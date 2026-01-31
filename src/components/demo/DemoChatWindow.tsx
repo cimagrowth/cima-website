@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { supabase } from "@/integrations/supabase/client";
 import { Send, Loader2, Bot, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { ChatSession } from "./DemoChatWidget";
@@ -71,12 +70,8 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
             ]);
           },
           onDone: async () => {
-            // Save the greeting to database
-            await supabase.from("demo_chat_messages").insert({
-              session_id: session.id,
-              role: "assistant",
-              content: assistantContent,
-            });
+            // Save the greeting to database via edge function
+            await saveMessage(session.id, assistantContent, "assistant");
             setIsLoading(false);
             inputRef.current?.focus();
           },
@@ -97,11 +92,32 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
     sendGreeting();
   }, [session]);
 
+  // Helper to save messages via edge function (server-side)
+  const saveMessage = async (sessionId: string, content: string, role: "user" | "assistant") => {
+    try {
+      const body = role === "user" 
+        ? { sessionId, userMessage: content }
+        : { sessionId, saveAssistantMessage: content };
+        
+      await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify(body),
+      });
+    } catch (error) {
+      console.error("Error saving message:", error);
+    }
+  };
+
   const streamChat = async ({
     messages,
     sessionId,
     clinicType,
     visitorName,
+    userMessage,
     onDelta,
     onDone,
   }: {
@@ -109,6 +125,7 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
     sessionId: string;
     clinicType: string;
     visitorName: string;
+    userMessage?: string;
     onDelta: (deltaText: string) => void;
     onDone: () => void;
   }) => {
@@ -118,7 +135,7 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
-      body: JSON.stringify({ messages, sessionId, clinicType, visitorName }),
+      body: JSON.stringify({ messages, sessionId, clinicType, visitorName, userMessage }),
     });
 
     if (!resp.ok || !resp.body) {
@@ -199,13 +216,6 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
 
     setMessages((prev) => [...prev, userMsg]);
 
-    // Save user message to database
-    await supabase.from("demo_chat_messages").insert({
-      session_id: session.id,
-      role: "user",
-      content: userMessage,
-    });
-
     const messagesForApi = [...messages, userMsg].map((m) => ({
       role: m.role,
       content: m.content,
@@ -220,6 +230,7 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
         sessionId: session.id,
         clinicType: session.clinicType,
         visitorName: session.visitorName,
+        userMessage, // This will be saved server-side
         onDelta: (chunk) => {
           assistantContent += chunk;
           setMessages((prev) => {
@@ -233,12 +244,8 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
           });
         },
         onDone: async () => {
-          // Save assistant message to database
-          await supabase.from("demo_chat_messages").insert({
-            session_id: session.id,
-            role: "assistant",
-            content: assistantContent,
-          });
+          // Save assistant message via edge function (server-side)
+          await saveMessage(session.id, assistantContent, "assistant");
           setIsLoading(false);
         },
       });

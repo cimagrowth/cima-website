@@ -6,6 +6,18 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// Create Supabase admin client for server-side operations
+const getSupabaseAdmin = () => {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL");
+  const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error("Missing Supabase configuration");
+  }
+  
+  return createClient(supabaseUrl, supabaseServiceKey);
+};
+
 const getSystemPrompt = (clinicType: string, visitorName: string) => {
   const clinicTypeContent: Record<string, string> = {
     fertility: `You specialize in fertility and IVF care. Key services include:
@@ -129,9 +141,47 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, sessionId, clinicType, visitorName } = await req.json();
+    const { messages, sessionId, clinicType, visitorName, userMessage, saveAssistantMessage } = await req.json();
     
     console.log("Demo chat request:", { sessionId, clinicType, visitorName, messageCount: messages?.length });
+
+    const supabaseAdmin = getSupabaseAdmin();
+
+    // Validate session exists (security check - only process requests for valid sessions)
+    const { data: sessionData, error: sessionError } = await supabaseAdmin
+      .from("demo_chat_sessions")
+      .select("id")
+      .eq("id", sessionId)
+      .single();
+
+    if (sessionError || !sessionData) {
+      console.error("Invalid session:", sessionId);
+      return new Response(JSON.stringify({ error: "Invalid session" }), {
+        status: 403,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // If this is a request to save the user message
+    if (userMessage) {
+      await supabaseAdmin.from("demo_chat_messages").insert({
+        session_id: sessionId,
+        role: "user",
+        content: userMessage,
+      });
+    }
+
+    // If this is a request to save the assistant message (after streaming completes)
+    if (saveAssistantMessage) {
+      await supabaseAdmin.from("demo_chat_messages").insert({
+        session_id: sessionId,
+        role: "assistant",
+        content: saveAssistantMessage,
+      });
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) {
