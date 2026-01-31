@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HowItWorks = () => {
   const steps = [
@@ -22,37 +23,63 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="section-padding bg-background">
-      <div className="container-wide">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+    <section className="section-padding bg-background relative overflow-hidden">
+      {/* Connecting line decoration */}
+      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent hidden md:block" />
+      
+      <div className="container-wide relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
           <h2 className="text-heading-lg md:text-display text-foreground mb-6">
-            How it works
+            How it <span className="text-gradient-accent">works</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
-              <div className="text-display text-primary/10 font-bold mb-4">
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="relative text-center md:text-left"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary-light text-primary-foreground text-heading-sm font-bold mb-6 shadow-card">
                 {step.number}
               </div>
               <h3 className="text-heading-sm text-foreground mb-3">{step.title}</h3>
               <p className="text-body text-muted-foreground">{step.description}</p>
+              
+              {/* Connector arrow */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 right-0 w-12 h-px bg-border translate-x-1/2" />
+                <div className="hidden md:flex absolute top-8 -right-4 w-8 items-center justify-center">
+                  <ArrowRight className="w-5 h-5 text-accent-orange" />
+                </div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center"
+        >
           <Link to="/demo">
-            <Button variant="hero" size="xl">
+            <Button variant="hero" size="xl" className="group">
               Book a Demo
-              <ArrowRight className="ml-1 h-5 w-5" />
+              <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

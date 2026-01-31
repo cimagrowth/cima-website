@@ -45,6 +45,12 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          orange: "hsl(var(--accent-orange))",
+          "orange-foreground": "hsl(var(--accent-orange-foreground))",
+        },
+        tan: {
+          DEFAULT: "hsl(var(--tan))",
+          foreground: "hsl(var(--tan-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -71,12 +77,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontSize: {
-        "display-xl": ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        "display-lg": ["3.75rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        "display": ["3rem", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
-        "heading-lg": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
-        "heading": ["1.875rem", { lineHeight: "1.25", letterSpacing: "-0.01em" }],
-        "heading-sm": ["1.5rem", { lineHeight: "1.3" }],
+        "display-xl": ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.03em" }],
+        "display-lg": ["3.75rem", { lineHeight: "1.08", letterSpacing: "-0.025em" }],
+        "display": ["3rem", { lineHeight: "1.12", letterSpacing: "-0.02em" }],
+        "heading-lg": ["2.25rem", { lineHeight: "1.15", letterSpacing: "-0.015em" }],
+        "heading": ["1.875rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        "heading-sm": ["1.5rem", { lineHeight: "1.25" }],
         "body-lg": ["1.125rem", { lineHeight: "1.7" }],
         "body": ["1rem", { lineHeight: "1.7" }],
         "body-sm": ["0.875rem", { lineHeight: "1.6" }],
@@ -89,6 +95,7 @@ export default {
         "soft": "var(--shadow-soft)",
         "card": "var(--shadow-card)",
         "elevated": "var(--shadow-elevated)",
+        "glow": "var(--shadow-glow)",
       },
       keyframes: {
         "accordion-down": {
@@ -99,10 +106,20 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "shimmer": "shimmer 3s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
       },
     },
   },
