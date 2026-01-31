@@ -42,7 +42,7 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container-wide">
+      <div className="container-wide px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Animated Logo */}
           <Link to="/" className="flex items-center gap-3 group relative">
@@ -66,7 +66,7 @@ const Header = () => {
               <img 
                 src={cimaLogo} 
                 alt="Cima" 
-                className={`h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105 ${
+                className={`h-8 md:h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105 ${
                   resolvedTheme === "dark" ? "brightness-0 invert" : ""
                 }`}
               />
@@ -114,10 +114,10 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button + Theme Toggle */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-1">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-accent text-accent-foreground transition-colors"
+              className="p-2.5 rounded-lg bg-accent text-accent-foreground transition-colors"
               aria-label="Toggle theme"
             >
               {resolvedTheme === "dark" ? (
@@ -127,7 +127,7 @@ const Header = () => {
               )}
             </button>
             <button
-              className="p-2 text-foreground transition-colors hover:text-accent-orange"
+              className="p-2.5 text-foreground transition-colors hover:text-accent-orange"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -139,25 +139,25 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-        isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
       }`}>
-        <nav className="bg-background border-b border-border px-6 py-4 flex flex-col gap-4">
+        <nav className="bg-background border-b border-border px-4 py-4 flex flex-col gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`text-base font-medium py-2 transition-colors ${
+              className={`text-base font-medium py-3 px-3 rounded-lg transition-colors ${
                 isActive(link.href)
-                  ? "text-accent-orange"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-accent-orange bg-accent-orange/10"
+                  : "text-foreground hover:bg-muted"
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
-            <Button variant="hero" className="w-full mt-2">
+          <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
+            <Button variant="hero" size="lg" className="w-full text-base">
               Book a Demo
             </Button>
           </Link>
