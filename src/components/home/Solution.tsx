@@ -66,8 +66,9 @@ const Solution = () => {
 
         <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10 md:mb-16">
           GrowthOS is built around a custom-trained AI that responds the moment a patient 
-          reaches out and continues the conversation over time. It communicates in your 
-          clinic's voice, follows your rules, and hands off to your team when the patient is ready.
+          reaches out and continues the conversation over time. It works alongside your existing 
+          CRM—Salesforce, HubSpot, Zoho, or any system—or replaces your infrastructure entirely. 
+          Your choice.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-6">
