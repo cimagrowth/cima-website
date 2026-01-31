@@ -100,6 +100,7 @@ const IntegrationFlexibility = () => {
             <span className="text-lg md:text-xl font-semibold text-foreground">Zoho</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">Keap</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">Tebra</span>
+            <span className="text-lg md:text-xl font-semibold text-foreground">DearDoc</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">+ API</span>
           </div>
         </motion.div>
