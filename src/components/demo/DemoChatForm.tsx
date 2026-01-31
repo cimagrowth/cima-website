@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import type { ChatSession } from "./DemoChatWidget";
 
 interface DemoChatFormProps {
@@ -94,11 +94,8 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
   };
 
   return (
-    <div className="p-6 overflow-y-auto h-full overscroll-contain">
-      <div className="text-center mb-6">
-        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center mx-auto mb-4">
-          <Sparkles className="h-8 w-8 text-white" />
-        </div>
+    <div className="p-5 overflow-y-auto h-full overscroll-contain flex flex-col">
+      <div className="text-center mb-4 flex-shrink-0">
         <h3 className="text-lg font-semibold text-foreground mb-2">
           Experience the AI in Action
         </h3>
@@ -107,7 +104,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3 flex-1">
         <div className="space-y-2">
           <Label htmlFor="demo-name">Your Name</Label>
           <Input
