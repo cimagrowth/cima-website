@@ -144,15 +144,15 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
               </Label>
             </div>
             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border hover:border-primary/50 transition-colors cursor-pointer">
-              <RadioGroupItem value="regenerative" id="regenerative" />
-              <Label htmlFor="regenerative" className="cursor-pointer text-sm">
-                Regenerative
+              <RadioGroupItem value="other" id="wellness" />
+              <Label htmlFor="wellness" className="cursor-pointer text-sm">
+                Wellness Center
               </Label>
             </div>
             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border hover:border-primary/50 transition-colors cursor-pointer">
-              <RadioGroupItem value="other" id="other" />
-              <Label htmlFor="other" className="cursor-pointer text-sm">
-                Other
+              <RadioGroupItem value="regenerative" id="regenerative" />
+              <Label htmlFor="regenerative" className="cursor-pointer text-sm">
+                Regenerative Medicine
               </Label>
             </div>
           </RadioGroup>
