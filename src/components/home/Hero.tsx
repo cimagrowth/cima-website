@@ -1,9 +1,25 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transforms for decorative elements
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const scale1 = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const opacity1 = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 45]);
+
   const outcomes = [
     "Faster response to every inquiry",
     "Consistent follow-up without staff overload",
@@ -11,14 +27,28 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute inset-0 bg-gradient-radial" />
       
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-accent-orange/10 rounded-full blur-3xl animate-float delay-300" />
+      {/* Parallax decorative elements */}
+      <motion.div 
+        style={{ y: y1, scale: scale1, opacity: opacity1 }}
+        className="absolute top-20 right-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl" 
+      />
+      <motion.div 
+        style={{ y: y2, scale: scale2, opacity: opacity1 }}
+        className="absolute bottom-20 left-[5%] w-96 h-96 bg-accent-orange/10 rounded-full blur-3xl" 
+      />
+      <motion.div 
+        style={{ y: y3, rotate: rotate1, opacity: opacity1 }}
+        className="absolute top-1/3 left-[15%] w-48 h-48 bg-primary/5 rounded-full blur-2xl" 
+      />
+      <motion.div 
+        style={{ y: y1, scale: scale2 }}
+        className="absolute bottom-1/4 right-[20%] w-32 h-32 bg-secondary/15 rounded-full blur-2xl" 
+      />
       
       <div className="container-wide relative z-10 py-20">
         <div className="max-w-4xl mx-auto text-center">
