@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema, generateFAQSchema } from "@/components/seo/schemas";
 
 const Pricing = () => {
   const features = [
@@ -42,8 +45,80 @@ const Pricing = () => {
     },
   ];
 
+  const faqItems = [
+    {
+      question: "What is the setup fee for monthly?",
+      answer: "It covers initial configuration of your system and AI training.",
+    },
+    {
+      question: "Is annual the same product?",
+      answer: "Yes. Same system. Annual includes no setup fee.",
+    },
+    {
+      question: "Are there any per-lead or usage fees?",
+      answer: "No. Your subscription covers unlimited leads, AI conversations, and team members.",
+    },
+  ];
+
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
+        { name: "Pricing", url: "https://inquiry-to-consult.lovable.app/pricing" },
+      ],
+    }),
+    generateFAQSchema({ questions: faqItems }),
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "GrowthOS",
+      description: "AI-powered patient engagement platform for healthcare clinics with instant response, automated nurturing, and unified inbox.",
+      brand: {
+        "@type": "Brand",
+        name: "Cima Growth Solutions",
+      },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Monthly Plan",
+          price: "999",
+          priceCurrency: "USD",
+          priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+          availability: "https://schema.org/InStock",
+          url: "https://inquiry-to-consult.lovable.app/pricing",
+        },
+        {
+          "@type": "Offer",
+          name: "Annual Plan",
+          price: "9999",
+          priceCurrency: "USD",
+          priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+          availability: "https://schema.org/InStock",
+          url: "https://inquiry-to-consult.lovable.app/pricing",
+        },
+      ],
+    },
+  ];
+
   return (
     <Layout>
+      <SEO
+        title="Pricing – GrowthOS AI Patient Engagement Platform"
+        description="Simple, transparent pricing for GrowthOS. $999/month or $9,999/year with no setup fee. Unlimited leads, AI conversations & team members. No per-lead charges. Full access to all features."
+        keywords={[
+          "GrowthOS pricing",
+          "healthcare CRM pricing",
+          "patient engagement software cost",
+          "clinic software pricing",
+          "med spa CRM cost",
+          "fertility clinic software pricing",
+          "AI healthcare software pricing",
+          "medical practice management cost",
+        ]}
+        canonical="https://inquiry-to-consult.lovable.app/pricing"
+      />
+      <JsonLd schema={schemas} />
+
       {/* Hero */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
@@ -109,7 +184,6 @@ const Pricing = () => {
                     {plan.setup}
                   </p>
 
-                  {/* Savings callout for annual */}
                   {plan.savings && (
                     <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-accent-orange/20 border border-accent-orange/30">
                       <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
@@ -119,7 +193,6 @@ const Pricing = () => {
                     </div>
                   )}
 
-                  {/* Bonus for annual */}
                   {plan.bonus && (
                     <div className="mt-3 flex items-center gap-2 p-3 rounded-lg bg-white/10 border border-white/20">
                       <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
@@ -130,7 +203,6 @@ const Pricing = () => {
                   )}
                 </div>
 
-                {/* Features list */}
                 <ul className="space-y-3 mb-8">
                   {features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-3">
@@ -198,20 +270,7 @@ const Pricing = () => {
           </motion.h2>
           
           <div className="space-y-4">
-            {[
-              {
-                q: "What is the setup fee for monthly?",
-                a: "It covers initial configuration of your system and AI training."
-              },
-              {
-                q: "Is annual the same product?",
-                a: "Yes. Same system. Annual includes no setup fee."
-              },
-              {
-                q: "Are there any per-lead or usage fees?",
-                a: "No. Your subscription covers unlimited leads, AI conversations, and team members."
-              }
-            ].map((item, index) => (
+            {faqItems.map((item, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -220,8 +279,8 @@ const Pricing = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="card-premium p-6"
               >
-                <h4 className="font-semibold text-foreground mb-2">{item.q}</h4>
-                <p className="text-body text-muted-foreground">{item.a}</p>
+                <h4 className="font-semibold text-foreground mb-2">{item.question}</h4>
+                <p className="text-body text-muted-foreground">{item.answer}</p>
               </motion.div>
             ))}
           </div>

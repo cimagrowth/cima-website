@@ -5,28 +5,22 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
-import { useEffect } from "react";
+import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/components/seo/schemas";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: post, isLoading, error } = usePostBySlug(slug || "");
 
-  // Update document title for SEO
-  useEffect(() => {
-    if (post) {
-      document.title = post.meta_title || post.title;
-      
-      // Update meta description
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc && post.meta_description) {
-        metaDesc.setAttribute("content", post.meta_description);
-      }
-    }
-  }, [post]);
-
   if (isLoading) {
     return (
       <Layout>
+        <SEO
+          title="Loading... | GrowthOS Blog"
+          description="Loading blog post..."
+          noindex
+        />
         <section className="section-padding bg-background">
           <div className="container-tight">
             <div className="animate-pulse">
@@ -48,6 +42,11 @@ const BlogPost = () => {
   if (error || !post) {
     return (
       <Layout>
+        <SEO
+          title="Post Not Found | GrowthOS Blog"
+          description="The blog post you're looking for doesn't exist or has been removed."
+          noindex
+        />
         <section className="section-padding bg-background">
           <div className="container-tight text-center">
             <h1 className="text-display text-foreground mb-4">Post Not Found</h1>
@@ -66,8 +65,45 @@ const BlogPost = () => {
     );
   }
 
+  const postUrl = `https://inquiry-to-consult.lovable.app/blog/${post.slug}`;
+  
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
+        { name: "Blog", url: "https://inquiry-to-consult.lovable.app/blog" },
+        { name: post.title, url: postUrl },
+      ],
+    }),
+    generateArticleSchema({
+      headline: post.title,
+      description: post.meta_description || post.excerpt || "",
+      image: post.featured_image_url || undefined,
+      datePublished: post.published_at || post.created_at,
+      dateModified: post.updated_at,
+      url: postUrl,
+      keywords: post.meta_keywords || [],
+    }),
+  ];
+
   return (
     <Layout>
+      <SEO
+        title={post.meta_title || `${post.title} | GrowthOS Blog`}
+        description={post.meta_description || post.excerpt || `Read ${post.title} on the GrowthOS blog.`}
+        keywords={post.meta_keywords || []}
+        canonical={postUrl}
+        ogType="article"
+        ogImage={post.featured_image_url || undefined}
+        article={{
+          publishedTime: post.published_at || undefined,
+          modifiedTime: post.updated_at,
+          section: "Healthcare Technology",
+          tags: post.meta_keywords || [],
+        }}
+      />
+      <JsonLd schema={schemas} />
+
       <article className="section-padding bg-background">
         <div className="container-tight">
           {/* Back link */}

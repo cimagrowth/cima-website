@@ -5,6 +5,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Check, Zap, MessageCircle, UserCheck, BarChart3, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema, generateServiceSchema } from "@/components/seo/schemas";
 
 const Demo = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +28,6 @@ const Demo = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, this would submit to a backend
     setIsSubmitted(true);
   };
 
@@ -33,8 +35,38 @@ const Demo = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
+        { name: "Book a Demo", url: "https://inquiry-to-consult.lovable.app/demo" },
+      ],
+    }),
+    generateServiceSchema({
+      name: "GrowthOS Demo & Consultation",
+      description: "Book a 30-minute walkthrough to see GrowthOS handle real patient inquiries with AI-powered engagement and follow-up automation.",
+    }),
+  ];
+
   return (
     <Layout>
+      <SEO
+        title="Book a Demo – See GrowthOS AI Patient Engagement in Action"
+        description="Schedule a 30-minute walkthrough of GrowthOS. Watch AI respond to patient inquiries in real-time across web, phone, text & social. See pipelines, automations & unified inbox. Free consultation for fertility clinics, med spas & regenerative medicine."
+        keywords={[
+          "GrowthOS demo",
+          "healthcare CRM demo",
+          "patient engagement demo",
+          "AI healthcare software trial",
+          "clinic software consultation",
+          "med spa CRM demo",
+          "fertility clinic software demo",
+          "patient follow-up automation demo",
+        ]}
+        canonical="https://inquiry-to-consult.lovable.app/demo"
+      />
+      <JsonLd schema={schemas} />
+      
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
         <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />

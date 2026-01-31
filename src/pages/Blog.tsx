@@ -6,13 +6,55 @@ import { Calendar, Clock, ArrowRight, PenSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { useAuth } from "@/contexts/AuthContext";
+import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema } from "@/components/seo/schemas";
 
 const Blog = () => {
   const { data: posts, isLoading, error } = usePublishedPosts();
   const { isAdmin } = useAuth();
 
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
+        { name: "Blog", url: "https://inquiry-to-consult.lovable.app/blog" },
+      ],
+    }),
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: "GrowthOS Blog – Insights for Clinic Growth",
+      description: "Expert strategies, industry insights, and actionable advice for fertility clinics, med spas, wellness centers, and regenerative medicine clinics.",
+      url: "https://inquiry-to-consult.lovable.app/blog",
+      publisher: {
+        "@type": "Organization",
+        name: "Cima Growth Solutions",
+        url: "https://inquiry-to-consult.lovable.app",
+      },
+    },
+  ];
+
   return (
     <Layout>
+      <SEO
+        title="Blog – Insights for Clinic Growth | GrowthOS"
+        description="Expert strategies, industry insights, and actionable advice for fertility clinics, med spas, wellness centers, and regenerative medicine clinics. Learn patient engagement best practices and clinic growth strategies."
+        keywords={[
+          "clinic growth strategies",
+          "patient engagement tips",
+          "fertility clinic marketing",
+          "med spa growth",
+          "healthcare marketing blog",
+          "patient retention strategies",
+          "medical practice growth",
+          "wellness center marketing",
+          "regenerative medicine marketing",
+        ]}
+        canonical="https://inquiry-to-consult.lovable.app/blog"
+      />
+      <JsonLd schema={schemas} />
+
       {/* Hero */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
@@ -31,7 +73,7 @@ const Blog = () => {
             </h1>
             <p className="text-body-lg text-muted-foreground">
               Expert strategies, industry insights, and actionable advice for
-              fertility and regenerative medicine clinics.
+              fertility clinics, med spas, wellness centers, and regenerative medicine clinics.
             </p>
             
             {isAdmin && (
