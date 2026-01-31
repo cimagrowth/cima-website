@@ -18,9 +18,9 @@ const Demo = () => {
 
   const benefits = [
     { icon: Zap, text: "Live AI response examples" },
-    { icon: MessageCircle, text: "Nurture flows in action" },
-    { icon: UserCheck, text: "Human handoff points" },
-    { icon: BarChart3, text: "Leakage visibility and reporting" },
+    { icon: MessageCircle, text: "Follow-up sequences in action" },
+    { icon: UserCheck, text: "Staff handoff points" },
+    { icon: BarChart3, text: "Pipeline visibility and reporting" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,8 +49,8 @@ const Demo = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-                See how GrowthOS{" "}
-                <span className="text-gradient-accent">stops patient leakage.</span>
+                See GrowthOS prevent patient loss{" "}
+                <span className="text-gradient-accent">in real time.</span>
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
                 Book a 30-minute demo with our team. We'll show you exactly how the AI 
@@ -197,7 +197,7 @@ const Demo = () => {
                       </Button>
 
                       <p className="text-body-sm text-muted-foreground text-center">
-                        See the AI in action. No pressure.
+                        See the AI + platform together. No pressure.
                       </p>
                     </form>
                   </>

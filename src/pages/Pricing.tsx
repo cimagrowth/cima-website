@@ -1,47 +1,41 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Gift, Sparkles } from "lucide-react";
+import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Pricing = () => {
   const features = [
-    "Custom-trained AI responder and nurturer",
-    "Instant 24/7 lead response",
-    "AI-guided nurturing sequences",
-    "Unified inbox with AI + human visibility",
-    "Custom pipelines and workflows",
-    "Missed-call AI response",
-    "Lead source tracking and reporting",
-    "Database reactivation campaigns",
-    "Team access and permissions",
-    "Onboarding and AI configuration",
+    "Custom-trained AI response and follow-up",
+    "Unified inbox (AI + staff)",
+    "Pipelines and patient journeys",
+    "Automations and follow-up rules",
+    "Reactivation campaigns",
+    "Reporting and visibility",
+    "Onboarding + configuration",
   ];
 
   const plans = [
     {
-      name: "GrowthOS Monthly",
+      name: "Monthly",
       price: "$999",
       period: "/ month",
-      setup: "+ $999 one-time setup fee",
-      description: "Full access to the complete GrowthOS platform with flexible monthly billing.",
+      setup: "$999 one-time setup",
+      description: "Full access to GrowthOS with flexible monthly billing.",
       savings: null,
-      bonus: null,
-      cta: "Start with Monthly",
+      cta: "Start Monthly",
+      ctaSubtext: "$999/mo + $999 setup",
       popular: false,
     },
     {
-      name: "GrowthOS Annual",
+      name: "Annual",
       price: "$9,999",
       period: "/ year",
       setup: "No setup fee",
-      description: "Best value for committed clinics. Pay annually and save significantly.",
-      savings: {
-        firstYear: "$2,997",
-        ongoing: "$1,998",
-      },
-      bonus: "$500 Meta & Google Ads Credit",
-      cta: "Get Annual Plan",
+      description: "Best value. Pay annually and save on setup.",
+      savings: "Save on setup",
+      cta: "Start Annual",
+      ctaSubtext: "$9,999/year, no setup fee",
       popular: true,
     },
   ];
@@ -59,11 +53,11 @@ const Pricing = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-              Stop patient leakage with an{" "}
-              <span className="text-gradient-accent">always-on AI system.</span>
+              Stop patient leakage with GrowthOS.{" "}
+              <span className="text-gradient-accent">Choose monthly or annual.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground">
-              No hidden fees. No per-lead charges. Just straightforward subscription plans.
+              One plan. Full access. No hidden fees or per-lead charges.
             </p>
           </motion.div>
         </div>
@@ -72,7 +66,7 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="pb-20 md:pb-28 lg:pb-32 bg-background">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -115,26 +109,10 @@ const Pricing = () => {
 
                   {/* Savings callout for annual */}
                   {plan.savings && (
-                    <div className="mt-4 p-4 rounded-xl bg-white/10 border border-white/20">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Sparkles className="w-4 h-4 text-accent-orange" />
-                        <span className="text-body-sm font-semibold text-primary-foreground">Your Savings</span>
-                      </div>
-                      <p className="text-body-sm text-primary-foreground/90">
-                        Save <span className="font-bold text-accent-orange">{plan.savings.firstYear}</span> your first year
-                      </p>
-                      <p className="text-body-sm text-primary-foreground/80">
-                        Save <span className="font-semibold">{plan.savings.ongoing}</span> every year after
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Bonus for annual */}
-                  {plan.bonus && (
-                    <div className="mt-4 flex items-center gap-3 p-3 rounded-lg bg-accent-orange/20 border border-accent-orange/30">
-                      <Gift className="w-5 h-5 text-accent-orange flex-shrink-0" />
+                    <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-accent-orange/20 border border-accent-orange/30">
+                      <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
                       <span className="text-body-sm font-semibold text-primary-foreground">
-                        {plan.bonus}
+                        {plan.savings}
                       </span>
                     </div>
                   )}
@@ -166,6 +144,9 @@ const Pricing = () => {
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
+                <p className={`text-body-sm mt-3 text-center ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                  {plan.ctaSubtext}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -186,7 +167,7 @@ const Pricing = () => {
               Full access. No feature tiers.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Both plans include every GrowthOS feature. The only difference is how you pay.
+              Both billing options include every GrowthOS feature. The only difference is how you pay.
             </p>
           </motion.div>
         </div>
@@ -207,16 +188,16 @@ const Pricing = () => {
           <div className="space-y-4">
             {[
               {
-                q: "What's included in the setup fee?",
-                a: "One-time AI training and system configuration. We configure your messaging, workflows, and integrations so the AI sounds like your clinic from day one."
+                q: "What is the setup fee for monthly?",
+                a: "It covers initial configuration of your system and AI training."
+              },
+              {
+                q: "Is annual the same product?",
+                a: "Yes. Same system. Annual includes no setup fee."
               },
               {
                 q: "Are there any per-lead or usage fees?",
                 a: "No. Your subscription covers unlimited leads, AI conversations, and team members."
-              },
-              {
-                q: "What if I need to cancel?",
-                a: "Monthly plans can be canceled anytime. Annual plans are billed upfront with no setup fee."
               }
             ].map((item, index) => (
               <motion.div 

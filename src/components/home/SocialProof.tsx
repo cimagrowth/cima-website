@@ -6,7 +6,7 @@ const SocialProof = () => {
     "IVF",
     "REI",
     "Regenerative",
-    "Functional Medicine",
+    "Wellness",
   ];
 
   return (
@@ -23,7 +23,7 @@ const SocialProof = () => {
           className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8"
         >
           <span className="text-body-sm text-primary-foreground/70 font-medium">
-            Trusted by clinics in:
+            Built for:
           </span>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
             {verticals.map((vertical, index) => (

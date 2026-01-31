@@ -15,7 +15,7 @@ const FounderLetter = () => {
           className="max-w-2xl mx-auto"
         >
           <h3 className="text-body-sm font-semibold text-accent-orange uppercase tracking-widest mb-8">
-            From the Founder
+            Why I built GrowthOS
           </h3>
           
           <div className="space-y-6 text-body-lg text-foreground">
@@ -25,7 +25,7 @@ const FounderLetter = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
             >
-              I built GrowthOS after watching clinics lose patients for reasons that had nothing to do with care quality.
+              I kept seeing clinics lose patients for reasons that had nothing to do with care quality.
             </motion.p>
             
             <motion.p
@@ -34,7 +34,7 @@ const FounderLetter = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
-              The real problem wasn't marketing. It was leakage. Patients reached out, and no one responded fast enough. Or follow-up stopped too soon. Or staff was stretched thin.
+              People were doing their best, but they were busy. Calls were missed. Follow-up slipped. Patients went quiet.
             </motion.p>
             
             <motion.p
@@ -43,7 +43,7 @@ const FounderLetter = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              GrowthOS is built around a simple belief: humans shouldn't be the first line of defense against patient loss.
+              So we built a system that doesn't rely on perfect timing or perfect memory.
             </motion.p>
             
             <motion.p 
@@ -52,26 +52,17 @@ const FounderLetter = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.4 }}
             >
-              So we built a custom AI system that responds instantly, nurtures consistently, and supports clinic teams instead of replacing them.
-            </motion.p>
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-            >
-              The inboxes, pipelines, and reports exist for one reason: to make sure the AI works transparently, safely, and in alignment with your clinic.
+              GrowthOS responds instantly, follows up consistently, and keeps every conversation organized in one place so your team always knows what's happening and what to do next.
             </motion.p>
             
             <motion.p 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.6 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
               className="text-muted-foreground"
             >
-              If GrowthOS feels calm and intentional, that's because it's designed to remove pressure from people and put it on systems.
+              It's not meant to replace people. It's meant to back them up.
             </motion.p>
           </div>
 

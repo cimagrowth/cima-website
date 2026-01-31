@@ -18,26 +18,26 @@ const Solution = () => {
   const capabilities = [
     {
       icon: Zap,
-      title: "Instant AI Response",
-      description: "Every inquiry receives an immediate, human-sounding response.",
+      title: "Immediate responses to every inquiry",
+      description: "Patients never wait. Every lead gets an instant, human-sounding reply.",
       gradient: "from-accent-orange to-secondary",
     },
     {
       icon: MessageCircle,
-      title: "AI-Guided Nurturing",
-      description: "Patients receive consistent, personalized follow-up over days or weeks.",
+      title: "Ongoing follow-up across days or weeks",
+      description: "The AI keeps the conversation going until the patient is ready.",
       gradient: "from-secondary to-primary-light",
     },
     {
       icon: Brain,
-      title: "Clinic-Trained Intelligence",
-      description: "The AI is trained on your clinic's approved messaging, tone, and rules.",
+      title: "Common questions, next steps, and nudges to book",
+      description: "It communicates in your clinic's voice and follows your rules.",
       gradient: "from-primary to-primary-light",
     },
     {
       icon: UserCheck,
-      title: "Clean Human Handoff",
-      description: "When a patient is ready, staff steps in with full context.",
+      title: "Clean handoff to staff with full conversation history",
+      description: "When a patient is ready, your team steps in with complete context.",
       gradient: "from-primary-light to-accent-orange",
     },
   ];
@@ -65,8 +65,8 @@ const Solution = () => {
           className="max-w-3xl mx-auto text-center mb-6"
         >
           <h2 className="text-heading-lg md:text-display text-foreground mb-6">
-            An AI system designed to{" "}
-            <span className="text-gradient">protect every inquiry.</span>
+            An AI system that{" "}
+            <span className="text-gradient">never forgets to follow up.</span>
           </h2>
         </motion.div>
 
@@ -77,9 +77,9 @@ const Solution = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-body-lg text-muted-foreground text-center max-w-3xl mx-auto mb-16"
         >
-          GrowthOS is built around a custom-trained AI language model that acts as your clinic's 
-          first responder and long-term nurture engine. It engages patients instantly, communicates 
-          in your clinic's voice, and follows structured workflows designed to move patients toward booking.
+          GrowthOS is built around a custom-trained AI that responds the moment a patient 
+          reaches out and continues the conversation over time. It communicates in your 
+          clinic's voice, follows your rules, and hands off to your team when the patient is ready.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-6">

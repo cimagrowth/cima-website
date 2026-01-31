@@ -16,10 +16,9 @@ const Problem = () => {
 
   const leakagePoints = [
     { icon: Clock, text: "After-hours inquiries" },
-    { icon: Phone, text: "Missed calls and voicemails" },
+    { icon: Phone, text: "Missed calls and slow responses" },
     { icon: Users, text: "Inconsistent follow-up" },
-    { icon: Database, text: "Leads that go cold without reactivation" },
-    { icon: Eye, text: "No visibility into where patients drop off" },
+    { icon: Database, text: "Leads that quietly go cold" },
   ];
 
   return (
@@ -43,17 +42,17 @@ const Problem = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-heading-lg md:text-display text-foreground mb-6">
-            Patient leakage happens{" "}
-            <span className="text-gradient-accent">quietly and constantly.</span>
+            Patient loss doesn't happen all at once.{" "}
+            <span className="text-gradient-accent">It happens in the gaps.</span>
           </h2>
           <p className="text-body-lg text-muted-foreground">
-            When a patient reaches out and doesn't hear back quickly, interest fades. 
-            When follow-up depends on busy staff, consistency breaks. Most clinics don't 
-            realize how many patients they lose because the system relies too heavily on humans.
+            A patient reaches out and doesn't hear back quickly. Follow-up fades. 
+            Life gets busy. They move on. Most clinics never see these losses, but they 
+            feel them in empty schedules and unpredictable bookings.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {leakagePoints.map((point, index) => {
             const Icon = point.icon;
             return (
