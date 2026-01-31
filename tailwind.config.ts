@@ -7,21 +7,28 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          soft: "hsl(var(--background-soft))",
+        },
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -63,22 +70,34 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontSize: {
+        "display-xl": ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "display-lg": ["3.75rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        "display": ["3rem", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+        "heading-lg": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        "heading": ["1.875rem", { lineHeight: "1.25", letterSpacing: "-0.01em" }],
+        "heading-sm": ["1.5rem", { lineHeight: "1.3" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.7" }],
+        "body": ["1rem", { lineHeight: "1.7" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.6" }],
+      },
+      spacing: {
+        "18": "4.5rem",
+        "22": "5.5rem",
+      },
+      boxShadow: {
+        "soft": "var(--shadow-soft)",
+        "card": "var(--shadow-card)",
+        "elevated": "var(--shadow-elevated)",
+      },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
