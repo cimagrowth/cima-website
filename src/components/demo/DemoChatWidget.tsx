@@ -55,30 +55,50 @@ const DemoChatWidget = () => {
   return (
     <>
       {/* Floating Chat Button - positioned on the right side, vertically centered */}
+      {/* Shows when closed OR when minimized (minimizes back to sidebar) */}
       <AnimatePresence>
-        {!isOpen && (
+        {(!isOpen || isMinimized) && (
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed right-0 top-1/2 -translate-y-1/2 z-50"
+            style={{ transformOrigin: "right center" }}
           >
             <div className="relative">
-              {showPulse && (
+              {/* Pulse animation only when not yet opened */}
+              {showPulse && !isMinimized && (
                 <motion.div
                   className="absolute inset-0 rounded-l-full bg-accent-orange"
                   animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               )}
+              {/* Unread indicator when minimized */}
+              {isMinimized && hasUnreadMessages && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [1, 0.8, 1]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute -left-1 top-1/2 -translate-y-1/2 w-3 h-3 bg-accent-orange rounded-full border-2 border-white z-10"
+                />
+              )}
               <Button
-                onClick={() => setIsOpen(true)}
+                onClick={isMinimized ? handleExpand : () => setIsOpen(true)}
                 variant="hero"
                 className="h-auto py-4 px-3 rounded-l-xl rounded-r-none shadow-glow flex flex-col gap-2 items-center"
               >
                 <MessageCircle className="h-5 w-5" />
                 <span className="text-xs font-medium writing-mode-vertical" style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}>
-                  Try AI Bot
+                  {isMinimized ? "Continue Chat" : "Try AI Bot"}
                 </span>
               </Button>
             </div>
@@ -86,59 +106,18 @@ const DemoChatWidget = () => {
         )}
       </AnimatePresence>
 
-      {/* Minimized Chat Bar */}
-      <AnimatePresence>
-        {isOpen && isMinimized && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 right-6 z-50"
-          >
-            <Button
-              onClick={handleExpand}
-              variant="hero"
-              className="h-14 px-4 rounded-full shadow-glow flex items-center gap-3 relative"
-            >
-              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center relative">
-                <MessageCircle className="h-4 w-4 text-white" />
-                {hasUnreadMessages && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [1, 0.8, 1]
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute -top-1 -right-1 w-3 h-3 bg-accent-orange rounded-full border-2 border-primary"
-                  />
-                )}
-              </div>
-              <span className="font-medium">
-                {hasUnreadMessages ? "New message" : "Continue Chat"}
-              </span>
-              <Maximize2 className="h-4 w-4 ml-1" />
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Chat Window - full screen on mobile, centered on desktop */}
+      {/* Chat Window - sized for mobile safe areas, centered on desktop */}
       <AnimatePresence>
         {isOpen && !isMinimized && (
           <motion.div
-            initial={{ opacity: 0, x: 20, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 20, scale: 0.95 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed z-50 bg-card border border-border shadow-glow overflow-hidden flex flex-col overscroll-contain
-              inset-2 rounded-xl
-              sm:inset-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:w-[380px] sm:h-[550px] sm:max-h-[calc(100vh-120px)] sm:rounded-2xl"
+              top-3 left-3 right-3 bottom-[env(safe-area-inset-bottom,16px)] pb-[env(safe-area-inset-bottom,0px)] rounded-xl max-h-[calc(100dvh-24px)]
+              sm:inset-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:w-[380px] sm:h-[550px] sm:max-h-[calc(100vh-120px)] sm:rounded-2xl sm:pb-0"
+            style={{ transformOrigin: "right center" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary to-secondary flex-shrink-0">
