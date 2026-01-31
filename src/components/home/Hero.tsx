@@ -70,7 +70,7 @@ const Hero = () => {
       />
       
       <motion.div 
-        className="container-wide relative z-10 flex-1 flex flex-col justify-center py-6 md:py-20"
+        className="container-wide relative z-10 flex-1 flex flex-col justify-center py-12 md:py-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -143,7 +143,7 @@ const Hero = () => {
 
       {/* MOBILE ONLY: Bottom section with CTAs */}
       <motion.div 
-        className="md:hidden relative z-10 px-6 pb-8 space-y-4"
+        className="md:hidden relative z-10 px-6 pb-10 space-y-5"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
