@@ -1,17 +1,17 @@
-import { TrendingUp, Clock, Users, RefreshCw, BarChart3 } from "lucide-react";
+import { Clock, MessageCircle, Users, RefreshCw, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
 const UseCases = () => {
   const useCases = [
-    { icon: TrendingUp, text: "Increase booked consults without increasing lead volume" },
     { icon: Clock, text: "Stop losing after-hours inquiries" },
-    { icon: Users, text: "Create consistent follow-up without new hires" },
-    { icon: RefreshCw, text: "Reactivate cold inquiries and no-shows" },
-    { icon: BarChart3, text: "Gain clarity into marketing and pipeline performance" },
+    { icon: MessageCircle, text: "Ensure every lead is followed up consistently" },
+    { icon: Users, text: "Reduce staff load without sacrificing experience" },
+    { icon: RefreshCw, text: "Reactivate cold leads automatically" },
+    { icon: Eye, text: "Gain visibility into patient leakage" },
   ];
 
   return (
-    <section className="section-padding bg-tan relative overflow-hidden">
+    <section className="section-padding bg-background relative overflow-hidden">
       <div className="container-wide relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

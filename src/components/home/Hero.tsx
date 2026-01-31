@@ -21,9 +21,9 @@ const Hero = () => {
   const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
   const outcomes = [
-    "Faster response to every inquiry",
-    "Consistent follow-up without staff overload",
-    "Clear visibility into what actually drives bookings",
+    "Every inquiry gets an immediate response",
+    "Patients are nurtured automatically, even after hours",
+    "Staff only engages when patients are ready",
   ];
 
   return (
@@ -70,8 +70,8 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-display-lg md:text-display-xl text-foreground mb-6"
           >
-            GrowthOS is the all-in-one growth operating system for clinics that want{" "}
-            <span className="text-gradient-accent">more booked patients.</span>
+            GrowthOS stops patient leakage with an always-on AI that{" "}
+            <span className="text-gradient-accent">responds and nurtures automatically.</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -81,9 +81,9 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-10"
           >
-            Capture leads, respond instantly, nurture automatically, and track what converts. 
-            GrowthOS replaces fragmented tools with one unified system built specifically for 
-            fertility and regenerative clinics.
+            Most clinics lose patients because no one responds fast enough or follows up long enough. 
+            GrowthOS uses a custom-trained AI system to instantly engage every inquiry, nurture them 
+            over time, and support your team so no patient falls through the cracks.
           </motion.p>
 
           {/* CTAs */}
@@ -113,9 +113,9 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 text-body-sm text-muted-foreground mb-16"
           >
-            <span>30 minutes. No sales pressure.</span>
+            <span>See how the AI works in real clinic workflows</span>
             <span className="hidden sm:inline text-border">•</span>
-            <span>Simple. Transparent.</span>
+            <span>Simple subscription plans</span>
           </motion.div>
 
           {/* Outcome bullets */}

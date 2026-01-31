@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const AIStudio = () => {
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
+    <section className="section-padding bg-tan relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-orange/5 rounded-full blur-3xl" />
       
@@ -27,16 +27,16 @@ const AIStudio = () => {
               <Sparkles className="w-8 h-8 text-white" />
             </motion.div>
             <h2 className="text-heading-lg text-foreground mb-4">
-              Want a preview of how we think?
+              Want to see how our AI thinks?
             </h2>
             <p className="text-body-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Get access to the Cima AI Studio, a free AI-powered toolkit designed for 
-              clinic marketing and patient communication.
+              Access the Cima AI Studio, a free toolkit that shows how we design 
+              patient-safe, clinic-aligned AI messaging.
             </p>
             <Button variant="hero" size="xl" className="pulse-glow">
               Get the Free AI Studio
             </Button>
-            <p className="text-body-sm text-muted-foreground mt-4">Instant access</p>
+            <p className="text-body-sm text-muted-foreground mt-4">Preview our AI approach</p>
           </div>
         </motion.div>
       </div>

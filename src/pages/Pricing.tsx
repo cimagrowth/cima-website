@@ -6,21 +6,16 @@ import { motion } from "framer-motion";
 
 const Pricing = () => {
   const features = [
-    "Custom AI Bot for nurturing & follow-up",
-    "24/7 automated lead response",
-    "Unified Inbox",
-    "Custom pipelines",
-    "Automations and workflows",
-    "Missed-call text back",
-    "Lead tracking and reporting",
+    "Custom-trained AI responder and nurturer",
+    "Instant 24/7 lead response",
+    "AI-guided nurturing sequences",
+    "Unified inbox with AI + human visibility",
+    "Custom pipelines and workflows",
+    "Missed-call AI response",
+    "Lead source tracking and reporting",
     "Database reactivation campaigns",
-    "Team access",
-    "Onboarding and training",
-    "Managed ad system integration",
-    "Funnel and conversion tracking",
-    "Landing page and lead flow setup",
-    "Ongoing optimization support",
-    "Priority strategy access",
+    "Team access and permissions",
+    "Onboarding and AI configuration",
   ];
 
   const plans = [
@@ -64,12 +59,11 @@ const Pricing = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-              Simple pricing built for{" "}
-              <span className="text-gradient-accent">real clinics.</span>
+              Stop patient leakage with an{" "}
+              <span className="text-gradient-accent">always-on AI system.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground">
-              No hidden fees. No per-lead charges. Just straightforward plans 
-              that scale with your practice.
+              No hidden fees. No per-lead charges. Just straightforward subscription plans.
             </p>
           </motion.div>
         </div>
@@ -214,15 +208,15 @@ const Pricing = () => {
             {[
               {
                 q: "What's included in the setup fee?",
-                a: "One-time configuration of workflows, pipelines, and integrations. We handle the technical setup so your team can focus on patients."
+                a: "One-time AI training and system configuration. We configure your messaging, workflows, and integrations so the AI sounds like your clinic from day one."
               },
               {
                 q: "Are there any per-lead or usage fees?",
-                a: "No. Your monthly subscription covers unlimited leads, conversations, and team members."
+                a: "No. Your subscription covers unlimited leads, AI conversations, and team members."
               },
               {
                 q: "What if I need to cancel?",
-                a: "Monthly plans can be canceled anytime. Annual plans are billed upfront with a discount on setup and monthly rate."
+                a: "Monthly plans can be canceled anytime. Annual plans are billed upfront with no setup fee."
               }
             ].map((item, index) => (
               <motion.div 
@@ -254,7 +248,7 @@ const Pricing = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h2 className="text-heading-lg text-primary-foreground mb-6">
-              Ready to grow your clinic?
+              Ready to stop patient leakage?
             </h2>
             <Link to="/demo">
               <Button variant="hero" size="xl" className="group shadow-glow">

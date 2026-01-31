@@ -2,7 +2,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, Calendar, Users, BarChart3, ArrowRight } from "lucide-react";
+import { Check, Zap, MessageCircle, UserCheck, BarChart3, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -17,10 +17,10 @@ const Demo = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const benefits = [
-    { icon: Calendar, text: "Live walkthrough of GrowthOS" },
-    { icon: Users, text: "Pipeline recommendations for your clinic" },
-    { icon: BarChart3, text: "Follow-up framework tailored to your workflow" },
-    { icon: ArrowRight, text: "Clear next steps — no pressure" },
+    { icon: Zap, text: "Live AI response examples" },
+    { icon: MessageCircle, text: "Nurture flows in action" },
+    { icon: UserCheck, text: "Human handoff points" },
+    { icon: BarChart3, text: "Leakage visibility and reporting" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,15 +49,15 @@ const Demo = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-                See GrowthOS{" "}
-                <span className="text-gradient-accent">in action.</span>
+                See how GrowthOS{" "}
+                <span className="text-gradient-accent">stops patient leakage.</span>
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
-                Book a 30-minute demo with our team. We'll show you exactly how GrowthOS 
-                can help your clinic convert more inquiries into booked patients.
+                Book a 30-minute demo with our team. We'll show you exactly how the AI 
+                responds, nurtures, and hands off to your staff in real clinic workflows.
               </p>
 
-              <h3 className="text-heading-sm text-foreground mb-6">What you'll get:</h3>
+              <h3 className="text-heading-sm text-foreground mb-6">What you'll see:</h3>
               <div className="space-y-4 mb-10">
                 {benefits.map((benefit, index) => {
                   const Icon = benefit.icon;
@@ -197,7 +197,7 @@ const Demo = () => {
                       </Button>
 
                       <p className="text-body-sm text-muted-foreground text-center">
-                        We'll only use this to follow up about GrowthOS.
+                        See the AI in action. No pressure.
                       </p>
                     </form>
                   </>
