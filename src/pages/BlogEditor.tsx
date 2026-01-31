@@ -24,6 +24,7 @@ import {
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import RichTextEditor from "@/components/blog/RichTextEditor";
 
 const BlogEditor = () => {
   const { id } = useParams<{ id: string }>();
@@ -318,17 +319,15 @@ const BlogEditor = () => {
                       <label className="block text-body-sm font-medium text-foreground mb-2">
                         Content
                       </label>
-                      <Textarea
-                        value={formData.content}
-                        onChange={(e) =>
+                      <RichTextEditor
+                        content={formData.content}
+                        onChange={(content) =>
                           setFormData((prev) => ({
                             ...prev,
-                            content: e.target.value,
+                            content,
                           }))
                         }
-                        placeholder="Write your blog post content here... Use ## for headings, **bold**, *italic*"
-                        rows={20}
-                        className="font-mono"
+                        placeholder="Start writing your blog post..."
                       />
                     </div>
                   </div>
