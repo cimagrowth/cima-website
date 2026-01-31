@@ -16,7 +16,7 @@ const IntegrationFlexibility = () => {
       icon: Layers,
       title: "Transition Mode",
       subtitle: "Moving away from your CRM",
-      description: "Already stuck in HubSpot, Salesforce, or HighLevel? We'll help you migrate at your own pace while GrowthOS handles the heavy lifting.",
+      description: "Already stuck in HubSpot, Salesforce, or Tebra? We'll help you migrate at your own pace while GrowthOS handles the heavy lifting.",
       audience: "For clinics ready to simplify",
       gradient: "from-secondary to-accent-orange",
       featured: false,
@@ -99,7 +99,7 @@ const IntegrationFlexibility = () => {
             <span className="text-lg md:text-xl font-semibold text-foreground">HubSpot</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">Zoho</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">Keap</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">HighLevel</span>
+            <span className="text-lg md:text-xl font-semibold text-foreground">Tebra</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">+ API</span>
           </div>
         </motion.div>
