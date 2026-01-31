@@ -8,27 +8,27 @@ const HowItWorks = () => {
     {
       number: "01",
       title: "Patient reaches out",
-      description: "From any channel — web form, call, text, or ad.",
+      description: "Web form, phone call, text, email, WhatsApp, Instagram, TikTok, Facebook, or Google My Business.",
     },
     {
       number: "02",
-      title: "AI responds instantly",
-      description: "No delays. Every inquiry gets immediate engagement.",
+      title: "AI responds in seconds",
+      description: "Emotionally intelligent, not robotic. Trained on your specialty and your clinic's voice.",
     },
     {
       number: "03",
-      title: "AI follows up consistently",
-      description: "The conversation continues over days or weeks.",
+      title: "AI nurtures over time",
+      description: "Answers questions, moves leads through stages, follows up for days or weeks.",
     },
     {
       number: "04",
-      title: "Staff steps in at the right moment",
-      description: "Your team takes over with full context when ready.",
+      title: "Staff gets alerted",
+      description: "Unified inbox on desktop and mobile. Real-time notifications when human attention is needed.",
     },
     {
       number: "05",
-      title: "Everything is tracked",
-      description: "Every message, lead, and outcome visible in one system.",
+      title: "Your team closes",
+      description: "Full conversation history. Staff steps in with complete context to book the consult.",
     },
   ];
 

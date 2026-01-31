@@ -17,10 +17,10 @@ const Demo = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const benefits = [
-    { icon: Zap, text: "Live AI response examples" },
-    { icon: MessageCircle, text: "Follow-up sequences in action" },
-    { icon: UserCheck, text: "Staff handoff points" },
-    { icon: BarChart3, text: "Pipeline visibility and reporting" },
+    { icon: Zap, text: "See the AI respond across channels in real time" },
+    { icon: MessageCircle, text: "Watch lead nurturing and stage progression" },
+    { icon: UserCheck, text: "Explore the unified inbox and staff alerts" },
+    { icon: BarChart3, text: "Review pipelines, automations, and reporting" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,12 +49,12 @@ const Demo = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-                See GrowthOS prevent patient loss{" "}
+                See GrowthOS handle real patient inquiries{" "}
                 <span className="text-gradient-accent">in real time.</span>
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
-                Book a 30-minute demo with our team. We'll show you exactly how the AI 
-                responds, nurtures, and hands off to your staff in real clinic workflows.
+                Book a 30-minute walkthrough with our team. We'll learn about your clinic, 
+                then show you the platform, the AI, and how leads move from first touch to booked consult.
               </p>
 
               <h3 className="text-heading-sm text-foreground mb-6">What you'll see:</h3>
@@ -84,9 +84,13 @@ const Demo = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="p-6 rounded-xl bg-accent/50 border border-border"
               >
-                <p className="text-body text-muted-foreground">
-                  You'll speak with a GrowthOS specialist, not a commission-based salesperson. 
-                  We'll send a short prep email so this is actually useful.
+                <p className="text-body text-muted-foreground mb-3">
+                  <span className="font-medium text-foreground">What happens next:</span> You'll speak with a GrowthOS specialist 
+                  (not a salesperson). We'll learn about your clinic setup, then walk you through 
+                  the tools, workflows, and AI so you can see exactly how it functions.
+                </p>
+                <p className="text-body-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Onboarding:</span> 24–48 hours with a real person guiding you.
                 </p>
               </motion.div>
             </motion.div>

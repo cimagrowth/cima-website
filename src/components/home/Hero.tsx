@@ -77,15 +77,16 @@ const Hero = () => {
             variants={itemVariants}
             className="text-base md:text-xl text-muted-foreground mb-5 md:mb-8 max-w-3xl"
           >
-            GrowthOS uses a custom-trained AI to respond instantly, follow up consistently, 
-            and keep patients engaged until your team steps in.
+            GrowthOS is a patient engagement platform with a custom-trained AI that responds 
+            instantly across every channel—web, phone, text, email, WhatsApp, Instagram, TikTok, 
+            and more—then nurtures leads until your team steps in.
           </motion.p>
 
           <motion.p
             variants={itemVariants}
             className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6"
           >
-            See the AI handle real patient inquiries • $999/month or $9,999/year
+            Live onboarding in 24–48 hours • Desktop + mobile app • $999/month or $9,999/year
           </motion.p>
 
           <motion.div
