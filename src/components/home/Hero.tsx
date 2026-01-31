@@ -86,7 +86,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6"
           >
-            Live onboarding in 24–48 hours • Desktop + mobile app • $999/month or $9,999/year
+            Live onboarding in 24–48 hours • Desktop + mobile app
           </motion.p>
 
           <motion.div
