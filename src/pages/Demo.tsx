@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Check, Zap, MessageCircle, UserCheck, BarChart3, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import DemoChatWidget from "@/components/demo/DemoChatWidget";
 
 const Demo = () => {
   const [formData, setFormData] = useState({
@@ -208,9 +207,6 @@ const Demo = () => {
           </div>
         </div>
       </section>
-
-      {/* Floating Chat Widget */}
-      <DemoChatWidget />
     </Layout>
   );
 };

@@ -35,56 +35,47 @@ const DemoChatWidget = () => {
 
   return (
     <>
-      {/* Floating Chat Button */}
+      {/* Floating Chat Button - positioned on the right side, vertically centered */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="fixed bottom-6 right-6 z-50"
+            className="fixed right-0 top-1/2 -translate-y-1/2 z-50"
           >
             <div className="relative">
               {showPulse && (
                 <motion.div
-                  className="absolute inset-0 rounded-full bg-accent-orange"
-                  animate={{ scale: [1, 1.4, 1], opacity: [0.7, 0, 0.7] }}
+                  className="absolute inset-0 rounded-l-full bg-accent-orange"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               )}
               <Button
                 onClick={() => setIsOpen(true)}
                 variant="hero"
-                size="icon"
-                className="h-14 w-14 rounded-full shadow-glow"
+                className="h-auto py-4 px-3 rounded-l-xl rounded-r-none shadow-glow flex flex-col gap-2 items-center"
               >
-                <MessageCircle className="h-6 w-6" />
+                <MessageCircle className="h-5 w-5" />
+                <span className="text-xs font-medium writing-mode-vertical" style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}>
+                  Try AI Bot
+                </span>
               </Button>
             </div>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="absolute bottom-full right-0 mb-3 whitespace-nowrap"
-            >
-              <div className="bg-card border border-border rounded-lg px-4 py-2 shadow-card text-sm text-foreground">
-                <span className="font-medium">Try the AI bot!</span>
-                <div className="absolute bottom-0 right-6 translate-y-1/2 rotate-45 w-2 h-2 bg-card border-r border-b border-border" />
-              </div>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Chat Window */}
+      {/* Chat Window - positioned on the right side, vertically centered */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, x: 20, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[600px] max-h-[calc(100vh-100px)] bg-card border border-border rounded-2xl shadow-glow overflow-hidden flex flex-col"
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[600px] max-h-[calc(100vh-160px)] bg-card border border-border rounded-2xl shadow-glow overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary to-secondary">
