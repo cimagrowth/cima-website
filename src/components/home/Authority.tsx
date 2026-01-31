@@ -38,7 +38,7 @@ const Authority = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Parallax decorative elements - hidden on mobile */}
       <motion.div 
         style={{ y: y1, scale: scale1, opacity: opacity1 }}
@@ -50,31 +50,30 @@ const Authority = () => {
       />
       
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-          <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             The platform that makes the AI work{" "}
             <span className="text-gradient-accent">cleanly across your entire clinic.</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mt-4">
-            The AI is the engine. GrowthOS is the system it runs inside. That means every 
-            message, every lead, and every outcome is visible, organized, and actionable. 
-            Your clinic can finally operate with consistency instead of hero effort.
+            The AI is the engine. GrowthOS is the system it runs inside. Every 
+            message, lead, and outcome is visible, organized, and actionable.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <div className="grid gap-4 md:gap-6 md:grid-cols-2 max-w-4xl mx-auto">
           {systems.map((system, index) => {
             const Icon = system.icon;
             return (
               <div
                 key={index}
-                className="card-premium p-5 md:p-6 flex gap-3 md:gap-4 group"
+                className="card-premium p-5 md:p-6 flex gap-4 group"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-base md:text-lg font-semibold text-foreground mb-1 md:mb-2">{system.title}</h3>
+                  <h3 className="text-base md:text-lg font-semibold text-foreground mb-2">{system.title}</h3>
                   <p className="text-sm md:text-base text-muted-foreground">{system.description}</p>
                 </div>
               </div>

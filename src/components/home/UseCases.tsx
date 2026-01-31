@@ -41,7 +41,7 @@ const UseCases = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Parallax decoration - hidden on mobile */}
       <motion.div 
         style={{ y: y1, opacity: opacity1 }}
@@ -49,25 +49,25 @@ const UseCases = () => {
       />
       
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-          <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             What GrowthOS <span className="text-gradient-accent">solves for clinics</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 max-w-5xl mx-auto">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
               <div
                 key={index}
-                className="card-premium p-4 md:p-6 group"
+                className="card-premium p-5 md:p-6 group"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-accent-orange/10 to-secondary/10 flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-accent-orange" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-accent-orange/10 to-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 md:w-7 md:h-7 text-accent-orange" />
                 </div>
-                <h3 className="text-sm md:text-base font-semibold text-foreground mb-1 md:mb-2">{useCase.title}</h3>
-                <p className="text-xs md:text-sm text-muted-foreground">{useCase.description}</p>
+                <h3 className="text-base md:text-lg font-semibold text-foreground mb-2">{useCase.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground">{useCase.description}</p>
               </div>
             );
           })}

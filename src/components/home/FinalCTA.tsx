@@ -19,7 +19,7 @@ const FinalCTA = () => {
   const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4]);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
+    <section ref={sectionRef} className="py-12 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
       
@@ -34,16 +34,16 @@ const FinalCTA = () => {
       />
       
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-xl sm:text-2xl md:text-display text-primary-foreground mb-4">
+        <div className="max-w-3xl mx-auto text-center px-2">
+          <h2 className="text-2xl sm:text-3xl md:text-display text-primary-foreground mb-6">
             If your clinic wants predictable growth, it starts with{" "}
             <span className="text-accent-orange">predictable follow-up.</span>
           </h2>
-          <Link to="/demo" className="mt-6 md:mt-8 inline-block">
+          <Link to="/demo" className="inline-block">
             <Button 
               variant="hero" 
               size="lg" 
-              className="group shadow-glow bg-accent-orange hover:brightness-110 md:size-xl"
+              className="group shadow-glow bg-accent-orange hover:brightness-110 text-base md:size-xl"
             >
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
