@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -6,10 +6,17 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import cimaLogo from "@/assets/cima-logo.png";
 
+type NavLink = {
+  href: string;
+  label: string;
+  isAnchor?: boolean;
+};
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -20,15 +27,45 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: "/", label: "Home" },
-    { href: "/product", label: "Product" },
+    { href: "/#solution", label: "Solution", isAnchor: true },
+    { href: "/#how-it-works", label: "How It Works", isAnchor: true },
     { href: "/pricing", label: "Pricing" },
     { href: "/blog", label: "Blog" },
-    { href: "/demo", label: "Demo" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path.includes("#")) {
+      return location.pathname === "/" && location.hash === path.replace("/", "");
+    }
+    return location.pathname === path;
+  };
+
+  const handleNavClick = (link: NavLink) => {
+    setIsMobileMenuOpen(false);
+    
+    if (link.isAnchor) {
+      const hash = link.href.replace("/", "");
+      
+      if (location.pathname === "/") {
+        // Already on homepage, just scroll
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // Navigate to homepage first, then scroll
+        navigate("/");
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      }
+    }
+  };
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -76,20 +113,34 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`text-sm font-medium transition-all duration-300 relative ${
-                  isActive(link.href)
-                    ? "text-accent-orange"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-                {isActive(link.href) && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-orange rounded-full" />
-                )}
-              </Link>
+              link.isAnchor ? (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavClick(link)}
+                  className={`text-sm font-medium transition-all duration-300 relative ${
+                    isActive(link.href)
+                      ? "text-accent-orange"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`text-sm font-medium transition-all duration-300 relative ${
+                    isActive(link.href)
+                      ? "text-accent-orange"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                  {isActive(link.href) && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-orange rounded-full" />
+                  )}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -143,18 +194,32 @@ const Header = () => {
       }`}>
         <nav className="bg-background border-b border-border px-4 py-4 flex flex-col gap-1">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`text-base font-medium py-3 px-3 rounded-lg transition-colors ${
-                isActive(link.href)
-                  ? "text-accent-orange bg-accent-orange/10"
-                  : "text-foreground hover:bg-muted"
-              }`}
-            >
-              {link.label}
-            </Link>
+            link.isAnchor ? (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link)}
+                className={`text-base font-medium py-3 px-3 rounded-lg transition-colors text-left ${
+                  isActive(link.href)
+                    ? "text-accent-orange bg-accent-orange/10"
+                    : "text-foreground hover:bg-muted"
+                }`}
+              >
+                {link.label}
+              </button>
+            ) : (
+              <Link
+                key={link.href}
+                to={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`text-base font-medium py-3 px-3 rounded-lg transition-colors ${
+                  isActive(link.href)
+                    ? "text-accent-orange bg-accent-orange/10"
+                    : "text-foreground hover:bg-muted"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
           <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
             <Button variant="hero" size="lg" className="w-full text-base">
