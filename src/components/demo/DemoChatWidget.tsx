@@ -106,7 +106,15 @@ const DemoChatWidget = () => {
                 {hasUnreadMessages && (
                   <motion.span
                     initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [1, 0.8, 1]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                     className="absolute -top-1 -right-1 w-3 h-3 bg-accent-orange rounded-full border-2 border-primary"
                   />
                 )}
