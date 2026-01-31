@@ -6,11 +6,14 @@ import { motion } from "framer-motion";
 
 const Pricing = () => {
   const features = [
+    "Custom AI Bot for nurturing & follow-up",
+    "24/7 automated lead response",
     "Unified Inbox",
     "Custom pipelines",
-    "Automations and follow-up",
+    "Automations and workflows",
     "Missed-call text back",
     "Lead tracking and reporting",
+    "Database reactivation campaigns",
     "Team access",
     "Onboarding and training",
     "Managed ad system integration",
