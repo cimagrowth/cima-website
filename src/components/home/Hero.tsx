@@ -10,6 +10,29 @@ const Hero = () => {
     "Your team steps in with full context",
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
   return (
     <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden bg-background">
       {/* Background decorations */}
@@ -17,43 +40,41 @@ const Hero = () => {
       <div className="absolute top-20 right-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-accent-orange/10 rounded-full blur-3xl animate-float delay-300" />
       
-      <div className="container-wide relative z-10 py-12 md:py-20">
+      <motion.div 
+        className="container-wide relative z-10 py-12 md:py-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-2xl sm:text-3xl md:text-display-xl lg:text-[4rem] text-foreground mb-4 md:mb-6 leading-tight"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-display-xl lg:text-[4rem] text-foreground mb-4 md:mb-6 leading-tight">
-              Every missed follow-up costs your clinic patients.{" "}
-              <span className="text-gradient-accent">GrowthOS makes sure it never happens.</span>
-            </h1>
-          </motion.div>
+            Every missed follow-up costs your clinic patients.{" "}
+            <span className="text-gradient-accent">GrowthOS makes sure it never happens.</span>
+          </motion.h1>
 
-          {/* CTAs moved up for mobile - above the fold */}
+          {/* CTAs - shown on all devices, positioned early for mobile */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex flex-col sm:flex-row gap-3 mb-6 md:hidden"
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8"
           >
             <Link to="/demo">
-              <Button variant="hero" size="lg" className="group w-full">
+              <Button variant="hero" size="lg" className="group w-full sm:w-auto md:size-xl">
                 Book a Demo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <Link to="/pricing">
-              <Button variant="hero-outline" size="lg" className="w-full">
+              <Button variant="hero-outline" size="lg" className="w-full sm:w-auto md:size-xl">
                 Sign Up
               </Button>
             </Link>
           </motion.div>
           
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            variants={itemVariants}
             className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-3xl"
           >
             GrowthOS uses a custom-trained AI to respond instantly, follow up consistently, 
@@ -61,39 +82,15 @@ const Hero = () => {
             every conversation organized, tracked, and measurable so nothing gets lost.
           </motion.p>
 
-          {/* Desktop CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="hidden md:flex flex-row gap-4 mb-10"
-          >
-            <Link to="/demo">
-              <Button variant="hero" size="xl" className="group">
-                Book a Demo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <Link to="/pricing">
-              <Button variant="hero-outline" size="xl">
-                Sign Up
-              </Button>
-            </Link>
-          </motion.div>
-
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
+            variants={itemVariants}
             className="text-sm text-muted-foreground mb-4 md:mb-6"
           >
             See the AI handle real patient inquiries • $999/month or $9,999/year
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
+            variants={itemVariants}
             className="flex flex-col sm:flex-row gap-3 md:gap-4"
           >
             {outcomes.map((outcome, index) => (
@@ -104,7 +101,7 @@ const Hero = () => {
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
