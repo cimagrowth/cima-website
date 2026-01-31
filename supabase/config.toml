@@ -1,0 +1,4 @@
+project_id = "tgfsrtfkmcuooelwbigc"
+
+[functions.optimize-blog-seo]
+verify_jwt = false
