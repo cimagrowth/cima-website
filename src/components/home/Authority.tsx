@@ -17,23 +17,23 @@ const Authority = () => {
   const systems = [
     {
       icon: Inbox,
-      title: "Unified Clinic Inbox and Pipeline Hub",
-      description: "See every AI and human interaction in one place.",
+      title: "Unified Inbox",
+      description: "All patient conversations in one place (AI + staff) so nothing slips.",
     },
     {
       icon: Settings,
-      title: "Automations and Guardrails",
-      description: "Define what the AI can say, when it hands off, and how follow-up flows.",
+      title: "Pipelines and Patient Journeys",
+      description: "Clear stages so every lead is tracked and managed properly.",
     },
     {
       icon: RefreshCw,
-      title: "Database Reactivation Engine",
-      description: "Use AI-assisted outreach to re-engage dormant inquiries.",
+      title: "Follow-Up Rules and Automations",
+      description: "Set the standards once. The system enforces them daily.",
     },
     {
       icon: BarChart3,
-      title: "Attribution and Leakage Reporting",
-      description: "See where patients convert and where they fall off.",
+      title: "Reactivation Campaigns",
+      description: "Bring cold leads back with scheduled SMS and email outreach.",
     },
   ];
 
@@ -58,9 +58,14 @@ const Authority = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-heading-lg md:text-display text-foreground mb-6">
-            The infrastructure that makes AI work{" "}
-            <span className="text-gradient-accent">safely and effectively.</span>
+            The platform that makes the AI work{" "}
+            <span className="text-gradient-accent">cleanly across your entire clinic.</span>
           </h2>
+          <p className="text-body-lg text-muted-foreground mt-4">
+            The AI is the engine. GrowthOS is the system it runs inside. That means every 
+            message, every lead, and every outcome is visible, organized, and actionable. 
+            Your clinic can finally operate with consistency instead of hero effort.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">

@@ -1,45 +1,63 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Inbox, GitBranch, Zap, RefreshCw, BarChart3, ArrowRight } from "lucide-react";
+import { Zap, MessageCircle, Brain, UserCheck, Inbox, GitBranch, Settings, RefreshCw, BarChart3, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Product = () => {
-  const modules = [
+  const aiEngine = [
+    {
+      icon: Zap,
+      title: "Instant response",
+      description: "Every inquiry gets immediate engagement, no matter when it comes in.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Automated nurturing",
+      description: "Follow-up continues over days or weeks without manual effort.",
+    },
+    {
+      icon: Brain,
+      title: "Clinic voice + rules",
+      description: "The AI communicates using your approved messaging and tone.",
+    },
+    {
+      icon: UserCheck,
+      title: "Staff handoff with context",
+      description: "When patients are ready, your team steps in with the full conversation.",
+    },
+  ];
+
+  const systemModules = [
     {
       icon: Inbox,
-      title: "Unified Inbox",
-      description: "All patient conversations — calls, texts, emails, web forms — in a single timeline. Never lose context, never miss a message.",
-      features: ["Multi-channel aggregation", "Conversation threading", "Team assignment", "Response tracking"],
-      gradient: "from-primary to-primary-light",
+      title: "Unified inbox (AI + staff)",
+      description: "All patient conversations in one place so nothing slips.",
+      features: ["Multi-channel aggregation", "Conversation threading", "Team assignment"],
     },
     {
       icon: GitBranch,
-      title: "Pipelines and Patient Journeys",
-      description: "Visual pipeline stages that match your actual patient flow. Know exactly where every inquiry stands.",
-      features: ["Custom stage configuration", "Automatic stage progression", "Stale lead alerts", "Conversion tracking"],
-      gradient: "from-accent-orange to-secondary",
+      title: "Pipelines and patient journeys",
+      description: "Clear stages so every lead is tracked and managed properly.",
+      features: ["Custom stage configuration", "Automatic progression", "Stale lead alerts"],
     },
     {
-      icon: Zap,
-      title: "Automations and Nurture",
-      description: "Follow-up that runs even when your team is offline. Immediate response, timed reminders, and long-term nurturing.",
-      features: ["Missed-call text back", "Appointment reminders", "No-show sequences", "Long-term nurture drips"],
-      gradient: "from-secondary to-primary-light",
+      icon: Settings,
+      title: "Follow-up rules and automations",
+      description: "Set the standards once. The system enforces them daily.",
+      features: ["Missed-call text back", "Appointment reminders", "No-show sequences"],
     },
     {
       icon: RefreshCw,
-      title: "Reactivation Campaigns",
-      description: "Turn dormant leads into consults. Monthly SMS and email campaigns targeting cold inquiries and past patients.",
-      features: ["Segmented targeting", "Multi-touch sequences", "Opt-out management", "Response tracking"],
-      gradient: "from-primary-light to-accent-orange",
+      title: "Reactivation campaigns",
+      description: "Bring cold leads back with scheduled SMS and email outreach.",
+      features: ["Segmented targeting", "Multi-touch sequences", "Response tracking"],
     },
     {
       icon: BarChart3,
-      title: "Reporting and Attribution",
-      description: "Know exactly what is driving booked patients. Clear dashboards that show performance at every stage.",
-      features: ["Source attribution", "Stage conversion rates", "Response time metrics", "Team performance"],
-      gradient: "from-primary to-secondary",
+      title: "Reporting and visibility",
+      description: "See response speed, conversion movement, and where patients drop off.",
+      features: ["Source attribution", "Stage conversion rates", "Team performance"],
     },
   ];
 
@@ -55,15 +73,16 @@ const Product = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center"
           >
             <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-              GrowthOS is your clinic's{" "}
-              <span className="text-gradient-accent">growth command center.</span>
+              GrowthOS is the AI follow-up engine{" "}
+              <span className="text-gradient-accent">plus the platform your clinic runs it on.</span>
             </h1>
-            <p className="text-body-lg text-muted-foreground mb-10">
-              One unified system for patient communication, follow-up automation, 
-              and growth analytics — built specifically for fertility and regenerative clinics.
+            <p className="text-body-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
+              Instant response, consistent nurturing, and clean staff handoff — powered by a 
+              custom-trained AI. Plus unified inbox, pipelines, automations, reactivation, 
+              and reporting so every lead is visible and managed.
             </p>
             <Link to="/demo">
               <Button variant="hero" size="xl" className="group">
@@ -75,13 +94,70 @@ const Product = () => {
         </div>
       </section>
 
-      {/* Modules */}
+      {/* AI Engine Section */}
       <section className="section-padding bg-tan relative overflow-hidden">
+        <div className="container-wide relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+              The AI Engine
+            </h2>
+            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              A custom-trained AI that responds instantly and nurtures consistently.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {aiEngine.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="card-premium p-6 text-center group"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-card">
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-heading-sm text-foreground mb-2">{item.title}</h3>
+                  <p className="text-body text-muted-foreground">{item.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* System Around It */}
+      <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-orange/10 rounded-full blur-3xl" />
         
         <div className="container-wide relative z-10">
-          <div className="space-y-8">
-            {modules.map((module, index) => {
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+              The System Around It
+            </h2>
+            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              Everything your clinic needs to operate with consistency instead of hero effort.
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {systemModules.map((module, index) => {
               const Icon = module.icon;
               const isEven = index % 2 === 0;
               return (
@@ -94,10 +170,10 @@ const Product = () => {
                   className="card-elevated p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center hover:shadow-glow transition-all duration-500"
                 >
                   <div className={isEven ? "" : "md:order-2"}>
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${module.gradient} flex items-center justify-center mb-6 shadow-card`}>
-                      <Icon className="w-8 h-8 text-white" />
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center mb-4 shadow-card">
+                      <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <h2 className="text-heading text-foreground mb-4">{module.title}</h2>
+                    <h3 className="text-heading text-foreground mb-3">{module.title}</h3>
                     <p className="text-body-lg text-muted-foreground">{module.description}</p>
                   </div>
                   <div className={`bg-gradient-to-br from-accent/50 to-tan rounded-xl p-6 border border-border ${isEven ? "" : "md:order-1"}`}>

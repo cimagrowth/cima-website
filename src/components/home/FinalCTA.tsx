@@ -42,13 +42,10 @@ const FinalCTA = () => {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
-            Stop patient leakage with an{" "}
-            <span className="text-accent-orange">always-on AI system.</span>
+            If your clinic wants predictable growth, it starts with{" "}
+            <span className="text-accent-orange">predictable follow-up.</span>
           </h2>
-          <p className="text-body-lg text-primary-foreground/80 mb-8">
-            See how GrowthOS protects every inquiry with instant response and consistent nurturing.
-          </p>
-          <Link to="/demo">
+          <Link to="/demo" className="mt-8 inline-block">
             <Button 
               variant="hero" 
               size="xl" 

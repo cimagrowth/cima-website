@@ -7,23 +7,28 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Connect your lead sources",
-      description: "Integrate your website forms, ad platforms, and communication channels.",
+      title: "Patient reaches out",
+      description: "From any channel — web form, call, text, or ad.",
     },
     {
       number: "02",
-      title: "Train the AI on your clinic's voice",
-      description: "Configure approved messaging, tone, and workflows for your practice.",
+      title: "AI responds instantly",
+      description: "No delays. Every inquiry gets immediate engagement.",
     },
     {
       number: "03",
-      title: "AI responds, nurtures, and hands off",
-      description: "Every inquiry is engaged instantly and nurtured automatically over time.",
+      title: "AI follows up consistently",
+      description: "The conversation continues over days or weeks.",
     },
     {
       number: "04",
-      title: "Your team focuses on ready patients",
-      description: "Staff steps in only when patients are qualified and ready to book.",
+      title: "Staff steps in at the right moment",
+      description: "Your team takes over with full context when ready.",
+    },
+    {
+      number: "05",
+      title: "Everything is tracked",
+      description: "Every message, lead, and outcome visible in one system.",
     },
   ];
 
@@ -45,7 +50,7 @@ const HowItWorks = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
           {steps.map((step, index) => (
             <motion.div 
               key={index} 

@@ -27,11 +27,11 @@ const AIStudio = () => {
               <Sparkles className="w-8 h-8 text-white" />
             </motion.div>
             <h2 className="text-heading-lg text-foreground mb-4">
-              Want to see how our AI thinks?
+              Want a preview of how our AI is built?
             </h2>
             <p className="text-body-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Access the Cima AI Studio, a free toolkit that shows how we design 
-              patient-safe, clinic-aligned AI messaging.
+              Get access to the Cima AI Studio, a free toolkit that shows how we design 
+              patient-safe, clinic-approved messaging and follow-up logic.
             </p>
             <Button variant="hero" size="xl" className="pulse-glow">
               Get the Free AI Studio
