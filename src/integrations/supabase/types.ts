@@ -98,6 +98,13 @@ export type Database = {
             referencedRelation: "demo_chat_sessions"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "demo_chat_messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "demo_chat_sessions_masked"
+            referencedColumns: ["id"]
+          },
         ]
       }
       demo_chat_sessions: {
@@ -153,7 +160,36 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      demo_chat_sessions_masked: {
+        Row: {
+          clinic_type: Database["public"]["Enums"]["clinic_type"] | null
+          created_at: string | null
+          id: string | null
+          updated_at: string | null
+          visitor_email: string | null
+          visitor_name: string | null
+          visitor_phone: string | null
+        }
+        Insert: {
+          clinic_type?: Database["public"]["Enums"]["clinic_type"] | null
+          created_at?: string | null
+          id?: string | null
+          updated_at?: string | null
+          visitor_email?: never
+          visitor_name?: never
+          visitor_phone?: never
+        }
+        Update: {
+          clinic_type?: Database["public"]["Enums"]["clinic_type"] | null
+          created_at?: string | null
+          id?: string | null
+          updated_at?: string | null
+          visitor_email?: never
+          visitor_name?: never
+          visitor_phone?: never
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
