@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Instagram, Facebook, Youtube } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
-import cimaLogoLight from "@/assets/cima-logo-light.png";
 import cimaLogoDark from "@/assets/cima-logo-dark.png";
 
 const Footer = () => {
-  const { resolvedTheme } = useTheme();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -40,7 +37,7 @@ const Footer = () => {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img 
-                src={resolvedTheme === "dark" ? cimaLogoDark : cimaLogoLight} 
+                src={cimaLogoDark} 
                 alt="Cima" 
                 className="h-9 md:h-10 w-auto"
               />
