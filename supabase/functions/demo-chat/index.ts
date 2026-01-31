@@ -6,6 +6,69 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 20; // 20 requests per minute per IP
+const SESSION_RATE_LIMIT = 5; // 5 session creations per minute per IP
+
+// In-memory rate limiter (per-instance)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const sessionRateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+// Clean up old entries periodically to prevent memory leaks
+const cleanupRateLimits = () => {
+  const now = Date.now();
+  for (const [key, value] of rateLimitMap.entries()) {
+    if (now > value.resetAt) {
+      rateLimitMap.delete(key);
+    }
+  }
+  for (const [key, value] of sessionRateLimitMap.entries()) {
+    if (now > value.resetAt) {
+      sessionRateLimitMap.delete(key);
+    }
+  }
+};
+
+// Check rate limit and return true if request is allowed
+const checkRateLimit = (
+  identifier: string, 
+  limitMap: Map<string, { count: number; resetAt: number }>,
+  maxRequests: number
+): { allowed: boolean; remaining: number; resetAt: number } => {
+  const now = Date.now();
+  const record = limitMap.get(identifier);
+
+  if (!record || now > record.resetAt) {
+    limitMap.set(identifier, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: maxRequests - 1, resetAt: now + RATE_LIMIT_WINDOW_MS };
+  }
+
+  if (record.count >= maxRequests) {
+    return { allowed: false, remaining: 0, resetAt: record.resetAt };
+  }
+
+  record.count++;
+  return { allowed: true, remaining: maxRequests - record.count, resetAt: record.resetAt };
+};
+
+// Get client IP from request headers
+const getClientIP = (req: Request): string => {
+  // Check common headers for real IP (behind proxies/load balancers)
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+  
+  const realIP = req.headers.get("x-real-ip");
+  if (realIP) {
+    return realIP;
+  }
+  
+  // Fallback to a generic identifier
+  return "unknown";
+};
+
 // Input validation constants
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 255;
@@ -218,8 +281,33 @@ Remember: You're showcasing how AI can nurture patient leads effectively. Make t
 };
 
 serve(async (req) => {
+  // Cleanup old rate limit entries periodically
+  cleanupRateLimits();
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Get client IP for rate limiting
+  const clientIP = getClientIP(req);
+
+  // Check general rate limit
+  const generalLimit = checkRateLimit(clientIP, rateLimitMap, MAX_REQUESTS_PER_WINDOW);
+  if (!generalLimit.allowed) {
+    console.log("Rate limit exceeded for IP:", clientIP);
+    return new Response(
+      JSON.stringify({ error: "Too many requests. Please try again later." }),
+      {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          "Content-Type": "application/json",
+          "Retry-After": Math.ceil((generalLimit.resetAt - Date.now()) / 1000).toString(),
+          "X-RateLimit-Remaining": "0",
+          "X-RateLimit-Reset": generalLimit.resetAt.toString(),
+        },
+      }
+    );
   }
 
   try {
@@ -238,12 +326,29 @@ serve(async (req) => {
       phone,
     } = body;
     
-    console.log("Demo chat request:", { action, sessionId, clinicType, visitorName, messageCount: messages?.length });
+    console.log("Demo chat request:", { action, sessionId, clinicType, visitorName, messageCount: messages?.length, clientIP });
 
     const supabaseAdmin = getSupabaseAdmin();
 
-    // Handle session creation
+    // Handle session creation with stricter rate limiting
     if (action === "create_session") {
+      // Check session creation rate limit (stricter)
+      const sessionLimit = checkRateLimit(clientIP, sessionRateLimitMap, SESSION_RATE_LIMIT);
+      if (!sessionLimit.allowed) {
+        console.log("Session creation rate limit exceeded for IP:", clientIP);
+        return new Response(
+          JSON.stringify({ error: "Too many session creations. Please try again later." }),
+          {
+            status: 429,
+            headers: {
+              ...corsHeaders,
+              "Content-Type": "application/json",
+              "Retry-After": Math.ceil((sessionLimit.resetAt - Date.now()) / 1000).toString(),
+            },
+          }
+        );
+      }
+
       const validation = validateSessionInput({ name, email, phone, clinicType });
       
       if (!validation.valid) {
