@@ -7,6 +7,7 @@ import {
   useCreatePost,
   useUpdatePost,
   useOptimizeSEO,
+  useGenerateBlogImage,
 } from "@/hooks/useBlogPosts";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +19,7 @@ import {
   Loader2,
   Eye,
   ImagePlus,
+  Wand2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -31,6 +33,7 @@ const BlogEditor = () => {
   const createPost = useCreatePost();
   const updatePost = useUpdatePost();
   const optimizeSEO = useOptimizeSEO();
+  const generateImage = useGenerateBlogImage();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -47,6 +50,7 @@ const BlogEditor = () => {
   const [keywordsInput, setKeywordsInput] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [suggestedImagePrompt, setSuggestedImagePrompt] = useState("");
 
   const isEditing = !!id;
 
@@ -123,16 +127,50 @@ const BlogEditor = () => {
           result.reading_time_minutes || prev.reading_time_minutes,
       }));
       setKeywordsInput(result.meta_keywords?.join(", ") || keywordsInput);
-
-      toast.success("SEO optimized! Review the suggestions below.");
       
+      // Store the suggested image prompt
       if (result.suggested_image_prompt) {
-        toast.info(`Image suggestion: ${result.suggested_image_prompt}`, {
-          duration: 10000,
-        });
+        setSuggestedImagePrompt(result.suggested_image_prompt);
+      }
+
+      toast.success("SEO optimized! Now generating featured image...");
+      
+      // Auto-generate image if no featured image and we have a prompt
+      if (!formData.featured_image_url && result.suggested_image_prompt) {
+        await handleGenerateImage(result.suggested_image_prompt);
+      } else if (result.suggested_image_prompt) {
+        toast.info("Featured image already set. Click 'Generate AI Image' to replace it.");
       }
     } catch (err) {
       toast.error("Failed to optimize SEO");
+    }
+  };
+
+  const handleGenerateImage = async (prompt?: string) => {
+    const imagePrompt = prompt || suggestedImagePrompt;
+    
+    if (!imagePrompt) {
+      toast.error("Please run 'Optimize SEO' first to generate an image prompt");
+      return;
+    }
+
+    try {
+      toast.loading("Generating AI image...", { id: "generate-image" });
+      
+      const result = await generateImage.mutateAsync({
+        prompt: imagePrompt,
+        title: formData.title,
+      });
+
+      setFormData((prev) => ({
+        ...prev,
+        featured_image_url: result.imageUrl,
+      }));
+
+      toast.success("Featured image generated!", { id: "generate-image" });
+    } catch (err) {
+      console.error("Image generation error:", err);
+      toast.error("Failed to generate image. You can upload one manually.", { id: "generate-image" });
     }
   };
 
@@ -368,22 +406,71 @@ const BlogEditor = () => {
                           alt="Featured"
                           className="w-full rounded-lg"
                         />
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="sm"
-                          onClick={() =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              featured_image_url: "",
-                            }))
-                          }
-                        >
-                          Remove Image
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                featured_image_url: "",
+                              }))
+                            }
+                          >
+                            Remove
+                          </Button>
+                          {suggestedImagePrompt && (
+                            <Button
+                              type="button"
+                              variant="secondary-blue"
+                              size="sm"
+                              onClick={() => handleGenerateImage()}
+                              disabled={generateImage.isPending}
+                            >
+                              {generateImage.isPending ? (
+                                <Loader2 className="w-4 h-4 animate-spin mr-1" />
+                              ) : (
+                                <Wand2 className="w-4 h-4 mr-1" />
+                              )}
+                              Regenerate
+                            </Button>
+                          )}
+                        </div>
                       </div>
                     ) : (
                       <div className="space-y-4">
+                        {/* AI Generate Button */}
+                        <Button
+                          type="button"
+                          variant="hero"
+                          size="sm"
+                          className="w-full"
+                          onClick={() => handleGenerateImage()}
+                          disabled={generateImage.isPending || !suggestedImagePrompt}
+                        >
+                          {generateImage.isPending ? (
+                            <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                          ) : (
+                            <Wand2 className="w-4 h-4 mr-2" />
+                          )}
+                          Generate AI Image
+                        </Button>
+                        {!suggestedImagePrompt && (
+                          <p className="text-body-sm text-muted-foreground text-center">
+                            Run "Optimize SEO" first to enable AI image generation
+                          </p>
+                        )}
+                        
+                        <div className="relative">
+                          <div className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t border-border" />
+                          </div>
+                          <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-card px-2 text-muted-foreground">Or upload</span>
+                          </div>
+                        </div>
+
                         <Input
                           type="file"
                           accept="image/*"
