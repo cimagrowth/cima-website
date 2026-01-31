@@ -55,7 +55,7 @@ const Hero = () => {
             </Link>
             <Link to="/pricing">
               <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
-                View Pricing
+                Sign Up
               </Button>
             </Link>
           </motion.div>
