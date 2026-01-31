@@ -33,28 +33,28 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
+    <section className="py-12 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
       {/* Connecting line decoration - desktop only */}
       <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent hidden lg:block" />
       
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-          <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             How it <span className="text-gradient-accent">works</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-10 md:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-10 md:mb-16">
           {steps.map((step, index) => (
             <div 
               key={index} 
               className="relative text-center"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-primary-light text-primary-foreground text-sm md:text-lg font-bold mb-3 md:mb-6 shadow-card">
+              <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-primary-light text-primary-foreground text-base md:text-lg font-bold mb-4 md:mb-6 shadow-card">
                 {step.number}
               </div>
-              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1 md:mb-3">{step.title}</h3>
-              <p className="text-xs md:text-sm text-muted-foreground">{step.description}</p>
+              <h3 className="text-base md:text-lg font-semibold text-foreground mb-2 md:mb-3">{step.title}</h3>
+              <p className="text-sm md:text-base text-muted-foreground">{step.description}</p>
               
               {/* Connector arrow - desktop only */}
               {index < steps.length - 1 && (
@@ -68,7 +68,7 @@ const HowItWorks = () => {
 
         <div className="text-center">
           <Link to="/demo">
-            <Button variant="hero" size="lg" className="group md:size-xl">
+            <Button variant="hero" size="lg" className="group text-base md:size-xl">
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
