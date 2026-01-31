@@ -6,6 +6,88 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// Input validation constants
+const MAX_NAME_LENGTH = 100;
+const MAX_EMAIL_LENGTH = 255;
+const MAX_PHONE_LENGTH = 30;
+const MAX_MESSAGE_LENGTH = 2000;
+const VALID_CLINIC_TYPES = ["fertility", "med_spa", "regenerative", "other"];
+
+// Simple email validation regex
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Phone validation - allows various formats
+const PHONE_REGEX = /^[\d\s\-\+\(\)\.]+$/;
+
+// Validate and sanitize input
+const validateSessionInput = (data: {
+  name?: string;
+  email?: string;
+  phone?: string;
+  clinicType?: string;
+}): { valid: boolean; error?: string; sanitized?: {
+  name: string;
+  email: string;
+  phone: string;
+  clinicType: string;
+}} => {
+  const { name, email, phone, clinicType } = data;
+
+  // Validate name
+  if (!name || typeof name !== "string") {
+    return { valid: false, error: "Name is required" };
+  }
+  const trimmedName = name.trim();
+  if (trimmedName.length === 0) {
+    return { valid: false, error: "Name cannot be empty" };
+  }
+  if (trimmedName.length > MAX_NAME_LENGTH) {
+    return { valid: false, error: `Name must be less than ${MAX_NAME_LENGTH} characters` };
+  }
+
+  // Validate email
+  if (!email || typeof email !== "string") {
+    return { valid: false, error: "Email is required" };
+  }
+  const trimmedEmail = email.trim().toLowerCase();
+  if (!EMAIL_REGEX.test(trimmedEmail)) {
+    return { valid: false, error: "Invalid email address" };
+  }
+  if (trimmedEmail.length > MAX_EMAIL_LENGTH) {
+    return { valid: false, error: `Email must be less than ${MAX_EMAIL_LENGTH} characters` };
+  }
+
+  // Validate phone
+  if (!phone || typeof phone !== "string") {
+    return { valid: false, error: "Phone number is required" };
+  }
+  const trimmedPhone = phone.trim();
+  if (trimmedPhone.length === 0) {
+    return { valid: false, error: "Phone number cannot be empty" };
+  }
+  if (trimmedPhone.length > MAX_PHONE_LENGTH) {
+    return { valid: false, error: `Phone must be less than ${MAX_PHONE_LENGTH} characters` };
+  }
+  if (!PHONE_REGEX.test(trimmedPhone)) {
+    return { valid: false, error: "Invalid phone number format" };
+  }
+
+  // Validate clinic type
+  const validClinicType = VALID_CLINIC_TYPES.includes(clinicType || "") 
+    ? (clinicType as string) 
+    : "fertility";
+
+  return {
+    valid: true,
+    sanitized: {
+      name: trimmedName,
+      email: trimmedEmail,
+      phone: trimmedPhone,
+      clinicType: validClinicType,
+    },
+  };
+};
+
 // Create Supabase admin client for server-side operations
 const getSupabaseAdmin = () => {
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -141,13 +223,83 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, sessionId, clinicType, visitorName, userMessage, saveAssistantMessage } = await req.json();
+    const body = await req.json();
+    const { 
+      action,
+      messages, 
+      sessionId, 
+      clinicType, 
+      visitorName, 
+      userMessage, 
+      saveAssistantMessage,
+      // Session creation fields
+      name,
+      email,
+      phone,
+    } = body;
     
-    console.log("Demo chat request:", { sessionId, clinicType, visitorName, messageCount: messages?.length });
+    console.log("Demo chat request:", { action, sessionId, clinicType, visitorName, messageCount: messages?.length });
 
     const supabaseAdmin = getSupabaseAdmin();
 
-    // Validate session exists (security check - only process requests for valid sessions)
+    // Handle session creation
+    if (action === "create_session") {
+      const validation = validateSessionInput({ name, email, phone, clinicType });
+      
+      if (!validation.valid) {
+        console.log("Session creation validation failed:", validation.error);
+        return new Response(JSON.stringify({ error: validation.error }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      const { sanitized } = validation;
+      
+      // Create the session with validated data
+      const { data: sessionData, error: insertError } = await supabaseAdmin
+        .from("demo_chat_sessions")
+        .insert({
+          visitor_name: sanitized!.name,
+          visitor_email: sanitized!.email,
+          visitor_phone: sanitized!.phone,
+          clinic_type: sanitized!.clinicType,
+        })
+        .select()
+        .single();
+
+      if (insertError) {
+        console.error("Error creating session:", insertError);
+        return new Response(JSON.stringify({ error: "Failed to create session" }), {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      console.log("Session created successfully:", sessionData.id);
+      
+      return new Response(JSON.stringify({ 
+        success: true, 
+        session: {
+          id: sessionData.id,
+          visitorName: sessionData.visitor_name,
+          visitorEmail: sessionData.visitor_email,
+          visitorPhone: sessionData.visitor_phone,
+          clinicType: sessionData.clinic_type,
+        }
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // For all other actions, validate session exists
+    if (!sessionId) {
+      return new Response(JSON.stringify({ error: "Session ID required" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const { data: sessionData, error: sessionError } = await supabaseAdmin
       .from("demo_chat_sessions")
       .select("id")
@@ -164,10 +316,18 @@ serve(async (req) => {
 
     // If this is a request to save the user message
     if (userMessage) {
+      // Validate message length
+      if (typeof userMessage !== "string" || userMessage.length > MAX_MESSAGE_LENGTH) {
+        return new Response(JSON.stringify({ error: "Message too long" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      
       await supabaseAdmin.from("demo_chat_messages").insert({
         session_id: sessionId,
         role: "user",
-        content: userMessage,
+        content: userMessage.trim(),
       });
     }
 
@@ -179,6 +339,14 @@ serve(async (req) => {
         content: saveAssistantMessage,
       });
       return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Validate messages array for chat
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(JSON.stringify({ error: "Messages array required" }), {
+        status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
