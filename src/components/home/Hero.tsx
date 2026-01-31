@@ -171,7 +171,7 @@ const Hero = () => {
             <Button 
               variant="hero-outline" 
               size="lg" 
-              className="w-full text-lg py-6 border-2 border-foreground/40 text-foreground hover:border-foreground hover:bg-foreground/10"
+              className="w-full text-lg py-6 border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
             >
               Sign Up
             </Button>
