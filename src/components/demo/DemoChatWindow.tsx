@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Loader2, Bot, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 import type { ChatSession } from "./DemoChatWidget";
 
 interface Message {
@@ -300,7 +301,9 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
                       : "bg-accent text-foreground rounded-tl-sm"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  <div className="text-sm prose prose-sm max-w-none prose-p:my-1 prose-p:leading-relaxed prose-strong:text-inherit prose-em:text-inherit prose-headings:text-inherit prose-a:text-accent-orange prose-a:no-underline hover:prose-a:underline">
+                    <ReactMarkdown>{message.content}</ReactMarkdown>
+                  </div>
                 </div>
               </motion.div>
             ))}
