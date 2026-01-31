@@ -18,8 +18,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
+    { href: "/", label: "Home" },
     { href: "/product", label: "Product" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/blog", label: "Blog" },
     { href: "/demo", label: "Demo" },
   ];
 
