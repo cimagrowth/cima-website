@@ -24,20 +24,81 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Split long content into multiple message chunks
+  const splitIntoChunks = (content: string): string[] => {
+    // Split by double newlines (paragraphs) or numbered/bulleted lists
+    const paragraphs = content.split(/\n\n+/).filter(p => p.trim());
+    
+    const chunks: string[] = [];
+    let currentChunk = "";
+    
+    for (const para of paragraphs) {
+      // If adding this paragraph would make the chunk too long, start a new chunk
+      if (currentChunk && (currentChunk.length + para.length > 300 || para.match(/^(\d+\.|[-•*])\s/))) {
+        chunks.push(currentChunk.trim());
+        currentChunk = para;
+      } else {
+        currentChunk = currentChunk ? `${currentChunk}\n\n${para}` : para;
+      }
+    }
+    
+    if (currentChunk.trim()) {
+      chunks.push(currentChunk.trim());
+    }
+    
+    // If only one chunk or content is short, return as-is
+    return chunks.length > 0 ? chunks : [content];
+  };
+
+  // Display messages with natural delays
+  const displayMessagesWithDelay = async (
+    fullContent: string,
+    baseId: string,
+    existingMessages: Message[]
+  ) => {
+    const chunks = splitIntoChunks(fullContent);
+    
+    // If only one short chunk, display immediately
+    if (chunks.length === 1) {
+      setMessages([...existingMessages, { id: baseId, role: "assistant", content: chunks[0] }]);
+      return;
+    }
+
+    // Display chunks with delays
+    for (let i = 0; i < chunks.length; i++) {
+      if (i > 0) {
+        setIsTyping(true);
+        // Random delay between 400-800ms for natural feel
+        await new Promise(resolve => setTimeout(resolve, 400 + Math.random() * 400));
+        setIsTyping(false);
+      }
+      
+      const newMessages = chunks.slice(0, i + 1).map((chunk, idx) => ({
+        id: `${baseId}-${idx}`,
+        role: "assistant" as const,
+        content: chunk,
+      }));
+      
+      setMessages([...existingMessages, ...newMessages]);
+    }
+  };
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isTyping]);
 
   // Send initial greeting
   useEffect(() => {
     const sendGreeting = async () => {
       setIsLoading(true);
+      setIsTyping(true);
       
       const clinicTypeLabels: Record<string, string> = {
         fertility: "fertility services",
@@ -63,9 +124,10 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
           visitorName: session.visitorName,
           onDelta: (chunk) => {
             assistantContent += chunk;
+            // Show streaming content in a single bubble while loading
             setMessages([
               {
-                id: "greeting",
+                id: "greeting-stream",
                 role: "assistant",
                 content: assistantContent,
               },
@@ -74,6 +136,9 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
           onDone: async () => {
             // Save the greeting to database via edge function
             await saveMessage(session.id, assistantContent, "assistant");
+            // Now split into multiple message bubbles with delays
+            setIsTyping(false);
+            await displayMessagesWithDelay(assistantContent, "greeting", []);
             setIsLoading(false);
             inputRef.current?.focus();
             onNewMessage?.();
@@ -81,6 +146,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
         });
       } catch (error) {
         console.error("Error sending greeting:", error);
+        setIsTyping(false);
         setMessages([
           {
             id: "greeting",
@@ -210,6 +276,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
     const userMessage = input.trim();
     setInput("");
     setIsLoading(true);
+    setIsTyping(true);
 
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -217,9 +284,10 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
       content: userMessage,
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    const prevMessages = [...messages, userMsg];
+    setMessages(prevMessages);
 
-    const messagesForApi = [...messages, userMsg].map((m) => ({
+    const messagesForApi = prevMessages.map((m) => ({
       role: m.role,
       content: m.content,
     }));
@@ -236,27 +304,27 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
         userMessage, // This will be saved server-side
         onDelta: (chunk) => {
           assistantContent += chunk;
-          setMessages((prev) => {
-            const last = prev[prev.length - 1];
-            if (last?.role === "assistant" && last.id === assistantId) {
-              return prev.map((m) =>
-                m.id === assistantId ? { ...m, content: assistantContent } : m
-              );
-            }
-            return [...prev, { id: assistantId, role: "assistant", content: assistantContent }];
-          });
+          // Show streaming in a single bubble
+          setMessages([
+            ...prevMessages,
+            { id: `${assistantId}-stream`, role: "assistant", content: assistantContent },
+          ]);
         },
         onDone: async () => {
           // Save assistant message via edge function (server-side)
           await saveMessage(session.id, assistantContent, "assistant");
+          // Now split into multiple message bubbles with delays
+          setIsTyping(false);
+          await displayMessagesWithDelay(assistantContent, assistantId, prevMessages);
           setIsLoading(false);
           onNewMessage?.();
         },
       });
     } catch (error) {
       console.error("Chat error:", error);
-      setMessages((prev) => [
-        ...prev,
+      setIsTyping(false);
+      setMessages([
+        ...prevMessages,
         {
           id: assistantId,
           role: "assistant",
@@ -309,10 +377,12 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
             ))}
           </AnimatePresence>
 
-          {isLoading && messages.length === 0 && (
+          {/* Typing indicator - shows when loading initial or between message chunks */}
+          {(isLoading && messages.length === 0) || isTyping ? (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
               className="flex gap-3"
             >
               <div className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center">
@@ -326,7 +396,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
                 </div>
               </div>
             </motion.div>
-          )}
+          ) : null}
         </div>
       </div>
 
