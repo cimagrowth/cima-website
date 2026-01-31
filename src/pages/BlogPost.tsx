@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
+import DOMPurify from "isomorphic-dompurify";
 import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/components/seo/schemas";
-
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: post, isLoading, error } = usePostBySlug(slug || "");
@@ -226,9 +226,9 @@ const BlogPost = () => {
   );
 };
 
-// Simple markdown-like content formatting
+// Secure content formatting with XSS sanitization
 function formatContent(content: string): string {
-  return content
+  const formatted = content
     .replace(/\n\n/g, "</p><p>")
     .replace(/\n/g, "<br>")
     .replace(/^/, "<p>")
@@ -238,6 +238,13 @@ function formatContent(content: string): string {
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.*?)\*/g, "<em>$1</em>")
     .replace(/<p><\/p>/g, "");
+
+  // Sanitize HTML to prevent XSS attacks
+  return DOMPurify.sanitize(formatted, {
+    ALLOWED_TAGS: ['p', 'br', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'em', 'u', 's', 'a', 'ul', 'ol', 'li', 'blockquote', 'code', 'pre', 'img', 'hr'],
+    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
+    ALLOW_DATA_ATTR: false,
+  });
 }
 
 export default BlogPost;
