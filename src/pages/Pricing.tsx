@@ -1,44 +1,49 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Gift, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Pricing = () => {
+  const features = [
+    "Unified Inbox",
+    "Custom pipelines",
+    "Automations and follow-up",
+    "Missed-call text back",
+    "Lead tracking and reporting",
+    "Team access",
+    "Onboarding and training",
+    "Managed ad system integration",
+    "Funnel and conversion tracking",
+    "Landing page and lead flow setup",
+    "Ongoing optimization support",
+    "Priority strategy access",
+  ];
+
   const plans = [
     {
-      name: "GrowthOS Core",
-      price: "$499",
+      name: "GrowthOS Monthly",
+      price: "$999",
       period: "/ month",
-      setup: "$999 one-time setup",
-      description: "Everything you need to unify communication and automate follow-up.",
-      features: [
-        "Unified Inbox",
-        "Custom pipelines",
-        "Automations and follow-up",
-        "Missed-call text back",
-        "Lead tracking and reporting",
-        "Team access",
-        "Onboarding and training",
-      ],
-      cta: "Start with GrowthOS",
+      setup: "+ $999 one-time setup fee",
+      description: "Full access to the complete GrowthOS platform with flexible monthly billing.",
+      savings: null,
+      bonus: null,
+      cta: "Start with Monthly",
       popular: false,
     },
     {
-      name: "GrowthOS Plus",
-      price: "$999",
-      period: "/ month",
-      setup: "$999 one-time setup",
-      description: "For clinics ready to optimize their entire patient acquisition funnel.",
-      features: [
-        "Everything in Core, plus:",
-        "Managed ad system integration",
-        "Funnel and conversion tracking",
-        "Landing page and lead flow setup",
-        "Ongoing optimization support",
-        "Priority strategy access",
-      ],
-      cta: "Get GrowthOS Plus",
+      name: "GrowthOS Annual",
+      price: "$9,999",
+      period: "/ year",
+      setup: "No setup fee",
+      description: "Best value for committed clinics. Pay annually and save significantly.",
+      savings: {
+        firstYear: "$2,997",
+        ongoing: "$1,998",
+      },
+      bonus: "$500 Meta & Google Ads Credit",
+      cta: "Get Annual Plan",
       popular: true,
     },
   ];
@@ -60,7 +65,7 @@ const Pricing = () => {
               <span className="text-gradient-accent">real clinics.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground">
-              No hidden fees. No per-lead charges. Just straightforward monthly plans 
+              No hidden fees. No per-lead charges. Just straightforward plans 
               that scale with your practice.
             </p>
           </motion.div>
@@ -70,7 +75,7 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="pb-20 md:pb-28 lg:pb-32 bg-background">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -86,7 +91,7 @@ const Pricing = () => {
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="bg-accent-orange text-white text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-card">
-                      Most Popular
+                      Best Value
                     </span>
                   </div>
                 )}
@@ -107,25 +112,36 @@ const Pricing = () => {
                       {plan.period}
                     </span>
                   </div>
-                  <p className={plan.popular ? "text-primary-foreground/70 text-body-sm" : "text-muted-foreground text-body-sm"}>
+                  <p className={plan.popular ? "text-primary-foreground/70 text-body-sm font-medium" : "text-muted-foreground text-body-sm"}>
                     {plan.setup}
                   </p>
-                </div>
 
-                <ul className="space-y-4 mb-10">
-                  {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start gap-3">
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        plan.popular ? "bg-accent-orange/20" : "bg-accent-orange/10"
-                      }`}>
-                        <Check className={`w-3 h-3 ${plan.popular ? "text-accent-orange" : "text-accent-orange"}`} />
+                  {/* Savings callout for annual */}
+                  {plan.savings && (
+                    <div className="mt-4 p-4 rounded-xl bg-white/10 border border-white/20">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Sparkles className="w-4 h-4 text-accent-orange" />
+                        <span className="text-body-sm font-semibold text-primary-foreground">Your Savings</span>
                       </div>
-                      <span className={plan.popular ? "text-primary-foreground" : "text-foreground"}>
-                        {feature}
+                      <p className="text-body-sm text-primary-foreground/90">
+                        Save <span className="font-bold text-accent-orange">{plan.savings.firstYear}</span> your first year
+                      </p>
+                      <p className="text-body-sm text-primary-foreground/80">
+                        Save <span className="font-semibold">{plan.savings.ongoing}</span> every year after
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Bonus for annual */}
+                  {plan.bonus && (
+                    <div className="mt-4 flex items-center gap-3 p-3 rounded-lg bg-accent-orange/20 border border-accent-orange/30">
+                      <Gift className="w-5 h-5 text-accent-orange flex-shrink-0" />
+                      <span className="text-body-sm font-semibold text-primary-foreground">
+                        {plan.bonus}
                       </span>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  )}
+                </div>
 
                 <Link to="/demo">
                   <Button
@@ -143,7 +159,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Annual Plans */}
+      {/* Features included in all plans */}
       <section className="section-padding-sm bg-tan">
         <div className="container-wide">
           <motion.div 
@@ -151,19 +167,32 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-heading text-foreground mb-4">
-              Annual plans available
+            <h2 className="text-heading text-foreground text-center mb-4">
+              Everything included in GrowthOS
             </h2>
-            <p className="text-body-lg text-muted-foreground mb-8">
-              Save with annual billing and get discounted setup.
+            <p className="text-body-lg text-muted-foreground text-center mb-10">
+              Both plans include full access to every feature. No tiers, no limitations.
             </p>
-            <Link to="/demo">
-              <Button variant="hero-outline" size="lg">
-                Ask About Annual Pricing
-              </Button>
-            </Link>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border"
+                >
+                  <div className="w-6 h-6 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3.5 h-3.5 text-accent-orange" />
+                  </div>
+                  <span className="text-body text-foreground">{feature}</span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
