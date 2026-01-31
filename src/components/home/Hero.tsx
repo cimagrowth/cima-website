@@ -49,7 +49,7 @@ const Hero = () => {
         <div className="max-w-4xl">
           <motion.h1 
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-display-xl lg:text-[4rem] text-foreground mb-5 md:mb-6 leading-tight"
+            className="text-[1.75rem] leading-[1.2] sm:text-4xl md:text-display-xl lg:text-[4rem] text-foreground font-bold mb-4 md:mb-6"
           >
             Every missed follow-up costs your clinic patients.{" "}
             <span className="text-gradient-accent">GrowthOS makes sure it never happens.</span>
