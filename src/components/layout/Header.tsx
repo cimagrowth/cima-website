@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
-import cimaLogo from "@/assets/cima-logo.png";
+import cimaLogoLight from "@/assets/cima-logo-light.png";
+import cimaLogoDark from "@/assets/cima-logo-dark.png";
 
 type NavLink = {
   href: string;
@@ -100,11 +101,9 @@ const Header = () => {
                 className="absolute inset-0 blur-xl bg-accent-orange/30 rounded-full scale-150"
               />
               <img 
-                src={cimaLogo} 
+                src={resolvedTheme === "dark" ? cimaLogoDark : cimaLogoLight} 
                 alt="Cima" 
-                className={`h-8 md:h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105 ${
-                  resolvedTheme === "dark" ? "brightness-0 invert" : ""
-                }`}
+                className="h-8 md:h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105"
               />
             </motion.div>
           </Link>
