@@ -19,43 +19,37 @@ const FinalCTA = () => {
   const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4]);
 
   return (
-    <section ref={sectionRef} className="section-padding relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
       
-      {/* Parallax decorative elements */}
+      {/* Parallax decorative elements - hidden on mobile */}
       <motion.div 
         style={{ y: y1, scale: scale1, rotate: rotate1, opacity: opacity1 }}
-        className="absolute top-0 left-1/4 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl" 
+        className="absolute top-0 left-1/4 w-72 md:w-96 h-72 md:h-96 bg-accent-orange/20 rounded-full blur-3xl hidden md:block" 
       />
       <motion.div 
         style={{ y: y2, scale: scale2, opacity: opacity1 }}
-        className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/30 rounded-full blur-3xl" 
+        className="absolute bottom-0 right-1/4 w-60 md:w-80 h-60 md:h-80 bg-secondary/30 rounded-full blur-3xl hidden md:block" 
       />
       
       <div className="container-wide relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl md:text-display text-primary-foreground mb-4">
             If your clinic wants predictable growth, it starts with{" "}
             <span className="text-accent-orange">predictable follow-up.</span>
           </h2>
-          <Link to="/demo" className="mt-8 inline-block">
+          <Link to="/demo" className="mt-6 md:mt-8 inline-block">
             <Button 
               variant="hero" 
-              size="xl" 
-              className="group shadow-glow bg-accent-orange hover:brightness-110"
+              size="lg" 
+              className="group shadow-glow bg-accent-orange hover:brightness-110 md:size-xl"
             >
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -41,44 +41,34 @@ const UseCases = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
-      {/* Parallax decoration */}
+    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+      {/* Parallax decoration - hidden on mobile */}
       <motion.div 
         style={{ y: y1, opacity: opacity1 }}
-        className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" 
+        className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl hidden md:block" 
       />
       
       <div className="container-wide relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <h2 className="text-heading-lg md:text-display text-foreground mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
+          <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
             What GrowthOS <span className="text-gradient-accent">solves for clinics</span>
           </h2>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-premium p-6 group"
+                className="card-premium p-4 md:p-6 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-orange/10 to-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6 text-accent-orange" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-accent-orange/10 to-secondary/10 flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-accent-orange" />
                 </div>
-                <h3 className="text-heading-sm text-foreground mb-2">{useCase.title}</h3>
-                <p className="text-body text-muted-foreground">{useCase.description}</p>
-              </motion.div>
+                <h3 className="text-sm md:text-base font-semibold text-foreground mb-1 md:mb-2">{useCase.title}</h3>
+                <p className="text-xs md:text-sm text-muted-foreground">{useCase.description}</p>
+              </div>
             );
           })}
         </div>
