@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 const SocialProof = () => {
   const verticals = [
-    "Fertility",
-    "Med Spa",
+    "Fertility Clinics",
+    "Med Spas",
     "Wellness Centers",
-    "Regenerative Medicine",
+    "Regenerative Medicine Clinics",
   ];
 
   return (
