@@ -96,7 +96,7 @@ const Pricing = () => {
                   </div>
                 )}
 
-                <div className="mb-8">
+                <div className="mb-6">
                   <h3 className={`text-heading-sm mb-2 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
                     {plan.name}
                   </h3>
@@ -143,6 +143,22 @@ const Pricing = () => {
                   )}
                 </div>
 
+                {/* Features list */}
+                <ul className="space-y-3 mb-8">
+                  {features.map((feature, fIndex) => (
+                    <li key={fIndex} className="flex items-start gap-3">
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                        plan.popular ? "bg-accent-orange/20" : "bg-accent-orange/10"
+                      }`}>
+                        <Check className={`w-3 h-3 text-accent-orange`} />
+                      </div>
+                      <span className={`text-body-sm ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
                 <Link to="/demo">
                   <Button
                     variant={plan.popular ? "hero" : "hero-outline"}
@@ -159,7 +175,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Features included in all plans */}
+      {/* Value proposition */}
       <section className="section-padding-sm bg-tan">
         <div className="container-wide">
           <motion.div 
@@ -167,32 +183,14 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-heading text-foreground text-center mb-4">
-              Everything included in GrowthOS
+            <h2 className="text-heading text-foreground mb-4">
+              Full access. No feature tiers.
             </h2>
-            <p className="text-body-lg text-muted-foreground text-center mb-10">
-              Both plans include full access to every feature. No tiers, no limitations.
+            <p className="text-body-lg text-muted-foreground">
+              Both plans include every GrowthOS feature. The only difference is how you pay.
             </p>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border"
-                >
-                  <div className="w-6 h-6 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3.5 h-3.5 text-accent-orange" />
-                  </div>
-                  <span className="text-body text-foreground">{feature}</span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
