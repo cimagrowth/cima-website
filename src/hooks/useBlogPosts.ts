@@ -182,3 +182,16 @@ export function useOptimizeSEO() {
     },
   });
 }
+
+export function useGenerateBlogImage() {
+  return useMutation({
+    mutationFn: async ({ prompt, title }: { prompt: string; title: string }) => {
+      const { data, error } = await supabase.functions.invoke("generate-blog-image", {
+        body: { prompt, title },
+      });
+
+      if (error) throw error;
+      return data as { imageUrl: string; message: string };
+    },
+  });
+}
