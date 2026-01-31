@@ -264,9 +264,9 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full overflow-hidden">
       {/* Messages */}
-      <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+      <div className="flex-1 overflow-y-auto p-4 min-h-0" ref={scrollRef}>
         <div className="space-y-4">
           <AnimatePresence initial={false}>
             {messages.map((message) => (
@@ -322,10 +322,10 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
             </motion.div>
           )}
         </div>
-      </ScrollArea>
+      </div>
 
       {/* Input */}
-      <form onSubmit={handleSubmit} className="p-4 border-t border-border">
+      <form onSubmit={handleSubmit} className="p-4 border-t border-border flex-shrink-0">
         <div className="flex gap-2">
           <Input
             ref={inputRef}
@@ -339,7 +339,7 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
             type="submit"
             variant="hero"
             size="icon"
-            className="h-11 w-11"
+            className="h-11 w-11 flex-shrink-0"
             disabled={isLoading || !input.trim()}
           >
             {isLoading ? (
