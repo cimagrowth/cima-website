@@ -4,28 +4,31 @@ import { Layers, Plug, Replace } from "lucide-react";
 const IntegrationFlexibility = () => {
   const deploymentModes = [
     {
-      icon: Plug,
-      title: "Plug-In Mode",
-      subtitle: "Keep your CRM",
-      description: "GrowthOS sits on top of Salesforce, HubSpot, Zoho, or any CRM. The AI handles patient engagement while your team works in familiar tools.",
-      audience: "For enterprise groups and established clinics",
-      gradient: "from-primary to-primary-light",
+      icon: Replace,
+      title: "Full Platform",
+      subtitle: "Recommended",
+      description: "Ditch the complexity. GrowthOS replaces your CRM entirely—one simple platform for patient engagement, pipelines, and follow-up. No more juggling tools.",
+      audience: "Most clinics choose this path",
+      gradient: "from-accent-orange to-secondary",
+      featured: true,
     },
     {
       icon: Layers,
-      title: "Hybrid Mode",
-      subtitle: "Use what matters",
-      description: "Pick the modules you need—AI follow-up, unified inbox, pipelines—and integrate with your existing stack via API.",
-      audience: "For clinics with partial systems in place",
+      title: "Transition Mode",
+      subtitle: "Moving away from your CRM",
+      description: "Already stuck in HubSpot, Salesforce, or HighLevel? We'll help you migrate at your own pace while GrowthOS handles the heavy lifting.",
+      audience: "For clinics ready to simplify",
       gradient: "from-secondary to-accent-orange",
+      featured: false,
     },
     {
-      icon: Replace,
-      title: "Full Platform",
-      subtitle: "Replace everything",
-      description: "GrowthOS becomes your complete patient management infrastructure. No more spreadsheets, no more tool juggling.",
-      audience: "For clinics ready to consolidate",
-      gradient: "from-accent-orange to-secondary",
+      icon: Plug,
+      title: "Integration Mode",
+      subtitle: "When you must stay",
+      description: "Enterprise mandates or multi-location requirements? GrowthOS can sit alongside existing CRMs via API—but most clients realize they don't need them.",
+      audience: "For enterprise groups with legacy systems",
+      gradient: "from-primary to-primary-light",
+      featured: false,
     },
   ];
 
@@ -43,11 +46,11 @@ const IntegrationFlexibility = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            Works with what you have—<span className="text-gradient">or becomes everything you need.</span>
+            Finally, a platform that's <span className="text-gradient">actually simple to use.</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            Whether you're running Salesforce across 50 locations, using HubSpot at a growing practice, 
-            or managing leads in a spreadsheet—GrowthOS adapts to your reality.
+            Tired of wrestling with HubSpot? Done paying for Salesforce features you'll never use? 
+            GrowthOS was built for clinics—not enterprises with IT departments.
           </p>
         </motion.div>
 
@@ -61,13 +64,20 @@ const IntegrationFlexibility = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="card-elevated p-6 md:p-8 text-center group hover:shadow-glow transition-all duration-500"
+                className={`card-elevated p-6 md:p-8 text-center group hover:shadow-glow transition-all duration-500 relative ${
+                  mode.featured ? "ring-2 ring-accent-orange" : ""
+                }`}
               >
+                {mode.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-orange text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Most Popular
+                  </div>
+                )}
                 <div className={`w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br ${mode.gradient} flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-card`}>
                   <Icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold text-foreground mb-1">{mode.title}</h3>
-                <p className="text-sm font-medium text-accent-orange mb-3">{mode.subtitle}</p>
+                <p className={`text-sm font-medium mb-3 ${mode.featured ? "text-accent-orange" : "text-muted-foreground"}`}>{mode.subtitle}</p>
                 <p className="text-sm md:text-base text-muted-foreground mb-4">{mode.description}</p>
                 <p className="text-xs md:text-sm text-muted-foreground/70 italic">{mode.audience}</p>
               </motion.div>
@@ -83,12 +93,13 @@ const IntegrationFlexibility = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 md:mt-16 text-center"
         >
-          <p className="text-sm text-muted-foreground mb-6">Integrates with the tools you already use</p>
+          <p className="text-sm text-muted-foreground mb-6">Migrating from or integrating with</p>
           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60">
             <span className="text-lg md:text-xl font-semibold text-foreground">Salesforce</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">HubSpot</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">Zoho</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">Keap</span>
+            <span className="text-lg md:text-xl font-semibold text-foreground">HighLevel</span>
             <span className="text-lg md:text-xl font-semibold text-foreground">+ API</span>
           </div>
         </motion.div>
