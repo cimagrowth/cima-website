@@ -23,6 +23,7 @@ const Pricing = () => {
       setup: "$999 one-time setup",
       description: "Full access to GrowthOS with flexible monthly billing.",
       savings: null,
+      bonus: null,
       cta: "Start Monthly",
       ctaSubtext: "$999/mo + $999 setup",
       popular: false,
@@ -34,6 +35,7 @@ const Pricing = () => {
       setup: "No setup fee",
       description: "Best value. Pay annually and save on setup.",
       savings: "Save on setup",
+      bonus: "$500 Meta & Google Ads Credit",
       cta: "Start Annual",
       ctaSubtext: "$9,999/year, no setup fee",
       popular: true,
@@ -113,6 +115,16 @@ const Pricing = () => {
                       <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
                       <span className="text-body-sm font-semibold text-primary-foreground">
                         {plan.savings}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Bonus for annual */}
+                  {plan.bonus && (
+                    <div className="mt-3 flex items-center gap-2 p-3 rounded-lg bg-white/10 border border-white/20">
+                      <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
+                      <span className="text-body-sm font-semibold text-primary-foreground">
+                        {plan.bonus}
                       </span>
                     </div>
                   )}
