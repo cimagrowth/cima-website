@@ -85,50 +85,53 @@
   }
 
   .dark {
+    /* Deep dark blue backgrounds */
     --background: 207 53% 8%;
     --background-soft: 207 53% 10%;
-    --foreground: 43 28% 89%;
+    --foreground: 0 0% 95%;
 
     --card: 207 53% 12%;
-    --card-foreground: 43 28% 89%;
+    --card-foreground: 0 0% 95%;
 
     --popover: 207 53% 12%;
-    --popover-foreground: 43 28% 89%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 198 32% 56%;
-    --primary-foreground: 207 53% 8%;
-    --primary-light: 198 40% 65%;
+    /* Primary stays dark blue for consistency */
+    --primary: 207 53% 14%;
+    --primary-foreground: 0 0% 95%;
+    --primary-light: 207 45% 25%;
 
     --accent-orange: 14 81% 55%;
     --accent-orange-foreground: 0 0% 100%;
 
     --secondary: 207 40% 22%;
-    --secondary-foreground: 43 28% 89%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 207 40% 18%;
-    --muted-foreground: 198 20% 60%;
+    --muted: 207 40% 16%;
+    --muted-foreground: 210 15% 65%;
 
-    --accent: 207 35% 18%;
-    --accent-foreground: 198 32% 65%;
+    --accent: 207 35% 16%;
+    --accent-foreground: 0 0% 90%;
 
-    --tan: 43 20% 15%;
-    --tan-foreground: 43 28% 89%;
+    /* Tan now uses dark blue tones instead of brown */
+    --tan: 207 45% 12%;
+    --tan-foreground: 0 0% 95%;
 
     --destructive: 0 62.8% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 207 35% 22%;
-    --input: 207 35% 22%;
+    --border: 207 35% 20%;
+    --input: 207 35% 20%;
     --ring: 14 81% 55%;
 
     --shadow-glow: 0 0 60px -10px rgb(233 90 50 / 0.4);
 
     --sidebar-background: 207 53% 10%;
-    --sidebar-foreground: 43 28% 89%;
+    --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 14 81% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 207 35% 18%;
-    --sidebar-accent-foreground: 43 28% 89%;
+    --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 207 35% 18%;
     --sidebar-ring: 14 81% 55%;
   }
