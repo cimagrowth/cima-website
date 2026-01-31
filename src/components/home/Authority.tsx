@@ -38,56 +38,46 @@ const Authority = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
-      {/* Parallax decorative elements */}
+    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+      {/* Parallax decorative elements - hidden on mobile */}
       <motion.div 
         style={{ y: y1, scale: scale1, opacity: opacity1 }}
-        className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" 
+        className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl hidden md:block" 
       />
       <motion.div 
         style={{ y: y2, scale: scale1, opacity: opacity1 }}
-        className="absolute bottom-0 left-0 w-80 h-80 bg-accent-orange/5 rounded-full blur-3xl" 
+        className="absolute bottom-0 left-0 w-80 h-80 bg-accent-orange/5 rounded-full blur-3xl hidden md:block" 
       />
       
       <div className="container-wide relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <h2 className="text-heading-lg md:text-display text-foreground mb-6">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
+          <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
             The platform that makes the AI work{" "}
             <span className="text-gradient-accent">cleanly across your entire clinic.</span>
           </h2>
-          <p className="text-body-lg text-muted-foreground mt-4">
+          <p className="text-base md:text-lg text-muted-foreground mt-4">
             The AI is the engine. GrowthOS is the system it runs inside. That means every 
             message, every lead, and every outcome is visible, organized, and actionable. 
             Your clinic can finally operate with consistency instead of hero effort.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {systems.map((system, index) => {
             const Icon = system.icon;
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-premium p-6 flex gap-4 group"
+                className="card-premium p-5 md:p-6 flex gap-3 md:gap-4 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-heading-sm text-foreground mb-2">{system.title}</h3>
-                  <p className="text-body text-muted-foreground">{system.description}</p>
+                  <h3 className="text-base md:text-lg font-semibold text-foreground mb-1 md:mb-2">{system.title}</h3>
+                  <p className="text-sm md:text-base text-muted-foreground">{system.description}</p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
