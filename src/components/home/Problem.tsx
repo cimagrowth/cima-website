@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Clock, MessageSquare, Users, Database, BarChart3 } from "lucide-react";
+import { Clock, Phone, Users, Database, Eye } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Problem = () => {
@@ -14,12 +14,12 @@ const Problem = () => {
   const scale1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 1.1]);
   const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
 
-  const painPoints = [
-    { icon: Clock, text: "After-hours inquiries go unanswered" },
-    { icon: MessageSquare, text: "Messages live in too many places" },
-    { icon: Users, text: "Follow-up depends on memory" },
-    { icon: Database, text: "Old leads are never reactivated" },
-    { icon: BarChart3, text: "Reporting lacks clarity" },
+  const leakagePoints = [
+    { icon: Clock, text: "After-hours inquiries" },
+    { icon: Phone, text: "Missed calls and voicemails" },
+    { icon: Users, text: "Inconsistent follow-up" },
+    { icon: Database, text: "Leads that go cold without reactivation" },
+    { icon: Eye, text: "No visibility into where patients drop off" },
   ];
 
   return (
@@ -43,18 +43,18 @@ const Problem = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-heading-lg md:text-display text-foreground mb-6">
-            Your clinic isn't losing leads because of care.{" "}
-            <span className="text-gradient-accent">It's losing them because of inconsistency.</span>
+            Patient leakage happens{" "}
+            <span className="text-gradient-accent">quietly and constantly.</span>
           </h2>
           <p className="text-body-lg text-muted-foreground">
-            Most clinics rely on disconnected tools, manual follow-up, and busy staff to manage 
-            patient inquiries. The result is slow response times, missed opportunities, and no 
-            clear picture of what is working.
+            When a patient reaches out and doesn't hear back quickly, interest fades. 
+            When follow-up depends on busy staff, consistency breaks. Most clinics don't 
+            realize how many patients they lose because the system relies too heavily on humans.
           </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {painPoints.map((point, index) => {
+          {leakagePoints.map((point, index) => {
             const Icon = point.icon;
             return (
               <motion.div

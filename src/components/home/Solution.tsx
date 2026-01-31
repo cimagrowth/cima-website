@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Inbox, Zap, RefreshCw, TrendingUp } from "lucide-react";
+import { Zap, MessageCircle, Brain, UserCheck } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Solution = () => {
@@ -15,29 +15,29 @@ const Solution = () => {
   const scale1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.1, 0.9]);
   const opacity1 = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.2, 0.6, 0.6, 0.2]);
 
-  const modules = [
-    {
-      icon: Inbox,
-      title: "Unified Clinic Inbox and Pipeline Hub",
-      description: "All patient conversations in one place with full visibility.",
-      gradient: "from-primary to-primary-light",
-    },
+  const capabilities = [
     {
       icon: Zap,
-      title: "Automated Follow-Up and Nurture",
-      description: "Immediate response, reminders, and long-term nurturing that runs automatically.",
+      title: "Instant AI Response",
+      description: "Every inquiry receives an immediate, human-sounding response.",
       gradient: "from-accent-orange to-secondary",
     },
     {
-      icon: RefreshCw,
-      title: "Database Reactivation Engine",
-      description: "Monthly SMS and email campaigns that turn dormant leads into consults.",
+      icon: MessageCircle,
+      title: "AI-Guided Nurturing",
+      description: "Patients receive consistent, personalized follow-up over days or weeks.",
       gradient: "from-secondary to-primary-light",
     },
     {
-      icon: TrendingUp,
-      title: "Attribution and Growth Reporting",
-      description: "Know exactly what is driving booked patients.",
+      icon: Brain,
+      title: "Clinic-Trained Intelligence",
+      description: "The AI is trained on your clinic's approved messaging, tone, and rules.",
+      gradient: "from-primary to-primary-light",
+    },
+    {
+      icon: UserCheck,
+      title: "Clean Human Handoff",
+      description: "When a patient is ready, staff steps in with full context.",
       gradient: "from-primary-light to-accent-orange",
     },
   ];
@@ -62,17 +62,29 @@ const Solution = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mx-auto text-center mb-6"
         >
           <h2 className="text-heading-lg md:text-display text-foreground mb-6">
-            GrowthOS replaces chaos with{" "}
-            <span className="text-gradient">clarity.</span>
+            An AI system designed to{" "}
+            <span className="text-gradient">protect every inquiry.</span>
           </h2>
         </motion.div>
 
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-body-lg text-muted-foreground text-center max-w-3xl mx-auto mb-16"
+        >
+          GrowthOS is built around a custom-trained AI language model that acts as your clinic's 
+          first responder and long-term nurture engine. It engages patients instantly, communicates 
+          in your clinic's voice, and follows structured workflows designed to move patients toward booking.
+        </motion.p>
+
         <div className="grid md:grid-cols-2 gap-6">
-          {modules.map((module, index) => {
-            const Icon = module.icon;
+          {capabilities.map((capability, index) => {
+            const Icon = capability.icon;
             return (
               <motion.div
                 key={index}
@@ -82,12 +94,12 @@ const Solution = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="card-elevated p-8 flex gap-5 group hover:shadow-glow transition-all duration-500"
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.gradient} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${capability.gradient} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-heading-sm text-foreground mb-2">{module.title}</h3>
-                  <p className="text-body text-muted-foreground">{module.description}</p>
+                  <h3 className="text-heading-sm text-foreground mb-2">{capability.title}</h3>
+                  <p className="text-body text-muted-foreground">{capability.description}</p>
                 </div>
               </motion.div>
             );

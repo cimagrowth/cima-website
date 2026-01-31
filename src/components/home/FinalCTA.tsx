@@ -41,10 +41,13 @@ const FinalCTA = () => {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="text-heading-lg md:text-display text-primary-foreground mb-8">
-            Growth doesn't require more effort.{" "}
-            <span className="text-accent-orange">It requires better systems.</span>
+          <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
+            Stop patient leakage with an{" "}
+            <span className="text-accent-orange">always-on AI system.</span>
           </h2>
+          <p className="text-body-lg text-primary-foreground/80 mb-8">
+            See how GrowthOS protects every inquiry with instant response and consistent nurturing.
+          </p>
           <Link to="/demo">
             <Button 
               variant="hero" 
