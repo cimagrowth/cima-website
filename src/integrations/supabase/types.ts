@@ -68,6 +68,68 @@ export type Database = {
         }
         Relationships: []
       }
+      demo_chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          session_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          session_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "demo_chat_messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "demo_chat_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      demo_chat_sessions: {
+        Row: {
+          clinic_type: Database["public"]["Enums"]["clinic_type"]
+          created_at: string
+          id: string
+          updated_at: string
+          visitor_email: string
+          visitor_name: string
+          visitor_phone: string
+        }
+        Insert: {
+          clinic_type?: Database["public"]["Enums"]["clinic_type"]
+          created_at?: string
+          id?: string
+          updated_at?: string
+          visitor_email: string
+          visitor_name: string
+          visitor_phone: string
+        }
+        Update: {
+          clinic_type?: Database["public"]["Enums"]["clinic_type"]
+          created_at?: string
+          id?: string
+          updated_at?: string
+          visitor_email?: string
+          visitor_name?: string
+          visitor_phone?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -104,6 +166,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      clinic_type: "fertility" | "med_spa" | "regenerative" | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -232,6 +295,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      clinic_type: ["fertility", "med_spa", "regenerative", "other"],
     },
   },
 } as const
