@@ -366,10 +366,10 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
                   className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                     message.role === "user"
                       ? "bg-accent-orange text-white rounded-tr-sm"
-                      : "bg-accent text-foreground rounded-tl-sm"
+                      : "bg-accent text-foreground dark:text-white rounded-tl-sm"
                   }`}
                 >
-                  <div className="text-sm prose prose-sm max-w-none prose-p:my-1 prose-p:leading-relaxed prose-strong:text-inherit prose-em:text-inherit prose-headings:text-inherit prose-a:text-accent-orange prose-a:no-underline hover:prose-a:underline">
+                  <div className="text-sm prose prose-sm max-w-none prose-p:my-1 prose-p:leading-relaxed prose-strong:text-inherit prose-em:text-inherit prose-headings:text-inherit prose-a:text-accent-orange prose-a:no-underline hover:prose-a:underline dark:prose-invert">
                     <ReactMarkdown>{message.content}</ReactMarkdown>
                   </div>
                 </div>
