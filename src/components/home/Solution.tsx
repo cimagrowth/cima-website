@@ -1,7 +1,20 @@
+import { useRef } from "react";
 import { Inbox, Zap, RefreshCw, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Solution = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [-30, 80]);
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const scale1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.1, 0.9]);
+  const opacity1 = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.2, 0.6, 0.6, 0.2]);
+
   const modules = [
     {
       icon: Inbox,
@@ -30,11 +43,17 @@ const Solution = () => {
   ];
 
   return (
-    <section className="section-padding bg-tan relative overflow-hidden">
-      {/* Background pattern */}
+    <section ref={sectionRef} className="section-padding bg-tan relative overflow-hidden">
+      {/* Parallax background pattern */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-accent-orange/10 rounded-full blur-3xl" />
+        <motion.div 
+          style={{ y: y1, rotate: rotate1, scale: scale1, opacity: opacity1 }}
+          className="absolute top-10 right-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl" 
+        />
+        <motion.div 
+          style={{ y: y2, scale: scale1, opacity: opacity1 }}
+          className="absolute bottom-10 left-10 w-80 h-80 bg-accent-orange/10 rounded-full blur-3xl" 
+        />
       </div>
       
       <div className="container-wide relative z-10">
