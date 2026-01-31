@@ -43,7 +43,7 @@ const Solution = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
+    <section id="solution" ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
       {/* Parallax background pattern - hidden on mobile */}
       <div className="absolute inset-0 opacity-30 hidden md:block">
         <motion.div 
