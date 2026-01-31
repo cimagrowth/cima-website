@@ -156,25 +156,41 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
             className="grid grid-cols-2 gap-1.5"
             disabled={isSubmitting}
           >
-            <div className="flex items-center space-x-2 p-2 rounded-lg border border-border hover:border-primary/50 transition-colors cursor-pointer">
+            <div className={`flex items-center space-x-2 p-2 rounded-lg border-2 transition-colors cursor-pointer ${
+              formData.clinicType === "fertility" 
+                ? "border-accent-orange bg-accent-orange/10" 
+                : "border-border hover:border-muted-foreground/50"
+            }`}>
               <RadioGroupItem value="fertility" id="fertility" />
               <Label htmlFor="fertility" className="cursor-pointer text-xs">
                 Fertility Clinic
               </Label>
             </div>
-            <div className="flex items-center space-x-2 p-2 rounded-lg border border-border hover:border-primary/50 transition-colors cursor-pointer">
+            <div className={`flex items-center space-x-2 p-2 rounded-lg border-2 transition-colors cursor-pointer ${
+              formData.clinicType === "med_spa" 
+                ? "border-accent-orange bg-accent-orange/10" 
+                : "border-border hover:border-muted-foreground/50"
+            }`}>
               <RadioGroupItem value="med_spa" id="med_spa" />
               <Label htmlFor="med_spa" className="cursor-pointer text-xs">
                 Med Spa
               </Label>
             </div>
-            <div className="flex items-center space-x-2 p-2 rounded-lg border border-border hover:border-primary/50 transition-colors cursor-pointer">
+            <div className={`flex items-center space-x-2 p-2 rounded-lg border-2 transition-colors cursor-pointer ${
+              formData.clinicType === "other" 
+                ? "border-accent-orange bg-accent-orange/10" 
+                : "border-border hover:border-muted-foreground/50"
+            }`}>
               <RadioGroupItem value="other" id="wellness" />
               <Label htmlFor="wellness" className="cursor-pointer text-xs">
                 Wellness Center
               </Label>
             </div>
-            <div className="flex items-center space-x-2 p-2 rounded-lg border border-border hover:border-primary/50 transition-colors cursor-pointer">
+            <div className={`flex items-center space-x-2 p-2 rounded-lg border-2 transition-colors cursor-pointer ${
+              formData.clinicType === "regenerative" 
+                ? "border-accent-orange bg-accent-orange/10" 
+                : "border-border hover:border-muted-foreground/50"
+            }`}>
               <RadioGroupItem value="regenerative" id="regenerative" />
               <Label htmlFor="regenerative" className="cursor-pointer text-xs">
                 Regenerative
