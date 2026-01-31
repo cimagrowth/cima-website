@@ -31,7 +31,7 @@ const Solution = () => {
     {
       icon: Brain,
       title: "Trained on your specialty + your clinic",
-      description: "Industry-specific AI for fertility, med spa, wellness centers, and regenerative medicine clinics—then fine-tuned on your policies, procedures, and qualification criteria.",
+      description: "Industry-specific AI for fertility clinics, med spas, wellness centers, and regenerative medicine clinics—then fine-tuned on your policies, procedures, and qualification criteria.",
       gradient: "from-primary to-primary-light",
     },
     {
