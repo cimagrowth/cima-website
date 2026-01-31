@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import cimaLogo from "@/assets/cima-logo.png";
 
@@ -43,15 +44,33 @@ const Header = () => {
     >
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <img 
-              src={cimaLogo} 
-              alt="Cima" 
-              className={`h-10 w-auto transition-all duration-300 group-hover:scale-105 ${
-                resolvedTheme === "dark" ? "brightness-0 invert" : ""
-              }`}
-            />
+          {/* Animated Logo */}
+          <Link to="/" className="flex items-center gap-3 group relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.1 
+              }}
+              className="relative"
+            >
+              {/* Glow effect */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.6, 0.3] }}
+                transition={{ duration: 1.5, delay: 0.3 }}
+                className="absolute inset-0 blur-xl bg-accent-orange/30 rounded-full scale-150"
+              />
+              <img 
+                src={cimaLogo} 
+                alt="Cima" 
+                className={`h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105 ${
+                  resolvedTheme === "dark" ? "brightness-0 invert" : ""
+                }`}
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
