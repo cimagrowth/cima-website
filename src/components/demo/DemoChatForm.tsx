@@ -18,6 +18,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    businessName: "",
     email: "",
     phone: "",
     clinicType: "fertility" as "fertility" | "med_spa" | "regenerative" | "other",
@@ -28,10 +29,11 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
     
     // Client-side validation
     const trimmedName = formData.name.trim();
+    const trimmedBusinessName = formData.businessName.trim();
     const trimmedEmail = formData.email.trim();
     const trimmedPhone = formData.phone.trim();
 
-    if (!trimmedName || !trimmedEmail || !trimmedPhone) {
+    if (!trimmedName || !trimmedBusinessName || !trimmedEmail || !trimmedPhone) {
       toast({
         title: "Please fill in all fields",
         variant: "destructive",
@@ -115,6 +117,19 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
             className="h-9 text-sm"
             disabled={isSubmitting}
             maxLength={100}
+          />
+        </div>
+
+        <div className="space-y-1">
+          <Label htmlFor="demo-business" className="text-xs">Clinic / Business Name</Label>
+          <Input
+            id="demo-business"
+            placeholder="Sunrise Fertility Clinic"
+            value={formData.businessName}
+            onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+            className="h-9 text-sm"
+            disabled={isSubmitting}
+            maxLength={150}
           />
         </div>
 
