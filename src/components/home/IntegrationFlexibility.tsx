@@ -46,11 +46,11 @@ const IntegrationFlexibility = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            Finally, a platform that's <span className="text-gradient">actually simple to use.</span>
+            Enterprise power. <span className="text-gradient">Zero bloat.</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            Tired of wrestling with HubSpot? Done paying for Salesforce features you'll never use? 
-            GrowthOS was built for clinics—not enterprises with IT departments.
+            Built for teams that want enterprise-grade capabilities without the six-month implementation, 
+            bloated feature sets, or dedicated admin staff. GrowthOS delivers power without the complexity.
           </p>
         </motion.div>
 
