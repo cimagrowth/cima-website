@@ -34,7 +34,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[80vh] md:min-h-[90vh] flex items-center overflow-hidden bg-background">
+    <section id="hero" className="relative min-h-[80vh] md:min-h-[90vh] flex items-center overflow-hidden bg-background">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-gradient-radial" />
       <div className="absolute top-20 right-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float hidden md:block" />

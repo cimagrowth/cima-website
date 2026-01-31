@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const AIStudio = () => {
   return (
-    <section className="py-12 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
+    <section id="ai-studio" className="py-12 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-accent-orange/5 rounded-full blur-3xl hidden md:block" />
       

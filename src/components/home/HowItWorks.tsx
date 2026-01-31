@@ -33,7 +33,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-12 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
+    <section id="how-it-works" className="py-12 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
       {/* Connecting line decoration - desktop only */}
       <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent hidden lg:block" />
       

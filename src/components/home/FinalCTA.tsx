@@ -19,7 +19,7 @@ const FinalCTA = () => {
   const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4]);
 
   return (
-    <section ref={sectionRef} className="py-12 md:py-24 lg:py-32 relative overflow-hidden">
+    <section id="cta" ref={sectionRef} className="py-12 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
       

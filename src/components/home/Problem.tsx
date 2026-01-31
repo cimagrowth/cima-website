@@ -22,7 +22,7 @@ const Problem = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="problem" ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Parallax decorative gradient - hidden on mobile for performance */}
       <motion.div 
         style={{ y: y1, scale: scale1, opacity: opacity1 }}
