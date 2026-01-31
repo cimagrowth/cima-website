@@ -1,5 +1,5 @@
 # GrowthOS by Cima Growth Solutions
-# https://inquiry-to-consult.lovable.app
+# https://growmyfertilityclinic.com
 
 User-agent: Googlebot
 Allow: /
@@ -18,4 +18,4 @@ Allow: /
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://inquiry-to-consult.lovable.app/sitemap.xml
+Sitemap: https://growmyfertilityclinic.com/sitemap.xml

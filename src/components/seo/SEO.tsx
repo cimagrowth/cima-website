@@ -19,8 +19,8 @@ interface SEOProps {
 }
 
 const SITE_NAME = "GrowthOS by Cima Growth Solutions";
-const DEFAULT_OG_IMAGE = "https://inquiry-to-consult.lovable.app/og-image.png";
-const SITE_URL = "https://inquiry-to-consult.lovable.app";
+const DEFAULT_OG_IMAGE = "https://growmyfertilityclinic.com/og-image.png";
+const SITE_URL = "https://growmyfertilityclinic.com";
 
 const SEO = ({
   title,

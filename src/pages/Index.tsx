@@ -48,7 +48,7 @@ const Index = () => {
           "automated patient response",
           "healthcare marketing automation",
         ]}
-        canonical="https://inquiry-to-consult.lovable.app"
+        canonical="https://growmyfertilityclinic.com"
       />
       <JsonLd schema={schemas} />
       <Hero />
