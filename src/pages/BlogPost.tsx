@@ -65,13 +65,13 @@ const BlogPost = () => {
     );
   }
 
-  const postUrl = `https://inquiry-to-consult.lovable.app/blog/${post.slug}`;
+  const postUrl = `https://growmyfertilityclinic.com/blog/${post.slug}`;
   
   const schemas = [
     generateBreadcrumbSchema({
       items: [
-        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
-        { name: "Blog", url: "https://inquiry-to-consult.lovable.app/blog" },
+        { name: "Home", url: "https://growmyfertilityclinic.com" },
+        { name: "Blog", url: "https://growmyfertilityclinic.com/blog" },
         { name: post.title, url: postUrl },
       ],
     }),

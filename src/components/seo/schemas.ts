@@ -1,6 +1,6 @@
 // JSON-LD Schema generators for SEO
 
-const SITE_URL = "https://inquiry-to-consult.lovable.app";
+const SITE_URL = "https://growmyfertilityclinic.com";
 const COMPANY_NAME = "Cima Growth Solutions";
 const PRODUCT_NAME = "GrowthOS";
 
