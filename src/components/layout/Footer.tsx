@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Linkedin, Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 import cimaLogo from "@/assets/cima-logo.png";
 
 const Footer = () => {
@@ -20,6 +21,14 @@ const Footer = () => {
     ],
   };
 
+  const socialLinks = [
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  ];
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container-wide px-4 md:px-6 py-10 md:py-16">
@@ -36,9 +45,25 @@ const Footer = () => {
             <p className="text-sm md:text-base text-primary-foreground/70 max-w-xs leading-relaxed">
               The all-in-one growth operating system for fertility and regenerative clinics.
             </p>
-            <p className="text-sm text-primary-foreground/50 mt-4">
-              A product of Cima Growth Solutions
-            </p>
+            
+            {/* Social Links */}
+            <div className="flex gap-3 mt-5">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-accent-orange hover:text-white transition-all duration-300"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
           {/* Product Links */}
