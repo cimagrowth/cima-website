@@ -94,7 +94,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
   };
 
   return (
-    <div className="p-6 overflow-y-auto h-full">
+    <div className="p-6 overflow-y-auto h-full overscroll-contain">
       <div className="text-center mb-6">
         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center mx-auto mb-4">
           <Sparkles className="h-8 w-8 text-white" />

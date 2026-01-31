@@ -128,7 +128,7 @@ const DemoChatWidget = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-6 top-1/2 -translate-y-1/2 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[550px] max-h-[calc(100vh-120px)] bg-card border border-border rounded-2xl shadow-glow overflow-hidden flex flex-col"
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[550px] max-h-[calc(100vh-120px)] bg-card border border-border rounded-2xl shadow-glow overflow-hidden flex flex-col overscroll-contain"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary to-secondary flex-shrink-0">
@@ -142,17 +142,15 @@ const DemoChatWidget = () => {
                 </div>
               </div>
               <div className="flex items-center gap-1">
-                {session && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={handleMinimize}
-                    className="text-white hover:bg-white/20"
-                    title="Minimize chat"
-                  >
-                    <Minimize2 className="h-4 w-4" />
-                  </Button>
-                )}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleMinimize}
+                  className="text-white hover:bg-white/20"
+                  title="Minimize chat"
+                >
+                  <Minimize2 className="h-4 w-4" />
+                </Button>
                 <Button
                   variant="ghost"
                   size="icon"
