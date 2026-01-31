@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import cimaLogo from "@/assets/cima-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,34 +21,35 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background-soft border-t border-border">
+    <footer className="bg-primary text-primary-foreground">
       <div className="container-wide section-padding-sm">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">G</span>
-              </div>
-              <span className="font-semibold text-foreground tracking-tight">GrowthOS</span>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img 
+                src={cimaLogo} 
+                alt="Cima" 
+                className="h-10 w-auto brightness-0 invert opacity-90"
+              />
             </Link>
-            <p className="text-body-sm text-muted-foreground max-w-xs">
+            <p className="text-body-sm text-primary-foreground/70 max-w-xs">
               The all-in-one growth operating system for fertility and regenerative clinics.
             </p>
-            <p className="text-body-sm text-muted-foreground mt-4">
+            <p className="text-body-sm text-primary-foreground/50 mt-4">
               A product of Cima Growth Solutions
             </p>
           </div>
 
           {/* Product Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Product</h4>
+            <h4 className="font-semibold text-primary-foreground mb-4">Product</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-body-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-body-sm text-primary-foreground/70 hover:text-accent-orange transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -58,13 +60,13 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Company</h4>
+            <h4 className="font-semibold text-primary-foreground mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-body-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-body-sm text-primary-foreground/70 hover:text-accent-orange transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -75,13 +77,13 @@ const Footer = () => {
 
           {/* Resources Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Resources</h4>
+            <h4 className="font-semibold text-primary-foreground mb-4">Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-body-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-body-sm text-primary-foreground/70 hover:text-accent-orange transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -92,16 +94,16 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="divider-subtle mt-12 mb-8" />
+        <div className="h-px bg-primary-foreground/10 mt-12 mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-body-sm text-muted-foreground">
+          <p className="text-body-sm text-primary-foreground/50">
             © {currentYear} Cima Growth Solutions. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-body-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/privacy" className="text-body-sm text-primary-foreground/50 hover:text-accent-orange transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-body-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/terms" className="text-body-sm text-primary-foreground/50 hover:text-accent-orange transition-colors">
               Terms of Service
             </Link>
           </div>

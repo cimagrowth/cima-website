@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import cimaLogo from "@/assets/cima-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,20 +27,21 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-soft"
+          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-card"
           : "bg-transparent"
       }`}
     >
       <div className="container-wide">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">G</span>
-            </div>
-            <span className="font-semibold text-foreground tracking-tight">GrowthOS</span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <img 
+              src={cimaLogo} 
+              alt="Cima" 
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,13 +50,16 @@ const Header = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-all duration-300 relative ${
                   isActive(link.href)
-                    ? "text-primary"
+                    ? "text-accent-orange"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
+                {isActive(link.href) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-orange rounded-full" />
+                )}
               </Link>
             ))}
           </nav>
@@ -70,7 +75,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground transition-colors hover:text-accent-orange"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -80,31 +85,31 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
-          <nav className="container-wide py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-base font-medium py-2 transition-colors ${
-                  isActive(link.href)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button variant="hero" className="w-full mt-2">
-                Book a Demo
-              </Button>
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+        isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+      }`}>
+        <nav className="bg-background border-b border-border px-6 py-4 flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`text-base font-medium py-2 transition-colors ${
+                isActive(link.href)
+                  ? "text-accent-orange"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {link.label}
             </Link>
-          </nav>
-        </div>
-      )}
+          ))}
+          <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button variant="hero" className="w-full mt-2">
+              Book a Demo
+            </Button>
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };
