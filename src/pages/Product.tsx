@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Zap, MessageCircle, Brain, UserCheck, Inbox, GitBranch, Settings, RefreshCw, BarChart3, ArrowRight, Plug, Layers, Replace } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema, generateSoftwareSchema } from "@/components/seo/schemas";
 
 const Product = () => {
   const aiEngine = [
@@ -61,8 +64,40 @@ const Product = () => {
     },
   ];
 
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
+        { name: "Product", url: "https://inquiry-to-consult.lovable.app/product" },
+      ],
+    }),
+    generateSoftwareSchema({
+      name: "GrowthOS",
+      description: "AI-powered patient engagement platform featuring instant multi-channel response, automated lead nurturing, unified inbox, pipeline management, and comprehensive reporting for healthcare clinics.",
+    }),
+  ];
+
   return (
     <Layout>
+      <SEO
+        title="Product – GrowthOS AI Patient Engagement & CRM Platform"
+        description="Explore GrowthOS features: AI-powered instant response, automated patient nurturing, unified inbox, pipeline management, reactivation campaigns & reporting. Works with Salesforce, HubSpot, Zoho or standalone."
+        keywords={[
+          "GrowthOS features",
+          "healthcare CRM features",
+          "AI patient engagement",
+          "clinic automation software",
+          "patient pipeline management",
+          "healthcare unified inbox",
+          "medical practice automation",
+          "patient reactivation campaigns",
+          "Salesforce healthcare integration",
+          "HubSpot clinic integration",
+        ]}
+        canonical="https://inquiry-to-consult.lovable.app/product"
+      />
+      <JsonLd schema={schemas} />
+
       {/* Hero */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
