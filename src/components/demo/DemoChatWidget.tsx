@@ -18,6 +18,7 @@ const DemoChatWidget = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [session, setSession] = useState<ChatSession | null>(null);
   const [showPulse, setShowPulse] = useState(true);
+  const [hasUnreadMessages, setHasUnreadMessages] = useState(false);
 
   useEffect(() => {
     // Stop the pulse animation after first interaction
@@ -33,6 +34,7 @@ const DemoChatWidget = () => {
   const handleClose = () => {
     setIsOpen(false);
     setIsMinimized(false);
+    setHasUnreadMessages(false);
   };
 
   const handleMinimize = () => {
@@ -41,6 +43,13 @@ const DemoChatWidget = () => {
 
   const handleExpand = () => {
     setIsMinimized(false);
+    setHasUnreadMessages(false);
+  };
+
+  const handleNewMessage = () => {
+    if (isMinimized) {
+      setHasUnreadMessages(true);
+    }
   };
 
   return (
@@ -90,12 +99,21 @@ const DemoChatWidget = () => {
             <Button
               onClick={handleExpand}
               variant="hero"
-              className="h-14 px-4 rounded-full shadow-glow flex items-center gap-3"
+              className="h-14 px-4 rounded-full shadow-glow flex items-center gap-3 relative"
             >
-              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center relative">
                 <MessageCircle className="h-4 w-4 text-white" />
+                {hasUnreadMessages && (
+                  <motion.span
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute -top-1 -right-1 w-3 h-3 bg-accent-orange rounded-full border-2 border-primary"
+                  />
+                )}
               </div>
-              <span className="font-medium">Continue Chat</span>
+              <span className="font-medium">
+                {hasUnreadMessages ? "New message" : "Continue Chat"}
+              </span>
               <Maximize2 className="h-4 w-4 ml-1" />
             </Button>
           </motion.div>
@@ -151,7 +169,7 @@ const DemoChatWidget = () => {
               {!session ? (
                 <DemoChatForm onSessionCreated={handleSessionCreated} />
               ) : (
-                <DemoChatWindow session={session} />
+                <DemoChatWindow session={session} onNewMessage={handleNewMessage} />
               )}
             </div>
           </motion.div>

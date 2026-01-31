@@ -14,11 +14,12 @@ interface Message {
 
 interface DemoChatWindowProps {
   session: ChatSession;
+  onNewMessage?: () => void;
 }
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-chat`;
 
-const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
+const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +75,7 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
             await saveMessage(session.id, assistantContent, "assistant");
             setIsLoading(false);
             inputRef.current?.focus();
+            onNewMessage?.();
           },
         });
       } catch (error) {
@@ -247,6 +249,7 @@ const DemoChatWindow = ({ session }: DemoChatWindowProps) => {
           // Save assistant message via edge function (server-side)
           await saveMessage(session.id, assistantContent, "assistant");
           setIsLoading(false);
+          onNewMessage?.();
         },
       });
     } catch (error) {
