@@ -18,26 +18,26 @@ const Solution = () => {
   const capabilities = [
     {
       icon: Zap,
-      title: "Immediate responses to every inquiry",
-      description: "Patients never wait. Every lead gets an instant, human-sounding reply.",
+      title: "Instant response on every channel",
+      description: "Web forms, phone, text, email, WhatsApp, Instagram, TikTok, Facebook, Google My Business—all covered, 24/7.",
       gradient: "from-accent-orange to-secondary",
     },
     {
       icon: MessageCircle,
-      title: "Ongoing follow-up across days or weeks",
-      description: "The AI keeps the conversation going until the patient is ready.",
+      title: "Emotionally intelligent follow-up",
+      description: "Not robotic. The AI adapts tone, answers questions, and nurtures across days or weeks until the patient is ready.",
       gradient: "from-secondary to-primary-light",
     },
     {
       icon: Brain,
-      title: "Common questions, next steps, and nudges to book",
-      description: "It communicates in your clinic's voice and follows your rules.",
+      title: "Trained on your specialty + your clinic",
+      description: "Industry-specific AI for fertility, med spa, and regenerative medicine—then fine-tuned on your policies, procedures, and qualification criteria.",
       gradient: "from-primary to-primary-light",
     },
     {
       icon: UserCheck,
-      title: "Clean handoff to staff with full conversation history",
-      description: "When a patient is ready, your team steps in with complete context.",
+      title: "Unified inbox with real-time staff alerts",
+      description: "All conversations in one place. Desktop and mobile app. When a patient needs human attention, your team gets notified instantly.",
       gradient: "from-primary-light to-accent-orange",
     },
   ];
@@ -59,16 +59,15 @@ const Solution = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-4 md:mb-6">
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            An AI system that{" "}
-            <span className="text-gradient">never forgets to follow up.</span>
+            Software your team logs into.{" "}
+            <span className="text-gradient">AI that never sleeps.</span>
           </h2>
         </div>
 
         <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          GrowthOS is built around a custom-trained AI that responds the moment a patient 
-          reaches out and continues the conversation over time. It works alongside your existing 
-          CRM—Salesforce, HubSpot, Zoho, or any system—or replaces your infrastructure entirely. 
-          Your choice.
+          GrowthOS is a CRM platform built for patient acquisition. Manage all communication, 
+          customize lead nurturing, build marketing automations, and let the AI handle 
+          first response and follow-up—so your team focuses on patients who are ready.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-6">
