@@ -42,29 +42,33 @@ serve(async (req) => {
     }
     logStep("Plan selected", { plan });
 
-    // Get authenticated user
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader) throw new Error("No authorization header provided");
-
-    const token = authHeader.replace("Bearer ", "");
-    const { data: userData, error: userError } = await supabaseClient.auth.getUser(token);
-    if (userError) throw new Error(`Authentication error: ${userError.message}`);
-    
-    const user = userData.user;
-    if (!user?.email) throw new Error("User not authenticated or email not available");
-    logStep("User authenticated", { userId: user.id, email: user.email });
-
     // Initialize Stripe
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2025-08-27.basil",
     });
 
-    // Check for existing Stripe customer
-    const customers = await stripe.customers.list({ email: user.email, limit: 1 });
     let customerId: string | undefined;
-    if (customers.data.length > 0) {
-      customerId = customers.data[0].id;
-      logStep("Found existing Stripe customer", { customerId });
+    let customerEmail: string | undefined;
+
+    // Try to get authenticated user (optional)
+    const authHeader = req.headers.get("Authorization");
+    if (authHeader) {
+      const token = authHeader.replace("Bearer ", "");
+      const { data: userData } = await supabaseClient.auth.getUser(token);
+      
+      if (userData.user?.email) {
+        customerEmail = userData.user.email;
+        logStep("User authenticated", { userId: userData.user.id, email: customerEmail });
+
+        // Check for existing Stripe customer
+        const customers = await stripe.customers.list({ email: customerEmail, limit: 1 });
+        if (customers.data.length > 0) {
+          customerId = customers.data[0].id;
+          logStep("Found existing Stripe customer", { customerId });
+        }
+      }
+    } else {
+      logStep("No auth header - proceeding with guest checkout");
     }
 
     // Build line items based on plan
@@ -85,20 +89,21 @@ serve(async (req) => {
 
     // Create checkout session
     const origin = req.headers.get("origin") || "https://inquiry-to-consult.lovable.app";
-    const session = await stripe.checkout.sessions.create({
-      customer: customerId,
-      customer_email: customerId ? undefined : user.email,
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       line_items: lineItems,
       mode: "subscription",
       success_url: `${origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/pricing`,
-      subscription_data: {
-        metadata: {
-          user_id: user.id,
-          plan: plan,
-        },
-      },
-    });
+    };
+
+    // Add customer info if available
+    if (customerId) {
+      sessionParams.customer = customerId;
+    } else if (customerEmail) {
+      sessionParams.customer_email = customerEmail;
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionParams);
 
     logStep("Checkout session created", { sessionId: session.id, url: session.url });
 

@@ -12,17 +12,6 @@ export function useCheckout() {
   const navigate = useNavigate();
 
   const handleCheckout = async (plan: PlanType) => {
-    if (!session) {
-      // Redirect to login/signup if not authenticated
-      toast({
-        title: "Sign in required",
-        description: "Please sign in or create an account to subscribe.",
-        variant: "default",
-      });
-      navigate("/admin/login?redirect=/pricing");
-      return;
-    }
-
     if (subscription.subscribed) {
       toast({
         title: "Already subscribed",
@@ -35,11 +24,16 @@ export function useCheckout() {
     setIsLoading(plan);
 
     try {
+      const headers: Record<string, string> = {};
+      
+      // Only add auth header if user is logged in
+      if (session?.access_token) {
+        headers.Authorization = `Bearer ${session.access_token}`;
+      }
+
       const { data, error } = await supabase.functions.invoke("create-checkout", {
         body: { plan },
-        headers: {
-          Authorization: `Bearer ${session.access_token}`,
-        },
+        headers,
       });
 
       if (error) throw error;
