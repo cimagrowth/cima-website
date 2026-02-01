@@ -114,7 +114,7 @@ const Hero = () => {
                 size="lg" 
                 className="text-base md:size-xl border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
               >
-                Sign Up
+                Get Started
               </Button>
             </Link>
           </motion.div>
@@ -177,7 +177,7 @@ const Hero = () => {
               size="lg" 
               className="w-full text-lg py-6 border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
             >
-              Sign Up
+              Get Started
             </Button>
           </Link>
         </motion.div>
