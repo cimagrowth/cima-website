@@ -184,11 +184,11 @@ const Demo = () => {
                     className="py-2"
                   >
                     <h3 className="text-heading-sm text-foreground mb-4 text-center">Select a Time</h3>
-                    <div className="w-full min-h-[650px]">
+                    <div className="w-full h-[700px] overflow-auto">
                       <iframe 
                         src={getCalendarUrl()} 
-                        style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "650px", height: "650px" }}
-                        scrolling="no"
+                        style={{ width: "100%", border: "none", minHeight: "700px", height: "100%" }}
+                        scrolling="yes"
                         title="Book a Demo"
                       />
                     </div>
