@@ -26,9 +26,46 @@ const Demo = () => {
     { icon: BarChart3, text: "Review pipelines, automations, and reporting" },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Fire webhook to capture lead
+    try {
+      await fetch("https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/faac0ee9-2ee4-420e-a272-1c722ae86e0e", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          clinicName: formData.clinicName,
+          message: formData.message,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+    } catch (error) {
+      console.error("Webhook error:", error);
+    }
+    
     setIsSubmitted(true);
+  };
+
+  // Build calendar URL with query params
+  const getCalendarUrl = () => {
+    const nameParts = formData.name.trim().split(" ");
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+    
+    const params = new URLSearchParams({
+      first_name: firstName,
+      last_name: lastName,
+      email: formData.email,
+      phone: formData.phone,
+      clinic_name: formData.clinicName,
+    });
+    
+    return `https://link.cimagrowth.com/widget/booking/4d4O0MaPjlOVoYlc3wS7?${params.toString()}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -140,15 +177,17 @@ const Demo = () => {
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-8"
+                    className="py-2"
                   >
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center mx-auto mb-6 shadow-glow">
-                      <Check className="w-10 h-10 text-white" />
+                    <h3 className="text-heading-sm text-foreground mb-4 text-center">Select a Time</h3>
+                    <div className="w-full min-h-[500px]">
+                      <iframe 
+                        src={getCalendarUrl()} 
+                        style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "500px" }}
+                        scrolling="no"
+                        title="Book a Demo"
+                      />
                     </div>
-                    <h3 className="text-heading-sm text-foreground mb-4">Demo request received</h3>
-                    <p className="text-body text-muted-foreground">
-                      We'll be in touch within one business day to schedule your walkthrough.
-                    </p>
                   </motion.div>
                 ) : (
                   <>
@@ -228,7 +267,7 @@ const Demo = () => {
                       </div>
 
                       <Button variant="hero" size="xl" type="submit" className="w-full group">
-                        Submit Request
+                        Book a Time
                         <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </Button>
 
