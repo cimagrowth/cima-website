@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import ScrollToTopOnNavigate from "@/components/layout/ScrollToTopOnNavigate";
 import Index from "./pages/Index";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
@@ -28,6 +29,7 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
+              <ScrollToTopOnNavigate />
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/product" element={<Product />} />

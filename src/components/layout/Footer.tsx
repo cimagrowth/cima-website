@@ -16,8 +16,8 @@ const Footer = () => {
       { label: "Contact", href: "/demo" },
     ],
     resources: [
-      { label: "AI Studio", href: "/ai-studio" },
-      { label: "Blog", href: "/blog" },
+      { label: "AI Studio", href: "https://www.CimaAIStudio.com", external: true },
+      { label: "Blog", href: "/blog", external: false },
     ],
   };
 
@@ -106,12 +106,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

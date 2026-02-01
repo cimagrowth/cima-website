@@ -21,9 +21,11 @@ const AIStudio = () => {
               Get access to the Cima AI Studio, a free toolkit that shows how we design 
               patient-safe, clinic-approved messaging.
             </p>
-            <Button variant="hero" size="lg" className="pulse-glow text-base md:size-xl">
-              Get the Free AI Studio
-            </Button>
+            <a href="https://www.CimaAIStudio.com" target="_blank" rel="noopener noreferrer">
+              <Button variant="hero" size="lg" className="pulse-glow text-base md:size-xl">
+                Get the Free AI Studio
+              </Button>
+            </a>
             <p className="text-sm text-muted-foreground mt-4">Preview our AI approach</p>
           </div>
         </div>
