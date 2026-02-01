@@ -29,12 +29,14 @@ const Demo = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Fire webhook to capture lead
+    // Fire webhook via edge function to capture lead
     try {
-      await fetch("https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/faac0ee9-2ee4-420e-a272-1c722ae86e0e", {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-webhook`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        mode: "no-cors",
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -44,6 +46,8 @@ const Demo = () => {
           submittedAt: new Date().toISOString(),
         }),
       });
+      const result = await response.json();
+      console.log("Webhook result:", result);
     } catch (error) {
       console.error("Webhook error:", error);
     }
