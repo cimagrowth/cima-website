@@ -175,7 +175,7 @@ const BlogPost = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-p:my-3 prose-a:text-accent-orange prose-strong:text-foreground prose-headings:mt-8 prose-headings:mb-3"
+            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-p:my-3 prose-li:text-muted-foreground prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-a:text-accent-orange prose-strong:text-foreground prose-headings:mt-8 prose-headings:mb-3"
             dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
           />
 
