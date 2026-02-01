@@ -279,9 +279,13 @@ const Pricing = () => {
                   </Button>
                 ) : (
                   <Button
-                    variant={plan.popular ? "hero" : "hero-outline"}
+                    variant="hero"
                     size="lg"
-                    className={`w-full group ${plan.popular ? "bg-accent-orange hover:brightness-110" : ""}`}
+                    className={`w-full group ${
+                      plan.popular 
+                        ? "bg-accent-orange hover:brightness-110" 
+                        : "bg-primary hover:bg-primary-light"
+                    }`}
                     onClick={() => handleCheckout(plan.planKey)}
                     disabled={!!isLoading || isCheckingSubscription}
                   >
