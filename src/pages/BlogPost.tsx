@@ -143,7 +143,7 @@ const BlogPost = () => {
               )}
             </div>
 
-            <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
+            <h1 className="text-display-lg md:text-display-xl text-foreground mb-4">
               {post.title}
             </h1>
 
@@ -151,19 +151,6 @@ const BlogPost = () => {
               <p className="text-body-lg text-muted-foreground">
                 {post.excerpt}
               </p>
-            )}
-
-            {post.meta_keywords && post.meta_keywords.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-6">
-                {post.meta_keywords.map((keyword, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-full bg-accent text-accent-foreground text-body-sm"
-                  >
-                    {keyword}
-                  </span>
-                ))}
-              </div>
             )}
           </motion.header>
 
@@ -188,9 +175,28 @@ const BlogPost = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-accent-orange prose-strong:text-foreground"
+            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-p:my-3 prose-a:text-accent-orange prose-strong:text-foreground prose-headings:mt-8 prose-headings:mb-3"
             dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
           />
+
+          {/* Topic Tags */}
+          {post.meta_keywords && post.meta_keywords.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              className="flex flex-wrap gap-2 mt-10"
+            >
+              {post.meta_keywords.map((keyword, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-0.5 rounded bg-muted text-muted-foreground text-xs"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </motion.div>
+          )}
 
           {/* Share Section */}
           <motion.div
