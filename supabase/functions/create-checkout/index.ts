@@ -50,25 +50,31 @@ serve(async (req) => {
     let customerId: string | undefined;
     let customerEmail: string | undefined;
 
-    // Try to get authenticated user (optional)
+    // Try to get authenticated user (optional - guest checkout allowed)
     const authHeader = req.headers.get("Authorization");
-    if (authHeader) {
-      const token = authHeader.replace("Bearer ", "");
-      const { data: userData } = await supabaseClient.auth.getUser(token);
-      
-      if (userData.user?.email) {
-        customerEmail = userData.user.email;
-        logStep("User authenticated", { userId: userData.user.id, email: customerEmail });
+    if (authHeader && authHeader !== "Bearer " && authHeader !== "Bearer undefined" && authHeader !== "Bearer null") {
+      try {
+        const token = authHeader.replace("Bearer ", "");
+        const { data: userData, error: authError } = await supabaseClient.auth.getUser(token);
+        
+        if (!authError && userData.user?.email) {
+          customerEmail = userData.user.email;
+          logStep("User authenticated", { userId: userData.user.id, email: customerEmail });
 
-        // Check for existing Stripe customer
-        const customers = await stripe.customers.list({ email: customerEmail, limit: 1 });
-        if (customers.data.length > 0) {
-          customerId = customers.data[0].id;
-          logStep("Found existing Stripe customer", { customerId });
+          // Check for existing Stripe customer
+          const customers = await stripe.customers.list({ email: customerEmail, limit: 1 });
+          if (customers.data.length > 0) {
+            customerId = customers.data[0].id;
+            logStep("Found existing Stripe customer", { customerId });
+          }
+        } else {
+          logStep("Auth header present but invalid - proceeding as guest", { error: authError?.message });
         }
+      } catch (authErr) {
+        logStep("Auth validation failed - proceeding as guest", { error: String(authErr) });
       }
     } else {
-      logStep("No auth header - proceeding with guest checkout");
+      logStep("No valid auth header - proceeding with guest checkout");
     }
 
     // Build line items based on plan
