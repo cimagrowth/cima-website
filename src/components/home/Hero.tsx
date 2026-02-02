@@ -108,7 +108,7 @@ const Hero = () => {
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link to="/pricing">
+            <Link to="/sign-up">
               <Button 
                 variant="hero-outline" 
                 size="lg" 
@@ -171,7 +171,7 @@ const Hero = () => {
           </Link>
         </motion.div>
         <motion.div variants={itemVariants}>
-          <Link to="/pricing" className="block">
+          <Link to="/sign-up" className="block">
             <Button 
               variant="hero-outline" 
               size="lg" 
