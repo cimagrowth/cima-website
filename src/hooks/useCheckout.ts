@@ -62,7 +62,7 @@ export function useCheckout() {
         description: "Please sign in to manage your subscription.",
         variant: "default",
       });
-      navigate("/admin/login?redirect=/pricing");
+      navigate("/admin/login?redirect=/sign-up");
       return;
     }
 

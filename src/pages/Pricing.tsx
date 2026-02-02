@@ -70,7 +70,7 @@ const Pricing = () => {
     generateBreadcrumbSchema({
       items: [
         { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
-        { name: "Pricing", url: "https://inquiry-to-consult.lovable.app/pricing" },
+        { name: "Sign Up", url: "https://inquiry-to-consult.lovable.app/sign-up" },
       ],
     }),
     generateFAQSchema({ questions: faqItems }),
@@ -91,7 +91,7 @@ const Pricing = () => {
           priceCurrency: "USD",
           priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
           availability: "https://schema.org/InStock",
-          url: "https://inquiry-to-consult.lovable.app/pricing",
+          url: "https://inquiry-to-consult.lovable.app/sign-up",
         },
         {
           "@type": "Offer",
@@ -100,7 +100,7 @@ const Pricing = () => {
           priceCurrency: "USD",
           priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
           availability: "https://schema.org/InStock",
-          url: "https://inquiry-to-consult.lovable.app/pricing",
+          url: "https://inquiry-to-consult.lovable.app/sign-up",
         },
       ],
     },
@@ -125,7 +125,7 @@ const Pricing = () => {
           "AI healthcare software pricing",
           "medical practice management cost",
         ]}
-        canonical="https://inquiry-to-consult.lovable.app/pricing"
+        canonical="https://inquiry-to-consult.lovable.app/sign-up"
       />
       <JsonLd schema={schemas} />
 
