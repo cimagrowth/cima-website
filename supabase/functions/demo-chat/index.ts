@@ -71,6 +71,7 @@ const getClientIP = (req: Request): string => {
 
 // Input validation constants
 const MAX_NAME_LENGTH = 100;
+const MAX_BUSINESS_NAME_LENGTH = 150;
 const MAX_EMAIL_LENGTH = 255;
 const MAX_PHONE_LENGTH = 30;
 const MAX_MESSAGE_LENGTH = 2000;
@@ -85,16 +86,18 @@ const PHONE_REGEX = /^[\d\s\-\+\(\)\.]+$/;
 // Validate and sanitize input
 const validateSessionInput = (data: {
   name?: string;
+  businessName?: string;
   email?: string;
   phone?: string;
   clinicType?: string;
 }): { valid: boolean; error?: string; sanitized?: {
   name: string;
+  businessName: string;
   email: string;
   phone: string;
   clinicType: string;
 }} => {
-  const { name, email, phone, clinicType } = data;
+  const { name, businessName, email, phone, clinicType } = data;
 
   // Validate name
   if (!name || typeof name !== "string") {
@@ -106,6 +109,12 @@ const validateSessionInput = (data: {
   }
   if (trimmedName.length > MAX_NAME_LENGTH) {
     return { valid: false, error: `Name must be less than ${MAX_NAME_LENGTH} characters` };
+  }
+
+  // Validate business name (optional but if provided, validate length)
+  const trimmedBusinessName = (businessName || "").trim();
+  if (trimmedBusinessName.length > MAX_BUSINESS_NAME_LENGTH) {
+    return { valid: false, error: `Business name must be less than ${MAX_BUSINESS_NAME_LENGTH} characters` };
   }
 
   // Validate email
@@ -144,6 +153,7 @@ const validateSessionInput = (data: {
     valid: true,
     sanitized: {
       name: trimmedName,
+      businessName: trimmedBusinessName,
       email: trimmedEmail,
       phone: trimmedPhone,
       clinicType: validClinicType,
@@ -329,6 +339,7 @@ serve(async (req) => {
       saveAssistantMessage,
       // Session creation fields
       name,
+      businessName,
       email,
       phone,
     } = body;
@@ -356,7 +367,7 @@ serve(async (req) => {
         );
       }
 
-      const validation = validateSessionInput({ name, email, phone, clinicType });
+      const validation = validateSessionInput({ name, businessName, email, phone, clinicType });
       
       if (!validation.valid) {
         console.log("Session creation validation failed:", validation.error);
@@ -373,6 +384,7 @@ serve(async (req) => {
         .from("demo_chat_sessions")
         .insert({
           visitor_name: sanitized!.name,
+          business_name: sanitized!.businessName || null,
           visitor_email: sanitized!.email,
           visitor_phone: sanitized!.phone,
           clinic_type: sanitized!.clinicType,
@@ -397,6 +409,7 @@ serve(async (req) => {
           visitorName: sessionData.visitor_name,
           visitorEmail: sessionData.visitor_email,
           visitorPhone: sessionData.visitor_phone,
+          businessName: sessionData.business_name || "",
           clinicType: sessionData.clinic_type,
         }
       }), {
@@ -509,6 +522,7 @@ Keep the summary professional and actionable for a sales/patient coordinator tea
         source: "ai_chat_widget",
         session_id: sessionId,
         name: sessionInfo.visitor_name,
+        business_name: sessionInfo.business_name || "",
         email: sessionInfo.visitor_email,
         phone: sessionInfo.visitor_phone,
         clinic_type: clinicTypeLabels[sessionInfo.clinic_type] || sessionInfo.clinic_type,
