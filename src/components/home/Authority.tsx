@@ -1,6 +1,8 @@
 import { useRef } from "react";
-import { Inbox, Settings, RefreshCw, BarChart3 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Inbox, Settings, RefreshCw, BarChart3, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const Authority = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -79,6 +81,16 @@ const Authority = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Mobile CTA */}
+        <div className="mt-8 text-center md:hidden">
+          <Link to="/demo">
+            <Button variant="hero" size="lg" className="group w-full max-w-xs">
+              Book a Demo
+              <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
