@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import DemoChatForm from "./DemoChatForm";
 import DemoChatWindow from "./DemoChatWindow";
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-chat`;
+const INACTIVITY_TIMEOUT_MS = 2 * 60 * 1000; // 2 minutes
 
 export interface ChatSession {
   id: string;
@@ -22,6 +23,8 @@ const DemoChatWidget = () => {
   const [showPulse, setShowPulse] = useState(true);
   const [hasUnreadMessages, setHasUnreadMessages] = useState(false);
   const sessionEndedRef = useRef(false);
+  const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const lastActivityRef = useRef<number>(Date.now());
 
   useEffect(() => {
     // Stop the pulse animation after first interaction
@@ -30,32 +33,116 @@ const DemoChatWidget = () => {
     }
   }, [isOpen]);
 
-  // End session and trigger webhook when user closes the chat
-  const endSession = async (sessionToEnd: ChatSession) => {
+  // End session and trigger webhook
+  const endSession = useCallback(async (sessionToEnd: ChatSession) => {
     if (sessionEndedRef.current) return; // Prevent duplicate calls
     sessionEndedRef.current = true;
 
+    // Clear inactivity timer
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+      inactivityTimerRef.current = null;
+    }
+
     try {
-      await fetch(CHAT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
-          action: "end_session",
-          sessionId: sessionToEnd.id,
-        }),
+      // Use sendBeacon for page unload scenarios, fetch for normal cases
+      const payload = JSON.stringify({
+        action: "end_session",
+        sessionId: sessionToEnd.id,
       });
+
+      // Try sendBeacon first (works better on page unload)
+      const beaconSent = navigator.sendBeacon?.(
+        CHAT_URL,
+        new Blob([payload], { type: "application/json" })
+      );
+
+      if (!beaconSent) {
+        // Fallback to fetch
+        await fetch(CHAT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+          body: payload,
+        });
+      }
       console.log("Session ended and webhook sent");
     } catch (error) {
       console.error("Error ending session:", error);
     }
-  };
+  }, []);
+
+  // Reset inactivity timer
+  const resetInactivityTimer = useCallback(() => {
+    lastActivityRef.current = Date.now();
+    
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+    }
+
+    // Only set timer if we have an active session
+    if (session && !sessionEndedRef.current) {
+      inactivityTimerRef.current = setTimeout(() => {
+        console.log("Inactivity timeout reached, ending session");
+        if (session && !sessionEndedRef.current) {
+          endSession(session);
+        }
+      }, INACTIVITY_TIMEOUT_MS);
+    }
+  }, [session, endSession]);
+
+  // Handle page unload/visibility change
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (session && !sessionEndedRef.current) {
+        // Use sendBeacon for reliability during page unload
+        const payload = JSON.stringify({
+          action: "end_session",
+          sessionId: session.id,
+        });
+        navigator.sendBeacon?.(
+          CHAT_URL,
+          new Blob([payload], { type: "application/json" })
+        );
+        sessionEndedRef.current = true;
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden && session && !sessionEndedRef.current) {
+        // User switched tabs or minimized browser - end session
+        endSession(session);
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [session, endSession]);
+
+  // Start inactivity timer when session is created
+  useEffect(() => {
+    if (session && !sessionEndedRef.current) {
+      resetInactivityTimer();
+    }
+
+    return () => {
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
+      }
+    };
+  }, [session, resetInactivityTimer]);
 
   const handleSessionCreated = (newSession: ChatSession) => {
     setSession(newSession);
     sessionEndedRef.current = false; // Reset for new session
+    lastActivityRef.current = Date.now();
   };
 
   const handleClose = async () => {
@@ -69,7 +156,11 @@ const DemoChatWidget = () => {
     setSession(null); // Clear session so next open starts fresh
   };
 
-  const handleMinimize = () => {
+  const handleMinimize = async () => {
+    // End session when minimizing (user going to "continue chat" mode)
+    if (session && !sessionEndedRef.current) {
+      await endSession(session);
+    }
     setIsMinimized(true);
   };
 
@@ -79,6 +170,9 @@ const DemoChatWidget = () => {
   };
 
   const handleNewMessage = () => {
+    // Reset inactivity timer on new message
+    resetInactivityTimer();
+    
     if (isMinimized) {
       setHasUnreadMessages(true);
     }
