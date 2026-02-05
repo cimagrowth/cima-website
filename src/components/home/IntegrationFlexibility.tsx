@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Layers, Plug, Replace } from "lucide-react";
+import { Layers, Plug, Replace, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const IntegrationFlexibility = () => {
   const deploymentModes = [
@@ -38,6 +40,16 @@ const IntegrationFlexibility = () => {
       <div className="absolute bottom-20 right-[10%] w-64 h-64 bg-accent-orange/10 rounded-full blur-3xl" />
       
       <div className="container-wide relative z-10">
+        {/* CTA at top */}
+        <div className="mb-10 md:mb-14 text-center">
+          <Link to="/demo">
+            <Button variant="hero" size="lg" className="group">
+              Book a Demo
+              <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+        </div>
+
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
