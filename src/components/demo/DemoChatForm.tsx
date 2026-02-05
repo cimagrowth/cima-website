@@ -111,7 +111,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
 
       <form onSubmit={handleSubmit} className="space-y-2 flex-1">
         <div className="space-y-1">
-          <Label htmlFor="demo-name" className="text-xs">Your Name</Label>
+          <Label htmlFor="demo-name" className="text-xs">Your Name <span className="text-destructive">*</span></Label>
           <Input
             id="demo-name"
             placeholder="Jane Smith"
@@ -120,11 +120,12 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
             className="h-9 text-sm"
             disabled={isSubmitting}
             maxLength={100}
+            required
           />
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="demo-business" className="text-xs">Clinic / Business Name</Label>
+          <Label htmlFor="demo-business" className="text-xs">Clinic / Business Name <span className="text-destructive">*</span></Label>
           <Input
             id="demo-business"
             placeholder="Sunrise Fertility Clinic"
@@ -133,11 +134,12 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
             className="h-9 text-sm"
             disabled={isSubmitting}
             maxLength={150}
+            required
           />
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="demo-email" className="text-xs">Email Address</Label>
+          <Label htmlFor="demo-email" className="text-xs">Email Address <span className="text-destructive">*</span></Label>
           <Input
             id="demo-email"
             type="email"
@@ -147,11 +149,12 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
             className="h-9 text-sm"
             disabled={isSubmitting}
             maxLength={255}
+            required
           />
         </div>
 
         <div className="space-y-1">
-          <Label htmlFor="demo-phone" className="text-xs">Phone Number</Label>
+          <Label htmlFor="demo-phone" className="text-xs">Phone Number <span className="text-destructive">*</span></Label>
           <Input
             id="demo-phone"
             type="tel"
@@ -161,6 +164,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
             className="h-9 text-sm"
             disabled={isSubmitting}
             maxLength={30}
+            required
           />
         </div>
 
