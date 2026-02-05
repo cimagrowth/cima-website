@@ -390,8 +390,8 @@ serve(async (req) => {
 
       console.log("Session created successfully:", sessionData.id);
       
-      return new Response(JSON.stringify({ 
-        success: true, 
+      return new Response(JSON.stringify({
+        success: true,
         session: {
           id: sessionData.id,
           visitorName: sessionData.visitor_name,
@@ -400,6 +400,145 @@ serve(async (req) => {
           clinicType: sessionData.clinic_type,
         }
       }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Handle session end with webhook
+    if (action === "end_session") {
+      if (!sessionId) {
+        return new Response(JSON.stringify({ error: "Session ID required" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      console.log("Ending session and sending webhook:", sessionId);
+
+      // Get session data
+      const { data: sessionInfo, error: sessionFetchError } = await supabaseAdmin
+        .from("demo_chat_sessions")
+        .select("*")
+        .eq("id", sessionId)
+        .single();
+
+      if (sessionFetchError || !sessionInfo) {
+        console.error("Session not found for end:", sessionId);
+        return new Response(JSON.stringify({ error: "Session not found" }), {
+          status: 404,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      // Get all messages for this session
+      const { data: messagesData, error: messagesError } = await supabaseAdmin
+        .from("demo_chat_messages")
+        .select("role, content, created_at")
+        .eq("session_id", sessionId)
+        .order("created_at", { ascending: true });
+
+      if (messagesError) {
+        console.error("Error fetching messages:", messagesError);
+      }
+
+      // Generate conversation summary using AI
+      let conversationSummary = "";
+      const formattedConversation = (messagesData || [])
+        .map(m => `${m.role.toUpperCase()}: ${m.content}`)
+        .join("\n\n");
+
+      if (messagesData && messagesData.length > 0) {
+        try {
+          const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+          if (LOVABLE_API_KEY) {
+            const summaryResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${LOVABLE_API_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                model: "google/gemini-2.5-flash-lite",
+                messages: [
+                  {
+                    role: "system",
+                    content: `You are a helpful assistant that summarizes chat conversations for sales follow-up purposes. 
+Create a concise but comprehensive summary that includes:
+1. Key topics discussed
+2. Patient's main concerns or interests
+3. Any specific services mentioned
+4. Level of interest/intent (high, medium, low)
+5. Recommended follow-up actions
+6. Any objections or concerns raised
+
+Keep the summary professional and actionable for a sales/patient coordinator team.`
+                  },
+                  {
+                    role: "user",
+                    content: `Please summarize this chat conversation:\n\n${formattedConversation}`
+                  }
+                ],
+                stream: false,
+              }),
+            });
+
+            if (summaryResponse.ok) {
+              const summaryData = await summaryResponse.json();
+              conversationSummary = summaryData.choices?.[0]?.message?.content || "";
+              console.log("Generated conversation summary");
+            }
+          }
+        } catch (error) {
+          console.error("Error generating summary:", error);
+          // Fallback to raw conversation if summary fails
+          conversationSummary = `[Summary generation failed]\n\nRaw conversation:\n${formattedConversation}`;
+        }
+      }
+
+      // Send webhook to LeadConnector
+      const webhookUrl = "https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/2ghpTT8McuBNOxhCH9WC";
+      
+      const clinicTypeLabels: Record<string, string> = {
+        fertility: "Fertility Clinic",
+        med_spa: "Med Spa",
+        regenerative: "Regenerative Medicine",
+        other: "Other Healthcare",
+      };
+
+      const webhookPayload = {
+        source: "ai_chat_widget",
+        session_id: sessionId,
+        name: sessionInfo.visitor_name,
+        email: sessionInfo.visitor_email,
+        phone: sessionInfo.visitor_phone,
+        clinic_type: clinicTypeLabels[sessionInfo.clinic_type] || sessionInfo.clinic_type,
+        chat_started_at: sessionInfo.created_at,
+        chat_ended_at: new Date().toISOString(),
+        message_count: messagesData?.length || 0,
+        conversation_summary: conversationSummary || "No messages in conversation",
+        full_conversation: formattedConversation || "No messages",
+      };
+
+      try {
+        const webhookResponse = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(webhookPayload),
+        });
+
+        console.log("Webhook response status:", webhookResponse.status);
+        
+        if (!webhookResponse.ok) {
+          console.error("Webhook failed:", await webhookResponse.text());
+        }
+      } catch (webhookError) {
+        console.error("Webhook error:", webhookError);
+        // Don't fail the request if webhook fails
+      }
+
+      return new Response(JSON.stringify({ success: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }

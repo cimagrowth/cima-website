@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Minimize2, Maximize2 } from "lucide-react";
+import { MessageCircle, X, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DemoChatForm from "./DemoChatForm";
 import DemoChatWindow from "./DemoChatWindow";
+
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-chat`;
 
 export interface ChatSession {
   id: string;
@@ -19,6 +21,7 @@ const DemoChatWidget = () => {
   const [session, setSession] = useState<ChatSession | null>(null);
   const [showPulse, setShowPulse] = useState(true);
   const [hasUnreadMessages, setHasUnreadMessages] = useState(false);
+  const sessionEndedRef = useRef(false);
 
   useEffect(() => {
     // Stop the pulse animation after first interaction
@@ -27,14 +30,43 @@ const DemoChatWidget = () => {
     }
   }, [isOpen]);
 
-  const handleSessionCreated = (newSession: ChatSession) => {
-    setSession(newSession);
+  // End session and trigger webhook when user closes the chat
+  const endSession = async (sessionToEnd: ChatSession) => {
+    if (sessionEndedRef.current) return; // Prevent duplicate calls
+    sessionEndedRef.current = true;
+
+    try {
+      await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({
+          action: "end_session",
+          sessionId: sessionToEnd.id,
+        }),
+      });
+      console.log("Session ended and webhook sent");
+    } catch (error) {
+      console.error("Error ending session:", error);
+    }
   };
 
-  const handleClose = () => {
+  const handleSessionCreated = (newSession: ChatSession) => {
+    setSession(newSession);
+    sessionEndedRef.current = false; // Reset for new session
+  };
+
+  const handleClose = async () => {
+    // End the session and send webhook when chat is closed
+    if (session && !sessionEndedRef.current) {
+      await endSession(session);
+    }
     setIsOpen(false);
     setIsMinimized(false);
     setHasUnreadMessages(false);
+    setSession(null); // Clear session so next open starts fresh
   };
 
   const handleMinimize = () => {
