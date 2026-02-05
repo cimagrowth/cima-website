@@ -138,7 +138,7 @@ const DemoChatWidget = () => {
         )}
       </AnimatePresence>
 
-      {/* Chat Window - sized for mobile safe areas, centered on desktop */}
+      {/* Chat Window - sized for mobile safe areas, positioned on right for desktop */}
       <AnimatePresence>
         {isOpen && !isMinimized && (
           <motion.div
@@ -148,8 +148,8 @@ const DemoChatWidget = () => {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed z-50 bg-card border border-border shadow-glow overflow-hidden flex flex-col overscroll-contain
               top-3 left-3 right-3 bottom-[env(safe-area-inset-bottom,16px)] pb-[env(safe-area-inset-bottom,0px)] rounded-xl max-h-[calc(100dvh-24px)]
-              sm:inset-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:w-[380px] sm:h-[550px] sm:max-h-[calc(100vh-120px)] sm:rounded-2xl sm:pb-0"
-            style={{ transformOrigin: "right center" }}
+              sm:inset-auto sm:right-6 sm:bottom-6 sm:top-auto sm:w-[400px] sm:h-[600px] sm:max-h-[calc(100vh-48px)] sm:rounded-2xl sm:pb-0"
+            style={{ transformOrigin: "bottom right" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary to-secondary flex-shrink-0">
