@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useVisitor } from "@/contexts/VisitorContext";
 import DemoChatForm from "./DemoChatForm";
 import DemoChatWindow from "./DemoChatWindow";
 
@@ -18,6 +19,7 @@ export interface ChatSession {
 }
 
 const DemoChatWidget = () => {
+  const { setVisitor } = useVisitor();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [session, setSession] = useState<ChatSession | null>(null);
@@ -144,6 +146,12 @@ const DemoChatWidget = () => {
     setSession(newSession);
     sessionEndedRef.current = false; // Reset for new session
     lastActivityRef.current = Date.now();
+    
+    // Store visitor data for personalization
+    setVisitor({
+      businessName: newSession.businessName,
+      visitorName: newSession.visitorName,
+    });
   };
 
   const handleClose = async () => {

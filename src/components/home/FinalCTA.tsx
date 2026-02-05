@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useVisitor } from "@/contexts/VisitorContext";
 
 const FinalCTA = () => {
+  const { visitor } = useVisitor();
+  const businessName = visitor?.businessName;
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -36,8 +39,17 @@ const FinalCTA = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl mx-auto text-center px-2">
           <h2 className="text-2xl sm:text-3xl md:text-display text-primary-foreground mb-6">
-            If your clinic wants predictable growth, it starts with{" "}
-            <span className="text-accent-orange">predictable follow-up.</span>
+            {businessName ? (
+              <>
+                {businessName} deserves predictable growth. It starts with{" "}
+                <span className="text-accent-orange">predictable follow-up.</span>
+              </>
+            ) : (
+              <>
+                If your clinic wants predictable growth, it starts with{" "}
+                <span className="text-accent-orange">predictable follow-up.</span>
+              </>
+            )}
           </h2>
           <Link to="/demo" className="inline-block">
             <Button 

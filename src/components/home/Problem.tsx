@@ -1,8 +1,11 @@
 import { useRef } from "react";
 import { Clock, Phone, Users, Database, Eye } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useVisitor } from "@/contexts/VisitorContext";
 
 const Problem = () => {
+  const { visitor } = useVisitor();
+  const businessName = visitor?.businessName;
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -36,8 +39,17 @@ const Problem = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
-            Patient loss doesn't happen all at once.{" "}
-            <span className="text-gradient-accent">It happens in the gaps.</span>
+            {businessName ? (
+              <>
+                {businessName}'s patients deserve better.{" "}
+                <span className="text-gradient-accent">So does your bottom line.</span>
+              </>
+            ) : (
+              <>
+                Patient loss doesn't happen all at once.{" "}
+                <span className="text-gradient-accent">It happens in the gaps.</span>
+              </>
+            )}
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
             A patient reaches out and doesn't hear back quickly. Follow-up fades. 

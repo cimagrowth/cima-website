@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { VisitorProvider } from "@/contexts/VisitorContext";
 import ScrollToTopOnNavigate from "@/components/layout/ScrollToTopOnNavigate";
 import Index from "./pages/Index";
 import Product from "./pages/Product";
@@ -25,8 +26,9 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <AuthProvider>
-          <TooltipProvider>
+        <VisitorProvider>
+          <AuthProvider>
+            <TooltipProvider>
             <Toaster />
             <Sonner />
             <BrowserRouter>
@@ -49,8 +51,9 @@ const App = () => (
             </BrowserRouter>
           </TooltipProvider>
         </AuthProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+      </VisitorProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
   </HelmetProvider>
 );
 

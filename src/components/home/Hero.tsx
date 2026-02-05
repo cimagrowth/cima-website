@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { useVisitor } from "@/contexts/VisitorContext";
 
 const Hero = () => {
+  const { visitor } = useVisitor();
+  const businessName = visitor?.businessName;
   const outcomes = [
     "Instant response",
     "Auto follow-up",
@@ -83,7 +86,7 @@ const Hero = () => {
           >
             <span className="block">Every missed</span>
             <span className="block">follow-up costs</span>
-            <span className="block">your clinic</span>
+            <span className="block">{businessName || "your clinic"}</span>
             <span className="block text-gradient-accent">patients.</span>
           </motion.h1>
 
