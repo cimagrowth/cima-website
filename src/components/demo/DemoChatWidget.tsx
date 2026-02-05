@@ -13,6 +13,7 @@ export interface ChatSession {
   visitorName: string;
   visitorEmail: string;
   visitorPhone: string;
+  businessName: string;
   clinicType: "fertility" | "med_spa" | "regenerative" | "other";
 }
 

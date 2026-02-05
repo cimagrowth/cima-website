@@ -65,6 +65,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
         body: JSON.stringify({
           action: "create_session",
           name: trimmedName,
+          businessName: trimmedBusinessName,
           email: trimmedEmail,
           phone: trimmedPhone,
           clinicType: formData.clinicType,
@@ -82,6 +83,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
         visitorName: data.session.visitorName,
         visitorEmail: data.session.visitorEmail,
         visitorPhone: data.session.visitorPhone,
+        businessName: data.session.businessName,
         clinicType: data.session.clinicType as ChatSession["clinicType"],
       });
     } catch (error) {

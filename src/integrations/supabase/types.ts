@@ -109,6 +109,7 @@ export type Database = {
       }
       demo_chat_sessions: {
         Row: {
+          business_name: string | null
           clinic_type: Database["public"]["Enums"]["clinic_type"]
           created_at: string
           id: string
@@ -118,6 +119,7 @@ export type Database = {
           visitor_phone: string
         }
         Insert: {
+          business_name?: string | null
           clinic_type?: Database["public"]["Enums"]["clinic_type"]
           created_at?: string
           id?: string
@@ -127,6 +129,7 @@ export type Database = {
           visitor_phone: string
         }
         Update: {
+          business_name?: string | null
           clinic_type?: Database["public"]["Enums"]["clinic_type"]
           created_at?: string
           id?: string
