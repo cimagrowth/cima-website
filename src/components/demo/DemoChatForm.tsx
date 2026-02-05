@@ -54,26 +54,8 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Fire webhook to capture lead
-      const webhookUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-webhook`;
-      fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
-          name: trimmedName,
-          email: trimmedEmail,
-          phone: trimmedPhone,
-          clinicName: trimmedBusinessName,
-          clinicType: formData.clinicType,
-          source: "chat_widget",
-          submittedAt: new Date().toISOString(),
-        }),
-      }).catch((err) => console.error("Webhook error:", err));
-
       // Create session via edge function (server-side validation)
+      // Webhook fires when chat ends (in DemoChatWidget handleClose)
       const response = await fetch(CHAT_URL, {
         method: "POST",
         headers: {
