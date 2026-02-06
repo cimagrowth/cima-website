@@ -47,33 +47,43 @@ const DemoChatWidget = () => {
       inactivityTimerRef.current = null;
     }
 
+    const payload = JSON.stringify({
+      action: "end_session",
+      sessionId: sessionToEnd.id,
+    });
+
+    console.log("Ending session:", sessionToEnd.id);
+
     try {
-      // Use sendBeacon for page unload scenarios, fetch for normal cases
-      const payload = JSON.stringify({
-        action: "end_session",
-        sessionId: sessionToEnd.id,
+      // Use fetch with keepalive for reliability (works better than sendBeacon for JSON APIs)
+      const response = await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: payload,
+        keepalive: true, // Ensures request completes even if page unloads
       });
 
-      // Try sendBeacon first (works better on page unload)
-      const beaconSent = navigator.sendBeacon?.(
-        CHAT_URL,
-        new Blob([payload], { type: "application/json" })
-      );
-
-      if (!beaconSent) {
-        // Fallback to fetch
-        await fetch(CHAT_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: payload,
-        });
+      if (response.ok) {
+        console.log("Session ended and webhook sent successfully");
+      } else {
+        const errorText = await response.text();
+        console.error("End session failed:", response.status, errorText);
       }
-      console.log("Session ended and webhook sent");
     } catch (error) {
       console.error("Error ending session:", error);
+      
+      // Fallback to sendBeacon as last resort
+      try {
+        navigator.sendBeacon?.(
+          CHAT_URL,
+          new Blob([payload], { type: "application/json" })
+        );
+        console.log("Session end sent via sendBeacon fallback");
+      } catch (beaconError) {
+        console.error("sendBeacon fallback also failed:", beaconError);
+      }
     }
   }, []);
 
@@ -100,16 +110,25 @@ const DemoChatWidget = () => {
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (session && !sessionEndedRef.current) {
-        // Use sendBeacon for reliability during page unload
+        sessionEndedRef.current = true;
         const payload = JSON.stringify({
           action: "end_session",
           sessionId: session.id,
         });
-        navigator.sendBeacon?.(
-          CHAT_URL,
-          new Blob([payload], { type: "application/json" })
-        );
-        sessionEndedRef.current = true;
+        
+        // Use fetch with keepalive - more reliable than sendBeacon for JSON APIs
+        fetch(CHAT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: payload,
+          keepalive: true,
+        }).catch(() => {
+          // Fallback to sendBeacon
+          navigator.sendBeacon?.(
+            CHAT_URL,
+            new Blob([payload], { type: "application/json" })
+          );
+        });
       }
     };
 
