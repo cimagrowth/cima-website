@@ -1,5 +1,5 @@
 # GrowthOS by Cima Growth Solutions
-# https://growmyfertilityclinic.com
+# https://cimagrowth.com
 
 User-agent: Googlebot
 Allow: /
@@ -18,4 +18,4 @@ Allow: /
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://growmyfertilityclinic.com/sitemap.xml
+Sitemap: https://cimagrowth.com/sitemap.xml

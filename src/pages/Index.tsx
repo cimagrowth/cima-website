@@ -48,7 +48,7 @@ const Index = () => {
           "automated patient response",
           "healthcare marketing automation",
         ]}
-        canonical="https://growmyfertilityclinic.com"
+        canonical="https://cimagrowth.com"
       />
       <JsonLd schema={schemas} />
       <Hero />
