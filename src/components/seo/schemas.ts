@@ -57,6 +57,7 @@ export interface SoftwareApplicationSchemaProps {
   description?: string;
   applicationCategory?: string;
   operatingSystem?: string;
+  image?: string;
   offers?: {
     price: string;
     priceCurrency: string;
@@ -68,6 +69,7 @@ export const generateSoftwareSchema = ({
   description = "AI-powered patient engagement platform that responds instantly across every channel—web, phone, text, email, WhatsApp, and social media—then nurtures leads until your team steps in.",
   applicationCategory = "BusinessApplication",
   operatingSystem = "Web, iOS, Android",
+  image = `${SITE_URL}/og-image.png`,
   offers = { price: "999", priceCurrency: "USD" },
 }: SoftwareApplicationSchemaProps = {}) => ({
   "@context": "https://schema.org",
@@ -76,6 +78,7 @@ export const generateSoftwareSchema = ({
   description,
   applicationCategory,
   operatingSystem,
+  image,
   offers: {
     "@type": "Offer",
     price: offers.price,
