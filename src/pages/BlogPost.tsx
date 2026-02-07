@@ -65,13 +65,13 @@ const BlogPost = () => {
     );
   }
 
-  const postUrl = `https://growmyfertilityclinic.com/blog/${post.slug}`;
+  const postUrl = `https://cimagrowth.com/blog/${post.slug}`;
   
   const schemas = [
     generateBreadcrumbSchema({
       items: [
-        { name: "Home", url: "https://growmyfertilityclinic.com" },
-        { name: "Blog", url: "https://growmyfertilityclinic.com/blog" },
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Blog", url: "https://cimagrowth.com/blog" },
         { name: post.title, url: postUrl },
       ],
     }),

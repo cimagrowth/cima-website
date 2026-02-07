@@ -17,8 +17,8 @@ const Blog = () => {
   const schemas = [
     generateBreadcrumbSchema({
       items: [
-        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
-        { name: "Blog", url: "https://inquiry-to-consult.lovable.app/blog" },
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Blog", url: "https://cimagrowth.com/blog" },
       ],
     }),
     {
@@ -26,11 +26,11 @@ const Blog = () => {
       "@type": "Blog",
       name: "GrowthOS Blog – Insights for Clinic Growth",
       description: "Expert strategies, industry insights, and actionable advice for fertility clinics, med spas, wellness centers, and regenerative medicine clinics.",
-      url: "https://inquiry-to-consult.lovable.app/blog",
+      url: "https://cimagrowth.com/blog",
       publisher: {
         "@type": "Organization",
         name: "Cima Growth Solutions",
-        url: "https://inquiry-to-consult.lovable.app",
+        url: "https://cimagrowth.com",
       },
     },
   ];
@@ -51,7 +51,7 @@ const Blog = () => {
           "wellness center marketing",
           "regenerative medicine marketing",
         ]}
-        canonical="https://inquiry-to-consult.lovable.app/blog"
+        canonical="https://cimagrowth.com/blog"
       />
       <JsonLd schema={schemas} />
 
