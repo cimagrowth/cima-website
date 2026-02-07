@@ -16,7 +16,6 @@ import {
   generateWebsiteSchema,
   generateOrganizationSchema,
   generateSoftwareSchema,
-  generateLocalBusinessSchema,
 } from "@/components/seo/schemas";
 
 const Index = () => {
@@ -24,7 +23,6 @@ const Index = () => {
     generateWebsiteSchema(),
     generateOrganizationSchema(),
     generateSoftwareSchema(),
-    generateLocalBusinessSchema(),
   ];
 
   return (
