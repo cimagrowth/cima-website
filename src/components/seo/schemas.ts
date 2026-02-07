@@ -188,30 +188,5 @@ export const generateServiceSchema = ({
   serviceType,
 });
 
-export interface LocalBusinessSchemaProps {
-  name?: string;
-  description?: string;
-  url?: string;
-  telephone?: string;
-  address?: {
-    streetAddress?: string;
-    addressLocality?: string;
-    addressRegion?: string;
-    postalCode?: string;
-    addressCountry?: string;
-  };
-}
-
-export const generateLocalBusinessSchema = ({
-  name = COMPANY_NAME,
-  description = "AI-powered patient engagement solutions for healthcare clinics",
-  url = SITE_URL,
-}: LocalBusinessSchemaProps = {}) => ({
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name,
-  description,
-  url,
-  priceRange: "$$",
-  "@id": url,
-});
+// LocalBusinessSchema removed - not appropriate for SaaS companies without physical locations
+// Use Organization and SoftwareApplication schemas instead
