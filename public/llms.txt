@@ -1,0 +1,39 @@
+# GrowthOS by Cima Growth Solutions
+
+> AI-powered patient engagement platform for healthcare clinics
+
+GrowthOS helps fertility clinics, med spas, wellness centers, and regenerative medicine practices stop patient leakage through instant AI response and automated lead nurturing.
+
+## What GrowthOS Does
+
+- Responds instantly to patient inquiries across all channels (web, phone, text, email, WhatsApp, social media)
+- Nurtures leads automatically until staff is ready to step in
+- Provides unified inbox combining AI and human conversations
+- Manages patient pipelines and journey tracking
+- Runs reactivation campaigns for cold leads
+- Delivers reporting on response times and conversion rates
+
+## Key Features
+
+- Custom-trained AI that uses your clinic's voice and rules
+- Multi-channel patient communication
+- Staff handoff with full conversation context
+- Integration with Salesforce, HubSpot, Zoho, and other CRMs
+- No per-lead or usage fees
+
+## Pricing
+
+- Monthly: $999/month + $999 one-time setup
+- Annual: $9,999/year with no setup fee (includes $500 ad credit)
+
+## Target Customers
+
+- Fertility clinics
+- Med spas and aesthetic practices
+- Wellness centers
+- Regenerative medicine clinics
+
+## Contact
+
+Website: https://cimagrowth.com
+Demo: https://cimagrowth.com/demo
