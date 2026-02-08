@@ -69,8 +69,8 @@ const Pricing = () => {
   const schemas = [
     generateBreadcrumbSchema({
       items: [
-        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
-        { name: "Sign Up", url: "https://inquiry-to-consult.lovable.app/sign-up" },
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Sign Up", url: "https://cimagrowth.com/sign-up" },
       ],
     }),
     generateFAQSchema({ questions: faqItems }),
@@ -91,7 +91,7 @@ const Pricing = () => {
           priceCurrency: "USD",
           priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
           availability: "https://schema.org/InStock",
-          url: "https://inquiry-to-consult.lovable.app/sign-up",
+          url: "https://cimagrowth.com/sign-up",
         },
         {
           "@type": "Offer",
@@ -100,7 +100,7 @@ const Pricing = () => {
           priceCurrency: "USD",
           priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
           availability: "https://schema.org/InStock",
-          url: "https://inquiry-to-consult.lovable.app/sign-up",
+          url: "https://cimagrowth.com/sign-up",
         },
       ],
     },
@@ -125,7 +125,7 @@ const Pricing = () => {
           "AI healthcare software pricing",
           "medical practice management cost",
         ]}
-        canonical="https://inquiry-to-consult.lovable.app/sign-up"
+        canonical="https://cimagrowth.com/sign-up"
       />
       <JsonLd schema={schemas} />
 
