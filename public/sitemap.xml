@@ -26,8 +26,14 @@
   </url>
   <url>
     <loc>https://cimagrowth.com/blog</loc>
-    <lastmod>2025-02-07</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cimagrowth.com/blog/weekend-planning-clinic-success</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
