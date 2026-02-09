@@ -45,7 +45,7 @@ const App = () => (
                 <Route path="/admin/blog" element={<AdminBlog />} />
                 <Route path="/admin/blog/new" element={<BlogEditor />} />
                 <Route path="/admin/blog/edit/:id" element={<BlogEditor />} />
-                <Route path="/subscription-success" element={<SubscriptionSuccess />} />
+                <Route path="/success" element={<SubscriptionSuccess />} />
                 <Route path="/ads-access" element={<AdsAccess />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
