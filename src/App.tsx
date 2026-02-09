@@ -18,6 +18,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminBlog from "./pages/AdminBlog";
 import BlogEditor from "./pages/BlogEditor";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
+import AdsAccess from "./pages/AdsAccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
                 <Route path="/admin/blog/new" element={<BlogEditor />} />
                 <Route path="/admin/blog/edit/:id" element={<BlogEditor />} />
                 <Route path="/subscription-success" element={<SubscriptionSuccess />} />
+                <Route path="/ads-access" element={<AdsAccess />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
