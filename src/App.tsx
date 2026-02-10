@@ -19,6 +19,8 @@ import AdminBlog from "./pages/AdminBlog";
 import BlogEditor from "./pages/BlogEditor";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import AdsAccess from "./pages/AdsAccess";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +49,8 @@ const App = () => (
                 <Route path="/admin/blog/edit/:id" element={<BlogEditor />} />
                 <Route path="/success" element={<SubscriptionSuccess />} />
                 <Route path="/ads-access" element={<AdsAccess />} />
+                <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
