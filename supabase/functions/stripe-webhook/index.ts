@@ -7,6 +7,7 @@ const corsHeaders = {
 };
 
 const LEADCONNECTOR_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/faac0ee9-2ee4-420e-a272-1c722ae86e0e";
+const N8N_CREATE_ACCOUNT_WEBHOOK_URL = "https://cima.app.n8n.cloud/webhook/create-cima-account";
 
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
@@ -126,6 +127,27 @@ serve(async (req) => {
       if (!response.ok) {
         logStep("LeadConnector webhook failed", { status: response.status });
       }
+
+      // Fire n8n webhook to create CIMA account (non-blocking)
+      logStep("Sending to n8n create-cima-account webhook", { email: customerEmail, name: customerName });
+      fetch(N8N_CREATE_ACCOUNT_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: customerEmail,
+          name: customerName,
+          phone: customerPhone,
+          planType,
+          amountPaid: session.amount_total ? session.amount_total / 100 : 0,
+          currency: session.currency?.toUpperCase() || "USD",
+          stripeCustomerId: session.customer,
+          subscriptionId: session.subscription || null,
+          createdAt: new Date().toISOString(),
+        }),
+      }).then(async (res) => {
+        const text = await res.text();
+        logStep("n8n create-account response", { status: res.status, response: text });
+      }).catch((err) => logStep("n8n create-account webhook error", { error: String(err) }));
     }
 
     // Handle subscription created/updated events
