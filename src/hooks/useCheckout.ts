@@ -6,12 +6,21 @@ import { toast } from "@/hooks/use-toast";
 
 type PlanType = "monthly" | "annual";
 
+export interface CheckoutCustomerInfo {
+  fullName: string;
+  clinicName: string;
+  address: string;
+  phone: string;
+  email: string;
+}
+
 export function useCheckout() {
   const [isLoading, setIsLoading] = useState<PlanType | null>(null);
+  const [pendingPlan, setPendingPlan] = useState<PlanType | null>(null);
   const { session, subscription } = useAuth();
   const navigate = useNavigate();
 
-  const handleCheckout = async (plan: PlanType) => {
+  const initiateCheckout = (plan: PlanType) => {
     if (subscription.subscribed) {
       toast({
         title: "Already subscribed",
@@ -20,19 +29,25 @@ export function useCheckout() {
       });
       return;
     }
+    setPendingPlan(plan);
+  };
 
+  const cancelCheckout = () => {
+    setPendingPlan(null);
+  };
+
+  const handleCheckout = async (plan: PlanType, customerInfo: CheckoutCustomerInfo) => {
     setIsLoading(plan);
 
     try {
       const headers: Record<string, string> = {};
       
-      // Only add auth header if user is logged in
       if (session?.access_token) {
         headers.Authorization = `Bearer ${session.access_token}`;
       }
 
       const { data, error } = await supabase.functions.invoke("create-checkout", {
-        body: { plan },
+        body: { plan, customerInfo },
         headers,
       });
 
@@ -52,6 +67,7 @@ export function useCheckout() {
       });
     } finally {
       setIsLoading(null);
+      setPendingPlan(null);
     }
   };
 
@@ -66,7 +82,7 @@ export function useCheckout() {
       return;
     }
 
-    setIsLoading("monthly"); // Just to show loading state
+    setIsLoading("monthly");
 
     try {
       const { data, error } = await supabase.functions.invoke("customer-portal", {
@@ -96,6 +112,9 @@ export function useCheckout() {
 
   return {
     isLoading,
+    pendingPlan,
+    initiateCheckout,
+    cancelCheckout,
     handleCheckout,
     handleManageSubscription,
   };

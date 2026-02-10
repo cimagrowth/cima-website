@@ -36,7 +36,7 @@ serve(async (req) => {
   try {
     logStep("Function started");
 
-    const { plan } = await req.json();
+    const { plan, customerInfo } = await req.json();
     if (!plan || !["monthly", "annual"].includes(plan)) {
       throw new Error("Invalid plan. Must be 'monthly' or 'annual'");
     }
@@ -50,44 +50,79 @@ serve(async (req) => {
     let customerId: string | undefined;
     let customerEmail: string | undefined;
 
-    // Try to get authenticated user (optional - guest checkout allowed)
-    const authHeader = req.headers.get("Authorization");
-    if (authHeader && authHeader !== "Bearer " && authHeader !== "Bearer undefined" && authHeader !== "Bearer null") {
-      try {
-        const token = authHeader.replace("Bearer ", "");
-        const { data: userData, error: authError } = await supabaseClient.auth.getUser(token);
-        
-        if (!authError && userData.user?.email) {
-          customerEmail = userData.user.email;
-          logStep("User authenticated", { userId: userData.user.id, email: customerEmail });
+    // Use customer info from the form if provided
+    if (customerInfo?.email) {
+      customerEmail = customerInfo.email;
+      logStep("Customer info from form", { email: customerEmail, name: customerInfo.fullName });
 
-          // Check for existing Stripe customer
-          const customers = await stripe.customers.list({ email: customerEmail, limit: 1 });
-          if (customers.data.length > 0) {
-            customerId = customers.data[0].id;
-            logStep("Found existing Stripe customer", { customerId });
-          }
-        } else {
-          logStep("Auth header present but invalid - proceeding as guest", { error: authError?.message });
-        }
-      } catch (authErr) {
-        logStep("Auth validation failed - proceeding as guest", { error: String(authErr) });
+      // Check for existing Stripe customer by email
+      const customers = await stripe.customers.list({ email: customerEmail, limit: 1 });
+      if (customers.data.length > 0) {
+        customerId = customers.data[0].id;
+        logStep("Found existing Stripe customer", { customerId });
+
+        // Update customer with latest info
+        await stripe.customers.update(customerId, {
+          name: customerInfo.fullName,
+          phone: customerInfo.phone,
+          metadata: {
+            clinic_name: customerInfo.clinicName,
+            address: customerInfo.address,
+          },
+        });
+      } else {
+        // Create new Stripe customer with form data
+        const newCustomer = await stripe.customers.create({
+          email: customerEmail,
+          name: customerInfo.fullName,
+          phone: customerInfo.phone,
+          metadata: {
+            clinic_name: customerInfo.clinicName,
+            address: customerInfo.address,
+          },
+        });
+        customerId = newCustomer.id;
+        logStep("Created new Stripe customer", { customerId });
       }
-    } else {
-      logStep("No valid auth header - proceeding with guest checkout");
+    }
+
+    // Fallback: try auth header if no form info
+    if (!customerId && !customerEmail) {
+      const authHeader = req.headers.get("Authorization");
+      if (authHeader && authHeader !== "Bearer " && authHeader !== "Bearer undefined" && authHeader !== "Bearer null") {
+        try {
+          const token = authHeader.replace("Bearer ", "");
+          const { data: userData, error: authError } = await supabaseClient.auth.getUser(token);
+          
+          if (!authError && userData.user?.email) {
+            customerEmail = userData.user.email;
+            logStep("User authenticated", { userId: userData.user.id, email: customerEmail });
+
+            const customers = await stripe.customers.list({ email: customerEmail, limit: 1 });
+            if (customers.data.length > 0) {
+              customerId = customers.data[0].id;
+              logStep("Found existing Stripe customer", { customerId });
+            }
+          } else {
+            logStep("Auth header present but invalid - proceeding as guest", { error: authError?.message });
+          }
+        } catch (authErr) {
+          logStep("Auth validation failed - proceeding as guest", { error: String(authErr) });
+        }
+      } else {
+        logStep("No valid auth header - proceeding with guest checkout");
+      }
     }
 
     // Build line items based on plan
     const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
     
     if (plan === "monthly") {
-      // Monthly: subscription + setup fee
       lineItems.push(
         { price: PRICING.monthly.subscription, quantity: 1 },
         { price: PRICING.monthly.setup, quantity: 1 }
       );
     } else {
-      // Annual: subscription only (no setup fee)
       lineItems.push({ price: PRICING.annual.subscription, quantity: 1 });
     }
 
@@ -99,10 +134,10 @@ serve(async (req) => {
       line_items: lineItems,
       mode: "subscription",
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/pricing`,
+      cancel_url: `${origin}/sign-up`,
     };
 
-    // Add customer info if available
+    // Add customer info
     if (customerId) {
       sessionParams.customer = customerId;
     } else if (customerEmail) {
