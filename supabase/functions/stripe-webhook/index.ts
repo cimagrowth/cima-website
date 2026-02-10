@@ -7,6 +7,7 @@ const corsHeaders = {
 };
 
 const LEADCONNECTOR_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/faac0ee9-2ee4-420e-a272-1c722ae86e0e";
+const LEADCONNECTOR_WEBHOOK_URL_2 = "https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/0db21057-47f3-46fa-9b48-8b51766894c6";
 const N8N_CREATE_ACCOUNT_WEBHOOK_URL = "https://cima.app.n8n.cloud/webhook/create-cima-account";
 const EXTERNAL_ACCOUNT_WEBHOOK_URL = "https://xdbahwfhycfiwjwouzwp.supabase.co/functions/v1/external-account-webhook";
 
@@ -142,7 +143,18 @@ serve(async (req) => {
         logStep("LeadConnector webhook failed", { status: response.status });
       }
 
-      // 2) Fire n8n webhook to create CIMA account (non-blocking)
+      // 2) Fire second LeadConnector webhook (non-blocking)
+      logStep("Sending to LeadConnector webhook 2", webhookPayload);
+      fetch(LEADCONNECTOR_WEBHOOK_URL_2, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(webhookPayload),
+      }).then(async (res) => {
+        const text = await res.text();
+        logStep("LeadConnector webhook 2 response", { status: res.status, response: text });
+      }).catch((err) => logStep("LeadConnector webhook 2 error", { error: String(err) }));
+
+      // 3) Fire n8n webhook to create CIMA account (non-blocking)
       logStep("Sending to n8n create-cima-account webhook", { email: customerEmail, name: customerName });
       fetch(N8N_CREATE_ACCOUNT_WEBHOOK_URL, {
         method: "POST",
