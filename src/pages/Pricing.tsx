@@ -6,11 +6,12 @@ import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/components/seo/schemas";
 import { useAuth } from "@/contexts/AuthContext";
-import { useCheckout } from "@/hooks/useCheckout";
+import { useCheckout, type CheckoutCustomerInfo } from "@/hooks/useCheckout";
+import PreCheckoutForm from "@/components/checkout/PreCheckoutForm";
 
 const Pricing = () => {
   const { subscription, isCheckingSubscription } = useAuth();
-  const { isLoading, handleCheckout, handleManageSubscription } = useCheckout();
+  const { isLoading, pendingPlan, initiateCheckout, cancelCheckout, handleCheckout, handleManageSubscription } = useCheckout();
 
   const features = [
     "Custom-trained AI response and follow-up",
@@ -286,7 +287,7 @@ const Pricing = () => {
                         ? "bg-accent-orange hover:brightness-110" 
                         : "bg-primary hover:bg-primary-light"
                     }`}
-                    onClick={() => handleCheckout(plan.planKey)}
+                    onClick={() => initiateCheckout(plan.planKey)}
                     disabled={!!isLoading || isCheckingSubscription}
                   >
                     {isLoading === plan.planKey ? (
@@ -391,7 +392,7 @@ const Pricing = () => {
                 variant="hero" 
                 size="xl" 
                 className="group shadow-glow"
-                onClick={() => handleCheckout("annual")}
+                onClick={() => initiateCheckout("annual")}
                 disabled={!!isLoading}
               >
                 {isLoading === "annual" ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : null}
@@ -402,6 +403,14 @@ const Pricing = () => {
           </motion.div>
         </div>
       </section>
+
+      <PreCheckoutForm
+        open={!!pendingPlan}
+        onClose={cancelCheckout}
+        onSubmit={(data) => pendingPlan && handleCheckout(pendingPlan, data)}
+        planName={pendingPlan === "annual" ? "Annual" : "Monthly"}
+        isLoading={!!isLoading}
+      />
     </Layout>
   );
 };
