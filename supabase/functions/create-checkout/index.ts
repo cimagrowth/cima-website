@@ -148,6 +148,25 @@ serve(async (req) => {
 
     logStep("Checkout session created", { sessionId: session.id, url: session.url });
 
+    // Fire signup webhook to LeadConnector (non-blocking)
+    if (customerInfo) {
+      const webhookUrl = "https://services.leadconnectorhq.com/hooks/RxV8vl8lgXtUddCR3zg6/webhook-trigger/58ac1029-90ba-4390-a871-20d7650b6360";
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: customerInfo.fullName,
+          clinicName: customerInfo.clinicName,
+          address: customerInfo.address,
+          phone: customerInfo.phone,
+          email: customerInfo.email,
+          plan,
+          stripeSessionId: session.id,
+        }),
+      }).then(() => logStep("Signup webhook fired"))
+        .catch((err) => logStep("Signup webhook error", { error: String(err) }));
+    }
+
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
