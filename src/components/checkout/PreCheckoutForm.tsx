@@ -153,6 +153,7 @@ const PreCheckoutForm = ({ open, onClose, onSubmit, planName, isLoading }: PreCh
                     <Checkbox
                       checked={field.value === true}
                       onCheckedChange={(checked) => field.onChange(checked === true ? true : undefined)}
+                      className="border-white data-[state=checked]:bg-accent-orange data-[state=checked]:border-accent-orange"
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
