@@ -33,6 +33,7 @@ const Header = () => {
     { href: "/#solution", label: "Solution", isAnchor: true },
     { href: "/#how-it-works", label: "How It Works", isAnchor: true },
     { href: "/blog", label: "Blog" },
+    { href: "/sign-up", label: "Sign Up" },
   ];
 
   const isActive = (path: string) => {
