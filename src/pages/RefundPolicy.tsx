@@ -8,6 +8,7 @@ const RefundPolicy = () => {
         title="Refund Policy"
         description="Refund Policy for Cima Growth Solutions GrowthOS subscriptions and associated services."
         canonical="https://cimagrowth.com/refund-policy"
+        ogImage="https://cimagrowth.com/og-refund.png"
       />
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">

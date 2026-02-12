@@ -8,6 +8,7 @@ const TermsOfService = () => {
         title="Terms of Service"
         description="Terms of Service and Master Services Agreement for Cima Growth Solutions GrowthOS platform."
         canonical="https://cimagrowth.com/terms"
+        ogImage="https://cimagrowth.com/og-terms.png"
       />
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">

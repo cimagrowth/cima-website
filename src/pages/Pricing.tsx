@@ -116,6 +116,7 @@ const Pricing = () => {
       <SEO
         title="Pricing – GrowthOS AI Patient Engagement Platform"
         description="Simple, transparent pricing for GrowthOS. $999/month or $9,999/year with no setup fee. Unlimited leads, AI conversations & team members. No per-lead charges. Full access to all features."
+        ogImage="https://cimagrowth.com/og-pricing.png"
         keywords={[
           "GrowthOS pricing",
           "healthcare CRM pricing",

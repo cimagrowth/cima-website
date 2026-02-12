@@ -40,6 +40,7 @@ const Blog = () => {
       <SEO
         title="Blog – Insights for Clinic Growth | GrowthOS"
         description="Expert strategies, industry insights, and actionable advice for fertility clinics, med spas, wellness centers, and regenerative medicine clinics. Learn patient engagement best practices and clinic growth strategies."
+        ogImage="https://cimagrowth.com/og-blog.png"
         keywords={[
           "clinic growth strategies",
           "patient engagement tips",

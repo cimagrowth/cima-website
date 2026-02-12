@@ -95,6 +95,7 @@ const Demo = () => {
       <SEO
         title="Book a Demo – See GrowthOS AI Patient Engagement in Action"
         description="Schedule a 30-minute walkthrough of GrowthOS. Watch AI respond to patient inquiries in real-time across web, phone, text & social. See pipelines, automations & unified inbox. Free consultation for fertility clinics, med spas & regenerative medicine."
+        ogImage="https://cimagrowth.com/og-demo.png"
         keywords={[
           "GrowthOS demo",
           "healthcare CRM demo",
