@@ -8,6 +8,7 @@ const PrivacyPolicy = () => {
         title="Privacy Policy"
         description="Privacy Policy for Cima Growth Solutions LLC healthcare-focused SaaS platform."
         canonical="https://cimagrowth.com/privacy"
+        ogImage="https://cimagrowth.com/og-privacy.png"
       />
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">

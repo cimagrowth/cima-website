@@ -106,6 +106,7 @@ const Product = () => {
       <SEO
         title="Product – GrowthOS AI Patient Engagement & CRM Platform"
         description="Explore GrowthOS features: AI-powered instant response, automated patient nurturing, unified inbox, pipeline management, reactivation campaigns & reporting. Works with Salesforce, HubSpot, Zoho or standalone."
+        ogImage="https://cimagrowth.com/og-product.png"
         keywords={[
           "GrowthOS features",
           "healthcare CRM features",
