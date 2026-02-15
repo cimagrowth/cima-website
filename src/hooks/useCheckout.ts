@@ -54,7 +54,7 @@ export function useCheckout() {
       if (error) throw error;
 
       if (data?.url) {
-        window.location.href = data.url;
+        window.open(data.url, "_blank");
       } else {
         throw new Error("No checkout URL returned");
       }
