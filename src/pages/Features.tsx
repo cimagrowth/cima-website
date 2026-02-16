@@ -11,7 +11,7 @@ interface Feature {
 }
 
 const features: Feature[] = [
-  { id: "workflows", label: "Workflows", videoSrc: null },
+  { id: "workflows", label: "Workflows", videoSrc: "/feature-videos/workflows.mp4" },
   { id: "calendars", label: "Calendars", videoSrc: "/feature-videos/calendars.mp4" },
   { id: "invoicing", label: "Invoicing", videoSrc: "/feature-videos/invoicing.mp4" },
   { id: "conversations", label: "Conversations", videoSrc: "/feature-videos/conversations.mp4" },
