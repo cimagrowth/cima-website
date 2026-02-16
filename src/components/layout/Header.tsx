@@ -30,6 +30,7 @@ const Header = () => {
 
   const navLinks: NavLink[] = [
     { href: "/", label: "Home" },
+    { href: "/features", label: "Features" },
     { href: "/#solution", label: "Solution", isAnchor: true },
     { href: "/#how-it-works", label: "How It Works", isAnchor: true },
     { href: "/blog", label: "Blog" },
