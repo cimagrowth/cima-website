@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/seo/SEO";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface Feature {
@@ -36,7 +39,7 @@ const Features = () => {
   return (
     <Layout>
       <SEO
-        title="Platform Features"
+        title="What's Inside GrowthOS"
         description="Explore GrowthOS features — workflows, calendars, invoicing, conversations, and more. See each tool in action."
         keywords={["GrowthOS features", "clinic CRM", "patient management", "healthcare automation"]}
         canonical="https://cimagrowth.com/features"
@@ -48,7 +51,7 @@ const Features = () => {
           {/* Header */}
           <div className="text-center mb-10 md:mb-14">
             <h1 className="text-3xl sm:text-4xl md:text-display font-bold text-foreground mb-4">
-              Everything inside{" "}
+              What's inside{" "}
               <span className="text-gradient-accent">GrowthOS</span>
             </h1>
             <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
@@ -113,9 +116,17 @@ const Features = () => {
                 </motion.div>
               </AnimatePresence>
 
-              <h2 className="mt-5 text-xl font-semibold text-foreground">
-                {current.label}
-              </h2>
+              <div className="mt-5 flex items-center justify-between flex-wrap gap-4">
+                <h2 className="text-xl font-semibold text-foreground">
+                  {current.label}
+                </h2>
+                <Link to="/demo">
+                  <Button variant="hero" size="default" className="group">
+                    Book a Demo
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
