@@ -16,7 +16,7 @@ const features: Feature[] = [
   { id: "invoicing", label: "Invoicing", videoSrc: null },
   { id: "conversations", label: "Conversations", videoSrc: null },
   { id: "chat-widget", label: "Chat Widget", videoSrc: null },
-  { id: "reviews", label: "Reviews & Reputation", videoSrc: null },
+  { id: "reviews", label: "Reviews & Reputation", videoSrc: "/feature-videos/reviews.mp4" },
   { id: "surveys", label: "Surveys & Forms", videoSrc: null },
   { id: "social-media", label: "Social Media Planner", videoSrc: "/feature-videos/social-media-planner.mp4" },
   { id: "contacts", label: "Contacts", videoSrc: "/feature-videos/contacts.mp4" },
