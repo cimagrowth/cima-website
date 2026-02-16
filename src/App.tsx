@@ -10,6 +10,7 @@ import { VisitorProvider } from "@/contexts/VisitorContext";
 import ScrollToTopOnNavigate from "@/components/layout/ScrollToTopOnNavigate";
 import Index from "./pages/Index";
 import Product from "./pages/Product";
+import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import Demo from "./pages/Demo";
 import Blog from "./pages/Blog";
@@ -40,6 +41,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/product" element={<Product />} />
+                <Route path="/features" element={<Features />} />
                 <Route path="/sign-up" element={<Pricing />} />
                 <Route path="/demo" element={<Demo />} />
                 <Route path="/blog" element={<Blog />} />
