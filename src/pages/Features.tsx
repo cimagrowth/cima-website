@@ -20,7 +20,7 @@ const features: Feature[] = [
   { id: "surveys", label: "Surveys & Forms", videoSrc: "/feature-videos/surveys.mp4" },
   { id: "social-media", label: "Social Media Planner", videoSrc: "/feature-videos/social-media-planner.mp4" },
   { id: "contacts", label: "Contacts", videoSrc: "/feature-videos/contacts.mp4" },
-  { id: "opportunities", label: "Opportunities & Pipelines", videoSrc: null },
+  { id: "opportunities", label: "Opportunities & Pipelines", videoSrc: "/feature-videos/opportunities.mp4" },
   { id: "website-builder", label: "Website & Funnel Builder", videoSrc: "/feature-videos/website-builder.mp4" },
   { id: "email-builder", label: "Email Builder", videoSrc: "/feature-videos/email-builder.mp4" },
   { id: "reporting", label: "Reporting", videoSrc: "/feature-videos/reporting.mp4" },
