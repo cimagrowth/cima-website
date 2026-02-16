@@ -24,7 +24,7 @@ const features: Feature[] = [
   { id: "website-builder", label: "Website & Funnel Builder", videoSrc: null },
   { id: "email-builder", label: "Email Builder", videoSrc: null },
   { id: "reporting", label: "Reporting", videoSrc: null },
-  { id: "call-recordings", label: "Call Recordings", videoSrc: null },
+  { id: "call-recordings", label: "Call Recordings", videoSrc: "/feature-videos/call-recordings.mp4" },
   { id: "payments", label: "Payments & Products", videoSrc: null },
 ];
 
