@@ -14,21 +14,21 @@ interface Feature {
 }
 
 const features: Feature[] = [
-  { id: "workflows", label: "Workflows", videoSrc: "/feature-videos/workflows.mp4" },
   { id: "calendars", label: "Calendars", videoSrc: "/feature-videos/calendars.mp4" },
-  { id: "invoicing", label: "Invoicing", videoSrc: "/feature-videos/invoicing.mp4" },
-  { id: "conversations", label: "Conversations", videoSrc: "/feature-videos/conversations.mp4" },
-  { id: "chat-widget", label: "Chat Widget", videoSrc: "/feature-videos/chat-widget.mp4" },
-  { id: "reviews", label: "Reviews & Reputation", videoSrc: "/feature-videos/reviews.mp4" },
-  { id: "surveys", label: "Surveys & Forms", videoSrc: "/feature-videos/surveys.mp4" },
-  { id: "social-media", label: "Social Media Planner", videoSrc: "/feature-videos/social-media-planner.mp4" },
-  { id: "contacts", label: "Contacts", videoSrc: "/feature-videos/contacts.mp4" },
-  { id: "opportunities", label: "Opportunities & Pipelines", videoSrc: "/feature-videos/opportunities.mp4" },
-  { id: "website-builder", label: "Website & Funnel Builder", videoSrc: "/feature-videos/website-builder.mp4" },
-  { id: "email-builder", label: "Email Builder", videoSrc: "/feature-videos/email-builder.mp4" },
-  { id: "reporting", label: "Reporting", videoSrc: "/feature-videos/reporting.mp4" },
   { id: "call-recordings", label: "Call Recordings", videoSrc: "/feature-videos/call-recordings.mp4" },
+  { id: "chat-widget", label: "Chat Widget", videoSrc: "/feature-videos/chat-widget.mp4" },
+  { id: "contacts", label: "Contacts", videoSrc: "/feature-videos/contacts.mp4" },
+  { id: "conversations", label: "Conversations", videoSrc: "/feature-videos/conversations.mp4" },
+  { id: "email-builder", label: "Email Builder", videoSrc: "/feature-videos/email-builder.mp4" },
+  { id: "invoicing", label: "Invoicing", videoSrc: "/feature-videos/invoicing.mp4" },
+  { id: "opportunities", label: "Opportunities & Pipelines", videoSrc: "/feature-videos/opportunities.mp4" },
   { id: "payments", label: "Payments & Products", videoSrc: "/feature-videos/payments.mp4" },
+  { id: "reporting", label: "Reporting", videoSrc: "/feature-videos/reporting.mp4" },
+  { id: "reviews", label: "Reviews & Reputation", videoSrc: "/feature-videos/reviews.mp4" },
+  { id: "social-media", label: "Social Media Planner", videoSrc: "/feature-videos/social-media-planner.mp4" },
+  { id: "surveys", label: "Surveys & Forms", videoSrc: "/feature-videos/surveys.mp4" },
+  { id: "website-builder", label: "Website & Funnel Builder", videoSrc: "/feature-videos/website-builder.mp4" },
+  { id: "workflows", label: "Workflows", videoSrc: "/feature-videos/workflows.mp4" },
 ];
 
 const Features = () => {
