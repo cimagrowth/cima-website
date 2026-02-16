@@ -14,7 +14,7 @@ const features: Feature[] = [
   { id: "workflows", label: "Workflows", videoSrc: null },
   { id: "calendars", label: "Calendars", videoSrc: null },
   { id: "invoicing", label: "Invoicing", videoSrc: null },
-  { id: "conversations", label: "Conversations", videoSrc: null },
+  { id: "conversations", label: "Conversations", videoSrc: "/feature-videos/conversations.mp4" },
   { id: "chat-widget", label: "Chat Widget", videoSrc: "/feature-videos/chat-widget.mp4" },
   { id: "reviews", label: "Reviews & Reputation", videoSrc: "/feature-videos/reviews.mp4" },
   { id: "surveys", label: "Surveys & Forms", videoSrc: null },
