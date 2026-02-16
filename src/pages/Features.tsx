@@ -25,7 +25,7 @@ const features: Feature[] = [
   { id: "email-builder", label: "Email Builder", videoSrc: null },
   { id: "reporting", label: "Reporting", videoSrc: null },
   { id: "call-recordings", label: "Call Recordings", videoSrc: "/feature-videos/call-recordings.mp4" },
-  { id: "payments", label: "Payments & Products", videoSrc: null },
+  { id: "payments", label: "Payments & Products", videoSrc: "/feature-videos/payments.mp4" },
 ];
 
 const Features = () => {
