@@ -21,7 +21,7 @@ const features: Feature[] = [
   { id: "social-media", label: "Social Media Planner", videoSrc: "/feature-videos/social-media-planner.mp4" },
   { id: "contacts", label: "Contacts", videoSrc: "/feature-videos/contacts.mp4" },
   { id: "opportunities", label: "Opportunities & Pipelines", videoSrc: null },
-  { id: "website-builder", label: "Website & Funnel Builder", videoSrc: null },
+  { id: "website-builder", label: "Website & Funnel Builder", videoSrc: "/feature-videos/website-builder.mp4" },
   { id: "email-builder", label: "Email Builder", videoSrc: null },
   { id: "reporting", label: "Reporting", videoSrc: null },
   { id: "call-recordings", label: "Call Recordings", videoSrc: "/feature-videos/call-recordings.mp4" },
