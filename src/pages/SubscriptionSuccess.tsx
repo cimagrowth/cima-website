@@ -1,6 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/seo/SEO";
-import { CheckCircle, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, Mail, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const SubscriptionSuccess = () => {
@@ -50,6 +52,20 @@ const SubscriptionSuccess = () => {
               style={{ border: "none" }}
               title="Book Onboarding Session"
             />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-center mt-10"
+          >
+            <Link to="/">
+              <Button variant="ghost" size="lg" className="group text-muted-foreground hover:text-foreground">
+                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                Back to Home
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
