@@ -1,17 +1,40 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Sparkles, Loader2, Settings } from "lucide-react";
+import { Check, ArrowRight, Sparkles, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/components/seo/schemas";
-import { useAuth } from "@/contexts/AuthContext";
-import { useCheckout, type CheckoutCustomerInfo } from "@/hooks/useCheckout";
-import PreCheckoutForm from "@/components/checkout/PreCheckoutForm";
+import { supabase } from "@/integrations/supabase/client";
 
 const Pricing = () => {
-  const { subscription, isCheckingSubscription } = useAuth();
-  const { isLoading, pendingPlan, initiateCheckout, cancelCheckout, handleCheckout, handleManageSubscription } = useCheckout();
+  const [whopUrls, setWhopUrls] = useState<{ monthly: string | null; annual: string | null }>({
+    monthly: null,
+    annual: null,
+  });
+  const [isLoadingUrls, setIsLoadingUrls] = useState(true);
+
+  useEffect(() => {
+    supabase
+      .from("website_settings")
+      .select("setting_key, setting_value")
+      .in("setting_key", ["whop_checkout_monthly_url", "whop_checkout_annual_url"])
+      .then(({ data }) => {
+        const urls = { monthly: null as string | null, annual: null as string | null };
+        data?.forEach((s) => {
+          if (s.setting_key === "whop_checkout_monthly_url") urls.monthly = s.setting_value;
+          if (s.setting_key === "whop_checkout_annual_url") urls.annual = s.setting_value;
+        });
+        setWhopUrls(urls);
+        setIsLoadingUrls(false);
+      });
+  }, []);
+
+  const handleSignup = (plan: "monthly" | "annual") => {
+    const url = plan === "monthly" ? whopUrls.monthly : whopUrls.annual;
+    if (url) window.location.href = url;
+  };
 
   const features = [
     "Custom-trained AI response and follow-up",
@@ -107,10 +130,6 @@ const Pricing = () => {
     },
   ];
 
-  const isCurrentPlan = (planKey: string) => {
-    return subscription.subscribed && subscription.plan === planKey;
-  };
-
   return (
     <Layout>
       <SEO
@@ -135,7 +154,7 @@ const Pricing = () => {
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
         <div className="container-wide relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -148,19 +167,6 @@ const Pricing = () => {
             <p className="text-body-lg text-muted-foreground">
               One plan. Full access. No hidden fees or per-lead charges.
             </p>
-            
-            {subscription.subscribed && (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-6 inline-flex items-center gap-2 bg-accent-orange/10 text-accent-orange px-4 py-2 rounded-full"
-              >
-                <Check className="w-4 h-4" />
-                <span className="font-medium">
-                  You're subscribed to the {subscription.plan} plan
-                </span>
-              </motion.div>
-            )}
           </motion.div>
         </div>
       </section>
@@ -176,20 +182,12 @@ const Pricing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className={`rounded-2xl p-8 md:p-10 relative transition-all duration-300 hover:-translate-y-2 ${
-                  isCurrentPlan(plan.planKey)
-                    ? "ring-2 ring-accent-orange bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-glow"
-                    : plan.popular
+                  plan.popular
                     ? "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-glow"
                     : "bg-card border-2 border-border shadow-card hover:shadow-elevated"
                 }`}
               >
-                {isCurrentPlan(plan.planKey) ? (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-accent-orange text-white text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-card">
-                      Your Plan
-                    </span>
-                  </div>
-                ) : plan.popular && (
+                {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="bg-accent-orange text-white text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-card">
                       Best Value
@@ -198,22 +196,22 @@ const Pricing = () => {
                 )}
 
                 <div className="mb-6">
-                  <h3 className={`text-heading-sm mb-2 ${plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground" : "text-foreground"}`}>
+                  <h3 className={`text-heading-sm mb-2 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
                     {plan.name}
                   </h3>
-                  <p className={`text-body-sm mb-6 ${plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  <p className={`text-body-sm mb-6 ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                     {plan.description}
                   </p>
-                  
+
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className={`text-display ${plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground" : "text-foreground"}`}>
+                    <span className={`text-display ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
                       {plan.price}
                     </span>
-                    <span className={plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground/70" : "text-muted-foreground"}>
+                    <span className={plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}>
                       {plan.period}
                     </span>
                   </div>
-                  <p className={plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground/70 text-body-sm font-medium" : "text-muted-foreground text-body-sm"}>
+                  <p className={plan.popular ? "text-primary-foreground/70 text-body-sm font-medium" : "text-muted-foreground text-body-sm"}>
                     {plan.setup}
                   </p>
 
@@ -240,71 +238,39 @@ const Pricing = () => {
                   {features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-3">
                       <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        plan.popular || isCurrentPlan(plan.planKey) ? "bg-accent-orange/20" : "bg-accent-orange/10"
+                        plan.popular ? "bg-accent-orange/20" : "bg-accent-orange/10"
                       }`}>
                         <Check className="w-3 h-3 text-accent-orange" />
                       </div>
-                      <span className={`text-body-sm ${plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground" : "text-foreground"}`}>
+                      <span className={`text-body-sm ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
                         {feature}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                {isCurrentPlan(plan.planKey) ? (
-                  <Button
-                    variant={plan.popular ? "hero" : "hero-outline"}
-                    size="lg"
-                    className={`w-full group ${plan.popular ? "bg-accent-orange hover:brightness-110" : ""}`}
-                    onClick={handleManageSubscription}
-                    disabled={!!isLoading || isCheckingSubscription}
-                  >
-                    {isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                    ) : (
-                      <Settings className="w-4 h-4 mr-2" />
-                    )}
-                    Manage Subscription
-                  </Button>
-                ) : subscription.subscribed ? (
-                  <Button
-                    variant={plan.popular ? "hero" : "hero-outline"}
-                    size="lg"
-                    className={`w-full group ${plan.popular ? "bg-accent-orange hover:brightness-110" : ""}`}
-                    onClick={handleManageSubscription}
-                    disabled={!!isLoading || isCheckingSubscription}
-                  >
-                    {isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                    ) : null}
-                    Switch Plan
-                  </Button>
-                ) : (
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    className={`w-full group ${
-                      plan.popular 
-                        ? "bg-accent-orange hover:brightness-110" 
-                        : "bg-primary hover:bg-primary-light"
-                    }`}
-                    onClick={() => initiateCheckout(plan.planKey)}
-                    disabled={!!isLoading || isCheckingSubscription}
-                  >
-                    {isLoading === plan.planKey ? (
-                      <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                    ) : null}
-                    {plan.cta}
-                    {isLoading !== plan.planKey && (
-                      <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    )}
-                  </Button>
-                )}
-                
-                <p className={`text-body-sm mt-3 text-center ${plan.popular || isCurrentPlan(plan.planKey) ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                  {isCurrentPlan(plan.planKey) 
-                    ? `Renews ${subscription.subscriptionEnd ? new Date(subscription.subscriptionEnd).toLocaleDateString() : "soon"}`
-                    : plan.ctaSubtext}
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className={`w-full group ${
+                    plan.popular
+                      ? "bg-accent-orange hover:brightness-110"
+                      : "bg-primary hover:bg-primary-light"
+                  }`}
+                  onClick={() => handleSignup(plan.planKey)}
+                  disabled={isLoadingUrls}
+                >
+                  {isLoadingUrls ? (
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                  ) : null}
+                  {plan.cta}
+                  {!isLoadingUrls && (
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  )}
+                </Button>
+
+                <p className={`text-body-sm mt-3 text-center ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                  {plan.ctaSubtext}
                 </p>
               </motion.div>
             ))}
@@ -315,7 +281,7 @@ const Pricing = () => {
       {/* Value proposition */}
       <section className="section-padding-sm bg-tan">
         <div className="container-wide">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -335,7 +301,7 @@ const Pricing = () => {
       {/* FAQ */}
       <section className="section-padding bg-background">
         <div className="container-tight">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -343,10 +309,10 @@ const Pricing = () => {
           >
             Common questions
           </motion.h2>
-          
+
           <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -366,9 +332,9 @@ const Pricing = () => {
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl" />
-        
+
         <div className="container-wide relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -377,41 +343,19 @@ const Pricing = () => {
             <h2 className="text-heading-lg text-primary-foreground mb-6">
               Ready to stop patient leakage?
             </h2>
-            {subscription.subscribed ? (
-              <Button 
-                variant="hero" 
-                size="xl" 
-                className="group shadow-glow"
-                onClick={handleManageSubscription}
-                disabled={!!isLoading}
-              >
-                {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <Settings className="w-5 h-5 mr-2" />}
-                Manage Subscription
-              </Button>
-            ) : (
-              <Button 
-                variant="hero" 
-                size="xl" 
-                className="group shadow-glow"
-                onClick={() => initiateCheckout("annual")}
-                disabled={!!isLoading}
-              >
-                {isLoading === "annual" ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : null}
-                Get Started
-                {!isLoading && <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />}
-              </Button>
-            )}
+            <Button
+              variant="hero"
+              size="xl"
+              className="group shadow-glow"
+              onClick={() => handleSignup("annual")}
+              disabled={isLoadingUrls}
+            >
+              Get Started
+              <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
           </motion.div>
         </div>
       </section>
-
-      <PreCheckoutForm
-        open={!!pendingPlan}
-        onClose={cancelCheckout}
-        onSubmit={(data) => pendingPlan && handleCheckout(pendingPlan, data)}
-        planName={pendingPlan === "annual" ? "Annual" : "Monthly"}
-        isLoading={!!isLoading}
-      />
     </Layout>
   );
 };

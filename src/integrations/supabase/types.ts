@@ -7,18 +7,16 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instantiate createClient with right options
-  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "14.1"
   }
   public: {
     Tables: {
-      blog_posts: {
+      website_blog_posts: {
         Row: {
           author_id: string | null
           content: string
-          created_at: string
+          created_at: string | null
           excerpt: string | null
           featured_image_url: string | null
           id: string
@@ -30,12 +28,12 @@ export type Database = {
           slug: string
           status: string
           title: string
-          updated_at: string
+          updated_at: string | null
         }
         Insert: {
           author_id?: string | null
           content: string
-          created_at?: string
+          created_at?: string | null
           excerpt?: string | null
           featured_image_url?: string | null
           id?: string
@@ -47,12 +45,12 @@ export type Database = {
           slug: string
           status?: string
           title: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Update: {
           author_id?: string | null
           content?: string
-          created_at?: string
+          created_at?: string | null
           excerpt?: string | null
           featured_image_url?: string | null
           id?: string
@@ -64,93 +62,130 @@ export type Database = {
           slug?: string
           status?: string
           title?: string
-          updated_at?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
-      demo_chat_messages: {
+      website_demo_messages: {
         Row: {
           content: string
-          created_at: string
+          created_at: string | null
           id: string
           role: string
           session_id: string
         }
         Insert: {
           content: string
-          created_at?: string
+          created_at?: string | null
           id?: string
           role: string
           session_id: string
         }
         Update: {
           content?: string
-          created_at?: string
+          created_at?: string | null
           id?: string
           role?: string
           session_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "demo_chat_messages_session_id_fkey"
-            columns: ["session_id"]
-            isOneToOne: false
-            referencedRelation: "demo_chat_sessions"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
-      demo_chat_sessions: {
+      website_demo_sessions: {
         Row: {
           business_name: string | null
-          clinic_type: Database["public"]["Enums"]["clinic_type"]
-          created_at: string
+          clinic_type: string | null
+          contact_id: string | null
+          conversation_summary: string | null
+          created_at: string | null
+          ended_at: string | null
           id: string
-          updated_at: string
+          updated_at: string | null
           visitor_email: string
           visitor_name: string
           visitor_phone: string
         }
         Insert: {
           business_name?: string | null
-          clinic_type?: Database["public"]["Enums"]["clinic_type"]
-          created_at?: string
+          clinic_type?: string | null
+          contact_id?: string | null
+          conversation_summary?: string | null
+          created_at?: string | null
+          ended_at?: string | null
           id?: string
-          updated_at?: string
+          updated_at?: string | null
           visitor_email: string
           visitor_name: string
           visitor_phone: string
         }
         Update: {
           business_name?: string | null
-          clinic_type?: Database["public"]["Enums"]["clinic_type"]
-          created_at?: string
+          clinic_type?: string | null
+          contact_id?: string | null
+          conversation_summary?: string | null
+          created_at?: string | null
+          ended_at?: string | null
           id?: string
-          updated_at?: string
+          updated_at?: string | null
           visitor_email?: string
           visitor_name?: string
           visitor_phone?: string
         }
         Relationships: []
       }
-      user_roles: {
+      website_settings: {
         Row: {
-          created_at: string
+          description: string | null
           id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
+          setting_key: string
+          setting_type: string | null
+          setting_value: string | null
+          updated_at: string | null
         }
         Insert: {
-          created_at?: string
+          description?: string | null
           id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
+          setting_key: string
+          setting_type?: string | null
+          setting_value?: string | null
+          updated_at?: string | null
         }
         Update: {
-          created_at?: string
+          description?: string | null
           id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
+          setting_key?: string
+          setting_type?: string | null
+          setting_value?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      agency_admins: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string | null
+          id: string
+          is_active: boolean | null
+          role: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          role?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          role?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -159,30 +194,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_demo_sessions_masked: {
-        Args: never
-        Returns: {
-          business_name: string
-          clinic_type: Database["public"]["Enums"]["clinic_type"]
-          created_at: string
-          id: string
-          updated_at: string
-          visitor_email_masked: string
-          visitor_name_masked: string
-          visitor_phone_masked: string
-        }[]
-      }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
-      clinic_type: "fertility" | "med_spa" | "regenerative" | "other"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -306,12 +321,3 @@ export type CompositeTypes<
   : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
     ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
-
-export const Constants = {
-  public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-      clinic_type: ["fertility", "med_spa", "regenerative", "other"],
-    },
-  },
-} as const

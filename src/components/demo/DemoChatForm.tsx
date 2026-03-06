@@ -11,7 +11,7 @@ interface DemoChatFormProps {
   onSessionCreated: (session: ChatSession) => void;
 }
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-chat`;
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-demo-chat`;
 
 const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
   const { toast } = useToast();

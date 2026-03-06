@@ -38,7 +38,7 @@ export function usePublishedPosts() {
     queryKey: ["blog-posts", "published"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .select("*")
         .eq("status", "published")
         .order("published_at", { ascending: false });
@@ -54,7 +54,7 @@ export function useAllPosts() {
     queryKey: ["blog-posts", "all"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .select("*")
         .order("created_at", { ascending: false });
 
@@ -69,7 +69,7 @@ export function usePostBySlug(slug: string) {
     queryKey: ["blog-posts", "slug", slug],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .select("*")
         .eq("slug", slug)
         .maybeSingle();
@@ -86,7 +86,7 @@ export function usePostById(id: string) {
     queryKey: ["blog-posts", "id", id],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .select("*")
         .eq("id", id)
         .maybeSingle();
@@ -106,7 +106,7 @@ export function useCreatePost() {
       const { data: { user } } = await supabase.auth.getUser();
       
       const { data, error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .insert({
           ...postData,
           author_id: user?.id,
@@ -137,7 +137,7 @@ export function useUpdatePost() {
       };
 
       const { data, error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .update(updateData)
         .eq("id", id)
         .select()
@@ -158,7 +158,7 @@ export function useDeletePost() {
   return useMutation({
     mutationFn: async (id: string) => {
       const { error } = await supabase
-        .from("blog_posts")
+        .from("website_blog_posts")
         .delete()
         .eq("id", id);
 

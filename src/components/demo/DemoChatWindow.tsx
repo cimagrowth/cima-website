@@ -18,7 +18,7 @@ interface DemoChatWindowProps {
   onNewMessage?: () => void;
 }
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-chat`;
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-demo-chat`;
 
 const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -238,6 +238,14 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
 
         try {
           const parsed = JSON.parse(jsonStr);
+          // Claude SSE format
+          if (parsed.type === "content_block_delta" && parsed.delta?.text) {
+            onDelta(parsed.delta.text);
+          } else if (parsed.type === "message_stop") {
+            streamDone = true;
+            break;
+          }
+          // OpenAI-compatible format fallback
           const content = parsed.choices?.[0]?.delta?.content as string | undefined;
           if (content) onDelta(content);
         } catch {
@@ -258,6 +266,9 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
         if (jsonStr === "[DONE]") continue;
         try {
           const parsed = JSON.parse(jsonStr);
+          if (parsed.type === "content_block_delta" && parsed.delta?.text) {
+            onDelta(parsed.delta.text);
+          }
           const content = parsed.choices?.[0]?.delta?.content as string | undefined;
           if (content) onDelta(content);
         } catch {
