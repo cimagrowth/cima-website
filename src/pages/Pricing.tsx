@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Sparkles, Loader2 } from "lucide-react";
@@ -94,7 +95,7 @@ const Pricing = () => {
     generateBreadcrumbSchema({
       items: [
         { name: "Home", url: "https://cimagrowth.com" },
-        { name: "Sign Up", url: "https://cimagrowth.com/sign-up" },
+        { name: "Pricing" },
       ],
     }),
     generateFAQSchema({ questions: faqItems }),
@@ -133,8 +134,8 @@ const Pricing = () => {
   return (
     <Layout>
       <SEO
-        title="Pricing – GrowthOS AI Patient Engagement Platform"
-        description="Simple, transparent pricing for GrowthOS. $999/month or $9,999/year with no setup fee. Unlimited leads, AI conversations & team members. No per-lead charges. Full access to all features."
+        title="Pricing – GrowthOS Plans for Clinics"
+        description="GrowthOS pricing: $999/month or $9,999/year. Unlimited leads, AI conversations & team members. No per-lead charges. Full platform access."
         ogImage="https://cimagrowth.com/og-pricing.png"
         keywords={[
           "GrowthOS pricing",
@@ -343,16 +344,26 @@ const Pricing = () => {
             <h2 className="text-heading-lg text-primary-foreground mb-6">
               Ready to stop patient leakage?
             </h2>
-            <Button
-              variant="hero"
-              size="xl"
-              className="group shadow-glow"
-              onClick={() => handleSignup("annual")}
-              disabled={isLoadingUrls}
-            >
-              Get Started
-              <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="hero"
+                size="xl"
+                className="group shadow-glow"
+                onClick={() => handleSignup("annual")}
+                disabled={isLoadingUrls}
+              >
+                Get Started
+                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Link to="/demo">
+                <Button variant="hero-outline" size="xl" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+                  Book a Demo First
+                </Button>
+              </Link>
+            </div>
+            <p className="text-primary-foreground/60 text-sm mt-6">
+              Want to learn more? <Link to="/product" className="underline hover:text-primary-foreground">See how GrowthOS works</Link> or <Link to="/features" className="underline hover:text-primary-foreground">explore all features</Link>.
+            </p>
           </motion.div>
         </div>
       </section>

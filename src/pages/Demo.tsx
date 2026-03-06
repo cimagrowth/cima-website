@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -80,8 +81,8 @@ const Demo = () => {
   const schemas = [
     generateBreadcrumbSchema({
       items: [
-        { name: "Home", url: "https://inquiry-to-consult.lovable.app" },
-        { name: "Book a Demo", url: "https://inquiry-to-consult.lovable.app/demo" },
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Book a Demo" },
       ],
     }),
     generateServiceSchema({
@@ -93,8 +94,8 @@ const Demo = () => {
   return (
     <Layout>
       <SEO
-        title="Book a Demo – See GrowthOS AI Patient Engagement in Action"
-        description="Schedule a 30-minute walkthrough of GrowthOS. Watch AI respond to patient inquiries in real-time across web, phone, text & social. See pipelines, automations & unified inbox. Free consultation for fertility clinics, med spas & regenerative medicine."
+        title="Book a Demo – See GrowthOS in Action"
+        description="Schedule a 30-minute GrowthOS walkthrough. Watch AI respond to patient inquiries in real-time across web, phone, text & social. Free consultation."
         ogImage="https://cimagrowth.com/og-demo.png"
         keywords={[
           "GrowthOS demo",
@@ -106,7 +107,7 @@ const Demo = () => {
           "fertility clinic software demo",
           "patient follow-up automation demo",
         ]}
-        canonical="https://inquiry-to-consult.lovable.app/demo"
+        canonical="https://cimagrowth.com/demo"
       />
       <JsonLd schema={schemas} />
       
@@ -166,6 +167,9 @@ const Demo = () => {
                 </p>
                 <p className="text-body-sm text-muted-foreground">
                   <span className="font-medium text-foreground">Onboarding:</span> 24–48 hours with a real person guiding you.
+                </p>
+                <p className="text-body-sm text-muted-foreground mt-3">
+                  Already know what you need? <Link to="/sign-up" className="text-accent-orange hover:underline">View pricing and get started</Link>. Want to explore first? <Link to="/product" className="text-accent-orange hover:underline">See the full platform</Link> or <Link to="/features" className="text-accent-orange hover:underline">browse all features</Link>.
                 </p>
               </motion.div>
             </motion.div>

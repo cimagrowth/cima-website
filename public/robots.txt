@@ -1,6 +1,18 @@
 # GrowthOS by Cima Growth Solutions
 # https://cimagrowth.com
 
+# Default - Allow all except restricted paths
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /success
+Disallow: /ads-access
+Disallow: /home-6335
+Disallow: /demo870629
+Disallow: /demo-4386
+Disallow: /calendar-4597
+
 # Traditional Search Engines
 User-agent: Googlebot
 Allow: /
@@ -18,11 +30,11 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# AI Crawlers - Explicitly Allowed
-User-agent: GPTBot
+# AI Retrieval Crawlers - Allowed
+User-agent: ChatGPT-User
 Allow: /
 
-User-agent: ChatGPT-User
+User-agent: PerplexityBot
 Allow: /
 
 User-agent: Claude-Web
@@ -34,25 +46,19 @@ Allow: /
 User-agent: Anthropic-AI
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Cohere-AI
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
+# AI Training Crawlers - Blocked
+User-agent: GPTBot
+Disallow: /
 
 User-agent: CCBot
-Allow: /
+Disallow: /
 
-# Default - Allow all except admin
-User-agent: *
-Allow: /
-Disallow: /admin/
+User-agent: Google-Extended
+Disallow: /
 
 # Sitemap location
 Sitemap: https://cimagrowth.com/sitemap.xml
+Host: https://cimagrowth.com
 
 # LLM-specific content files
 # llms.txt - Concise product summary for AI systems

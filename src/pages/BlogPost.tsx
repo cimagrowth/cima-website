@@ -72,7 +72,7 @@ const BlogPost = () => {
       items: [
         { name: "Home", url: "https://cimagrowth.com" },
         { name: "Blog", url: "https://cimagrowth.com/blog" },
-        { name: post.title, url: postUrl },
+        { name: post.title },
       ],
     }),
     generateArticleSchema({

@@ -1,15 +1,28 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema } from "@/components/seo/schemas";
 
 const TermsOfService = () => {
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Terms of Service" },
+      ],
+    }),
+  ];
+
   return (
     <Layout>
       <SEO
         title="Terms of Service"
-        description="Terms of Service and Master Services Agreement for Cima Growth Solutions GrowthOS platform."
+        description="Terms of Service and Master Services Agreement for the GrowthOS platform by Cima Growth Solutions. Covers SaaS access, HIPAA compliance, and data handling."
+        keywords={["terms of service", "GrowthOS terms", "Cima Growth Solutions agreement"]}
         canonical="https://cimagrowth.com/terms"
         ogImage="https://cimagrowth.com/og-terms.png"
       />
+      <JsonLd schema={schemas} />
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">Terms of Service and Master Services Agreement</h1>

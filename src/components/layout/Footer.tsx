@@ -12,12 +12,12 @@ const Footer = () => {
       { label: "Demo", href: "/demo" },
     ],
     company: [
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/demo" },
+      { label: "Contact Us", href: "/demo" },
+      { label: "Blog", href: "/blog" },
     ],
     resources: [
       { label: "AI Studio", href: "https://www.CimaAIStudio.com", external: true },
-      { label: "Blog", href: "/blog", external: false },
+      { label: "Product", href: "/product", external: false },
     ],
   };
 
@@ -38,7 +38,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img 
                 src={cimaLogoDark} 
-                alt="Cima" 
+                alt="Cima Growth Solutions logo" 
                 className="h-9 md:h-10 w-auto"
               />
             </Link>

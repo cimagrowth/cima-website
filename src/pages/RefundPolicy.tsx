@@ -1,15 +1,28 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema } from "@/components/seo/schemas";
 
 const RefundPolicy = () => {
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Refund Policy" },
+      ],
+    }),
+  ];
+
   return (
     <Layout>
       <SEO
         title="Refund Policy"
-        description="Refund Policy for Cima Growth Solutions GrowthOS subscriptions and associated services."
+        description="Refund and cancellation policy for GrowthOS subscriptions by Cima Growth Solutions. 14-day cancellation window, conditions, and chargeback procedures."
+        keywords={["refund policy", "GrowthOS cancellation", "subscription refund"]}
         canonical="https://cimagrowth.com/refund-policy"
         ogImage="https://cimagrowth.com/og-refund.png"
       />
+      <JsonLd schema={schemas} />
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">Refund Policy</h1>
