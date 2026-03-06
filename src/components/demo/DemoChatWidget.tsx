@@ -6,7 +6,7 @@ import { useVisitor } from "@/contexts/VisitorContext";
 import DemoChatForm from "./DemoChatForm";
 import DemoChatWindow from "./DemoChatWindow";
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-chat`;
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-demo-chat`;
 const INACTIVITY_TIMEOUT_MS = 2 * 60 * 1000; // 2 minutes
 
 export interface ChatSession {
