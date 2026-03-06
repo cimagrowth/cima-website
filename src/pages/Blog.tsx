@@ -18,7 +18,7 @@ const Blog = () => {
     generateBreadcrumbSchema({
       items: [
         { name: "Home", url: "https://cimagrowth.com" },
-        { name: "Blog", url: "https://cimagrowth.com/blog" },
+        { name: "Blog" },
       ],
     }),
     {
@@ -38,8 +38,8 @@ const Blog = () => {
   return (
     <Layout>
       <SEO
-        title="Blog – Insights for Clinic Growth | GrowthOS"
-        description="Expert strategies, industry insights, and actionable advice for fertility clinics, med spas, wellness centers, and regenerative medicine clinics. Learn patient engagement best practices and clinic growth strategies."
+        title="Blog – Healthcare Marketing Insights"
+        description="Expert strategies and actionable advice for fertility clinics, med spas, and regenerative medicine. Patient engagement best practices and growth tips."
         ogImage="https://cimagrowth.com/og-blog.png"
         keywords={[
           "clinic growth strategies",

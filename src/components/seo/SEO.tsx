@@ -18,7 +18,7 @@ interface SEOProps {
   children?: React.ReactNode;
 }
 
-const SITE_NAME = "GrowthOS by Cima Growth Solutions";
+const SITE_NAME = "Cima Growth Solutions";
 const DEFAULT_OG_IMAGE = "https://cimagrowth.com/og-image.png";
 const SITE_URL = "https://cimagrowth.com";
 
@@ -33,7 +33,7 @@ const SEO = ({
   noindex = false,
   children,
 }: SEOProps) => {
-  const fullTitle = title.includes("GrowthOS") ? title : `${title} | ${SITE_NAME}`;
+  const fullTitle = title.includes("Cima Growth") ? title : `${title} – ${SITE_NAME}`;
   const canonicalUrl = canonical || (typeof window !== "undefined" ? window.location.href : SITE_URL);
 
   return (

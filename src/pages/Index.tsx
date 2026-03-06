@@ -28,8 +28,8 @@ const Index = () => {
   return (
     <Layout>
       <SEO
-        title="GrowthOS – AI Patient Engagement Platform for Healthcare Clinics"
-        description="Stop patient leakage with GrowthOS. AI-powered patient engagement that responds instantly across web, phone, text, email & social media. Built for fertility clinics, med spas, wellness centers & regenerative medicine. Live in 24-48 hours."
+        title="AI Patient Engagement for Healthcare Clinics – Cima Growth Solutions"
+        description="GrowthOS responds instantly to patient inquiries across web, phone, text, email & social. AI-powered engagement for fertility clinics and med spas."
         keywords={[
           "patient engagement software",
           "healthcare CRM",

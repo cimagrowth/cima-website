@@ -11,7 +11,7 @@ const JsonLd = ({ schema }: JsonLdProps) => {
     <Helmet>
       {schemas.map((s, index) => (
         <script key={index} type="application/ld+json">
-          {JSON.stringify(s)}
+          {JSON.stringify(s).replace(/</g, '\\u003c')}
         </script>
       ))}
     </Helmet>

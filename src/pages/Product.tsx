@@ -91,7 +91,7 @@ const Product = () => {
     generateBreadcrumbSchema({
       items: [
         { name: "Home", url: "https://cimagrowth.com" },
-        { name: "Product", url: "https://cimagrowth.com/product" },
+        { name: "Product" },
       ],
     }),
     generateSoftwareSchema({
@@ -104,8 +104,8 @@ const Product = () => {
   return (
     <Layout>
       <SEO
-        title="Product – GrowthOS AI Patient Engagement & CRM Platform"
-        description="Explore GrowthOS features: AI-powered instant response, automated patient nurturing, unified inbox, pipeline management, reactivation campaigns & reporting. Works with Salesforce, HubSpot, Zoho or standalone."
+        title="GrowthOS Platform – AI Follow-Up Engine for Clinics"
+        description="Explore GrowthOS: AI instant response, automated nurturing, unified inbox, pipeline management, and reporting. Works with Salesforce, HubSpot, or standalone."
         ogImage="https://cimagrowth.com/og-product.png"
         keywords={[
           "GrowthOS features",

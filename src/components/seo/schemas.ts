@@ -15,22 +15,35 @@ export interface OrganizationSchemaProps {
 export const generateOrganizationSchema = ({
   name = COMPANY_NAME,
   url = SITE_URL,
-  logo = `${SITE_URL}/cima-logo.png`,
-  description = "AI-powered patient engagement platform for healthcare clinics",
+  logo = `${SITE_URL}/og-image.png`,
+  description = "AI-powered patient engagement and marketing automation platform for fertility clinics, med spas, and regenerative medicine practices.",
   sameAs = [],
 }: OrganizationSchemaProps = {}) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
   name,
   url,
-  logo,
+  logo: {
+    "@type": "ImageObject",
+    url: logo,
+  },
   description,
   sameAs,
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
+    email: "support@cimagrowth.com",
     availableLanguage: "English",
   },
+  areaServed: "United States",
+  knowsAbout: [
+    "Patient Engagement",
+    "Healthcare Marketing Automation",
+    "Fertility Clinic Marketing",
+    "Regenerative Medicine Marketing",
+    "HIPAA Compliant CRM",
+  ],
 });
 
 export interface WebsiteSchemaProps {
@@ -46,16 +59,20 @@ export const generateWebsiteSchema = ({
 }: WebsiteSchemaProps = {}) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name,
   url,
   description,
-  publisher: generateOrganizationSchema(),
+  publisher: {
+    "@id": `${SITE_URL}/#organization`,
+  },
 });
 
 export interface SoftwareApplicationSchemaProps {
   name?: string;
   description?: string;
   applicationCategory?: string;
+  applicationSubCategory?: string;
   operatingSystem?: string;
   image?: string;
   offers?: {
@@ -68,15 +85,18 @@ export const generateSoftwareSchema = ({
   name = PRODUCT_NAME,
   description = "AI-powered patient engagement platform that responds instantly across every channel—web, phone, text, email, WhatsApp, and social media—then nurtures leads until your team steps in.",
   applicationCategory = "BusinessApplication",
+  applicationSubCategory = "Healthcare Marketing Automation",
   operatingSystem = "Web, iOS, Android",
   image = `${SITE_URL}/og-image.png`,
   offers = { price: "999", priceCurrency: "USD" },
 }: SoftwareApplicationSchemaProps = {}) => ({
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  "@id": `${SITE_URL}/#application`,
   name,
   description,
   applicationCategory,
+  applicationSubCategory,
   operatingSystem,
   image,
   offers: {
@@ -85,7 +105,18 @@ export const generateSoftwareSchema = ({
     priceCurrency: offers.priceCurrency,
     priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
   },
-  provider: generateOrganizationSchema(),
+  provider: {
+    "@id": `${SITE_URL}/#organization`,
+  },
+  featureList: [
+    "AI-Powered Instant Response",
+    "Multi-Channel Patient Communication",
+    "Automated Lead Nurturing",
+    "Unified Inbox",
+    "Pipeline Management",
+    "Reactivation Campaigns",
+    "HIPAA Compliant",
+  ],
 });
 
 export interface ArticleSchemaProps {
@@ -118,10 +149,13 @@ export const generateArticleSchema = ({
   dateModified: dateModified || datePublished,
   author: {
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: author,
     url: SITE_URL,
   },
-  publisher: generateOrganizationSchema(),
+  publisher: {
+    "@id": `${SITE_URL}/#organization`,
+  },
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": url,
@@ -147,18 +181,25 @@ export const generateFAQSchema = ({ questions }: FAQSchemaProps) => ({
 });
 
 export interface BreadcrumbSchemaProps {
-  items: Array<{ name: string; url: string }>;
+  items: Array<{ name: string; url?: string }>;
 }
 
 export const generateBreadcrumbSchema = ({ items }: BreadcrumbSchemaProps) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: items.map((item, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: item.name,
-    item: item.url,
-  })),
+  itemListElement: items.map((item, index) => {
+    const isLast = index === items.length - 1;
+    const entry: Record<string, unknown> = {
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+    };
+    // Last item should NOT include "item" URL per spec
+    if (!isLast && item.url) {
+      entry.item = item.url;
+    }
+    return entry;
+  }),
 });
 
 export interface ServiceSchemaProps {
@@ -182,11 +223,13 @@ export const generateServiceSchema = ({
   description,
   provider: {
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: provider,
   },
   areaServed,
   serviceType,
+  audience: {
+    "@type": "Audience",
+    audienceType: "Fertility Clinics and Reproductive Medicine Practices",
+  },
 });
-
-// LocalBusinessSchema removed - not appropriate for SaaS companies without physical locations
-// Use Organization and SoftwareApplication schemas instead

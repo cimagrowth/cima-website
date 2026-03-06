@@ -104,7 +104,7 @@ const Header = () => {
               />
               <img 
                 src={resolvedTheme === "dark" ? cimaLogoDark : cimaLogoLight} 
-                alt="Cima" 
+                alt="Cima Growth Solutions logo" 
                 className="h-8 md:h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105"
               />
             </motion.div>

@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/seo/SEO";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateBreadcrumbSchema, generateSoftwareSchema } from "@/components/seo/schemas";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -36,15 +38,29 @@ const Features = () => {
 
   const current = features.find((f) => f.id === activeFeature)!;
 
+  const schemas = [
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "Features" },
+      ],
+    }),
+    generateSoftwareSchema({
+      name: "GrowthOS",
+      description: "All-in-one clinic growth platform with workflows, calendars, invoicing, conversations, pipelines, reviews, social media planning, and more.",
+    }),
+  ];
+
   return (
     <Layout>
       <SEO
-        title="What's Inside GrowthOS"
-        description="Explore GrowthOS features — workflows, calendars, invoicing, conversations, and more. See each tool in action."
+        title="GrowthOS Features – Workflows, CRM & Automation Tools"
+        description="See every GrowthOS tool in action: workflows, calendars, invoicing, conversations, pipelines, and more. One platform to run your clinic's growth engine."
         keywords={["GrowthOS features", "clinic CRM", "patient management", "healthcare automation"]}
         canonical="https://cimagrowth.com/features"
         ogImage="https://cimagrowth.com/og-product.png"
       />
+      <JsonLd schema={schemas} />
 
       <section className="py-12 md:py-20">
         <div className="container-wide">
@@ -129,6 +145,15 @@ const Features = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-12 md:py-16 bg-tan">
+        <div className="container-wide text-center">
+          <p className="text-muted-foreground mb-4">
+            Ready to see GrowthOS in your clinic? <Link to="/product" className="text-accent-orange hover:underline font-medium">Learn how the AI engine works</Link> or <Link to="/sign-up" className="text-accent-orange hover:underline font-medium">view pricing</Link>.
+          </p>
         </div>
       </section>
     </Layout>
