@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/((?!api|_next|favicon|og-|blog-images|feature-videos|llms|robots|sitemap|placeholder).*)", "destination": "/index.html" }
+    { "source": "/((?!api|_next|favicon|og-|blog-images|feature-videos|llms|robots|sitemap|placeholder).*)", "destination": "/_spa-fallback.html" }
   ],
   "redirects": [
     {
