@@ -34,6 +34,7 @@ const Header = () => {
     { href: "/features", label: "What's Inside" },
     { href: "/#solution", label: "Solution", isAnchor: true },
     { href: "/blog", label: "Blog" },
+    { href: "/outreach", label: "Outreach Engine" },
     { href: "/sign-up", label: "Sign Up" },
   ];
 
