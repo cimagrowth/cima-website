@@ -7,7 +7,6 @@ import IntegrationFlexibility from "@/components/home/IntegrationFlexibility";
 import HowItWorks from "@/components/home/HowItWorks";
 import Authority from "@/components/home/Authority";
 import UseCases from "@/components/home/UseCases";
-import AIStudio from "@/components/home/AIStudio";
 import FounderLetter from "@/components/home/FounderLetter";
 import FinalCTA from "@/components/home/FinalCTA";
 import SEO from "@/components/seo/SEO";
@@ -57,7 +56,6 @@ const Index = () => {
       <HowItWorks />
       <Authority />
       <UseCases />
-      <AIStudio />
       <FounderLetter />
       <FinalCTA />
     </Layout>
