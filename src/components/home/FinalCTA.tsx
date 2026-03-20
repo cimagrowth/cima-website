@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -51,16 +50,16 @@ const FinalCTA = () => {
               </>
             )}
           </h2>
-          <Link to="/demo" className="inline-block">
-            <Button 
-              variant="hero" 
-              size="lg" 
+          <a href="https://os.cimagrowth.com/demo/register" className="inline-block">
+            <Button
+              variant="hero"
+              size="lg"
               className="group shadow-glow bg-accent-orange hover:brightness-110 text-base md:size-xl"
             >
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>

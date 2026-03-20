@@ -1,121 +1,150 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Check, Zap, MessageCircle, UserCheck, BarChart3, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { Check, ArrowRight, ShieldCheck, Zap, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateBreadcrumbSchema, generateServiceSchema } from "@/components/seo/schemas";
 
-const Demo = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    clinicName: "",
-    phone: "",
-    message: "",
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const GROWTHANOS_URL = "https://momssbzlofjodqodvvvk.supabase.co";
+const ANON_KEY = import.meta.env.VITE_GROWTHANOS_ANON_KEY as string;
+const FORM_ID = "059ef2d4-830d-403d-831f-23c4d82a91a6";
 
-  const benefits = [
-    { icon: Zap, text: "See the AI respond across channels in real time" },
-    { icon: MessageCircle, text: "Watch lead nurturing and stage progression" },
-    { icon: UserCheck, text: "Explore the unified inbox and staff alerts" },
-    { icon: BarChart3, text: "Review pipelines, automations, and reporting" },
-  ];
+const industryOptions = [
+  "Healthcare/Medical",
+  "SaaS/Technology",
+  "Agency/Consulting",
+  "Finance",
+  "Real Estate",
+  "E-commerce",
+  "Legal",
+  "Other",
+];
+
+const primaryGoalOptions = [
+  "Need more leads/patients",
+  "Poor conversion rates",
+  "No outreach system",
+  "Marketing is too manual",
+  "Cannot track ROI",
+  "Other",
+];
+
+type FormData = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  company_name: string;
+  company_website: string;
+  industry: string;
+  role: string;
+  primary_goal: string;
+};
+
+const Demo = () => {
+  const [formData, setFormData] = useState<FormData>({
+    first_name: "",
+    last_name: "",
+    email: "",
+    company_name: "",
+    company_website: "",
+    industry: "",
+    role: "",
+    primary_goal: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Fire webhook via edge function to capture lead
+    setIsSubmitting(true);
+    setError(null);
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/demo-webhook`, {
+      const params = new URLSearchParams(window.location.search);
+      const response = await fetch(`${GROWTHANOS_URL}/functions/v1/form-submit`, {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          apikey: ANON_KEY,
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          clinicName: formData.clinicName,
-          message: formData.message,
-          source: "demo_form",
-          submittedAt: new Date().toISOString(),
+          form_id: FORM_ID,
+          data: {
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            email: formData.email,
+            company_name: formData.company_name,
+            company_website: formData.company_website,
+            industry: formData.industry,
+            role: formData.role,
+            primary_goal: formData.primary_goal,
+          },
+          source_url: window.location.href,
+          utm_source: params.get("utm_source"),
+          utm_medium: params.get("utm_medium"),
+          utm_campaign: params.get("utm_campaign"),
         }),
       });
+
       const result = await response.json();
-      console.log("Webhook result:", result);
-    } catch (error) {
-      console.error("Webhook error:", error);
+
+      if (result.verification_sent) {
+        window.location.href = `https://os.cimagrowth.com/demo/verify?email=${encodeURIComponent(formData.email)}`;
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Failed to submit. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    setIsSubmitted(true);
-  };
-
-  // Build calendar URL with query params
-  const getCalendarUrl = () => {
-    const nameParts = formData.name.trim().split(" ");
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || "";
-    
-    const params = new URLSearchParams({
-      first_name: firstName,
-      last_name: lastName,
-      email: formData.email,
-      phone: formData.phone,
-      clinic_name: formData.clinicName,
-    });
-    
-    return `https://link.cimagrowth.com/widget/booking/4d4O0MaPjlOVoYlc3wS7?${params.toString()}`;
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const schemas = [
     generateBreadcrumbSchema({
       items: [
         { name: "Home", url: "https://cimagrowth.com" },
-        { name: "Book a Demo" },
+        { name: "Interactive Demo" },
       ],
     }),
     generateServiceSchema({
-      name: "GrowthOS Demo & Consultation",
-      description: "Book a 30-minute walkthrough to see GrowthOS handle real patient inquiries with AI-powered engagement and follow-up automation.",
+      name: "GrowthOS Interactive Demo",
+      description: "See GrowthOS in action with a voice-guided interactive demo. No sales call required. Answer a few questions, verify your email, and explore the full platform.",
     }),
   ];
 
   return (
     <Layout>
       <SEO
-        title="Book a Demo – See GrowthOS in Action"
-        description="Schedule a 30-minute GrowthOS walkthrough. Watch AI respond to patient inquiries in real-time across web, phone, text & social. Free consultation."
+        title="See GrowthOS in Action – Interactive Demo"
+        description="No sales call required. Answer a few questions, verify your email, and explore GrowthOS with a voice-guided interactive tour. Free, instant access."
         ogImage="https://cimagrowth.com/og-demo.png"
         keywords={[
           "GrowthOS demo",
+          "interactive demo",
           "healthcare CRM demo",
           "patient engagement demo",
           "AI healthcare software trial",
-          "clinic software consultation",
-          "med spa CRM demo",
-          "fertility clinic software demo",
-          "patient follow-up automation demo",
+          "clinic software demo",
         ]}
         canonical="https://cimagrowth.com/demo"
       />
       <JsonLd schema={schemas} />
-      
+
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
         <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent-orange/10 rounded-full blur-3xl animate-float delay-300" />
-        
+
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left Content */}
@@ -125,21 +154,25 @@ const Demo = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-                See GrowthOS handle real patient inquiries{" "}
-                <span className="text-gradient-accent">in real time.</span>
+                See GrowthOS{" "}
+                <span className="text-gradient-accent">in Action</span>
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
-                Book a 30-minute walkthrough with our team. We'll learn about your clinic, 
-                then show you the platform, the AI, and how leads move from first touch to booked consult.
+                Interactive Demo — No Sales Call Required. Answer a few
+                questions, verify your email, and explore the full platform
+                with a voice-guided tour.
               </p>
 
-              <h3 className="text-heading-sm text-foreground mb-6">What you'll see:</h3>
               <div className="space-y-4 mb-10">
-                {benefits.map((benefit, index) => {
-                  const Icon = benefit.icon;
+                {[
+                  { icon: Zap, text: "Instant AI response across every channel" },
+                  { icon: Clock, text: "Voice-guided tour at your own pace" },
+                  { icon: Check, text: "See real pipelines, automations, and reporting" },
+                ].map((item, index) => {
+                  const Icon = item.icon;
                   return (
-                    <motion.div 
-                      key={index} 
+                    <motion.div
+                      key={index}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
@@ -148,34 +181,42 @@ const Demo = () => {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary to-primary-light flex items-center justify-center flex-shrink-0 shadow-card">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <span className="text-body text-foreground font-medium">{benefit.text}</span>
+                      <span className="text-body text-foreground font-medium">
+                        {item.text}
+                      </span>
                     </motion.div>
                   );
                 })}
               </div>
 
-              <motion.div 
+              {/* Trust badges */}
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="p-6 rounded-xl bg-accent/50 border border-border"
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex flex-wrap gap-3"
               >
-                <p className="text-body text-muted-foreground mb-3">
-                  <span className="font-medium text-foreground">What happens next:</span> You'll speak with a GrowthOS specialist 
-                  (not a salesperson). We'll learn about your clinic setup, then walk you through 
-                  the tools, workflows, and AI so you can see exactly how it functions.
-                </p>
-                <p className="text-body-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">Onboarding:</span> 24–48 hours with a real person guiding you.
-                </p>
-                <p className="text-body-sm text-muted-foreground mt-3">
-                  Already know what you need? <Link to="/sign-up" className="text-accent-orange hover:underline">View pricing and get started</Link>. Want to explore first? <Link to="/product" className="text-accent-orange hover:underline">See the full platform</Link> or <Link to="/features" className="text-accent-orange hover:underline">browse all features</Link>.
-                </p>
+                {[
+                  { icon: ShieldCheck, text: "No credit card required" },
+                  { icon: Zap, text: "2-minute setup" },
+                  { icon: Clock, text: "Voice-guided tour" },
+                ].map((badge, index) => {
+                  const Icon = badge.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/50 border border-border text-body-sm text-foreground font-medium"
+                    >
+                      <Icon className="w-4 h-4 text-accent-orange" />
+                      {badge.text}
+                    </div>
+                  );
+                })}
               </motion.div>
             </motion.div>
 
             {/* Right Form */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -183,110 +224,199 @@ const Demo = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-accent-orange via-secondary to-primary rounded-2xl blur-sm opacity-20" />
               <div className="relative card-elevated p-8 md:p-10">
-                {isSubmitted ? (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="py-2"
-                  >
-                    <h3 className="text-heading-sm text-foreground mb-4 text-center">Select a Time</h3>
-                    <div className="w-full h-[700px] overflow-auto">
-                      <iframe 
-                        src={getCalendarUrl()} 
-                        style={{ width: "100%", border: "none", minHeight: "700px", height: "100%" }}
-                        scrolling="yes"
-                        title="Book a Demo"
+                <h2 className="text-heading text-foreground mb-6">
+                  Get Instant Demo Access
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="first_name"
+                        className="block text-body-sm font-medium text-foreground mb-2"
+                      >
+                        First Name <span className="text-accent-orange">*</span>
+                      </label>
+                      <Input
+                        id="first_name"
+                        name="first_name"
+                        type="text"
+                        required
+                        placeholder="John"
+                        value={formData.first_name}
+                        onChange={handleChange}
+                        className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
                       />
                     </div>
-                  </motion.div>
-                ) : (
-                  <>
-                    <h2 className="text-heading text-foreground mb-6">Book My Demo</h2>
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div>
-                        <label htmlFor="name" className="block text-body-sm font-medium text-foreground mb-2">
-                          Your name
-                        </label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
-                        />
-                      </div>
+                    <div>
+                      <label
+                        htmlFor="last_name"
+                        className="block text-body-sm font-medium text-foreground mb-2"
+                      >
+                        Last Name <span className="text-accent-orange">*</span>
+                      </label>
+                      <Input
+                        id="last_name"
+                        name="last_name"
+                        type="text"
+                        required
+                        placeholder="Smith"
+                        value={formData.last_name}
+                        onChange={handleChange}
+                        className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
+                      />
+                    </div>
+                  </div>
 
-                      <div>
-                        <label htmlFor="email" className="block text-body-sm font-medium text-foreground mb-2">
-                          Email address
-                        </label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
-                        />
-                      </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      Work Email <span className="text-accent-orange">*</span>
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="john@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
+                    />
+                  </div>
 
-                      <div>
-                        <label htmlFor="clinicName" className="block text-body-sm font-medium text-foreground mb-2">
-                          Clinic name
-                        </label>
-                        <Input
-                          id="clinicName"
-                          name="clinicName"
-                          type="text"
-                          required
-                          value={formData.clinicName}
-                          onChange={handleChange}
-                          className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
-                        />
-                      </div>
+                  <div>
+                    <label
+                      htmlFor="company_name"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      Company Name <span className="text-accent-orange">*</span>
+                    </label>
+                    <Input
+                      id="company_name"
+                      name="company_name"
+                      type="text"
+                      required
+                      placeholder="Acme Corp"
+                      value={formData.company_name}
+                      onChange={handleChange}
+                      className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
+                    />
+                  </div>
 
-                      <div>
-                        <label htmlFor="phone" className="block text-body-sm font-medium text-foreground mb-2">
-                          Phone number <span className="text-muted-foreground">(optional)</span>
-                        </label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
-                        />
-                      </div>
+                  <div>
+                    <label
+                      htmlFor="company_website"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      Company Website{" "}
+                      <span className="text-muted-foreground">(optional)</span>
+                    </label>
+                    <Input
+                      id="company_website"
+                      name="company_website"
+                      type="url"
+                      placeholder="https://acmecorp.com"
+                      value={formData.company_website}
+                      onChange={handleChange}
+                      className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
+                    />
+                  </div>
 
-                      <div>
-                        <label htmlFor="message" className="block text-body-sm font-medium text-foreground mb-2">
-                          Anything specific you'd like to discuss? <span className="text-muted-foreground">(optional)</span>
-                        </label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          rows={3}
-                          value={formData.message}
-                          onChange={handleChange}
-                          className="border-border focus:border-accent-orange focus:ring-accent-orange"
-                        />
-                      </div>
+                  <div>
+                    <label
+                      htmlFor="industry"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      Industry <span className="text-accent-orange">*</span>
+                    </label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      required
+                      value={formData.industry}
+                      onChange={handleChange}
+                      className="w-full h-12 px-3 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange"
+                    >
+                      <option value="" disabled>
+                        Select your industry
+                      </option>
+                      {industryOptions.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                      <Button variant="hero" size="xl" type="submit" className="w-full group">
-                        Book a Time
-                        <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                      </Button>
+                  <div>
+                    <label
+                      htmlFor="role"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      Your Role{" "}
+                      <span className="text-muted-foreground">(optional)</span>
+                    </label>
+                    <Input
+                      id="role"
+                      name="role"
+                      type="text"
+                      placeholder="Marketing Director"
+                      value={formData.role}
+                      onChange={handleChange}
+                      className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
+                    />
+                  </div>
 
-                      <p className="text-body-sm text-muted-foreground text-center">
-                        See the AI + platform together. No pressure.
-                      </p>
-                    </form>
-                  </>
-                )}
+                  <div>
+                    <label
+                      htmlFor="primary_goal"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      What is your #1 growth challenge?{" "}
+                      <span className="text-accent-orange">*</span>
+                    </label>
+                    <select
+                      id="primary_goal"
+                      name="primary_goal"
+                      required
+                      value={formData.primary_goal}
+                      onChange={handleChange}
+                      className="w-full h-12 px-3 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange"
+                    >
+                      <option value="" disabled>
+                        Select your top challenge
+                      </option>
+                      {primaryGoalOptions.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {error && (
+                    <p className="text-sm text-red-500 text-center">{error}</p>
+                  )}
+
+                  <Button
+                    variant="hero"
+                    size="xl"
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full group"
+                  >
+                    {isSubmitting ? "Submitting..." : "Get Demo Access"}
+                    {!isSubmitting && (
+                      <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    )}
+                  </Button>
+
+                  <p className="text-body-sm text-muted-foreground text-center">
+                    Check your email for a verification code. No credit card required.
+                  </p>
+                </form>
               </div>
             </motion.div>
           </div>

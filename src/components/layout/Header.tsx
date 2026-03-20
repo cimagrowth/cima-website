@@ -172,11 +172,11 @@ const Header = () => {
                 </Button>
               </a>
             ) : (
-              <Link to="/demo">
+              <a href="https://os.cimagrowth.com/demo/register">
                 <Button variant="hero" size="default">
                   Book a Demo
                 </Button>
-              </Link>
+              </a>
             )}
           </div>
 
@@ -253,11 +253,11 @@ const Header = () => {
               </Button>
             </a>
           ) : (
-            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
+            <a href="https://os.cimagrowth.com/demo/register" onClick={() => setIsMobileMenuOpen(false)} className="mt-2 block">
               <Button variant="hero" size="lg" className="w-full text-base">
                 Book a Demo
               </Button>
-            </Link>
+            </a>
           )}
         </nav>
       </div>

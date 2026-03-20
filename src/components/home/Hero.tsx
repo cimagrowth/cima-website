@@ -105,12 +105,12 @@ const Hero = () => {
             variants={itemVariants}
             className="hidden md:flex flex-row gap-4 mb-8"
           >
-            <Link to="/demo">
+            <a href="https://os.cimagrowth.com/demo/register">
               <Button variant="hero" size="lg" className="group text-base md:size-xl shadow-glow">
                 Book a Demo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-            </Link>
+            </a>
             <Link to="/sign-up">
               <Button 
                 variant="hero-outline" 
@@ -166,12 +166,12 @@ const Hero = () => {
 
         {/* Full-width stacked CTAs */}
         <motion.div variants={itemVariants}>
-          <Link to="/demo" className="block">
+          <a href="https://os.cimagrowth.com/demo/register" className="block">
             <Button variant="hero" size="lg" className="w-full text-lg py-6 shadow-glow group">
               Book a Demo
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-          </Link>
+          </a>
         </motion.div>
         <motion.div variants={itemVariants}>
           <Link to="/sign-up" className="block">
