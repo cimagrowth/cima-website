@@ -11,6 +11,7 @@ import ScrollToTopOnNavigate from "@/components/layout/ScrollToTopOnNavigate";
 import Index from "./pages/Index";
 import Product from "./pages/Product";
 import Features from "./pages/Features";
+import HowItWorksPage from "./pages/HowItWorks";
 import Pricing from "./pages/Pricing";
 import Demo from "./pages/Demo";
 import Blog from "./pages/Blog";
@@ -41,6 +42,7 @@ const App = () => (
               <ScrollToTopOnNavigate />
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/how-it-works" element={<HowItWorksPage />} />
                 <Route path="/product" element={<Product />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/sign-up" element={<Pricing />} />

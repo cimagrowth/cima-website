@@ -30,12 +30,10 @@ const Header = () => {
 
   const navLinks: NavLink[] = [
     { href: "/", label: "Home" },
-    { href: "/#how-it-works", label: "How It Works", isAnchor: true },
-    { href: "/features", label: "What's Inside" },
-    { href: "/#solution", label: "Solution", isAnchor: true },
-    { href: "/blog", label: "Blog" },
+    { href: "/how-it-works", label: "How It Works" },
+    { href: "/features", label: "Features" },
     { href: "/outreach", label: "Outreach Engine" },
-    { href: "/sign-up", label: "Sign Up" },
+    { href: "/blog", label: "Blog" },
   ];
 
   const isActive = (path: string) => {
@@ -158,26 +156,17 @@ const Header = () => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
-            {location.pathname === "/outreach" ? (
-              <a
-                href="#pricing"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById("pricing");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <Button variant="hero" size="default">
-                  Get Started
-                </Button>
-              </a>
-            ) : (
-              <Link to="/demo">
-                <Button variant="hero" size="default">
-                  Book a Demo
-                </Button>
-              </Link>
-            )}
+            <Link
+              to="/outreach#pricing"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link to="/demo">
+              <Button variant="hero" size="default">
+                Book a Demo
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button + Theme Toggle */}
@@ -237,28 +226,18 @@ const Header = () => {
               </Link>
             )
           ))}
-          {location.pathname === "/outreach" ? (
-            <a
-              href="#pricing"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsMobileMenuOpen(false);
-                const el = document.getElementById("pricing");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="mt-2"
-            >
-              <Button variant="hero" size="lg" className="w-full text-base">
-                Get Started
-              </Button>
-            </a>
-          ) : (
-            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
+          <div className="mt-2 flex flex-col gap-2">
+            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero" size="lg" className="w-full text-base">
                 Book a Demo
               </Button>
             </Link>
-          )}
+            <Link to="/outreach#pricing" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button variant="hero-outline" size="lg" className="w-full text-base">
+                Get Started
+              </Button>
+            </Link>
+          </div>
         </nav>
       </div>
     </header>
