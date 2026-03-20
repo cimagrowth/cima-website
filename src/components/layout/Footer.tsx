@@ -9,10 +9,10 @@ const Footer = () => {
     product: [
       { label: "Features", href: "/product" },
       { label: "Sign Up", href: "/sign-up" },
-      { label: "Demo", href: "/demo" },
+      { label: "Demo", href: "https://os.cimagrowth.com/demo/register", external: true },
     ],
     company: [
-      { label: "Contact Us", href: "/demo" },
+      { label: "Contact Us", href: "https://os.cimagrowth.com/demo/register", external: true },
       { label: "Blog", href: "/blog" },
     ],
     resources: [
@@ -72,12 +72,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -89,12 +100,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

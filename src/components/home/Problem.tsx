@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 import { Clock, Phone, Users, Database, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -78,12 +77,12 @@ const Problem = () => {
 
         {/* CTA */}
         <div className="mt-8 md:mt-12 text-center">
-          <Link to="/demo">
+          <a href="https://os.cimagrowth.com/demo/register">
             <Button variant="hero" size="lg" className="group">
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>
