@@ -591,23 +591,12 @@ const Features = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Not sure where to start?
+              Ready to transform your patient acquisition?
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
-              Start with the Outreach Engine for $49/mo, or unlock the full platform. Your
-              data carries over seamlessly.
+              Book a demo and see the full GrowthOS platform in action.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/outreach#pricing">
-                <Button
-                  variant="hero-outline"
-                  size="lg"
-                  className="w-full sm:w-auto border-white/40 text-white hover:bg-white/10 group"
-                >
-                  See Outreach Pricing
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
               <Link to="/demo">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto group">
                   Book a Demo
