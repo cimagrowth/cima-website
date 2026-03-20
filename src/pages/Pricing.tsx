@@ -355,11 +355,11 @@ const Pricing = () => {
                 Get Started
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <a href="https://os.cimagrowth.com/demo/register">
+              <Link to="/demo">
                 <Button variant="hero-outline" size="xl" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                   Book a Demo First
                 </Button>
-              </a>
+              </Link>
             </div>
             <p className="text-primary-foreground/60 text-sm mt-6">
               Want to learn more? <Link to="/product" className="underline hover:text-primary-foreground">See how GrowthOS works</Link> or <Link to="/features" className="underline hover:text-primary-foreground">explore all features</Link>.
