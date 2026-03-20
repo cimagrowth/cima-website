@@ -144,12 +144,12 @@ const Product = () => {
               custom-trained AI. Works with your existing CRM or becomes your complete infrastructure. 
               Use the pieces that matter, or adopt the full platform.
             </p>
-            <a href="https://os.cimagrowth.com/demo/register">
+            <Link to="/demo">
               <Button variant="hero" size="xl" className="group">
                 Book a Demo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -364,12 +364,12 @@ const Product = () => {
             <h2 className="text-heading-lg md:text-display text-primary-foreground mb-6">
               Ready to see GrowthOS in action?
             </h2>
-            <a href="https://os.cimagrowth.com/demo/register">
+            <Link to="/demo">
               <Button variant="hero" size="xl" className="group shadow-glow">
                 Book a Demo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { Clock, Users, Zap, RefreshCw, Eye, ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -76,12 +77,12 @@ const UseCases = () => {
 
         {/* CTA */}
         <div className="mt-8 md:mt-12 text-center">
-          <a href="https://os.cimagrowth.com/demo/register">
+          <Link to="/demo">
             <Button variant="hero" size="lg" className="group">
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
