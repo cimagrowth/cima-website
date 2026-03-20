@@ -475,9 +475,9 @@ const HowItWorksPage = () => {
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link to="/outreach#pricing">
+                <Link to="/features">
                   <Button variant="hero-outline" size="lg" className="w-full sm:w-auto">
-                    See Pricing
+                    See the Full Platform
                   </Button>
                 </Link>
               </div>

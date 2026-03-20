@@ -157,7 +157,7 @@ const Header = () => {
               )}
             </button>
             <Link
-              to="/outreach#pricing"
+              to="/demo"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Get Started
@@ -232,7 +232,7 @@ const Header = () => {
                 Book a Demo
               </Button>
             </Link>
-            <Link to="/outreach#pricing" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero-outline" size="lg" className="w-full text-base">
                 Get Started
               </Button>

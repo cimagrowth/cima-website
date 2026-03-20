@@ -18,7 +18,7 @@ const Footer = () => {
       { label: "Blog", href: "/blog" },
     ],
     resources: [
-      { label: "Pricing", href: "/outreach#pricing" },
+      { label: "Pricing", href: "/sign-up" },
       { label: "Product Overview", href: "/product" },
     ],
   };
@@ -43,23 +43,13 @@ const Footer = () => {
             Every day without GrowthOS is another day of leads going cold. See the platform or
             start today.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex justify-center">
             <Link to="/demo">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-white text-accent-orange hover:bg-white/90 font-semibold group"
+                className="bg-white text-accent-orange hover:bg-white/90 font-semibold group"
               >
                 Book a Demo
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <Link to="/outreach#pricing">
-              <Button
-                variant="hero-outline"
-                size="lg"
-                className="w-full sm:w-auto border-white/50 text-white hover:bg-white/10 group"
-              >
-                Start with Outreach
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
