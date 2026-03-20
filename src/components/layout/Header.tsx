@@ -158,11 +158,26 @@ const Header = () => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
-            <Link to="/demo">
-              <Button variant="hero" size="default">
-                Book a Demo
-              </Button>
-            </Link>
+            {location.pathname === "/outreach" ? (
+              <a
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById("pricing");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <Button variant="hero" size="default">
+                  Get Started
+                </Button>
+              </a>
+            ) : (
+              <Link to="/demo">
+                <Button variant="hero" size="default">
+                  Book a Demo
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button + Theme Toggle */}
@@ -222,11 +237,28 @@ const Header = () => {
               </Link>
             )
           ))}
-          <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
-            <Button variant="hero" size="lg" className="w-full text-base">
-              Book a Demo
-            </Button>
-          </Link>
+          {location.pathname === "/outreach" ? (
+            <a
+              href="#pricing"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMobileMenuOpen(false);
+                const el = document.getElementById("pricing");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="mt-2"
+            >
+              <Button variant="hero" size="lg" className="w-full text-base">
+                Get Started
+              </Button>
+            </a>
+          ) : (
+            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)} className="mt-2">
+              <Button variant="hero" size="lg" className="w-full text-base">
+                Book a Demo
+              </Button>
+            </Link>
+          )}
         </nav>
       </div>
     </header>
