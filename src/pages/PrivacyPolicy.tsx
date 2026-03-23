@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">Healthcare Enterprise Privacy Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: January 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last Updated: March 2026</p>
 
           <p>
             Thank you for using the Cima Growth Solutions LLC platform, including our website, mobile applications, software, and related services (collectively, the "Services"). This Privacy Policy ("Policy") explains how Cima Growth Solutions LLC ("Cima," "Company," "we," "us," or "our") collects, uses, discloses, and safeguards information when providing a healthcare-focused SaaS platform.
@@ -41,6 +41,7 @@ const PrivacyPolicy = () => {
             <li>Through Cima-branded mobile applications</li>
             <li>Through email, SMS, voice, and in-app communications</li>
             <li>Through forms, CRM workflows, AI-assisted tools, and integrations</li>
+            <li>Through the GrowthOS mobile application available on the Apple App Store and Google Play Store</li>
           </ul>
           <p>This Policy does not apply to third-party websites or services accessed through integrations or links. Their privacy practices are governed by their own policies.</p>
 
@@ -142,6 +143,20 @@ const PrivacyPolicy = () => {
           </ul>
           <p>Requests may be submitted using the contact information below.</p>
 
+          <h3>Account Deletion</h3>
+          <p>You may request deletion of your account and associated personal data through any of the following methods:</p>
+          <ul>
+            <li>Use the "Delete Account" option available in App Settings within the GrowthOS mobile application</li>
+            <li>Send an email to <a href="mailto:support@cimagrowth.com">support@cimagrowth.com</a> with the subject line "Account Deletion Request"</li>
+            <li>Call us at +1-484-480-9296</li>
+          </ul>
+          <p>
+            Upon receiving a verified account deletion request, we will process the deletion within 30 calendar days. During this period, your account will be deactivated. Once deleted, your personal data will be permanently removed from our active systems.
+          </p>
+          <p>
+            We may retain certain information beyond the 30-day deletion period only where required by legal or contractual obligations (e.g., tax records, regulatory compliance). Healthcare customers operating under an executed Business Associate Agreement (BAA) are subject to the data retention terms specified in that agreement, which may require longer retention of certain records to comply with HIPAA and applicable healthcare regulations.
+          </p>
+
           <h2>9. U.S. State Privacy Rights</h2>
           <p>Cima honors applicable state privacy laws, including but not limited to:</p>
           <ul>
@@ -172,7 +187,99 @@ const PrivacyPolicy = () => {
           <h2>14. Terms of Use</h2>
           <p>Use of the Services is subject to our <a href="/terms">Terms of Use</a>.</p>
 
-          <h2>15. Contact Information</h2>
+          <h2>15. Mobile Application Privacy</h2>
+          <p>This section applies specifically to the GrowthOS mobile application available on the Apple App Store and Google Play Store.</p>
+
+          <h3>A. Data Collected by the App</h3>
+          <p>In addition to the data described elsewhere in this Policy, the GrowthOS mobile application may collect:</p>
+          <ul>
+            <li>Device tokens for push notification delivery</li>
+            <li>Device information (model, operating system version, unique device identifiers)</li>
+            <li>Crash data and performance diagnostics</li>
+            <li>Push notification preferences and interaction data</li>
+          </ul>
+
+          <h3>B. Push Notifications</h3>
+          <p>The GrowthOS app may send push notifications to keep you informed about:</p>
+          <ul>
+            <li>New patient or client inquiries</li>
+            <li>Upcoming and updated appointments</li>
+            <li>Messages and internal communications</li>
+            <li>System updates and important alerts</li>
+          </ul>
+          <p>You can manage or disable push notifications at any time through your device Settings. Disabling push notifications does not affect other app functionality.</p>
+
+          <h3>C. App Tracking and Advertising</h3>
+          <p>The GrowthOS mobile application does <strong>not</strong> engage in advertising tracking. Specifically:</p>
+          <ul>
+            <li>We do <strong>not</strong> use advertising tracking or interest-based advertising within the app</li>
+            <li>We do <strong>not</strong> perform cross-app tracking or cross-site tracking</li>
+            <li>We do <strong>not</strong> access or use the Apple Identifier for Advertisers (IDFA) or equivalent Android advertising identifiers</li>
+            <li>We do <strong>not</strong> share any user data with advertising networks or data brokers</li>
+          </ul>
+          <p>We may collect anonymized, aggregate analytics data solely to improve app performance and user experience. This data cannot be used to identify individual users.</p>
+
+          <h3>D. Third-Party SDKs and Services</h3>
+          <p>The GrowthOS mobile application integrates the following third-party services:</p>
+          <div className="overflow-x-auto">
+            <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-800">
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Service</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Purpose</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Data Accessed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Supabase</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Backend infrastructure and authentication</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Account credentials, user data</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">OpenAI</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">AI-powered chatbot and workflow assistance</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">User messages (no PHI transmitted)</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Twilio</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">SMS and voice communications</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Phone numbers, message content</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Stripe</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Payment processing (PCI DSS compliant)</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Payment information (tokenized)</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Apple Push Notification Service</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">iOS push notifications</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Device token only</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Firebase Cloud Messaging</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Android push notifications</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Device token only</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>E. Data Storage and Security</h3>
+          <p>The GrowthOS mobile application employs the following security measures:</p>
+          <ul>
+            <li>All data transmitted between the app and our servers is encrypted using TLS 1.2 or higher</li>
+            <li>Sensitive credentials are stored using iOS Keychain (Apple devices) or Android Keystore (Android devices)</li>
+            <li>No Protected Health Information (PHI) is stored locally on the device</li>
+            <li>Biometric authentication (Face ID, Touch ID, fingerprint) is processed entirely on-device and is never transmitted to our servers</li>
+          </ul>
+
+          <h3>F. Offline Access</h3>
+          <p>
+            The GrowthOS app may provide limited offline access to certain non-sensitive, cached data. All locally cached data is encrypted and is automatically cleared when you sign out of the application. No PHI or sensitive personal data is available offline.
+          </p>
+
+          <h2>16. Contact Information</h2>
           <p>
             Cima Growth Solutions LLC<br />
             3467 Trexler Blvd<br />
