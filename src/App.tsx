@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import Features from "./pages/Features";
 import HowItWorksPage from "./pages/HowItWorks";
 import Pricing from "./pages/Pricing";
+import Register from "./pages/Register";
 import Demo from "./pages/Demo";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -46,6 +47,7 @@ const App = () => (
                 <Route path="/product" element={<Product />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/sign-up" element={<Pricing />} />
+                <Route path="/sign-up/register" element={<Register />} />
                 <Route path="/demo" element={<Demo />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />

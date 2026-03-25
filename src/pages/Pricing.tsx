@@ -1,41 +1,13 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Sparkles, Loader2 } from "lucide-react";
+import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/components/seo/schemas";
-import { supabase } from "@/integrations/supabase/client";
 
 const Pricing = () => {
-  const [whopUrls, setWhopUrls] = useState<{ monthly: string | null; annual: string | null }>({
-    monthly: null,
-    annual: null,
-  });
-  const [isLoadingUrls, setIsLoadingUrls] = useState(true);
-
-  useEffect(() => {
-    supabase
-      .from("website_settings")
-      .select("setting_key, setting_value")
-      .in("setting_key", ["whop_checkout_monthly_url", "whop_checkout_annual_url"])
-      .then(({ data }) => {
-        const urls = { monthly: null as string | null, annual: null as string | null };
-        data?.forEach((s) => {
-          if (s.setting_key === "whop_checkout_monthly_url") urls.monthly = s.setting_value;
-          if (s.setting_key === "whop_checkout_annual_url") urls.annual = s.setting_value;
-        });
-        setWhopUrls(urls);
-        setIsLoadingUrls(false);
-      });
-  }, []);
-
-  const handleSignup = (plan: "monthly" | "annual") => {
-    const url = plan === "monthly" ? whopUrls.monthly : whopUrls.annual;
-    if (url) window.location.href = url;
-  };
 
   const features = [
     "Custom-trained AI response and follow-up",
@@ -250,25 +222,20 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <Button
-                  variant="hero"
-                  size="lg"
-                  className={`w-full group ${
-                    plan.popular
-                      ? "bg-accent-orange hover:brightness-110"
-                      : "bg-primary hover:bg-primary-light"
-                  }`}
-                  onClick={() => handleSignup(plan.planKey)}
-                  disabled={isLoadingUrls}
-                >
-                  {isLoadingUrls ? (
-                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                  ) : null}
-                  {plan.cta}
-                  {!isLoadingUrls && (
+                <Link to={`/sign-up/register?plan=${plan.planKey}`}>
+                  <Button
+                    variant="hero"
+                    size="lg"
+                    className={`w-full group ${
+                      plan.popular
+                        ? "bg-accent-orange hover:brightness-110"
+                        : "bg-primary hover:bg-primary-light"
+                    }`}
+                  >
+                    {plan.cta}
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  )}
-                </Button>
+                  </Button>
+                </Link>
 
                 <p className={`text-body-sm mt-3 text-center ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                   {plan.ctaSubtext}
@@ -345,16 +312,16 @@ const Pricing = () => {
               Ready to stop patient leakage?
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="hero"
-                size="xl"
-                className="group shadow-glow"
-                onClick={() => handleSignup("annual")}
-                disabled={isLoadingUrls}
-              >
-                Get Started
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <Link to="/sign-up/register?plan=monthly">
+                <Button
+                  variant="hero"
+                  size="xl"
+                  className="group shadow-glow"
+                >
+                  Get Started
+                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
               <Link to="/demo">
                 <Button variant="hero-outline" size="xl" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                   Book a Demo First
