@@ -26,6 +26,7 @@ import AdsAccess from "./pages/AdsAccess";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
+import AIAgent from "./pages/AIAgent";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +58,7 @@ const App = () => (
                 <Route path="/admin/blog/edit/:id" element={<BlogEditor />} />
                 <Route path="/outreach" element={<Outreach />} />
                 <Route path="/success" element={<SubscriptionSuccess />} />
+                <Route path="/ai-agent" element={<AIAgent />} />
                 <Route path="/ads-access" element={<AdsAccess />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
