@@ -215,16 +215,13 @@ const AIAgent = () => {
   };
 
   const schemas = [
-    generateBreadcrumbSchema([
-      { name: "Home", url: "https://cimagrowth.com" },
-      { name: "AI Agent", url: "https://cimagrowth.com/ai-agent" },
-    ]),
-    generateFAQSchema(
-      faqItems.map((item) => ({
-        question: item.question,
-        answer: item.answer,
-      }))
-    ),
+    generateBreadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://cimagrowth.com" },
+        { name: "AI Agent", url: "https://cimagrowth.com/ai-agent" },
+      ],
+    }),
+    generateFAQSchema({ questions: faqItems }),
   ];
 
   return (
