@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Sparkles } from "lucide-react";
+import { Check, ArrowRight, Sparkles, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/components/seo/schemas";
+import EnterpriseInquiryModal from "@/components/enterprise/EnterpriseInquiryModal";
 
 const Pricing = () => {
+  const [enterpriseModalOpen, setEnterpriseModalOpen] = useState(false);
 
   const features = [
     "Custom-trained AI response and follow-up",
@@ -46,6 +49,15 @@ const Pricing = () => {
       ctaSubtext: "$9,999/year, no setup fee",
       popular: true,
     },
+  ];
+
+  const enterpriseFeatures = [
+    "AI Patient Engagement across all locations",
+    "CRM integration (Salesforce, HubSpot, or existing CRM)",
+    "Dedicated enterprise dashboard & analytics",
+    "Brand-specific AI training & customization",
+    "Priority support & quarterly strategy reviews",
+    "Custom onboarding & implementation",
   ];
 
   const faqItems = [
@@ -147,7 +159,7 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="pb-20 md:pb-28 lg:pb-32 bg-background">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -242,9 +254,69 @@ const Pricing = () => {
                 </p>
               </motion.div>
             ))}
+
+            {/* Enterprise Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="rounded-2xl p-8 md:p-10 relative transition-all duration-300 hover:-translate-y-2 bg-card border-2 border-accent-orange/40 shadow-card hover:shadow-elevated"
+            >
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-accent-orange text-white text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-card flex items-center gap-1.5">
+                  <Building2 className="w-3.5 h-3.5" />
+                  ENTERPRISE
+                </span>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-heading-sm mb-2 text-foreground">Enterprise</h3>
+                <p className="text-body-sm mb-6 text-muted-foreground">
+                  For multi-location clinics & healthcare networks
+                </p>
+
+                <div className="flex items-baseline gap-1 mb-2">
+                  <span className="text-display text-foreground">Custom</span>
+                  <span className="text-muted-foreground">Pricing</span>
+                </div>
+                <p className="text-muted-foreground text-body-sm">
+                  Tailored to your scale
+                </p>
+              </div>
+
+              <ul className="space-y-3 mb-8">
+                {enterpriseFeatures.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-accent-orange/10">
+                      <Check className="w-3 h-3 text-accent-orange" />
+                    </div>
+                    <span className="text-body-sm text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                variant="hero"
+                size="lg"
+                className="w-full group bg-accent-orange hover:brightness-110"
+                onClick={() => setEnterpriseModalOpen(true)}
+              >
+                Contact Us to Discuss
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+
+              <p className="text-body-sm mt-3 text-center text-muted-foreground">
+                Tailored to your organization's needs
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      <EnterpriseInquiryModal
+        open={enterpriseModalOpen}
+        onOpenChange={setEnterpriseModalOpen}
+      />
 
       {/* Value proposition */}
       <section className="section-padding-sm bg-tan">
