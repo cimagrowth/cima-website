@@ -17,7 +17,7 @@ const buttonVariants = cva(
         link: "text-accent-orange underline-offset-4 hover:underline",
         // Premium variants for the landing page
         hero: "bg-accent-orange text-accent-orange-foreground hover:brightness-110 shadow-card hover:shadow-glow text-base font-semibold transform hover:scale-[1.02] active:scale-[0.98]",
-        "hero-outline": "border-2 border-primary/30 bg-transparent text-primary hover:bg-primary hover:text-primary-foreground text-base font-medium",
+        "hero-outline": "border-2 border-primary/30 bg-transparent text-primary dark:text-primary-foreground hover:bg-primary hover:text-primary-foreground text-base font-medium",
         subtle: "bg-accent text-accent-foreground hover:bg-accent/80",
         // Secondary blue variant
         "secondary-blue": "bg-secondary text-secondary-foreground hover:brightness-110 shadow-card",
