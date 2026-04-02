@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import AdsIntakeModal, { type AdsPlanType } from "@/components/checkout/AdsIntakeModal";
 import SEO from "@/components/seo/SEO";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/components/seo/schemas";
@@ -253,16 +254,15 @@ const schemas = [
   generateFAQSchema({ questions: faqItems }),
 ];
 
-const scrollToPricing = (e: React.MouseEvent) => {
-  e.preventDefault();
-  const el = document.getElementById("pricing");
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 const AdsPage = () => {
   const [activeSpecialty, setActiveSpecialty] = useState("fertility");
+  const [intakeOpen, setIntakeOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<AdsPlanType>("ads_monthly");
+
+  const openIntake = (plan: AdsPlanType) => {
+    setSelectedPlan(plan);
+    setIntakeOpen(true);
+  };
 
   return (
     <Layout>
@@ -320,17 +320,13 @@ const AdsPage = () => {
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#pricing" onClick={scrollToPricing}>
-                <Button variant="hero" size="xl" className="group shadow-glow">
-                  Start for $399/mo
-                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </a>
-              <a href="#pricing" onClick={scrollToPricing}>
-                <Button variant="outline" size="xl" className="group">
-                  Save $789/yr — Go Annual
-                </Button>
-              </a>
+              <Button variant="hero" size="xl" className="group shadow-glow" onClick={() => openIntake("ads_monthly")}>
+                Start for $399/mo
+                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Button variant="outline" size="xl" className="group" onClick={() => openIntake("ads_annual")}>
+                Save $789/yr — Go Annual
+              </Button>
             </motion.div>
 
             <motion.p variants={itemVariants} className="text-body-sm text-muted-foreground mt-4">
@@ -432,12 +428,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <a href="#pricing" onClick={scrollToPricing}>
-              <Button variant="hero" size="lg" className="group">
-                Get Started
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </a>
+            <Button variant="hero" size="lg" className="group" onClick={() => openIntake("ads_monthly")}>
+              Get Started
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -492,12 +486,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <a href="#pricing" onClick={scrollToPricing}>
-              <Button variant="hero" size="lg" className="group">
-                See Pricing
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </a>
+            <Button variant="hero" size="lg" className="group" onClick={() => openIntake("ads_monthly")}>
+              See Pricing
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -620,7 +612,7 @@ const AdsPage = () => {
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" size="lg" className="w-full group">
+              <Button variant="outline" size="lg" className="w-full group" onClick={() => openIntake("ads_monthly")}>
                 Start for $399/mo
               </Button>
             </motion.div>
@@ -657,7 +649,7 @@ const AdsPage = () => {
                   </li>
                 ))}
               </ul>
-              <Button variant="hero" size="lg" className="w-full group bg-accent-orange hover:brightness-110">
+              <Button variant="hero" size="lg" className="w-full group bg-accent-orange hover:brightness-110" onClick={() => openIntake("ads_annual")}>
                 Save $789/yr — Go Annual
               </Button>
             </motion.div>
@@ -769,17 +761,13 @@ const AdsPage = () => {
               consultations.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <a href="#pricing" onClick={scrollToPricing}>
-                <Button variant="hero" size="xl" className="group shadow-glow">
-                  Start for $399/mo
-                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </a>
-              <a href="#pricing" onClick={scrollToPricing}>
-                <Button variant="outline" size="xl" className="group border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                  Save $789/yr — Go Annual
-                </Button>
-              </a>
+              <Button variant="hero" size="xl" className="group shadow-glow" onClick={() => openIntake("ads_monthly")}>
+                Start for $399/mo
+                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Button variant="outline" size="xl" className="group border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" onClick={() => openIntake("ads_annual")}>
+                Save $789/yr — Go Annual
+              </Button>
             </div>
             <p className="text-body-sm text-primary-foreground/60">
               Questions? Email brandon@cimagrowth.com
@@ -787,6 +775,11 @@ const AdsPage = () => {
           </motion.div>
         </div>
       </section>
+      <AdsIntakeModal
+        open={intakeOpen}
+        onClose={() => setIntakeOpen(false)}
+        selectedPlan={selectedPlan}
+      />
     </Layout>
   );
 };
