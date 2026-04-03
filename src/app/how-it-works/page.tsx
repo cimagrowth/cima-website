@@ -2,15 +2,31 @@ import type { Metadata } from 'next';
 import HowItWorksPage from '@/views/HowItWorks';
 
 export const metadata: Metadata = {
-  title: 'How GrowthOS Works – AI-Powered Patient Growth Engine',
-  description: 'Clinics lose 30–40% of leads between first inquiry and booked appointment. GrowthOS closes that gap with AI-powered capture, nurture, convert, and grow — on autopilot.',
+  title: 'How GrowthOS Works – Cima Growth Solutions',
+  description: 'From first contact to booked consult — AI handles every step of patient engagement.',
   keywords: ['patient leakage', 'clinic growth platform', 'AI patient engagement', 'healthcare CRM', 'GrowthOS'],
-  alternates: { canonical: 'https://cimagrowth.com/how-it-works' },
+  alternates: { canonical: 'https://www.cimagrowth.com/how-it-works' },
   openGraph: {
-    title: 'How GrowthOS Works – AI-Powered Patient Growth Engine',
-    description: 'Clinics lose 30–40% of leads between first inquiry and booked appointment. GrowthOS closes that gap with AI-powered capture, nurture, convert, and grow — on autopilot.',
-    url: 'https://cimagrowth.com/how-it-works',
-    images: [{ url: '/og-product.png' }],
+    title: 'How GrowthOS Works – Cima Growth Solutions',
+    description: 'From first contact to booked consult — AI handles every step of patient engagement.',
+    url: 'https://www.cimagrowth.com/how-it-works',
+    siteName: 'Cima Growth Solutions',
+    images: [
+      {
+        url: '/og/og-how-it-works.png',
+        width: 1200,
+        height: 630,
+        alt: 'How GrowthOS Works – Cima Growth Solutions',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How GrowthOS Works – Cima Growth Solutions',
+    description: 'From first contact to booked consult — AI handles every step of patient engagement.',
+    images: ['/og/og-how-it-works.png'],
   },
 };
 

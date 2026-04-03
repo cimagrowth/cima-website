@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Product from '@/views/Product';
 
 export const metadata: Metadata = {
-  title: 'GrowthOS Platform – AI Follow-Up Engine for Clinics',
-  description: 'Explore GrowthOS: AI instant response, automated nurturing, unified inbox, pipeline management, and reporting. Works with Salesforce, HubSpot, or standalone.',
+  title: 'Product Overview – Cima Growth Solutions',
+  description: 'The complete AI-powered growth operating system for healthcare clinics.',
   keywords: [
     'GrowthOS features', 'healthcare CRM features', 'AI patient engagement',
     'clinic automation software', 'patient pipeline management',
@@ -11,12 +11,28 @@ export const metadata: Metadata = {
     'patient reactivation campaigns', 'Salesforce healthcare integration',
     'HubSpot clinic integration',
   ],
-  alternates: { canonical: 'https://cimagrowth.com/product' },
+  alternates: { canonical: 'https://www.cimagrowth.com/product' },
   openGraph: {
-    title: 'GrowthOS Platform – AI Follow-Up Engine for Clinics',
-    description: 'Explore GrowthOS: AI instant response, automated nurturing, unified inbox, pipeline management, and reporting.',
-    url: 'https://cimagrowth.com/product',
-    images: [{ url: '/og-product.png' }],
+    title: 'Product Overview – Cima Growth Solutions',
+    description: 'The complete AI-powered growth operating system for healthcare clinics.',
+    url: 'https://www.cimagrowth.com/product',
+    siteName: 'Cima Growth Solutions',
+    images: [
+      {
+        url: '/og/og-product.png',
+        width: 1200,
+        height: 630,
+        alt: 'Product Overview – Cima Growth Solutions',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Product Overview – Cima Growth Solutions',
+    description: 'The complete AI-powered growth operating system for healthcare clinics.',
+    images: ['/og/og-product.png'],
   },
 };
 

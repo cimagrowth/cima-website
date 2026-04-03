@@ -10,24 +10,30 @@ import DemoChatWidget from '@/components/demo/DemoChatWidget';
 import { DynamicGTM } from './dynamic-gtm';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cimagrowth.com'),
+  metadataBase: new URL('https://www.cimagrowth.com'),
   title: {
-    default: 'AI Patient Engagement for Healthcare Clinics – Cima Growth Solutions',
-    template: '%s – Cima Growth Solutions',
+    default: 'Cima Growth Solutions – AI Patient Engagement for Healthcare Clinics',
+    template: '%s',
   },
-  description: 'GrowthOS responds instantly to patient inquiries across web, phone, text, email & social. AI-powered engagement for fertility clinics and med spas.',
+  description: 'GrowthOS is an AI-powered patient engagement platform for fertility clinics, med spas, wellness centers, and regenerative medicine clinics.',
   keywords: ['patient engagement software', 'healthcare CRM', 'AI patient communication', 'fertility clinic software', 'med spa CRM'],
   authors: [{ name: 'Cima Growth Solutions' }],
   openGraph: {
     type: 'website',
-    siteName: 'GrowthOS by Cima Growth Solutions',
+    siteName: 'Cima Growth Solutions',
     locale: 'en_US',
-    url: 'https://cimagrowth.com',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [
+      {
+        url: '/og/og-home.png',
+        width: 1200,
+        height: 630,
+        alt: 'Cima Growth Solutions',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/og-image.png'],
+    images: ['/og/og-home.png'],
   },
   icons: {
     icon: [
