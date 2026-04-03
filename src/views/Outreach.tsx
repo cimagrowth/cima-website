@@ -17,6 +17,7 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const containerVariants = {
@@ -103,60 +104,65 @@ const tiers = [
     name: "Starter",
     monthlyPrice: 49,
     annualPrice: 490,
+    annualSavings: 98,
     enrichments: 100,
-    checkoutMonthly: "https://whop.com/checkout/plan_8WMJxXcwU2441",
-    checkoutAnnual: "https://whop.com/checkout/plan_lZMOa45Sn35zS",
+    checkoutMonthly: "https://whop.com/checkout/plan_berBiVByOs7XV",
+    checkoutAnnual: "https://whop.com/checkout/plan_KYTU1DIPiGwSq",
     features: [
       "AI prospect enrichment",
-      "12-step cold email sequences",
-      "LinkedIn messages & SMS drafts",
-      "Voice & tone configuration",
-      "Unified communications inbox",
-      "Contact management & CRM",
+      "12-step email sequences",
+      "LinkedIn + SMS drafts",
+      "Brand voice config",
+      "Email regeneration",
     ],
     highlighted: false,
   },
   {
     name: "Growth",
     monthlyPrice: 99,
-    annualPrice: 990,
+    annualPrice: 999,
+    annualSavings: 189,
     enrichments: 300,
-    checkoutMonthly: "https://whop.com/checkout/plan_tpb2iMaW93fu3",
-    checkoutAnnual: "https://whop.com/checkout/plan_MTSodcfZg8R5S",
-    features: ["Everything in Starter", "Priority enrichment queue"],
+    checkoutMonthly: "https://whop.com/checkout/plan_L9q8TCSz61hlV",
+    checkoutAnnual: "https://whop.com/checkout/plan_OQO2RTuJ06jVJ",
+    features: ["Everything in Starter", "Priority enrichment queue", "300 prospects/month"],
     highlighted: false,
   },
   {
     name: "Pro",
     monthlyPrice: 199,
     annualPrice: 1990,
+    annualSavings: 398,
     enrichments: 750,
-    checkoutMonthly: "https://whop.com/checkout/plan_OOXxJ39eN7mbN",
-    checkoutAnnual: "https://whop.com/checkout/plan_D8siMeTn8yikv",
-    features: ["Everything in Growth", "Custom voice per campaign"],
+    checkoutMonthly: "https://whop.com/checkout/plan_oUfC9HOmfK7Ft",
+    checkoutAnnual: "https://whop.com/checkout/plan_LAP2RdZ6K4JH4",
+    features: ["Everything in Growth", "Custom voice per campaign", "750 prospects/month"],
     highlighted: true,
   },
   {
     name: "Agency",
     monthlyPrice: 399,
     annualPrice: 3990,
+    annualSavings: 798,
     enrichments: 2000,
-    checkoutMonthly: "https://whop.com/checkout/plan_g0XgYS58Brx2Y",
-    checkoutAnnual: "https://whop.com/checkout/plan_8NiPOkbs8Damg",
-    features: ["Everything in Pro", "White-label outreach reports"],
+    checkoutMonthly: "https://whop.com/checkout/plan_c4RZPciY5WUyF",
+    checkoutAnnual: "https://whop.com/checkout/plan_nOVJ2jzuQ1OFO",
+    features: ["Everything in Pro", "White-label reports", "2,000 prospects/month"],
     highlighted: false,
   },
   {
     name: "Enterprise",
     monthlyPrice: 799,
     annualPrice: 7990,
+    annualSavings: 1598,
     enrichments: 5000,
-    checkoutMonthly: "https://whop.com/checkout/plan_X2fieDfMPqgTz",
-    checkoutAnnual: "https://whop.com/checkout/plan_n2TCrUobe2I9r",
+    checkoutMonthly: "https://whop.com/checkout/plan_2g0hcrD3EtkYr",
+    checkoutAnnual: "https://whop.com/checkout/plan_BKF0QRTw31KUF",
     features: [
       "Everything in Agency",
-      "Dedicated enrichment queue",
+      "Dedicated queue",
       "Custom AI training",
+      "5,000 prospects/month",
     ],
     highlighted: false,
   },
@@ -517,7 +523,7 @@ const Outreach = () => {
                   </div>
 
                   <p
-                    className={`text-body-sm mb-4 ${
+                    className={`text-body-sm mb-2 ${
                       tier.highlighted
                         ? "text-primary-foreground/70"
                         : "text-muted-foreground"
@@ -526,15 +532,27 @@ const Outreach = () => {
                     {billingNote}
                   </p>
 
+                  {isAnnual && (
+                    <span className="inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-semibold bg-green-500/10 text-green-600 mb-2">
+                      Save ${tier.annualSavings.toLocaleString()}/year
+                    </span>
+                  )}
+
                   <p
-                    className={`text-body font-semibold mb-4 ${
-                      tier.highlighted
-                        ? "text-accent-orange"
-                        : "text-accent-orange"
-                    }`}
+                    className="text-body font-semibold mb-2 text-accent-orange"
                   >
                     {tier.enrichments.toLocaleString()} prospects/month
                   </p>
+
+                  <span
+                    className={`inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-medium mb-4 ${
+                      tier.highlighted
+                        ? "bg-primary-foreground/10 text-primary-foreground/80"
+                        : "bg-muted-foreground/10 text-muted-foreground"
+                    }`}
+                  >
+                    No surprise charges
+                  </span>
 
                   <ul className="space-y-2 mb-6 flex-1">
                     {tier.features.map((feat, j) => (
@@ -668,12 +686,21 @@ const Outreach = () => {
               Join hundreds of B2B teams using AI to turn cold prospects into
               warm conversations.
             </p>
-            <a href="#pricing" onClick={scrollToPricing}>
-              <Button variant="hero" size="xl" className="group shadow-glow">
-                Choose Your Plan
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </a>
+            <div className="flex flex-col items-center gap-4">
+              <a href="#pricing" onClick={scrollToPricing}>
+                <Button variant="hero" size="xl" className="group shadow-glow">
+                  Choose Your Plan
+                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
+              <p className="text-body-sm text-primary-foreground/60">
+                Not sure which plan?{" "}
+                <Link href="/demo" className="text-accent-orange hover:underline font-medium">
+                  Book a call
+                </Link>{" "}
+                and we&apos;ll help you choose.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
