@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
@@ -105,13 +107,13 @@ const Hero = () => {
             variants={itemVariants}
             className="hidden md:flex flex-row gap-4 mb-8"
           >
-            <Link to="/demo">
+            <Link href="/demo">
               <Button variant="hero" size="lg" className="group text-base md:size-xl shadow-glow">
                 Book a Demo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link to="/sign-up">
+            <Link href="/sign-up">
               <Button 
                 variant="hero-outline" 
                 size="lg" 
@@ -166,7 +168,7 @@ const Hero = () => {
 
         {/* Full-width stacked CTAs */}
         <motion.div variants={itemVariants}>
-          <Link to="/demo" className="block">
+          <Link href="/demo" className="block">
             <Button variant="hero" size="lg" className="w-full text-lg py-6 shadow-glow group">
               Book a Demo
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -174,7 +176,7 @@ const Hero = () => {
           </Link>
         </motion.div>
         <motion.div variants={itemVariants}>
-          <Link to="/sign-up" className="block">
+          <Link href="/sign-up" className="block">
             <Button 
               variant="hero-outline" 
               size="lg" 

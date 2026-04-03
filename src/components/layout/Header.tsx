@@ -1,11 +1,17 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+'use client';
+
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
-import cimaLogoLight from "@/assets/cima-logo-light.png";
-import cimaLogoDark from "@/assets/cima-logo-dark.png";
+import cimaLogoLightImg from "@/assets/cima-logo-light.png";
+import cimaLogoDarkImg from "@/assets/cima-logo-dark.png";
+
+const cimaLogoLight = typeof cimaLogoLightImg === 'string' ? cimaLogoLightImg : cimaLogoLightImg.src;
+const cimaLogoDark = typeof cimaLogoDarkImg === 'string' ? cimaLogoDarkImg : cimaLogoDarkImg.src;
 
 type NavLink = {
   href: string;
@@ -16,8 +22,8 @@ type NavLink = {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -40,26 +46,24 @@ const Header = () => {
 
   const isActive = (path: string) => {
     if (path.includes("#")) {
-      return location.pathname === "/" && location.hash === path.replace("/", "");
+      return pathname === "/";
     }
-    return location.pathname === path;
+    return pathname === path;
   };
 
   const handleNavClick = (link: NavLink) => {
     setIsMobileMenuOpen(false);
-    
+
     if (link.isAnchor) {
       const hash = link.href.replace("/", "");
-      
-      if (location.pathname === "/") {
-        // Already on homepage, just scroll
+
+      if (pathname === "/") {
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
       } else {
-        // Navigate to homepage first, then scroll
-        navigate("/");
+        router.push("/");
         setTimeout(() => {
           const element = document.querySelector(hash);
           if (element) {
@@ -85,14 +89,14 @@ const Header = () => {
       <div className="container-wide px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Animated Logo */}
-          <Link to="/" className="flex items-center gap-3 group relative">
+          <Link href="/" className="flex items-center gap-3 group relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{ 
-                duration: 0.8, 
+              transition={{
+                duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],
-                delay: 0.1 
+                delay: 0.1
               }}
               className="relative"
             >
@@ -103,9 +107,9 @@ const Header = () => {
                 transition={{ duration: 1.5, delay: 0.3 }}
                 className="absolute inset-0 blur-xl bg-accent-orange/30 rounded-full scale-150"
               />
-              <img 
-                src={resolvedTheme === "dark" ? cimaLogoDark : cimaLogoLight} 
-                alt="Cima Growth Solutions logo" 
+              <img
+                src={resolvedTheme === "dark" ? cimaLogoDark : cimaLogoLight}
+                alt="Cima Growth Solutions logo"
                 className="h-8 md:h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105"
               />
             </motion.div>
@@ -129,7 +133,7 @@ const Header = () => {
               ) : (
                 <Link
                   key={link.href}
-                  to={link.href}
+                  href={link.href}
                   className={`text-sm font-medium transition-all duration-300 relative ${
                     isActive(link.href)
                       ? "text-accent-orange"
@@ -159,12 +163,12 @@ const Header = () => {
               )}
             </button>
             <Link
-              to="/sign-up"
+              href="/sign-up"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Get Started
             </Link>
-            <Link to="/demo">
+            <Link href="/demo">
               <Button variant="hero" size="default">
                 Book a Demo
               </Button>
@@ -216,7 +220,7 @@ const Header = () => {
             ) : (
               <Link
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-base font-medium py-3 px-3 rounded-lg transition-colors ${
                   isActive(link.href)
@@ -229,12 +233,12 @@ const Header = () => {
             )
           ))}
           <div className="mt-2 flex flex-col gap-2">
-            <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero" size="lg" className="w-full text-base">
                 Book a Demo
               </Button>
             </Link>
-            <Link to="/sign-up" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/sign-up" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero-outline" size="lg" className="w-full text-base">
                 Get Started
               </Button>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import type { CheckoutCustomerInfo } from "@/hooks/useCheckout";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -159,15 +159,15 @@ const PreCheckoutForm = ({ open, onClose, onSubmit, planName, isLoading }: PreCh
                   <div className="space-y-1 leading-none">
                     <FormLabel className="text-sm font-normal text-muted-foreground">
                       I agree to the{" "}
-                      <Link to="/terms" target="_blank" className="underline text-foreground hover:text-accent-orange">
+                      <Link href="/terms" target="_blank" className="underline text-foreground hover:text-accent-orange">
                         Terms of Service
                       </Link>
                       ,{" "}
-                      <Link to="/privacy" target="_blank" className="underline text-foreground hover:text-accent-orange">
+                      <Link href="/privacy" target="_blank" className="underline text-foreground hover:text-accent-orange">
                         Privacy Policy
                       </Link>
                       , and{" "}
-                      <Link to="/refund-policy" target="_blank" className="underline text-foreground hover:text-accent-orange">
+                      <Link href="/refund-policy" target="_blank" className="underline text-foreground hover:text-accent-orange">
                         Refund Policy
                       </Link>
                       .

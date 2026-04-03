@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/hooks/use-toast";
@@ -17,8 +19,9 @@ export interface CheckoutCustomerInfo {
 export function useCheckout() {
   const [isLoading, setIsLoading] = useState<PlanType | null>(null);
   const [pendingPlan, setPendingPlan] = useState<PlanType | null>(null);
-  const { session, subscription } = useAuth();
-  const navigate = useNavigate();
+  const { session } = useAuth();
+  const subscription = { subscribed: false };
+  const router = useRouter();
 
   const initiateCheckout = (plan: PlanType) => {
     if (subscription.subscribed) {
@@ -78,7 +81,7 @@ export function useCheckout() {
         description: "Please sign in to manage your subscription.",
         variant: "default",
       });
-      navigate("/admin/login?redirect=/sign-up");
+      router.push("/admin/login?redirect=/sign-up");
       return;
     }
 

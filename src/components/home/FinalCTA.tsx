@@ -1,5 +1,7 @@
+"use client";
+
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -51,7 +53,7 @@ const FinalCTA = () => {
               </>
             )}
           </h2>
-          <Link to="/demo" className="inline-block">
+          <Link href="/demo" className="inline-block">
             <Button
               variant="hero"
               size="lg"

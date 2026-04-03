@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -258,7 +258,7 @@ const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) =>
                     <FormLabel className="text-sm font-normal text-muted-foreground">
                       I agree to the{" "}
                       <Link
-                        to="/terms"
+                        href="/terms"
                         target="_blank"
                         className="underline text-foreground hover:text-accent-orange"
                       >
@@ -266,7 +266,7 @@ const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) =>
                       </Link>
                       ,{" "}
                       <Link
-                        to="/privacy"
+                        href="/privacy"
                         target="_blank"
                         className="underline text-foreground hover:text-accent-orange"
                       >
@@ -274,7 +274,7 @@ const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) =>
                       </Link>
                       , and{" "}
                       <Link
-                        to="/refund-policy"
+                        href="/refund-policy"
                         target="_blank"
                         className="underline text-foreground hover:text-accent-orange"
                       >

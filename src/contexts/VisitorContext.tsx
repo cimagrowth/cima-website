@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 interface VisitorData {
@@ -17,7 +19,7 @@ const STORAGE_KEY = "cima_visitor_data";
 
 export const VisitorProvider = ({ children }: { children: ReactNode }) => {
   const [visitor, setVisitorState] = useState<VisitorData | null>(() => {
-    // Initialize from localStorage
+    if (typeof window === 'undefined') return null;
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {

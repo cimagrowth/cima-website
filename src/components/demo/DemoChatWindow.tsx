@@ -18,7 +18,7 @@ interface DemoChatWindowProps {
   onNewMessage?: () => void;
 }
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-demo-chat`;
+const CHAT_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/website-demo-chat`;
 
 const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -172,7 +172,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY}`,
         },
         body: JSON.stringify(body),
       });
@@ -202,7 +202,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY}`,
       },
       body: JSON.stringify({ messages, sessionId, clinicType, visitorName, userMessage }),
     });

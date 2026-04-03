@@ -1,0 +1,85 @@
+import type { Metadata } from 'next';
+import Script from 'next/script';
+import '@/index.css';
+import { Providers } from './providers';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import ScrollToTop from '@/components/layout/ScrollToTop';
+import ScrollToTopOnNavigate from '@/components/layout/ScrollToTopOnNavigate';
+import DemoChatWidget from '@/components/demo/DemoChatWidget';
+import { DynamicGTM } from './dynamic-gtm';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://cimagrowth.com'),
+  title: {
+    default: 'AI Patient Engagement for Healthcare Clinics – Cima Growth Solutions',
+    template: '%s – Cima Growth Solutions',
+  },
+  description: 'GrowthOS responds instantly to patient inquiries across web, phone, text, email & social. AI-powered engagement for fertility clinics and med spas.',
+  keywords: ['patient engagement software', 'healthcare CRM', 'AI patient communication', 'fertility clinic software', 'med spa CRM'],
+  authors: [{ name: 'Cima Growth Solutions' }],
+  openGraph: {
+    type: 'website',
+    siteName: 'GrowthOS by Cima Growth Solutions',
+    locale: 'en_US',
+    url: 'https://cimagrowth.com',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.png'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  other: {
+    'theme-color': '#112434',
+    'msapplication-TileColor': '#112434',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-TCKBWVR');`}
+        </Script>
+      </head>
+      <body className="font-sans antialiased">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TCKBWVR"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        <Providers>
+          <ScrollToTopOnNavigate />
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1 pt-16 md:pt-20">{children}</main>
+            <Footer />
+            <ScrollToTop />
+            <DemoChatWidget />
+          </div>
+          <DynamicGTM />
+        </Providers>
+      </body>
+    </html>
+  );
+}

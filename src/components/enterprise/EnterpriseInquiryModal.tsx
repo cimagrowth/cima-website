@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import {
   Dialog,
@@ -149,7 +151,7 @@ const EnterpriseInquiryModal = ({ open, onOpenChange }: EnterpriseInquiryModalPr
                       id={field.key}
                       type={field.type}
                       required={field.required}
-                      placeholder={field.placeholder}
+                      placeholder={'placeholder' in field ? field.placeholder : undefined}
                       className={inputClasses}
                       value={formData[field.key] || ""}
                       onChange={(e) => handleChange(field.key, e.target.value)}

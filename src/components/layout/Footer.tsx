@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+'use client';
+
+import Link from "next/link";
 import { Linkedin, Twitter, Instagram, Facebook, Youtube, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import cimaLogoDark from "@/assets/cima-logo-dark.png";
+import cimaLogoDarkImg from "@/assets/cima-logo-dark.png";
+
+const cimaLogoDark = typeof cimaLogoDarkImg === 'string' ? cimaLogoDarkImg : cimaLogoDarkImg.src;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,7 +48,7 @@ const Footer = () => {
             start today.
           </p>
           <div className="flex justify-center">
-            <Link to="/demo">
+            <Link href="/demo">
               <Button
                 size="lg"
                 className="bg-white text-accent-orange hover:bg-white/90 font-semibold group"
@@ -62,7 +66,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {/* Brand Column */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <Link to="/" className="flex items-center gap-3 mb-4">
+              <Link href="/" className="flex items-center gap-3 mb-4">
                 <img
                   src={cimaLogoDark}
                   alt="Cima Growth Solutions logo"
@@ -102,7 +106,7 @@ const Footer = () => {
                 {footerLinks.product.map((link) => (
                   <li key={link.label}>
                     <Link
-                      to={link.href}
+                      href={link.href}
                       className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
                     >
                       {link.label}
@@ -121,7 +125,7 @@ const Footer = () => {
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
                     <Link
-                      to={link.href}
+                      href={link.href}
                       className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
                     >
                       {link.label}
@@ -140,7 +144,7 @@ const Footer = () => {
                 {footerLinks.resources.map((link) => (
                   <li key={link.label}>
                     <Link
-                      to={link.href}
+                      href={link.href}
                       className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
                     >
                       {link.label}
@@ -155,23 +159,23 @@ const Footer = () => {
           <div className="h-px bg-primary-foreground/10 mt-10 md:mt-12 mb-6 md:mb-8" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/50 text-center md:text-left">
-              © {currentYear} Cima Growth Solutions. All rights reserved.
+              &copy; {currentYear} Cima Growth Solutions. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link
-                to="/privacy"
+                href="/privacy"
                 className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
-                to="/terms"
+                href="/terms"
                 className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
               >
                 Terms of Service
               </Link>
               <Link
-                to="/refund-policy"
+                href="/refund-policy"
                 className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
               >
                 Refund Policy

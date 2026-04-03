@@ -11,7 +11,7 @@ interface DemoChatFormProps {
   onSessionCreated: (session: ChatSession) => void;
 }
 
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/website-demo-chat`;
+const CHAT_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/website-demo-chat`;
 
 const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
   const { toast } = useToast();
@@ -60,7 +60,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY}`,
         },
         body: JSON.stringify({
           action: "create_session",
