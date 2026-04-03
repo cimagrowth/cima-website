@@ -2,19 +2,35 @@ import type { Metadata } from 'next';
 import Outreach from '@/views/Outreach';
 
 export const metadata: Metadata = {
-  title: 'AI-Powered B2B Outreach System | Cima Growth Solutions',
-  description: 'Stop sending generic cold emails. Our AI scrapes prospect websites, identifies pain points, and generates personalized multi-step sequences. Starting at $49/mo.',
+  title: 'AI-Powered Outreach Engine – Cima Growth Solutions',
+  description: 'Prospect enrichment, personalized email generation, and automated follow-up that books meetings.',
   keywords: [
     'B2B outreach', 'AI cold email', 'prospect enrichment', 'cold email automation',
     'AI email sequences', 'B2B lead generation', 'outreach automation',
     'personalized cold email', 'sales engagement platform', 'AI prospecting tool',
   ],
-  alternates: { canonical: 'https://cimagrowth.com/outreach' },
+  alternates: { canonical: 'https://www.cimagrowth.com/outreach' },
   openGraph: {
-    title: 'B2B Outreach Engine | AI-Powered Prospect Enrichment & Cold Email',
-    description: 'Turn cold prospects into warm conversations. AI enriches every prospect, writes personalized 12-step email sequences.',
-    url: 'https://cimagrowth.com/outreach',
-    images: [{ url: '/og-outreach.png' }],
+    title: 'AI-Powered Outreach Engine – Cima Growth Solutions',
+    description: 'Prospect enrichment, personalized email generation, and automated follow-up that books meetings.',
+    url: 'https://www.cimagrowth.com/outreach',
+    siteName: 'Cima Growth Solutions',
+    images: [
+      {
+        url: '/og/og-outreach.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI-Powered Outreach Engine – Cima Growth Solutions',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI-Powered Outreach Engine – Cima Growth Solutions',
+    description: 'Prospect enrichment, personalized email generation, and automated follow-up that books meetings.',
+    images: ['/og/og-outreach.png'],
   },
 };
 
