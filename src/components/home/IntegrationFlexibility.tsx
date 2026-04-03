@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Layers, Plug, Replace, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,7 +44,7 @@ const IntegrationFlexibility = () => {
       <div className="container-wide relative z-10">
         {/* CTA at top */}
         <div className="mb-10 md:mb-14 text-center">
-          <Link to="/demo">
+          <Link href="/demo">
             <Button variant="hero" size="lg" className="group">
               Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
