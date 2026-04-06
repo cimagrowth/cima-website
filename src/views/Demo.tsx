@@ -12,14 +12,11 @@ const ANON_KEY =
 const FORM_ID = "059ef2d4-830d-403d-831f-23c4d82a91a6";
 
 const industryOptions = [
-  "Healthcare/Medical",
-  "SaaS/Technology",
-  "Agency/Consulting",
-  "Finance",
-  "Real Estate",
-  "E-commerce",
-  "Legal",
-  "Other",
+  { label: "Fertility", value: "fertility" },
+  { label: "Wellness", value: "wellness" },
+  { label: "Aesthetics", value: "aesthetics" },
+  { label: "Regenerative Medicine", value: "regenerative_medicine" },
+  { label: "Other", value: "other" },
 ];
 
 const primaryGoalOptions = [
@@ -328,11 +325,11 @@ const Demo = () => {
                       className="w-full h-12 px-3 rounded-md border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange transition-colors"
                     >
                       <option value="" disabled>
-                        Select your industry
+                        Select your specialty
                       </option>
                       {industryOptions.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
                         </option>
                       ))}
                     </select>
