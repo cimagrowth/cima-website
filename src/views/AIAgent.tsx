@@ -48,14 +48,14 @@ const steps = [
     title: "Connect Your CRM",
     time: "2 minutes",
     description:
-      "Link your GoHighLevel account with a single click. No code, no IT team required.",
+      "Link your GoHighLevel, HubSpot (Q3), or Salesforce (Q4) account. One click. Your data stays yours.",
   },
   {
     icon: Brain,
     title: "Train Your Agent",
     time: "5 minutes",
     description:
-      "Tell your agent about your services, FAQs, and booking rules. It learns your clinic's voice instantly.",
+      "Upload your services, FAQs, booking rules, and qualification criteria. The AI learns your clinic's voice instantly.",
   },
   {
     icon: Zap,
@@ -77,49 +77,49 @@ const features = [
     icon: Clock,
     title: "24/7 Instant Response",
     description:
-      "Never miss a lead again. Your AI agent responds to inquiries within seconds, day or night.",
+      "Under 3 seconds. Every channel. Every time. Day or night, weekday or holiday.",
   },
   {
     icon: Users,
-    title: "Lead Qualification",
+    title: "Emotionally Intelligent Qualification",
     description:
-      "Automatically qualifies incoming leads based on your criteria — service interest, budget, and timeline.",
+      "AI asks the right questions without feeling like an interrogation. Adjusts tone based on specialty and patient sentiment. Scores leads as Hot, Warm, or Cold.",
   },
   {
     icon: Calendar,
     title: "Appointment Booking",
     description:
-      "Books consultations directly into your calendar. Handles rescheduling and confirmations automatically.",
+      "Books consultations directly into your calendar. Handles rescheduling and confirmations. Sends reminders.",
   },
   {
     icon: Globe,
-    title: "Multi-Channel",
+    title: "Multi-Channel Engagement",
     description:
-      "Engages patients across SMS, email, web chat, and social DMs from a single AI brain.",
+      "SMS, email, web chat, WhatsApp, Instagram DM, Facebook Messenger — one AI brain, every channel.",
   },
   {
     icon: Sparkles,
     title: "Specialty-Trained",
     description:
-      "Pre-trained on fertility, med spa, and aesthetic clinic workflows. Understands your patients' language.",
+      "Pre-loaded with fertility, med spa, aesthetic, regenerative, and wellness conversation frameworks. Then fine-tuned on YOUR clinic's specific services, policies, and voice.",
   },
   {
     icon: MessageSquare,
-    title: "Human Escalation",
+    title: "Seamless Human Escalation",
     description:
-      "Seamlessly hands off complex conversations to your staff with full context — no patient repeats themselves.",
+      "When a patient needs a human, your staff gets alerted on desktop or mobile with the full conversation. The patient never starts over.",
   },
   {
     icon: ShieldCheck,
     title: "HIPAA Compliant",
     description:
-      "Built with healthcare privacy at the core. All patient data is encrypted and handled per HIPAA guidelines.",
+      "All data encrypted. BAA available. Built for healthcare.",
   },
   {
     icon: Inbox,
     title: "Real-Time Inbox",
     description:
-      "Monitor every AI conversation in real time. Jump in anytime, or let the agent handle it end to end.",
+      "Monitor every AI conversation live. Jump in anytime, or let the agent handle it end to end.",
   },
 ];
 
@@ -154,7 +154,7 @@ const pricingTiers = [
       "Everything in Starter",
       "Unlimited conversations",
       "All CRM integrations",
-      "Multi-channel (SMS, email, web chat, social)",
+      "Multi-channel (SMS, email, web chat, WhatsApp, social DMs)",
       "Custom AI training",
       "Human escalation workflows",
       "Advanced analytics",
@@ -168,32 +168,32 @@ const faqItems = [
   {
     question: "Does this work with my CRM?",
     answer:
-      "We currently integrate natively with GoHighLevel (GHL). HubSpot integration is coming in Q3 and Salesforce in Q4. If you use a different CRM, contact us — we may be able to build a custom connection.",
+      "Native GoHighLevel integration today. HubSpot in Q3, Salesforce in Q4. Or use it inside GrowthOS as the full platform — no external CRM needed.",
   },
   {
-    question: "How long does setup take?",
+    question: "How is this different from the chatbot that came with my CRM?",
     answer:
-      "Most clinics are live in under 10 minutes. You connect your CRM (2 min), configure your agent's knowledge base (5 min), and go live instantly. No developer or IT team needed.",
+      "Most CRM chatbots match keywords to canned responses. The Cima AI Agent is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI employee.",
   },
   {
     question: "Can my staff see what the AI is saying?",
     answer:
-      "Absolutely. Every conversation appears in your real-time inbox. Staff can monitor, jump in at any time, or review conversation history. You stay in full control.",
+      "Every conversation appears in your real-time inbox. Staff can monitor, jump in, or review history. You're always in control.",
   },
   {
-    question: "What if the AI can't answer a question?",
+    question: "What if the AI can't answer something?",
     answer:
-      "Your agent is trained to recognize when it's out of its depth. It seamlessly escalates to a human team member with the full conversation context, so the patient never has to repeat themselves.",
+      "It recognizes when it's out of its depth and escalates to your team with full context. The patient never repeats themselves.",
   },
   {
     question: "Is this HIPAA compliant?",
     answer:
-      "Yes. All patient data is encrypted in transit and at rest. We follow HIPAA guidelines for data handling, and we sign BAAs (Business Associate Agreements) with all healthcare clients.",
+      "Yes. Encrypted in transit and at rest. BAA available.",
   },
   {
     question: "Can I customize what the AI says?",
     answer:
-      "Yes. You control your agent's personality, tone, FAQs, booking rules, and escalation triggers. It speaks in your clinic's voice, not generic AI-speak.",
+      "You control personality, tone, FAQs, booking rules, qualification criteria, and escalation triggers. It speaks in your voice.",
   },
   {
     question: "Can I upgrade or downgrade my plan?",
@@ -215,7 +215,7 @@ const AIAgent = () => {
   return (
     <>
 
-      {/* ═══════════ HERO ═══════════ */}
+      {/* HERO */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial" />
         <div className="container-wide relative z-10">
@@ -231,13 +231,13 @@ const AIAgent = () => {
             <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
               Your Clinic's AI Front Desk —{" "}
               <span className="text-gradient-accent">
-                Works Inside the CRM You Already Use
+                Responds in Seconds, Nurtures for Weeks, Hands Off With Full Context.
               </span>
             </h1>
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-              Stop losing patients to slow response times. Cima AI Agent handles
-              inquiries, qualifies leads, and books appointments 24/7 — no
-              platform switch required.
+              Stop losing patients to slow response times. The Cima AI Agent
+              handles inquiries, qualifies leads, and books appointments 24/7 —
+              inside the CRM you already use, or inside GrowthOS.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -254,14 +254,14 @@ const AIAgent = () => {
                 size="lg"
                 onClick={() => scrollTo("how-it-works")}
               >
-                See it in Action ↓
+                See it in Action
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ═══════════ PROBLEM STATEMENT ═══════════ */}
+      {/* PROOF BAR */}
       <section className="py-16 md:py-20 bg-tan">
         <div className="container-wide">
           <motion.div
@@ -269,20 +269,24 @@ const AIAgent = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-4 gap-8"
           >
             {[
               {
-                stat: "73%",
-                text: "of patients choose the clinic that responds first.",
+                stat: "78%",
+                text: "of patients choose the first clinic to respond",
               },
               {
                 stat: "24/7",
-                text: "Your staff can't be available around the clock. Your AI agent can.",
+                text: "Coverage your staff physically can't provide",
               },
               {
-                stat: "15–20",
-                text: "potential patients lost per month to slow or missed follow-ups.",
+                stat: "15-20",
+                text: "potential patients lost per month to slow follow-up",
+              },
+              {
+                stat: "< 3 sec",
+                text: "average AI response time",
               },
             ].map((item, i) => (
               <motion.div
@@ -300,8 +304,40 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* ═══════════ HOW IT WORKS ═══════════ */}
-      <section id="how-it-works" className="section-padding bg-background">
+      {/* DIFFERENTIATOR — Not a Chatbot */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-heading-lg md:text-display text-foreground mb-6 text-center">
+              Most "AI Chatbots" Are Glorified FAQ Pages.{" "}
+              <span className="text-gradient-accent">This Is an AI Employee.</span>
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 mt-10">
+              <div className="card-premium p-6 border-l-4 border-muted-foreground/30">
+                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">A chatbot:</p>
+                <p className="text-body text-muted-foreground">
+                  Matches keywords to canned responses. When it doesn't understand, it says "Let me connect you with a team member" — and that team member is unavailable until morning.
+                </p>
+              </div>
+              <div className="card-premium p-6 border-l-4 border-accent-orange">
+                <p className="text-sm font-semibold text-accent-orange uppercase tracking-wider mb-3">The Cima AI Agent:</p>
+                <p className="text-body text-foreground">
+                  Reads the emotional context of every message. Knows that a patient asking about egg freezing at 11 PM is probably anxious and needs reassurance, not a pricing sheet. Nurtures across days or weeks. Then hands off with the complete conversation history.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS — Setup */}
+      <section id="how-it-works" className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -311,11 +347,8 @@ const AIAgent = () => {
             className="text-center mb-16"
           >
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Live in Under 10 Minutes
+              Live in Under 10 Minutes. No Code. No IT.
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Three steps. No code. No IT department.
-            </p>
           </motion.div>
           <motion.div
             variants={containerVariants}
@@ -348,8 +381,8 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* ═══════════ CRM INTEGRATIONS ═══════════ */}
-      <section className="py-12 md:py-16 bg-tan">
+      {/* CRM INTEGRATIONS */}
+      <section className="py-12 md:py-16 bg-background">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -389,8 +422,8 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* ═══════════ FEATURES ═══════════ */}
-      <section className="section-padding bg-background">
+      {/* FEATURES */}
+      <section className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -401,12 +434,8 @@ const AIAgent = () => {
           >
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
               Everything Your Front Desk Does —{" "}
-              <span className="text-gradient-accent">Automated</span>
+              <span className="text-gradient-accent">Without the Hold Music.</span>
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Your AI agent handles patient communication so your team can focus
-              on care.
-            </p>
           </motion.div>
           <motion.div
             variants={containerVariants}
@@ -436,8 +465,8 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* ═══════════ PRICING ═══════════ */}
-      <section id="pricing" className="section-padding bg-tan">
+      {/* PRICING */}
+      <section id="pricing" className="section-padding bg-background">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -447,11 +476,8 @@ const AIAgent = () => {
             className="text-center mb-12"
           >
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Simple, Transparent Pricing
+              Simple Pricing. No Setup Fees. Cancel Anytime.
             </h2>
-            <p className="text-body-lg text-muted-foreground mb-8">
-              No setup fees. No hidden costs. Cancel anytime.
-            </p>
 
             {/* Monthly/Annual Toggle */}
             <div className="inline-flex items-center gap-3 bg-card border border-border rounded-full p-1.5">
@@ -547,11 +573,7 @@ const AIAgent = () => {
                   {tier.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-2.5">
                       <Check
-                        className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                          tier.highlighted
-                            ? "text-accent-orange"
-                            : "text-accent-orange"
-                        }`}
+                        className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent-orange"
                       />
                       <span
                         className={`text-body-sm ${
@@ -583,11 +605,29 @@ const AIAgent = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Full Platform upsell */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="max-w-4xl mx-auto mt-8"
+          >
+            <div className="rounded-xl p-6 bg-tan border border-border text-center">
+              <p className="text-body font-semibold text-foreground mb-2">
+                Full Platform — $999/month
+              </p>
+              <p className="text-body-sm text-muted-foreground">
+                Everything in Pro + the entire GrowthOS platform: outreach engine, campaign builder, ad manager, landing pages, pipeline management, lead scoring, EHR integration, and more. For clinics that want the complete patient acquisition system.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ═══════════ FAQ ═══════════ */}
-      <section className="section-padding bg-background">
+      {/* FAQ */}
+      <section className="section-padding bg-tan">
         <div className="container-tight">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -638,7 +678,7 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* ═══════════ FINAL CTA ═══════════ */}
+      {/* FINAL CTA */}
       <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-wide text-center">
           <motion.div
@@ -648,11 +688,10 @@ const AIAgent = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-heading-lg md:text-display text-white mb-4">
-              Ready to Stop Losing Patients?
+              Every Hour Without an AI Agent Is an Hour of Leads Going to Your Competitor.
             </h2>
             <p className="text-body-lg text-white/70 max-w-xl mx-auto mb-8">
-              Join clinics that respond to every lead in seconds — not hours.
-              Start your AI agent today.
+              The clinic that responds first wins 78% of the time. Your AI agent responds in under 3 seconds.
             </p>
             <Button
               variant="hero"
@@ -676,7 +715,7 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* ═══════════ CHECKOUT MODAL ═══════════ */}
+      {/* CHECKOUT MODAL */}
       {checkoutPlan && (
         <div
           className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
@@ -693,7 +732,7 @@ const AIAgent = () => {
                 onClick={() => setCheckoutPlan(null)}
                 className="text-gray-500 hover:text-gray-700"
               >
-                ✕
+                &times;
               </button>
             </div>
             <WhopCheckoutEmbed

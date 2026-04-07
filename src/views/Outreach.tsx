@@ -35,67 +35,68 @@ const itemVariants = {
 
 const stats = [
   { value: "40%", label: "More replies vs. generic outreach" },
-  { value: "12", label: "Personalized follow-ups per prospect" },
-  { value: "$0.07", label: "Per AI-enriched prospect" },
+  { value: "12", label: "Personalized follow-ups per prospect — each with a different angle" },
+  { value: "$0.07", label: "Per AI-enriched prospect (vs. $50+ for an SDR)" },
+  { value: "100%", label: "Personalized — no templates, no mail merge" },
 ];
 
 const steps = [
   {
     icon: Upload,
-    title: "Import prospects",
+    title: "Import Prospects",
     description:
-      "Upload a CSV or add contacts manually. Include a website URL and the AI handles the rest.",
+      "Upload a CSV or add contacts manually. Just include a website URL — the AI handles the rest.",
   },
   {
     icon: Brain,
-    title: "AI enriches & writes",
+    title: "AI Enriches and Writes",
     description:
-      "Each prospect gets scraped, analyzed, and receives a custom 12-step cold email sequence written in your voice.",
+      "Every prospect's website gets scraped, analyzed for pain points and personalization hooks, and matched with the best outreach angle. Then AI writes a custom 12-step cold email sequence — in your voice, with your positioning, using a different persuasion angle on every follow-up.",
   },
   {
     icon: Send,
-    title: "Send & manage",
+    title: "Send and Manage",
     description:
-      "Launch sequences, track opens and replies, and manage every conversation from a unified inbox.",
+      "Launch sequences with per-email click tracking. Track opens, replies, and conversions. Manage every conversation from a unified inbox with CC/BCC support. Toggle formal or informal tone per campaign. Configure CTA as link or reply.",
   },
 ];
 
 const features = [
   {
     icon: Search,
-    title: "AI Prospect Enrichment",
+    title: "AI Prospect Enrichment (Gemini 2.5 Flash)",
     description:
-      "Every prospect's website gets scraped and analyzed. AI identifies pain points, personalization hooks, and the best angle for your outreach.",
+      "Website scraping + AI analysis identifies pain points, competitive positioning, tech stack, and the best angle for your first email. Not a template — a strategy per prospect.",
   },
   {
     icon: Mail,
-    title: "12-Step Email Sequences",
+    title: "12-Step Personalized Sequences",
     description:
-      "AI writes a personalized cold email plus 12 follow-ups per prospect. Each follow-up uses a different angle. All written in your voice.",
+      "Each prospect gets a unique sequence. Every follow-up uses a different angle — not just \"checking in.\" All written in your configured voice.",
   },
   {
     icon: Mic,
     title: "Voice Configuration",
     description:
-      "Define your tone, authority, and positioning once. Every email sounds like you wrote it, not a marketing agency.",
+      "Define tone, authority level, and positioning once. Toggle formal/informal per campaign. Every email sounds like you wrote it.",
   },
   {
     icon: MessageSquare,
     title: "Unified Inbox",
     description:
-      "Email, SMS, and WhatsApp in one place. Reply to prospects without switching tabs. Full conversation history at a glance.",
+      "Email, SMS, and WhatsApp in one place. Full conversation history. CC/BCC support. Reply without switching tabs.",
   },
   {
     icon: Users,
-    title: "Contact Management",
+    title: "Contact & Company Management",
     description:
-      "Full CRM with companies, contacts, tags, notes, and activity timeline. Import from CSV or add manually.",
+      "Full CRM with companies, contacts, tags, notes, and activity timeline. Import from CSV. Merge fields auto-populate.",
   },
   {
     icon: BarChart3,
     title: "Outreach Analytics",
     description:
-      "Track enrichment progress, email delivery, open rates, reply rates, and pipeline conversion across your entire prospect list.",
+      "Enrichment progress, delivery rates, opens, replies, click tracking, and pipeline conversion — across your entire prospect list.",
   },
 ];
 
@@ -109,11 +110,7 @@ const tiers = [
     checkoutMonthly: "https://whop.com/checkout/plan_berBiVByOs7XV",
     checkoutAnnual: "https://whop.com/checkout/plan_KYTU1DIPiGwSq",
     features: [
-      "AI prospect enrichment",
-      "12-step email sequences",
-      "LinkedIn + SMS drafts",
-      "Brand voice config",
-      "Email regeneration",
+      "AI enrichment, 12-step sequences, brand voice, email regeneration",
     ],
     highlighted: false,
   },
@@ -125,7 +122,7 @@ const tiers = [
     enrichments: 300,
     checkoutMonthly: "https://whop.com/checkout/plan_L9q8TCSz61hlV",
     checkoutAnnual: "https://whop.com/checkout/plan_OQO2RTuJ06jVJ",
-    features: ["Everything in Starter", "Priority enrichment queue", "300 prospects/month"],
+    features: ["Everything in Starter + priority enrichment"],
     highlighted: false,
   },
   {
@@ -136,7 +133,7 @@ const tiers = [
     enrichments: 750,
     checkoutMonthly: "https://whop.com/checkout/plan_oUfC9HOmfK7Ft",
     checkoutAnnual: "https://whop.com/checkout/plan_LAP2RdZ6K4JH4",
-    features: ["Everything in Growth", "Custom voice per campaign", "750 prospects/month"],
+    features: ["Everything in Growth + custom voice per campaign"],
     highlighted: true,
   },
   {
@@ -147,7 +144,7 @@ const tiers = [
     enrichments: 2000,
     checkoutMonthly: "https://whop.com/checkout/plan_c4RZPciY5WUyF",
     checkoutAnnual: "https://whop.com/checkout/plan_nOVJ2jzuQ1OFO",
-    features: ["Everything in Pro", "White-label reports", "2,000 prospects/month"],
+    features: ["Everything in Pro + white-label reports"],
     highlighted: false,
   },
   {
@@ -159,10 +156,7 @@ const tiers = [
     checkoutMonthly: "https://whop.com/checkout/plan_2g0hcrD3EtkYr",
     checkoutAnnual: "https://whop.com/checkout/plan_BKF0QRTw31KUF",
     features: [
-      "Everything in Agency",
-      "Dedicated queue",
-      "Custom AI training",
-      "5,000 prospects/month",
+      "Everything in Agency + dedicated queue + custom AI training",
     ],
     highlighted: false,
   },
@@ -182,7 +176,7 @@ const faqItems = [
   {
     question: "Can I upgrade to the full GrowthOS platform later?",
     answer:
-      "Yes. Upgrade anytime to GrowthOS for AI campaign building, landing pages, Google Ads management, pipeline deals, and more. Your data carries over seamlessly.",
+      "Yes. Upgrade anytime to GrowthOS for AI campaign building, landing pages, Google Ads management, pipeline deals, and more. Your outreach data carries over seamlessly.",
   },
 ];
 
@@ -200,7 +194,7 @@ const Outreach = () => {
   return (
     <>
 
-      {/* ────────── HERO ────────── */}
+      {/* HERO */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
@@ -224,17 +218,17 @@ const Outreach = () => {
               variants={itemVariants}
               className="text-display-lg md:text-display-xl text-foreground mb-6"
             >
-              Stop guessing.{" "}
-              <span className="text-gradient-accent">Start closing.</span>
+              Turn a Spreadsheet of Prospects Into a{" "}
+              <span className="text-gradient-accent">Pipeline of Warm Conversations.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
             >
-              Import your prospect list. AI enriches every contact, writes
-              personalized 12-step email sequences, and manages your entire
-              pipeline from first touch to closed deal.
+              Import your list. AI scrapes every prospect's website, identifies
+              their pain points, and writes a personalized 12-step email
+              sequence — in your voice. At $0.07 per prospect.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col items-center gap-3">
@@ -255,7 +249,7 @@ const Outreach = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
           >
             {stats.map((stat, i) => (
               <div
@@ -274,7 +268,7 @@ const Outreach = () => {
         </div>
       </section>
 
-      {/* ────────── HOW IT WORKS ────────── */}
+      {/* HOW IT WORKS */}
       <section className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
@@ -288,12 +282,8 @@ const Outreach = () => {
               How It Works
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Three steps to a full pipeline
+              Three Steps to a Full Pipeline
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
-              Upload your list, let AI do the heavy lifting, and focus on the
-              conversations that matter.
-            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -322,7 +312,6 @@ const Outreach = () => {
             ))}
           </div>
 
-          {/* CTA after How It Works */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -340,7 +329,7 @@ const Outreach = () => {
         </div>
       </section>
 
-      {/* ────────── FEATURES GRID ────────── */}
+      {/* FEATURES GRID */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -356,7 +345,7 @@ const Outreach = () => {
               What You Get
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground">
-              Everything to run outreach at scale
+              Everything to Run Outreach at Scale — Without an Outreach Team
             </h2>
           </motion.div>
 
@@ -382,26 +371,10 @@ const Outreach = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* CTA after Features */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <a href="#pricing" onClick={scrollToPricing}>
-              <Button variant="hero" size="lg" className="group">
-                See Pricing
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </a>
-          </motion.div>
         </div>
       </section>
 
-      {/* ────────── PRICING ────────── */}
+      {/* PRICING */}
       <section id="pricing" className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
@@ -415,12 +388,8 @@ const Outreach = () => {
               Pricing
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Simple, transparent pricing
+              Start Small. Scale When It Works.
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
-              Start with outreach. Upgrade to the full platform when you're
-              ready.
-            </p>
           </motion.div>
 
           {/* Monthly / Annual Toggle */}
@@ -620,9 +589,8 @@ const Outreach = () => {
               <div className="flex items-start gap-3">
                 <Sparkles className="w-5 h-5 text-accent-orange flex-shrink-0 mt-0.5" />
                 <p className="text-body text-muted-foreground">
-                  Need landing pages, Google Ads, AI campaigns, and pipeline
-                  management? Upgrade to the full GrowthOS platform anytime.
-                  Your data carries over seamlessly.
+                  <strong className="text-foreground">Ready for the full patient acquisition platform?</strong>{" "}
+                  Upgrade to GrowthOS anytime. Your outreach data carries over seamlessly.
                 </p>
               </div>
             </div>
@@ -630,7 +598,7 @@ const Outreach = () => {
         </div>
       </section>
 
-      {/* ────────── FAQ ────────── */}
+      {/* FAQ */}
       <section className="section-padding bg-background">
         <div className="container-tight">
           <motion.h2
@@ -662,7 +630,7 @@ const Outreach = () => {
         </div>
       </section>
 
-      {/* ────────── FINAL CTA ────────── */}
+      {/* FINAL CTA */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl pointer-events-none" />
@@ -676,15 +644,13 @@ const Outreach = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
-              Ready?
-            </span>
             <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
-              Your pipeline won't fill itself
+              Your Pipeline Won't Fill Itself.
             </h2>
             <p className="text-body-lg text-primary-foreground/80 mb-10 max-w-xl mx-auto">
-              Join hundreds of B2B teams using AI to turn cold prospects into
-              warm conversations.
+              An SDR costs $5,000+/month and sends generic templates. The
+              Outreach Engine costs $0.07/prospect and writes sequences that
+              sound like you.
             </p>
             <div className="flex flex-col items-center gap-4">
               <a href="#pricing" onClick={scrollToPricing}>
@@ -693,13 +659,6 @@ const Outreach = () => {
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
-              <p className="text-body-sm text-primary-foreground/60">
-                Not sure which plan?{" "}
-                <Link href="/demo" className="text-accent-orange hover:underline font-medium">
-                  Book a call
-                </Link>{" "}
-                and we&apos;ll help you choose.
-              </p>
             </div>
           </motion.div>
         </div>

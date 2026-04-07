@@ -2,35 +2,37 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Layers, Plug, Replace, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Layers, Plug, Replace } from "lucide-react";
 
 const IntegrationFlexibility = () => {
   const deploymentModes = [
     {
       icon: Replace,
       title: "Full Platform",
-      subtitle: "Recommended",
-      description: "Ditch the complexity. GrowthOS replaces your CRM entirely—one simple platform for patient engagement, pipelines, and follow-up. No more juggling tools.",
-      audience: "Most clinics choose this path",
+      subtitle: "Most Popular",
+      bestFor: "Clinics ready to simplify",
+      whatHappens: "GrowthOS replaces your CRM entirely",
+      integratesWith: "Native — nothing else needed",
       gradient: "from-accent-orange to-secondary",
       featured: true,
     },
     {
       icon: Layers,
       title: "Transition Mode",
-      subtitle: "Moving away from your CRM",
-      description: "Already stuck in HubSpot, Salesforce, or Tebra? We'll help you migrate at your own pace while GrowthOS handles the heavy lifting.",
-      audience: "For clinics ready to simplify",
+      subtitle: "Migrating from another CRM",
+      bestFor: "Clinics migrating from another CRM",
+      whatHappens: "We migrate you at your pace while GrowthOS handles the heavy lifting",
+      integratesWith: "HubSpot, Salesforce, Zoho, Keap, Tebra, DearDoc",
       gradient: "from-secondary to-accent-orange",
       featured: false,
     },
     {
       icon: Plug,
       title: "Integration Mode",
-      subtitle: "When you must stay",
-      description: "Enterprise mandates or multi-location requirements? GrowthOS can sit alongside existing CRMs via API—but most clients realize they don't need them.",
-      audience: "For enterprise groups with legacy systems",
+      subtitle: "Enterprise with legacy mandates",
+      bestFor: "Enterprise groups with legacy mandates",
+      whatHappens: "GrowthOS sits alongside your existing CRM via API",
+      integratesWith: "Any system with an API",
       gradient: "from-primary to-primary-light",
       featured: false,
     },
@@ -40,19 +42,9 @@ const IntegrationFlexibility = () => {
     <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-[10%] w-64 h-64 bg-accent-orange/10 rounded-full blur-3xl" />
-      
-      <div className="container-wide relative z-10">
-        {/* CTA at top */}
-        <div className="mb-10 md:mb-14 text-center">
-          <Link href="/demo">
-            <Button variant="hero" size="lg" className="group">
-              Book a Demo
-              <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
-        </div>
 
-        <motion.div 
+      <div className="container-wide relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -60,12 +52,9 @@ const IntegrationFlexibility = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            Enterprise power. <span className="text-gradient">Zero bloat.</span>
+            Works However Your{" "}
+            <span className="text-gradient">Clinic Works.</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            Built for teams that want enterprise-grade capabilities without the six-month implementation, 
-            bloated feature sets, or dedicated admin staff. GrowthOS delivers power without the complexity.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -91,33 +80,25 @@ const IntegrationFlexibility = () => {
                   <Icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold text-foreground mb-1">{mode.title}</h3>
-                <p className={`text-sm font-medium mb-3 ${mode.featured ? "text-accent-orange" : "text-muted-foreground"}`}>{mode.subtitle}</p>
-                <p className="text-sm md:text-base text-muted-foreground mb-4">{mode.description}</p>
-                <p className="text-xs md:text-sm text-muted-foreground/70 italic">{mode.audience}</p>
+                <p className={`text-sm font-medium mb-4 ${mode.featured ? "text-accent-orange" : "text-muted-foreground"}`}>{mode.subtitle}</p>
+                <div className="space-y-3 text-sm text-left">
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Best for</p>
+                    <p className="text-foreground">{mode.bestFor}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">What happens</p>
+                    <p className="text-foreground">{mode.whatHappens}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Integrates with</p>
+                    <p className="text-foreground">{mode.integratesWith}</p>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
         </div>
-
-        {/* CRM Logos */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 md:mt-16 text-center"
-        >
-          <p className="text-sm text-muted-foreground mb-6">Migrating from or integrating with</p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60">
-            <span className="text-lg md:text-xl font-semibold text-foreground">Salesforce</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">HubSpot</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">Zoho</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">Keap</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">Tebra</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">DearDoc</span>
-            <span className="text-lg md:text-xl font-semibold text-foreground">+ API</span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

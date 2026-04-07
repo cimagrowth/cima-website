@@ -48,36 +48,36 @@ const itemVariants = {
 const painPoints = [
   {
     icon: ShieldAlert,
-    text: "Generic agencies don't understand fertility/aesthetics compliance",
+    text: "Generic agencies don't understand fertility compliance, healthcare keyword restrictions, or why your landing page needs to say different things to an egg freezing patient vs. an IUI patient",
+  },
+  {
+    icon: CircleDollarSign,
+    text: "You end up spending $3K-10K/month on ads — plus $2K-5K on the agency managing them — and can't tell what's actually driving booked appointments vs. tire-kicker clicks",
   },
   {
     icon: SlidersHorizontal,
     text: "Google Ads Manager is built for marketers, not clinic owners",
-  },
-  {
-    icon: CircleDollarSign,
-    text: "You're spending $3K-10K/mo on ads but can't tell what's working",
   },
 ];
 
 const steps = [
   {
     icon: ClipboardList,
-    title: "Complete Your Brand Intake",
+    title: "Complete Your Brand Intake (15 minutes)",
     description:
-      "Our AI learns your clinic's voice, services, and ideal patients in 15 minutes.",
+      "AI learns your clinic's voice, services, differentiators, and ideal patients.",
   },
   {
     icon: Link,
-    title: "Connect Google & Facebook",
+    title: "Connect Google & Facebook (One click)",
     description:
-      "One-click connection. Your accounts stay 100% yours.",
+      "Your accounts stay 100% yours. We never lock you in.",
   },
   {
     icon: Rocket,
-    title: "Launch & Optimize",
+    title: "AI Generates, You Approve, It Launches",
     description:
-      "AI generates headlines, keywords, audience signals, and ad copy. Review, approve, launch.",
+      "AI generates headlines, keywords, audience signals, ad copy, and creative images (powered by Imagen). You review and approve. Campaigns launch with healthcare keyword compliance handled automatically — including Google's medical exemption process.",
   },
 ];
 
@@ -86,37 +86,49 @@ const features = [
     icon: Pencil,
     title: "AI-Generated Ad Copy",
     description:
-      "Custom ad copy for fertility, aesthetics, wellness, and regen services — written to convert patients, not clicks.",
+      "Specialty-specific copy for fertility, aesthetics, wellness, and regenerative services. Written to convert patients, not impressions.",
   },
   {
-    icon: Search,
-    title: "Automated Keyword Research",
+    icon: ShieldAlert,
+    title: "Healthcare Keyword Compliance",
     description:
-      "AI finds high-intent keywords and manages negative keywords so you stop paying for irrelevant traffic.",
+      "Google restricts medical advertising terms. GrowthOS handles the two-step exemption process automatically. No rejected campaigns, no wasted time.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI-Generated Creative (Imagen)",
+    description:
+      "AI creates ad images tailored to your specialty. No stock photos. No designer needed.",
   },
   {
     icon: Target,
     title: "Smart Audience Targeting",
     description:
-      "AI-built audience signals reach the right patients based on demographics, intent, and behavior.",
+      "AI-built audience signals based on demographics, intent, behavior, and in-market signals for your specialty.",
   },
   {
     icon: LayoutDashboard,
-    title: "Google Search & Performance Max",
+    title: "Google Search + Performance Max",
     description:
-      "Launch Search and Performance Max campaigns from one dashboard with AI-optimized settings.",
+      "Launch both campaign types from one dashboard with AI-optimized settings and sitelinks.",
   },
   {
     icon: MonitorSmartphone,
     title: "Facebook & Instagram Campaigns",
     description:
-      "Create and manage campaigns for both platforms from one place. AI handles creative and targeting.",
+      "Create and manage campaigns for both platforms. AI handles creative, targeting, and budget allocation.",
+  },
+  {
+    icon: Globe,
+    title: "AI Landing Page Builder",
+    description:
+      "Build high-converting landing pages using 37 evidence-based conversion rules. Custom subdomain included. Conversion tracking configured automatically.",
   },
   {
     icon: BarChart3,
-    title: "Real-Time Performance Dashboard",
+    title: "Real-Time Dashboard",
     description:
-      "See clicks, conversions, cost-per-lead, and ROI at a glance. No more digging through Ads Manager.",
+      "Clicks, conversions, cost-per-lead, ROAS — at a glance. No more digging through Ads Manager.",
   },
   {
     icon: Bot,
@@ -125,22 +137,10 @@ const features = [
       "Automatic recommendations to improve bids, pause underperformers, and scale winners.",
   },
   {
-    icon: Globe,
-    title: "AI Landing Page Builder",
-    description:
-      "Build high-converting landing pages with AI. Custom subdomain included. No coding required.",
-  },
-  {
-    icon: Sparkles,
-    title: "Conversion Tracking Setup",
-    description:
-      "Pixel and conversion tracking configured automatically so you know exactly what's driving results.",
-  },
-  {
     icon: Palette,
-    title: "Brand Intake & Voice Match",
+    title: "Brand Voice Match",
     description:
-      "Every ad sounds like YOUR practice. AI learns your tone, positioning, and differentiators.",
+      "Every ad sounds like your practice. AI learns your tone, positioning, and differentiators during brand intake.",
   },
 ];
 
@@ -149,7 +149,7 @@ const specialties = [
     key: "fertility",
     label: "Fertility & IVF",
     icon: Baby,
-    tagline: "Reach patients at their most important moment.",
+    tagline: "Reach patients at their most important moment — with copy that balances hope and clinical credibility.",
     headlines: [
       "Ready to Start Your Family? World-Class IVF — Success Rates Above National Average",
       "Egg Freezing on Your Terms — Free Consultation, Flexible Financing",
@@ -160,7 +160,7 @@ const specialties = [
     key: "aesthetics",
     label: "Aesthetics & Med Spa",
     icon: Syringe,
-    tagline: "Fill your appointment book with high-value patients.",
+    tagline: "Drive bookings with urgency and aspiration. AI knows the difference between Botox and a body contouring campaign.",
     headlines: [
       "Look 10 Years Younger — Botox & Fillers Starting at $199",
       "Body Contouring Without Surgery — See Results in One Session",
@@ -169,9 +169,9 @@ const specialties = [
   },
   {
     key: "wellness",
-    label: "Wellness",
+    label: "Wellness & Hormone Therapy",
     icon: HeartPulse,
-    tagline: "Attract patients seeking real, lasting health solutions.",
+    tagline: "Speak to patients exploring options — educational tone that builds trust before asking for the booking.",
     headlines: [
       "Tired of Feeling Tired? Hormone Optimization Changed Everything",
       "IV Therapy for Peak Performance — Walk-Ins Welcome",
@@ -182,7 +182,7 @@ const specialties = [
     key: "regen",
     label: "Regenerative Medicine",
     icon: Dna,
-    tagline: "Position your practice at the forefront of modern medicine.",
+    tagline: "Position cutting-edge treatments with authority. AI highlights clinical differentiation.",
     headlines: [
       "PRP Joint Therapy — Avoid Surgery, Recover Faster",
       "Stem Cell Treatments for Chronic Pain — Schedule Your Evaluation",
@@ -210,7 +210,7 @@ const faqItems = [
   {
     question: "How is this different from hiring an agency?",
     answer:
-      "Agencies charge $2,000-5,000/mo and take weeks. Our AI generates campaigns in minutes for $399/mo. You maintain full control.",
+      "Agencies charge $2,000-5,000/mo and take weeks to launch. Our AI generates campaigns in minutes for $399/mo. You maintain full control of your ad accounts.",
   },
   {
     question: "Can I upgrade to GrowthOS later?",
@@ -227,18 +227,18 @@ const faqItems = [
 const upgradePaths = [
   {
     icon: MessageSquare,
-    title: "AI Chatbot",
-    description: "Convert website visitors into booked consultations 24/7",
+    title: "AI Agent",
+    description: "Convert website visitors into booked consultations 24/7 with emotionally intelligent conversation.",
   },
   {
     icon: Mail,
     title: "AI Outreach",
-    description: "Find and nurture prospects with personalized AI email sequences",
+    description: "Find and nurture prospects with AI-enriched, personalized 12-step email sequences.",
   },
   {
     icon: Sparkles,
     title: "Full GrowthOS",
-    description: "Landing pages, email campaigns, patient pipeline, analytics — everything",
+    description: "Landing pages, campaigns, pipeline, inbox, lead scoring, EHR integration — the complete patient acquisition operating system. All your ad data carries over.",
   },
 ];
 
@@ -271,7 +271,7 @@ const AdsPage = () => {
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-orange/10 text-accent-orange text-body-sm font-semibold mb-6">
                 <Zap className="w-4 h-4" />
-                AI-Powered Google Ads
+                AI-Powered Google & Facebook Ads
               </span>
             </motion.div>
 
@@ -279,17 +279,17 @@ const AdsPage = () => {
               variants={itemVariants}
               className="text-display-lg md:text-display-xl text-foreground mb-6"
             >
-              Stop Wasting Ad Spend.{" "}
-              <span className="text-gradient-accent">Start Converting Patients.</span>
+              Stop Paying Agencies $5,000/Month to Manage Your Ad Spend.{" "}
+              <span className="text-gradient-accent">Let AI Do It for $399.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
             >
-              AI builds, launches, and optimizes your Google & Facebook ad
-              campaigns — so you get more consultations without touching Ads
-              Manager.
+              AI builds, launches, and optimizes your Google and Facebook ad
+              campaigns — with healthcare compliance built in — so you get more
+              booked consultations without touching Ads Manager.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -303,7 +303,7 @@ const AdsPage = () => {
             </motion.div>
 
             <motion.p variants={itemVariants} className="text-body-sm text-muted-foreground mt-4">
-              Trusted by 100+ fertility & wellness clinics
+              Built for fertility & wellness clinics
             </motion.p>
           </motion.div>
         </div>
@@ -323,7 +323,7 @@ const AdsPage = () => {
               The Problem
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground">
-              Running ads for a medical practice is different.
+              Running Ads for a Medical Practice Is a Specialized Skill. Most Agencies Don't Have It.
             </h2>
           </motion.div>
 
@@ -361,11 +361,8 @@ const AdsPage = () => {
               How It Works
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Live in three simple steps
+              From Brand Intake to Live Campaigns in Under an Hour.
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
-              From brand intake to live campaigns in under an hour.
-            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -425,7 +422,7 @@ const AdsPage = () => {
               What You Get
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground">
-              Everything to run ads that actually work
+              Everything to Run Ads That Actually Convert Patients — Not Just Clicks.
             </h2>
           </motion.div>
 
@@ -481,7 +478,7 @@ const AdsPage = () => {
               Built For Your Specialty
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              AI ads tailored to your practice
+              AI Ads Tailored to Your Practice
             </h2>
             <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
               See example AI-generated headlines for your specialty.
@@ -551,7 +548,7 @@ const AdsPage = () => {
               Pricing
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Simple, transparent pricing
+              Agency-Level Output. Software Pricing.
             </h2>
             <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
               No hidden fees. No long-term contracts. Your ad accounts stay yours.
@@ -576,7 +573,7 @@ const AdsPage = () => {
                 No contracts. Cancel anytime.
               </p>
               <ul className="space-y-2 mb-8 flex-1">
-                {["AI ad copy & keyword research", "Google & Facebook campaigns", "Performance dashboard", "AI optimization agent", "AI landing page builder", "Brand intake & voice match"].map((feat, j) => (
+                {["AI ad copy & keyword research", "Google & Facebook campaigns", "Healthcare compliance", "Performance dashboard", "AI optimization", "AI landing page builder", "Brand voice match", "Cancel anytime"].map((feat, j) => (
                   <li key={j} className="flex items-start gap-2">
                     <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-accent-orange/10">
                       <Check className="w-2.5 h-2.5 text-accent-orange" />
@@ -634,6 +631,60 @@ const AdsPage = () => {
         </div>
       </section>
 
+      {/* ────────── VS AGENCY COMPARISON ────────── */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+              The Comparison
+            </span>
+            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+              Why Clinics Switch From Agencies to Cima AI Ads
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="overflow-x-auto rounded-2xl border border-border shadow-card max-w-3xl mx-auto"
+          >
+            <table className="w-full text-sm md:text-base">
+              <thead>
+                <tr className="bg-primary text-primary-foreground">
+                  <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl"></th>
+                  <th className="text-left px-4 md:px-6 py-4 font-semibold">Marketing Agency</th>
+                  <th className="text-left px-4 md:px-6 py-4 font-semibold text-accent-orange rounded-tr-2xl">Cima AI Ads</th>
+                </tr>
+              </thead>
+              <tbody className="bg-card">
+                {[
+                  { label: "Monthly cost", agency: "$2,000-5,000", cima: "$399" },
+                  { label: "Campaign launch time", agency: "2-4 weeks", cima: "Under 1 hour" },
+                  { label: "Healthcare compliance", agency: "Manual (error-prone)", cima: "Automatic" },
+                  { label: "Ad account ownership", agency: "Often agency-controlled", cima: "Always yours" },
+                  { label: "Landing pages", agency: "Extra cost", cima: "Included" },
+                  { label: "Reporting", agency: "Monthly PDF", cima: "Real-time dashboard" },
+                ].map((row, i, arr) => (
+                  <tr key={row.label} className={i < arr.length - 1 ? "border-b border-border" : ""}>
+                    <td className="px-4 md:px-6 py-4 font-medium text-foreground">{row.label}</td>
+                    <td className="px-4 md:px-6 py-4 text-muted-foreground">{row.agency}</td>
+                    <td className="px-4 md:px-6 py-4 font-semibold text-accent-orange">{row.cima}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ────────── UPGRADE PATH ────────── */}
       <section className="section-padding bg-background">
         <div className="container-wide">
@@ -648,7 +699,7 @@ const AdsPage = () => {
               Grow With Us
             </span>
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Ads are just the beginning.
+              Ads Are Just the Beginning.
             </h2>
           </motion.div>
 
@@ -727,11 +778,11 @@ const AdsPage = () => {
               Ready?
             </span>
             <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
-              Launch Your First AI Campaign Today
+              Every Dollar of Ad Spend Without AI Optimization Is a Dollar Half-Wasted.
             </h2>
             <p className="text-body-lg text-primary-foreground/80 mb-10 max-w-xl mx-auto">
-              Join hundreds of clinics using AI to turn ad spend into booked
-              consultations.
+              Join clinics that launch campaigns in minutes — not weeks — and
+              know exactly which dollars drive booked appointments.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <Button variant="hero" size="xl" className="group shadow-glow" onClick={() => openIntake("ads_monthly")}>

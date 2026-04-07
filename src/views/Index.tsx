@@ -4,10 +4,9 @@ import Hero from "@/components/home/Hero";
 import SocialProof from "@/components/home/SocialProof";
 import Problem from "@/components/home/Problem";
 import Solution from "@/components/home/Solution";
-import IntegrationFlexibility from "@/components/home/IntegrationFlexibility";
+import ValueStack from "@/components/home/ValueStack";
 import HowItWorks from "@/components/home/HowItWorks";
-import Authority from "@/components/home/Authority";
-import UseCases from "@/components/home/UseCases";
+import IntegrationFlexibility from "@/components/home/IntegrationFlexibility";
 import FounderLetter from "@/components/home/FounderLetter";
 import FinalCTA from "@/components/home/FinalCTA";
 
@@ -18,10 +17,9 @@ const Index = () => {
       <SocialProof />
       <Problem />
       <Solution />
-      <IntegrationFlexibility />
+      <ValueStack />
       <HowItWorks />
-      <Authority />
-      <UseCases />
+      <IntegrationFlexibility />
       <FounderLetter />
       <FinalCTA />
     </>

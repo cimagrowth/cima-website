@@ -38,6 +38,7 @@ import {
   RefreshCw,
   Bell,
   ChevronRight,
+  Languages,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -81,6 +82,7 @@ const iconMap: Record<string, React.FC<{ className?: string }>> = {
   RefreshCw,
   Bell,
   ChevronRight,
+  Languages,
 };
 
 interface WebsiteFeature {
@@ -104,43 +106,205 @@ interface GroupedCategory {
 }
 
 const CATEGORY_ORDER = [
-  "ai_engine",
-  "communications",
-  "marketing",
-  "core",
-  "analytics",
+  "ai_agent",
+  "lead_management",
+  "campaigns_outreach",
+  "advertising",
+  "landing_pages",
   "integrations",
 ];
 
-// Static fallback data if API is unavailable
+// Static fallback data matching new spec copy
 const FALLBACK_FEATURES: WebsiteFeature[] = [
-  // AI Engine
+  // AI Patient Agent
   {
-    id: "ai-campaign-builder",
-    name: "AI Campaign Builder",
-    headline: "Launch full campaigns in 2 minutes",
+    id: "ai-instant-response",
+    name: "Instant Response Across 11 Channels",
+    headline: "Under 3 seconds. Every channel. 24/7/365.",
     description:
-      "Generate landing pages, email drips, SMS sequences, and ad copy in one click. The AI understands your clinic's brand, specialty, and audience.",
+      "Web chat, phone, SMS, email, WhatsApp, Instagram DM, TikTok DM, Facebook Messenger, Google My Business — all covered. Average response time: under 3 seconds.",
     bullet_points: [
-      "Auto-generates landing page, email, and SMS",
-      "Google Ads copy included",
-      "Trained on healthcare messaging frameworks",
-      "One-click launch",
+      "11 channels covered simultaneously",
+      "Under 3-second average response time",
+      "24/7/365 availability",
+      "No staffing required",
     ],
-    icon: "Sparkles",
-    category: "ai_engine",
-    category_label: "AI Engine",
-    is_new: true,
+    icon: "Zap",
+    category: "ai_agent",
+    category_label: "AI Patient Agent",
+    is_new: false,
     is_coming_soon: false,
     sort_order: 1,
     is_visible: true,
   },
   {
-    id: "ai-outreach-engine",
-    name: "Outreach Engine",
-    headline: "Personalized cold outreach at scale",
+    id: "ai-emotional-intelligence",
+    name: "Emotionally Intelligent Conversation",
+    headline: "Not a script — a real conversation.",
     description:
-      "Import prospects, let AI enrich each contact with business data, then generate 12-step personalized email sequences. Cost: $0.07 per prospect.",
+      "The AI adapts tone based on specialty and patient context. A nervous fertility patient gets warmth and reassurance. A returning med spa client gets confidence and efficiency.",
+    bullet_points: [
+      "Adapts tone to patient sentiment",
+      "Specialty-specific conversation frameworks",
+      "Nurtures across days or weeks",
+      "Never pushy, never robotic",
+    ],
+    icon: "Brain",
+    category: "ai_agent",
+    category_label: "AI Patient Agent",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 2,
+    is_visible: true,
+  },
+  {
+    id: "ai-clinic-trained",
+    name: "Trained on Your Clinic",
+    headline: "Your policies. Your voice. Your qualification criteria.",
+    description:
+      "Specialty-specific knowledge base (fertility, aesthetics, regenerative, wellness) fine-tuned with your policies, procedures, services, pricing, and qualification criteria.",
+    bullet_points: [
+      "Specialty-specific knowledge base",
+      "Fine-tuned on your policies and procedures",
+      "Multi-language support",
+      "Per-org language configuration",
+    ],
+    icon: "Settings",
+    category: "ai_agent",
+    category_label: "AI Patient Agent",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 3,
+    is_visible: true,
+  },
+  {
+    id: "ai-human-handoff",
+    name: "Seamless Human Handoff",
+    headline: "The patient never repeats themselves.",
+    description:
+      "When a patient needs a human, the AI alerts your team on desktop or mobile with full conversation context. One click opens the complete history.",
+    bullet_points: [
+      "Real-time desktop and mobile alerts",
+      "Full conversation context transferred",
+      "One-click handoff",
+      "Patient never starts over",
+    ],
+    icon: "Users",
+    category: "ai_agent",
+    category_label: "AI Patient Agent",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 4,
+    is_visible: true,
+  },
+  // Lead Management & Scoring
+  {
+    id: "behavioral-lead-scoring",
+    name: "Behavioral Lead Scoring",
+    headline: "AI scores every lead in real time.",
+    description:
+      "AI scores every lead using hard qualification signals (service interest, insurance, timeline) plus behavioral signals (message frequency, channel engagement, response sentiment). Categorized as Hot, Warm, or Cold.",
+    bullet_points: [
+      "Hard + behavioral qualification signals",
+      "Real-time Hot / Warm / Cold scoring",
+      "Automatic score updates",
+      "Priority alerts for hot leads",
+    ],
+    icon: "Target",
+    category: "lead_management",
+    category_label: "Lead Management & Scoring",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 5,
+    is_visible: true,
+  },
+  {
+    id: "visual-pipeline",
+    name: "Visual Pipeline Management",
+    headline: "See exactly where every lead stands.",
+    description:
+      "Drag-and-drop patient journey stages. See every lead from first inquiry to booked appointment to completed treatment. Automated stage transitions and reactivation triggers.",
+    bullet_points: [
+      "Drag-and-drop pipeline stages",
+      "Automated stage transitions",
+      "Reactivation triggers",
+      "Revenue forecasting",
+    ],
+    icon: "LayoutDashboard",
+    category: "lead_management",
+    category_label: "Lead Management & Scoring",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 6,
+    is_visible: true,
+  },
+  {
+    id: "unified-inbox",
+    name: "Unified Inbox",
+    headline: "Every conversation. One screen.",
+    description:
+      "Every conversation (AI + staff) across every channel in one screen. Desktop and mobile app with real-time notifications.",
+    bullet_points: [
+      "All channels in one view",
+      "AI + staff conversations together",
+      "Desktop and mobile app",
+      "Real-time notifications",
+    ],
+    icon: "Inbox",
+    category: "lead_management",
+    category_label: "Lead Management & Scoring",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 7,
+    is_visible: true,
+  },
+  {
+    id: "contact-management",
+    name: "Contact Management",
+    headline: "Full CRM with 15+ merge fields.",
+    description:
+      "Full CRM with companies, contacts, tags, notes, activity timeline, and merge fields. Import from CSV or add manually. Automatic UTM injection.",
+    bullet_points: [
+      "Companies, contacts, tags, notes",
+      "Activity timeline per contact",
+      "15+ merge fields",
+      "Automatic UTM injection",
+    ],
+    icon: "Users",
+    category: "lead_management",
+    category_label: "Lead Management & Scoring",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 8,
+    is_visible: true,
+  },
+  // Campaigns & Outreach
+  {
+    id: "ai-campaign-builder",
+    name: "AI Campaign Builder",
+    headline: "Complete campaigns in 2 minutes.",
+    description:
+      "Generate a complete campaign: landing page + email sequence + SMS drip + ad copy. AI uses your brand voice and conversion-optimized frameworks.",
+    bullet_points: [
+      "Landing page + email + SMS + ad copy",
+      "Your brand voice",
+      "Conversion-optimized frameworks",
+      "2-minute launch time",
+    ],
+    icon: "Sparkles",
+    category: "campaigns_outreach",
+    category_label: "Campaigns & Outreach",
+    is_new: true,
+    is_coming_soon: false,
+    sort_order: 9,
+    is_visible: true,
+  },
+  {
+    id: "ai-outreach-engine",
+    name: "AI Outreach Engine",
+    headline: "$0.07 per enriched prospect.",
+    description:
+      "Import a prospect list. AI scrapes and enriches every contact, identifies pain points, and writes a personalized 12-step cold email sequence in your voice.",
     bullet_points: [
       "AI prospect enrichment",
       "12-step personalized sequences",
@@ -148,216 +312,194 @@ const FALLBACK_FEATURES: WebsiteFeature[] = [
       "40% more replies vs generic outreach",
     ],
     icon: "Send",
-    category: "ai_engine",
-    category_label: "AI Engine",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 2,
-    is_visible: true,
-  },
-  {
-    id: "ai-chatbot",
-    name: "AI Chat Widget",
-    headline: "Qualifies and books leads 24/7",
-    description:
-      "An emotionally intelligent chatbot trained on your clinic's specialty and voice. Responds to inquiries in seconds, qualifies leads, and books appointments.",
-    bullet_points: [
-      "24/7 instant response",
-      "Trained on your clinic voice",
-      "Appointment booking built-in",
-      "Multi-language support",
-    ],
-    icon: "Bot",
-    category: "ai_engine",
-    category_label: "AI Engine",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 3,
-    is_visible: true,
-  },
-  // Communications
-  {
-    id: "unified-inbox",
-    name: "Unified Inbox",
-    headline: "Every channel. One place.",
-    description:
-      "Respond to email, SMS, WhatsApp, Instagram DMs, Facebook messages, and phone calls from a single inbox. Never miss a patient message.",
-    bullet_points: [
-      "Email, SMS, WhatsApp in one view",
-      "Social DMs included",
-      "Mobile app notifications",
-      "Team assignment and handoff",
-    ],
-    icon: "Inbox",
-    category: "communications",
-    category_label: "Communications",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 4,
-    is_visible: true,
-  },
-  {
-    id: "call-recordings",
-    name: "Call Recordings & Tracking",
-    headline: "Never lose a phone conversation",
-    description:
-      "Record, transcribe, and analyze every inbound and outbound call. AI flags important moments and surfaces them in the patient timeline.",
-    bullet_points: [
-      "Auto-transcription",
-      "AI call summary",
-      "Linked to contact record",
-      "Compliance-ready storage",
-    ],
-    icon: "Mic",
-    category: "communications",
-    category_label: "Communications",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 5,
-    is_visible: true,
-  },
-  // Marketing
-  {
-    id: "email-builder",
-    name: "Email Builder",
-    headline: "Beautiful healthcare emails, fast",
-    description:
-      "Drag-and-drop email builder with HIPAA-aware templates. AI writes the copy. Schedule campaigns or trigger them from patient behavior.",
-    bullet_points: [
-      "HIPAA-aware templates",
-      "AI copywriting",
-      "Behavioral triggers",
-      "A/B testing",
-    ],
-    icon: "Mail",
-    category: "marketing",
-    category_label: "Marketing",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 6,
-    is_visible: true,
-  },
-  {
-    id: "social-media",
-    name: "Social Media Planner",
-    headline: "Schedule content across every platform",
-    description:
-      "Plan, create, and publish content to Instagram, Facebook, Google My Business, and LinkedIn. AI suggests post ideas based on your clinic specialty.",
-    bullet_points: [
-      "Multi-platform publishing",
-      "AI content suggestions",
-      "Visual content calendar",
-      "Performance analytics",
-    ],
-    icon: "Share2",
-    category: "marketing",
-    category_label: "Marketing",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 7,
-    is_visible: true,
-  },
-  // Core CRM
-  {
-    id: "pipelines",
-    name: "Pipelines & Opportunities",
-    headline: "See every lead at a glance",
-    description:
-      "Visual Kanban-style pipeline tracks every patient from first inquiry to booked consult. AI alerts your team when a lead needs attention.",
-    bullet_points: [
-      "Visual Kanban pipeline",
-      "AI cold-lead alerts",
-      "Automated stage moves",
-      "Revenue forecasting",
-    ],
-    icon: "LayoutDashboard",
-    category: "core",
-    category_label: "Core CRM",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 8,
-    is_visible: true,
-  },
-  {
-    id: "contacts",
-    name: "Contacts & Patient Records",
-    headline: "Complete patient history in one place",
-    description:
-      "Every interaction, form submission, call, and message is logged under a single patient record. Your team walks into every conversation with full context.",
-    bullet_points: [
-      "Full interaction timeline",
-      "Custom fields",
-      "Tag and segment patients",
-      "Import from any CRM",
-    ],
-    icon: "Users",
-    category: "core",
-    category_label: "Core CRM",
-    is_new: false,
-    is_coming_soon: false,
-    sort_order: 9,
-    is_visible: true,
-  },
-  {
-    id: "calendars",
-    name: "Calendars & Scheduling",
-    headline: "Bookings without the back-and-forth",
-    description:
-      "Embed booking links anywhere. Patients pick their time, confirm their details, and get automated reminders. Reduce no-shows by 40%.",
-    bullet_points: [
-      "Self-service booking links",
-      "Automated SMS/email reminders",
-      "Calendar sync (Google, Outlook)",
-      "Multi-staff scheduling",
-    ],
-    icon: "Calendar",
-    category: "core",
-    category_label: "Core CRM",
+    category: "campaigns_outreach",
+    category_label: "Campaigns & Outreach",
     is_new: false,
     is_coming_soon: false,
     sort_order: 10,
     is_visible: true,
   },
-  // Analytics
   {
-    id: "reporting",
-    name: "Reporting & Analytics",
-    headline: "Know exactly what's working",
+    id: "reactivation-campaigns",
+    name: "Reactivation Campaigns",
+    headline: "Bring cold leads and no-shows back.",
     description:
-      "Track lead sources, conversion rates, campaign performance, and revenue attribution in one dashboard. AI surfaces insights you'd miss in a spreadsheet.",
+      "Scheduled SMS and email outreach to bring cold leads and no-shows back into motion. AI-powered timing and messaging.",
     bullet_points: [
-      "Lead source attribution",
-      "Conversion funnel reporting",
-      "Campaign ROI tracking",
-      "AI-generated insights",
+      "Automated SMS and email sequences",
+      "AI-powered timing",
+      "No-show re-engagement",
+      "Cold lead reactivation",
     ],
-    icon: "BarChart3",
-    category: "analytics",
-    category_label: "Analytics",
+    icon: "RefreshCw",
+    category: "campaigns_outreach",
+    category_label: "Campaigns & Outreach",
     is_new: false,
     is_coming_soon: false,
     sort_order: 11,
     is_visible: true,
   },
-  // Integrations
+  // Advertising
   {
-    id: "integrations",
-    name: "EHR & CRM Integrations",
-    headline: "Connect your existing tech stack",
+    id: "google-ads",
+    name: "Google Ads Integration",
+    headline: "Healthcare compliance built in.",
     description:
-      "GrowthOS connects to your EHR (Epic, Athena, Jane App) and existing CRMs. Data flows both ways — no manual entry, no duplicate records.",
+      "AI generates headlines, keywords, and ad copy. Healthcare keyword compliance built in — automatic exemption handling for restricted medical terms. Performance Max and Search campaigns from one dashboard.",
     bullet_points: [
-      "Epic, Athena, Jane App",
-      "Salesforce, HubSpot, Zoho",
-      "Zapier / Webhook support",
-      "Two-way data sync",
+      "AI-generated headlines and keywords",
+      "Healthcare keyword compliance",
+      "Performance Max + Search campaigns",
+      "Automatic exemption handling",
     ],
-    icon: "LinkIcon",
-    category: "integrations",
-    category_label: "Integrations",
+    icon: "Search",
+    category: "advertising",
+    category_label: "Advertising",
     is_new: false,
     is_coming_soon: false,
     sort_order: 12,
+    is_visible: true,
+  },
+  {
+    id: "facebook-instagram-ads",
+    name: "Facebook & Instagram Ads",
+    headline: "Create and manage from one place.",
+    description:
+      "Create and manage campaigns from one place. AI handles creative generation, audience targeting, and budget optimization.",
+    bullet_points: [
+      "AI creative generation",
+      "Smart audience targeting",
+      "Budget optimization",
+      "Cross-platform management",
+    ],
+    icon: "Megaphone",
+    category: "advertising",
+    category_label: "Advertising",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 13,
+    is_visible: true,
+  },
+  {
+    id: "performance-dashboard",
+    name: "Real-Time Performance Dashboard",
+    headline: "No more digging through Ads Manager.",
+    description:
+      "Clicks, conversions, cost-per-lead, and ROI at a glance. AI-generated ad images powered by Imagen. Specialty-specific templates ready out of the box.",
+    bullet_points: [
+      "Clicks, conversions, cost-per-lead, ROI",
+      "AI-generated creative (Imagen)",
+      "Specialty-specific templates",
+      "Real-time reporting",
+    ],
+    icon: "BarChart3",
+    category: "advertising",
+    category_label: "Advertising",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 14,
+    is_visible: true,
+  },
+  // Landing Pages
+  {
+    id: "ai-landing-pages",
+    name: "AI Landing Page Builder",
+    headline: "37 evidence-based conversion rules.",
+    description:
+      "Built on 37 evidence-based conversion rules stored in the platform. Every page AI generates follows these principles automatically — not templates, science.",
+    bullet_points: [
+      "37 evidence-based conversion rules",
+      "AI-generated pages",
+      "Custom subdomain deployment",
+      "SSL and DNS handled automatically",
+    ],
+    icon: "Globe",
+    category: "landing_pages",
+    category_label: "Landing Pages",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 15,
+    is_visible: true,
+  },
+  {
+    id: "conversion-tracking",
+    name: "Conversion Tracking",
+    headline: "Pixel tracking configured automatically.",
+    description:
+      "Pixel and conversion tracking configured automatically. Per-email click tracking on outreach sequences. Know exactly which channels drive booked appointments.",
+    bullet_points: [
+      "Automatic pixel setup",
+      "Per-email click tracking",
+      "Channel attribution",
+      "Custom domain deployment",
+    ],
+    icon: "TrendingUp",
+    category: "landing_pages",
+    category_label: "Landing Pages",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 16,
+    is_visible: true,
+  },
+  // Integrations & Infrastructure
+  {
+    id: "ehr-integration",
+    name: "EHR Integration",
+    headline: "ModMed, FertEHR, and HL7.",
+    description:
+      "Native connections to ModMed, FertEHR, and other systems via HL7 translation engine. Patient data flows both ways.",
+    bullet_points: [
+      "ModMed and FertEHR native",
+      "HL7 translation engine",
+      "Two-way data sync",
+      "Custom webhook support",
+    ],
+    icon: "Database",
+    category: "integrations",
+    category_label: "Integrations & Infrastructure",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 17,
+    is_visible: true,
+  },
+  {
+    id: "crm-migration",
+    name: "CRM Migration Support",
+    headline: "We migrate you at your pace.",
+    description:
+      "Transitioning from HubSpot, Salesforce, Zoho, Keap, Tebra, or DearDoc? We migrate your data and run both systems in parallel until you're ready.",
+    bullet_points: [
+      "HubSpot, Salesforce, Zoho, Keap",
+      "Tebra and DearDoc support",
+      "Parallel system operation",
+      "Data migration included",
+    ],
+    icon: "Share2",
+    category: "integrations",
+    category_label: "Integrations & Infrastructure",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 18,
+    is_visible: true,
+  },
+  {
+    id: "hipaa-compliance",
+    name: "HIPAA Compliant",
+    headline: "Built for healthcare from day one.",
+    description:
+      "All data encrypted in transit and at rest. BAA available. A2P 10DLC registered SMS sending so your texts actually get delivered. Full compliance setup handled during onboarding.",
+    bullet_points: [
+      "Encrypted in transit and at rest",
+      "BAA available",
+      "A2P 10DLC compliance",
+      "Full onboarding compliance setup",
+    ],
+    icon: "Shield",
+    category: "integrations",
+    category_label: "Integrations & Infrastructure",
+    is_new: false,
+    is_coming_soon: false,
+    sort_order: 19,
     is_visible: true,
   },
 ];
@@ -432,7 +574,7 @@ const CategoryCTA = () => (
   <div className="mt-8 flex justify-center">
     <Link href="/demo">
       <Button variant="hero" size="default" className="group">
-        Book a Demo
+        Book a Demo — See Every Feature Live
         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Button>
     </Link>
@@ -488,17 +630,19 @@ const Features = () => {
           className="container-wide relative z-10 text-center"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-display font-bold text-white mb-6 max-w-4xl mx-auto leading-tight">
-            Every feature you need to{" "}
-            <span className="text-accent-orange">acquire, engage,</span> and{" "}
-            <span className="text-accent-orange">convert patients.</span>
+            Every Feature You Need to{" "}
+            <span className="text-accent-orange">Acquire, Engage,</span> and{" "}
+            <span className="text-accent-orange">Convert Patients.</span>{" "}
+            Nothing You Don't.
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10">
-            GrowthOS replaces your CRM, email platform, chatbot, phone system, landing page
-            builder, and marketing agency — all powered by AI.
+            GrowthOS replaces your CRM, chatbot, phone system, email platform,
+            landing page builder, ads manager, and marketing agency — powered by
+            AI that actually does the work.
           </p>
           <Link href="/demo">
             <Button variant="hero" size="lg" className="text-base group">
-              See It In Action
+              See It In Action — Book a Demo
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
@@ -559,7 +703,7 @@ const Features = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to transform your patient acquisition?
+              Ready to see every feature live?
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
               Book a demo and see the full GrowthOS platform in action.
@@ -567,7 +711,7 @@ const Features = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/demo">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto group">
-                  Book a Demo
+                  Book a Demo — See Every Feature Live
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
