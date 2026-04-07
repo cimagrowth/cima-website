@@ -703,7 +703,7 @@ const AdsPage = () => {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl lg:max-w-5xl mx-auto">
             {upgradePaths.map((item, i) => (
               <motion.div
                 key={i}

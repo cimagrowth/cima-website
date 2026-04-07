@@ -59,7 +59,7 @@ const UseCases = () => {
           </h2>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 max-w-5xl mx-auto">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 max-w-5xl lg:max-w-6xl mx-auto">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
