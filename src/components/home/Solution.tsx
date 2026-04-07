@@ -34,7 +34,7 @@ const Solution = () => {
       </div>
 
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-4 md:mb-6">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-4 md:mb-6">
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
             This Isn't a Chatbot.{" "}
             <span className="text-gradient">It's an AI That Understands What Your Patients Are Feeling.</span>
@@ -48,7 +48,7 @@ const Solution = () => {
         </p>
 
         {/* Comparison */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10 md:mb-16">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl lg:max-w-5xl mx-auto mb-10 md:mb-16">
           <div className="card-elevated p-5 md:p-8 border-l-4 border-muted-foreground/30">
             <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Generic chatbot:</p>
             <p className="text-sm md:text-base text-muted-foreground italic">

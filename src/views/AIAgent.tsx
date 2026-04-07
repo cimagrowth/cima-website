@@ -223,7 +223,7 @@ const AIAgent = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-4xl lg:max-w-5xl mx-auto"
           >
             <span className="inline-block bg-accent-orange/10 text-accent-orange text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
               Now Available
@@ -234,7 +234,7 @@ const AIAgent = () => {
                 Responds in Seconds, Nurtures for Weeks, Hands Off With Full Context.
               </span>
             </h1>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-10">
               Stop losing patients to slow response times. The Cima AI Agent
               handles inquiries, qualifies leads, and books appointments 24/7 —
               inside the CRM you already use, or inside GrowthOS.
@@ -312,7 +312,7 @@ const AIAgent = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl lg:max-w-4xl mx-auto"
           >
             <h2 className="text-heading-lg md:text-display text-foreground mb-6 text-center">
               Most "AI Chatbots" Are Glorified FAQ Pages.{" "}
@@ -505,7 +505,7 @@ const AIAgent = () => {
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl lg:max-w-6xl mx-auto">
             {pricingTiers.map((tier, i) => (
               <motion.div
                 key={i}
@@ -612,7 +612,7 @@ const AIAgent = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-4xl mx-auto mt-8"
+            className="max-w-4xl lg:max-w-5xl mx-auto mt-8"
           >
             <div className="rounded-xl p-6 bg-tan border border-border text-center">
               <p className="text-body font-semibold text-foreground mb-2">

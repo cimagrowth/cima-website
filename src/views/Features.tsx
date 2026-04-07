@@ -629,7 +629,7 @@ const Features = () => {
           transition={{ duration: 0.6 }}
           className="container-wide relative z-10 text-center"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-display font-bold text-white mb-6 max-w-4xl mx-auto leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-display font-bold text-white mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight">
             Every Feature You Need to{" "}
             <span className="text-accent-orange">Acquire, Engage,</span> and{" "}
             <span className="text-accent-orange">Convert Patients.</span>{" "}
@@ -705,7 +705,7 @@ const Features = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to see every feature live?
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
+            <p className="text-lg text-white/70 max-w-3xl mx-auto mb-10">
               Book a demo and see the full GrowthOS platform in action.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -53,7 +53,7 @@ const UseCases = () => {
       />
       
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             What GrowthOS <span className="text-gradient-accent">solves for clinics</span>
           </h2>

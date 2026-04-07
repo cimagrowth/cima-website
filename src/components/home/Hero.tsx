@@ -78,7 +78,7 @@ const Hero = () => {
         animate="visible"
       >
         {/* MOBILE: Giant headline taking up screen */}
-        <div className="md:max-w-4xl">
+        <div className="md:max-w-4xl lg:max-w-5xl">
           <motion.h1
             variants={itemVariants}
             className="text-[2.2rem] leading-[1.08] sm:text-4xl md:text-display-xl lg:text-[4.2rem] text-foreground font-bold mb-4 md:mb-6 tracking-tight"

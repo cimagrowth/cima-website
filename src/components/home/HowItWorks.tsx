@@ -39,7 +39,7 @@ const HowItWorks = () => {
       <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent hidden lg:block" />
 
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             From Inquiry to Appointment in{" "}
             <span className="text-gradient-accent">5 Steps</span>

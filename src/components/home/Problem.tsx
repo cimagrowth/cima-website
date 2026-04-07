@@ -38,12 +38,12 @@ const Problem = () => {
       />
 
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             You're Not Losing Patients to Better Clinics.{" "}
             <span className="text-gradient-accent">You're Losing Them to Silence.</span>
           </h2>
-          <div className="text-base md:text-lg text-muted-foreground space-y-3 text-left max-w-2xl mx-auto">
+          <div className="text-base md:text-lg text-muted-foreground space-y-3 text-left max-w-3xl mx-auto">
             <p>
               A woman spends weeks deciding to call a fertility clinic. She finally fills out a form at 9:47 PM.
             </p>
@@ -59,7 +59,7 @@ const Problem = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-4xl lg:max-w-6xl mx-auto">
           {gapItems.map((item, index) => {
             const Icon = item.icon;
             return (
