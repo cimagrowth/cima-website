@@ -33,12 +33,14 @@ const itemVariants = {
 
 const HowItWorksPage = () => {
   const comparisonRows = [
-    { metric: "Lead response time", before: "4–24 hours", after: "Under 5 minutes" },
-    { metric: "Follow-up rate", before: "60%", after: "100%" },
-    { metric: "Patient leakage", before: "35–40%", after: "Under 5%" },
-    { metric: "Campaign launch time", before: "2–4 weeks", after: "2 minutes" },
-    { metric: "Cost per campaign", before: "$5,000+ (agency)", after: "$0.28 (AI)" },
-    { metric: "Outreach cost per prospect", before: "$50+ (SDR)", after: "$0.07 (AI)" },
+    { metric: "Lead response time", before: "4-24 hours", after: "Under 5 seconds" },
+    { metric: "Follow-up completion rate", before: "60%", after: "100%" },
+    { metric: "Patient leakage", before: "35-40%", after: "Under 5%" },
+    { metric: "Campaign launch time", before: "2-4 weeks (agency)", after: "2 minutes (AI)" },
+    { metric: "Cost per campaign", before: "$5,000+ (agency)", after: "$0.28 (AI-generated)" },
+    { metric: "Outreach cost per prospect", before: "$50+ (SDR hire)", after: "$0.07 (AI enrichment)" },
+    { metric: "Channels monitored", before: "2-3 (email + phone)", after: "11 (every channel)" },
+    { metric: "After-hours coverage", before: "None", after: "24/7/365" },
   ];
 
   return (
@@ -59,16 +61,19 @@ const HowItWorksPage = () => {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl mx-auto leading-tight"
           >
-            The front end of medicine is{" "}
-            <span className="text-accent-orange">broken.</span> We fix it.
+            The Front End of Medicine Is{" "}
+            <span className="text-accent-orange">Broken.</span> We Fix It.
           </motion.h1>
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10"
           >
-            Clinics lose 30–40% of leads between first inquiry and booked
-            appointment. GrowthOS is the AI-powered platform that closes that
-            gap — and fills your pipeline with new patients on autopilot.
+            Clinics lose 30-40% of leads between first inquiry and booked
+            appointment. Not because of bad marketing. Because of what happens AFTER
+            someone raises their hand. GrowthOS is the AI-powered platform that
+            closes that gap — instant response, emotionally intelligent nurture,
+            and a full patient acquisition pipeline that runs whether your team is
+            at the desk or not.
           </motion.p>
           <motion.div variants={itemVariants}>
             <Link href="/demo">
@@ -81,7 +86,7 @@ const HowItWorksPage = () => {
         </motion.div>
       </section>
 
-      {/* Section 1: The Problem */}
+      {/* Section 1: The Problem — With Numbers */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-wide">
           <motion.div
@@ -92,24 +97,47 @@ const HowItWorksPage = () => {
           >
             <motion.div variants={itemVariants} className="max-w-3xl mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
-                You're losing patients you've{" "}
-                <span className="text-gradient-accent">already paid to attract.</span>
+                You're Spending Thousands to Attract Patients —{" "}
+                <span className="text-gradient-accent">Then Losing Them to Silence.</span>
               </h2>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground">
                 <p>
-                  You spend thousands on Google Ads, SEO, and referral programs. Leads
-                  come in — and then disappear. They fill out a form and never hear back.
-                  They call and get voicemail. They email and wait 3 days for a response.
+                  You run Google Ads. You invest in SEO. You build referral programs. Leads come in.
                 </p>
                 <p>
-                  This is <strong className="text-foreground">patient leakage.</strong> And
-                  it's costing the average clinic $500K+ per year in lost revenue.
+                  Then they disappear. They fill out a form and never hear back. They call and get voicemail. They email and wait 3 days.
                 </p>
                 <p>
-                  The problem isn't your marketing. It's what happens after someone
-                  raises their hand.
+                  <strong className="text-foreground">This is patient leakage. And it's the most expensive problem your clinic doesn't track.</strong>
                 </p>
               </div>
+            </motion.div>
+
+            {/* Metric table */}
+            <motion.div variants={itemVariants} className="overflow-x-auto rounded-2xl border border-border shadow-card mb-12">
+              <table className="w-full text-sm md:text-base">
+                <thead>
+                  <tr className="bg-primary text-primary-foreground">
+                    <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl">Metric</th>
+                    <th className="text-left px-4 md:px-6 py-4 font-semibold">Your Clinic Today</th>
+                    <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tr-2xl">Industry Average</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-card">
+                  {[
+                    { metric: "Lead response time", yours: "4-24 hours", industry: "47 hours (Harvard Business Review)" },
+                    { metric: "Follow-up completion rate", yours: "~60%", industry: "Under 50% at most clinics" },
+                    { metric: "Patient leakage rate", yours: "Unknown (that's the problem)", industry: "35-40%" },
+                    { metric: "Revenue lost per month", yours: "$50K+ for a mid-size clinic", industry: "$500K+/year" },
+                  ].map((row, i, arr) => (
+                    <tr key={row.metric} className={i < arr.length - 1 ? "border-b border-border" : ""}>
+                      <td className="px-4 md:px-6 py-4 font-medium text-foreground">{row.metric}</td>
+                      <td className="px-4 md:px-6 py-4 text-muted-foreground">{row.yours}</td>
+                      <td className="px-4 md:px-6 py-4 text-muted-foreground">{row.industry}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </motion.div>
 
             {/* Stat cards */}
@@ -120,18 +148,18 @@ const HowItWorksPage = () => {
               {[
                 {
                   icon: Clock,
-                  stat: "35%",
-                  label: "of leads never get a follow-up within 24 hours",
+                  stat: "5 min",
+                  label: "Respond within 5 minutes = 21x more likely to qualify the lead",
                 },
                 {
                   icon: Zap,
-                  stat: "5 minutes",
-                  label: "— the window to respond before a lead goes cold",
+                  stat: "< 5 sec",
+                  label: "GrowthOS average response time",
                 },
                 {
                   icon: DollarSign,
-                  stat: "$50K+",
-                  label: "average revenue lost per month from leaked patients",
+                  stat: "$500K+",
+                  label: "Average revenue lost per year from patient leakage",
                 },
               ].map((item) => {
                 const Icon = item.icon;
@@ -156,7 +184,7 @@ const HowItWorksPage = () => {
             <motion.div variants={itemVariants}>
               <Link href="/demo">
                 <Button variant="hero" size="lg" className="group">
-                  Stop the Leak
+                  Stop the Leak — Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -165,7 +193,7 @@ const HowItWorksPage = () => {
         </div>
       </section>
 
-      {/* Section 2: How GrowthOS Fixes It */}
+      {/* Section 2: The System — 4 Stages */}
       <section className="py-16 md:py-24 bg-tan">
         <div className="container-wide">
           <motion.div
@@ -176,40 +204,40 @@ const HowItWorksPage = () => {
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                One platform. Every touchpoint.{" "}
-                <span className="text-gradient-accent">AI-powered.</span>
+                One Platform. Every Touchpoint.{" "}
+                <span className="text-gradient-accent">AI-Powered.</span>
               </h2>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
               {[
                 {
-                  step: "Step 1",
+                  step: "Stage 1",
                   title: "Capture",
                   icon: MessageSquare,
                   description:
-                    "AI chatbot on your website qualifies leads 24/7, answers questions, and books appointments instantly. Forms capture leads from ads and landing pages. Every inquiry gets a response in seconds, not days.",
+                    "AI chatbot on your website qualifies leads 24/7. Answers clinical questions with specialty-specific knowledge. Books appointments. Captures leads from ads, landing pages, forms, and social DMs. Every inquiry gets a response in seconds — not days.",
                 },
                 {
-                  step: "Step 2",
+                  step: "Stage 2",
                   title: "Nurture",
                   icon: Brain,
                   description:
-                    "AI generates personalized email and SMS sequences for every lead. Multi-step campaigns fire automatically based on the patient's behavior. No lead falls through the cracks.",
+                    "AI generates personalized email, SMS, and WhatsApp sequences for every lead. Multi-step campaigns fire automatically based on the patient's behavior, engagement signals, and lead score. Not one follow-up — a 7-to-12 touchpoint nurture sequence that adapts tone and channel.",
                 },
                 {
-                  step: "Step 3",
+                  step: "Stage 3",
                   title: "Convert",
                   icon: Users,
                   description:
-                    "Unified inbox lets your team respond from email, SMS, WhatsApp, and phone in one place. Pipeline management shows exactly where every lead stands. AI alerts you when a lead is about to go cold.",
+                    "Unified inbox lets your team respond across all channels from one screen. Behavioral lead scoring shows who's Hot, Warm, and Cold. AI alerts your team before a warm lead goes cold. Full conversation history means staff steps in with context — the patient never repeats themselves.",
                 },
                 {
-                  step: "Step 4",
+                  step: "Stage 4",
                   title: "Grow",
                   icon: Rocket,
                   description:
-                    "AI Campaign Builder generates complete campaigns in 2 minutes — landing page, email drip, SMS sequence, and Google Ads copy. The Outreach Engine enriches cold prospects and writes personalized 12-step sequences.",
+                    "AI Campaign Builder generates complete campaigns in 2 minutes — landing page, email drip, SMS sequence, and Google Ads copy. Outreach Engine enriches cold prospects and writes personalized 12-step sequences. Reactivation campaigns bring dormant leads back automatically.",
                 },
               ].map((item) => {
                 const Icon = item.icon;
@@ -263,8 +291,8 @@ const HowItWorksPage = () => {
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                This isn't another CRM.{" "}
-                <span className="text-gradient-accent">It's an AI growth engine.</span>
+                This Isn't Another CRM.{" "}
+                <span className="text-gradient-accent">It's an AI Growth Engine Built for Healthcare.</span>
               </h2>
             </motion.div>
 
@@ -272,27 +300,27 @@ const HowItWorksPage = () => {
               {[
                 {
                   icon: Zap,
-                  title: "AI Does the Work",
+                  title: "AI Does the Work — You Don't \"Figure It Out\"",
                   description:
-                    "Other platforms give you tools and make you figure it out. GrowthOS generates campaigns, writes emails, enriches prospects, and monitors ads — autonomously. Your team focuses on patients, not marketing.",
+                    "Other platforms give you tools and leave you alone. GrowthOS generates campaigns, writes emails, enriches prospects, scores leads, manages ads, and monitors performance — autonomously. Your team focuses on patients.",
                 },
                 {
                   icon: Shield,
-                  title: "Built for Healthcare",
+                  title: "Built for Healthcare From Day One",
                   description:
-                    "HIPAA-aware. EHR integration. Patient journey mapping. We understand that a fertility clinic's marketing needs are different from a SaaS company's. The AI is trained on healthcare-specific frameworks.",
+                    "HIPAA-aware. EHR integration (ModMed, FertEHR, HL7). Patient journey mapping designed for fertility, aesthetics, and wellness workflows. The AI understands that a scared fertility patient and a confident Botox client need completely different conversations.",
                 },
                 {
                   icon: TrendingDown,
-                  title: "Not an Agency, Not Just Software",
+                  title: "Not an Agency. Not Just Software.",
                   description:
-                    "Agencies charge $10K/month and move slowly. DIY software overwhelms your team. GrowthOS gives you agency-level output at software pricing, powered by AI that learns your practice.",
+                    "Agencies charge $10K/month and move slowly. DIY software overwhelms your team. GrowthOS gives you agency-level output at software pricing — powered by AI trained on 47 proprietary direct response frameworks developed across 100+ real client engagements.",
                 },
                 {
                   icon: Layers,
                   title: "Everything Connects",
                   description:
-                    "Your chatbot, inbox, pipeline, campaigns, ads, and EHR all share the same data. When a patient fills out a form, it creates a contact, adds them to a pipeline, enrolls them in a sequence, and notifies your team — automatically.",
+                    "Chatbot, inbox, pipeline, campaigns, ads, landing pages, and EHR — all sharing the same data. When a patient fills out a form, it creates a contact, scores the lead, adds them to a pipeline, enrolls them in a nurture sequence, and notifies your team. Automatically.",
                 },
               ].map((item) => {
                 const Icon = item.icon;
@@ -328,7 +356,7 @@ const HowItWorksPage = () => {
         </div>
       </section>
 
-      {/* Section 4: The Numbers */}
+      {/* Section 4: Before/After Table */}
       <section className="py-16 md:py-24 bg-tan">
         <div className="container-wide">
           <motion.div
@@ -339,8 +367,8 @@ const HowItWorksPage = () => {
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                What happens when you{" "}
-                <span className="text-gradient-accent">close the gap.</span>
+                What Changes When You{" "}
+                <span className="text-gradient-accent">Close the Gap</span>
               </h2>
             </motion.div>
 
@@ -385,7 +413,7 @@ const HowItWorksPage = () => {
             <motion.div variants={itemVariants} className="text-center">
               <Link href="/demo">
                 <Button variant="hero" size="lg" className="group">
-                  Start Growing
+                  Start Growing — Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -394,7 +422,7 @@ const HowItWorksPage = () => {
         </div>
       </section>
 
-      {/* Section 5: How to Get Started */}
+      {/* Section 5: Three Steps to Start */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-wide">
           <motion.div
@@ -405,8 +433,8 @@ const HowItWorksPage = () => {
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Three steps.{" "}
-                <span className="text-gradient-accent">That's it.</span>
+                Three Steps.{" "}
+                <span className="text-gradient-accent">That's It.</span>
               </h2>
             </motion.div>
 
@@ -416,19 +444,19 @@ const HowItWorksPage = () => {
                   number: "01",
                   title: "Book a Demo or Try the Interactive Demo",
                   description:
-                    "See GrowthOS in action with your own eyes. Voice-guided tour, real features, sample data.",
+                    "See GrowthOS in action. Voice-guided tour, real features, sample data. Takes 15 minutes.",
                 },
                 {
                   number: "02",
                   title: "We Set Everything Up",
                   description:
-                    "We build your brand profile, connect your EHR, import your data, and configure your AI. You're live in days, not months.",
+                    "We build your brand profile, connect your EHR, import your data, configure your AI agent, and register your A2P messaging. You're live in 24-48 hours — not months.",
                 },
                 {
                   number: "03",
                   title: "Patients Start Flowing",
                   description:
-                    "AI campaigns launch, outreach sequences fire, your chatbot qualifies leads 24/7, and your pipeline fills up.",
+                    "AI campaigns launch. Outreach sequences fire. Your chatbot qualifies leads 24/7. Your pipeline fills. Your team closes.",
                 },
               ].map((item) => (
                 <motion.div

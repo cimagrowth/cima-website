@@ -14,7 +14,9 @@ const Footer = () => {
     product: [
       { label: "How It Works", href: "/how-it-works" },
       { label: "Features", href: "/features" },
+      { label: "AI Agent", href: "/ai-agent" },
       { label: "Outreach Engine", href: "/outreach" },
+      { label: "AI Ads", href: "/ads" },
       { label: "Demo", href: "/demo" },
     ],
     company: [
@@ -41,11 +43,10 @@ const Footer = () => {
       <section className="bg-accent-orange py-14 md:py-20">
         <div className="container-wide text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to stop losing patients?
+            Every day without GrowthOS is another day of patients choosing the clinic that responded first.
           </h2>
           <p className="text-base md:text-lg text-white/80 max-w-xl mx-auto mb-8">
-            Every day without GrowthOS is another day of leads going cold. See the platform or
-            start today.
+            See results in 30 days or we'll work with you until you do. No setup fee. Live in 48 hours.
           </p>
           <div className="flex justify-center">
             <Link href="/demo">

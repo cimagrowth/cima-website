@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Outreach from '@/views/Outreach';
 
 export const metadata: Metadata = {
-  title: 'AI-Powered Outreach Engine – Cima Growth Solutions',
-  description: 'Prospect enrichment, personalized email generation, and automated follow-up that books meetings.',
+  title: 'AI Outreach Engine – Turn Prospects Into Warm Conversations at $0.07 Each',
+  description: 'Import your list. AI scrapes every prospect, identifies pain points, and writes a personalized 12-step email sequence in your voice. Starting at $49/mo.',
   keywords: [
     'B2B outreach', 'AI cold email', 'prospect enrichment', 'cold email automation',
     'AI email sequences', 'B2B lead generation', 'outreach automation',
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.cimagrowth.com/outreach' },
   openGraph: {
-    title: 'AI-Powered Outreach Engine – Cima Growth Solutions',
-    description: 'Prospect enrichment, personalized email generation, and automated follow-up that books meetings.',
+    title: 'AI Outreach Engine – Turn Prospects Into Warm Conversations at $0.07 Each',
+    description: 'Import your list. AI scrapes every prospect, identifies pain points, and writes a personalized 12-step email sequence in your voice. Starting at $49/mo.',
     url: 'https://www.cimagrowth.com/outreach',
     siteName: 'Cima Growth Solutions',
     images: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: '/og/og-outreach.png',
         width: 1200,
         height: 630,
-        alt: 'AI-Powered Outreach Engine – Cima Growth Solutions',
+        alt: 'AI Outreach Engine – Turn Prospects Into Warm Conversations at $0.07 Each',
       },
     ],
     locale: 'en_US',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI-Powered Outreach Engine – Cima Growth Solutions',
-    description: 'Prospect enrichment, personalized email generation, and automated follow-up that books meetings.',
+    title: 'AI Outreach Engine – Turn Prospects Into Warm Conversations at $0.07 Each',
+    description: 'Import your list. AI scrapes every prospect, identifies pain points, and writes a personalized 12-step email sequence in your voice. Starting at $49/mo.',
     images: ['/og/og-outreach.png'],
   },
 };
