@@ -59,7 +59,7 @@ const HowItWorksPage = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl mx-auto leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight"
           >
             The Front End of Medicine Is{" "}
             <span className="text-accent-orange">Broken.</span> We Fix It.
@@ -95,7 +95,7 @@ const HowItWorksPage = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.div variants={itemVariants} className="max-w-3xl mb-12 md:mb-16">
+            <motion.div variants={itemVariants} className="max-w-3xl lg:max-w-4xl mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
                 You're Spending Thousands to Attract Patients —{" "}
                 <span className="text-gradient-accent">Then Losing Them to Silence.</span>

@@ -266,7 +266,7 @@ const AdsPage = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-orange/10 text-accent-orange text-body-sm font-semibold mb-6">
@@ -285,7 +285,7 @@ const AdsPage = () => {
 
             <motion.p
               variants={itemVariants}
-              className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
+              className="text-body-lg text-muted-foreground mb-10 max-w-3xl mx-auto"
             >
               AI builds, launches, and optimizes your Google and Facebook ad
               campaigns — with healthcare compliance built in — so you get more
@@ -317,7 +317,7 @@ const AdsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-12"
           >
             <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
               The Problem
@@ -327,7 +327,7 @@ const AdsPage = () => {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl lg:max-w-5xl mx-auto">
             {painPoints.map((point, i) => (
               <motion.div
                 key={i}
@@ -426,7 +426,7 @@ const AdsPage = () => {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl lg:max-w-6xl mx-auto">
             {features.map((feat, i) => (
               <motion.div
                 key={i}
@@ -512,7 +512,7 @@ const AdsPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="max-w-3xl mx-auto"
+                className="max-w-3xl lg:max-w-5xl mx-auto"
               >
                 <p className="text-center text-body-lg text-muted-foreground mb-8">
                   {spec.tagline}
@@ -555,7 +555,7 @@ const AdsPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl lg:max-w-5xl mx-auto">
             {/* Monthly */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -654,7 +654,7 @@ const AdsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="overflow-x-auto rounded-2xl border border-border shadow-card max-w-3xl mx-auto"
+            className="overflow-x-auto rounded-2xl border border-border shadow-card max-w-3xl lg:max-w-5xl mx-auto"
           >
             <table className="w-full text-sm md:text-base">
               <thead>
@@ -772,7 +772,7 @@ const AdsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
             <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
               Ready?

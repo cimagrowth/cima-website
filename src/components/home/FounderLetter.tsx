@@ -7,7 +7,7 @@ const FounderLetter = () => {
       <div className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-gradient-to-b from-transparent via-accent-orange to-transparent hidden md:block" />
 
       <div className="container-tight relative z-10">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl lg:max-w-3xl mx-auto">
           <h3 className="text-xs md:text-sm font-semibold text-accent-orange uppercase tracking-widest mb-6 md:mb-8">
             Why I Built This
           </h3>

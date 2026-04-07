@@ -74,7 +74,7 @@ const Product = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
             <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
               GrowthOS is the AI follow-up engine{" "}
@@ -108,7 +108,7 @@ const Product = () => {
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
               The AI Engine
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
               A custom-trained AI that responds instantly and nurtures consistently.
             </p>
           </motion.div>
@@ -152,7 +152,7 @@ const Product = () => {
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
               The System Around It
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
               Everything your clinic needs to operate with consistency instead of hero effort.
             </p>
           </motion.div>
@@ -219,7 +219,7 @@ const Product = () => {
             <h2 className="text-heading-lg md:text-display text-foreground mb-4">
               Fits Your Infrastructure
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
               Whether you're running enterprise CRMs across multiple locations or managing leads in spreadsheets—GrowthOS adapts.
             </p>
           </motion.div>
@@ -300,7 +300,7 @@ const Product = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
             <h2 className="text-heading-lg md:text-display text-primary-foreground mb-6">
               Ready to see GrowthOS in action?

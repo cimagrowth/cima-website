@@ -205,7 +205,7 @@ const Outreach = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-orange/10 text-accent-orange text-body-sm font-semibold mb-6">
@@ -224,7 +224,7 @@ const Outreach = () => {
 
             <motion.p
               variants={itemVariants}
-              className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
+              className="text-body-lg text-muted-foreground mb-10 max-w-3xl mx-auto"
             >
               Import your list. AI scrapes every prospect's website, identifies
               their pain points, and writes a personalized 12-step email
@@ -249,7 +249,7 @@ const Outreach = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl lg:max-w-5xl mx-auto"
           >
             {stats.map((stat, i) => (
               <div
@@ -349,7 +349,7 @@ const Outreach = () => {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl lg:max-w-6xl mx-auto">
             {features.map((feat, i) => (
               <motion.div
                 key={i}
@@ -642,7 +642,7 @@ const Outreach = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
             <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
               Your Pipeline Won't Fill Itself.

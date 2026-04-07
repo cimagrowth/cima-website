@@ -83,7 +83,7 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
             <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
               Stop patient leakage with GrowthOS.{" "}
@@ -266,7 +266,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
             <h2 className="text-heading text-foreground mb-4">
               Full access. No feature tiers.
@@ -318,7 +318,7 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
             <h2 className="text-heading-lg text-primary-foreground mb-6">
               Ready to stop patient leakage?

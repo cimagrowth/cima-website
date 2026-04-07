@@ -54,7 +54,7 @@ const Authority = () => {
       />
       
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             The platform that makes the AI work{" "}
             <span className="text-gradient-accent">cleanly across your entire clinic.</span>
@@ -65,7 +65,7 @@ const Authority = () => {
           </p>
         </div>
 
-        <div className="grid gap-4 md:gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+        <div className="grid gap-4 md:gap-6 md:grid-cols-2 max-w-4xl lg:max-w-6xl mx-auto">
           {systems.map((system, index) => {
             const Icon = system.icon;
             return (

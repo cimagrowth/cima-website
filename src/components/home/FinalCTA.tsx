@@ -36,11 +36,11 @@ const FinalCTA = () => {
       />
 
       <div className="container-wide relative z-10">
-        <div className="max-w-3xl mx-auto text-center px-2">
+        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center px-2">
           <h2 className="text-xl sm:text-2xl md:text-display text-primary-foreground mb-4 md:mb-6">
             See Results in 30 Days or We'll Work With You Until You Do.
           </h2>
-          <p className="text-base md:text-lg text-primary-foreground/80 mb-4 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-primary-foreground/80 mb-4 max-w-3xl mx-auto">
             Every GrowthOS client gets live onboarding, AI configuration tuned to your clinic, and a 30-day performance review. If your lead response time hasn't improved and your pipeline isn't more organized, we'll keep working with you at no extra cost until it is.
           </p>
           <p className="text-base md:text-lg font-semibold text-accent-orange mb-8">
