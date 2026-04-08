@@ -1,9 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { InvoiceView } from "@/components/billing/InvoiceView";
 
-export default function PatientInvoicePage() {
+function InvoicePageContent() {
   const params = useSearchParams();
   const invoiceId = params.get("invoiceId");
   const mode = params.get("mode") === "patient" ? "patient" : "staff";
@@ -20,5 +21,13 @@ export default function PatientInvoicePage() {
     <div className="max-w-2xl mx-auto py-8 px-4">
       <InvoiceView invoiceId={invoiceId} mode={mode} />
     </div>
+  );
+}
+
+export default function PatientInvoicePage() {
+  return (
+    <Suspense>
+      <InvoicePageContent />
+    </Suspense>
   );
 }
