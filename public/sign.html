@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Sign Medical Records Authorization</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}:root{--accent:#2563eb;--ok:#059669;--err:#dc2626}
+body{font-family:"DM Sans",sans-serif;background:#f6f7f9;color:#1a1d23;line-height:1.6}
+.shell{max-width:640px;margin:0 auto;padding:24px 20px 48px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#eff4ff;color:var(--accent);border:1px solid #c7d7fe;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;margin-bottom:16px}
+.header{text-align:center;margin-bottom:32px}.header h1{font-size:24px;font-weight:700;margin-bottom:8px}.header p{font-size:15px;color:#4a4f5c}
+.card{background:#fff;border:1px solid #dfe1e6;border-radius:12px;padding:24px;margin-bottom:20px}.card h2{font-size:16px;font-weight:600;margin-bottom:16px}
+.info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f1f3;font-size:14px}.info-row:last-child{border:none}.info-label{color:#8b90a0;font-weight:500}.info-value{color:#1a1d23;font-weight:600;text-align:right}
+.consent-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;font-size:13px;color:#4a4f5c;line-height:1.7;max-height:250px;overflow-y:auto;margin-bottom:20px}.consent-box strong{color:#1a1d23}
+.sig-area{margin:20px 0}.sig-label{font-size:14px;font-weight:600;margin-bottom:8px}
+.sig-wrap{border:2px solid #dfe1e6;border-radius:8px;background:#fff;position:relative;margin-bottom:8px}.sig-wrap canvas{width:100%;height:200px;display:block;border-radius:8px}.sig-wrap.signed{border-color:var(--ok)}
+.sig-clear{position:absolute;top:8px;right:8px;background:#f6f7f9;border:1px solid #dfe1e6;border-radius:4px;padding:4px 12px;font-size:12px;font-family:inherit;color:#8b90a0;cursor:pointer}
+.sig-hint{font-size:12px;color:#8b90a0;text-align:center}
+.submit-btn{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;margin-top:24px;position:relative}.submit-btn:hover{background:#1d4ed8}.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+.submit-btn .sp{width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none;position:absolute;right:20px;top:50%;margin-top:-10px}.submit-btn.loading .sp{display:inline-block}@keyframes spin{to{transform:rotate(360deg)}}
+.alert{padding:14px 18px;border-radius:8px;font-size:14px;margin-bottom:16px;display:none}.alert.show{display:flex;gap:10px}.alert.error{background:#fef2f2;color:var(--err);border:1px solid #fecaca}
+.success-screen{text-align:center;padding:48px 24px;display:none}.success-screen.show{display:block}
+.success-screen .check{width:80px;height:80px;border-radius:50%;background:#ecfdf5;border:3px solid var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px}
+.success-screen h2{font-size:22px;margin-bottom:12px}.success-screen p{color:#4a4f5c;font-size:15px;line-height:1.6}
+.loading-screen{text-align:center;padding:60px 20px;color:#8b90a0}.loading-screen .spin-lg{width:36px;height:36px;border:3px solid #dfe1e6;border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px}
+.error-screen{text-align:center;padding:60px 20px}.error-screen h2{color:var(--err);margin-bottom:12px}.error-screen p{color:#4a4f5c;font-size:15px}
+</style></head><body>
+<div class="shell">
+<div class="loading-screen" id="loadingScreen"><div class="spin-lg"></div>Loading authorization...</div>
+<div class="error-screen" id="errorScreen" style="display:none"><h2 id="errTitle">Invalid Link</h2><p id="errMsg">This authorization link is invalid or has been used.</p></div>
+<div id="formView" style="display:none">
+<div class="header"><div class="badge">&#x1F512; Secure Authorization</div><h1>Medical Records Authorization</h1><p id="headerDesc"></p></div>
+<div class="card"><h2>Your Information</h2>
+<div class="info-row"><span class="info-label">Name</span><span class="info-value" id="infoName"></span></div>
+<div class="info-row"><span class="info-label">Date of Birth</span><span class="info-value" id="infoDob"></span></div>
+<div class="info-row"><span class="info-label">Email</span><span class="info-value" id="infoEmail"></span></div>
+<div class="info-row" id="phoneRow" style="display:none"><span class="info-label">Phone</span><span class="info-value" id="infoPhone"></span></div></div>
+<div class="card"><h2>Records Requested From</h2><div id="provList"></div>
+<div class="info-row"><span class="info-label">Records Sent To</span><span class="info-value" id="infoClinic"></span></div></div>
+<div class="card"><h2>HIPAA Authorization</h2><div class="consent-box" id="consentText"></div>
+<div class="sig-area"><div class="sig-label">Your Signature</div>
+<div class="sig-wrap" id="sigWrap"><canvas id="sigCanvas"></canvas><button type="button" class="sig-clear" onclick="clearSig()">Clear</button></div>
+<div class="sig-hint">Sign above using your finger or mouse</div></div></div>
+<div id="alert" class="alert"><span id="alertIcon"></span><span id="alertMsg"></span></div>
+<button class="submit-btn" id="submitBtn" onclick="submitSig()">Sign &amp; Authorize Records Release<span class="sp"></span></button>
+<p style="text-align:center;font-size:12px;color:#8b90a0;margin-top:16px">&#x1F512; Your signature is encrypted and transmitted securely</p></div>
+<div class="success-screen" id="successScreen"><div class="check">&#x2713;</div><h2>Authorization Complete</h2><p id="successMsg"></p><p style="margin-top:24px;font-size:13px;color:#8b90a0">You may close this page.</p></div>
+</div>
+<script>
+var API="https://zrbqqrqmclykewukvxps.supabase.co/functions/v1";
+var sigPad,consentInfo;
+var token=new URLSearchParams(location.search).get("token");
+
+document.addEventListener("DOMContentLoaded",function(){if(!token){showErr("Invalid Link","No authorization token found.");return}loadConsent()});
+
+async function loadConsent(){try{
+  var r=await fetch(API+"/consent-data?token="+encodeURIComponent(token));
+  var d=await r.json();
+  if(!d.success){showErr(d.title||"Error",d.error||"Unable to load.");return}
+  consentInfo=d.consent;var c=consentInfo;
+  document.getElementById("headerDesc").textContent=(c.release_to_org||"Your provider")+" needs your signature to retrieve your medical records";
+  document.getElementById("infoName").textContent=(c.patient_first_name||"")+" "+(c.patient_last_name||"");
+  document.getElementById("infoDob").textContent=c.patient_dob||"";
+  document.getElementById("infoEmail").textContent=c.patient_email||"";
+  if(c.patient_phone){document.getElementById("infoPhone").textContent=c.patient_phone;document.getElementById("phoneRow").style.display="flex"}
+  var provs=c.previous_providers||[];
+  document.getElementById("provList").innerHTML=provs.map(function(p,i){var n=p.practiceName||[p.providerFirstName,p.providerLastName].filter(Boolean).join(" ")||"Provider";return'<div class="info-row"><span class="info-label">Provider '+(i+1)+'</span><span class="info-value">'+esc(n)+'</span></div>'}).join("");
+  document.getElementById("infoClinic").textContent=c.release_to_org||"";
+  document.getElementById("consentText").innerHTML="<strong>AUTHORIZATION TO RELEASE CONFIDENTIAL HEALTHCARE INFORMATION</strong><br><br>I, <strong>"+esc(c.patient_first_name+" "+c.patient_last_name)+"</strong>, hereby authorize the above-listed healthcare provider(s) to release my complete health record to <strong>"+esc(c.release_to_org||"")+"</strong>.<br><br>Records include: OB/GYN records, progress notes, lab results, imaging, medications, procedures, and all related records.<br><br>Purpose: Continuation of care.<br><br>I understand that:<ul style='margin:8px 0 8px 20px'><li>I may revoke this at any time</li><li>Disclosed info may be re-disclosed</li><li>Treatment is not conditioned on signing</li><li>This expires 12 months from signature</li></ul>";
+  document.getElementById("loadingScreen").style.display="none";
+  document.getElementById("formView").style.display="block";
+  initSig();
+}catch(e){showErr("Error","Network error: "+e.message)}}
+
+function showErr(t,m){document.getElementById("loadingScreen").style.display="none";document.getElementById("errTitle").textContent=t;document.getElementById("errMsg").textContent=m;document.getElementById("errorScreen").style.display="block"}
+function esc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML}
+function initSig(){var c=document.getElementById("sigCanvas");sigPad=new SignaturePad(c,{backgroundColor:"rgb(255,255,255)",penColor:"rgb(20,20,80)"});function rs(){var r=c.parentElement.getBoundingClientRect();c.width=r.width;c.height=200;sigPad.clear()}rs();window.addEventListener("resize",rs);sigPad.addEventListener("endStroke",function(){document.getElementById("sigWrap").classList.add("signed")})}
+function clearSig(){sigPad.clear();document.getElementById("sigWrap").classList.remove("signed")}
+function showAlert(m){var a=document.getElementById("alert");a.className="alert show error";document.getElementById("alertIcon").textContent="\u26A0";document.getElementById("alertMsg").textContent=m}
+async function submitSig(){
+  if(sigPad.isEmpty()){showAlert("Please sign before submitting.");return}
+  var btn=document.getElementById("submitBtn");btn.classList.add("loading");btn.disabled=true;
+  document.getElementById("alert").classList.remove("show");
+  try{
+    var r=await fetch(API+"/consent-data?token="+encodeURIComponent(token),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({signatureDataUrl:sigPad.toDataURL("image/png")})});
+    var d=await r.json();
+    if(d.success){document.getElementById("formView").style.display="none";document.getElementById("successScreen").classList.add("show");document.getElementById("successMsg").textContent="Thank you, "+(consentInfo.patient_first_name||"")+". Your medical records request has been authorized and submitted. "+(consentInfo.release_to_org||"Your provider")+" will receive your records once retrieved. This typically takes 5\u201314 business days."}
+    else{showAlert(d.error||"Failed. Please try again.");btn.classList.remove("loading");btn.disabled=false}
+  }catch(e){showAlert("Network error: "+e.message);btn.classList.remove("loading");btn.disabled=false}
+}
+</script></body></html>
