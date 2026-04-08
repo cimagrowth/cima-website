@@ -117,10 +117,10 @@ export function useInvoice(invoiceId: string | null) {
       if (pkgRes.error) throw pkgRes.error;
       if (catRes.error) throw catRes.error;
 
-      setInvoice((invRes.data as Invoice) ?? null);
-      setLineItems((itemsRes.data as InvoiceLineItem[]) ?? []);
-      setPackages((pkgRes.data as ServicePackage[]) ?? []);
-      setCategories((catRes.data as ServicePackageCategory[]) ?? []);
+      setInvoice((invRes.data as unknown as Invoice) ?? null);
+      setLineItems((itemsRes.data as unknown as InvoiceLineItem[]) ?? []);
+      setPackages((pkgRes.data as unknown as ServicePackage[]) ?? []);
+      setCategories((catRes.data as unknown as ServicePackageCategory[]) ?? []);
     } catch (err: any) {
       setError(err.message ?? "Failed to load invoice");
     } finally {

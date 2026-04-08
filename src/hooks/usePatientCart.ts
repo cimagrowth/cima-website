@@ -111,9 +111,9 @@ export function usePatientCart(patientId: string | null) {
       if (pkgRes.error) throw pkgRes.error;
       if (catRes.error) throw catRes.error;
 
-      setItems((cartRes.data as PatientCartItem[]) ?? []);
-      setPackages((pkgRes.data as ServicePackage[]) ?? []);
-      setCategories((catRes.data as ServicePackageCategory[]) ?? []);
+      setItems((cartRes.data as unknown as PatientCartItem[]) ?? []);
+      setPackages((pkgRes.data as unknown as ServicePackage[]) ?? []);
+      setCategories((catRes.data as unknown as ServicePackageCategory[]) ?? []);
     } catch (err: any) {
       setError(err.message ?? "Failed to load cart");
     } finally {
