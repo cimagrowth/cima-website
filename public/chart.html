@@ -42,9 +42,28 @@ body{font-family:"DM Sans",sans-serif;background:var(--raised);color:var(--ink);
 .reg-price{font-size:18px;font-weight:700;color:var(--accent);margin-top:12px}.reg-price span{font-size:13px;font-weight:400;color:var(--ink-muted)}
 .tos-box{max-height:200px;overflow-y:auto;background:var(--raised);border:1px solid var(--border);border-radius:var(--rs);padding:16px;font-size:12px;color:var(--ink-soft);line-height:1.7;margin-bottom:12px}
 .check-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;font-size:13px;color:var(--ink-soft)}.check-row input[type=checkbox]{margin-top:2px;accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
+.hist-item{background:#fff;border:1px solid #e5ddd3;border-radius:10px;padding:16px;margin-bottom:12px}
+.hist-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.hist-name{font-weight:600;font-size:15px}
+.hist-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;text-transform:uppercase}
+.hist-badge.pending{background:#fef3ee;color:#e95a32}
+.hist-badge.submitted{background:#eff4ff;color:#2563eb}
+.hist-badge.signed{background:#eff4ff;color:#2563eb}
+.hist-badge.retrieval_complete{background:#ecfdf5;color:#059669}
+.hist-badge.documents_available{background:#ecfdf5;color:#059669}
+.hist-badge.failed{background:#fef2f2;color:#dc2626}
+.hist-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;color:#4a4f5c}
+.hist-label{color:#8b90a0}
+.hist-empty{text-align:center;padding:40px;color:#8b90a0;font-size:14px}
 </style></head><body>
 <div class="shell">
 <div class="logo-bar"><span class="logo-text">Cima ChartAI</span></div>
+<div id="tabBar" style="display:none;margin-bottom:20px">
+  <div style="display:flex;gap:0;border-bottom:2px solid #e5ddd3">
+    <button class="tab-btn active" onclick="switchTab('request')" id="tabRequest" style="flex:1;padding:12px;font-family:inherit;font-size:14px;font-weight:600;background:none;border:none;border-bottom:3px solid #e95a32;color:#e95a32;cursor:pointer">New Request</button>
+    <button class="tab-btn" onclick="switchTab('history')" id="tabHistory" style="flex:1;padding:12px;font-family:inherit;font-size:14px;font-weight:600;background:none;border:none;border-bottom:3px solid transparent;color:#8b90a0;cursor:pointer">Request History</button>
+  </div>
+</div>
 <div class="loading-screen" id="loadingScreen"><div class="spin-lg"></div>Loading...</div>
 <div class="error-screen" id="errorScreen" style="display:none"><h2>Clinic Not Found</h2><p id="errorMsg">Please contact your provider.</p></div>
 
@@ -102,6 +121,10 @@ body{font-family:"DM Sans",sans-serif;background:var(--raised);color:var(--ink);
 <div class="ss" id="successScreen"><div class="sc">&#x2713;</div><h2>Authorization Sent</h2><p id="successMsg"></p><div class="ri" id="refId"></div><div style="margin-top:16px;font-size:13px" id="signingLinkWrap"></div><div style="margin-top:24px"><button class="btn bp" onclick="location.reload()">Submit Another</button></div></div>
 <div class="nr" id="navRow"><button class="btn bs" id="btnBack" onclick="goBack()" style="visibility:hidden">&#x2190; Back</button><button class="btn bp" id="btnNext" onclick="goNext()"><span class="bt">Continue &#x2192;</span><span class="sp"></span></button></div>
 </div>
+<div id="historyView" style="display:none">
+  <div id="historyLoading" style="text-align:center;padding:40px;color:#8b90a0">Loading requests...</div>
+  <div id="historyContent"></div>
+</div>
 </div>
 <script>
 var API="https://zrbqqrqmclykewukvxps.supabase.co/functions/v1";
@@ -112,7 +135,50 @@ var platform=params.get("platform")||"ghl";
 document.addEventListener("DOMContentLoaded",function(){if(!locationId){showErr("No clinic specified.");return}document.getElementById("regFeeCheck").addEventListener("change",ckReg);document.getElementById("regTosCheck").addEventListener("change",ckReg);loadClinic()});
 function ckReg(){document.getElementById("regSubmit").disabled=!(document.getElementById("regFeeCheck").checked&&document.getElementById("regTosCheck").checked)}
 async function loadClinic(){try{var r=await fetch(API+"/client-config?locationId="+encodeURIComponent(locationId));var d=await r.json();if(!d.success||!d.client){document.getElementById("loadingScreen").style.display="none";document.getElementById("regForm").style.display="block";return}clinic=d.client;showMain()}catch(e){showErr("Error: "+e.message)}}
-function showMain(){document.getElementById("clinicBadge").textContent=clinic.orgName;document.getElementById("consentText").innerHTML="<strong>AUTHORIZATION TO RELEASE HEALTHCARE INFORMATION</strong><br><br>The patient will authorize the listed provider(s) to release their complete health record to:<br><strong>"+clinic.orgName+(clinic.orgAddress?", "+clinic.orgAddress:"")+"</strong><br><br>Records include progress notes, labs, imaging, medications, procedures, and all related records.";var fd=new Date(Date.now()+30*86400000);document.getElementById("futureAppt").value=fd.toISOString().split("T")[0];document.getElementById("loadingScreen").style.display="none";document.getElementById("regForm").style.display="none";document.getElementById("mainForm").style.display="block";addProv();initSearch()}
+function showMain(){document.getElementById("clinicBadge").textContent=clinic.orgName;document.getElementById("consentText").innerHTML="<strong>AUTHORIZATION TO RELEASE HEALTHCARE INFORMATION</strong><br><br>The patient will authorize the listed provider(s) to release their complete health record to:<br><strong>"+clinic.orgName+(clinic.orgAddress?", "+clinic.orgAddress:"")+"</strong><br><br>Records include progress notes, labs, imaging, medications, procedures, and all related records.";var fd=new Date(Date.now()+30*86400000);document.getElementById("futureAppt").value=fd.toISOString().split("T")[0];document.getElementById("loadingScreen").style.display="none";document.getElementById("regForm").style.display="none";document.getElementById("mainForm").style.display="block";document.getElementById('tabBar').style.display='block';addProv();initSearch()}
+function switchTab(tab) {
+  if (tab === 'request') {
+    document.getElementById('mainForm').style.display = 'block';
+    document.getElementById('historyView').style.display = 'none';
+    document.getElementById('tabRequest').style.borderBottomColor = '#e95a32';
+    document.getElementById('tabRequest').style.color = '#e95a32';
+    document.getElementById('tabHistory').style.borderBottomColor = 'transparent';
+    document.getElementById('tabHistory').style.color = '#8b90a0';
+  } else {
+    document.getElementById('mainForm').style.display = 'none';
+    document.getElementById('historyView').style.display = 'block';
+    document.getElementById('tabHistory').style.borderBottomColor = '#e95a32';
+    document.getElementById('tabHistory').style.color = '#e95a32';
+    document.getElementById('tabRequest').style.borderBottomColor = 'transparent';
+    document.getElementById('tabRequest').style.color = '#8b90a0';
+    loadHistory();
+  }
+}
+async function loadHistory() {
+  var hc = document.getElementById('historyContent');
+  var hl = document.getElementById('historyLoading');
+  hl.style.display = 'block';
+  hc.innerHTML = '';
+  try {
+    var r = await fetch(API + '/admin-api?resource=requests&locationId=' + encodeURIComponent(locationId));
+    var d = await r.json();
+    hl.style.display = 'none';
+    var reqs = d.requests || [];
+    if (!reqs.length) { hc.innerHTML = '<div class="hist-empty">No requests yet. Submit your first request in the "New Request" tab.</div>'; return; }
+    reqs.sort(function(a, b) { return new Date(b.created_at) - new Date(a.created_at); });
+    hc.innerHTML = reqs.map(function(r) {
+      var status = r.status || 'pending';
+      var date = r.created_at ? new Date(r.created_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) : '';
+      var docs = r.document_count || 0;
+      return '<div class="hist-item">' +
+        '<div class="hist-top"><span class="hist-name">' + esc(r.patient_name || 'Unknown') + '</span><span class="hist-badge ' + status + '">' + status.replace(/_/g, ' ') + '</span></div>' +
+        '<div class="hist-row"><span class="hist-label">Submitted</span><span>' + date + '</span></div>' +
+        '<div class="hist-row"><span class="hist-label">Providers</span><span>' + (r.provider_count || 0) + '</span></div>' +
+        (docs > 0 ? '<div class="hist-row"><span class="hist-label">Documents</span><span>' + docs + ' received</span></div>' : '') +
+        '</div>';
+    }).join('');
+  } catch(e) { hl.style.display = 'none'; hc.innerHTML = '<div class="hist-empty">Failed to load history.</div>'; }
+}
 function showErr(m){document.getElementById("loadingScreen").style.display="none";document.getElementById("errorMsg").textContent=m;document.getElementById("errorScreen").style.display="block"}
 
 // --- REGISTRATION ---
