@@ -170,11 +170,21 @@ async function loadHistory() {
       var status = r.status || 'pending';
       var date = r.created_at ? new Date(r.created_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) : '';
       var docs = r.document_count || 0;
+      var docsHtml = '';
+      if (r.documents && r.documents.length > 0) {
+        docsHtml = '<div style="margin-top:8px;padding-top:8px;border-top:1px solid #f0f1f3">' +
+          '<div style="font-size:12px;font-weight:600;color:#059669;margin-bottom:6px">📄 Retrieved Documents</div>' +
+          r.documents.map(function(doc) {
+            return '<a href="' + doc.document_url + '" target="_blank" style="display:block;font-size:13px;color:#2563eb;text-decoration:none;padding:4px 0">' +
+              '↓ ' + (doc.document_name || 'Medical Record') + '</a>';
+          }).join('') + '</div>';
+      }
       return '<div class="hist-item">' +
         '<div class="hist-top"><span class="hist-name">' + esc(r.patient_name || 'Unknown') + '</span><span class="hist-badge ' + status + '">' + status.replace(/_/g, ' ') + '</span></div>' +
         '<div class="hist-row"><span class="hist-label">Submitted</span><span>' + date + '</span></div>' +
         '<div class="hist-row"><span class="hist-label">Providers</span><span>' + (r.provider_count || 0) + '</span></div>' +
         (docs > 0 ? '<div class="hist-row"><span class="hist-label">Documents</span><span>' + docs + ' received</span></div>' : '') +
+        docsHtml +
         '</div>';
     }).join('');
   } catch(e) { hl.style.display = 'none'; hc.innerHTML = '<div class="hist-empty">Failed to load history.</div>'; }
