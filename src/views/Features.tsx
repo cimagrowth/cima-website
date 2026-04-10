@@ -8,6 +8,7 @@ import {
   Zap,
   Phone,
   Mail,
+  MessageSquare,
   Users,
   BarChart3,
   Calendar,
@@ -26,7 +27,6 @@ import {
   RefreshCw,
   Globe,
   Building2,
-  MapPin,
   Megaphone,
   Bell,
   Settings,
@@ -393,12 +393,6 @@ const migrationCards = [
     description:
       "We work with your existing stack — EMRs, billing platforms, phone systems — to ensure a smooth, complete transition.",
   },
-];
-
-const territoryTags = [
-  "One clinic per territory",
-  "Competitor lockout",
-  "Market dominance",
 ];
 
 // ──────────────────────────────────────────────
@@ -784,40 +778,6 @@ const Features = () => {
             {migrationCards.map((card) => (
               <FeatureCard key={card.title} {...card} />
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── TERRITORY EXCLUSIVITY ── */}
-      <section className="section-padding-sm bg-tan">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="card-elevated rounded-2xl p-8 md:p-12 border-l-4 border-accent-orange max-w-4xl lg:max-w-5xl mx-auto"
-          >
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-7 h-7 text-accent-orange" />
-              </div>
-              <div>
-                <h2 className="text-heading text-foreground mb-3">
-                  Territory Exclusivity
-                </h2>
-                <p className="text-body-lg text-muted-foreground mb-6">
-                  We only partner with one clinic per market. Once you claim your territory,
-                  we decline all competitors in your area. This isn't a sales tactic — it's
-                  how we ensure every client dominates their local market.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {territoryTags.map((tag) => (
-                    <Chip key={tag} label={tag} />
-                  ))}
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
