@@ -41,6 +41,7 @@ const Header = () => {
     { href: "/outreach", label: "Outreach Engine" },
     { href: "/ai-agent", label: "AI Agent" },
     { href: "/ads", label: "AI Ads" },
+    { href: "/chartai", label: "ChartAI" },
     { href: "/blog", label: "Blog" },
   ];
 

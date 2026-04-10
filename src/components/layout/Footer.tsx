@@ -17,6 +17,7 @@ const Footer = () => {
       { label: "AI Agent", href: "/ai-agent" },
       { label: "Outreach Engine", href: "/outreach" },
       { label: "AI Ads", href: "/ads" },
+      { label: "ChartAI", href: "/chartai" },
       { label: "Demo", href: "/demo" },
     ],
     company: [
