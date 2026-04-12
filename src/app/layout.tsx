@@ -85,6 +85,11 @@ export default function RootLayout({
           </div>
           <DynamicGTM />
         </Providers>
+        {/* GrowthOS AI Chat Widget */}
+        <Script
+          src="https://momssbzlofjodqodvvvk.supabase.co/functions/v1/chat-widget?org=1372de10-066f-437e-941e-643deefebf2f"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
