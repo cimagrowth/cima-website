@@ -11,7 +11,7 @@ const SocialProof = () => {
   ];
 
   return (
-    <section className="py-6 md:py-12 bg-primary relative overflow-hidden">
+    <section className="py-6 md:py-12 bg-primary/90 relative overflow-hidden">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-light/20 to-primary opacity-50" />
 
