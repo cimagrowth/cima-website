@@ -12,122 +12,107 @@
 
 @layer base {
   :root {
-    /* ===== BACKGROUND & SURFACE ===== */
-    --background: 40 33% 98%;           /* #FDFBF7 — warm off-white, not sterile */
-    --background-soft: 40 28% 95%;      /* #F5F1EA — slightly warmer for depth */
-    --foreground: 210 29% 24%;          /* #2B3D4F — warm dark slate, NOT pure black */
+    --background: 40 33% 98%;           /* #FDFBF7 warm off-white */
+    --background-soft: 40 28% 95%;
+    --foreground: 210 29% 24%;          /* #2B3D4F warm dark slate */
 
-    /* ===== CARDS & POPOVERS ===== */
-    --card: 0 0% 100%;                  /* #FFFFFF — crisp white cards on warm bg */
-    --card-foreground: 210 29% 24%;     /* same warm slate */
+    --card: 0 0% 100%;
+    --card-foreground: 210 29% 24%;
     --popover: 0 0% 100%;
     --popover-foreground: 210 29% 24%;
 
-    /* ===== PRIMARY (deep teal — trust + medical authority) ===== */
-    --primary: 192 47% 20%;             /* #1B4D5C — deep teal, replaces dark navy */
-    --primary-foreground: 40 33% 96%;   /* warm off-white text on primary */
-    --primary-light: 180 30% 50%;       /* #598F8F — medium teal for gradients */
+    --primary: 195 52% 22%;             /* #1B4D5C deep teal */
+    --primary-foreground: 40 33% 96%;
+    --primary-light: 187 32% 48%;       /* #548E96 medium teal */
 
-    /* ===== ACCENT ORANGE (unchanged — this is the CTA color) ===== */
-    --accent-orange: 24 95% 53%;        /* #F97316 — keeping this. It's the brand action color */
+    --accent-orange: 24 95% 53%;        /* #F97316 */
     --accent-orange-foreground: 0 0% 100%;
 
-    /* ===== SECONDARY (warm medium teal — complements primary) ===== */
-    --secondary: 184 35% 53%;           /* #58A3AD — warm medium teal, same family as primary */
+    --secondary: 190 30% 50%;           /* #5994A1 — muted teal, NOT green */
     --secondary-foreground: 0 0% 100%;
 
-    /* ===== MUTED & NEUTRAL ===== */
-    --muted: 40 18% 93%;                /* #EDE9E3 — warm gray, not cold */
-    --muted-foreground: 210 15% 46%;    /* #637080 — readable but soft */
+    --muted: 40 18% 93%;
+    --muted-foreground: 210 15% 46%;
 
-    /* ===== ACCENT (hover states, subtle highlights) ===== */
-    --accent: 180 18% 93%;              /* light teal-gray tint */
+    --accent: 190 15% 93%;
     --accent-foreground: 210 29% 24%;
 
-    /* ===== TAN (section backgrounds — warm alternating) ===== */
-    --tan: 37 33% 91%;                  /* #EDE5D6 — warm sand */
+    --tan: 37 33% 91%;                  /* #EDE5D6 warm sand */
     --tan-foreground: 210 29% 24%;
 
-    /* ===== DESTRUCTIVE ===== */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* ===== BORDER & INPUT ===== */
-    --border: 37 20% 87%;               /* warm border, not cold gray */
+    --border: 37 20% 87%;
     --input: 37 20% 87%;
-    --ring: 24 95% 53%;                 /* orange ring for focus states */
-
-    /* ===== RADIUS (keep) ===== */
+    --ring: 24 95% 53%;
     --radius: 0.75rem;
 
-    /* ===== SHADOWS (warm-tinted instead of cold navy) ===== */
     --shadow-soft: 0 1px 2px 0 rgba(43, 61, 79, 0.04), 0 1px 6px -1px rgba(43, 61, 79, 0.03);
     --shadow-card: 0 4px 16px -4px rgba(43, 61, 79, 0.07), 0 2px 4px -2px rgba(43, 61, 79, 0.03);
     --shadow-elevated: 0 8px 30px -6px rgba(43, 61, 79, 0.10), 0 4px 10px -4px rgba(43, 61, 79, 0.05);
     --shadow-glow: 0 0 40px -10px rgba(249, 115, 22, 0.25);
 
-    /* ===== GRADIENTS ===== */
-    --gradient-primary: linear-gradient(135deg, #1B4D5C, #58A3AD);
+    --gradient-primary: linear-gradient(135deg, #1B4D5C, #548E96);
     --gradient-accent: linear-gradient(135deg, #F97316, #EA580C);
     --gradient-hero: linear-gradient(180deg, #FDFBF7, #F5F1EA);
-    --gradient-radial: radial-gradient(ellipse at top, rgba(88, 163, 173, 0.08) 0%, transparent 60%);
+    --gradient-radial: radial-gradient(ellipse at top, rgba(89, 148, 161, 0.06) 0%, transparent 60%);
 
-    /* ===== SIDEBAR (for internal pages if any — deep teal) ===== */
-    --sidebar-background: 192 47% 20%;
+    --sidebar-background: 195 52% 22%;
     --sidebar-foreground: 40 33% 96%;
     --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 192 40% 26%;
+    --sidebar-accent: 195 42% 28%;
     --sidebar-accent-foreground: 40 33% 96%;
-    --sidebar-border: 192 35% 28%;
+    --sidebar-border: 195 38% 30%;
     --sidebar-ring: 24 95% 53%;
   }
 
   .dark {
-    --background: 200 25% 10%;          /* dark warm-charcoal, not pure black */
-    --background-soft: 200 22% 13%;
-    --foreground: 40 15% 92%;           /* warm off-white text */
+    --background: 210 20% 11%;          /* #182028 — warm dark, not pure black */
+    --background-soft: 210 18% 14%;
+    --foreground: 40 12% 90%;
 
-    --card: 200 22% 14%;
-    --card-foreground: 40 15% 92%;
-    --popover: 200 22% 14%;
-    --popover-foreground: 40 15% 92%;
+    --card: 210 18% 15%;
+    --card-foreground: 40 12% 90%;
+    --popover: 210 18% 15%;
+    --popover-foreground: 40 12% 90%;
 
-    --primary: 180 30% 45%;             /* lighter teal in dark mode */
-    --primary-foreground: 40 15% 92%;
-    --primary-light: 180 25% 30%;
+    --primary: 195 45% 25%;             /* #234E5C — stays dark and rich in dark mode */
+    --primary-foreground: 40 12% 90%;
+    --primary-light: 187 28% 35%;
 
     --accent-orange: 24 95% 53%;
     --accent-orange-foreground: 0 0% 100%;
 
-    --secondary: 184 30% 35%;
-    --secondary-foreground: 40 15% 92%;
+    --secondary: 190 25% 38%;           /* muted teal, not green */
+    --secondary-foreground: 40 12% 90%;
 
-    --muted: 200 20% 18%;
-    --muted-foreground: 200 12% 60%;
+    --muted: 210 16% 19%;
+    --muted-foreground: 210 10% 58%;
 
-    --accent: 200 18% 18%;
-    --accent-foreground: 40 15% 90%;
+    --accent: 210 14% 19%;
+    --accent-foreground: 40 12% 88%;
 
-    --tan: 200 20% 14%;
-    --tan-foreground: 40 15% 92%;
+    --tan: 210 16% 15%;
+    --tan-foreground: 40 12% 90%;
 
     --destructive: 0 62.8% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 18% 22%;
-    --input: 200 18% 22%;
+    --border: 210 14% 23%;
+    --input: 210 14% 23%;
     --ring: 24 95% 53%;
 
-    --shadow-glow: 0 0 60px -10px rgba(249, 115, 22, 0.35);
+    --shadow-glow: 0 0 60px -10px rgba(249, 115, 22, 0.30);
 
-    --sidebar-background: 200 25% 12%;
-    --sidebar-foreground: 40 15% 92%;
+    --sidebar-background: 210 20% 13%;
+    --sidebar-foreground: 40 12% 90%;
     --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 200 18% 20%;
-    --sidebar-accent-foreground: 40 15% 92%;
-    --sidebar-border: 200 18% 20%;
+    --sidebar-accent: 210 14% 20%;
+    --sidebar-accent-foreground: 40 12% 90%;
+    --sidebar-border: 210 14% 20%;
     --sidebar-ring: 24 95% 53%;
   }
 }

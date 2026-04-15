@@ -124,7 +124,7 @@ const Hero = () => {
 
           <motion.p
             variants={itemVariants}
-            className="hidden md:block text-base text-secondary font-medium mb-6"
+            className="hidden md:block text-base text-muted-foreground font-medium mb-6"
           >
             Live onboarding in 24-48 hours | Desktop + mobile app | HIPAA compliant
           </motion.p>
@@ -185,7 +185,7 @@ const Hero = () => {
           </Link>
         </motion.div>
 
-        <motion.p variants={itemVariants} className="text-center text-sm text-secondary font-medium pt-2">
+        <motion.p variants={itemVariants} className="text-center text-sm text-muted-foreground font-medium pt-2">
           Live in 24-48 hours | HIPAA compliant
         </motion.p>
       </motion.div>
