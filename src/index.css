@@ -4,7 +4,7 @@
 
 /* Cima Growth Solutions / GrowthOS Design System
    Warm, trustworthy healthcare aesthetic
-   Brand Colors: Deep Teal #1B4D5C, Orange #F97316, Sage Green #5DA690, Warm Sand #EDE5D6
+   Brand Colors: Deep Teal #1B4D5C, Orange #F97316, Medium Teal #58A3AD, Warm Sand #EDE5D6
    All colors in HSL format
 */
 
@@ -32,8 +32,8 @@
     --accent-orange: 24 95% 53%;        /* #F97316 — keeping this. It's the brand action color */
     --accent-orange-foreground: 0 0% 100%;
 
-    /* ===== SECONDARY (sage green — calm, wellness, growth) ===== */
-    --secondary: 165 30% 52%;           /* #5DA690 — sage/seafoam green, replaces steel blue */
+    /* ===== SECONDARY (warm medium teal — complements primary) ===== */
+    --secondary: 184 35% 53%;           /* #58A3AD — warm medium teal, same family as primary */
     --secondary-foreground: 0 0% 100%;
 
     /* ===== MUTED & NEUTRAL ===== */
@@ -67,10 +67,10 @@
     --shadow-glow: 0 0 40px -10px rgba(249, 115, 22, 0.25);
 
     /* ===== GRADIENTS ===== */
-    --gradient-primary: linear-gradient(135deg, #1B4D5C, #598F8F);
+    --gradient-primary: linear-gradient(135deg, #1B4D5C, #58A3AD);
     --gradient-accent: linear-gradient(135deg, #F97316, #EA580C);
     --gradient-hero: linear-gradient(180deg, #FDFBF7, #F5F1EA);
-    --gradient-radial: radial-gradient(ellipse at top, rgba(93, 166, 144, 0.08) 0%, transparent 60%);
+    --gradient-radial: radial-gradient(ellipse at top, rgba(88, 163, 173, 0.08) 0%, transparent 60%);
 
     /* ===== SIDEBAR (for internal pages if any — deep teal) ===== */
     --sidebar-background: 192 47% 20%;
@@ -100,7 +100,7 @@
     --accent-orange: 24 95% 53%;
     --accent-orange-foreground: 0 0% 100%;
 
-    --secondary: 165 25% 35%;
+    --secondary: 184 30% 35%;
     --secondary-foreground: 40 15% 92%;
 
     --muted: 200 20% 18%;
