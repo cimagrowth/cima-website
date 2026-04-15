@@ -3,137 +3,132 @@
 @tailwind utilities;
 
 /* Cima Growth Solutions / GrowthOS Design System
-   Premium, vibrant medical SaaS aesthetic
-   Brand Colors: Dark Blue #112434, Orange #e95a32, Secondary Blue #6b9db3, Tan #ecebde
+   Warm, trustworthy healthcare aesthetic
+   Brand Colors: Deep Teal #1B4D5C, Orange #F97316, Sage Green #5DA690, Warm Sand #EDE5D6
    All colors in HSL format
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    /* Core backgrounds */
-    --background: 0 0% 100%;
-    --background-soft: 43 28% 95%;
-    --foreground: 207 53% 14%;
+    /* ===== BACKGROUND & SURFACE ===== */
+    --background: 40 33% 98%;           /* #FDFBF7 — warm off-white, not sterile */
+    --background-soft: 40 28% 95%;      /* #F5F1EA — slightly warmer for depth */
+    --foreground: 210 29% 24%;          /* #2B3D4F — warm dark slate, NOT pure black */
 
-    /* Card surfaces */
-    --card: 0 0% 100%;
-    --card-foreground: 207 53% 14%;
-
-    /* Popover */
+    /* ===== CARDS & POPOVERS ===== */
+    --card: 0 0% 100%;                  /* #FFFFFF — crisp white cards on warm bg */
+    --card-foreground: 210 29% 24%;     /* same warm slate */
     --popover: 0 0% 100%;
-    --popover-foreground: 207 53% 14%;
+    --popover-foreground: 210 29% 24%;
 
-    /* Primary - Deep Cima Blue */
-    --primary: 207 53% 14%;
-    --primary-foreground: 43 28% 89%;
-    --primary-light: 198 32% 56%;
+    /* ===== PRIMARY (deep teal — trust + medical authority) ===== */
+    --primary: 192 47% 20%;             /* #1B4D5C — deep teal, replaces dark navy */
+    --primary-foreground: 40 33% 96%;   /* warm off-white text on primary */
+    --primary-light: 180 30% 50%;       /* #598F8F — medium teal for gradients */
 
-    /* Accent - Cima Orange (for CTAs and highlights) */
-    --accent-orange: 14 81% 55%;
+    /* ===== ACCENT ORANGE (unchanged — this is the CTA color) ===== */
+    --accent-orange: 24 95% 53%;        /* #F97316 — keeping this. It's the brand action color */
     --accent-orange-foreground: 0 0% 100%;
 
-    /* Secondary - Cima Blue */
-    --secondary: 198 32% 56%;
+    /* ===== SECONDARY (sage green — calm, wellness, growth) ===== */
+    --secondary: 165 30% 52%;           /* #5DA690 — sage/seafoam green, replaces steel blue */
     --secondary-foreground: 0 0% 100%;
 
-    /* Muted surfaces and text */
-    --muted: 43 28% 92%;
-    --muted-foreground: 207 30% 40%;
+    /* ===== MUTED & NEUTRAL ===== */
+    --muted: 40 18% 93%;                /* #EDE9E3 — warm gray, not cold */
+    --muted-foreground: 210 15% 46%;    /* #637080 — readable but soft */
 
-    /* Accent - Subtle blue tint */
-    --accent: 198 25% 92%;
-    --accent-foreground: 207 53% 14%;
+    /* ===== ACCENT (hover states, subtle highlights) ===== */
+    --accent: 180 18% 93%;              /* light teal-gray tint */
+    --accent-foreground: 210 29% 24%;
 
-    /* Tan surface */
-    --tan: 43 28% 89%;
-    --tan-foreground: 207 53% 14%;
+    /* ===== TAN (section backgrounds — warm alternating) ===== */
+    --tan: 37 33% 91%;                  /* #EDE5D6 — warm sand */
+    --tan-foreground: 210 29% 24%;
 
-    /* Destructive */
+    /* ===== DESTRUCTIVE ===== */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs */
-    --border: 198 20% 85%;
-    --input: 198 20% 85%;
-    --ring: 14 81% 55%;
+    /* ===== BORDER & INPUT ===== */
+    --border: 37 20% 87%;               /* warm border, not cold gray */
+    --input: 37 20% 87%;
+    --ring: 24 95% 53%;                 /* orange ring for focus states */
 
+    /* ===== RADIUS (keep) ===== */
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --shadow-soft: 0 1px 2px 0 rgb(17 36 52 / 0.04), 0 1px 6px -1px rgb(17 36 52 / 0.03);
-    --shadow-card: 0 4px 16px -4px rgb(17 36 52 / 0.08), 0 2px 4px -2px rgb(17 36 52 / 0.04);
-    --shadow-elevated: 0 8px 30px -6px rgb(17 36 52 / 0.12), 0 4px 10px -4px rgb(17 36 52 / 0.06);
-    --shadow-glow: 0 0 40px -10px rgb(233 90 50 / 0.3);
+    /* ===== SHADOWS (warm-tinted instead of cold navy) ===== */
+    --shadow-soft: 0 1px 2px 0 rgba(43, 61, 79, 0.04), 0 1px 6px -1px rgba(43, 61, 79, 0.03);
+    --shadow-card: 0 4px 16px -4px rgba(43, 61, 79, 0.07), 0 2px 4px -2px rgba(43, 61, 79, 0.03);
+    --shadow-elevated: 0 8px 30px -6px rgba(43, 61, 79, 0.10), 0 4px 10px -4px rgba(43, 61, 79, 0.05);
+    --shadow-glow: 0 0 40px -10px rgba(249, 115, 22, 0.25);
 
-    /* Gradient tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(207 53% 14%) 0%, hsl(198 32% 56%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(14 81% 55%) 0%, hsl(14 81% 45%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(43 28% 95%) 100%);
-    --gradient-radial: radial-gradient(ellipse at top, hsl(198 32% 56% / 0.1) 0%, transparent 60%);
+    /* ===== GRADIENTS ===== */
+    --gradient-primary: linear-gradient(135deg, #1B4D5C, #598F8F);
+    --gradient-accent: linear-gradient(135deg, #F97316, #EA580C);
+    --gradient-hero: linear-gradient(180deg, #FDFBF7, #F5F1EA);
+    --gradient-radial: radial-gradient(ellipse at top, rgba(93, 166, 144, 0.08) 0%, transparent 60%);
 
-    /* Sidebar defaults */
-    --sidebar-background: 207 53% 14%;
-    --sidebar-foreground: 43 28% 89%;
-    --sidebar-primary: 14 81% 55%;
+    /* ===== SIDEBAR (for internal pages if any — deep teal) ===== */
+    --sidebar-background: 192 47% 20%;
+    --sidebar-foreground: 40 33% 96%;
+    --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 207 45% 20%;
-    --sidebar-accent-foreground: 43 28% 89%;
-    --sidebar-border: 207 40% 22%;
-    --sidebar-ring: 14 81% 55%;
+    --sidebar-accent: 192 40% 26%;
+    --sidebar-accent-foreground: 40 33% 96%;
+    --sidebar-border: 192 35% 28%;
+    --sidebar-ring: 24 95% 53%;
   }
 
   .dark {
-    /* Deep dark blue backgrounds */
-    --background: 207 53% 8%;
-    --background-soft: 207 53% 10%;
-    --foreground: 0 0% 95%;
+    --background: 200 25% 10%;          /* dark warm-charcoal, not pure black */
+    --background-soft: 200 22% 13%;
+    --foreground: 40 15% 92%;           /* warm off-white text */
 
-    --card: 207 53% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 200 22% 14%;
+    --card-foreground: 40 15% 92%;
+    --popover: 200 22% 14%;
+    --popover-foreground: 40 15% 92%;
 
-    --popover: 207 53% 12%;
-    --popover-foreground: 0 0% 95%;
+    --primary: 180 30% 45%;             /* lighter teal in dark mode */
+    --primary-foreground: 40 15% 92%;
+    --primary-light: 180 25% 30%;
 
-    /* Primary stays dark blue for consistency */
-    --primary: 207 53% 14%;
-    --primary-foreground: 0 0% 95%;
-    --primary-light: 207 45% 25%;
-
-    --accent-orange: 14 81% 55%;
+    --accent-orange: 24 95% 53%;
     --accent-orange-foreground: 0 0% 100%;
 
-    --secondary: 207 40% 22%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 165 25% 35%;
+    --secondary-foreground: 40 15% 92%;
 
-    --muted: 207 40% 16%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 200 20% 18%;
+    --muted-foreground: 200 12% 60%;
 
-    --accent: 207 35% 16%;
-    --accent-foreground: 0 0% 90%;
+    --accent: 200 18% 18%;
+    --accent-foreground: 40 15% 90%;
 
-    /* Tan now uses dark blue tones instead of brown */
-    --tan: 207 45% 12%;
-    --tan-foreground: 0 0% 95%;
+    --tan: 200 20% 14%;
+    --tan-foreground: 40 15% 92%;
 
     --destructive: 0 62.8% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 207 35% 20%;
-    --input: 207 35% 20%;
-    --ring: 14 81% 55%;
+    --border: 200 18% 22%;
+    --input: 200 18% 22%;
+    --ring: 24 95% 53%;
 
-    --shadow-glow: 0 0 60px -10px rgb(233 90 50 / 0.4);
+    --shadow-glow: 0 0 60px -10px rgba(249, 115, 22, 0.35);
 
-    --sidebar-background: 207 53% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 14 81% 55%;
+    --sidebar-background: 200 25% 12%;
+    --sidebar-foreground: 40 15% 92%;
+    --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 207 35% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 207 35% 18%;
-    --sidebar-ring: 14 81% 55%;
+    --sidebar-accent: 200 18% 20%;
+    --sidebar-accent-foreground: 40 15% 92%;
+    --sidebar-border: 200 18% 20%;
+    --sidebar-ring: 24 95% 53%;
   }
 }
 
@@ -161,6 +156,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight text-foreground;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Plus Jakarta Sans', 'DM Sans', system-ui, sans-serif;
   }
 }
 
