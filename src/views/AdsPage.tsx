@@ -28,6 +28,15 @@ import {
   Syringe,
   HeartPulse,
   Dna,
+  TrendingUp,
+  ShieldCheck,
+  Gauge,
+  FileText,
+  LineChart,
+  CheckCircle2,
+  Clock,
+  XCircle,
+  Moon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AdsIntakeModal, { type AdsPlanType } from "@/components/checkout/AdsIntakeModal";
@@ -126,15 +135,15 @@ const features = [
   },
   {
     icon: BarChart3,
-    title: "Real-Time Dashboard",
+    title: "Real-Time Performance Dashboard",
     description:
-      "Clicks, conversions, cost-per-lead, ROAS — at a glance. No more digging through Ads Manager.",
+      "Live dashboard plus one-click editorial-quality reports with campaign verdicts, AI insights, 30-day projections, and a full log of every optimization the system made.",
   },
   {
     icon: Bot,
     title: "AI Optimization Agent",
     description:
-      "Automatic recommendations to improve bids, pause underperformers, and scale winners.",
+      "Nightly AI engine scores every campaign 0-100, automatically increases budgets on winners, cuts spend on losers, and tracks the actual impact 7 days later. Full change log in your report.",
   },
   {
     icon: Palette,
@@ -143,6 +152,107 @@ const features = [
       "Every ad sounds like your practice. AI learns your tone, positioning, and differentiators during brand intake.",
   },
 ];
+
+const optimizationFeatures = [
+  {
+    icon: TrendingUp,
+    title: "Reward Winners, Starve Losers",
+    description:
+      "The optimization engine scores every campaign nightly on a 0-100 scale. Top performers get automatic budget increases. Underperformers get cut — and you see exactly why in your report.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Safety Rails Built In",
+    description:
+      "Budget changes are capped at 25% per cycle. Campaigns are never deleted — only paused. And the system waits 14 full days before making its first move, so Google's ML has time to learn.",
+  },
+  {
+    icon: Gauge,
+    title: "Closed-Loop Impact Tracking",
+    description:
+      "Seven days after every change, the engine measures whether it actually worked. Your report shows: \"We increased this budget → projected +6 conversions → actual: +8.\" That's accountability most agencies can't match.",
+  },
+];
+
+type ActivityStatus = "success" | "pending" | "cut";
+
+const activityFeed: {
+  timestamp: string;
+  status: ActivityStatus;
+  title: string;
+  change: string;
+  reason: string;
+  note: string;
+}[] = [
+  {
+    timestamp: "Apr 15 · 2:04 AM",
+    status: "success",
+    title: "Increased Leads-Search-English budget",
+    change: "$10/day → $40/day",
+    reason: "Lowest CPA in account ($13.51), impression-constrained",
+    note: "Projected: +6 conversions/week",
+  },
+  {
+    timestamp: "Apr 15 · 2:04 AM",
+    status: "cut",
+    title: "Cut PMAX · IVF · Bay Area budget",
+    change: "$12/day → $6/day",
+    reason: "21 days, $180 spend, 0 conversions",
+    note: "Status: Auto-executed",
+  },
+  {
+    timestamp: "Apr 15 · 2:05 AM",
+    status: "pending",
+    title: "Pending approval: Pause Leads-Search-Korean",
+    change: "$10/day → Paused",
+    reason: "No landing page, 0 conversions in 30 days",
+    note: "",
+  },
+];
+
+const reportTypes = [
+  {
+    icon: FileText,
+    title: "Campaign Report",
+    badge: "Included in all plans",
+    bullets: [
+      "Per-campaign performance with spend, clicks, CTR, conversions, CPA",
+      "Daily trend chart",
+      "Campaign verdicts: Winner / Watch / Cut",
+      "Full log of every change the optimization engine made",
+    ],
+    quote: "\"What did my ads do this month?\" — answered in 10 seconds.",
+  },
+  {
+    icon: LineChart,
+    title: "Advanced Report",
+    badge: "Included in all plans",
+    bullets: [
+      "Everything in Campaign Report, plus:",
+      "Geographic and service-line breakdowns",
+      "AI-generated insights (what's winning, what's failing, what to do)",
+      "30-day projections: current trajectory vs with planned optimizations",
+      "Planned changes with timelines and projected impact",
+      "Transparent assumptions block — shows the math, not just the answer",
+    ],
+    quote: "\"What should I do next?\" — the report tells you.",
+  },
+];
+
+const beforeAfter = {
+  before: [
+    { label: "Avg response time to ad inquiries", value: "4.2 hours" },
+    { label: "Monthly wasted ad spend (non-converting campaigns)", value: "$1,800" },
+    { label: "Time spent reviewing ad performance", value: "6 hrs/week" },
+    { label: "Report quality", value: "Screenshot of Google Ads Manager" },
+  ],
+  after: [
+    { label: "Avg response time", value: "3 seconds", sub: "AI chatbot + ads = instant" },
+    { label: "Monthly wasted spend", value: "Automatically cut", sub: "by optimization engine" },
+    { label: "Time spent reviewing performance", value: "2 minutes", sub: "one-click report" },
+    { label: "Report quality", value: "Client-ready document", sub: "with projections & insights" },
+  ],
+};
 
 const specialties = [
   {
@@ -461,6 +571,360 @@ const AdsPage = () => {
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ────────── AUTO-OPTIMIZATION ENGINE ────────── */}
+      <section className="section-padding bg-background relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-14"
+          >
+            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+              How It's Different
+            </span>
+            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+              Your Ads Get Smarter Every Night While You Sleep.
+            </h2>
+            <p className="text-body-lg text-muted-foreground">
+              Most platforms launch your ads and walk away. GrowthOS watches every
+              campaign, every day — and automatically adjusts budgets, pauses waste,
+              and doubles down on what's converting. No agency. No manual reviews.
+              No wasted spend.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start max-w-6xl mx-auto">
+            {/* Left — feature blocks */}
+            <div className="space-y-6">
+              {optimizationFeatures.map((feat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="card-premium rounded-xl p-6 md:p-7 flex gap-5"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center flex-shrink-0">
+                    <feat.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-heading-sm text-foreground mb-2">
+                      {feat.title}
+                    </h3>
+                    <p className="text-body text-muted-foreground">
+                      {feat.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right — Engine Activity mock card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="rounded-2xl p-6 md:p-7 shadow-card border border-white/5"
+              style={{ backgroundColor: "#0F1419" }}
+            >
+              <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                </div>
+                <div className="flex items-center gap-2 text-white/50 text-xs font-mono">
+                  <Moon className="w-3.5 h-3.5" />
+                  engine-activity.log
+                </div>
+              </div>
+
+              <div className="space-y-5 font-mono text-sm">
+                {activityFeed.map((entry, i) => {
+                  const StatusIcon =
+                    entry.status === "success"
+                      ? CheckCircle2
+                      : entry.status === "cut"
+                      ? XCircle
+                      : Clock;
+                  const statusColor =
+                    entry.status === "success"
+                      ? "text-emerald-400"
+                      : entry.status === "cut"
+                      ? "text-red-400"
+                      : "text-amber-400";
+                  const borderColor =
+                    entry.status === "success"
+                      ? "border-emerald-400/60"
+                      : entry.status === "cut"
+                      ? "border-red-400/60"
+                      : "border-amber-400/60";
+
+                  return (
+                    <div
+                      key={i}
+                      className={`pl-4 border-l-2 ${borderColor}`}
+                    >
+                      <div className="text-white/40 text-xs mb-1.5">
+                        [{entry.timestamp}]
+                      </div>
+                      <div className={`flex items-start gap-2 ${statusColor} mb-1.5`}>
+                        <StatusIcon className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                        <span className="text-white font-medium leading-snug">
+                          {entry.title}
+                        </span>
+                      </div>
+                      <div className="text-white/70 pl-6 leading-relaxed">
+                        {entry.change}
+                      </div>
+                      <div className="text-white/50 pl-6 leading-relaxed text-xs mt-1">
+                        Reason: {entry.reason}
+                      </div>
+                      {entry.note && (
+                        <div className={`pl-6 text-xs mt-1 ${statusColor}`}>
+                          {entry.note}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button asChild variant="hero" size="lg" className="group">
+              <a href="/demo">
+                See This Working on Your Account
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ────────── REPORTING ────────── */}
+      <section className="section-padding bg-tan relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-14"
+          >
+            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+              Proof, Not Promises
+            </span>
+            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+              One-Click Reports That Would Cost You $2,000 From an Agency.
+            </h2>
+            <p className="text-body-lg text-muted-foreground">
+              Generate client-ready Google Ads reports in seconds. Not spreadsheets
+              — editorial-quality documents with campaign breakdowns, AI insights,
+              change logs, and 30-day projections.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {reportTypes.map((report, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card-premium rounded-2xl p-8 flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center flex-shrink-0">
+                    <report.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-heading-sm text-foreground leading-tight">
+                      {report.title}
+                    </h3>
+                    <span className="text-body-sm text-accent-orange font-semibold">
+                      {report.badge}
+                    </span>
+                  </div>
+                </div>
+                <ul className="space-y-2.5 mb-6 flex-1">
+                  {report.bullets.map((b, j) => (
+                    <li key={j} className="flex items-start gap-2">
+                      <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-1 bg-accent-orange/10">
+                        <Check className="w-2.5 h-2.5 text-accent-orange" />
+                      </div>
+                      <span className="text-body-sm text-foreground">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-body italic text-muted-foreground border-l-4 border-accent-orange pl-4">
+                  {report.quote}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Contrast callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-10 max-w-5xl mx-auto"
+          >
+            <div className="relative rounded-2xl p-8 md:p-10 overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-card">
+              <div className="absolute top-0 right-0 w-72 h-72 bg-accent-orange/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="relative z-10 grid md:grid-cols-2 gap-8">
+                <div>
+                  <p className="text-body-sm font-semibold tracking-widest text-primary-foreground/60 uppercase mb-3">
+                    What GoHighLevel gives you
+                  </p>
+                  <p className="text-heading-sm text-primary-foreground/90">
+                    A dashboard with numbers.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-3">
+                    What GrowthOS gives you
+                  </p>
+                  <p className="text-heading-sm text-primary-foreground">
+                    A document you'd hand to your board, your investors, or your
+                    partner — with projections, AI insights, and a record of every
+                    optimization we made on your behalf.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button asChild variant="hero" size="lg" className="group">
+              <a href="/demo">
+                Generate Your First Report
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ────────── BEFORE & AFTER ────────── */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-14"
+          >
+            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+              Real Results
+            </span>
+            <h2 className="text-heading-lg md:text-display text-foreground">
+              What Happens When AI Manages Your Ad Spend.
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Before */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="card-premium rounded-2xl p-8 border-l-4 border-muted-foreground/30"
+            >
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground text-body-sm font-semibold mb-6">
+                Before GrowthOS
+              </span>
+              <div className="space-y-5">
+                {beforeAfter.before.map((row, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col gap-1 pb-4 border-b border-border last:border-b-0 last:pb-0"
+                  >
+                    <span className="text-body-sm text-muted-foreground">
+                      {row.label}
+                    </span>
+                    <span className="text-heading-sm text-foreground font-semibold">
+                      {row.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* After */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="card-premium rounded-2xl p-8 border-l-4 border-accent-orange relative"
+            >
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-orange/10 text-accent-orange text-body-sm font-semibold mb-6">
+                <Sparkles className="w-4 h-4" />
+                After GrowthOS
+              </span>
+              <div className="space-y-5">
+                {beforeAfter.after.map((row, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col gap-1 pb-4 border-b border-border last:border-b-0 last:pb-0"
+                  >
+                    <span className="text-body-sm text-muted-foreground">
+                      {row.label}
+                    </span>
+                    <span className="text-heading-sm text-foreground font-semibold">
+                      {row.value}
+                    </span>
+                    {row.sub && (
+                      <span className="text-body-sm text-accent-orange">
+                        {row.sub}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center text-body-lg text-muted-foreground mt-12 max-w-3xl mx-auto"
+          >
+            The AI doesn't just run your ads. It runs your ads, monitors your ads,
+            optimizes your ads, and proves they're working — every single month.
+          </motion.p>
         </div>
       </section>
 
