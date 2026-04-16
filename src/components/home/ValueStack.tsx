@@ -35,13 +35,26 @@ const ValueStack = () => {
   const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
 
   return (
-    <section id="value-stack" ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="pricing" ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden scroll-mt-20">
       <motion.div
         style={{ y: y1, scale: scale1, opacity: opacity1 }}
         className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl hidden md:block"
       />
 
       <div className="container-wide relative z-10">
+        {/* Lead-in headline */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+            Pricing
+          </p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
+            One price. One login. One system that replaces your entire stack.
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            No tiers for features we gate. No per-user surcharges. Just the platform.
+          </p>
+        </div>
+
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             One Platform Replaces Your{" "}

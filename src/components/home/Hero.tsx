@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   const outcomes = [
-    "3-second response",
-    "11 channels covered",
-    "24/7 coverage",
+    "Generate demand",
+    "Convert inquiries",
+    "Retain patients",
   ];
 
   const containerVariants = {
@@ -81,23 +81,25 @@ const Hero = () => {
         <div className="md:max-w-4xl lg:max-w-5xl">
           <motion.h1
             variants={itemVariants}
-            className="text-[2.2rem] leading-[1.08] sm:text-4xl md:text-display-xl lg:text-[4.2rem] text-foreground font-bold mb-4 md:mb-6 tracking-tight"
+            className="font-display text-[2.2rem] leading-[1.08] sm:text-4xl md:text-5xl lg:text-6xl text-foreground font-bold mb-4 md:mb-6 tracking-tight"
           >
-            <span className="block">Your Clinic Responds</span>
-            <span className="block">in 3 Seconds. Across</span>
-            <span className="block">11 Channels. <span className="text-gradient-accent">24/7.</span></span>
-            <span className="block text-gradient-accent">Without Hiring Anyone.</span>
+            The complete patient acquisition engine for{" "}
+            <span className="text-gradient-accent">fertility, aesthetics, and wellness clinics.</span>
           </motion.h1>
 
           {/* Desktop only: subhead and description */}
           <motion.p
             variants={itemVariants}
-            className="hidden md:block text-xl text-muted-foreground mb-8 max-w-3xl leading-relaxed"
+            className="hidden md:block text-xl md:text-2xl text-foreground/90 mb-4 max-w-3xl leading-relaxed"
           >
-            GrowthOS is an AI patient acquisition platform that responds to every inquiry
-            instantly — web, phone, text, email, WhatsApp, Instagram, TikTok, Facebook,
-            and Google — then nurtures that lead with emotionally intelligent follow-up
-            until your team steps in to close.
+            Generate demand. Convert inquiries. Stop leakage. Retain patients. One system. No agency required.
+          </motion.p>
+
+          <motion.p
+            variants={itemVariants}
+            className="hidden md:block text-base text-muted-foreground mb-8 max-w-3xl leading-relaxed"
+          >
+            Built by a 15-year fertility marketing veteran who got tired of watching clinics pay six different vendors for one broken funnel.
           </motion.p>
 
           {/* Desktop CTAs inline */}
@@ -105,36 +107,29 @@ const Hero = () => {
             variants={itemVariants}
             className="hidden md:flex flex-row gap-4 mb-8"
           >
-            <Link href="/demo">
+            <Link href="/sign-up">
               <Button variant="hero" size="lg" className="group text-base md:size-xl shadow-glow">
-                Book a Demo
+                Get Started
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link href="/sign-up">
+            <Link href="/demo">
               <Button
                 variant="hero-outline"
                 size="lg"
                 className="text-base md:size-xl border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
               >
-                Get Started — Live in 48 Hours
+                Book a Demo
               </Button>
             </Link>
           </motion.div>
-
-          <motion.p
-            variants={itemVariants}
-            className="hidden md:block text-base text-muted-foreground font-medium mb-6"
-          >
-            Live onboarding in 24-48 hours | Desktop + mobile app | HIPAA compliant
-          </motion.p>
 
           {/* Desktop outcomes */}
           <motion.div
             variants={itemVariants}
             className="hidden md:flex flex-row gap-4"
           >
-            {["Patients get a response in seconds", "AI nurtures until they're ready", "Your team closes with full context"].map((outcome, index) => (
+            {["Generate demand", "Convert inquiries", "Stop leakage", "Retain patients"].map((outcome, index) => (
               <div key={index} className="flex items-center gap-2.5 bg-card/50 backdrop-blur-sm px-3 py-2 rounded-lg border border-border/50">
                 <CheckCircle className="w-5 h-5 text-accent-orange flex-shrink-0" />
                 <span className="text-base text-foreground font-medium">{outcome}</span>
@@ -166,28 +161,24 @@ const Hero = () => {
 
         {/* Full-width stacked CTAs */}
         <motion.div variants={itemVariants}>
-          <Link href="/demo" className="block">
+          <Link href="/sign-up" className="block">
             <Button variant="hero" size="lg" className="w-full text-lg py-6 shadow-glow group">
-              Book a Demo
+              Get Started
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
         </motion.div>
         <motion.div variants={itemVariants}>
-          <Link href="/sign-up" className="block">
+          <Link href="/demo" className="block">
             <Button
               variant="hero-outline"
               size="lg"
               className="w-full text-lg py-6 border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
             >
-              Get Started — Live in 48 Hours
+              Book a Demo
             </Button>
           </Link>
         </motion.div>
-
-        <motion.p variants={itemVariants} className="text-center text-sm text-muted-foreground font-medium pt-2">
-          Live in 24-48 hours | HIPAA compliant
-        </motion.p>
       </motion.div>
     </section>
   );
