@@ -1,6 +1,9 @@
 'use client';
 
 import Hero from "@/components/home/Hero";
+import PositioningBand from "@/components/home/PositioningBand";
+import PatientJourney from "@/components/home/PatientJourney";
+import StackReplacement from "@/components/home/StackReplacement";
 import SocialProof from "@/components/home/SocialProof";
 import Problem from "@/components/home/Problem";
 import Solution from "@/components/home/Solution";
@@ -14,10 +17,13 @@ const Index = () => {
   return (
     <>
       <Hero />
-      <SocialProof />
+      <PositioningBand />
+      <PatientJourney />
+      <StackReplacement />
       <Problem />
-      <Solution />
       <ValueStack />
+      <SocialProof />
+      <Solution />
       <HowItWorks />
       <IntegrationFlexibility />
       <FounderLetter />
