@@ -174,15 +174,19 @@ const Audit = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-7"
             >
-              <h1 className="font-display font-bold tracking-tight text-primary text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
+              <h1 className="font-display font-bold tracking-tight text-foreground text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
                 The average clinic loses{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10">$8,000–$23,000 a month</span>
-                  <span className="absolute left-0 right-0 bottom-1 h-3 bg-accent-orange/30 -z-0 rounded-sm" />
+                  <span
+                    aria-hidden
+                    className="absolute left-0 right-0 bottom-1 h-3 bg-accent-orange/25 rounded-sm"
+                    style={{ zIndex: 0 }}
+                  />
                 </span>{" "}
                 to leads that click, visit, and vanish.
                 <br />
-                <span className="text-foreground">
+                <span className="text-gradient-accent">
                   In 90 seconds, I&apos;ll show you exactly where yours is
                   bleeding.
                 </span>
@@ -256,8 +260,11 @@ const Audit = () => {
       <section className="bg-background-soft section-padding-sm">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="font-display font-bold text-primary text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
-              You know something is broken. You just can&apos;t see where.
+            <h2 className="font-display font-bold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+              You know something is broken.{" "}
+              <span className="text-gradient-accent">
+                You just can&apos;t see where.
+              </span>
             </h2>
             <p className="text-body-lg text-muted-foreground">
               Most clinic owners I talk to are running on instinct. They feel
@@ -303,7 +310,7 @@ const Audit = () => {
                   <div className="w-12 h-12 rounded-xl bg-accent-orange/10 flex items-center justify-center mb-5">
                     <Icon className="w-6 h-6 text-accent-orange" />
                   </div>
-                  <h3 className="font-display font-bold text-primary text-[1.125rem] leading-snug mb-3">
+                  <h3 className="font-display font-semibold text-foreground text-[1.0625rem] md:text-[1.125rem] leading-snug mb-3">
                     {card.title}
                   </h3>
                   <p className="text-body-sm text-muted-foreground mb-4 flex-1">
@@ -320,11 +327,14 @@ const Audit = () => {
       </section>
 
       {/* ───────────── Section 3: What you actually get ───────────── */}
-      <section className="bg-card section-padding-sm">
+      <section className="bg-background section-padding-sm">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="font-display font-bold text-primary text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
-              Three tools. Zero fluff. Unlimited use.
+            <h2 className="font-display font-bold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+              Three tools.{" "}
+              <span className="text-gradient-accent">
+                Zero fluff. Unlimited use.
+              </span>
             </h2>
             <p className="text-body-lg text-muted-foreground">
               Every practice owner I&apos;ve met says the same thing:
@@ -384,10 +394,10 @@ const Audit = () => {
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-orange to-orange-600 flex items-center justify-center shadow-card mb-5">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-display font-bold text-primary text-heading-sm mb-2">
+                  <h3 className="font-display font-bold text-foreground text-heading-sm mb-2">
                     {tool.name}
                   </h3>
-                  <p className="font-display font-semibold text-primary/90 text-body mb-4 italic">
+                  <p className="font-display font-semibold text-foreground/90 text-body mb-4 italic">
                     {tool.tagline}
                   </p>
                   <ul className="space-y-2.5 mt-auto">
@@ -406,7 +416,7 @@ const Audit = () => {
             })}
           </div>
 
-          <p className="text-center font-display font-bold text-primary text-[1.25rem] md:text-[1.5rem] max-w-3xl mx-auto leading-snug">
+          <p className="text-center font-display font-bold text-foreground text-[1.25rem] md:text-[1.5rem] max-w-3xl mx-auto leading-snug">
             All three tools are free. No trial. No credit card. No expiry.
             Keep using them after the audit.
           </p>
@@ -414,14 +424,27 @@ const Audit = () => {
       </section>
 
       {/* ───────────── Section 4: Brandon credibility ───────────── */}
-      <section className="bg-primary text-primary-foreground section-padding-sm">
-        <div className="container-wide">
+      <section className="relative overflow-hidden bg-gradient-primary section-padding-sm">
+        <div
+          className="absolute inset-0 opacity-[0.06] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, hsl(var(--primary-foreground)) 1px, transparent 0)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+        <div className="absolute top-1/3 -right-20 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container-wide relative z-10">
           <div className="max-w-4xl">
-            <h2 className="font-display font-bold text-white text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
+            <p className="text-xs md:text-sm font-semibold text-accent-orange uppercase tracking-widest mb-5">
+              Who&apos;s behind this
+            </p>
+            <h2 className="font-display font-bold text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
               15 years. 100+ clinics. One obsession: figuring out why leads
               click, visit, and disappear — and what to do about it.
             </h2>
-            <div className="space-y-5 text-[1.0625rem] md:text-[1.125rem] leading-relaxed text-white/90">
+            <div className="space-y-5 text-[1.0625rem] md:text-[1.125rem] leading-relaxed text-primary-foreground/90">
               <p>
                 I&apos;m Brandon Hensinger, founder of Cima Growth Solutions.
                 I&apos;ve run marketing inside fertility clinics, med spas,
@@ -443,16 +466,18 @@ const Audit = () => {
                 your audit.
               </p>
             </div>
-            <p className="mt-8 italic text-white/80 text-body-sm">— Brandon</p>
+            <p className="mt-8 italic text-primary-foreground/75 text-body-sm">
+              — Brandon
+            </p>
           </div>
         </div>
       </section>
 
       {/* ───────────── Section 5: FAQ ───────────── */}
-      <section className="bg-card section-padding-sm">
+      <section className="bg-background section-padding-sm">
         <div className="container-tight">
           <div className="text-center mb-10">
-            <h2 className="font-display font-bold text-primary text-[2rem] md:text-[2.5rem] leading-tight tracking-tight">
+            <h2 className="font-display font-bold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight">
               Questions before you sign up
             </h2>
           </div>
@@ -495,7 +520,7 @@ const Audit = () => {
                 value={item.id}
                 className="border-border"
               >
-                <AccordionTrigger className="text-left text-primary font-display font-semibold text-[1.0625rem] md:text-body-lg py-5 hover:no-underline">
+                <AccordionTrigger className="text-left text-foreground font-display font-semibold text-[1.0625rem] md:text-body-lg py-5 hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-body leading-relaxed pb-6">
@@ -510,7 +535,7 @@ const Audit = () => {
       {/* ───────────── Section 6: Final CTA ───────────── */}
       <section className="bg-background-soft section-padding-sm">
         <div className="container-tight text-center">
-          <h2 className="font-display font-bold text-primary text-[2.5rem] md:text-[3.25rem] leading-tight tracking-tight mb-5">
+          <h2 className="font-display font-bold text-foreground text-[2.5rem] md:text-[3.25rem] leading-tight tracking-tight mb-5">
             Still here?
           </h2>
           <p className="text-body-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -558,9 +583,9 @@ const FormCard = ({
 }: FormCardProps) => (
   <form onSubmit={onSubmit} className="space-y-4" noValidate>
     <div>
-      <h2 className="font-display font-bold text-primary text-[1.5rem] mb-1">
-        Run my audit{" "}
-        <ArrowRight className="inline-block w-5 h-5 -mt-1 text-accent-orange" />
+      <h2 className="font-display font-bold text-foreground text-[1.5rem] mb-1 flex items-center gap-2">
+        Run my audit
+        <ArrowRight className="w-5 h-5 text-accent-orange" />
       </h2>
       <p className="text-body-sm text-muted-foreground">
         Enter your clinic&apos;s URL. You&apos;ll get an instant login plus
@@ -708,7 +733,7 @@ const FormCard = ({
     {error && (
       <p
         role="alert"
-        className="text-sm text-red-600 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3"
+        className="text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-lg px-4 py-3"
       >
         {error}
       </p>
@@ -751,7 +776,7 @@ const SuccessCard = ({
     <div className="mx-auto w-16 h-16 rounded-full bg-accent-orange/10 flex items-center justify-center mb-6">
       <CheckCircle2 className="w-9 h-9 text-accent-orange" />
     </div>
-    <h2 className="font-display font-bold text-primary text-[1.5rem] md:text-[1.75rem] leading-tight mb-3">
+    <h2 className="font-display font-bold text-foreground text-[1.5rem] md:text-[1.75rem] leading-tight mb-3">
       {returning
         ? "Welcome back. A fresh login link is in your inbox."
         : "Check your inbox. Your audit is waiting."}
