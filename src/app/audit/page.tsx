@@ -1,32 +1,35 @@
 import type { Metadata } from 'next';
 import Audit from '@/views/Audit';
 
+const TITLE =
+  'Free Clinic Audit \u2014 See Where You\u2019re Losing Patients in 90 Seconds';
+const DESCRIPTION =
+  'Three free AI tools that audit your website, intake response, and compliance exposure. Built from 15 years inside 100+ fertility, aesthetics, and wellness clinics. No credit card.';
+
 export const metadata: Metadata = {
-  title: 'Free Patient Acquisition Audit + 47 Frameworks Ebook – Cima Growth Solutions',
-  description:
-    'Free ebook + 3 AI tools to audit your clinic\u2019s patient acquisition funnel. No credit card. Unlimited access.',
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
+    'clinic website audit',
     'patient acquisition audit',
-    'clinic marketing ebook',
-    'fertility marketing',
-    'med spa marketing',
-    'HIPAA compliance scanner',
     'lead response audit',
+    'HIPAA compliance scanner',
+    'fertility clinic marketing',
+    'med spa marketing audit',
     'GrowthOS AI tools',
   ],
   alternates: { canonical: 'https://www.cimagrowth.com/audit' },
   openGraph: {
-    title: 'Free Patient Acquisition Audit + 47 Frameworks Ebook',
-    description:
-      'Free ebook + 3 AI tools to audit your clinic\u2019s patient acquisition funnel. No credit card.',
+    title: TITLE,
+    description: DESCRIPTION,
     url: 'https://www.cimagrowth.com/audit',
     siteName: 'Cima Growth Solutions',
     images: [
       {
-        url: '/og/og-home.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Free Patient Acquisition Audit + 47 Frameworks Ebook',
+        alt: 'Free Clinic Audit \u2014 Cima Growth Solutions',
       },
     ],
     locale: 'en_US',
@@ -34,10 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Patient Acquisition Audit + 47 Frameworks Ebook',
-    description:
-      'Free ebook + 3 AI tools to audit your clinic\u2019s patient acquisition funnel. No credit card.',
-    images: ['/og/og-home.png'],
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ['/og-image.png'],
   },
 };
 
