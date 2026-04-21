@@ -52,6 +52,20 @@ const TermsOfService = () => {
             Company makes no representations or warranties regarding advertising performance, lead volume, patient bookings, revenue, cost-per-lead, or return on ad spend.
           </p>
 
+          <h3>6.1 Client Ownership of Advertising Accounts</h3>
+          <p>
+            Client owns all right, title, and interest in and to Client's accounts on Advertising Platforms (including Meta Business Manager, Facebook Pages, Instagram Business accounts, Google Ads accounts, Google Merchant Center, TikTok Ads Manager, and any similar third-party advertising accounts), whether those accounts existed prior to Client's engagement with Company or were created on Client's behalf during the engagement.
+          </p>
+          <p>
+            Company does not and will not claim ownership of Client's advertising accounts, advertising data, customer audiences, pixels, conversion events, or related third-party assets. All such assets remain the property of Client at all times.
+          </p>
+          <p>
+            Upon termination of this Agreement for any reason, Client may revoke Company's access to Advertising Platform accounts through the applicable platform's access controls (for example, Facebook Business Integrations or Google Ads account user management), and Company shall, upon written request, promptly remove any administrative access Company holds to Client's accounts. Company shall retain only such data as is required by law, as is necessary for legitimate recordkeeping, or as exists in routine system backups, consistent with the Company's Privacy Policy.
+          </p>
+          <p>
+            Nothing in this Section grants Company any license or right to use Client's Advertising Platform accounts, audiences, or data for any purpose other than providing the Services to Client.
+          </p>
+
           <h2>7. Account Security</h2>
           <p>
             Client is solely responsible for maintaining the confidentiality of account credentials and all activity under its account. Company shall not be liable for unauthorized access resulting from Client's failure to safeguard credentials.
@@ -96,6 +110,29 @@ const TermsOfService = () => {
           <h2>11. User Content and Compliance</h2>
           <p>
             Client is solely responsible for all content submitted or used through the Services and warrants that such content complies with all applicable laws and does not infringe third-party rights.
+          </p>
+
+          <h3>11.1 Acceptable Use Policy</h3>
+          <p>
+            Without limiting Section 11, Client agrees that Client will not use the Services — and will not submit, generate, publish, or run advertisements through the Services — that:
+          </p>
+          <ul>
+            <li>Violate the advertising policies, community standards, or terms of service of any Advertising Platform, including Meta Advertising Policies, Google Ads policies, TikTok Ads policies, or any other third-party platform used to deliver the advertisements;</li>
+            <li>Make unsubstantiated health, medical, fertility, cosmetic, or outcome-related claims, including guarantees of pregnancy, treatment success, weight loss, or similar patient outcomes;</li>
+            <li>Use before-and-after imagery, testimonials, or endorsements in a manner prohibited by the FTC Endorsement Guides, state medical board regulations, or Advertising Platform policies;</li>
+            <li>Target minors or use content directed at minors in connection with medical, fertility, aesthetic, wellness, or regenerative services;</li>
+            <li>Promote services that Client is not legally authorized to provide in the jurisdictions being targeted;</li>
+            <li>Contain false, misleading, deceptive, or unsubstantiated statements about Client's services, competitors, or third parties;</li>
+            <li>Infringe any third party's intellectual property, publicity, or privacy rights, including unauthorized use of patient photographs, testimonials, or identifying information;</li>
+            <li>Violate HIPAA, state health information privacy laws, the Telephone Consumer Protection Act (TCPA), the CAN-SPAM Act, state anti-spam or telemarketing laws, or any other applicable law;</li>
+            <li>Constitute spam, bulk unsolicited messaging, or messaging to recipients who have not provided appropriate consent;</li>
+            <li>Impersonate any person or organization, or misrepresent Client's affiliation with any person or organization;</li>
+            <li>Attempt to circumvent, disable, or interfere with security, authentication, rate-limiting, or access-control features of the Services;</li>
+            <li>Reverse engineer, decompile, scrape, or extract data from the Services except as expressly permitted; or</li>
+            <li>Use the Services to build a competing product or service.</li>
+          </ul>
+          <p>
+            Company may, in its sole discretion and without liability, refuse to run, pause, remove, or decline to submit to Advertising Platforms any content that Company reasonably believes violates this Acceptable Use Policy or any Advertising Platform policy. Client remains solely responsible for all content Client submits or causes to be published through the Services, and Client shall indemnify Company in accordance with Section 18 for any claim, fine, penalty, or action arising from Client's violation of this Section.
           </p>
 
           <h2>12. Privacy and Data Protection</h2>
