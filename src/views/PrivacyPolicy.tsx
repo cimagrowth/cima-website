@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">Healthcare Enterprise Privacy Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: March 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last Updated: April 2026</p>
 
           <p>
             Thank you for using the Cima Growth Solutions LLC platform, including our website, mobile applications, software, and related services (collectively, the "Services"). This Privacy Policy ("Policy") explains how Cima Growth Solutions LLC ("Cima," "Company," "we," "us," or "our") collects, uses, discloses, and safeguards information when providing a healthcare-focused SaaS platform.
@@ -257,6 +257,63 @@ const PrivacyPolicy = () => {
           <h3>F. Offline Access</h3>
           <p>
             The GrowthOS app may provide limited offline access to certain non-sensitive, cached data. All locally cached data is encrypted and is automatically cleared when you sign out of the application. No PHI or sensitive personal data is available offline.
+          </p>
+
+          <h2>16A. Meta Platform (Facebook, Instagram, WhatsApp)</h2>
+          <p>
+            When a clinic connects their Meta account to our Services for advertising purposes, we use Meta's Facebook Login for Business flow and request the following permissions. For each permission we describe what we access, why, and how long we retain it.
+          </p>
+          <ul>
+            <li><strong>ads_management, ads_read</strong> — we create, manage, and read ad campaigns, ad sets, creatives, and performance insights for the ad account you select, so our platform can publish campaigns on your behalf and show you analytics. Retained while your connection is active.</li>
+            <li><strong>business_management</strong> — we identify the Meta Business Manager assets you have access to so you can select the correct ad account and Facebook Page.</li>
+            <li><strong>pages_show_list</strong> — we list the Facebook Pages you manage so you can choose which Page your ads will run from. Every Meta ad must reference a Page.</li>
+            <li><strong>pages_read_engagement</strong> — we read Page engagement metrics to inform ad targeting and reporting.</li>
+            <li><strong>instagram_basic</strong> — we identify the Instagram Business account, if any, linked to your Page so we can serve ads to Instagram placements.</li>
+            <li><strong>whatsapp_business_management, whatsapp_business_messaging</strong> — used only for Click-to-WhatsApp advertising features when you explicitly enable them; we read WhatsApp Business Account metadata and phone number status to enable this ad format.</li>
+          </ul>
+          <p>
+            We store the Facebook user ID of the person who authorized the connection, long-lived access tokens (encrypted at rest), the selected ad account ID, Facebook Page ID, and Instagram Business account ID (if applicable). We do not access, store, or process any Meta user's personal content (messages, posts, photos) beyond what is strictly necessary to operate the ad features you enable.
+          </p>
+
+          <h2>16B. Google Services</h2>
+          <p>
+            When a customer connects Google Ads, Gmail, Google Calendar, or Google Business Profile, we request only the OAuth scopes necessary for the feature being used. Our use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+          </p>
+
+          <h2>16C. Third-Party Service Providers</h2>
+          <p>
+            We use the following third-party service providers (subprocessors) to operate the Services. A current list is available on request to <a href="mailto:privacy@cimagrowth.com">privacy@cimagrowth.com</a> and includes, at the time this Policy was last updated:
+          </p>
+          <ul>
+            <li><strong>Supabase</strong> — database, authentication, storage, and serverless function hosting</li>
+            <li><strong>Anthropic</strong> — Claude large-language-model API for AI features; inputs are not used to train Anthropic's models under our API terms</li>
+            <li><strong>Google (Google Cloud, Vertex AI)</strong> — Gemini API for specific text-generation tasks</li>
+            <li><strong>SendGrid</strong> — transactional and marketing email delivery</li>
+            <li><strong>Twilio</strong> — SMS and voice messaging infrastructure</li>
+            <li><strong>Whop, GoHighLevel, Stripe</strong> — billing and subscription management</li>
+            <li><strong>Meta Platforms, Google</strong> — advertising delivery and measurement, when a customer connects those platforms</li>
+          </ul>
+          <p>
+            We require each subprocessor to provide appropriate contractual protections and technical safeguards, including Business Associate Agreements where the subprocessor will handle protected health information.
+          </p>
+
+          <h2>16D. Data Deletion</h2>
+          <p>You can request deletion of your information at any time:</p>
+          <ol>
+            <li>
+              <strong>For your Cima Growth Solutions account</strong>, email <a href="mailto:privacy@cimagrowth.com">privacy@cimagrowth.com</a> from the address on file. We will verify your identity and complete the deletion within 30 days.
+            </li>
+            <li>
+              <strong>For Meta Platform data specifically</strong>, remove our application from <a href="https://www.facebook.com/settings?tab=business_tools" target="_blank" rel="noopener noreferrer">Facebook Business Integrations</a>, or use Facebook's data deletion option in your account settings. When you do, our systems will automatically receive a signed request from Meta, delete your Facebook user ID, access tokens, and selected account information, and return a confirmation code you can use to verify the status of your deletion.
+            </li>
+            <li>
+              <strong>For information held by a clinic customer about you as a patient</strong>, contact the clinic directly. The clinic is the data controller of that information under HIPAA and applicable state laws.
+            </li>
+          </ol>
+
+          <h2>16E. Cookies and Tracking Technologies</h2>
+          <p>
+            We use strictly necessary cookies for login sessions and security; these cannot be disabled without breaking core functionality. We use analytics and marketing cookies only with your consent. On your first visit you will be asked to accept all, reject all, or customize your choices; you can change those preferences at any time by clicking <strong>Cookie Preferences</strong> in the site footer. We honor the Global Privacy Control (GPC) signal where legally required — when your browser sends GPC we automatically reject non-essential cookies without prompting.
           </p>
 
           <h2>16. Contact Information</h2>

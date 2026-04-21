@@ -182,6 +182,13 @@ const Footer = () => {
               >
                 Refund Policy
               </Link>
+              <button
+                type="button"
+                onClick={() => window.reopenCookieConsent?.()}
+                className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
+              >
+                Cookie Preferences
+              </button>
             </div>
           </div>
         </div>
