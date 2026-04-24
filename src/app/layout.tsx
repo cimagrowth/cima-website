@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/layout/ScrollToTop';
 import ScrollToTopOnNavigate from '@/components/layout/ScrollToTopOnNavigate';
+import DemoChatWidget from '@/components/demo/DemoChatWidget';
 import { CookieConsent } from '@/components/CookieConsent';
 import { DynamicGTM } from './dynamic-gtm';
 
@@ -81,13 +82,14 @@ export default function RootLayout({
             <main className="flex-1 pt-16 md:pt-20">{children}</main>
             <Footer />
             <ScrollToTop />
+            <DemoChatWidget />
           </div>
           <DynamicGTM />
         </Providers>
         {/* GrowthOS AI Chat Widget */}
         <Script
           src="https://momssbzlofjodqodvvvk.supabase.co/functions/v1/chat-widget?org=1372de10-066f-437e-941e-643deefebf2f"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <CookieConsent />
       </body>
