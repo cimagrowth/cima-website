@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/layout/ScrollToTop';
 import ScrollToTopOnNavigate from '@/components/layout/ScrollToTopOnNavigate';
+import DemoChatWidget from '@/components/demo/DemoChatWidget';
 import { CookieConsent } from '@/components/CookieConsent';
 import { DynamicGTM } from './dynamic-gtm';
 
@@ -81,6 +82,7 @@ export default function RootLayout({
             <main className="flex-1 pt-16 md:pt-20">{children}</main>
             <Footer />
             <ScrollToTop />
+            <DemoChatWidget />
           </div>
           <DynamicGTM />
         </Providers>
