@@ -7,7 +7,6 @@ import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/layout/ScrollToTop';
 import ScrollToTopOnNavigate from '@/components/layout/ScrollToTopOnNavigate';
 import DemoChatWidget from '@/components/demo/DemoChatWidget';
-import { CimaChatWidget } from '@/components/CimaChatWidget';
 import { CookieConsent } from '@/components/CookieConsent';
 import { DynamicGTM } from './dynamic-gtm';
 
@@ -87,7 +86,11 @@ export default function RootLayout({
           </div>
           <DynamicGTM />
         </Providers>
-        <CimaChatWidget />
+        {/* GrowthOS AI Chat Widget */}
+        <Script
+          src="https://momssbzlofjodqodvvvk.supabase.co/functions/v1/chat-widget?org=1372de10-066f-437e-941e-643deefebf2f"
+          strategy="lazyOnload"
+        />
         <CookieConsent />
       </body>
     </html>
