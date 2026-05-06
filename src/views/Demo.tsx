@@ -151,9 +151,9 @@ const Demo = () => {
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
                 Answer a few quick questions and book a 30-minute call with
-                Brandon. After the call, you'll get login access to a
-                personalized GrowthOS sandbox — seeded with sample data for
-                your specialty — so you can keep exploring on your own time.
+                Brandon. After the call, you'll get access to a personalized
+                GrowthOS account seeded with sample data for your specialty,
+                so you can explore on your own.
               </p>
 
               <div className="space-y-5 mb-10">
@@ -165,7 +165,7 @@ const Demo = () => {
                   },
                   {
                     icon: Sparkles,
-                    title: "Personalized GrowthOS sandbox after the call",
+                    title: "Personalized GrowthOS account after the call",
                     detail: "Your own login, seeded with sample data for your specialty so you can keep exploring.",
                   },
                   {
@@ -421,7 +421,7 @@ const Demo = () => {
                   <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 pt-1">
                     {[
                       "30-minute live call with Brandon Hensinger",
-                      "Personalized GrowthOS sandbox after the call",
+                      "Personalized GrowthOS account after the call",
                       "See real platform features with sample data for your specialty",
                     ].map((text) => (
                       <span
