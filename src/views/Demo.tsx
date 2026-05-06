@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Loader2, ShieldCheck, Mic, MonitorPlay } from "lucide-react";
+import { ArrowRight, Loader2, CalendarCheck, Sparkles, MonitorPlay } from "lucide-react";
 import { motion } from "framer-motion";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
@@ -40,6 +41,7 @@ type FormState = {
 };
 
 const Demo = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormState>({
     first_name: "",
     last_name: "",
@@ -109,15 +111,18 @@ const Demo = () => {
         throw new Error(err.error || "Something went wrong. Please try again.");
       }
 
-      const result = await response.json();
+      await response.json();
 
-      if (result.verification_sent) {
-        window.location.href = `https://os.cimagrowth.com/demo/verify?email=${encodeURIComponent(
-          formData.email
-        )}`;
-      } else {
-        throw new Error("Something went wrong. Please try again.");
-      }
+      const redirectParams = new URLSearchParams({
+        email: formData.email,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        company: formData.company_name,
+        industry: formData.industry,
+        role: formData.role || "",
+        primary_goal: formData.primary_goal || "",
+      });
+      router.push(`/demo/scheduled?${redirectParams.toString()}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setIsSubmitting(false);
@@ -145,26 +150,28 @@ const Demo = () => {
                 <span className="text-gradient-accent">in Action</span>
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
-                Answer a few quick questions and get instant access to a
-                voice-guided interactive demo. No sales call required.
+                Answer a few quick questions and book a 30-minute call with
+                Brandon. After the call, you'll get login access to a
+                personalized GrowthOS sandbox — seeded with sample data for
+                your specialty — so you can keep exploring on your own time.
               </p>
 
               <div className="space-y-5 mb-10">
                 {[
                   {
+                    icon: CalendarCheck,
+                    title: "30-minute live call with Brandon Hensinger",
+                    detail: "Pick a slot that works for you. Calendar invite with Google Meet link goes out on booking.",
+                  },
+                  {
+                    icon: Sparkles,
+                    title: "Personalized GrowthOS sandbox after the call",
+                    detail: "Your own login, seeded with sample data for your specialty so you can keep exploring.",
+                  },
+                  {
                     icon: MonitorPlay,
-                    title: "See real platform features",
-                    detail: "Explore pipelines, automations, and the AI with sample data.",
-                  },
-                  {
-                    icon: Mic,
-                    title: "Voice-guided interactive tour",
-                    detail: "A guided walkthrough at your own pace — no one watching.",
-                  },
-                  {
-                    icon: ShieldCheck,
-                    title: "Instant access — no sales call",
-                    detail: "Verify your email and you're in. Takes under 2 minutes.",
+                    title: "See real platform features with sample data",
+                    detail: "Walk through pipelines, automations, and the AI with realistic data for your specialty.",
                   },
                 ].map((item, index) => {
                   const Icon = item.icon;
@@ -203,7 +210,7 @@ const Demo = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-accent-orange via-secondary to-primary rounded-2xl blur-sm opacity-20" />
               <div className="relative card-elevated p-8 md:p-10">
                 <h2 className="text-heading text-foreground mb-6">
-                  Access the Demo
+                  Book Your Demo
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -400,11 +407,11 @@ const Demo = () => {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Verifying your email…
+                        Saving your details…
                       </>
                     ) : (
                       <>
-                        Access the Demo
+                        Book My Demo
                         <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </>
                     )}
@@ -413,9 +420,9 @@ const Demo = () => {
                   {/* Trust indicators */}
                   <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 pt-1">
                     {[
-                      "Instant access — no sales call",
-                      "Voice-guided interactive tour",
-                      "See real platform features with sample data",
+                      "30-minute live call with Brandon Hensinger",
+                      "Personalized GrowthOS sandbox after the call",
+                      "See real platform features with sample data for your specialty",
                     ].map((text) => (
                       <span
                         key={text}

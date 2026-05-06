@@ -442,9 +442,9 @@ const HowItWorksPage = () => {
               {[
                 {
                   number: "01",
-                  title: "Book a Demo or Try the Interactive Demo",
+                  title: "Book a Demo with Brandon",
                   description:
-                    "See GrowthOS in action. Voice-guided tour, real features, sample data. Takes 15 minutes.",
+                    "30-minute live walkthrough on Google Meet. See real features with sample data for your specialty, then keep exploring in your own GrowthOS sandbox.",
                 },
                 {
                   number: "02",

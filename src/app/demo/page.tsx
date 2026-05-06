@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Book a Demo – Cima Growth Solutions',
   description: 'See how GrowthOS transforms patient acquisition for fertility clinics, med spas, and wellness centers.',
   keywords: [
-    'GrowthOS demo', 'interactive demo', 'healthcare CRM demo',
+    'GrowthOS demo', 'book a demo', 'healthcare CRM demo',
     'patient engagement demo', 'AI healthcare software trial', 'clinic software demo',
   ],
   alternates: { canonical: 'https://www.cimagrowth.com/demo' },
