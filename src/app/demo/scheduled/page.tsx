@@ -83,12 +83,11 @@ export default function ScheduledPage({ searchParams }: Props) {
           </h1>
           <p className="text-[1.0625rem] md:text-[1.125rem] leading-relaxed text-[#444] max-w-2xl mx-auto mb-3">
             You're one step away. Choose a 30-minute slot that works for you.
-            Brandon will join on Google Meet — calendar invite goes out the
-            moment you book.
           </p>
           <p className="text-[0.9375rem] md:text-[1rem] leading-relaxed text-[#444]/80 max-w-2xl mx-auto">
-            After our call, you'll get email access to a personalized GrowthOS
-            sandbox seeded with sample data for {industryLabel}.
+            After our call, you'll get access to a personalized GrowthOS
+            account seeded with sample data for {industryLabel}, so you can
+            explore on your own.
           </p>
         </div>
 
