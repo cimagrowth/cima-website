@@ -13,10 +13,13 @@ const ENDPOINT = 'https://momssbzlofjodqodvvvk.supabase.co/functions/v1/form-sub
 
 type Status = 'idle' | 'submitting' | 'success' | 'error' | 'rate_limited';
 
-const inputClasses =
-  'h-12 rounded-lg border border-[#E3E7ED] bg-white px-4 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0';
+const SMS_CONSENT_TEXT =
+  'I agree to receive SMS messages from Cima Growth Solutions at the phone number provided regarding consultation scheduling, GrowthOS onboarding updates, and educational resources. Up to 4 msgs/month. Consent is not a condition of purchase. Msg & data rates may apply. Reply STOP to opt out, HELP for help. View our Privacy Policy.';
 
-const labelClasses = 'mb-2 block text-sm font-medium text-[#5a6b7e]';
+const inputClasses =
+  'h-12 rounded-lg border border-[#E3E7ED] bg-white px-4 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:border-white/10 dark:bg-white/5 dark:text-[#FDFBF7] dark:placeholder:text-white/40 dark:focus-visible:border-accent-orange';
+
+const labelClasses = 'mb-2 block text-sm font-medium text-[#5a6b7e] dark:text-[#FDFBF7]/80';
 
 function RequiredMark() {
   return <span className="ml-0.5 text-accent-orange">*</span>;
@@ -24,10 +27,18 @@ function RequiredMark() {
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>('idle');
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const isSubmitting = status === 'submitting';
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!smsConsent) {
+      setConsentError(true);
+      return;
+    }
+    setConsentError(false);
     setStatus('submitting');
 
     const formData = new FormData(e.currentTarget);
@@ -46,6 +57,9 @@ export default function Contact() {
         email: String(formData.get('email') || '').trim().toLowerCase(),
         phone: String(formData.get('phone') || '').trim(),
         question: String(formData.get('question') || '').trim(),
+        sms_consent_given: true,
+        sms_consent_timestamp: new Date().toISOString(),
+        sms_consent_text: SMS_CONSENT_TEXT,
       },
       source_url: typeof window !== 'undefined' ? window.location.href : '',
       utm_source: params.get('utm_source') || '',
@@ -87,34 +101,18 @@ export default function Contact() {
           <h1 className="font-display text-4xl font-bold text-primary md:text-5xl">
             Get in touch.
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Tell us what you're working on. Brandon usually replies within one business day.
-            For anything time-sensitive, you can also reach Brandon directly at{' '}
-            <a
-              href="mailto:brandon@cimagrowth.com"
-              className="text-accent-orange underline underline-offset-4 hover:brightness-110"
-            >
-              brandon@cimagrowth.com
-            </a>
-            .
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/90">
+            Tell us what you&rsquo;re working on. Our team typically responds within one business day.
           </p>
         </header>
 
         {status === 'success' ? (
-          <div className="rounded-xl border border-[#E3E7ED] bg-white p-8 shadow-soft">
-            <h2 className="font-display text-2xl font-semibold text-primary">
+          <div className="rounded-xl border border-[#E3E7ED] bg-white p-8 shadow-soft dark:border-white/10 dark:bg-white/5">
+            <h2 className="font-display text-2xl font-semibold text-primary dark:text-[#FDFBF7]">
               Message sent.
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Thanks for reaching out. Brandon usually replies within one business day.
-              For anything time-sensitive, you can also email{' '}
-              <a
-                href="mailto:brandon@cimagrowth.com"
-                className="text-accent-orange underline underline-offset-4 hover:brightness-110"
-              >
-                brandon@cimagrowth.com
-              </a>{' '}
-              directly.
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/80">
+              Thanks for reaching out. Our team typically responds within one business day.
             </p>
           </div>
         ) : (
@@ -209,31 +207,66 @@ export default function Contact() {
                 placeholder="Tell us what you're looking for. The more context the better."
                 disabled={isSubmitting}
                 className={cn(
-                  'min-h-[140px] rounded-lg border border-[#E3E7ED] bg-white px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0',
+                  'min-h-[140px] rounded-lg border border-[#E3E7ED] bg-white px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:border-white/10 dark:bg-white/5 dark:text-[#FDFBF7] dark:placeholder:text-white/40 dark:focus-visible:border-accent-orange',
                 )}
               />
             </div>
 
+            {/* SMS Consent — TCR / A2P 10DLC compliance — DO NOT REMOVE */}
+            <div className="flex items-start gap-3 pt-1">
+              <input
+                type="checkbox"
+                id="sms_consent"
+                name="sms_consent"
+                required
+                checked={smsConsent}
+                onChange={(e) => {
+                  setSmsConsent(e.target.checked);
+                  if (e.target.checked) setConsentError(false);
+                }}
+                disabled={isSubmitting}
+                className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-[#1B4D5C]/30 text-accent-orange accent-accent-orange focus:ring-2 focus:ring-accent-orange/40 dark:border-white/20"
+              />
+              <label
+                htmlFor="sms_consent"
+                className="cursor-pointer text-sm leading-relaxed text-[#1B4D5C]/80 dark:text-[#FDFBF7]/80"
+              >
+                I agree to receive SMS messages from Cima Growth Solutions at the phone number
+                provided regarding consultation scheduling, GrowthOS onboarding updates, and
+                educational resources. Up to 4 msgs/month. Consent is not a condition of purchase.
+                Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. View our{' '}
+                <a
+                  href="/privacy"
+                  className="underline underline-offset-2 hover:text-accent-orange"
+                >
+                  Privacy Policy
+                </a>
+                .
+              </label>
+            </div>
+
+            {consentError && (
+              <p
+                role="alert"
+                className="text-sm text-red-600 dark:text-red-300"
+              >
+                Please agree to receive SMS messages to continue.
+              </p>
+            )}
+
             {status === 'error' && (
               <div
                 role="alert"
-                className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-200"
               >
-                Something went wrong sending your message. Please try again or email{' '}
-                <a
-                  href="mailto:brandon@cimagrowth.com"
-                  className="font-medium underline underline-offset-2"
-                >
-                  brandon@cimagrowth.com
-                </a>{' '}
-                directly.
+                Something went wrong sending your message. Please try again in a moment.
               </div>
             )}
 
             {status === 'rate_limited' && (
               <div
                 role="alert"
-                className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+                className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
               >
                 Too many requests. Please wait a moment and try again.
               </div>
@@ -257,6 +290,17 @@ export default function Contact() {
                 )}
               </Button>
             </div>
+
+            <p className="pt-4 text-center text-xs text-[#1B4D5C]/60 dark:text-[#FDFBF7]/60">
+              By submitting this form you agree to our{' '}
+              <a
+                href="/privacy"
+                className="underline underline-offset-2 hover:text-accent-orange"
+              >
+                Privacy Policy
+              </a>
+              .
+            </p>
           </form>
         )}
       </div>
