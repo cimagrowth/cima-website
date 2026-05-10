@@ -1,7 +1,8 @@
 'use client';
 
 import Hero from "@/components/home/Hero";
-import EmployeeNotChatbot from "@/components/home/EmployeeNotChatbot";
+import TheLeakageProblem from "@/components/home/TheLeakageProblem";
+import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
 import PositioningBand from "@/components/home/PositioningBand";
 import PatientJourney from "@/components/home/PatientJourney";
 import StackReplacement from "@/components/home/StackReplacement";
@@ -19,9 +20,10 @@ const Index = () => {
   return (
     <>
       <Hero />
-      <EmployeeNotChatbot />
-      <PositioningBand />
+      <TheLeakageProblem />
+      <HowGrowthOSStopsTheLeak />
       <PatientJourney />
+      <PositioningBand />
       <StackReplacement />
       <Problem />
       <ValueStack />

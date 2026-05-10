@@ -8,7 +8,7 @@ const HomepageOSCallout = () => {
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <p className="font-display text-lg md:text-2xl font-medium leading-snug">
-          GrowthOS is the operating system. Your AI staff is included.
+          Stop the leak. Run your clinic on GrowthOS.
         </p>
       </div>
     </section>
