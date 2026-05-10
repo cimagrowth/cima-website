@@ -1,12 +1,13 @@
 "use client";
 
-import { Megaphone, MessageCircle, Calendar, Heart } from "lucide-react";
+import { Megaphone, Users, Calendar, Heart } from "lucide-react";
 
 type Stage = {
   label: string;
   tagline: string;
   icon: typeof Megaphone;
   bullets: string[];
+  highlight?: boolean;
 };
 
 const stages: Stage[] = [
@@ -22,14 +23,16 @@ const stages: Stage[] = [
     ],
   },
   {
-    label: "ENGAGE",
-    tagline: "Talk to every inquiry instantly, 24/7.",
-    icon: MessageCircle,
+    label: "AI Staff, not a chatbot",
+    tagline:
+      "Four agents that fire automatically on the events that matter most.",
+    icon: Users,
+    highlight: true,
     bullets: [
-      "7-specialty AI chatbot trained on your clinic\u2019s voice",
-      "Cold outreach campaigns with the Peer Insight framework",
-      "Email and SMS sequences that feel human",
-      "Multi-language support (English, Spanish, Portuguese)",
+      "Crisis Triage \u2014 fires on chat escalations",
+      "Demo Prep \u2014 fires on demo bookings",
+      "Patient Onboarding \u2014 fires on new patient appointments",
+      "Lead Enrichment \u2014 fires on high-intent leads",
     ],
   },
   {
@@ -78,17 +81,46 @@ const PatientJourney = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stages.map((stage) => {
             const Icon = stage.icon;
+            const isHighlight = stage.highlight;
             return (
               <div
                 key={stage.label}
-                className="bg-card rounded-2xl border border-border p-8 shadow-card flex flex-col"
+                className={
+                  isHighlight
+                    ? "bg-card rounded-2xl border-2 border-accent-orange p-8 shadow-glow flex flex-col relative"
+                    : "bg-card rounded-2xl border border-border p-8 shadow-card flex flex-col"
+                }
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
+                {isHighlight && (
+                  <span className="absolute -top-3 right-6 px-2.5 py-1 rounded-full bg-accent-orange text-primary-foreground text-[10px] font-bold uppercase tracking-[0.18em] shadow-card">
+                    New
+                  </span>
+                )}
+                <div
+                  className={
+                    isHighlight
+                      ? "w-10 h-10 rounded-lg bg-accent-orange/10 flex items-center justify-center mb-4"
+                      : "w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4"
+                  }
+                >
+                  <Icon
+                    className={
+                      isHighlight
+                        ? "w-5 h-5 text-accent-orange"
+                        : "w-5 h-5 text-primary"
+                    }
+                    aria-hidden="true"
+                  />
                 </div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary mb-2">
-                  {stage.label}
-                </p>
+                {isHighlight ? (
+                  <p className="font-display text-lg font-bold text-foreground mb-2 leading-snug">
+                    {stage.label}
+                  </p>
+                ) : (
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary mb-2">
+                    {stage.label}
+                  </p>
+                )}
                 <p className="italic text-foreground mb-5">{stage.tagline}</p>
                 <ul className="space-y-3 text-sm md:text-base text-muted-foreground">
                   {stage.bullets.map((bullet) => (
@@ -101,6 +133,13 @@ const PatientJourney = () => {
                     </li>
                   ))}
                 </ul>
+                {isHighlight && (
+                  <p className="mt-5 text-xs md:text-sm text-muted-foreground leading-relaxed">
+                    Each one researches the contact, assembles a briefing, and
+                    notifies the right person — in under 2 minutes, while your
+                    team gets back to clinical work.
+                  </p>
+                )}
               </div>
             );
           })}

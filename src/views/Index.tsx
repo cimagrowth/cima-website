@@ -1,6 +1,7 @@
 'use client';
 
 import Hero from "@/components/home/Hero";
+import EmployeeNotChatbot from "@/components/home/EmployeeNotChatbot";
 import PositioningBand from "@/components/home/PositioningBand";
 import PatientJourney from "@/components/home/PatientJourney";
 import StackReplacement from "@/components/home/StackReplacement";
@@ -12,11 +13,13 @@ import HowItWorks from "@/components/home/HowItWorks";
 import IntegrationFlexibility from "@/components/home/IntegrationFlexibility";
 import FounderLetter from "@/components/home/FounderLetter";
 import FinalCTA from "@/components/home/FinalCTA";
+import HomepageOSCallout from "@/components/home/HomepageOSCallout";
 
 const Index = () => {
   return (
     <>
       <Hero />
+      <EmployeeNotChatbot />
       <PositioningBand />
       <PatientJourney />
       <StackReplacement />
@@ -28,6 +31,7 @@ const Index = () => {
       <IntegrationFlexibility />
       <FounderLetter />
       <FinalCTA />
+      <HomepageOSCallout />
     </>
   );
 };

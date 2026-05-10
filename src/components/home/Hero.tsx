@@ -83,8 +83,8 @@ const Hero = () => {
             variants={itemVariants}
             className="font-display text-[2.2rem] leading-[1.08] sm:text-4xl md:text-5xl lg:text-6xl text-foreground font-bold mb-4 md:mb-6 tracking-tight"
           >
-            The complete patient acquisition engine for{" "}
-            <span className="text-gradient-accent">fertility, aesthetics, and wellness clinics.</span>
+            The operating system for{" "}
+            <span className="text-gradient-accent">modern clinics.</span>
           </motion.h1>
 
           {/* Desktop only: subhead and description */}
@@ -92,14 +92,14 @@ const Hero = () => {
             variants={itemVariants}
             className="hidden md:block text-xl md:text-2xl text-foreground/90 mb-4 max-w-3xl leading-relaxed"
           >
-            Generate demand. Convert inquiries. Stop leakage. Retain patients. One system. No agency required.
+            Most clinic software gives you a database and a chatbot. GrowthOS gives you the system that runs the work — an AI staff that researches, drafts briefings, and follows through on every patient inquiry, demo booking, and hot lead.
           </motion.p>
 
           <motion.p
             variants={itemVariants}
             className="hidden md:block text-base text-muted-foreground mb-8 max-w-3xl leading-relaxed"
           >
-            Built by a 15-year fertility marketing veteran who got tired of watching clinics pay six different vendors for one broken funnel.
+            So your team can stop chasing context and start practicing medicine.
           </motion.p>
 
           {/* Desktop CTAs inline */}
