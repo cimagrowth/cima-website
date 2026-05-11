@@ -41,9 +41,12 @@ const HowItWorks = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
-            From Inquiry to Appointment in{" "}
-            <span className="text-gradient-accent">5 Steps</span>
+            Live in your clinic{" "}
+            <span className="text-gradient-accent">in a week.</span>
           </h2>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-left md:text-center">
+            We train the AI on your clinic in the first three days. The bot goes live on web chat the same week. SMS, WhatsApp, email, and social channels turn on as you&rsquo;re ready. Most clinics see their first AI-booked appointment within 48 hours of going live. You don&rsquo;t replace any of your existing tools to start &mdash; GrowthOS works alongside them and can take over the pieces you&rsquo;re tired of paying for.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 mb-10 md:mb-16">

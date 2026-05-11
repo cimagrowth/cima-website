@@ -14,9 +14,9 @@ const TheLeakageProblem = () => {
             The Problem
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight">
-            Your clinic is bleeding patients.{" "}
+            The window is{" "}
             <span className="text-gradient-accent">
-              You just can&apos;t see it on a dashboard.
+              shorter than you think.
             </span>
           </h2>
         </div>
@@ -25,51 +25,15 @@ const TheLeakageProblem = () => {
           {/* Left column: body */}
           <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
-              The average clinic captures a patient inquiry, then takes 6 to 48
-              hours to follow up. By then, that patient has booked with the
-              clinic that called back first. The chatbot collected the info.
-              Your CRM stored it. Your EHR is ready to schedule. But nothing in
-              your stack actually does the work in between.
+              A patient who fills out your form at 9pm has booked somewhere
+              else by 9:07pm. The average specialty clinic responds in four to
+              twelve hours. By then the patient has been to three
+              competitors&rsquo; websites and booked the one that called back
+              first.
             </p>
             <p className="text-foreground font-medium">
-              That&apos;s the gap where revenue dies:
-            </p>
-            <ul className="space-y-3">
-              <li className="flex gap-3 leading-relaxed">
-                <span
-                  className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-orange flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span>
-                  A patient escalates in chat with a real concern. Staff sees
-                  the alert hours later, scrambles for context, calls back
-                  cold.
-                </span>
-              </li>
-              <li className="flex gap-3 leading-relaxed">
-                <span
-                  className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-orange flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span>
-                  A new patient confirms an appointment. They get a generic
-                  reminder. Show rate drops.
-                </span>
-              </li>
-              <li className="flex gap-3 leading-relaxed">
-                <span
-                  className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-orange flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span>
-                  A prospective patient asks three buying questions in chat.
-                  Nobody on your team is paid to notice.
-                </span>
-              </li>
-            </ul>
-            <p>
-              Multiply that across 50 inquiries a week. That&apos;s your
-              leakage. That&apos;s the gap GrowthOS exists to close.
+              This isn&rsquo;t a marketing problem. It&rsquo;s a response-speed
+              problem &mdash; and no amount of ad spend fixes it.
             </p>
           </div>
 

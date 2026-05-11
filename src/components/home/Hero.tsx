@@ -106,9 +106,10 @@ const Hero = () => {
               className="hidden md:block text-lg md:text-xl text-foreground/90 mb-4 max-w-2xl leading-relaxed"
             >
               Every clinic leaks patients between the initial contact and the
-              callback. GrowthOS is the operating system that closes the gap —
-              an AI staff that picks up the second a patient escalates, books,
-              or asks a buying question.
+              callback. GrowthOS is the operating system that closes that gap
+              — an AI front desk trained on your specialty and your clinic,
+              replying in seconds across every channel, qualifying, nurturing,
+              and following up so no patient slips through.
             </motion.p>
 
             <motion.p
@@ -221,9 +222,10 @@ const Hero = () => {
           className="text-base text-foreground/90 leading-relaxed"
         >
           Every clinic leaks patients between the initial contact and the
-          callback. GrowthOS is the operating system that closes the gap — an
-          AI staff that picks up the second a patient escalates, books, or asks
-          a buying question.
+          callback. GrowthOS is the operating system that closes that gap — an
+          AI front desk trained on your specialty and your clinic, replying in
+          seconds across every channel, qualifying, nurturing, and following up
+          so no patient slips through.
         </motion.p>
 
         <motion.p
