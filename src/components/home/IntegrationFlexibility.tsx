@@ -49,15 +49,12 @@ const IntegrationFlexibility = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16 max-w-4xl mx-auto"
+          className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            Trained on your specialty. Trained on your clinic.{" "}
-            <span className="text-gradient">Then trained by you, in plain English.</span>
+            Works However Your{" "}
+            <span className="text-gradient">Clinic Works.</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-left md:text-center">
-            Generic chatbots fail because they sound generic and don&rsquo;t know your business. GrowthOS starts differently. We begin with deep training on your specialty &mdash; fertility, aesthetics, regenerative medicine, wellness &mdash; covering the clinical language, the emotional context patients are in when they reach out, and the things a clinic in your field must never say. Then we layer in your specific clinic: your FAQ, your pricing approach, your services, your scheduling rules, your voice. Then you take over. You train the bot the way you&rsquo;d train a new hire &mdash; in plain English. Type &ldquo;if a patient wants to book with Dr. Patel, check his calendar and offer three open slots&rdquo; and the bot follows that rule on the very next message. Correct a bad reply with one click and the lesson sticks across every future conversation.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
