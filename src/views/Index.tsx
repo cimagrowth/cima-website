@@ -21,14 +21,14 @@ const Index = () => {
     <>
       <Hero />
       <TheLeakageProblem />
+      <Solution />
+      <PositioningBand />
       <HowGrowthOSStopsTheLeak />
       <PatientJourney />
-      <PositioningBand />
       <StackReplacement />
       <Problem />
       <ValueStack />
       <SocialProof />
-      <Solution />
       <HowItWorks />
       <IntegrationFlexibility />
       <FounderLetter />

@@ -2,9 +2,56 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  MessagesSquare,
+  HeartHandshake,
+  GraduationCap,
+  Building2,
+  PenLine,
+  Workflow,
+} from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
+
+type Feature = {
+  icon: typeof MessagesSquare;
+  title: string;
+  body: string;
+};
+
+const features: Feature[] = [
+  {
+    icon: MessagesSquare,
+    title: "Instant response on every channel",
+    body: "Web chat, SMS, WhatsApp, email, Facebook and Instagram DMs, lead forms, and inside GoHighLevel / HubSpot / Salesforce. One brain, every channel.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Emotionally aware",
+    body: "Knows the emotional context patients are in when they reach out — grief, anxiety, hope, curiosity — and responds in the way your specialty requires.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Trained on your specialty",
+    body: "Fertility, aesthetics, regenerative medicine, wellness. Clinical language, safety guardrails, and the things your kind of clinic must never say.",
+  },
+  {
+    icon: Building2,
+    title: "Trained on your clinic",
+    body: "Your FAQ, your services, your pricing approach, your qualification questions, your scheduling rules, your voice.",
+  },
+  {
+    icon: PenLine,
+    title: "Retrainable in plain English",
+    body: "Type “if a patient wants to book with Dr. Patel, check his calendar and offer three open slots” and the bot follows that rule on the next message. Correct any reply with one click; the lesson sticks across every future conversation.",
+  },
+  {
+    icon: Workflow,
+    title: "Connects to your CRM",
+    body: "Power conversations directly inside GoHighLevel, HubSpot, or Salesforce. Your existing workflows keep working — the AI just makes them faster.",
+  },
+];
 
 const Solution = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,36 +83,40 @@ const Solution = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-4 md:mb-6">
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            An AI front desk,{" "}
-            <span className="text-gradient">on duty 24/7.</span>
+            An AI chat that actually{" "}
+            <span className="text-gradient">understands your clinic.</span>
           </h2>
         </div>
 
         <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          GrowthOS gives every clinic an AI staff member that picks up the second a patient reaches out &mdash; by web chat, SMS, WhatsApp, email, social DM, or web form. It greets them in your voice, answers their questions from your knowledge base, qualifies them with the same questions your best front-desk person would ask, and books them on your real calendar with the appointment type you configured. When a patient goes quiet, it follows up. When a question is beyond its scope, it escalates with a full briefing for your team. It is, functionally, your best front-desk person &mdash; except it never sleeps, never has a bad day, and works every channel at once.
+          The reason chatbots fail isn&rsquo;t speed &mdash; it&rsquo;s that they sound generic, say the wrong things, and don&rsquo;t know your business. GrowthOS is different. The chat goes live on web, SMS, WhatsApp, email, social DMs, your lead forms, and inside any CRM you already use. It answers in seconds, in your voice, with the answers you&rsquo;d give. It qualifies leads with the same questions your best front-desk person would ask. It books on your real calendar with your real appointment types. It follows up when a patient goes quiet. And it knows when not to talk &mdash; handing off to your team the moment a conversation is beyond its scope.
         </p>
 
-        {/* Comparison */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl lg:max-w-5xl mx-auto mb-10 md:mb-16">
-          <div className="card-elevated p-5 md:p-8 border-l-4 border-muted-foreground/30">
-            <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Generic chatbot:</p>
-            <p className="text-sm md:text-base text-muted-foreground italic">
-              "Thank you for your inquiry. A team member will be in touch shortly. Please allow 24-48 hours for a response."
-            </p>
-          </div>
-          <div className="card-elevated p-5 md:p-8 border-l-4 border-accent-orange hover:shadow-glow transition-all duration-500">
-            <p className="text-sm font-semibold text-accent-orange uppercase tracking-wider mb-3">GrowthOS AI (fertility clinic, evening inquiry):</p>
-            <p className="text-sm md:text-base text-foreground italic">
-              "Hi Sarah — I know reaching out about fertility can feel like a big step, and I want you to know we're here for you. Dr. Ramirez's team specializes in patients just starting to explore their options. Can I ask a couple of quick questions so we can match you with the right consultation type?"
-            </p>
-          </div>
+        {/* 6-feature row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10 md:mb-16">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <div
+                key={feature.title}
+                className="card-elevated p-6 md:p-7 border-l-4 border-accent-orange hover:shadow-glow transition-all duration-500"
+              >
+                <div className="w-10 h-10 rounded-lg bg-accent-orange/10 flex items-center justify-center mb-4">
+                  <Icon
+                    className="w-5 h-5 text-accent-orange"
+                    aria-hidden="true"
+                  />
+                </div>
+                <h3 className="text-base md:text-lg font-semibold text-foreground mb-2 leading-snug">
+                  {feature.title}
+                </h3>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  {feature.body}
+                </p>
+              </div>
+            );
+          })}
         </div>
-
-        <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10">
-          The AI reads tone. It adapts. It nurtures a nervous first-time IVF patient differently than a returning Botox client.
-          It follows up across days or weeks — never pushy, never robotic — until the patient is ready. Then it hands off to
-          your team with the <strong className="text-foreground">full conversation history</strong>, so the patient never repeats themselves.
-        </p>
 
         {/* CTA */}
         <div className="text-center">
