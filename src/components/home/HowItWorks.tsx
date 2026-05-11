@@ -8,28 +8,28 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Patient Reaches Out",
-      description: "Any channel. Any time. Web form, phone call, text, email, WhatsApp, Instagram, TikTok, Facebook, or Google My Business.",
+      title: "Kickoff Call",
+      description: "A 45-minute session where we collect your FAQ, voice, services, scheduling rules, and appointment types. You give us what your best front-desk person already knows.",
     },
     {
       number: "02",
-      title: "AI Responds in Seconds",
-      description: "Not a template. The AI reads the context, adapts its tone to the patient's emotional state, and responds with empathy and precision — trained on your clinic's exact services and policies.",
+      title: "Specialty + Clinic Training",
+      description: "We train the AI on your field — fertility, aesthetics, regenerative, wellness — then layer in your clinic specifics. Everything is reviewable in the dashboard before it goes live.",
     },
     {
       number: "03",
-      title: "AI Qualifies and Scores",
-      description: "Behavioral lead scoring categorizes every inquiry as Hot, Warm, or Cold. The AI asks the right qualification questions without feeling like an interrogation.",
+      title: "Calendar + Channels Wired",
+      description: "Real calendar integration, appointment types, and the chat widget embedded on your site. SMS, WhatsApp, email, and social DMs queued up to turn on when you’re ready.",
     },
     {
       number: "04",
-      title: "AI Nurtures Over Days or Weeks",
-      description: "Multi-channel follow-up that doesn't stop after one message. The AI varies its approach — different angles, different channels — until the patient is ready or disengages.",
+      title: "Web Chat Goes Live",
+      description: "Within 24 hours of kickoff, the AI is replying to inquiries in your voice, qualifying patients, and booking on your real calendar.",
     },
     {
       number: "05",
-      title: "Your Team Steps In With Full Context",
-      description: "Real-time alert on desktop or mobile. One click opens the full conversation history. Your team closes with confidence — the patient never repeats themselves.",
+      title: "First AI-Booked Appointment",
+      description: "Most clinics see one the same day. You watch every conversation in the GrowthOS inbox and correct anything you don’t like — the lesson sticks for every future patient.",
     },
   ];
 
@@ -42,10 +42,10 @@ const HowItWorks = () => {
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
             Live in your clinic{" "}
-            <span className="text-gradient-accent">in a week.</span>
+            <span className="text-gradient-accent">within 24 hours.</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-left md:text-center">
-            We train the AI on your clinic in the first three days. The bot goes live on web chat the same week. SMS, WhatsApp, email, and social channels turn on as you&rsquo;re ready. Most clinics see their first AI-booked appointment within 48 hours of going live. You don&rsquo;t replace any of your existing tools to start &mdash; GrowthOS works alongside them and can take over the pieces you&rsquo;re tired of paying for.
+            We train the AI on your clinic in the first few hours. The bot goes live on web chat the same day. SMS, WhatsApp, email, and social channels turn on as you&rsquo;re ready. Most clinics see their first AI-booked appointment inside the first 24 hours. You don&rsquo;t replace any of your existing tools to start &mdash; GrowthOS works alongside them and can take over the pieces you&rsquo;re tired of paying for.
           </p>
         </div>
 
