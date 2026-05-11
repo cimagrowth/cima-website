@@ -38,13 +38,10 @@ const FinalCTA = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center px-2">
           <h2 className="text-xl sm:text-2xl md:text-display text-primary-foreground mb-4 md:mb-6">
-            See Results in 30 Days or We'll Work With You Until You Do.
+            See where your clinic is leaking patients.
           </h2>
-          <p className="text-base md:text-lg text-primary-foreground/80 mb-4 max-w-3xl mx-auto">
-            Every GrowthOS client gets live onboarding, AI configuration tuned to your clinic, and a 30-day performance review. If your lead response time hasn't improved and your pipeline isn't more organized, we'll keep working with you at no extra cost until it is.
-          </p>
-          <p className="text-base md:text-lg font-semibold text-accent-orange mb-8">
-            Every day without GrowthOS is another day of patients choosing the clinic that responded first.
+          <p className="text-base md:text-lg text-primary-foreground/85 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Get a free growth audit. We analyze your current response times, channel coverage, and conversion paths, and show you specifically where patients are slipping through and what GrowthOS would change.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/demo" className="inline-block">

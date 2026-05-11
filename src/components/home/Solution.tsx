@@ -36,15 +36,13 @@ const Solution = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-4 md:mb-6">
           <h2 className="text-xl sm:text-2xl md:text-display text-foreground mb-4 md:mb-6">
-            This Isn't a Chatbot.{" "}
-            <span className="text-gradient">It's an AI That Understands What Your Patients Are Feeling.</span>
+            An AI front desk,{" "}
+            <span className="text-gradient">on duty 24/7.</span>
           </h2>
         </div>
 
         <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          Most "AI chatbots" sound like a phone tree with a thesaurus. GrowthOS is different.
-          The AI is trained on your specialty — fertility, aesthetics, regenerative medicine, wellness — and
-          fine-tuned on YOUR clinic's voice, policies, procedures, and qualification criteria.
+          GrowthOS gives every clinic an AI staff member that picks up the second a patient reaches out &mdash; by web chat, SMS, WhatsApp, email, social DM, or web form. It greets them in your voice, answers their questions from your knowledge base, qualifies them with the same questions your best front-desk person would ask, and books them on your real calendar with the appointment type you configured. When a patient goes quiet, it follows up. When a question is beyond its scope, it escalates with a full briefing for your team. It is, functionally, your best front-desk person &mdash; except it never sleeps, never has a bad day, and works every channel at once.
         </p>
 
         {/* Comparison */}
