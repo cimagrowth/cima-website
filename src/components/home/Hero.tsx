@@ -4,33 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-
-type FunnelStage = {
-  label: string;
-  value: number;
-  highlight?: boolean;
-  leakNote?: string;
-};
-
-const funnelStages: FunnelStage[] = [
-  {
-    label: "Inquiry",
-    value: 100,
-    highlight: true,
-    leakNote:
-      "← Leads come in and never get a timely response. Most clinics lose patients here before staff even sees the inquiry.",
-  },
-  { label: "Engaged in chat", value: 62 },
-  {
-    label: "Reached by staff",
-    value: 34,
-    highlight: true,
-    leakNote:
-      "← Staff makes first contact, the patient goes quiet, and there's no structured follow-up. The lead disappears.",
-  },
-  { label: "Consultation", value: 18 },
-  { label: "Booked treatment", value: 9 },
-];
+import PatientLeakageFunnel from "@/components/home/PatientLeakageFunnel";
 
 const Hero = () => {
   const containerVariants = {
@@ -163,64 +137,9 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right column: leakage funnel — desktop & tablet */}
-          <motion.div
-            variants={itemVariants}
-            className="hidden md:block"
-          >
-            <div className="bg-card/80 backdrop-blur-sm rounded-2xl border border-border shadow-card p-6 lg:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-1">
-                Patient Leakage Funnel
-              </p>
-              <p className="text-sm text-muted-foreground mb-6">
-                Where the average clinic loses patients between inquiry and
-                treatment.
-              </p>
-              <div className="space-y-3">
-                {funnelStages.map((stage) => (
-                  <div key={stage.label}>
-                    <div className="flex items-center justify-between text-sm mb-1.5">
-                      <span
-                        className={
-                          stage.highlight
-                            ? "font-semibold text-foreground"
-                            : "text-foreground/80"
-                        }
-                      >
-                        {stage.label}
-                      </span>
-                      <span
-                        className={
-                          stage.highlight
-                            ? "font-bold text-accent-orange"
-                            : "text-muted-foreground"
-                        }
-                      >
-                        {stage.value}%
-                      </span>
-                    </div>
-                    <div className="h-2.5 rounded-full bg-muted/60 overflow-hidden">
-                      <div
-                        className={
-                          stage.highlight
-                            ? "h-full rounded-full bg-accent-orange"
-                            : "h-full rounded-full bg-primary/70"
-                        }
-                        style={{ width: `${stage.value}%` }}
-                      />
-                    </div>
-                    {stage.highlight && stage.leakNote && (
-                      <p className="text-[11px] text-accent-orange mt-1 font-medium">
-                        {stage.leakNote}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-sm font-display font-semibold text-primary text-center italic">
-                GrowthOS closes the gap at every stage.
-              </p>
-            </div>
+          {/* Right column on desktop, below copy on tablet/mobile: leakage funnel */}
+          <motion.div variants={itemVariants}>
+            <PatientLeakageFunnel />
           </motion.div>
         </div>
       </motion.div>
