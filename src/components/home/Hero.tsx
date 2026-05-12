@@ -9,12 +9,25 @@ type FunnelStage = {
   label: string;
   value: number;
   highlight?: boolean;
+  leakNote?: string;
 };
 
 const funnelStages: FunnelStage[] = [
-  { label: "Inquiry", value: 100 },
+  {
+    label: "Inquiry",
+    value: 100,
+    highlight: true,
+    leakNote:
+      "← Leads come in and never get a timely response. Most clinics lose patients here before staff even sees the inquiry.",
+  },
   { label: "Engaged in chat", value: 62 },
-  { label: "Reached by staff", value: 34, highlight: true },
+  {
+    label: "Reached by staff",
+    value: 34,
+    highlight: true,
+    leakNote:
+      "← Staff makes first contact, the patient goes quiet, and there's no structured follow-up. The lead disappears.",
+  },
   { label: "Consultation", value: 18 },
   { label: "Booked treatment", value: 9 },
 ];
@@ -105,12 +118,13 @@ const Hero = () => {
               variants={itemVariants}
               className="hidden md:block text-lg md:text-xl text-foreground/90 mb-4 max-w-2xl leading-relaxed"
             >
-              Every clinic leaks patients between the initial contact and the
-              callback. GrowthOS closes that gap with an AI chat that answers
-              the second a patient reaches out &mdash; on any channel, trained
-              on your specialty and your clinic, smart enough to qualify,
-              nurture, follow up, and book without anyone on your team touching
-              the keyboard.
+              Every clinic leaks patients twice &mdash; first when inquiries
+              come in and don&apos;t get a timely response, then again after
+              first contact when the patient goes quiet. GrowthOS closes both
+              gaps with an AI chat that answers the second a patient reaches
+              out &mdash; on any channel, trained on your specialty and your
+              clinic, smart enough to qualify, nurture, follow up, and book
+              without anyone on your team touching the keyboard.
             </motion.p>
 
             <motion.p
@@ -195,9 +209,9 @@ const Hero = () => {
                         style={{ width: `${stage.value}%` }}
                       />
                     </div>
-                    {stage.highlight && (
+                    {stage.highlight && stage.leakNote && (
                       <p className="text-[11px] text-accent-orange mt-1 font-medium">
-                        ← This is where patients leak through.
+                        {stage.leakNote}
                       </p>
                     )}
                   </div>
@@ -222,11 +236,13 @@ const Hero = () => {
           variants={itemVariants}
           className="text-base text-foreground/90 leading-relaxed"
         >
-          Every clinic leaks patients between the initial contact and the
-          callback. GrowthOS closes that gap with an AI chat that answers the
-          second a patient reaches out &mdash; on any channel, trained on your
-          specialty and your clinic, smart enough to qualify, nurture, follow
-          up, and book without anyone on your team touching the keyboard.
+          Every clinic leaks patients twice &mdash; first when inquiries come
+          in and don&apos;t get a timely response, then again after first
+          contact when the patient goes quiet. GrowthOS closes both gaps with
+          an AI chat that answers the second a patient reaches out &mdash; on
+          any channel, trained on your specialty and your clinic, smart enough
+          to qualify, nurture, follow up, and book without anyone on your team
+          touching the keyboard.
         </motion.p>
 
         <motion.p
