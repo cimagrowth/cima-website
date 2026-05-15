@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">Healthcare Enterprise Privacy Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: April 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last Updated: May 2026</p>
 
           <p>
             Thank you for using the Cima Growth Solutions LLC platform, including our website, mobile applications, software, and related services (collectively, the "Services"). This Privacy Policy ("Policy") explains how Cima Growth Solutions LLC ("Cima," "Company," "we," "us," or "our") collects, uses, discloses, and safeguards information when providing a healthcare-focused SaaS platform.
@@ -259,7 +259,7 @@ const PrivacyPolicy = () => {
             The GrowthOS app may provide limited offline access to certain non-sensitive, cached data. All locally cached data is encrypted and is automatically cleared when you sign out of the application. No PHI or sensitive personal data is available offline.
           </p>
 
-          <h2>16A. Meta Platform (Facebook, Instagram, WhatsApp)</h2>
+          <h2>16. Meta Platform (Facebook, Instagram, WhatsApp)</h2>
           <p>
             When a clinic connects their Meta account to our Services for advertising purposes, we use Meta's Facebook Login for Business flow and request the following permissions. For each permission we describe what we access, why, and how long we retain it.
           </p>
@@ -275,12 +275,93 @@ const PrivacyPolicy = () => {
             We store the Facebook user ID of the person who authorized the connection, long-lived access tokens (encrypted at rest), the selected ad account ID, Facebook Page ID, and Instagram Business account ID (if applicable). We do not access, store, or process any Meta user's personal content (messages, posts, photos) beyond what is strictly necessary to operate the ad features you enable.
           </p>
 
-          <h2>16B. Google Services</h2>
+          <h2>17. Google Services</h2>
           <p>
-            When a customer connects Google Ads, Gmail, Google Calendar, or Google Business Profile, we request only the OAuth scopes necessary for the feature being used. Our use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+            When a customer connects their Google account to our Services for Gmail, Google Calendar, Google Ads, or Google Business Profile features, we request only the OAuth scopes necessary for the feature being used. This section describes our practices for Google user data in detail.
           </p>
 
-          <h2>16C. Third-Party Service Providers</h2>
+          <h3>Limited Use Disclosure</h3>
+          <p>
+            Cima Growth Solutions' use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+          </p>
+          <p>Specifically, with respect to data obtained through Google APIs, Cima Growth Solutions:</p>
+          <ol>
+            <li><strong>Will only use access</strong> to Gmail message bodies, attachments, metadata, headers, and settings, and to Google Calendar events, to provide or improve user-facing features that are prominent in the GrowthOS user interface — specifically inbound email reading for lead discovery and patient conversation surfacing, and consultation scheduling.</li>
+            <li><strong>Will not transfer</strong> Google user data to others except as necessary to provide or improve these user-facing features, comply with applicable law, or as part of a merger, acquisition, or sale of assets with notice to the affected user.</li>
+            <li><strong>Will not use</strong> Google user data to serve advertisements, including retargeting, personalized, or interest-based advertising.</li>
+            <li><strong>Will not allow</strong> human personnel to read Google user data unless (a) the user has given explicit consent for specific messages, (b) it is necessary for security purposes (such as investigating abuse), (c) it is necessary to comply with applicable law, or (d) the data has been aggregated and anonymized for internal operational purposes.</li>
+          </ol>
+
+          <h3>Google OAuth Scopes We Request</h3>
+          <p>
+            We request the following OAuth scopes only when a customer explicitly connects the corresponding feature in GrowthOS. A customer may grant any subset of these scopes; declining one scope only disables the corresponding feature and does not affect other parts of the platform.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-800">
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Scope</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Tier</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">What We Access</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Why We Need It</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>openid</code>, <code>userinfo.email</code>, <code>userinfo.profile</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Basic</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Your Google account email, name, and profile photo</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To identify the connected Google account and display your name and photo within the application</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>gmail.readonly</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Restricted</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Read-only access to your Gmail inbox messages and metadata</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To surface inbound patient and prospective lead emails inside GrowthOS conversations (the "Lead Discovery" feature), so your team can respond from one place instead of switching between Gmail and GrowthOS. We do not send email through Gmail (outbound email is sent through SendGrid from your verified domain) and we do not modify, label, or delete any Gmail messages.</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>calendar.readonly</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Sensitive</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Read-only access to your calendar list and free/busy data</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To detect when you are available for patient consultations and avoid scheduling conflicts</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>calendar.events</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Sensitive</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Read and write access to events on your calendar</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To create patient consultation appointments on your Google Calendar, update events when patients reschedule, and remove events when patients cancel</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>adwords</code> (Google Ads API)</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Sensitive</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Your Google Ads campaign, ad group, and performance data</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To create and manage Google Ads campaigns on behalf of your clinic, when you enable the AI Ads feature</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>What We Do With Google User Data</h3>
+          <ul>
+            <li><strong>Storage:</strong> OAuth refresh tokens are encrypted at rest in our database (Supabase, US region) using industry-standard encryption. Gmail message content accessed through the Gmail API is stored only insofar as it appears in a corresponding GrowthOS conversation thread (the same way a SendGrid-delivered email body is stored), so your team can read it inside our platform. Calendar event data is stored as a GrowthOS appointment record.</li>
+            <li><strong>Processing:</strong> Limited to the user-facing features described above. Where AI classification is applied to inbound email (for example, to detect unsubscribe requests or auto-replies), the email content is sent to the Anthropic Claude API for classification and is not used by Anthropic to train its models under our enterprise API terms.</li>
+            <li><strong>Retention:</strong> Google user data and OAuth tokens are retained for the duration of your active GrowthOS subscription plus 30 days after cancellation or disconnection, after which all tokens are revoked and associated data is deleted.</li>
+            <li><strong>Sharing:</strong> We do not sell Google user data. We do not share Google user data with third parties except for the specific subprocessors required to deliver the user-facing feature (for example, Anthropic for classification, Supabase for storage), each of which is listed in Section 18 and bound by contractual confidentiality and security obligations.</li>
+            <li><strong>AI / Machine Learning:</strong> Google user data is <strong>not</strong> used to train any AI or machine-learning models, whether by Cima Growth Solutions or by our subprocessors.</li>
+          </ul>
+
+          <h3>How to Revoke Access or Request Deletion</h3>
+          <p>You can revoke our access to your Google account at any time:</p>
+          <ol>
+            <li>Visit <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a></li>
+            <li>Find "GrowthOS" in the list of connected applications</li>
+            <li>Click "Remove access"</li>
+          </ol>
+          <p>
+            When you revoke access, our systems will detect the revocation on next use and remove the corresponding tokens from our database. To request deletion of any associated data already processed, email <a href="mailto:privacy@cimagrowth.com">privacy@cimagrowth.com</a> and we will complete deletion within 30 days, subject to the legal and contractual retention exceptions described in Sections 8 and 11.
+          </p>
+
+          <h2>18. Third-Party Service Providers</h2>
           <p>
             We use the following third-party service providers (subprocessors) to operate the Services. A current list is available on request to <a href="mailto:privacy@cimagrowth.com">privacy@cimagrowth.com</a> and includes, at the time this Policy was last updated:
           </p>
@@ -297,7 +378,7 @@ const PrivacyPolicy = () => {
             We require each subprocessor to provide appropriate contractual protections and technical safeguards, including Business Associate Agreements where the subprocessor will handle protected health information.
           </p>
 
-          <h2>16D. Data Deletion</h2>
+          <h2>19. Data Deletion</h2>
           <p>You can request deletion of your information at any time:</p>
           <ol>
             <li>
@@ -311,12 +392,12 @@ const PrivacyPolicy = () => {
             </li>
           </ol>
 
-          <h2>16E. Cookies and Tracking Technologies</h2>
+          <h2>20. Cookies and Tracking Technologies</h2>
           <p>
             We use strictly necessary cookies for login sessions and security; these cannot be disabled without breaking core functionality. We use analytics and marketing cookies only with your consent. On your first visit you will be asked to accept all, reject all, or customize your choices; you can change those preferences at any time by clicking <strong>Cookie Preferences</strong> in the site footer. We honor the Global Privacy Control (GPC) signal where legally required — when your browser sends GPC we automatically reject non-essential cookies without prompting.
           </p>
 
-          <h2>16. Contact Information</h2>
+          <h2>21. Contact Information</h2>
           <p>
             Cima Growth Solutions LLC<br />
             3467 Trexler Blvd<br />
