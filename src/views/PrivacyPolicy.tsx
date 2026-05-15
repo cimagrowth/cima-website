@@ -105,7 +105,7 @@ const PrivacyPolicy = () => {
             <li>Business Transfers: Mergers, acquisitions, or asset sales</li>
             <li>With Consent: As directed by the customer</li>
           </ul>
-          <p>Cima does not sell PHI, phone numbers, or SMS opt-in consent.</p>
+          <p>Cima does not sell or share PHI, phone numbers, or SMS opt-in consent with third parties or affiliates for marketing or promotional purposes. See Section 21 for full SMS terms.</p>
           <p>A current list of subprocessors is available upon request.</p>
 
           <h2>7. Advertising &amp; Tracking</h2>
@@ -397,7 +397,42 @@ const PrivacyPolicy = () => {
             We use strictly necessary cookies for login sessions and security; these cannot be disabled without breaking core functionality. We use analytics and marketing cookies only with your consent. On your first visit you will be asked to accept all, reject all, or customize your choices; you can change those preferences at any time by clicking <strong>Cookie Preferences</strong> in the site footer. We honor the Global Privacy Control (GPC) signal where legally required — when your browser sends GPC we automatically reject non-essential cookies without prompting.
           </p>
 
-          <h2>21. Contact Information</h2>
+          <h2>21. SMS and Text Messaging Communications</h2>
+          <p>This section describes how Cima Growth Solutions collects, uses, and protects phone numbers and SMS consent information.</p>
+
+          <h3>A. How We Collect SMS Consent</h3>
+          <p>
+            Phone numbers are collected when a visitor submits a form on cimagrowth.com (including the contact form at cimagrowth.com/contact) and affirmatively checks an unchecked-by-default SMS consent checkbox. The checkbox is displayed separately from any email or newsletter opt-in. Consent is never a condition of purchase or service.
+          </p>
+
+          <h3>B. How We Use Phone Numbers and SMS Consent</h3>
+          <p>We use phone numbers submitted through SMS opt-in solely to send:</p>
+          <ul>
+            <li>Consultation scheduling confirmations</li>
+            <li>Follow-up communications after discovery calls</li>
+            <li>GrowthOS platform onboarding updates</li>
+          </ul>
+          <p>Message frequency is up to four messages per recipient per month. Message and data rates may apply.</p>
+
+          <h3>C. SMS Opt-Out</h3>
+          <p>
+            Recipients may reply STOP to any message to immediately and permanently opt out of all SMS communications. Replying HELP returns customer support contact information. All opt-out requests are honored in real time and the phone number is added to an internal suppression list.
+          </p>
+
+          <h3>D. Sharing of Phone Numbers and SMS Consent</h3>
+          <p>
+            <strong>Phone numbers and SMS opt-in consent information are NOT shared with any third parties or affiliates for marketing or promotional purposes under any circumstances.</strong> This includes, without limitation, lead-generation partners, advertising networks, data brokers, and affiliate marketers.
+          </p>
+          <p>
+            Phone numbers may be shared only with the subprocessors strictly required to deliver SMS messages (e.g., Twilio for SMS infrastructure), each of which is contractually bound to use the information only to deliver our messages and not for any other purpose.
+          </p>
+
+          <h3>E. SMS Consent Records</h3>
+          <p>
+            We maintain records of SMS consent including the date, time, IP address, opt-in source URL, and exact consent language presented at the time of opt-in, in accordance with TCPA and CTIA requirements.
+          </p>
+
+          <h2>22. Contact Information</h2>
           <p>
             Cima Growth Solutions LLC<br />
             3467 Trexler Blvd<br />
