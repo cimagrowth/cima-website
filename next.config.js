@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // No output: 'export' — Vercel handles SSR/SSG natively
+  experimental: {
+    serverComponentsExternalPackages: ['isomorphic-dompurify'],
+  },
   images: {
     remotePatterns: [
       {

@@ -1,15 +1,18 @@
 'use client';
 
 import Link from "next/link";
-import { usePublishedPosts } from "@/hooks/useBlogPosts";
+import type { BlogPost } from "@/hooks/useBlogPosts";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight, PenSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { useAuth } from "@/contexts/AuthContext";
 
-const Blog = () => {
-  const { data: posts, isLoading, error } = usePublishedPosts();
+interface BlogProps {
+  posts: BlogPost[];
+}
+
+const Blog = ({ posts }: BlogProps) => {
   const { isAdmin } = useAuth();
 
   return (
@@ -46,38 +49,19 @@ const Blog = () => {
           </motion.div>
 
           {/* Blog Posts Grid */}
-          {isLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="card-premium p-6 animate-pulse"
-                >
-                  <div className="h-48 bg-muted rounded-lg mb-4" />
-                  <div className="h-6 bg-muted rounded w-3/4 mb-3" />
-                  <div className="h-4 bg-muted rounded w-full mb-2" />
-                  <div className="h-4 bg-muted rounded w-2/3" />
-                </div>
-              ))}
-            </div>
-          ) : error ? (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                Unable to load blog posts. Please try again later.
-              </p>
-            </div>
-          ) : posts && posts.length > 0 ? (
+          {posts.length > 0 ? (
+            // TODO: pagination at N>24
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post, index) => (
                 <motion.article
                   key={post.id}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: Math.min(index, 6) * 0.05 }}
                 >
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="card-premium p-0 overflow-hidden block group"
+                    className="card-premium p-0 overflow-hidden block group h-full"
                   >
                     {post.featured_image_url ? (
                       <div className="h-48 overflow-hidden">
@@ -100,7 +84,7 @@ const Blog = () => {
                         {post.published_at && (
                           <span className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
-                            {format(new Date(post.published_at), "MMM d, yyyy")}
+                            {format(new Date(post.published_at), "MMMM d, yyyy")}
                           </span>
                         )}
                         {post.reading_time_minutes && (
@@ -155,6 +139,25 @@ const Blog = () => {
               )}
             </motion.div>
           )}
+        </div>
+
+        {/* CTA */}
+        <div className="container-wide relative z-10 mt-20">
+          <div className="max-w-3xl mx-auto text-center bg-primary/5 border border-primary/10 rounded-2xl p-10">
+            <h2 className="text-heading text-foreground mb-3">
+              Every day without GrowthOS is revenue lost.
+            </h2>
+            <p className="text-body text-muted-foreground mb-6">
+              See how Cima's agentic platform turns insights like these into booked
+              consults for fertility clinics, med spas, and wellness centers.
+            </p>
+            <Link href="/demo">
+              <Button variant="hero" size="lg">
+                Book a Demo
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </>
