@@ -1,80 +1,44 @@
 'use client';
 
-import { useParams } from "next/navigation";
 import Link from "next/link";
-import { usePostBySlug } from "@/hooks/useBlogPosts";
+import type { BlogPost as BlogPostType } from "@/hooks/useBlogPosts";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
-import DOMPurify from "isomorphic-dompurify";
 
-const BlogPost = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const { data: post, isLoading, error } = usePostBySlug(slug || "");
+interface BlogPostProps {
+  post: BlogPostType;
+  relatedPosts: BlogPostType[];
+  /** HTML body, pre-sanitized on the server. */
+  sanitizedContent: string;
+}
 
-  if (isLoading) {
-    return (
-      <>
-        <section className="section-padding bg-background">
-          <div className="container-tight">
-            <div className="animate-pulse">
-              <div className="h-8 bg-muted rounded w-3/4 mb-4" />
-              <div className="h-4 bg-muted rounded w-1/2 mb-8" />
-              <div className="h-64 bg-muted rounded-xl mb-8" />
-              <div className="space-y-4">
-                <div className="h-4 bg-muted rounded w-full" />
-                <div className="h-4 bg-muted rounded w-full" />
-                <div className="h-4 bg-muted rounded w-3/4" />
-              </div>
-            </div>
-          </div>
-        </section>
-      </>
-    );
-  }
-
-  if (error || !post) {
-    return (
-      <>
-        <section className="section-padding bg-background">
-          <div className="container-tight text-center">
-            <h1 className="text-display text-foreground mb-4">Post Not Found</h1>
-            <p className="text-body-lg text-muted-foreground mb-8">
-              The blog post you're looking for doesn't exist or has been removed.
-            </p>
-            <Link href="/blog">
-              <Button variant="hero">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Blog
-              </Button>
-            </Link>
-          </div>
-        </section>
-      </>
-    );
-  }
-
-  const postUrl = `https://cimagrowth.com/blog/${post.slug}`;
-
+const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
   return (
     <>
       <article className="section-padding bg-background">
         <div className="container-tight">
-          {/* Back link */}
-          <motion.div
+          {/* Breadcrumb */}
+          <motion.nav
+            aria-label="Breadcrumb"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
+            className="mb-8"
           >
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Blog
-            </Link>
-          </motion.div>
+            <ol className="flex items-center gap-2 text-body-sm text-muted-foreground">
+              <li>
+                <Link href="/blog" className="hover:text-foreground transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li aria-hidden="true">→</li>
+              <li className="text-foreground line-clamp-1" aria-current="page">
+                {post.title}
+              </li>
+            </ol>
+          </motion.nav>
 
           {/* Header */}
           <motion.header
@@ -83,6 +47,10 @@ const BlogPost = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mb-10"
           >
+            <h1 className="text-display-lg md:text-display-xl text-foreground mb-4">
+              {post.title}
+            </h1>
+
             <div className="flex items-center gap-4 text-body-sm text-muted-foreground mb-4">
               {post.published_at && (
                 <span className="flex items-center gap-1">
@@ -97,10 +65,6 @@ const BlogPost = () => {
                 </span>
               )}
             </div>
-
-            <h1 className="text-display-lg md:text-display-xl text-foreground mb-4">
-              {post.title}
-            </h1>
 
             {post.excerpt && (
               <p className="text-body-lg text-muted-foreground">
@@ -130,8 +94,8 @@ const BlogPost = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-p:my-3 prose-li:text-muted-foreground prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-a:text-accent-orange prose-strong:text-foreground prose-headings:mt-8 prose-headings:mb-3"
-            dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
+            className="prose prose-lg max-w-2xl mx-auto prose-headings:font-display prose-headings:text-primary prose-headings:font-bold prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/85 prose-p:text-lg prose-p:leading-relaxed prose-li:text-foreground/85 prose-a:text-primary prose-a:underline hover:prose-a:text-accent-orange prose-strong:text-foreground"
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
           />
 
           {/* Topic Tags */}
@@ -140,7 +104,7 @@ const BlogPost = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.4 }}
-              className="flex flex-wrap gap-2 mt-10"
+              className="flex flex-wrap gap-2 mt-10 max-w-2xl mx-auto"
             >
               {post.meta_keywords.map((keyword, i) => (
                 <span
@@ -153,12 +117,12 @@ const BlogPost = () => {
             </motion.div>
           )}
 
-          {/* Share Section */}
+          {/* Share / Back */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.4 }}
-            className="mt-12 pt-8 border-t border-border"
+            className="mt-12 pt-8 border-t border-border max-w-2xl mx-auto"
           >
             <div className="flex items-center justify-between">
               <Link href="/blog">
@@ -170,10 +134,12 @@ const BlogPost = () => {
               <Button
                 variant="ghost"
                 onClick={() => {
-                  navigator.share?.({
-                    title: post.title,
-                    url: window.location.href,
-                  });
+                  if (typeof navigator !== "undefined" && navigator.share) {
+                    navigator.share({
+                      title: post.title,
+                      url: window.location.href,
+                    });
+                  }
                 }}
               >
                 <Share2 className="w-4 h-4 mr-2" />
@@ -181,31 +147,58 @@ const BlogPost = () => {
               </Button>
             </div>
           </motion.div>
+
+          {/* Read more */}
+          {relatedPosts.length > 0 && (
+            <section className="mt-20 max-w-5xl mx-auto">
+              <h2 className="text-heading text-foreground mb-8 text-center">
+                Read more
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {relatedPosts.map((rp) => (
+                  <Link
+                    key={rp.id}
+                    href={`/blog/${rp.slug}`}
+                    className="card-premium p-0 overflow-hidden block group"
+                  >
+                    {rp.featured_image_url ? (
+                      <div className="h-40 overflow-hidden">
+                        <img
+                          src={rp.featured_image_url}
+                          alt={rp.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    ) : (
+                      <div className="h-40 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                        <span className="text-5xl font-bold text-primary/20">
+                          {rp.title[0]}
+                        </span>
+                      </div>
+                    )}
+                    <div className="p-5">
+                      {rp.published_at && (
+                        <p className="text-body-sm text-muted-foreground mb-2">
+                          {format(new Date(rp.published_at), "MMMM d, yyyy")}
+                        </p>
+                      )}
+                      <h3 className="text-heading-sm text-foreground group-hover:text-accent-orange transition-colors mb-2 line-clamp-2">
+                        {rp.title}
+                      </h3>
+                      <span className="text-accent-orange font-medium flex items-center gap-1 group-hover:gap-2 transition-all text-body-sm">
+                        Read
+                        <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </article>
     </>
   );
 };
-
-// Secure content formatting with XSS sanitization
-function formatContent(content: string): string {
-  const formatted = content
-    .replace(/\n\n/g, "</p><p>")
-    .replace(/\n/g, "<br>")
-    .replace(/^/, "<p>")
-    .replace(/$/, "</p>")
-    .replace(/## (.*?)(?=<|$)/g, "</p><h2>$1</h2><p>")
-    .replace(/### (.*?)(?=<|$)/g, "</p><h3>$1</h3><p>")
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.*?)\*/g, "<em>$1</em>")
-    .replace(/<p><\/p>/g, "");
-
-  // Sanitize HTML to prevent XSS attacks
-  return DOMPurify.sanitize(formatted, {
-    ALLOWED_TAGS: ['p', 'br', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'em', 'u', 's', 'a', 'ul', 'ol', 'li', 'blockquote', 'code', 'pre', 'img', 'hr'],
-    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
-    ALLOW_DATA_ATTR: false,
-  });
-}
 
 export default BlogPost;

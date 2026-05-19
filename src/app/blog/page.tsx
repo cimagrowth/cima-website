@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import Blog from '@/views/Blog';
+import { getPublishedPosts } from '@/lib/blog-data';
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Blog – Cima Growth Solutions',
@@ -34,6 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <Blog />;
+export default async function Page() {
+  const posts = await getPublishedPosts(24);
+  return <Blog posts={posts} />;
 }
