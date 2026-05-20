@@ -28,17 +28,11 @@ function RequiredMark() {
 export default function Contact() {
   const [status, setStatus] = useState<Status>('idle');
   const [smsConsent, setSmsConsent] = useState(false);
-  const [consentError, setConsentError] = useState(false);
   const isSubmitting = status === 'submitting';
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!smsConsent) {
-      setConsentError(true);
-      return;
-    }
-    setConsentError(false);
     setStatus('submitting');
 
     const formData = new FormData(e.currentTarget);
@@ -57,7 +51,7 @@ export default function Contact() {
         email: String(formData.get('email') || '').trim().toLowerCase(),
         phone: String(formData.get('phone') || '').trim(),
         question: String(formData.get('question') || '').trim(),
-        sms_consent_given: true,
+        sms_consent_given: smsConsent,
         sms_consent_timestamp: new Date().toISOString(),
         sms_consent_text: SMS_CONSENT_TEXT,
       },
@@ -218,12 +212,8 @@ export default function Contact() {
                 type="checkbox"
                 id="sms_consent"
                 name="sms_consent"
-                required
                 checked={smsConsent}
-                onChange={(e) => {
-                  setSmsConsent(e.target.checked);
-                  if (e.target.checked) setConsentError(false);
-                }}
+                onChange={(e) => setSmsConsent(e.target.checked)}
                 disabled={isSubmitting}
                 className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-[#1B4D5C]/30 text-accent-orange accent-accent-orange focus:ring-2 focus:ring-accent-orange/40 dark:border-white/20"
               />
@@ -244,15 +234,6 @@ export default function Contact() {
                 .
               </label>
             </div>
-
-            {consentError && (
-              <p
-                role="alert"
-                className="text-sm text-red-600 dark:text-red-300"
-              >
-                Please agree to receive SMS messages to continue.
-              </p>
-            )}
 
             {status === 'error' && (
               <div
