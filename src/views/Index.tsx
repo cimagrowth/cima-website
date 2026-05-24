@@ -1,6 +1,7 @@
 'use client';
 
 import Hero from "@/components/home/Hero";
+import Reframe from "@/components/home/Reframe";
 import TheLeakageProblem from "@/components/home/TheLeakageProblem";
 import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
 import PositioningBand from "@/components/home/PositioningBand";
@@ -20,6 +21,7 @@ const Index = () => {
   return (
     <>
       <Hero />
+      <Reframe />
       <TheLeakageProblem />
       <Solution />
       <PositioningBand />

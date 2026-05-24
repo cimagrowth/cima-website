@@ -105,9 +105,15 @@ const Hero = () => {
               variants={itemVariants}
               className="hidden md:block text-sm text-muted-foreground mb-8 max-w-2xl leading-relaxed"
             >
-              Built for fertility, aesthetics, regenerative medicine, and
-              wellness clinics. Replaces 6+ tools with one operating system
-              that actually runs the work.
+              But slow follow-up is only the symptom. The deeper problem: every
+              part of your growth &mdash; getting found, bringing leads in,
+              answering them, following up, earning reviews &mdash; runs on
+              people who get overwhelmed, agencies you can&rsquo;t see working,
+              and manual steps that quietly fail. GrowthOS replaces all of it
+              with a team of AI employees that drives patients in, answers the
+              second they reach out, and never lets one go cold. Built for
+              fertility, aesthetics, regenerative medicine, and wellness
+              clinics.
             </motion.p>
 
             {/* Desktop CTAs inline */}
@@ -168,9 +174,14 @@ const Hero = () => {
           variants={itemVariants}
           className="text-xs text-muted-foreground leading-relaxed"
         >
-          Built for fertility, aesthetics, regenerative medicine, and wellness
-          clinics. Replaces 6+ tools with one operating system that actually
-          runs the work.
+          But slow follow-up is only the symptom. The deeper problem: every
+          part of your growth &mdash; getting found, bringing leads in,
+          answering them, following up, earning reviews &mdash; runs on people
+          who get overwhelmed, agencies you can&rsquo;t see working, and manual
+          steps that quietly fail. GrowthOS replaces all of it with a team of
+          AI employees that drives patients in, answers the second they reach
+          out, and never lets one go cold. Built for fertility, aesthetics,
+          regenerative medicine, and wellness clinics.
         </motion.p>
 
         {/* Full-width stacked CTAs */}
