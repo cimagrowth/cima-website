@@ -89,7 +89,7 @@ const Solution = () => {
         </div>
 
         <p className="text-base md:text-lg text-muted-foreground text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          The reason chatbots fail isn&rsquo;t speed &mdash; it&rsquo;s that they sound generic, say the wrong things, and don&rsquo;t know your business. GrowthOS is different. The chat goes live on web, SMS, WhatsApp, email, social DMs, your lead forms, and inside any CRM you already use. It answers in seconds, in your voice, with the answers you&rsquo;d give. It qualifies leads with the same questions your best front-desk person would ask. It books on your real calendar with your real appointment types. It follows up when a patient goes quiet. And it knows when not to talk &mdash; handing off to your team the moment a conversation is beyond its scope.
+          This is your AI Front Desk up close. The reason chatbots fail isn&rsquo;t speed &mdash; it&rsquo;s that they sound generic, say the wrong things, and don&rsquo;t know your business. GrowthOS is different. The chat goes live on web, SMS, WhatsApp, email, social DMs, your lead forms, and inside any CRM you already use. It answers in seconds, in your voice, with the answers you&rsquo;d give. It qualifies leads with the same questions your best front-desk person would ask. It books on your real calendar with your real appointment types. It follows up when a patient goes quiet. And it knows when not to talk &mdash; handing off to your team the moment a conversation is beyond its scope.
         </p>
 
         {/* 6-feature row */}

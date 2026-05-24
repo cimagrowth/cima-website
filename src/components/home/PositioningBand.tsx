@@ -4,14 +4,17 @@ const PositioningBand = () => {
   return (
     <section
       id="positioning"
-      className="bg-primary text-primary-foreground py-16 md:py-24"
+      className="bg-primary text-primary-foreground py-10 md:py-14"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <p className="font-display text-2xl md:text-4xl font-bold leading-tight">
+        <p className="font-display text-xl md:text-3xl font-bold leading-tight">
           Not a chatbot. Not an ads platform. Not a CRM. The operating system.
         </p>
-        <p className="font-display text-base md:text-lg font-normal leading-relaxed mt-6 text-primary-foreground/85">
-          The chat is the front door. Behind it, GrowthOS replaces the patchwork most clinics duct-tape together &mdash; paid ads built and optimized by AI, landing pages and lead forms, multi-channel outreach sequences, conversation routing, calendar booking, contact management, and reporting. Every piece talks to every other piece. A patient who clicks a Google ad on Saturday morning is qualified by the AI by Saturday afternoon, nurtured through Sunday, and sitting in a consultation chair on Tuesday &mdash; without anyone on your team touching the keyboard.
+        <p className="font-display text-sm md:text-base font-normal leading-relaxed mt-4 md:mt-5 text-primary-foreground/85">
+          Acquisition, conversion, and retention run on one brain &mdash; so a
+          patient who clicks a Google ad Saturday morning is qualified that
+          afternoon, nurtured through Sunday, and sitting in your chair Tuesday,
+          without anyone on your team touching the keyboard.
         </p>
       </div>
     </section>
