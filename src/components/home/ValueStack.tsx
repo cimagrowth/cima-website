@@ -1,113 +1,247 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const valueItems = [
-  { feature: "AI Patient Agent", replaces: "Chatbot + after-hours answering service", cost: "$500-1,500/mo" },
-  { feature: "Behavioral Lead Scoring", replaces: "Manual lead qualification", cost: "$200-500/mo" },
-  { feature: "Multi-Channel Unified Inbox", replaces: "4-6 separate platforms", cost: "$300-800/mo" },
-  { feature: "AI Outreach Engine", replaces: "SDR or outreach agency", cost: "$3,000-5,000/mo" },
-  { feature: "AI Campaign Builder", replaces: "Marketing agency", cost: "$5,000-10,000/mo" },
-  { feature: "Google & Facebook Ads Manager", replaces: "Ads agency", cost: "$2,000-5,000/mo" },
-  { feature: "AI Landing Page Builder", replaces: "Landing page tool + designer", cost: "$200-500/mo" },
-  { feature: "Pipeline & Patient Journey Management", replaces: "CRM platform", cost: "$150-300/mo" },
-  { feature: "EHR Integration", replaces: "Integration middleware", cost: "$500-1,000/mo" },
-  { feature: "Reactivation Campaigns", replaces: "Re-engagement agency", cost: "$1,000-2,000/mo" },
-  { feature: "Custom Domain + Branding", replaces: "Web developer", cost: "$1,000+ setup" },
-  { feature: "Desktop + Mobile App", replaces: "—", cost: "Included" },
-  { feature: "A2P 10DLC Compliance", replaces: "Compliance consultant", cost: "$500+ setup" },
-  { feature: "Multi-Language Support", replaces: "Translation service", cost: "$200-500/mo" },
+type Plan = {
+  name: string;
+  planKey: "monthly" | "annual";
+  price: string;
+  period: string;
+  setup: string;
+  description: string;
+  cta: string;
+  ctaSubtext: string;
+  popular: boolean;
+  bonus?: string;
+  savings?: string;
+};
+
+const plans: Plan[] = [
+  {
+    name: "Monthly",
+    planKey: "monthly",
+    price: "$999",
+    period: "/ month",
+    setup: "$999 one-time setup",
+    description: "Full access to GrowthOS with flexible monthly billing.",
+    cta: "Start Monthly",
+    ctaSubtext: "$999/mo + $999 setup",
+    popular: false,
+  },
+  {
+    name: "Annual",
+    planKey: "annual",
+    price: "$9,999",
+    period: "/ year",
+    setup: "No setup fee",
+    description:
+      "Best value. Two months effectively free, and setup is waived.",
+    savings: "Save on setup",
+    bonus: "$500 Meta & Google Ads Credit",
+    cta: "Start Annual",
+    ctaSubtext: "$9,999/year, no setup fee",
+    popular: true,
+  },
+];
+
+const includedHighlights = [
+  "Your whole AI growth team — DRIVE, CAPTURE, GROW",
+  "Unified inbox, every channel, 24/7",
+  "Pipelines, automations, and reactivation campaigns",
+  "HIPAA-grade handling, BAA, and clinical guardrails",
+  "Onboarding, configuration, and AI training",
+  "Unlimited leads, conversations, and team members",
 ];
 
 const ValueStack = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const scale1 = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.15, 0.9]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
-
   return (
-    <section id="pricing" ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden scroll-mt-20">
-      <motion.div
-        style={{ y: y1, scale: scale1, opacity: opacity1 }}
-        className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl hidden md:block"
-      />
-
+    <section
+      id="pricing"
+      className="py-20 md:py-28 lg:py-32 bg-background relative overflow-hidden scroll-mt-20"
+    >
       <div className="container-wide relative z-10">
         {/* Lead-in headline */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-3xl mx-auto text-center mb-12 md:mb-16"
+        >
           <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
             Pricing
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
-            One price. One login. One system that replaces your entire stack.
+            One price. One login. One AI team.
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            No tiers for features we gate. No per-user surcharges. Just the platform.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            No tiers for features we gate. No per-user surcharges. Choose
+            monthly or annual.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="max-w-3xl lg:max-w-4xl mx-auto text-center mb-8 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-display text-foreground mb-4 md:mb-6">
-            One Platform Replaces Your{" "}
-            <span className="text-gradient-accent">Entire Marketing Stack.</span>
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
-            Here's everything included in GrowthOS at $999/month:
-          </p>
-        </div>
+        {/* Plan cards */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-10 md:mb-12">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={plan.planKey}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.12,
+                ease: "easeOut",
+              }}
+              className={`relative rounded-2xl p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 ${
+                plan.popular
+                  ? "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-glow"
+                  : "bg-card border-2 border-border shadow-card hover:shadow-elevated"
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-accent-orange text-white text-xs md:text-sm font-semibold px-5 py-1.5 rounded-full shadow-card">
+                    Best Value
+                  </span>
+                </div>
+              )}
 
-        {/* Value table */}
-        <div className="overflow-x-auto rounded-2xl border border-border shadow-card mb-8 md:mb-12">
-          <table className="w-full text-sm md:text-base">
-            <thead>
-              <tr className="bg-primary text-primary-foreground">
-                <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl">What You Get</th>
-                <th className="text-left px-4 md:px-6 py-4 font-semibold hidden sm:table-cell">What It Replaces</th>
-                <th className="text-right px-4 md:px-6 py-4 font-semibold text-accent-orange rounded-tr-2xl">Separate Cost</th>
-              </tr>
-            </thead>
-            <tbody className="bg-card">
-              {valueItems.map((item, i) => (
-                <tr
-                  key={i}
-                  className={i < valueItems.length - 1 ? "border-b border-border" : ""}
+              <div className="mb-6">
+                <h3
+                  className={`text-xl md:text-2xl font-semibold mb-2 ${
+                    plan.popular ? "text-primary-foreground" : "text-foreground"
+                  }`}
                 >
-                  <td className="px-4 md:px-6 py-3 font-medium text-foreground">{item.feature}</td>
-                  <td className="px-4 md:px-6 py-3 text-muted-foreground hidden sm:table-cell">{item.replaces}</td>
-                  <td className="px-4 md:px-6 py-3 text-right text-muted-foreground">{item.cost}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  {plan.name}
+                </h3>
+                <p
+                  className={`text-sm mb-6 ${
+                    plan.popular
+                      ? "text-primary-foreground/80"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {plan.description}
+                </p>
+
+                <div className="flex items-baseline gap-1 mb-2">
+                  <span
+                    className={`font-display text-4xl md:text-5xl font-bold ${
+                      plan.popular ? "text-primary-foreground" : "text-foreground"
+                    }`}
+                  >
+                    {plan.price}
+                  </span>
+                  <span
+                    className={
+                      plan.popular
+                        ? "text-primary-foreground/70"
+                        : "text-muted-foreground"
+                    }
+                  >
+                    {plan.period}
+                  </span>
+                </div>
+                <p
+                  className={`text-sm font-medium ${
+                    plan.popular
+                      ? "text-primary-foreground/80"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {plan.setup}
+                </p>
+
+                {plan.savings && (
+                  <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-accent-orange/20 border border-accent-orange/30">
+                    <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
+                    <span className="text-sm font-semibold text-primary-foreground">
+                      {plan.savings}
+                    </span>
+                  </div>
+                )}
+
+                {plan.bonus && (
+                  <div className="mt-3 flex items-center gap-2 p-3 rounded-lg bg-white/10 border border-white/20">
+                    <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
+                    <span className="text-sm font-semibold text-primary-foreground">
+                      {plan.bonus}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href={`/sign-up/register?plan=${plan.planKey}`}
+                className="block"
+              >
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className={`w-full group ${
+                    plan.popular
+                      ? "bg-accent-orange hover:brightness-110"
+                      : "bg-primary hover:bg-primary-light"
+                  }`}
+                >
+                  {plan.cta}
+                  <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+
+              <p
+                className={`text-sm mt-3 text-center ${
+                  plan.popular
+                    ? "text-primary-foreground/70"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {plan.ctaSubtext}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Price anchor */}
-        <div className="text-center space-y-3 mb-8 md:mb-12">
-          <p className="text-base md:text-lg text-muted-foreground">
-            Total value if purchased separately: <span className="font-bold text-foreground">$13,550-$27,600/month</span>
+        {/* Included recap */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          className="max-w-3xl mx-auto bg-card rounded-2xl border border-border shadow-card p-6 md:p-8 mb-8"
+        >
+          <p className="text-center text-sm md:text-base font-semibold text-foreground mb-5">
+            Everything your AI team does, included in both plans:
           </p>
-          <p className="text-3xl md:text-4xl font-bold text-foreground">
-            GrowthOS: <span className="text-accent-orange">$999/month.</span>
-          </p>
-          <p className="text-sm md:text-base text-muted-foreground">
-            No setup fee. Live in 48 hours. Cancel anytime.
-          </p>
-        </div>
+          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+            {includedHighlights.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 text-sm md:text-base text-muted-foreground leading-snug"
+              >
+                <span className="mt-1 w-5 h-5 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3 h-3 text-accent-orange" />
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* Trust line */}
+        <p className="text-center text-sm md:text-base text-muted-foreground mb-8">
+          Live in 48 hours. Cancel anytime.
+        </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/sign-up">
             <Button variant="hero" size="lg" className="group shadow-glow">
-              Start Now
+              Get Started
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
