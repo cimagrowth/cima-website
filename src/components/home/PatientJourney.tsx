@@ -1,58 +1,64 @@
 "use client";
 
-import { Megaphone, MessageCircle, Calendar, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { Rocket, MessageCircle, TrendingUp } from "lucide-react";
 
-type Stage = {
-  label: string;
+type Pillar = {
+  label: "DRIVE" | "CAPTURE" | "GROW";
   tagline: string;
-  icon: typeof Megaphone;
+  icon: typeof Rocket;
   bullets: string[];
+  accent: string;
+  accentSoft: string;
+  bullet: string;
 };
 
-const stages: Stage[] = [
+const pillars: Pillar[] = [
   {
-    label: "ATTRACT",
-    tagline: "Fill the top of your funnel.",
-    icon: Megaphone,
+    label: "DRIVE",
+    tagline: "Bring the patients in.",
+    icon: Rocket,
     bullets: [
       "Google Ads automation with healthcare-compliant keyword sync",
       "Meta & Facebook Ads with auto-generated creative",
+      "Cold outreach campaigns (Peer Insight framework)",
       "Landing pages built for fertility, aesthetics, and wellness conversion",
       "SEO gap analysis and content tools",
+      "Dormant-patient reactivation campaigns",
     ],
+    accent: "text-[#3E6E86]",
+    accentSoft: "bg-[#3E6E86]/12",
+    bullet: "bg-[#3E6E86]",
   },
   {
-    label: "ENGAGE",
-    tagline: "Talk to every inquiry instantly, 24/7.",
+    label: "CAPTURE",
+    tagline: "Answer, qualify, and book every inquiry — instantly.",
     icon: MessageCircle,
     bullets: [
-      "7-specialty AI chatbot trained on your clinic’s voice",
-      "Cold outreach campaigns with the Peer Insight framework",
-      "Email and SMS sequences that feel human",
-      "Multi-language support (English, Spanish, Portuguese)",
-    ],
-  },
-  {
-    label: "CONVERT",
-    tagline: "Turn conversations into consults.",
-    icon: Calendar,
-    bullets: [
-      "Smart CRM with automated lead scoring",
+      "7-specialty AI chat trained on your clinic’s voice, every channel, 24/7",
+      "Email & SMS sequences that feel human",
+      "Smart lead scoring + unified inbox",
       "Integrated booking and calendar sync",
-      "Campaign builder with pre-built fertility playbooks",
       "Pipeline management your team will actually use",
+      "Multi-language (English, Spanish, Portuguese)",
     ],
+    accent: "text-primary",
+    accentSoft: "bg-primary/12",
+    bullet: "bg-primary",
   },
   {
-    label: "RETAIN",
+    label: "GROW",
     tagline: "Keep patients and build referral flywheels.",
-    icon: Heart,
+    icon: TrendingUp,
     bullets: [
       "Review AI that turns happy patients into marketing",
       "Nurture sequences for every patient stage",
       "ChartAI medical records retrieval",
       "EHR integration (ModMed and more)",
     ],
+    accent: "text-[#E95931]",
+    accentSoft: "bg-[#E95931]/12",
+    bullet: "bg-[#E95931]",
   },
 ];
 
@@ -60,58 +66,79 @@ const PatientJourney = () => {
   return (
     <section id="patient-journey" className="bg-background py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-12 md:mb-16"
+        >
           <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
-            The Operating System
+            How The Team Works
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6">
-            Everything else a modern clinic runs on, in one place.
+            Drive. Capture. Grow.
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto italic">
-            Your AI staff doesn&apos;t work in a vacuum. They run on the same
-            operating system that handles your conversations, ads, automations,
-            and patient data &mdash; so what they research, draft, and send is
-            always tied to the rest of your clinic&apos;s work.
+            Three pillars, one platform. Your AI team drives patients in,
+            captures every inquiry the second it lands, and grows the
+            relationships that turn into referrals.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 4-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stages.map((stage) => {
-            const Icon = stage.icon;
+        {/* 3-column ascent: DRIVE → CAPTURE → GROW */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:items-end">
+          {pillars.map((pillar, index) => {
+            const Icon = pillar.icon;
+            // Visual ascent on desktop: each pillar steps up toward the summit
+            const ascent = ["md:mt-12", "md:mt-6", "md:mt-0"][index];
             return (
-              <div
-                key={stage.label}
-                className="bg-card rounded-2xl border border-border p-8 shadow-card flex flex-col"
+              <motion.div
+                key={pillar.label}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.12,
+                  ease: "easeOut",
+                }}
+                className={`bg-card rounded-2xl border border-border p-7 md:p-8 shadow-card flex flex-col ${ascent}`}
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
+                <div
+                  className={`w-10 h-10 rounded-lg ${pillar.accentSoft} flex items-center justify-center mb-4`}
+                >
+                  <Icon
+                    className={`w-5 h-5 ${pillar.accent}`}
+                    aria-hidden="true"
+                  />
                 </div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary mb-2">
-                  {stage.label}
+                <p
+                  className={`text-xs font-bold uppercase tracking-[0.18em] ${pillar.accent} mb-2`}
+                >
+                  {pillar.label}
                 </p>
-                <p className="italic text-foreground mb-5">{stage.tagline}</p>
+                <p className="italic text-foreground mb-5">{pillar.tagline}</p>
                 <ul className="space-y-3 text-sm md:text-base text-muted-foreground">
-                  {stage.bullets.map((bullet) => (
+                  {pillar.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-2 leading-snug">
                       <span
-                        className="mt-2 w-1.5 h-1.5 rounded-full bg-accent-orange flex-shrink-0"
+                        className={`mt-2 w-1.5 h-1.5 rounded-full ${pillar.bullet} flex-shrink-0`}
                         aria-hidden="true"
                       />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Footer */}
         <p className="mt-16 text-center text-lg text-muted-foreground max-w-3xl mx-auto">
-          Every module is built into one platform. Everything talks to everything.
-          No Zapier. No integration fees. No &ldquo;that&rsquo;s on our roadmap.&rdquo;
+          Every module is built into one platform. Everything talks to
+          everything. No Zapier. No integration fees. No &ldquo;that&rsquo;s on
+          our roadmap.&rdquo;
         </p>
       </div>
     </section>

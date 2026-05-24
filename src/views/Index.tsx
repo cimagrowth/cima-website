@@ -2,10 +2,11 @@
 
 import Hero from "@/components/home/Hero";
 import Reframe from "@/components/home/Reframe";
-import TheLeakageProblem from "@/components/home/TheLeakageProblem";
-import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
-import PositioningBand from "@/components/home/PositioningBand";
+import AIGrowthTeam from "@/components/home/AIGrowthTeam";
 import PatientJourney from "@/components/home/PatientJourney";
+import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
+import TheLeakageProblem from "@/components/home/TheLeakageProblem";
+import PositioningBand from "@/components/home/PositioningBand";
 import StackReplacement from "@/components/home/StackReplacement";
 import SocialProof from "@/components/home/SocialProof";
 import Problem from "@/components/home/Problem";
@@ -22,11 +23,12 @@ const Index = () => {
     <>
       <Hero />
       <Reframe />
+      <AIGrowthTeam />
+      <PatientJourney />
+      <HowGrowthOSStopsTheLeak />
       <TheLeakageProblem />
       <Solution />
       <PositioningBand />
-      <HowGrowthOSStopsTheLeak />
-      <PatientJourney />
       <StackReplacement />
       <Problem />
       <ValueStack />
