@@ -5,6 +5,7 @@ import Reframe from "@/components/home/Reframe";
 import AIGrowthTeam from "@/components/home/AIGrowthTeam";
 import PatientJourney from "@/components/home/PatientJourney";
 import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
+import Compliance from "@/components/home/Compliance";
 import TheLeakageProblem from "@/components/home/TheLeakageProblem";
 import PositioningBand from "@/components/home/PositioningBand";
 import StackReplacement from "@/components/home/StackReplacement";
@@ -26,6 +27,7 @@ const Index = () => {
       <AIGrowthTeam />
       <PatientJourney />
       <HowGrowthOSStopsTheLeak />
+      <Compliance />
       <TheLeakageProblem />
       <Solution />
       <PositioningBand />
