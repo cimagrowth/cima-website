@@ -2,66 +2,224 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Zap, MessageCircle, Brain, UserCheck, Inbox, GitBranch, Settings, RefreshCw, BarChart3, ArrowRight, Plug, Layers, Replace } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Check,
+  Users,
+  GitBranch,
+  Gauge,
+  Inbox,
+  Workflow,
+  CalendarCheck,
+  LayoutTemplate,
+  Mail,
+  BarChart3,
+  Smartphone,
+  Webhook,
+  Replace,
+  Layers,
+  Plug,
+  X,
+  Minus,
+} from "lucide-react";
+
+type Capability = {
+  icon: typeof Users;
+  title: string;
+  body: string;
+};
+
+const capabilities: Capability[] = [
+  {
+    icon: Users,
+    title: "Contacts & data",
+    body: "Unified contact records, custom fields, segmentation, and tags.",
+  },
+  {
+    icon: GitBranch,
+    title: "Pipelines",
+    body: "Visual pipelines, custom stages, drag-and-drop, multiple pipelines.",
+  },
+  {
+    icon: Gauge,
+    title: "Lead scoring",
+    body: "Behavioral and automated lead scoring out of the box.",
+  },
+  {
+    icon: Inbox,
+    title: "Unified inbox",
+    body: "Web chat, SMS, WhatsApp, email, Facebook and Instagram DMs in one place.",
+  },
+  {
+    icon: Workflow,
+    title: "Automations",
+    body: "Sequences, triggers, and a full workflow builder.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Booking",
+    body: "Calendar sync, appointment types, and booking on your real calendar.",
+  },
+  {
+    icon: LayoutTemplate,
+    title: "Forms & landing pages",
+    body: "Lead capture forms and conversion landing pages.",
+  },
+  {
+    icon: Mail,
+    title: "Email & SMS",
+    body: "Sending, sequences, templates, and approvals.",
+  },
+  {
+    icon: BarChart3,
+    title: "Reporting & analytics",
+    body: "Pipeline and funnel reporting, performance dashboards.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile + desktop apps",
+    body: "Same inbox and pipelines, wherever your team works.",
+  },
+  {
+    icon: Webhook,
+    title: "API / webhooks",
+    body: "Integrate with anything in your stack.",
+  },
+];
+
+type CompareValue = "yes" | "no" | "limited" | "manual" | "workarounds" | string;
+
+type CompareRow = {
+  label: string;
+  growthos: CompareValue;
+  hubspot: CompareValue;
+  ghl: CompareValue;
+};
+
+const compareRows: CompareRow[] = [
+  {
+    label: "Built specifically for healthcare clinics",
+    growthos: "yes",
+    hubspot: "no",
+    ghl: "no",
+  },
+  {
+    label: "HIPAA-grade PHI handling + BAA",
+    growthos: "yes",
+    hubspot: "Limited / add-on",
+    ghl: "Workarounds",
+  },
+  {
+    label: "A2P 10DLC + clinical consent built in",
+    growthos: "yes",
+    hubspot: "Manual",
+    ghl: "Manual",
+  },
+  {
+    label: "EHR / EMR integration (ModMed, etc.)",
+    growthos: "yes",
+    hubspot: "no",
+    ghl: "no",
+  },
+  {
+    label: "Clinical AI guardrails by specialty",
+    growthos: "yes",
+    hubspot: "no",
+    ghl: "no",
+  },
+  {
+    label: "AI actually runs ads / outreach / follow-up for you",
+    growthos: "yes",
+    hubspot: "no",
+    ghl: "no",
+  },
+  {
+    label: "Pre-built for your specialty (live in ~24h)",
+    growthos: "yes",
+    hubspot: "Weeks + agency",
+    ghl: "Weeks + agency",
+  },
+  {
+    label: "Contacts, pipelines, scoring, reporting",
+    growthos: "yes",
+    hubspot: "yes",
+    ghl: "yes",
+  },
+  {
+    label: "Replaces your marketing agency",
+    growthos: "yes",
+    hubspot: "no",
+    ghl: "no",
+  },
+];
+
+const renderCell = (value: CompareValue) => {
+  if (value === "yes") {
+    return (
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-accent-orange/15 text-accent-orange">
+        <Check className="w-4 h-4" aria-label="Yes" />
+      </span>
+    );
+  }
+  if (value === "no") {
+    return (
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-muted text-muted-foreground/70">
+        <X className="w-4 h-4" aria-label="No" />
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+      <Minus className="w-3.5 h-3.5" aria-hidden="true" />
+      {value}
+    </span>
+  );
+};
+
+type Mode = {
+  icon: typeof Replace;
+  title: string;
+  subtitle: string;
+  description: string;
+  featured?: boolean;
+};
+
+const modes: Mode[] = [
+  {
+    icon: Layers,
+    title: "Transition Mode",
+    subtitle: "Switch on your schedule",
+    description:
+      "Already on HubSpot, Salesforce, GoHighLevel, or Tebra? We migrate you at your pace while GrowthOS does the heavy lifting — your team keeps working in familiar tools as the AI runs underneath.",
+    featured: true,
+  },
+  {
+    icon: Plug,
+    title: "Integration Mode",
+    subtitle: "Keep your CRM, add the team",
+    description:
+      "GrowthOS sits on top of your existing CRM via API. Pick the AI capabilities you need — front desk, nurture, ads, outreach — and leave your records and reporting where they live today.",
+  },
+  {
+    icon: Replace,
+    title: "Full Platform",
+    subtitle: "Replace the patchwork entirely",
+    description:
+      "GrowthOS becomes your complete patient growth infrastructure — contacts, pipelines, inbox, automations, ads, and reporting in one place, run by the AI team.",
+  },
+];
+
+const integrations = [
+  "HubSpot",
+  "Salesforce",
+  "Zoho",
+  "Keap",
+  "Tebra",
+  "DearDoc",
+];
 
 const Product = () => {
-  const aiEngine = [
-    {
-      icon: Zap,
-      title: "Instant response",
-      description: "Every inquiry gets immediate engagement, no matter when it comes in.",
-    },
-    {
-      icon: MessageCircle,
-      title: "Automated nurturing",
-      description: "Follow-up continues over days or weeks without manual effort.",
-    },
-    {
-      icon: Brain,
-      title: "Clinic voice + rules",
-      description: "The AI communicates using your approved messaging and tone.",
-    },
-    {
-      icon: UserCheck,
-      title: "Staff handoff with context",
-      description: "When patients are ready, your team steps in with the full conversation.",
-    },
-  ];
-
-  const systemModules = [
-    {
-      icon: Inbox,
-      title: "Unified inbox (AI + staff)",
-      description: "All patient conversations in one place so nothing slips.",
-      features: ["Multi-channel aggregation", "Conversation threading", "Team assignment"],
-    },
-    {
-      icon: GitBranch,
-      title: "Pipelines and patient journeys",
-      description: "Clear stages so every lead is tracked and managed properly.",
-      features: ["Custom stage configuration", "Automatic progression", "Stale lead alerts"],
-    },
-    {
-      icon: Settings,
-      title: "Follow-up rules and automations",
-      description: "Set the standards once. The system enforces them daily.",
-      features: ["Missed-call text back", "Appointment reminders", "No-show sequences"],
-    },
-    {
-      icon: RefreshCw,
-      title: "Reactivation campaigns",
-      description: "Bring cold leads back with scheduled SMS and email outreach.",
-      features: ["Segmented targeting", "Multi-touch sequences", "Response tracking"],
-    },
-    {
-      icon: BarChart3,
-      title: "Reporting and visibility",
-      description: "See response speed, conversion movement, and where patients drop off.",
-      features: ["Source attribution", "Stage conversion rates", "Team performance"],
-    },
-  ];
-
   return (
     <>
       {/* Hero */}
@@ -76,220 +234,329 @@ const Product = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
-            <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
-              GrowthOS is the AI follow-up engine{" "}
-              <span className="text-gradient-accent">plus the platform your clinic runs it on.</span>
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+              The Platform
+            </p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight tracking-tight">
+              Everything a CRM does.{" "}
+              <span className="text-gradient-accent">
+                None of the work it makes you do.
+              </span>
             </h1>
-            <p className="text-body-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-              Instant response, consistent nurturing, and clean staff handoff — powered by a
-              custom-trained AI. Works with your existing CRM or becomes your complete infrastructure.
-              Use the pieces that matter, or adopt the full platform.
+            <p className="text-base md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+              GrowthOS has the contacts, pipelines, scoring, inbox, and
+              reporting you&rsquo;d expect &mdash; plus an AI team that
+              actually does the work inside them. Most clinics realize they
+              don&rsquo;t need a separate CRM at all.
             </p>
-            <Link href="/demo">
-              <Button variant="hero" size="xl" className="group">
-                Book a Demo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* AI Engine Section */}
-      <section className="section-padding bg-tan relative overflow-hidden">
-        <div className="container-wide relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              The AI Engine
-            </h2>
-            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
-              A custom-trained AI that responds instantly and nurtures consistently.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {aiEngine.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="card-premium p-6 text-center group"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/demo">
+                <Button variant="hero" size="xl" className="group shadow-glow">
+                  Book a Demo
+                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link href="/sign-up">
+                <Button
+                  variant="hero-outline"
+                  size="xl"
+                  className="border-2 border-secondary text-foreground hover:bg-secondary/15"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-card">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-heading-sm text-foreground mb-2">{item.title}</h3>
-                  <p className="text-body text-muted-foreground">{item.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* System Around It */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-orange/10 rounded-full blur-3xl" />
-
-        <div className="container-wide relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              The System Around It
-            </h2>
-            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
-              Everything your clinic needs to operate with consistency instead of hero effort.
-            </p>
-          </motion.div>
-
-          <div className="space-y-6">
-            {systemModules.map((module, index) => {
-              const Icon = module.icon;
-              const isEven = index % 2 === 0;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="card-elevated p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center hover:shadow-glow transition-all duration-500"
-                >
-                  <div className={isEven ? "" : "md:order-2"}>
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center mb-4 shadow-card">
-                      <Icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-heading text-foreground mb-3">{module.title}</h3>
-                    <p className="text-body-lg text-muted-foreground">{module.description}</p>
-                  </div>
-                  <div className={`bg-gradient-to-br from-accent/50 to-tan rounded-xl p-6 border border-border ${isEven ? "" : "md:order-1"}`}>
-                    <h4 className="text-body-sm font-semibold text-accent-orange uppercase tracking-wider mb-4">
-                      Key Features
-                    </h4>
-                    <ul className="space-y-3">
-                      {module.features.map((feature, fIndex) => (
-                        <motion.li
-                          key={fIndex}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.3, delay: 0.3 + fIndex * 0.1 }}
-                          className="flex items-center gap-3 text-body text-foreground"
-                        >
-                          <span className="w-2 h-2 rounded-full bg-gradient-to-r from-accent-orange to-secondary flex-shrink-0" />
-                          {feature}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Integration Flexibility */}
-      <section className="section-padding bg-tan relative overflow-hidden">
-        <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
-
-        <div className="container-wide relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
-              Fits Your Infrastructure
-            </h2>
-            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
-              Whether you're running enterprise CRMs across multiple locations or managing leads in spreadsheets—GrowthOS adapts.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Plug,
-                title: "Plug-In Mode",
-                subtitle: "Keep your CRM",
-                description: "GrowthOS sits on top of Salesforce, HubSpot, Zoho, or any system. The AI handles patient engagement while your team works in familiar tools.",
-                gradient: "from-primary to-primary-light",
-              },
-              {
-                icon: Layers,
-                title: "Hybrid Mode",
-                subtitle: "Use what matters",
-                description: "Pick the modules you need—AI follow-up, unified inbox, pipelines—and integrate with your existing stack via API.",
-                gradient: "from-secondary to-accent-orange",
-              },
-              {
-                icon: Replace,
-                title: "Full Platform",
-                subtitle: "Replace everything",
-                description: "GrowthOS becomes your complete patient management infrastructure. No more spreadsheets, no more tool juggling.",
-                gradient: "from-accent-orange to-secondary",
-              },
-            ].map((mode, index) => {
-              const Icon = mode.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
-                  className="card-elevated p-6 md:p-8 text-center group hover:shadow-glow transition-all duration-500"
-                >
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${mode.gradient} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-card`}>
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-heading-sm text-foreground mb-1">{mode.title}</h3>
-                  <p className="text-sm font-medium text-accent-orange mb-3">{mode.subtitle}</p>
-                  <p className="text-body text-muted-foreground">{mode.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* CRM Logos */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
-          >
-            <p className="text-sm text-muted-foreground mb-6">Integrates with the tools you already use</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-60">
-              <span className="text-lg font-semibold text-foreground">Salesforce</span>
-              <span className="text-lg font-semibold text-foreground">HubSpot</span>
-              <span className="text-lg font-semibold text-foreground">Zoho</span>
-              <span className="text-lg font-semibold text-foreground">Keap</span>
-              <span className="text-lg font-semibold text-foreground">+ API</span>
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Feature parity grid */}
+      <section
+        id="feature-parity"
+        className="py-20 md:py-28 bg-tan relative overflow-hidden"
+      >
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
+          >
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+              The Boxes You Came To Check
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+              Everything you&rsquo;d verify on a CRM switcher checklist.
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              The fundamentals are all here. No surprises mid-migration, no
+              &ldquo;that&rsquo;s on our roadmap.&rdquo;
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
+            {capabilities.map((cap, index) => {
+              const Icon = cap.icon;
+              return (
+                <motion.div
+                  key={cap.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{
+                    duration: 0.45,
+                    delay: index * 0.04,
+                    ease: "easeOut",
+                  }}
+                  className="bg-card rounded-2xl border border-border p-6 shadow-card flex gap-4"
+                >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon
+                      className="w-5 h-5 text-primary"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-base md:text-lg font-bold text-foreground mb-1 leading-snug">
+                      {cap.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {cap.body}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* The pivot */}
+      <section
+        id="system-of-action"
+        className="bg-background py-20 md:py-28 relative overflow-hidden"
+      >
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="relative pl-6 md:pl-10 border-l-2 border-accent-orange/70">
+              <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+                System Of Action
+              </p>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+                But a CRM is{" "}
+                <span className="text-gradient-accent">
+                  a filing cabinet you fill by hand.
+                </span>
+              </h2>
+              <p className="text-base md:text-lg text-foreground leading-relaxed">
+                Every CRM gives you the boxes. Then it hands you the work
+                &mdash; someone still has to run the ads, answer the inquiry,
+                send the seventh follow-up, ask for the review, and keep the
+                records clean. GrowthOS is the only one where the records fill
+                themselves, because an AI team is already doing the work that
+                creates them.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Comparison table */}
+      <section
+        id="comparison"
+        className="py-20 md:py-28 bg-tan relative overflow-hidden"
+      >
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
+          >
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+              Stack Up
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+              GrowthOS vs HubSpot vs GoHighLevel
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              The basics are a tie. The healthcare depth and the work-done-for-you aren&rsquo;t.
+            </p>
+          </motion.div>
+
+          <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border shadow-card bg-card">
+            <table className="w-full text-sm md:text-base min-w-[640px]">
+              <thead>
+                <tr className="border-b border-border bg-primary text-primary-foreground">
+                  <th
+                    scope="col"
+                    className="text-left font-semibold px-4 md:px-6 py-4 rounded-tl-2xl"
+                  >
+                    Capability
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-center font-semibold px-3 md:px-6 py-4 bg-primary"
+                  >
+                    GrowthOS
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-center font-semibold px-3 md:px-6 py-4"
+                  >
+                    HubSpot
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-center font-semibold px-3 md:px-6 py-4 rounded-tr-2xl"
+                  >
+                    GoHighLevel
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {compareRows.map((row, i) => (
+                  <tr
+                    key={row.label}
+                    className={
+                      i < compareRows.length - 1
+                        ? "border-b border-border/60"
+                        : ""
+                    }
+                  >
+                    <td className="px-4 md:px-6 py-4 text-foreground font-medium">
+                      {row.label}
+                    </td>
+                    <td className="px-3 md:px-6 py-4 text-center bg-primary/[0.04]">
+                      {renderCell(row.growthos)}
+                    </td>
+                    <td className="px-3 md:px-6 py-4 text-center">
+                      {renderCell(row.hubspot)}
+                    </td>
+                    <td className="px-3 md:px-6 py-4 text-center">
+                      {renderCell(row.ghl)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="mt-6 text-center text-xs md:text-sm text-muted-foreground italic">
+            Cells reflect typical out-of-the-box capability for a healthcare
+            clinic; some HubSpot and GoHighLevel items can be approximated with
+            paid add-ons, custom builds, or third-party tools.
+          </p>
+        </div>
+      </section>
+
+      {/* Migration / modes */}
+      <section
+        id="migration"
+        className="py-20 md:py-28 bg-background relative overflow-hidden"
+      >
+        <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-[10%] w-64 h-64 bg-accent-orange/10 rounded-full blur-3xl" />
+
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
+          >
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+              Migration
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+              Switch on your schedule.
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Three ways to roll out, depending on what you&rsquo;re running today.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            {modes.map((mode, index) => {
+              const Icon = mode.icon;
+              return (
+                <motion.div
+                  key={mode.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.12,
+                    ease: "easeOut",
+                  }}
+                  className={`relative card-elevated p-7 md:p-8 text-center group hover:shadow-glow transition-all duration-500 ${
+                    mode.featured ? "ring-2 ring-accent-orange" : ""
+                  }`}
+                >
+                  {mode.featured && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-orange text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      Most Popular
+                    </div>
+                  )}
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-card">
+                    <Icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                  </div>
+                  <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-1">
+                    {mode.title}
+                  </h3>
+                  <p
+                    className={`text-sm font-medium mb-4 ${
+                      mode.featured ? "text-accent-orange" : "text-muted-foreground"
+                    }`}
+                  >
+                    {mode.subtitle}
+                  </p>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {mode.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            className="mt-12 md:mt-14 text-center"
+          >
+            <p className="text-sm text-muted-foreground mb-5">
+              Migrating from or integrating with:
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-10 gap-y-3 opacity-70">
+              {integrations.map((name) => (
+                <span
+                  key={name}
+                  className="text-base md:text-lg font-semibold text-foreground"
+                >
+                  {name}
+                </span>
+              ))}
+              <span className="text-base md:text-lg font-semibold text-foreground">
+                + API
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Closing CTA */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl" />
@@ -299,18 +566,34 @@ const Product = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-heading-lg md:text-display text-primary-foreground mb-6">
-              Ready to see GrowthOS in action?
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-6 leading-tight">
+              See it run on your clinic.
             </h2>
-            <Link href="/demo">
-              <Button variant="hero" size="xl" className="group shadow-glow">
-                Book a Demo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
+            <p className="text-base md:text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+              Twenty minutes. We&rsquo;ll show you the AI team handling real
+              patient inquiries in your specialty &mdash; not a generic demo.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/demo">
+                <Button variant="hero" size="xl" className="group shadow-glow">
+                  Book a Demo
+                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link href="/sign-up">
+                <Button
+                  variant="hero-outline"
+                  size="xl"
+                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                >
+                  Get Started — live in 48 hours
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

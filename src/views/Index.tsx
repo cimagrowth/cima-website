@@ -1,15 +1,16 @@
 'use client';
 
 import Hero from "@/components/home/Hero";
-import TheLeakageProblem from "@/components/home/TheLeakageProblem";
-import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
+import Reframe from "@/components/home/Reframe";
+import AIGrowthTeam from "@/components/home/AIGrowthTeam";
 import PositioningBand from "@/components/home/PositioningBand";
 import PatientJourney from "@/components/home/PatientJourney";
-import StackReplacement from "@/components/home/StackReplacement";
-import SocialProof from "@/components/home/SocialProof";
-import Problem from "@/components/home/Problem";
 import Solution from "@/components/home/Solution";
+import HowGrowthOSStopsTheLeak from "@/components/home/HowGrowthOSStopsTheLeak";
+import Compliance from "@/components/home/Compliance";
+import StackReplacement from "@/components/home/StackReplacement";
 import ValueStack from "@/components/home/ValueStack";
+import SocialProof from "@/components/home/SocialProof";
 import HowItWorks from "@/components/home/HowItWorks";
 import IntegrationFlexibility from "@/components/home/IntegrationFlexibility";
 import FounderLetter from "@/components/home/FounderLetter";
@@ -20,13 +21,14 @@ const Index = () => {
   return (
     <>
       <Hero />
-      <TheLeakageProblem />
-      <Solution />
+      <Reframe />
+      <AIGrowthTeam />
       <PositioningBand />
-      <HowGrowthOSStopsTheLeak />
       <PatientJourney />
+      <Solution />
+      <HowGrowthOSStopsTheLeak />
+      <Compliance />
       <StackReplacement />
-      <Problem />
       <ValueStack />
       <SocialProof />
       <HowItWorks />
