@@ -57,7 +57,7 @@ function getVariant(status: Status, name: string): Variant {
         icon: 'success',
         headline: `You're in, ${displayName}.`,
         subcopy:
-          'Your 47 Frameworks ebook is on its way \u2014 check the email we just sent.',
+          'Your copy of The Seven-Figure Leak is on its way \u2014 check the email we just sent.',
         secondary: 'The email also has a link to your free AI tools dashboard.',
       };
     case 'already_verified':
@@ -65,7 +65,7 @@ function getVariant(status: Status, name: string): Variant {
         icon: 'success',
         headline: `Welcome back, ${displayName}.`,
         subcopy:
-          'Looks like you already verified this email. We just re-sent your ebook and login link \u2014 check your inbox.',
+          'Looks like you already verified this email. We just re-sent your copy of The Seven-Figure Leak and your login link \u2014 check your inbox.',
       };
     case 'invalid_link':
       return {
