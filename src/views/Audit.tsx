@@ -195,7 +195,9 @@ const Audit = () => {
               <p className="text-body-lg text-muted-foreground max-w-2xl mb-6">
                 Three free AI tools that audit your website, your intake
                 response, and your compliance exposure — in the time it takes
-                to make coffee. Built from 15 years inside 100+ fertility,
+                to make coffee. Plus a free copy of{" "}
+                <em>The Seven-Figure Leak</em> — our 108-page patient leakage
+                playbook. Built from 15 years inside 100+ fertility,
                 aesthetics, and wellness practices. No credit card. No sales
                 call. Keep them as long as you want.
               </p>
@@ -420,6 +422,14 @@ const Audit = () => {
             All three tools are free. No trial. No credit card. No expiry.
             Keep using them after the audit.
           </p>
+
+          <p className="text-center text-body text-muted-foreground max-w-3xl mx-auto mt-5">
+            Plus, check the box on the form and I&apos;ll send you{" "}
+            <em>The Seven-Figure Leak</em> (108-page book) — where fertility
+            patients disappear at every stage of the journey, what it costs,
+            and how AI brings them back. All 47 direct-response frameworks
+            included.
+          </p>
         </div>
       </section>
 
@@ -459,8 +469,9 @@ const Audit = () => {
                 — but they still deserve to know what&apos;s broken.
               </p>
               <p>
-                If you want to fix it yourself, these tools plus the 47
-                Frameworks ebook will get you 80% of the way. If you&apos;d
+                If you want to fix it yourself, these tools plus{" "}
+                <em>The Seven-Figure Leak</em> will get you 80% of the way.
+                If you&apos;d
                 rather I do it for you, there&apos;s a way for that too. But
                 that&apos;s a conversation for later. Right now, just run
                 your audit.
@@ -725,8 +736,7 @@ const FormCard = ({
         className="mt-0.5 border-primary data-[state=checked]:bg-accent-orange data-[state=checked]:border-accent-orange data-[state=checked]:text-white"
       />
       <span className="text-body-sm text-foreground/90 group-hover:text-foreground">
-        Also send me the 47 Frameworks ebook — 15 years of what actually
-        works.
+        Send me my free copy of The Seven-Figure Leak (PDF)
       </span>
     </label>
 
