@@ -27,8 +27,11 @@ export async function generateMetadata(
   const canonical = `https://www.cimagrowth.com/blog/${post.slug}`;
   const title = post.meta_title ?? post.title;
   const description = post.meta_description ?? post.excerpt ?? undefined;
-  const images = post.featured_image_url ? [post.featured_image_url] : undefined;
 
+  // NOTE: Intentionally do NOT set openGraph.images / twitter.images here.
+  // The colocated `opengraph-image.tsx` file convention auto-injects the
+  // branded 1200×630 title card as both og:image and twitter:image. Setting
+  // `images` here would clobber that convention.
   return {
     title,
     description,
@@ -41,14 +44,12 @@ export async function generateMetadata(
       siteName: 'Cima Growth Solutions',
       type: 'article',
       publishedTime: post.published_at ?? undefined,
-      images,
       locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images,
     },
   };
 }
