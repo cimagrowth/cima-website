@@ -52,7 +52,12 @@ const Blog = ({ posts }: BlogProps) => {
           {posts.length > 0 ? (
             // TODO: pagination at N>24
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
+              {posts.map((post, index) => {
+                // Manual override (real featured image) always wins; otherwise
+                // fall back to the branded title card from the OG route.
+                const thumb =
+                  post.featured_image_url ?? `/blog/${post.slug}/opengraph-image`;
+                return (
                 <motion.article
                   key={post.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -63,21 +68,13 @@ const Blog = ({ posts }: BlogProps) => {
                     href={`/blog/${post.slug}`}
                     className="card-premium p-0 overflow-hidden block group h-full"
                   >
-                    {post.featured_image_url ? (
-                      <div className="h-48 overflow-hidden">
-                        <img
-                          src={post.featured_image_url}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    ) : (
-                      <div className="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                        <span className="text-6xl font-bold text-primary/20">
-                          {post.title[0]}
-                        </span>
-                      </div>
-                    )}
+                    <div className="h-48 overflow-hidden">
+                      <img
+                        src={thumb}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
 
                     <div className="p-6">
                       <div className="flex items-center gap-4 text-body-sm text-muted-foreground mb-3">
@@ -112,7 +109,8 @@ const Blog = ({ posts }: BlogProps) => {
                     </div>
                   </Link>
                 </motion.article>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <motion.div
