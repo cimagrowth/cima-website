@@ -8,7 +8,7 @@
    All colors in HSL format
 */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&display=swap');
 
 @layer base {
   :root {
@@ -66,6 +66,29 @@
     --sidebar-accent-foreground: 40 33% 96%;
     --sidebar-border: 195 38% 30%;
     --sidebar-ring: 24 95% 53%;
+
+    /* ── Elegant rebrand tokens (brand book, Elegant Edition) ──
+       canvas + ink */
+    --color-cream: #F6EFE3;      /* dominant page background (warm) */
+    --color-paper: #FDFBF7;      /* cards / elevated surfaces */
+    --color-teal: #1B4D5C;       /* anchor: dark sections, headings, 2ndary btn */
+    --color-teal-deep: #143038;  /* body ink (teal-charcoal) */
+    --color-muted: #6E7D7A;      /* secondary text */
+    /* warm */
+    --color-clay: #D2693B;       /* warm PRIMARY button + warm fills */
+    --color-orange: #F97316;     /* ACCENT ONLY: italic hero word, dots, tiny */
+    /* neutrals */
+    --color-sand: #E7DCC8;       /* hairline borders, dividers, quiet fills */
+    --color-mist: #E7EFEC;       /* soft teal panels behind product imagery */
+
+    /* type roles */
+    --font-display: "Fraunces", Georgia, serif;
+    --font-ui: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+
+    /* shape */
+    --shadow: 0 1px 2px rgba(20,48,56,.04), 0 18px 40px -24px rgba(20,48,56,.22);
+    --shadow-sm: 0 1px 2px rgba(20,48,56,.05), 0 8px 22px -16px rgba(20,48,56,.18);
   }
 
   .dark {
@@ -135,8 +158,17 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply antialiased;
+    background: var(--color-cream, #F6EFE3);
+    color: var(--color-teal-deep, #143038);
+    font-family: var(--font-body, "DM Sans"), system-ui, sans-serif;
+    line-height: 1.65;
     font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  ::selection {
+    background: #F6E0CE;
+    color: #143038;
   }
 
   h1, h2, h3, h4, h5, h6 {
