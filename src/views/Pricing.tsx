@@ -76,8 +76,7 @@ const Pricing = () => {
   return (
     <>
       {/* Hero */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial" />
+      <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -85,11 +84,11 @@ const Pricing = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
-            <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
+            <h1 className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6">
               Stop patient leakage with GrowthOS.{" "}
-              <span className="text-gradient-accent">Choose monthly or annual.</span>
+              <span className="italic text-clay">Choose monthly or annual.</span>
             </h1>
-            <p className="text-body-lg text-muted-foreground">
+            <p className="text-body-lg text-teal-deep/80">
               One plan. Full access. No hidden fees or per-lead charges.
             </p>
           </motion.div>
@@ -106,53 +105,53 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className={`rounded-2xl p-8 md:p-10 relative transition-all duration-300 hover:-translate-y-2 ${
+                className={`rounded-xl2 p-8 md:p-10 relative transition-all duration-300 hover:-translate-y-2 ${
                   plan.popular
-                    ? "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-glow"
-                    : "bg-card border-2 border-border shadow-card hover:shadow-elevated"
+                    ? "bg-teal text-paper shadow-[var(--shadow)]"
+                    : "bg-paper border border-sand shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow)]"
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-accent-orange text-white text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-card">
+                    <span className="bg-paper border border-sand text-clay text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-[var(--shadow-sm)]">
                       Best Value
                     </span>
                   </div>
                 )}
 
                 <div className="mb-6">
-                  <h3 className={`text-heading-sm mb-2 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                  <h3 className={`text-heading-sm mb-2 ${plan.popular ? "text-paper" : "text-foreground"}`}>
                     {plan.name}
                   </h3>
-                  <p className={`text-body-sm mb-6 ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  <p className={`text-body-sm mb-6 ${plan.popular ? "text-paper/80" : "text-muted-foreground"}`}>
                     {plan.description}
                   </p>
 
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className={`text-display ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                    <span className={`text-display ${plan.popular ? "text-paper" : "text-foreground"}`}>
                       {plan.price}
                     </span>
-                    <span className={plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}>
+                    <span className={plan.popular ? "text-paper/70" : "text-muted-foreground"}>
                       {plan.period}
                     </span>
                   </div>
-                  <p className={plan.popular ? "text-primary-foreground/70 text-body-sm font-medium" : "text-muted-foreground text-body-sm"}>
+                  <p className={plan.popular ? "text-paper/70 text-body-sm font-medium" : "text-muted-foreground text-body-sm"}>
                     {plan.setup}
                   </p>
 
                   {plan.savings && (
-                    <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-accent-orange/20 border border-accent-orange/30">
-                      <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
-                      <span className="text-body-sm font-semibold text-primary-foreground">
+                    <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-paper/10 ring-1 ring-sand/40">
+                      <Sparkles className="w-4 h-4 text-sand flex-shrink-0" />
+                      <span className="text-body-sm font-semibold text-paper">
                         {plan.savings}
                       </span>
                     </div>
                   )}
 
                   {plan.bonus && (
-                    <div className="mt-3 flex items-center gap-2 p-3 rounded-lg bg-white/10 border border-white/20">
-                      <Sparkles className="w-4 h-4 text-accent-orange flex-shrink-0" />
-                      <span className="text-body-sm font-semibold text-primary-foreground">
+                    <div className="mt-3 flex items-center gap-2 p-3 rounded-lg bg-paper/10 ring-1 ring-sand/40">
+                      <Sparkles className="w-4 h-4 text-sand flex-shrink-0" />
+                      <span className="text-body-sm font-semibold text-paper">
                         {plan.bonus}
                       </span>
                     </div>
@@ -163,11 +162,11 @@ const Pricing = () => {
                   {features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-3">
                       <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        plan.popular ? "bg-accent-orange/20" : "bg-accent-orange/10"
+                        plan.popular ? "bg-paper/10" : "bg-accent-orange/10"
                       }`}>
-                        <Check className="w-3 h-3 text-accent-orange" />
+                        <Check className={`w-3 h-3 ${plan.popular ? "text-sand" : "text-accent-orange"}`} />
                       </div>
-                      <span className={`text-body-sm ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                      <span className={`text-body-sm ${plan.popular ? "text-paper" : "text-foreground"}`}>
                         {feature}
                       </span>
                     </li>
@@ -178,18 +177,14 @@ const Pricing = () => {
                   <Button
                     variant="hero"
                     size="lg"
-                    className={`w-full group ${
-                      plan.popular
-                        ? "bg-accent-orange hover:brightness-110"
-                        : "bg-primary hover:bg-primary-light"
-                    }`}
+                    className="w-full group"
                   >
                     {plan.cta}
                     <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
 
-                <p className={`text-body-sm mt-3 text-center ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                <p className={`text-body-sm mt-3 text-center ${plan.popular ? "text-paper/70" : "text-muted-foreground"}`}>
                   {plan.ctaSubtext}
                 </p>
               </motion.div>
@@ -200,10 +195,10 @@ const Pricing = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="rounded-2xl p-8 md:p-10 relative transition-all duration-300 hover:-translate-y-2 bg-card border-2 border-accent-orange/40 shadow-card hover:shadow-elevated"
+              className="rounded-xl2 p-8 md:p-10 relative transition-all duration-300 hover:-translate-y-2 bg-paper border border-clay/40 shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow)]"
             >
               <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-accent-orange text-white text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-card flex items-center gap-1.5">
+                <span className="bg-paper border border-sand text-clay text-body-sm font-semibold px-5 py-1.5 rounded-full shadow-[var(--shadow-sm)] flex items-center gap-1.5">
                   <Building2 className="w-3.5 h-3.5" />
                   ENTERPRISE
                 </span>
@@ -238,7 +233,7 @@ const Pricing = () => {
               <Button
                 variant="hero"
                 size="lg"
-                className="w-full group bg-accent-orange hover:brightness-110"
+                className="w-full group"
                 onClick={() => setEnterpriseModalOpen(true)}
               >
                 Contact Us to Discuss
@@ -309,10 +304,7 @@ const Pricing = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl" />
-
+      <section className="section-padding bg-teal relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -320,7 +312,7 @@ const Pricing = () => {
             viewport={{ once: true }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-heading-lg text-primary-foreground mb-6">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg text-paper mb-6">
               Ready to stop patient leakage?
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -328,20 +320,20 @@ const Pricing = () => {
                 <Button
                   variant="hero"
                   size="xl"
-                  className="group shadow-glow"
+                  className="group"
                 >
                   Get Started
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/demo">
-                <Button variant="hero-outline" size="xl" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+                <Button variant="hero-outline" size="xl" className="border border-paper/40 bg-transparent text-paper hover:bg-paper/10">
                   Book a Demo First
                 </Button>
               </Link>
             </div>
-            <p className="text-primary-foreground/60 text-sm mt-6">
-              Want to learn more? <Link href="/product" className="underline hover:text-primary-foreground">See how GrowthOS works</Link> or <Link href="/features" className="underline hover:text-primary-foreground">explore all features</Link>.
+            <p className="text-paper/60 text-sm mt-6">
+              Want to learn more? <Link href="/product" className="underline hover:text-paper">See how GrowthOS works</Link> or <Link href="/features" className="underline hover:text-paper">explore all features</Link>.
             </p>
           </motion.div>
         </div>

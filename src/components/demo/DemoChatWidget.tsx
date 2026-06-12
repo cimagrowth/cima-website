@@ -250,7 +250,7 @@ const DemoChatWidget = () => {
               <Button
                 onClick={isMinimized ? handleExpand : () => setIsOpen(true)}
                 variant="hero"
-                className="h-auto py-4 px-3 rounded-l-xl rounded-r-none shadow-glow flex flex-col gap-2 items-center"
+                className="h-auto py-4 px-3 rounded-l-xl rounded-r-none flex flex-col gap-2 items-center"
               >
                 <MessageCircle className="h-5 w-5" />
                 <span className="text-xs font-medium writing-mode-vertical" style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}>
@@ -270,7 +270,7 @@ const DemoChatWidget = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed z-50 bg-card border border-border shadow-glow overflow-hidden flex flex-col overscroll-contain
+            className="fixed z-50 bg-card border border-border shadow-[var(--shadow)] overflow-hidden flex flex-col overscroll-contain
               top-3 left-3 right-3 bottom-[env(safe-area-inset-bottom,16px)] pb-[env(safe-area-inset-bottom,0px)] rounded-xl max-h-[calc(100dvh-24px)]
               sm:inset-auto sm:right-6 sm:bottom-6 sm:top-auto sm:w-[400px] sm:h-[600px] sm:max-h-[calc(100vh-48px)] sm:rounded-2xl sm:pb-0"
             style={{ transformOrigin: "bottom right" }}

@@ -40,20 +40,20 @@ const Footer = () => {
 
   return (
     <>
-      {/* Pre-footer CTA */}
-      <section className="bg-accent-orange py-14 md:py-20">
+      {/* Pre-footer CTA — teal anchor block */}
+      <section className="bg-teal py-[clamp(80px,10vw,140px)]">
         <div className="container-wide text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-5">
             Every day without GrowthOS is another day of patients choosing the clinic that responded first.
           </h2>
-          <p className="text-base md:text-lg text-white/80 max-w-xl mx-auto mb-8">
+          <p className="text-base md:text-lg text-paper/80 max-w-xl mx-auto mb-10">
             See results in 30 days or we'll work with you until you do. No setup fee. Live in 48 hours.
           </p>
           <div className="flex justify-center">
             <Link href="/demo">
               <Button
                 size="lg"
-                className="bg-white text-accent-orange hover:bg-white/90 font-semibold group"
+                className="bg-clay text-paper hover:bg-clay/90 font-semibold group"
               >
                 Book a Demo
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -89,7 +89,7 @@ const Footer = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-accent-orange hover:text-white transition-all duration-300"
+                      className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-clay transition-all duration-300"
                       aria-label={social.label}
                     >
                       <Icon className="w-5 h-5" />
@@ -109,7 +109,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-sand transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -128,7 +128,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-sand transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -147,7 +147,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm md:text-base text-primary-foreground/70 hover:text-accent-orange transition-colors"
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-sand transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -166,26 +166,26 @@ const Footer = () => {
             <div className="flex gap-6">
               <Link
                 href="/privacy"
-                className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
+                className="text-sm text-primary-foreground/50 hover:text-sand transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
+                className="text-sm text-primary-foreground/50 hover:text-sand transition-colors"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/refund-policy"
-                className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
+                className="text-sm text-primary-foreground/50 hover:text-sand transition-colors"
               >
                 Refund Policy
               </Link>
               <button
                 type="button"
                 onClick={() => window.reopenCookieConsent?.()}
-                className="text-sm text-primary-foreground/50 hover:text-accent-orange transition-colors"
+                className="text-sm text-primary-foreground/50 hover:text-sand transition-colors"
               >
                 Cookie Preferences
               </button>

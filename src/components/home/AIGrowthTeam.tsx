@@ -73,10 +73,10 @@ const pillarStyles: Record<
     iconText: "text-primary",
   },
   GROW: {
-    bg: "bg-[#E95931]/10",
-    text: "text-[#E95931]",
-    iconBg: "bg-[#E95931]/12",
-    iconText: "text-[#E95931]",
+    bg: "bg-[#D2693B]/10",
+    text: "text-[#D2693B]",
+    iconBg: "bg-[#D2693B]/12",
+    iconText: "text-[#D2693B]",
   },
 };
 
@@ -84,7 +84,7 @@ const AIGrowthTeam = () => {
   return (
     <section
       id="ai-growth-team"
-      className="bg-background py-20 md:py-28 relative overflow-hidden"
+      className="bg-background section-padding relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         <motion.div
@@ -94,10 +94,10 @@ const AIGrowthTeam = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
         >
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+          <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
             The Team
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+          <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
             A growth team that never sleeps, never quits, and{" "}
             <span className="text-gradient-accent">
               never lets a lead go cold.
@@ -126,7 +126,7 @@ const AIGrowthTeam = () => {
                   delay: index * 0.08,
                   ease: "easeOut",
                 }}
-                className="bg-card rounded-2xl border border-border p-7 md:p-8 shadow-card flex flex-col h-full"
+                className="bg-paper rounded-xl2 border border-sand p-7 md:p-8 shadow-[var(--shadow-sm)] flex flex-col h-full"
               >
                 <div className="flex items-center justify-between mb-5">
                   <div
@@ -143,7 +143,7 @@ const AIGrowthTeam = () => {
                     {role.pillar}
                   </span>
                 </div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3 leading-snug">
+                <h3 className="font-ui text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug">
                   {role.title}
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">

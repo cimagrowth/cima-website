@@ -45,7 +45,7 @@ const UseCases = () => {
   ];
 
   return (
-    <section id="use-cases" ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="use-cases" ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
       {/* Parallax decoration - hidden on mobile */}
       <motion.div 
         style={{ y: y1, opacity: opacity1 }}

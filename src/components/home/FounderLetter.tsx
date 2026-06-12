@@ -2,13 +2,13 @@
 
 const FounderLetter = () => {
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-background relative">
+    <section className="section-padding bg-background relative">
       {/* Subtle side accent - hidden on mobile */}
       <div className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-gradient-to-b from-transparent via-accent-orange to-transparent hidden md:block" />
 
       <div className="container-tight relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto">
-          <h3 className="text-xs md:text-sm font-semibold text-accent-orange uppercase tracking-widest mb-6 md:mb-8">
+          <h3 className="font-ui text-xs md:text-sm font-semibold text-clay uppercase tracking-[.16em] mb-6 md:mb-8">
             Why I Built This
           </h3>
 

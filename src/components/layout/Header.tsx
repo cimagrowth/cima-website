@@ -4,14 +4,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
-import { useTheme } from "@/contexts/ThemeContext";
 import cimaLogoLightImg from "@/assets/cima-logo-light.png";
-import cimaLogoDarkImg from "@/assets/cima-logo-dark.png";
 
 const cimaLogoLight = typeof cimaLogoLightImg === 'string' ? cimaLogoLightImg : cimaLogoLightImg.src;
-const cimaLogoDark = typeof cimaLogoDarkImg === 'string' ? cimaLogoDarkImg : cimaLogoDarkImg.src;
 
 type NavLink = {
   href: string;
@@ -24,7 +21,6 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,15 +72,11 @@ const Header = () => {
     }
   };
 
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-card"
+          ? "bg-cream/90 backdrop-blur-md border-b border-sand"
           : "bg-transparent"
       }`}
     >
@@ -102,15 +94,8 @@ const Header = () => {
               }}
               className="relative"
             >
-              {/* Glow effect */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 0.6, 0.3] }}
-                transition={{ duration: 1.5, delay: 0.3 }}
-                className="absolute inset-0 blur-xl bg-accent-orange/30 rounded-full scale-150"
-              />
               <img
-                src={resolvedTheme === "dark" ? cimaLogoDark : cimaLogoLight}
+                src={cimaLogoLight}
                 alt="Cima Growth Solutions logo"
                 className="h-8 md:h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105"
               />
@@ -124,10 +109,10 @@ const Header = () => {
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link)}
-                  className={`text-sm font-medium transition-all duration-300 relative ${
+                  className={`font-ui text-sm font-medium transition-all duration-300 relative ${
                     isActive(link.href)
-                      ? "text-accent-orange"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-teal-deep"
+                      : "text-teal-deep/75 hover:text-teal"
                   }`}
                 >
                   {link.label}
@@ -136,37 +121,26 @@ const Header = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-all duration-300 relative ${
+                  className={`font-ui text-sm font-medium transition-all duration-300 relative ${
                     isActive(link.href)
-                      ? "text-accent-orange"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-teal-deep"
+                      : "text-teal-deep/75 hover:text-teal"
                   }`}
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-orange rounded-full" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-clay rounded-full" />
                   )}
                 </Link>
               )
             ))}
           </nav>
 
-          {/* Desktop CTA + Theme Toggle */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-lg bg-accent hover:bg-accent/80 text-accent-foreground transition-all duration-300 hover:scale-105"
-              aria-label="Toggle theme"
-            >
-              {resolvedTheme === "dark" ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
             <Link
               href="/sign-up"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="font-ui text-sm font-medium text-teal-deep/75 hover:text-teal transition-colors"
             >
               Get Started
             </Link>
@@ -177,21 +151,10 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button + Theme Toggle */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-1">
             <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-lg bg-accent text-accent-foreground transition-colors"
-              aria-label="Toggle theme"
-            >
-              {resolvedTheme === "dark" ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-            <button
-              className="p-2.5 text-foreground transition-colors hover:text-accent-orange"
+              className="p-2.5 text-teal-deep transition-colors hover:text-teal"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -205,16 +168,16 @@ const Header = () => {
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${
         isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
       }`}>
-        <nav className="bg-background border-b border-border px-4 py-4 flex flex-col gap-1">
+        <nav className="bg-cream border-b border-sand px-4 py-4 flex flex-col gap-1">
           {navLinks.map((link) => (
             link.isAnchor ? (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link)}
-                className={`text-base font-medium py-3 px-3 rounded-lg transition-colors text-left ${
+                className={`font-ui text-base font-medium py-3 px-3 rounded-lg transition-colors text-left ${
                   isActive(link.href)
-                    ? "text-accent-orange bg-accent-orange/10"
-                    : "text-foreground hover:bg-muted"
+                    ? "text-teal-deep bg-sand/50"
+                    : "text-teal-deep hover:bg-sand/30"
                 }`}
               >
                 {link.label}
@@ -224,10 +187,10 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-base font-medium py-3 px-3 rounded-lg transition-colors ${
+                className={`font-ui text-base font-medium py-3 px-3 rounded-lg transition-colors ${
                   isActive(link.href)
-                    ? "text-accent-orange bg-accent-orange/10"
-                    : "text-foreground hover:bg-muted"
+                    ? "text-teal-deep bg-sand/50"
+                    : "text-teal-deep hover:bg-sand/30"
                 }`}
               >
                 {link.label}

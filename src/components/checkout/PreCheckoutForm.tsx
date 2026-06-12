@@ -153,7 +153,7 @@ const PreCheckoutForm = ({ open, onClose, onSubmit, planName, isLoading }: PreCh
                     <Checkbox
                       checked={field.value === true}
                       onCheckedChange={(checked) => field.onChange(checked === true ? true : undefined)}
-                      className="border-white data-[state=checked]:bg-accent-orange data-[state=checked]:border-accent-orange"
+                      className="border-primary data-[state=checked]:bg-accent-orange data-[state=checked]:border-accent-orange"
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
@@ -182,7 +182,7 @@ const PreCheckoutForm = ({ open, onClose, onSubmit, planName, isLoading }: PreCh
               type="submit"
               variant="hero"
               size="lg"
-              className="w-full bg-accent-orange hover:brightness-110 mt-4 group"
+              className="w-full mt-4 group"
               disabled={isLoading}
             >
               {isLoading ? (

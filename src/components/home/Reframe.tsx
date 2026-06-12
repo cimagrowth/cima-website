@@ -6,7 +6,7 @@ const Reframe = () => {
   return (
     <section
       id="reframe"
-      className="bg-background py-20 md:py-28 relative overflow-hidden"
+      className="bg-background section-padding relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -17,10 +17,10 @@ const Reframe = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative pl-6 md:pl-10 border-l-2 border-accent-orange/70"
           >
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+            <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               The Real Problem
             </p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-8 md:mb-10">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-8 md:mb-10">
               Your growth shouldn&rsquo;t depend on someone{" "}
               <span className="text-gradient-accent">
                 remembering to do it.

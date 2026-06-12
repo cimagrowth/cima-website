@@ -20,7 +20,7 @@ const SubscriptionSuccess = () => {
               <CheckCircle className="w-10 h-10 text-accent-orange" />
             </div>
 
-            <h1 className="text-display-lg text-foreground mb-4">
+            <h1 className="font-display font-[340] tracking-tight text-display-lg text-foreground mb-4">
               Thank You for Signing Up
             </h1>
 

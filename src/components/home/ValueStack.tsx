@@ -60,7 +60,7 @@ const ValueStack = () => {
   return (
     <section
       id="pricing"
-      className="py-20 md:py-28 lg:py-32 bg-background relative overflow-hidden scroll-mt-20"
+      className="section-padding bg-background relative overflow-hidden scroll-mt-20"
     >
       <div className="container-wide relative z-10">
         {/* Lead-in headline */}
@@ -71,10 +71,10 @@ const ValueStack = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-3xl mx-auto text-center mb-12 md:mb-16"
         >
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+          <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
             Pricing
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground mb-4">
             One price. One login. One AI team.
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -96,10 +96,10 @@ const ValueStack = () => {
                 delay: index * 0.12,
                 ease: "easeOut",
               }}
-              className={`relative rounded-2xl p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 ${
+              className={`relative rounded-xl2 p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 ${
                 plan.popular
-                  ? "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-glow"
-                  : "bg-card border-2 border-border shadow-card hover:shadow-elevated"
+                  ? "bg-teal text-paper shadow-[var(--shadow)]"
+                  : "bg-paper border border-sand shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow)]"
               }`}
             >
               {plan.popular && (
@@ -130,7 +130,7 @@ const ValueStack = () => {
 
                 <div className="flex items-baseline gap-1 mb-2">
                   <span
-                    className={`font-display text-4xl md:text-5xl font-bold ${
+                    className={`font-ui text-4xl md:text-5xl font-bold ${
                       plan.popular ? "text-primary-foreground" : "text-foreground"
                     }`}
                   >
@@ -212,7 +212,7 @@ const ValueStack = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="max-w-3xl mx-auto bg-card rounded-2xl border border-border shadow-card p-6 md:p-8 mb-8"
+          className="max-w-3xl mx-auto bg-paper rounded-xl2 border border-sand shadow-[var(--shadow-sm)] p-6 md:p-8 mb-8"
         >
           <p className="text-center text-sm md:text-base font-semibold text-foreground mb-5">
             Everything your AI team does, included in both plans:
@@ -240,7 +240,7 @@ const ValueStack = () => {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/sign-up">
-            <Button variant="hero" size="lg" className="group shadow-glow">
+            <Button variant="hero" size="lg" className="group">
               Get Started
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>

@@ -39,7 +39,7 @@ const IntegrationFlexibility = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section className="section-padding bg-background relative overflow-hidden">
       <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-[10%] w-64 h-64 bg-accent-orange/10 rounded-full blur-3xl" />
 
@@ -67,7 +67,7 @@ const IntegrationFlexibility = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className={`card-elevated p-6 md:p-8 text-center group hover:shadow-glow transition-all duration-500 relative ${
+                className={`card-elevated p-6 md:p-8 text-center group transition-all duration-500 relative ${
                   mode.featured ? "ring-2 ring-accent-orange" : ""
                 }`}
               >

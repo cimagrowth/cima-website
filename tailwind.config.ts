@@ -15,9 +15,22 @@ export default {
     extend: {
       fontFamily: {
         sans: ["DM Sans", "system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        display: ["Plus Jakarta Sans", "DM Sans", "system-ui", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+        ui: ["Plus Jakarta Sans", "DM Sans", "system-ui", "sans-serif"],
+        body: ["DM Sans", "system-ui", "sans-serif"],
       },
       colors: {
+        cream: "#F6EFE3",
+        paper: "#FDFBF7",
+        teal: "#1B4D5C",
+        "teal-deep": "#143038",
+        clay: "#D2693B",
+        orange: {
+          DEFAULT: "#F97316",
+          600: "#EA580C",
+        },
+        sand: "#E7DCC8",
+        mist: "#E7EFEC",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -76,6 +89,8 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl2: "18px",
+        btn: "11px",
       },
       fontSize: {
         "display-xl": ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.03em" }],

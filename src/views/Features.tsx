@@ -72,7 +72,7 @@ const SectionHeader = ({
     <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
       {label}
     </span>
-    <h2 className={`text-heading-lg md:text-display text-foreground mb-4 ${centered ? "mx-auto" : ""} max-w-3xl ${centered ? "mx-auto" : ""}`}>
+    <h2 className={`font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4 ${centered ? "mx-auto" : ""} max-w-3xl ${centered ? "mx-auto" : ""}`}>
       {title}
     </h2>
     <p className={`text-body-lg text-muted-foreground max-w-2xl ${centered ? "mx-auto" : ""}`}>
@@ -403,32 +403,28 @@ const Features = () => {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-20 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light opacity-90" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-orange/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl" />
-
+      <section className="pt-28 pb-[clamp(64px,8vw,120px)] md:pt-36 bg-cream relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="container-wide relative z-10 text-center"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-orange/20 text-accent-orange text-body-sm font-semibold mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-paper border border-sand text-clay text-body-sm font-semibold shadow-[var(--shadow-sm)] mb-6">
             <Sparkles className="w-4 h-4" />
             Platform Overview
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-display font-bold text-white mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight">
+          <h1 className="font-display font-[340] tracking-[-.02em] text-3xl sm:text-4xl md:text-5xl lg:text-display text-teal-deep mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight">
             One platform.{" "}
-            <em className="not-italic text-gradient-accent">Everything</em>{" "}
+            <em className="italic text-clay">Everything</em>{" "}
             your clinic needs.
           </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10">
+          <p className="text-lg md:text-xl text-teal-deep/80 max-w-3xl mx-auto mb-10">
             GrowthOS replaces your CRM, marketing tools, phone system, chat platform,
             reputation manager, and analytics suite — all HIPAA-compliant, all in one place.
           </p>
           <Link href="/demo">
-            <Button variant="hero" size="lg" className="text-base group shadow-glow">
+            <Button variant="hero" size="lg" className="text-base group">
               Schedule a Demo
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -804,7 +800,7 @@ const Features = () => {
               specialty.
             </p>
             <Link href="/demo">
-              <Button variant="hero" size="lg" className="group shadow-glow text-base">
+              <Button variant="hero" size="lg" className="group text-base">
                 Schedule a Demo →
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>

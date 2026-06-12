@@ -92,7 +92,7 @@ export default function Contact() {
     <div className="bg-background">
       <div className="container-wide mx-auto max-w-[640px] px-4 py-16 md:px-6 md:py-24">
         <header className="mb-10 md:mb-12">
-          <h1 className="font-display text-4xl font-bold text-primary md:text-5xl">
+          <h1 className="font-display text-4xl font-[340] tracking-tight text-teal md:text-5xl">
             Get in touch.
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/90">
@@ -102,7 +102,7 @@ export default function Contact() {
 
         {status === 'success' ? (
           <div className="rounded-xl border border-[#E3E7ED] bg-white p-8 shadow-soft dark:border-white/10 dark:bg-white/5">
-            <h2 className="font-display text-2xl font-semibold text-primary dark:text-[#FDFBF7]">
+            <h2 className="font-ui text-2xl font-semibold text-primary dark:text-[#FDFBF7]">
               Message sent.
             </h2>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/80">

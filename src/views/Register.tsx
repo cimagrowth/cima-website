@@ -153,7 +153,7 @@ const Register = () => {
             {/* Header - shown for steps 1 and 2 */}
             {step < 3 && (
               <div className="text-center mb-8">
-                <h1 className="text-display-lg md:text-display-xl text-foreground mb-4">
+                <h1 className="font-display font-[340] tracking-tight text-display-lg md:text-display-xl text-foreground mb-4">
                   {step === 1 ? "Almost there — set up your clinic." : "Complete Your Payment"}
                 </h1>
 
@@ -291,7 +291,7 @@ const Register = () => {
                     type="submit"
                     variant="hero"
                     size="lg"
-                    className="w-full group shadow-glow"
+                    className="w-full group"
                     disabled={isLoading}
                   >
                     {isLoading ? (

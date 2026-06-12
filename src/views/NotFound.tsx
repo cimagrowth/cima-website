@@ -30,7 +30,7 @@ const NotFound = () => {
             <div className="text-[8rem] md:text-[12rem] font-bold text-gradient-accent leading-none mb-4">
               404
             </div>
-            <h1 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h1 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Page not found
             </h1>
             <p className="text-body-lg text-muted-foreground mb-8 max-w-md mx-auto">

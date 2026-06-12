@@ -4,7 +4,7 @@ const ZoomIntegration = () => {
   return (
     <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
       <article className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-primary prose-a:text-accent-orange prose-a:no-underline hover:prose-a:underline">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">Zoom Integration</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-[340] tracking-tight mb-4">Zoom Integration</h1>
         <p className="text-lg leading-relaxed mb-8">
           This guide explains how to connect a Zoom account to GrowthOS, how Zoom meetings are created when appointments are booked, and how to remove the integration.
         </p>

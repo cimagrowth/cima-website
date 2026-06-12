@@ -112,8 +112,8 @@ export default function AuditWelcomePage({ searchParams }: Props) {
   const variant = getVariant(status, safeName);
 
   const isSuccess = variant.icon === 'success';
-  const iconBg = isSuccess ? 'bg-[#1B4D5C]/10' : 'bg-[#F97316]/10';
-  const iconColor = isSuccess ? 'text-[#1B4D5C]' : 'text-[#F97316]';
+  const iconBg = isSuccess ? 'bg-[#1B4D5C]/10' : 'bg-clay/10';
+  const iconColor = isSuccess ? 'text-[#1B4D5C]' : 'text-clay';
   const IconComponent = isSuccess ? CheckCircle2 : AlertTriangle;
 
   return (
@@ -134,7 +134,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
         </div>
 
         <h1
-          className="font-display font-bold text-[#1B4D5C] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
+          className="font-display font-[340] text-[#1B4D5C] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {variant.headline}
@@ -160,7 +160,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
           <div className="mt-8">
             <Link
               href={variant.cta.href}
-              className="inline-flex items-center justify-center rounded-lg bg-[#F97316] px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#F97316]/90 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-lg bg-clay px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
             >
               {variant.cta.label}
             </Link>

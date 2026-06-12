@@ -67,7 +67,7 @@ const Solution = () => {
   const opacity1 = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.2, 0.6, 0.6, 0.2]);
 
   return (
-    <section id="solution" ref={sectionRef} className="py-16 md:py-24 lg:py-32 bg-tan relative overflow-hidden">
+    <section id="solution" ref={sectionRef} className="section-padding bg-tan relative overflow-hidden">
       {/* Parallax background pattern - hidden on mobile */}
       <div className="absolute inset-0 opacity-30 hidden md:block">
         <motion.div
@@ -99,7 +99,7 @@ const Solution = () => {
             return (
               <div
                 key={feature.title}
-                className="card-elevated p-6 md:p-7 border-l-4 border-accent-orange hover:shadow-glow transition-all duration-500"
+                className="card-elevated p-6 md:p-7 border-l-[3px] border-l-clay transition-all duration-500"
               >
                 <div className="w-10 h-10 rounded-lg bg-accent-orange/10 flex items-center justify-center mb-4">
                   <Icon

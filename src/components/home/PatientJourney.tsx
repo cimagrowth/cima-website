@@ -56,15 +56,15 @@ const pillars: Pillar[] = [
       "ChartAI medical records retrieval",
       "EHR integration (ModMed and more)",
     ],
-    accent: "text-[#E95931]",
-    accentSoft: "bg-[#E95931]/12",
-    bullet: "bg-[#E95931]",
+    accent: "text-[#D2693B]",
+    accentSoft: "bg-[#D2693B]/12",
+    bullet: "bg-[#D2693B]",
   },
 ];
 
 const PatientJourney = () => {
   return (
-    <section id="patient-journey" className="bg-background py-20 md:py-28">
+    <section id="patient-journey" className="bg-background section-padding">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -73,10 +73,10 @@ const PatientJourney = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-16"
         >
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+          <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
             How The Team Works
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground mb-6">
             Drive. Capture. Grow.
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto italic">
@@ -103,7 +103,7 @@ const PatientJourney = () => {
                   delay: index * 0.12,
                   ease: "easeOut",
                 }}
-                className={`bg-card rounded-2xl border border-border p-7 md:p-8 shadow-card flex flex-col ${ascent}`}
+                className={`bg-paper rounded-xl2 border border-sand p-7 md:p-8 shadow-[var(--shadow-sm)] flex flex-col ${ascent}`}
               >
                 <div
                   className={`w-10 h-10 rounded-lg ${pillar.accentSoft} flex items-center justify-center mb-4`}
