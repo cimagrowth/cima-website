@@ -42,7 +42,7 @@ const Authority = () => {
   ];
 
   return (
-    <section id="platform" ref={sectionRef} className="py-12 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="platform" ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
       {/* Parallax decorative elements - hidden on mobile */}
       <motion.div 
         style={{ y: y1, scale: scale1, opacity: opacity1 }}

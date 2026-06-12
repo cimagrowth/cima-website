@@ -92,7 +92,7 @@ export default function Contact() {
     <div className="bg-background">
       <div className="container-wide mx-auto max-w-[640px] px-4 py-16 md:px-6 md:py-24">
         <header className="mb-10 md:mb-12">
-          <h1 className="font-display text-4xl font-bold text-primary md:text-5xl">
+          <h1 className="font-display text-4xl font-[340] tracking-tight text-teal md:text-5xl">
             Get in touch.
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/90">

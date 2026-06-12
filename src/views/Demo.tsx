@@ -145,7 +145,7 @@ const Demo = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
+              <h1 className="font-display font-[340] tracking-tight text-display-lg md:text-display-xl text-foreground mb-6">
                 See GrowthOS{" "}
                 <span className="text-gradient-accent">in Action</span>
               </h1>

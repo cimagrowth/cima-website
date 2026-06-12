@@ -122,7 +122,7 @@ const EnterpriseInquiryModal = ({ open, onOpenChange }: EnterpriseInquiryModalPr
             </DialogHeader>
             <Button
               variant="hero"
-              className="mt-8 bg-accent-orange hover:brightness-110"
+              className="mt-8"
               onClick={() => handleOpenChange(false)}
             >
               Close
@@ -248,7 +248,7 @@ const EnterpriseInquiryModal = ({ open, onOpenChange }: EnterpriseInquiryModalPr
                 variant="hero"
                 size="lg"
                 disabled={submitting}
-                className="w-full bg-accent-orange hover:brightness-110"
+                className="w-full"
               >
                 {submitting ? (
                   <>

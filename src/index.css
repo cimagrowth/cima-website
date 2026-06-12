@@ -12,27 +12,27 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;           /* #FDFBF7 warm off-white */
-    --background-soft: 40 28% 95%;
-    --foreground: 210 29% 24%;          /* #2B3D4F warm dark slate */
+    --background: 38 51% 93%;           /* #F6EFE3 warm cream canvas */
+    --background-soft: 39 39% 89%;
+    --foreground: 193 47% 15%;          /* #143038 teal-charcoal ink */
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 29% 24%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 29% 24%;
+    --card: 40 33% 98%;                 /* #FDFBF7 paper surfaces */
+    --card-foreground: 193 47% 15%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 193 47% 15%;
 
     --primary: 195 52% 22%;             /* #1B4D5C deep teal */
     --primary-foreground: 40 33% 96%;
     --primary-light: 187 32% 48%;       /* #548E96 medium teal */
 
-    --accent-orange: 24 95% 53%;        /* #F97316 */
-    --accent-orange-foreground: 0 0% 100%;
+    --accent-orange: 18 63% 53%;        /* #D2693B clay — warm accent, no neon */
+    --accent-orange-foreground: 40 33% 98%;
 
     --secondary: 190 30% 50%;           /* #5994A1 — muted teal, NOT green */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 18% 93%;
-    --muted-foreground: 210 15% 46%;
+    --muted: 39 39% 91%;                /* quiet sand-tinted fill */
+    --muted-foreground: 168 6% 46%;     /* #6E7D7A secondary text */
 
     --accent: 190 15% 93%;
     --accent-foreground: 210 29% 24%;
@@ -43,19 +43,19 @@
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 37 20% 87%;
-    --input: 37 20% 87%;
-    --ring: 24 95% 53%;
+    --border: 39 39% 85%;               /* #E7DCC8 sand hairlines */
+    --input: 39 39% 85%;
+    --ring: 195 52% 22%;                /* teal focus ring */
     --radius: 0.75rem;
 
-    --shadow-soft: 0 1px 2px 0 rgba(43, 61, 79, 0.04), 0 1px 6px -1px rgba(43, 61, 79, 0.03);
-    --shadow-card: 0 4px 16px -4px rgba(43, 61, 79, 0.07), 0 2px 4px -2px rgba(43, 61, 79, 0.03);
-    --shadow-elevated: 0 8px 30px -6px rgba(43, 61, 79, 0.10), 0 4px 10px -4px rgba(43, 61, 79, 0.05);
-    --shadow-glow: 0 0 40px -10px rgba(249, 115, 22, 0.25);
+    --shadow-soft: 0 1px 2px 0 rgba(20, 48, 56, 0.04), 0 1px 6px -1px rgba(20, 48, 56, 0.03);
+    --shadow-card: var(--shadow-sm);
+    --shadow-elevated: var(--shadow);
+    --shadow-glow: var(--shadow-sm);    /* glows retired — calm soft shadow */
 
     --gradient-primary: linear-gradient(135deg, #1B4D5C, #548E96);
-    --gradient-accent: linear-gradient(135deg, #F97316, #EA580C);
-    --gradient-hero: linear-gradient(180deg, #FDFBF7, #F5F1EA);
+    --gradient-accent: linear-gradient(135deg, #D2693B, #C05E33);
+    --gradient-hero: linear-gradient(180deg, #F6EFE3, #F0E7D5);
     --gradient-radial: radial-gradient(ellipse at top, rgba(89, 148, 161, 0.06) 0%, transparent 60%);
 
     --sidebar-background: 195 52% 22%;
@@ -181,13 +181,13 @@
 }
 
 @layer components {
-  /* Premium section styling */
+  /* Premium section styling — generous, calm vertical rhythm */
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    padding-block: clamp(80px, 10vw, 140px);
   }
 
   .section-padding-sm {
-    @apply py-12 md:py-16 lg:py-20;
+    padding-block: clamp(56px, 7vw, 96px);
   }
 
   /* Container with max width */
@@ -201,18 +201,18 @@
 
   /* Card with premium shadow */
   .card-premium {
-    @apply bg-card rounded-xl border border-border transition-all duration-300;
-    box-shadow: var(--shadow-card);
+    @apply bg-paper rounded-xl2 border border-sand transition-all duration-300;
+    box-shadow: var(--shadow-sm);
   }
 
   .card-premium:hover {
-    box-shadow: var(--shadow-elevated);
+    box-shadow: var(--shadow);
     transform: translateY(-2px);
   }
 
   .card-elevated {
-    @apply bg-card rounded-xl border border-border;
-    box-shadow: var(--shadow-elevated);
+    @apply bg-paper rounded-xl2 border border-sand;
+    box-shadow: var(--shadow);
   }
 
   /* Gradient backgrounds */
@@ -244,8 +244,7 @@
   }
 
   .text-gradient-accent {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--accent-orange)) 0%, hsl(14 81% 45%) 100%);
+    color: var(--color-clay);
   }
 
   /* Subtle divider */
@@ -452,6 +451,21 @@
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-fade-up,
+    .animate-scale-in,
+    .animate-slide-up,
+    .animate-slide-in-left,
+    .animate-slide-in-right,
+    .animate-shimmer,
+    .animate-float,
+    .float,
+    .pulse-glow {
+      animation: none;
     }
   }
 

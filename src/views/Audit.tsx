@@ -174,7 +174,7 @@ const Audit = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-7"
             >
-              <h1 className="font-display font-bold tracking-tight text-foreground text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
+              <h1 className="font-display font-[340] tracking-tight text-foreground text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
                 The average clinic loses{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10">$8,000–$23,000 a month</span>
@@ -262,7 +262,7 @@ const Audit = () => {
       <section className="bg-background-soft section-padding-sm">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="font-display font-bold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+            <h2 className="font-display font-[340] text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
               You know something is broken.{" "}
               <span className="text-gradient-accent">
                 You just can&apos;t see where.
@@ -312,7 +312,7 @@ const Audit = () => {
                   <div className="w-12 h-12 rounded-xl bg-accent-orange/10 flex items-center justify-center mb-5">
                     <Icon className="w-6 h-6 text-accent-orange" />
                   </div>
-                  <h3 className="font-display font-semibold text-foreground text-[1.0625rem] md:text-[1.125rem] leading-snug mb-3">
+                  <h3 className="font-ui font-semibold text-foreground text-[1.0625rem] md:text-[1.125rem] leading-snug mb-3">
                     {card.title}
                   </h3>
                   <p className="text-body-sm text-muted-foreground mb-4 flex-1">
@@ -332,7 +332,7 @@ const Audit = () => {
       <section className="bg-background section-padding-sm">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="font-display font-bold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+            <h2 className="font-display font-[340] text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
               Three tools.{" "}
               <span className="text-gradient-accent">
                 Zero fluff. Unlimited use.
@@ -393,13 +393,13 @@ const Audit = () => {
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   className="card-premium p-7 flex flex-col h-full"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-orange to-orange-600 flex items-center justify-center shadow-card mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-teal flex items-center justify-center shadow-card mb-5">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-display font-bold text-foreground text-heading-sm mb-2">
+                  <h3 className="font-ui font-bold text-foreground text-heading-sm mb-2">
                     {tool.name}
                   </h3>
-                  <p className="font-display font-semibold text-foreground/90 text-body mb-4 italic">
+                  <p className="font-ui font-semibold text-foreground/90 text-body mb-4 italic">
                     {tool.tagline}
                   </p>
                   <ul className="space-y-2.5 mt-auto">
@@ -418,7 +418,7 @@ const Audit = () => {
             })}
           </div>
 
-          <p className="text-center font-display font-bold text-foreground text-[1.25rem] md:text-[1.5rem] max-w-3xl mx-auto leading-snug">
+          <p className="text-center font-ui font-bold text-foreground text-[1.25rem] md:text-[1.5rem] max-w-3xl mx-auto leading-snug">
             All three tools are free. No trial. No credit card. No expiry.
             Keep using them after the audit.
           </p>
@@ -447,10 +447,10 @@ const Audit = () => {
 
         <div className="container-wide relative z-10">
           <div className="max-w-4xl">
-            <p className="text-xs md:text-sm font-semibold text-accent-orange uppercase tracking-widest mb-5">
+            <p className="text-xs md:text-sm font-ui font-semibold text-clay uppercase tracking-[.16em] mb-5">
               Who&apos;s behind this
             </p>
-            <h2 className="font-display font-bold text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
+            <h2 className="font-display font-[340] text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
               15 years. 100+ clinics. One obsession: figuring out why leads
               click, visit, and disappear — and what to do about it.
             </h2>
@@ -488,7 +488,7 @@ const Audit = () => {
       <section className="bg-background section-padding-sm">
         <div className="container-tight">
           <div className="text-center mb-10">
-            <h2 className="font-display font-bold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight">
+            <h2 className="font-display font-[340] text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight">
               Questions before you sign up
             </h2>
           </div>
@@ -531,7 +531,7 @@ const Audit = () => {
                 value={item.id}
                 className="border-border"
               >
-                <AccordionTrigger className="text-left text-foreground font-display font-semibold text-[1.0625rem] md:text-body-lg py-5 hover:no-underline">
+                <AccordionTrigger className="text-left text-foreground font-ui font-semibold text-[1.0625rem] md:text-body-lg py-5 hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-body leading-relaxed pb-6">
@@ -546,7 +546,7 @@ const Audit = () => {
       {/* ───────────── Section 6: Final CTA ───────────── */}
       <section className="bg-background-soft section-padding-sm">
         <div className="container-tight text-center">
-          <h2 className="font-display font-bold text-foreground text-[2.5rem] md:text-[3.25rem] leading-tight tracking-tight mb-5">
+          <h2 className="font-display font-[340] text-foreground text-[2.5rem] md:text-[3.25rem] leading-tight tracking-tight mb-5">
             Still here?
           </h2>
           <p className="text-body-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -594,7 +594,7 @@ const FormCard = ({
 }: FormCardProps) => (
   <form onSubmit={onSubmit} className="space-y-4" noValidate>
     <div>
-      <h2 className="font-display font-bold text-foreground text-[1.5rem] mb-1 flex items-center gap-2">
+      <h2 className="font-ui font-bold text-foreground text-[1.5rem] mb-1 flex items-center gap-2">
         Run my audit
         <ArrowRight className="w-5 h-5 text-accent-orange" />
       </h2>
@@ -786,7 +786,7 @@ const SuccessCard = ({
     <div className="mx-auto w-16 h-16 rounded-full bg-accent-orange/10 flex items-center justify-center mb-6">
       <CheckCircle2 className="w-9 h-9 text-accent-orange" />
     </div>
-    <h2 className="font-display font-bold text-foreground text-[1.5rem] md:text-[1.75rem] leading-tight mb-3">
+    <h2 className="font-ui font-bold text-foreground text-[1.5rem] md:text-[1.75rem] leading-tight mb-3">
       {returning
         ? "Welcome back. A fresh login link is in your inbox."
         : "Check your inbox. Your audit is waiting."}

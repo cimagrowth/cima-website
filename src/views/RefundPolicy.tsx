@@ -5,7 +5,7 @@ const RefundPolicy = () => {
     <>
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Refund Policy</h1>
+          <h1 className="font-display text-3xl md:text-4xl font-[340] tracking-tight mb-2">Refund Policy</h1>
           <p className="text-muted-foreground text-lg mb-8">Last Updated: February 10, 2026</p>
 
           <p>

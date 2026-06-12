@@ -1,5 +1,3 @@
-import { AlertTriangle } from "lucide-react";
-
 type StageRow = {
   kind: "stage";
   label: string;
@@ -39,11 +37,11 @@ const PatientLeakageFunnel = () => {
   return (
     <section
       aria-labelledby="patient-leakage-funnel-heading"
-      className="bg-card/80 backdrop-blur-sm rounded-2xl border border-border shadow-card p-5 sm:p-6 lg:p-8"
+      className="bg-paper rounded-xl2 border border-sand shadow-[var(--shadow)] p-5 sm:p-6 lg:p-8"
     >
       <h2
         id="patient-leakage-funnel-heading"
-        className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-1"
+        className="font-ui text-xs font-semibold uppercase tracking-[.16em] text-clay mb-1"
       >
         Patient Leakage Funnel
       </h2>
@@ -56,16 +54,16 @@ const PatientLeakageFunnel = () => {
         {rows.map((row) =>
           row.kind === "stage" ? (
             <li key={`stage-${row.label}`}>
-              <div className="text-[13px] sm:text-sm font-semibold text-foreground mb-1.5">
+              <div className="font-ui text-[13px] sm:text-sm font-semibold text-teal-deep mb-1.5">
                 {row.label}
               </div>
               <div
                 role="img"
                 aria-label={`${row.label}: ${row.value} percent of patients`}
-                className="h-9 sm:h-10 rounded-md bg-gradient-to-r from-primary to-primary-light flex items-center justify-end pr-2.5 sm:pr-3 shadow-sm min-w-[3.25rem]"
+                className="h-9 sm:h-10 rounded-md bg-teal flex items-center justify-end pr-2.5 sm:pr-3 min-w-[3.25rem]"
                 style={{ width: `${row.value}%` }}
               >
-                <span className="text-[11px] sm:text-xs font-bold text-primary-foreground tabular-nums">
+                <span className="text-[11px] sm:text-xs font-bold text-paper tabular-nums">
                   {row.value}%
                 </span>
               </div>
@@ -76,17 +74,17 @@ const PatientLeakageFunnel = () => {
               className="ml-3 sm:ml-5"
               aria-label={`Warning. ${row.title} ${row.body} Drop of ${row.drop} percent.`}
             >
-              <div className="flex items-start gap-2 rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2">
-                <AlertTriangle
+              <div className="flex items-start gap-2 rounded-md border border-sand border-l-[3px] border-l-clay bg-cream px-3 py-2">
+                <span
                   aria-hidden="true"
-                  className="h-4 w-4 shrink-0 mt-0.5 text-destructive"
+                  className="h-1.5 w-1.5 shrink-0 mt-1.5 rounded-full bg-clay"
                 />
                 <p className="text-[11.5px] sm:text-[12px] leading-snug">
                   <span className="sr-only">Warning. </span>
-                  <span className="font-semibold text-destructive">
+                  <span className="font-semibold text-clay">
                     {row.title}
                   </span>{" "}
-                  <span className="text-foreground/80">{row.body}</span>
+                  <span className="text-teal-deep/80">{row.body}</span>
                 </p>
               </div>
             </li>
@@ -94,7 +92,7 @@ const PatientLeakageFunnel = () => {
         )}
       </ol>
 
-      <p className="mt-5 sm:mt-6 text-[13px] sm:text-sm font-display font-semibold text-primary text-center italic">
+      <p className="mt-5 sm:mt-6 text-[13px] sm:text-sm font-ui font-semibold text-teal text-center italic">
         GrowthOS closes both gaps — instant response on every channel, and AI
         nurture that doesn&apos;t fade after day three.
       </p>

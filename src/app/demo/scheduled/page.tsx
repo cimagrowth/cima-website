@@ -53,7 +53,7 @@ export default function ScheduledPage({ searchParams }: Props) {
           </p>
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center h-12 px-6 rounded-md bg-[#F97316] text-white font-semibold hover:bg-[#F97316]/90 transition-colors"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-md bg-clay text-white font-semibold hover:bg-clay/90 transition-colors"
           >
             Restart from the demo form →
           </Link>
@@ -110,7 +110,7 @@ export default function ScheduledPage({ searchParams }: Props) {
           email{' '}
           <a
             href="mailto:brandon@cimagrowth.com"
-            className="text-[#F97316] font-medium hover:underline"
+            className="text-clay font-medium hover:underline"
           >
             brandon@cimagrowth.com
           </a>

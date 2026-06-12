@@ -33,45 +33,10 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-4rem)] md:min-h-[90vh] flex flex-col justify-between md:justify-center overflow-hidden bg-background"
+      className="relative flex flex-col justify-between md:justify-center overflow-hidden bg-cream"
     >
-      {/* Animated glow orbs */}
       <motion.div
-        className="absolute top-10 right-0 w-56 h-56 md:w-72 md:h-72 bg-accent-orange/25 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.25, 0.4, 0.25],
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/2 -left-10 w-40 h-40 md:w-48 md:h-48 bg-secondary/40 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-      <motion.div
-        className="absolute bottom-32 right-[20%] w-64 h-64 md:w-96 md:h-96 bg-primary-light/20 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.2, 0.3, 0.2],
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
-
-      {/* Subtle grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
-          backgroundSize: "20px 20px",
-        }}
-      />
-
-      <motion.div
-        className="container-wide relative z-10 flex-1 flex flex-col justify-center py-4 md:py-20"
+        className="container-wide relative z-10 flex-1 flex flex-col justify-center py-[clamp(48px,6vw,80px)] md:py-[clamp(96px,12vw,160px)]"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -81,16 +46,16 @@ const Hero = () => {
           <div>
             <motion.h1
               variants={itemVariants}
-              className="font-display text-[2.2rem] leading-[1.08] sm:text-4xl md:text-5xl lg:text-6xl text-foreground font-bold mb-4 md:mb-6 tracking-tight"
+              className="font-display font-[340] text-[clamp(46px,7vw,92px)] leading-[1.02] tracking-[-.02em] text-teal-deep mb-6 md:mb-8"
             >
-              Stop losing patients to{" "}
-              <span className="text-gradient-accent">slow follow-up.</span>
+              Stop losing patients to <em className="italic text-clay">slow</em>{" "}
+              follow-up.
             </motion.h1>
 
             {/* Desktop only: subhead */}
             <motion.p
               variants={itemVariants}
-              className="hidden md:block text-lg md:text-xl text-foreground/90 mb-4 max-w-2xl leading-relaxed"
+              className="hidden md:block font-body text-lg md:text-xl text-teal-deep/85 mb-5 max-w-[60ch] leading-relaxed"
             >
               Every clinic leaks patients twice &mdash; first when inquiries
               come in and don&apos;t get a timely response, then again after
@@ -103,7 +68,7 @@ const Hero = () => {
 
             <motion.p
               variants={itemVariants}
-              className="hidden md:block text-sm text-muted-foreground mb-8 max-w-2xl leading-relaxed"
+              className="hidden md:block font-body text-sm text-teal-deep/70 mb-10 max-w-[60ch] leading-relaxed"
             >
               But slow follow-up is only the symptom. The deeper problem: every
               part of your growth &mdash; getting found, bringing leads in,
@@ -122,21 +87,13 @@ const Hero = () => {
               className="hidden md:flex flex-row gap-4"
             >
               <Link href="/sign-up">
-                <Button
-                  variant="hero"
-                  size="lg"
-                  className="group text-base md:size-xl shadow-glow"
-                >
+                <Button variant="hero" size="lg" className="group text-base">
                   Get Started
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/demo">
-                <Button
-                  variant="hero-outline"
-                  size="lg"
-                  className="text-base md:size-xl border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
-                >
+                <Button variant="hero-outline" size="lg" className="text-base">
                   Book a Demo
                 </Button>
               </Link>
@@ -159,7 +116,7 @@ const Hero = () => {
       >
         <motion.p
           variants={itemVariants}
-          className="text-base text-foreground/90 leading-relaxed"
+          className="font-body text-base text-teal-deep/85 leading-relaxed"
         >
           Every clinic leaks patients twice &mdash; first when inquiries come
           in and don&apos;t get a timely response, then again after first
@@ -172,7 +129,7 @@ const Hero = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-xs text-muted-foreground leading-relaxed"
+          className="font-body text-xs text-teal-deep/70 leading-relaxed"
         >
           But slow follow-up is only the symptom. The deeper problem: every
           part of your growth &mdash; getting found, bringing leads in,
@@ -190,7 +147,7 @@ const Hero = () => {
             <Button
               variant="hero"
               size="lg"
-              className="w-full text-lg py-6 shadow-glow group"
+              className="w-full text-lg py-6 group"
             >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -202,7 +159,7 @@ const Hero = () => {
             <Button
               variant="hero-outline"
               size="lg"
-              className="w-full text-lg py-6 border-2 border-secondary text-foreground hover:border-secondary hover:bg-secondary/15 shadow-[0_0_20px_-5px_hsl(var(--secondary)/0.5)] hover:shadow-[0_0_30px_-5px_hsl(var(--secondary)/0.7)] transition-shadow"
+              className="w-full text-lg py-6"
             >
               Book a Demo
             </Button>

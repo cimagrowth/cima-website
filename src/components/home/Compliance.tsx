@@ -47,7 +47,7 @@ const Compliance = () => {
   return (
     <section
       id="compliance"
-      className="bg-background py-20 md:py-28 relative overflow-hidden"
+      className="bg-background section-padding relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         <motion.div
@@ -57,10 +57,10 @@ const Compliance = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
         >
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+          <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
             Built For Healthcare
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+          <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
             Built for healthcare from day one &mdash;{" "}
             <span className="text-gradient-accent">
               not a generic tool with a medical coat of paint.
@@ -88,7 +88,7 @@ const Compliance = () => {
                   delay: index * 0.08,
                   ease: "easeOut",
                 }}
-                className="bg-card rounded-2xl border border-border p-7 md:p-8 shadow-card flex flex-col h-full"
+                className="bg-paper rounded-xl2 border border-sand p-7 md:p-8 shadow-[var(--shadow-sm)] flex flex-col h-full"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
                   <Icon
@@ -96,7 +96,7 @@ const Compliance = () => {
                     aria-hidden="true"
                   />
                 </div>
-                <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3 leading-snug">
+                <h3 className="font-ui text-lg md:text-xl font-semibold text-foreground mb-3 leading-snug">
                   {card.title}
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">

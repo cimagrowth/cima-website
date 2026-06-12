@@ -22,7 +22,7 @@ const StackReplacement = () => {
   return (
     <section
       id="stack-replacement"
-      className="relative overflow-hidden py-20 md:py-28 text-white bg-[#122434] bg-gradient-to-br from-[#122434] to-[#0e1c29]"
+      className="relative overflow-hidden section-padding text-paper bg-teal"
     >
       {/* Topographic contour texture */}
       <svg
@@ -65,12 +65,12 @@ const StackReplacement = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-16"
         >
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-[#E95931] mb-4">
+          <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand mb-4">
             The Math
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-paper mb-6 leading-tight">
             You&rsquo;re not replacing software.{" "}
-            <span className="text-[#E95931]">You&rsquo;re replacing a department.</span>
+            <span className="italic text-sand">You&rsquo;re replacing a department.</span>
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
             Here&rsquo;s what it costs to do everything GrowthOS does the old
@@ -127,11 +127,11 @@ const StackReplacement = () => {
                   {TOTAL}
                 </td>
               </tr>
-              <tr className="bg-[#E95931]/15 ring-1 ring-[#E95931]/40 shadow-[0_0_40px_-5px_rgba(233,89,49,0.45)]">
+              <tr className="bg-paper/10 ring-1 ring-sand/40">
                 <td className="px-6 py-5 font-bold text-lg md:text-xl text-white">
                   GrowthOS (the whole team, one platform)
                 </td>
-                <td className="px-6 py-5 text-right font-bold text-lg md:text-xl text-[#FFB89A]">
+                <td className="px-6 py-5 text-right font-bold text-lg md:text-xl text-sand">
                   $999/mo
                 </td>
               </tr>
@@ -168,11 +168,11 @@ const StackReplacement = () => {
               </span>
             </li>
           </ul>
-          <div className="rounded-2xl px-5 py-5 flex items-center justify-between gap-4 bg-[#E95931]/15 ring-1 ring-[#E95931]/40 shadow-[0_0_40px_-5px_rgba(233,89,49,0.45)]">
+          <div className="rounded-2xl px-5 py-5 flex items-center justify-between gap-4 bg-paper/10 ring-1 ring-sand/40">
             <span className="text-base font-bold leading-snug text-white">
               GrowthOS (the whole team, one platform)
             </span>
-            <span className="text-lg font-bold whitespace-nowrap text-[#FFB89A]">
+            <span className="text-lg font-bold whitespace-nowrap text-sand">
               $999/mo
             </span>
           </div>

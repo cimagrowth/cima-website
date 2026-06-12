@@ -7,28 +7,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-btn font-ui text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-deep focus-visible:outline-offset-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-light shadow-soft hover:shadow-card",
+        default: "bg-teal text-paper hover:bg-teal-deep shadow-[var(--shadow-sm)]",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-border bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/20",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-accent-orange underline-offset-4 hover:underline",
+        outline: "border border-sand bg-transparent text-teal hover:bg-sand/30 hover:text-teal-deep",
+        secondary: "bg-teal text-paper hover:bg-teal-deep",
+        ghost: "text-teal hover:bg-sand/30 hover:text-teal-deep",
+        link: "text-teal underline-offset-4 hover:underline",
         // Premium variants for the landing page
-        hero: "bg-accent-orange text-accent-orange-foreground hover:brightness-110 shadow-card hover:shadow-glow text-base font-semibold transform hover:scale-[1.02] active:scale-[0.98]",
-        "hero-outline": "border-2 border-primary/30 bg-transparent text-primary dark:text-primary-foreground hover:bg-primary hover:text-primary-foreground text-base font-medium",
+        hero: "bg-clay text-paper hover:bg-clay/90 shadow-[var(--shadow-sm)] text-base font-semibold",
+        "hero-outline": "bg-teal text-paper hover:bg-teal-deep text-base font-medium",
         subtle: "bg-accent text-accent-foreground hover:bg-accent/80",
         // Secondary blue variant
-        "secondary-blue": "bg-secondary text-secondary-foreground hover:brightness-110 shadow-card",
+        "secondary-blue": "bg-teal text-paper hover:bg-teal-deep shadow-[var(--shadow-sm)]",
       },
       size: {
         default: "h-10 px-5 py-2",
-        sm: "h-9 rounded-md px-4",
-        lg: "h-12 rounded-lg px-8",
-        xl: "h-14 rounded-xl px-10 text-base",
+        sm: "h-9 px-4",
+        lg: "h-12 px-8",
+        xl: "h-14 px-10 text-base",
         icon: "h-10 w-10",
       },
     },

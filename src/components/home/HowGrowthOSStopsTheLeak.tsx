@@ -30,14 +30,14 @@ const HowGrowthOSStopsTheLeak = () => {
   return (
     <section
       id="how-growthos-stops-the-leak"
-      className="bg-tan py-20 md:py-28 relative overflow-hidden"
+      className="bg-tan section-padding relative overflow-hidden"
     >
       <div className="container-wide relative z-10">
         <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto">
-          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+          <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
             The Specialists
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight">
+          <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
             When something important happens,{" "}
             <span className="text-gradient-accent">a specialist takes over.</span>
           </h2>
@@ -64,7 +64,7 @@ const HowGrowthOSStopsTheLeak = () => {
             return (
               <div
                 key={agent.title}
-                className="bg-card rounded-2xl border border-border p-7 md:p-8 shadow-card flex flex-col h-full"
+                className="bg-paper rounded-xl2 border border-sand p-7 md:p-8 shadow-[var(--shadow-sm)] flex flex-col h-full"
               >
                 <div className="w-12 h-12 rounded-xl bg-accent-orange/10 flex items-center justify-center mb-5">
                   <Icon
@@ -72,7 +72,7 @@ const HowGrowthOSStopsTheLeak = () => {
                     aria-hidden="true"
                   />
                 </div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3 leading-snug">
+                <h3 className="font-ui text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug">
                   {agent.title}
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
