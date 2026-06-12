@@ -102,7 +102,7 @@ export default function Contact() {
 
         {status === 'success' ? (
           <div className="rounded-xl border border-[#E3E7ED] bg-white p-8 shadow-soft dark:border-white/10 dark:bg-white/5">
-            <h2 className="font-display text-2xl font-semibold text-primary dark:text-[#FDFBF7]">
+            <h2 className="font-ui text-2xl font-semibold text-primary dark:text-[#FDFBF7]">
               Message sent.
             </h2>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/80">

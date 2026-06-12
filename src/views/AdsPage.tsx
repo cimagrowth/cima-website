@@ -366,11 +366,7 @@ const AdsPage = () => {
     <>
 
       {/* ────────── HERO ────────── */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-radial pointer-events-none" />
-
+      <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             variants={containerVariants}
@@ -379,7 +375,7 @@ const AdsPage = () => {
             className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-orange/10 text-accent-orange text-body-sm font-semibold mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay font-ui text-body-sm font-semibold mb-6">
                 <Zap className="w-4 h-4" />
                 AI-Powered Google & Facebook Ads
               </span>
@@ -387,15 +383,15 @@ const AdsPage = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="text-display-lg md:text-display-xl text-foreground mb-6"
+              className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
               Stop Paying Agencies $5,000/Month to Manage Your Ad Spend.{" "}
-              <span className="text-gradient-accent">Let AI Do It for $399.</span>
+              <span className="italic text-clay">Let AI Do It for $399.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-body-lg text-muted-foreground mb-10 max-w-3xl mx-auto"
+              className="text-body-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto"
             >
               AI builds, launches, and optimizes your Google and Facebook ad
               campaigns — with healthcare compliance built in — so you get more
@@ -403,7 +399,7 @@ const AdsPage = () => {
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="xl" className="group shadow-glow" onClick={() => openIntake("ads_monthly")}>
+              <Button variant="hero" size="xl" className="group" onClick={() => openIntake("ads_monthly")}>
                 Start for $399/mo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -412,7 +408,7 @@ const AdsPage = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={itemVariants} className="text-body-sm text-muted-foreground mt-4">
+            <motion.p variants={itemVariants} className="text-body-sm text-teal-deep/80 mt-4">
               Built for fertility & wellness clinics
             </motion.p>
           </motion.div>
@@ -429,10 +425,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-12"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               The Problem
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
               Running Ads for a Medical Practice Is a Specialized Skill. Most Agencies Don't Have It.
             </h2>
           </motion.div>
@@ -467,10 +463,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It Works
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               From Brand Intake to Live Campaigns in Under an Hour.
             </h2>
           </motion.div>
@@ -518,8 +514,6 @@ const AdsPage = () => {
 
       {/* ────────── FEATURES ────────── */}
       <section className="section-padding bg-tan relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -528,10 +522,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               What You Get
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
               Everything to Run Ads That Actually Convert Patients — Not Just Clicks.
             </h2>
           </motion.div>
@@ -576,8 +570,6 @@ const AdsPage = () => {
 
       {/* ────────── AUTO-OPTIMIZATION ENGINE ────────── */}
       <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -586,10 +578,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-14"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It's Different
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Your Ads Get Smarter Every Night While You Sleep.
             </h2>
             <p className="text-body-lg text-muted-foreground">
@@ -633,8 +625,7 @@ const AdsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="rounded-2xl p-6 md:p-7 shadow-card border border-white/5"
-              style={{ backgroundColor: "#0F1419" }}
+              className="bg-teal rounded-xl2 p-6 md:p-7 shadow-[var(--shadow)] border border-paper/10"
             >
               <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/10">
                 <div className="flex items-center gap-2">
@@ -720,8 +711,6 @@ const AdsPage = () => {
 
       {/* ────────── REPORTING ────────── */}
       <section className="section-padding bg-tan relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -730,10 +719,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-14"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Proof, Not Promises
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               One-Click Reports That Would Cost You $2,000 From an Agency.
             </h2>
             <p className="text-body-lg text-muted-foreground">
@@ -791,22 +780,21 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="mt-10 max-w-5xl mx-auto"
           >
-            <div className="relative rounded-2xl p-8 md:p-10 overflow-hidden bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground shadow-card">
-              <div className="absolute top-0 right-0 w-72 h-72 bg-accent-orange/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative rounded-xl2 p-8 md:p-10 overflow-hidden bg-teal text-paper shadow-[var(--shadow)]">
               <div className="relative z-10 grid md:grid-cols-2 gap-8">
                 <div>
-                  <p className="text-body-sm font-semibold tracking-widest text-primary-foreground/60 uppercase mb-3">
+                  <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand/70 mb-3">
                     What GoHighLevel gives you
                   </p>
-                  <p className="text-heading-sm text-primary-foreground/90">
+                  <p className="text-heading-sm text-paper/80">
                     A dashboard with numbers.
                   </p>
                 </div>
                 <div>
-                  <p className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-3">
+                  <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand mb-3">
                     What GrowthOS gives you
                   </p>
-                  <p className="text-heading-sm text-primary-foreground">
+                  <p className="text-heading-sm text-paper">
                     A document you'd hand to your board, your investors, or your
                     partner — with projections, AI insights, and a record of every
                     optimization we made on your behalf.
@@ -843,10 +831,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-14"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Real Results
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
               What Happens When AI Manages Your Ad Spend.
             </h2>
           </motion.div>
@@ -938,10 +926,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Built For Your Specialty
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               AI Ads Tailored to Your Practice
             </h2>
             <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
@@ -957,7 +945,7 @@ const AdsPage = () => {
                 onClick={() => setActiveSpecialty(spec.key)}
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-300 ${
                   activeSpecialty === spec.key
-                    ? "bg-accent-orange text-white shadow-glow"
+                    ? "bg-clay text-paper shadow-[var(--shadow-sm)]"
                     : "bg-muted/50 text-muted-foreground hover:bg-muted"
                 }`}
               >
@@ -1008,10 +996,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Pricing
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Agency-Level Output. Software Pricing.
             </h2>
             <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
@@ -1057,33 +1045,33 @@ const AdsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-2xl p-8 flex flex-col relative bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground ring-2 ring-accent-orange shadow-glow"
+              className="rounded-xl2 p-8 flex flex-col relative bg-teal text-paper shadow-[var(--shadow)]"
             >
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-accent-orange text-white">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-paper border border-sand text-clay shadow-[var(--shadow-sm)]">
                 Best Value
               </span>
-              <h3 className="text-heading-sm font-bold text-primary-foreground mb-1">Annual</h3>
+              <h3 className="text-heading-sm font-bold text-paper mb-1">Annual</h3>
               <div className="flex items-baseline gap-1 mb-1">
-                <span className="text-display font-bold text-primary-foreground">$333</span>
-                <span className="text-primary-foreground/70">/mo</span>
+                <span className="text-display font-bold text-paper">$333</span>
+                <span className="text-paper/70">/mo</span>
               </div>
-              <p className="text-body-sm text-primary-foreground/70 mb-1">
+              <p className="text-body-sm text-paper/70 mb-1">
                 Billed at $3,999/yr
               </p>
-              <p className="text-body-sm font-semibold text-accent-orange mb-6">
+              <p className="text-body-sm font-semibold text-sand mb-6">
                 Save $789. Best value.
               </p>
               <ul className="space-y-2 mb-8 flex-1">
                 {["Everything in Monthly", "Priority support", "Save $789 per year"].map((feat, j) => (
                   <li key={j} className="flex items-start gap-2">
-                    <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-accent-orange/20">
-                      <Check className="w-2.5 h-2.5 text-accent-orange" />
+                    <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-paper/10">
+                      <Check className="w-2.5 h-2.5 text-sand" />
                     </div>
-                    <span className="text-body-sm text-primary-foreground">{feat}</span>
+                    <span className="text-body-sm text-paper">{feat}</span>
                   </li>
                 ))}
               </ul>
-              <Button variant="hero" size="lg" className="w-full group bg-accent-orange hover:brightness-110" onClick={() => openIntake("ads_annual")}>
+              <Button variant="hero" size="lg" className="w-full group" onClick={() => openIntake("ads_annual")}>
                 Save $789/yr — Go Annual
               </Button>
             </motion.div>
@@ -1105,10 +1093,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               The Comparison
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Why Clinics Switch From Agencies to Cima AI Ads
             </h2>
           </motion.div>
@@ -1122,10 +1110,10 @@ const AdsPage = () => {
           >
             <table className="w-full text-sm md:text-base">
               <thead>
-                <tr className="bg-primary text-primary-foreground">
+                <tr className="bg-teal text-paper">
                   <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl"></th>
                   <th className="text-left px-4 md:px-6 py-4 font-semibold">Marketing Agency</th>
-                  <th className="text-left px-4 md:px-6 py-4 font-semibold text-accent-orange rounded-tr-2xl">Cima AI Ads</th>
+                  <th className="text-left px-4 md:px-6 py-4 font-semibold text-sand rounded-tr-2xl">Cima AI Ads</th>
                 </tr>
               </thead>
               <tbody className="bg-card">
@@ -1159,10 +1147,10 @@ const AdsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Grow With Us
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Ads Are Just the Beginning.
             </h2>
           </motion.div>
@@ -1225,11 +1213,7 @@ const AdsPage = () => {
       </section>
 
       {/* ────────── FINAL CTA ────────── */}
-      <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none" />
-
+      <section className="section-padding bg-teal relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1238,26 +1222,26 @@ const AdsPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand mb-4 block">
               Ready?
             </span>
-            <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Every Dollar of Ad Spend Without AI Optimization Is a Dollar Half-Wasted.
             </h2>
-            <p className="text-body-lg text-primary-foreground/80 mb-10 max-w-xl mx-auto">
+            <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
               Join clinics that launch campaigns in minutes — not weeks — and
               know exactly which dollars drive booked appointments.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <Button variant="hero" size="xl" className="group shadow-glow" onClick={() => openIntake("ads_monthly")}>
+              <Button variant="hero" size="xl" className="group" onClick={() => openIntake("ads_monthly")}>
                 Start for $399/mo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="outline" size="xl" className="group border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" onClick={() => openIntake("ads_annual")}>
+              <Button variant="outline" size="xl" className="group border border-paper/40 bg-transparent text-paper hover:bg-paper/10" onClick={() => openIntake("ads_annual")}>
                 Save $789/yr — Go Annual
               </Button>
             </div>
-            <p className="text-body-sm text-primary-foreground/60">
+            <p className="text-body-sm text-paper/60">
               Questions? Email brandon@cimagrowth.com
             </p>
           </motion.div>

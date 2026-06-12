@@ -800,7 +800,7 @@ const Features = () => {
               specialty.
             </p>
             <Link href="/demo">
-              <Button variant="hero" size="lg" className="group shadow-glow text-base">
+              <Button variant="hero" size="lg" className="group text-base">
                 Schedule a Demo →
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>

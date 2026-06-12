@@ -46,11 +46,7 @@ const HowItWorksPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light opacity-90" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-orange/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl" />
-
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-cream relative overflow-hidden">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -59,14 +55,14 @@ const HowItWorksPage = () => {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-[340] tracking-[-.02em] text-teal-deep mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight"
           >
             The Front End of Medicine Is{" "}
-            <span className="text-accent-orange">Broken.</span> We Fix It.
+            <span className="italic text-clay">Broken.</span> We Fix It.
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10"
+            className="text-lg md:text-xl text-teal-deep/80 max-w-3xl mx-auto mb-10"
           >
             Clinics lose 30-40% of leads between first inquiry and booked
             appointment. Not because of bad marketing. Because of what happens AFTER
@@ -87,7 +83,7 @@ const HowItWorksPage = () => {
       </section>
 
       {/* Section 1: The Problem — With Numbers */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="section-padding bg-background">
         <div className="container-wide">
           <motion.div
             variants={containerVariants}
@@ -96,9 +92,9 @@ const HowItWorksPage = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div variants={itemVariants} className="max-w-3xl lg:max-w-4xl mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-[340] tracking-tight text-foreground mb-6">
                 You're Spending Thousands to Attract Patients —{" "}
-                <span className="text-gradient-accent">Then Losing Them to Silence.</span>
+                <span className="italic text-clay">Then Losing Them to Silence.</span>
               </h2>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground">
                 <p>
@@ -117,7 +113,7 @@ const HowItWorksPage = () => {
             <motion.div variants={itemVariants} className="overflow-x-auto rounded-2xl border border-border shadow-card mb-12">
               <table className="w-full text-sm md:text-base">
                 <thead>
-                  <tr className="bg-primary text-primary-foreground">
+                  <tr className="bg-teal text-paper">
                     <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl">Metric</th>
                     <th className="text-left px-4 md:px-6 py-4 font-semibold">Your Clinic Today</th>
                     <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tr-2xl">Industry Average</th>
@@ -167,7 +163,7 @@ const HowItWorksPage = () => {
                   <motion.div
                     key={item.stat}
                     variants={itemVariants}
-                    className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-card"
+                    className="bg-paper rounded-xl2 border border-sand shadow-[var(--shadow-sm)] p-6 md:p-8"
                   >
                     <div className="w-12 h-12 rounded-xl bg-accent-orange/10 flex items-center justify-center mb-4">
                       <Icon className="w-6 h-6 text-accent-orange" />
@@ -194,7 +190,7 @@ const HowItWorksPage = () => {
       </section>
 
       {/* Section 2: The System — 4 Stages */}
-      <section className="py-16 md:py-24 bg-tan">
+      <section className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
             variants={containerVariants}
@@ -203,9 +199,9 @@ const HowItWorksPage = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-[340] tracking-tight text-foreground mb-4">
                 One Platform. Every Touchpoint.{" "}
-                <span className="text-gradient-accent">AI-Powered.</span>
+                <span className="italic text-clay">AI-Powered.</span>
               </h2>
             </motion.div>
 
@@ -245,14 +241,14 @@ const HowItWorksPage = () => {
                   <motion.div
                     key={item.step}
                     variants={itemVariants}
-                    className="rounded-2xl bg-card border border-border p-6 md:p-8 shadow-card"
+                    className="bg-paper rounded-xl2 border border-sand shadow-[var(--shadow-sm)] p-6 md:p-8"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center flex-shrink-0 shadow-card">
+                      <div className="w-12 h-12 rounded-xl bg-teal flex items-center justify-center flex-shrink-0 shadow-[var(--shadow-sm)]">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <div className="text-xs font-semibold text-accent-orange uppercase tracking-wider mb-1">
+                        <div className="font-ui text-xs font-semibold uppercase tracking-[.16em] text-clay mb-1">
                           {item.step}
                         </div>
                         <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
@@ -281,7 +277,7 @@ const HowItWorksPage = () => {
       </section>
 
       {/* Section 3: What Makes GrowthOS Different */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="section-padding bg-background">
         <div className="container-wide">
           <motion.div
             variants={containerVariants}
@@ -290,9 +286,9 @@ const HowItWorksPage = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-[340] tracking-tight text-foreground mb-4">
                 This Isn't Another CRM.{" "}
-                <span className="text-gradient-accent">It's an AI Growth Engine Built for Healthcare.</span>
+                <span className="italic text-clay">It's an AI Growth Engine Built for Healthcare.</span>
               </h2>
             </motion.div>
 
@@ -328,7 +324,7 @@ const HowItWorksPage = () => {
                   <motion.div
                     key={item.title}
                     variants={itemVariants}
-                    className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-card"
+                    className="bg-paper rounded-xl2 border border-sand shadow-[var(--shadow-sm)] p-6 md:p-8"
                   >
                     <div className="w-12 h-12 rounded-xl bg-accent-orange/10 flex items-center justify-center mb-4">
                       <Icon className="w-6 h-6 text-accent-orange" />
@@ -357,7 +353,7 @@ const HowItWorksPage = () => {
       </section>
 
       {/* Section 4: Before/After Table */}
-      <section className="py-16 md:py-24 bg-tan">
+      <section className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
             variants={containerVariants}
@@ -366,23 +362,23 @@ const HowItWorksPage = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-[340] tracking-tight text-foreground mb-4">
                 What Changes When You{" "}
-                <span className="text-gradient-accent">Close the Gap</span>
+                <span className="italic text-clay">Close the Gap</span>
               </h2>
             </motion.div>
 
             <motion.div variants={itemVariants} className="overflow-x-auto rounded-2xl border border-border shadow-card mb-12">
               <table className="w-full text-sm md:text-base">
                 <thead>
-                  <tr className="bg-primary text-primary-foreground">
+                  <tr className="bg-teal text-paper">
                     <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl">
                       Metric
                     </th>
                     <th className="text-left px-4 md:px-6 py-4 font-semibold">
                       Before GrowthOS
                     </th>
-                    <th className="text-left px-4 md:px-6 py-4 font-semibold text-accent-orange rounded-tr-2xl">
+                    <th className="text-left px-4 md:px-6 py-4 font-semibold text-sand rounded-tr-2xl">
                       After GrowthOS
                     </th>
                   </tr>
@@ -423,7 +419,7 @@ const HowItWorksPage = () => {
       </section>
 
       {/* Section 5: Three Steps to Start */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="section-padding bg-background">
         <div className="container-wide">
           <motion.div
             variants={containerVariants}
@@ -432,9 +428,9 @@ const HowItWorksPage = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-[340] tracking-tight text-foreground mb-4">
                 Three Steps.{" "}
-                <span className="text-gradient-accent">That's It.</span>
+                <span className="italic text-clay">That's It.</span>
               </h2>
             </motion.div>
 
@@ -464,7 +460,7 @@ const HowItWorksPage = () => {
                   variants={itemVariants}
                   className="relative text-center"
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary-light text-white text-xl font-bold mb-6 shadow-card">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-teal text-white text-xl font-bold mb-6 shadow-[var(--shadow-sm)]">
                     {item.number}
                   </div>
                   <h3 className="text-lg md:text-xl font-semibold text-foreground mb-3">

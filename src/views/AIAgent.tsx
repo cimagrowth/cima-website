@@ -216,8 +216,7 @@ const AIAgent = () => {
     <>
 
       {/* HERO */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial" />
+      <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -225,16 +224,16 @@ const AIAgent = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-4xl lg:max-w-5xl mx-auto"
           >
-            <span className="inline-block bg-accent-orange/10 text-accent-orange text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <span className="inline-block bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay font-ui text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
               Now Available
             </span>
-            <h1 className="text-display-lg md:text-display-xl text-foreground mb-6">
+            <h1 className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6">
               Your Clinic's AI Front Desk —{" "}
-              <span className="text-gradient-accent">
+              <span className="italic text-clay">
                 Responds in Seconds, Nurtures for Weeks, Hands Off With Full Context.
               </span>
             </h1>
-            <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+            <p className="text-body-lg text-teal-deep/80 max-w-3xl mx-auto mb-10">
               Stop losing patients to slow response times. The Cima AI Agent
               handles inquiries, qualifies leads, and books appointments 24/7 —
               inside the CRM you already use, or inside GrowthOS.
@@ -243,7 +242,7 @@ const AIAgent = () => {
               <Button
                 variant="hero"
                 size="lg"
-                className="group shadow-glow"
+                className="group"
                 onClick={() => scrollTo("pricing")}
               >
                 Start Your AI Agent
@@ -262,7 +261,7 @@ const AIAgent = () => {
       </section>
 
       {/* PROOF BAR */}
-      <section className="py-16 md:py-20 bg-tan">
+      <section className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
             variants={containerVariants}
@@ -314,19 +313,19 @@ const AIAgent = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl lg:max-w-4xl mx-auto"
           >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-6 text-center">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-6 text-center">
               Most "AI Chatbots" Are Glorified FAQ Pages.{" "}
-              <span className="text-gradient-accent">This Is an AI Employee.</span>
+              <span className="italic text-clay">This Is an AI Employee.</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-6 mt-10">
               <div className="card-premium p-6 border-l-4 border-muted-foreground/30">
-                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">A chatbot:</p>
+                <p className="font-ui text-sm font-semibold text-muted-foreground uppercase tracking-[.16em] mb-3">A chatbot:</p>
                 <p className="text-body text-muted-foreground">
                   Matches keywords to canned responses. When it doesn't understand, it says "Let me connect you with a team member" — and that team member is unavailable until morning.
                 </p>
               </div>
-              <div className="card-premium p-6 border-l-4 border-accent-orange">
-                <p className="text-sm font-semibold text-accent-orange uppercase tracking-wider mb-3">The Cima AI Agent:</p>
+              <div className="card-premium p-6 border-l-4 border-clay">
+                <p className="font-ui text-sm font-semibold text-clay uppercase tracking-[.16em] mb-3">The Cima AI Agent:</p>
                 <p className="text-body text-foreground">
                   Reads the emotional context of every message. Knows that a patient asking about egg freezing at 11 PM is probably anxious and needs reassurance, not a pricing sheet. Nurtures across days or weeks. Then hands off with the complete conversation history.
                 </p>
@@ -346,7 +345,7 @@ const AIAgent = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Live in Under 10 Minutes. No Code. No IT.
             </h2>
           </motion.div>
@@ -366,7 +365,7 @@ const AIAgent = () => {
                 <div className="w-14 h-14 mx-auto mb-5 rounded-2xl bg-accent-orange/10 flex items-center justify-center">
                   <step.icon className="w-7 h-7 text-accent-orange" />
                 </div>
-                <span className="text-xs font-semibold text-accent-orange uppercase tracking-wider">
+                <span className="font-ui text-xs font-semibold text-clay uppercase tracking-[.16em]">
                   Step {i + 1} — {step.time}
                 </span>
                 <h3 className="text-heading-sm text-foreground mt-2 mb-3">
@@ -382,7 +381,7 @@ const AIAgent = () => {
       </section>
 
       {/* CRM INTEGRATIONS */}
-      <section className="py-12 md:py-16 bg-background">
+      <section className="section-padding bg-background">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -432,9 +431,9 @@ const AIAgent = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Everything Your Front Desk Does —{" "}
-              <span className="text-gradient-accent">Without the Hold Music.</span>
+              <span className="italic text-clay">Without the Hold Music.</span>
             </h2>
           </motion.div>
           <motion.div
@@ -475,7 +474,7 @@ const AIAgent = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Simple Pricing. No Setup Fees. Cancel Anytime.
             </h2>
 
@@ -513,20 +512,20 @@ const AIAgent = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`rounded-2xl p-8 ${
+                className={`rounded-xl2 p-8 ${
                   tier.highlighted
-                    ? "bg-primary text-primary-foreground border-2 border-accent-orange shadow-glow relative"
+                    ? "bg-teal text-paper shadow-[var(--shadow)] relative"
                     : "card-premium"
                 }`}
               >
                 {tier.highlighted && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-orange text-white text-xs font-semibold px-4 py-1 rounded-full">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-paper border border-sand text-clay shadow-[var(--shadow-sm)] text-xs font-semibold px-4 py-1 rounded-full">
                     Most Popular
                   </span>
                 )}
                 <h3
                   className={`text-heading-sm mb-1 ${
-                    tier.highlighted ? "text-white" : "text-foreground"
+                    tier.highlighted ? "text-paper" : "text-foreground"
                   }`}
                 >
                   {tier.name}
@@ -534,7 +533,7 @@ const AIAgent = () => {
                 <p
                   className={`text-body-sm mb-6 ${
                     tier.highlighted
-                      ? "text-white/70"
+                      ? "text-paper/70"
                       : "text-muted-foreground"
                   }`}
                 >
@@ -543,7 +542,7 @@ const AIAgent = () => {
                 <div className="mb-6">
                   <span
                     className={`text-display font-bold ${
-                      tier.highlighted ? "text-white" : "text-foreground"
+                      tier.highlighted ? "text-paper" : "text-foreground"
                     }`}
                   >
                     ${isAnnual ? tier.annualPrice : tier.monthlyPrice}
@@ -551,7 +550,7 @@ const AIAgent = () => {
                   <span
                     className={`text-body-sm ${
                       tier.highlighted
-                        ? "text-white/70"
+                        ? "text-paper/70"
                         : "text-muted-foreground"
                     }`}
                   >
@@ -561,7 +560,7 @@ const AIAgent = () => {
                     <span
                       className={`block text-body-sm mt-1 ${
                         tier.highlighted
-                          ? "text-white/50"
+                          ? "text-paper/50"
                           : "text-muted-foreground"
                       }`}
                     >
@@ -573,12 +572,14 @@ const AIAgent = () => {
                   {tier.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-2.5">
                       <Check
-                        className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent-orange"
+                        className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                          tier.highlighted ? "text-sand" : "text-accent-orange"
+                        }`}
                       />
                       <span
                         className={`text-body-sm ${
                           tier.highlighted
-                            ? "text-white/90"
+                            ? "text-paper/90"
                             : "text-muted-foreground"
                         }`}
                       >
@@ -614,7 +615,7 @@ const AIAgent = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-4xl lg:max-w-5xl mx-auto mt-8"
           >
-            <div className="rounded-xl p-6 bg-tan border border-border text-center">
+            <div className="rounded-xl2 p-6 bg-paper border border-sand shadow-[var(--shadow-sm)] text-center">
               <p className="text-body font-semibold text-foreground mb-2">
                 Full Platform — $999/month
               </p>
@@ -636,7 +637,7 @@ const AIAgent = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Frequently Asked Questions
             </h2>
           </motion.div>
@@ -679,7 +680,7 @@ const AIAgent = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="section-padding bg-primary text-primary-foreground">
+      <section className="section-padding bg-teal text-paper">
         <div className="container-wide text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -687,16 +688,16 @@ const AIAgent = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-heading-lg md:text-display text-white mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Every Hour Without an AI Agent Is an Hour of Leads Going to Your Competitor.
             </h2>
-            <p className="text-body-lg text-white/70 max-w-xl mx-auto mb-8">
+            <p className="text-body-lg text-paper/70 max-w-xl mx-auto mb-8">
               The clinic that responds first wins 78% of the time. Your AI agent responds in under 3 seconds.
             </p>
             <Button
               variant="hero"
               size="lg"
-              className="group shadow-glow"
+              className="group"
               onClick={() =>
                 setCheckoutPlan(
                   AGENT_PLAN_IDS[
@@ -708,7 +709,7 @@ const AIAgent = () => {
               Start Your AI Agent — $297/mo
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
-            <p className="text-sm text-white/50 mt-4">
+            <p className="text-sm text-paper/50 mt-4">
               No setup fee. Cancel anytime.
             </p>
           </motion.div>

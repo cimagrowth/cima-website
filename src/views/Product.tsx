@@ -223,10 +223,7 @@ const Product = () => {
   return (
     <>
       {/* Hero */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial" />
-        <div className="absolute top-20 right-[10%] w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />
-
+      <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -234,16 +231,16 @@ const Product = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+            <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               The Platform
             </p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight tracking-tight">
+            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Everything a CRM does.{" "}
-              <span className="text-gradient-accent">
+              <span className="italic text-clay">
                 None of the work it makes you do.
               </span>
             </h1>
-            <p className="text-base md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
               GrowthOS has the contacts, pipelines, scoring, inbox, and
               reporting you&rsquo;d expect &mdash; plus an AI team that
               actually does the work inside them. Most clinics realize they
@@ -251,7 +248,7 @@ const Product = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">
-                <Button variant="hero" size="xl" className="group shadow-glow">
+                <Button variant="hero" size="xl" className="group">
                   Book a Demo
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -260,7 +257,6 @@ const Product = () => {
                 <Button
                   variant="hero-outline"
                   size="xl"
-                  className="border-2 border-secondary text-foreground hover:bg-secondary/15"
                 >
                   Get Started
                 </Button>
@@ -273,7 +269,7 @@ const Product = () => {
       {/* Feature parity grid */}
       <section
         id="feature-parity"
-        className="py-20 md:py-28 bg-tan relative overflow-hidden"
+        className="section-padding bg-tan relative overflow-hidden"
       >
         <div className="container-wide relative z-10">
           <motion.div
@@ -283,10 +279,10 @@ const Product = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+            <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               The Boxes You Came To Check
             </p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
               Everything you&rsquo;d verify on a CRM switcher checklist.
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -309,7 +305,7 @@ const Product = () => {
                     delay: index * 0.04,
                     ease: "easeOut",
                   }}
-                  className="bg-card rounded-2xl border border-border p-6 shadow-card flex gap-4"
+                  className="bg-paper rounded-xl2 border border-sand p-6 shadow-[var(--shadow-sm)] flex gap-4"
                 >
                   <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Icon
@@ -318,7 +314,7 @@ const Product = () => {
                     />
                   </span>
                   <div>
-                    <h3 className="font-display text-base md:text-lg font-bold text-foreground mb-1 leading-snug">
+                    <h3 className="font-ui text-base md:text-lg font-semibold text-foreground mb-1 leading-snug">
                       {cap.title}
                     </h3>
                     <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -335,7 +331,7 @@ const Product = () => {
       {/* The pivot */}
       <section
         id="system-of-action"
-        className="bg-background py-20 md:py-28 relative overflow-hidden"
+        className="bg-background section-padding relative overflow-hidden"
       >
         <div className="container-wide relative z-10">
           <motion.div
@@ -346,12 +342,12 @@ const Product = () => {
             className="max-w-3xl mx-auto"
           >
             <div className="relative pl-6 md:pl-10 border-l-2 border-accent-orange/70">
-              <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+              <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
                 System Of Action
               </p>
-              <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+              <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
                 But a CRM is{" "}
-                <span className="text-gradient-accent">
+                <span className="italic text-clay">
                   a filing cabinet you fill by hand.
                 </span>
               </h2>
@@ -371,7 +367,7 @@ const Product = () => {
       {/* Comparison table */}
       <section
         id="comparison"
-        className="py-20 md:py-28 bg-tan relative overflow-hidden"
+        className="section-padding bg-tan relative overflow-hidden"
       >
         <div className="container-wide relative z-10">
           <motion.div
@@ -381,10 +377,10 @@ const Product = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+            <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               Stack Up
             </p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
               GrowthOS vs HubSpot vs GoHighLevel
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -395,7 +391,7 @@ const Product = () => {
           <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border shadow-card bg-card">
             <table className="w-full text-sm md:text-base min-w-[640px]">
               <thead>
-                <tr className="border-b border-border bg-primary text-primary-foreground">
+                <tr className="border-b border-border bg-teal text-paper">
                   <th
                     scope="col"
                     className="text-left font-semibold px-4 md:px-6 py-4 rounded-tl-2xl"
@@ -404,7 +400,7 @@ const Product = () => {
                   </th>
                   <th
                     scope="col"
-                    className="text-center font-semibold px-3 md:px-6 py-4 bg-primary"
+                    className="text-center font-semibold px-3 md:px-6 py-4 bg-teal"
                   >
                     GrowthOS
                   </th>
@@ -461,11 +457,8 @@ const Product = () => {
       {/* Migration / modes */}
       <section
         id="migration"
-        className="py-20 md:py-28 bg-background relative overflow-hidden"
+        className="section-padding bg-background relative overflow-hidden"
       >
-        <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-[10%] w-64 h-64 bg-accent-orange/10 rounded-full blur-3xl" />
-
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -474,10 +467,10 @@ const Product = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+            <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               Migration
             </p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
               Switch on your schedule.
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -499,19 +492,19 @@ const Product = () => {
                     delay: index * 0.12,
                     ease: "easeOut",
                   }}
-                  className={`relative card-elevated p-7 md:p-8 text-center group hover:shadow-glow transition-all duration-500 ${
-                    mode.featured ? "ring-2 ring-accent-orange" : ""
+                  className={`relative card-elevated p-7 md:p-8 text-center group transition-all duration-500 ${
+                    mode.featured ? "ring-1 ring-clay/50" : ""
                   }`}
                 >
                   {mode.featured && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-orange text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-paper border border-sand text-clay shadow-[var(--shadow-sm)] text-xs font-semibold px-3 py-1 rounded-full">
                       Most Popular
                     </div>
                   )}
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-card">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-teal flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[var(--shadow-sm)]">
                     <Icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
                   </div>
-                  <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-1">
+                  <h3 className="font-ui text-lg md:text-xl font-semibold text-foreground mb-1">
                     {mode.title}
                   </h3>
                   <p
@@ -557,11 +550,7 @@ const Product = () => {
       </section>
 
       {/* Closing CTA */}
-      <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/30 rounded-full blur-3xl" />
-
+      <section className="section-padding bg-teal relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -570,16 +559,16 @@ const Product = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-6 leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-paper mb-6 leading-tight">
               See it run on your clinic.
             </h2>
-            <p className="text-base md:text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">
               Twenty minutes. We&rsquo;ll show you the AI team handling real
               patient inquiries in your specialty &mdash; not a generic demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">
-                <Button variant="hero" size="xl" className="group shadow-glow">
+                <Button variant="hero" size="xl" className="group">
                   Book a Demo
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -588,7 +577,7 @@ const Product = () => {
                 <Button
                   variant="hero-outline"
                   size="xl"
-                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                  className="border border-paper/40 bg-transparent text-paper hover:bg-paper/10"
                 >
                   Get Started — live in 48 hours
                 </Button>

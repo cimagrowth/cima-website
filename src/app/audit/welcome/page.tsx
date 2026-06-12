@@ -134,7 +134,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
         </div>
 
         <h1
-          className="font-display font-bold text-[#1B4D5C] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
+          className="font-display font-[340] text-[#1B4D5C] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {variant.headline}

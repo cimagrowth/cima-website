@@ -195,11 +195,7 @@ const Outreach = () => {
     <>
 
       {/* HERO */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-orange/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-radial pointer-events-none" />
-
+      <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             variants={containerVariants}
@@ -208,7 +204,7 @@ const Outreach = () => {
             className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-orange/10 text-accent-orange text-body-sm font-semibold mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay font-ui text-body-sm font-semibold mb-6">
                 <Zap className="w-4 h-4" />
                 AI-Powered B2B Outreach
               </span>
@@ -216,15 +212,15 @@ const Outreach = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="text-display-lg md:text-display-xl text-foreground mb-6"
+              className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
               Turn a Spreadsheet of Prospects Into a{" "}
-              <span className="text-gradient-accent">Pipeline of Warm Conversations.</span>
+              <span className="italic text-clay">Pipeline of Warm Conversations.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-body-lg text-muted-foreground mb-10 max-w-3xl mx-auto"
+              className="text-body-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto"
             >
               Import your list. AI scrapes every prospect's website, identifies
               their pain points, and writes a personalized 12-step email
@@ -233,12 +229,12 @@ const Outreach = () => {
 
             <motion.div variants={itemVariants} className="flex flex-col items-center gap-3">
               <a href="#pricing" onClick={scrollToPricing}>
-                <Button variant="hero" size="xl" className="group shadow-glow">
+                <Button variant="hero" size="xl" className="group">
                   Choose Your Plan
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
-              <p className="text-body-sm text-muted-foreground">
+              <p className="text-body-sm text-teal-deep/80">
                 No contracts. Cancel anytime.
               </p>
             </motion.div>
@@ -278,10 +274,10 @@ const Outreach = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It Works
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Three Steps to a Full Pipeline
             </h2>
           </motion.div>
@@ -331,8 +327,6 @@ const Outreach = () => {
 
       {/* FEATURES GRID */}
       <section className="section-padding bg-background relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full blur-3xl pointer-events-none" />
-
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -341,10 +335,10 @@ const Outreach = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               What You Get
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
               Everything to Run Outreach at Scale — Without an Outreach Team
             </h2>
           </motion.div>
@@ -384,10 +378,10 @@ const Outreach = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
+            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Pricing
             </span>
-            <h2 className="text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Start Small. Scale When It Works.
             </h2>
           </motion.div>
@@ -422,7 +416,7 @@ const Outreach = () => {
               Annual
             </span>
             {isAnnual && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-accent-orange/10 text-accent-orange">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay">
                 Save ~17%
               </span>
             )}
@@ -448,14 +442,14 @@ const Outreach = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className={`rounded-2xl p-6 flex flex-col relative ${
+                  className={`rounded-xl2 p-6 flex flex-col relative ${
                     tier.highlighted
-                      ? "bg-gradient-to-br from-primary via-primary to-primary-light text-primary-foreground ring-2 ring-accent-orange shadow-glow"
+                      ? "bg-teal text-paper shadow-[var(--shadow)]"
                       : "card-premium"
                   }`}
                 >
                   {tier.highlighted && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-accent-orange text-white">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-paper border border-sand text-clay shadow-[var(--shadow-sm)]">
                       Most Popular
                     </span>
                   )}
@@ -463,7 +457,7 @@ const Outreach = () => {
                   <h3
                     className={`text-heading-sm font-bold mb-1 ${
                       tier.highlighted
-                        ? "text-primary-foreground"
+                        ? "text-paper"
                         : "text-foreground"
                     }`}
                   >
@@ -474,7 +468,7 @@ const Outreach = () => {
                     <span
                       className={`text-display font-bold ${
                         tier.highlighted
-                          ? "text-primary-foreground"
+                          ? "text-paper"
                           : "text-foreground"
                       }`}
                     >
@@ -483,7 +477,7 @@ const Outreach = () => {
                     <span
                       className={
                         tier.highlighted
-                          ? "text-primary-foreground/70"
+                          ? "text-paper/70"
                           : "text-muted-foreground"
                       }
                     >
@@ -494,7 +488,7 @@ const Outreach = () => {
                   <p
                     className={`text-body-sm mb-2 ${
                       tier.highlighted
-                        ? "text-primary-foreground/70"
+                        ? "text-paper/70"
                         : "text-muted-foreground"
                     }`}
                   >
@@ -502,13 +496,15 @@ const Outreach = () => {
                   </p>
 
                   {isAnnual && (
-                    <span className="inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-semibold bg-green-500/10 text-green-600 mb-2">
+                    <span className="inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-semibold bg-paper border border-sand text-teal mb-2">
                       Save ${tier.annualSavings.toLocaleString()}/year
                     </span>
                   )}
 
                   <p
-                    className="text-body font-semibold mb-2 text-accent-orange"
+                    className={`text-body font-semibold mb-2 ${
+                      tier.highlighted ? "text-sand" : "text-clay"
+                    }`}
                   >
                     {tier.enrichments.toLocaleString()} prospects/month
                   </p>
@@ -516,7 +512,7 @@ const Outreach = () => {
                   <span
                     className={`inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-medium mb-4 ${
                       tier.highlighted
-                        ? "bg-primary-foreground/10 text-primary-foreground/80"
+                        ? "bg-paper/10 ring-1 ring-sand/40 text-sand"
                         : "bg-muted-foreground/10 text-muted-foreground"
                     }`}
                   >
@@ -529,16 +525,20 @@ const Outreach = () => {
                         <div
                           className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
                             tier.highlighted
-                              ? "bg-accent-orange/20"
+                              ? "bg-paper/10"
                               : "bg-accent-orange/10"
                           }`}
                         >
-                          <Check className="w-2.5 h-2.5 text-accent-orange" />
+                          <Check
+                            className={`w-2.5 h-2.5 ${
+                              tier.highlighted ? "text-sand" : "text-accent-orange"
+                            }`}
+                          />
                         </div>
                         <span
                           className={`text-body-sm ${
                             tier.highlighted
-                              ? "text-primary-foreground"
+                              ? "text-paper"
                               : "text-foreground"
                           }`}
                         >
@@ -557,11 +557,7 @@ const Outreach = () => {
                     <Button
                       variant={tier.highlighted ? "hero" : "outline"}
                       size="lg"
-                      className={`w-full group ${
-                        tier.highlighted
-                          ? "bg-accent-orange hover:brightness-110"
-                          : ""
-                      }`}
+                      className="w-full group"
                     >
                       Get Started
                     </Button>
@@ -585,7 +581,7 @@ const Outreach = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-2xl mx-auto mt-10"
           >
-            <div className="rounded-xl p-6 bg-background border border-border">
+            <div className="rounded-xl2 p-6 bg-paper border border-sand shadow-[var(--shadow-sm)]">
               <div className="flex items-start gap-3">
                 <Sparkles className="w-5 h-5 text-accent-orange flex-shrink-0 mt-0.5" />
                 <p className="text-body text-muted-foreground">
@@ -631,11 +627,7 @@ const Outreach = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none" />
-
+      <section className="section-padding bg-teal relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -644,17 +636,17 @@ const Outreach = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-heading-lg md:text-display text-primary-foreground mb-4">
+            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Your Pipeline Won't Fill Itself.
             </h2>
-            <p className="text-body-lg text-primary-foreground/80 mb-10 max-w-xl mx-auto">
+            <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
               An SDR costs $5,000+/month and sends generic templates. The
               Outreach Engine costs $0.07/prospect and writes sequences that
               sound like you.
             </p>
             <div className="flex flex-col items-center gap-4">
               <a href="#pricing" onClick={scrollToPricing}>
-                <Button variant="hero" size="xl" className="group shadow-glow">
+                <Button variant="hero" size="xl" className="group">
                   Choose Your Plan
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
