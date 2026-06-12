@@ -11,8 +11,9 @@ const FALLBACK_TITLE = 'Cima Growth Solutions — Fertility Marketing';
 
 // Brand tokens (do not change — must match Tailwind config)
 const TEAL = '#1B4D5C';
-const OFF_WHITE = '#FDFBF7';
-const ORANGE = '#F97316';
+const OFF_WHITE = '#FDFBF7'; // paper
+const CLAY = '#D2693B';
+const SAND = '#E7DCC8';
 
 // Glyph set requested from Google Fonts so dynamic titles render with the
 // brand fonts (Google returns a ttf subset, which satori/next-og can parse).
@@ -101,7 +102,8 @@ export default async function Image({
       : null;
 
   // Load brand fonts (graceful: render even if a fetch fails — never throw).
-  const [jakarta, dmSans] = await Promise.all([
+  const [fraunces, jakarta, dmSans] = await Promise.all([
+    loadGoogleFont('Fraunces', 340, GLYPHS + title),
     loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS + title),
     loadGoogleFont('DM Sans', 400, GLYPHS),
   ]);
@@ -109,6 +111,15 @@ export default async function Image({
   const fonts: NonNullable<
     ConstructorParameters<typeof ImageResponse>[1]
   >['fonts'] = [];
+  if (fraunces)
+    fonts.push({
+      // Fetched as the 340 variable-font instance; satori's Weight type only
+      // accepts standard stops, so it is registered/matched as 300.
+      name: 'Fraunces',
+      data: fraunces,
+      weight: 300,
+      style: 'normal',
+    });
   if (jakarta)
     fonts.push({
       name: 'Plus Jakarta Sans',
@@ -149,7 +160,7 @@ export default async function Image({
             fontSize: '460px',
             lineHeight: 1,
             fontWeight: 700,
-            color: 'rgba(249, 115, 22, 0.08)',
+            color: 'rgba(210, 105, 59, 0.10)',
             fontFamily: '"Plus Jakarta Sans"',
             display: 'flex',
           }}
@@ -163,7 +174,7 @@ export default async function Image({
             style={{
               width: '72px',
               height: '4px',
-              backgroundColor: ORANGE,
+              backgroundColor: CLAY,
               marginBottom: '24px',
               display: 'flex',
             }}
@@ -173,7 +184,7 @@ export default async function Image({
               display: 'flex',
               fontSize: '22px',
               letterSpacing: '6px',
-              color: ORANGE,
+              color: SAND,
               textTransform: 'uppercase',
             }}
           >
@@ -192,10 +203,11 @@ export default async function Image({
           <div
             style={{
               fontSize: '64px',
-              lineHeight: 1.15,
-              fontWeight: 700,
+              lineHeight: 1.12,
+              fontWeight: 300,
+              letterSpacing: '-0.02em',
               color: OFF_WHITE,
-              fontFamily: '"Plus Jakarta Sans"',
+              fontFamily: '"Fraunces", "Plus Jakarta Sans"',
               display: '-webkit-box',
               WebkitBoxOrient: 'vertical',
               WebkitLineClamp: 3,
