@@ -43,22 +43,43 @@ const Hero = () => {
       >
         {/* Copy column — first in DOM = CTA above the fold on mobile */}
         <div>
+          <motion.p
+            variants={itemVariants}
+            className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4"
+          >
+            Not a chatbot. Not a CRM. The operating system your clinic runs on.
+          </motion.p>
+
           <motion.h1
             variants={itemVariants}
-            className="font-display font-[340] text-[clamp(40px,7vw,92px)] leading-[1.02] tracking-[-.02em] text-teal-deep mb-6 md:mb-8"
+            className="font-display font-[340] text-[clamp(36px,6vw,76px)] leading-[1.04] tracking-[-.02em] text-teal-deep mb-6 md:mb-8"
           >
-            Stop losing patients to <em className="italic text-clay">slow</em>{" "}
-            follow-up.
+            Your clinic is leaking patients. This is the operating system that{" "}
+            <em className="italic text-clay">seals it.</em>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="font-body text-base md:text-xl text-teal-deep/85 mb-8 md:mb-10 max-w-[60ch] leading-relaxed"
+            className="font-body text-base md:text-xl text-teal-deep/85 mb-5 md:mb-6 max-w-[60ch] leading-relaxed"
           >
-            Your clinic leaks patients twice &mdash; at the inquiry, then again
-            when follow-up fades. GrowthOS is an AI growth platform that answers
-            in seconds, follows up for weeks, and books &mdash; on every
-            channel, trained on your specialty.
+            The platform that <span className="text-orange">drives</span>{" "}
+            patients in, <span className="text-orange">captures</span> every
+            inquiry the second it lands, and{" "}
+            <span className="text-orange">grows</span> them into referrals
+            &mdash; one system, not another AI bolt-on.
+          </motion.p>
+
+          <motion.p
+            variants={itemVariants}
+            className="font-body text-sm md:text-base text-teal-deep/70 mb-8 md:mb-10 max-w-[60ch] leading-relaxed"
+          >
+            A clinic doesn&rsquo;t leak patients in one place. It leaks at every
+            stage &mdash; the ads no one&rsquo;s optimizing, the inquiry that
+            sits for hours, the follow-up that stops at one, the patient who
+            quietly disappears, the review you never ask for. GrowthOS runs all
+            of it on one brain: acquisition, conversion, and retention in a
+            single platform. Not five disconnected tools. Not a chatbot with a
+            medical coat of paint. The system your clinic actually runs on.
           </motion.p>
 
           {/* CTAs — stacked on mobile, inline on larger screens */}
