@@ -183,7 +183,7 @@
 @layer components {
   /* Premium section styling — generous, calm vertical rhythm */
   .section-padding {
-    padding-block: clamp(80px, 10vw, 140px);
+    padding-block: clamp(4rem, 8vh, 6rem);
   }
 
   .section-padding-sm {
@@ -291,6 +291,19 @@
   @keyframes pulseGlow {
     0%, 100% { box-shadow: 0 0 20px -5px hsl(var(--accent-orange) / 0.3); }
     50% { box-shadow: 0 0 40px -5px hsl(var(--accent-orange) / 0.5); }
+  }
+
+  /* Hero funnel "leak" drip — subtle, only when motion is welcome */
+  @keyframes heroDripFall {
+    0%   { transform: rotate(45deg) translate(0, 0); opacity: 0.85; }
+    60%  { opacity: 0.4; }
+    100% { transform: rotate(45deg) translate(3px, 6px); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-drip {
+      animation: heroDripFall 2.6s ease-in-out infinite;
+    }
   }
 }
 

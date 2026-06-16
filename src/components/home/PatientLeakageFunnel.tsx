@@ -1,121 +1,134 @@
-import { Check } from "lucide-react";
-
 type Stage = {
-  group: "Drive" | "Capture" | "Grow";
+  pillar: "Drive" | "Capture" | "Grow";
   name: string;
-  value: number;
+  pct: number;
+  width: string;
   leak: string;
-  seal: string;
+  fix: string;
 };
 
 const stages: Stage[] = [
   {
-    group: "Drive",
+    pillar: "Drive",
     name: "Demand",
-    value: 100,
-    leak: "Ads aren't running, aren't compliant, or aren't optimized, so the right patients never find you.",
-    seal: "AI Media Buyer builds, launches, and optimizes Google + Meta daily.",
+    pct: 100,
+    width: "100%",
+    leak: "Ads unoptimized — right patients never find you",
+    fix: "AI Media Buyer",
   },
   {
-    group: "Capture",
+    pillar: "Capture",
     name: "Inquiry",
-    value: 65,
-    leak: "35% of patients never hear back in time and book elsewhere.",
-    seal: "AI Front Desk answers in seconds, on every channel, 24/7.",
+    pct: 65,
+    width: "86%",
+    leak: "35% never hear back in time → book elsewhere",
+    fix: "AI Front Desk, instant",
   },
   {
-    group: "Capture",
+    pillar: "Capture",
     name: "Nurture",
-    value: 40,
-    leak: "The patient engages once, then goes quiet. The biggest drop in the funnel — the average patient needs 7–12 touchpoints to book, and most clinics stop at 1–2.",
-    seal: "AI Nurture Rep follows up 7–12 times and never fades.",
+    pct: 40,
+    width: "72%",
+    leak: "Goes quiet — needs 7–12 touches, gets 1–2",
+    fix: "AI Nurture Rep",
   },
   {
-    group: "Grow",
+    pillar: "Grow",
     name: "Retention",
-    value: 20,
-    leak: "The patient books once and never comes back; no one re-engages dormant patients.",
-    seal: "Reactivation campaigns + clinical-journey nurture bring them back.",
+    pct: 20,
+    width: "56%",
+    leak: "Books once, never returns",
+    fix: "Reactivation campaigns",
   },
   {
-    group: "Grow",
+    pillar: "Grow",
     name: "Referral",
-    value: 12,
-    leak: "Happy patients leave without ever being asked for a review or referral.",
-    seal: "AI Reputation Manager turns them into reviews and referrals automatically.",
+    pct: 12,
+    width: "42%",
+    leak: "Happy patients never asked for a review",
+    fix: "AI Reputation Manager",
   },
 ];
 
 const PatientLeakageFunnel = () => {
   return (
     <section
-      aria-labelledby="patient-leakage-funnel-heading"
-      className="bg-paper rounded-xl2 border border-sand shadow-[var(--shadow)] p-5 sm:p-6 lg:p-8"
+      aria-labelledby="patient-leak-heading"
+      className="bg-paper rounded-[20px] border border-teal/15 pt-[26px] px-6 pb-[22px] shadow-[0_18px_50px_-24px_rgba(27,77,92,.35)]"
     >
       <h2
-        id="patient-leakage-funnel-heading"
-        className="font-ui text-xs font-semibold uppercase tracking-[.16em] text-clay mb-1"
+        id="patient-leak-heading"
+        className="font-display font-bold text-[11px] tracking-[.14em] uppercase text-orange"
       >
-        The Leak Map
+        The 5-Stage Patient Leak
       </h2>
-      <p className="text-sm text-muted-foreground mb-5 sm:mb-6">
-        Where clinics lose patients — and where GrowthOS seals each leak.
+      <p className="text-[13px] text-[#6B7B80] mt-1 mb-[18px]">
+        Where clinics lose patients — and where GrowthOS seals each gap.
       </p>
 
-      <ol role="list" className="space-y-4 sm:space-y-5">
+      <ol role="list" className="flex flex-col gap-3">
         {stages.map((stage, i) => {
-          const isGroupStart = i === 0 || stages[i - 1].group !== stage.group;
+          const showPillar =
+            i === 0 || stages[i - 1].pillar !== stage.pillar;
+          const isLast = i === stages.length - 1;
           return (
-            <li key={stage.name}>
-              {isGroupStart && (
-                <div className="font-ui text-[11px] sm:text-xs font-bold uppercase tracking-[.18em] text-clay mb-2">
-                  {stage.group}
+            <li key={stage.name} className="relative">
+              {showPillar && (
+                <div className="font-display text-[9px] font-bold tracking-[.12em] uppercase text-teal/60 mb-[5px]">
+                  {stage.pillar}
                 </div>
               )}
 
-              <div className="font-ui text-[13px] sm:text-sm font-semibold text-teal-deep mb-1.5">
-                {stage.name}
-              </div>
               <div
                 role="img"
-                aria-label={`${stage.name}: ${stage.value} percent of patients`}
-                className="h-9 sm:h-10 rounded-md bg-teal flex items-center justify-end pr-2.5 sm:pr-3 min-w-[3.25rem] mb-2"
-                style={{ width: `${stage.value}%` }}
+                aria-label={`${stage.name}: ${stage.pct} percent of patients`}
+                className="h-[34px] rounded-[9px] mx-auto px-[14px] text-white flex items-center justify-between font-display"
+                style={{
+                  width: stage.width,
+                  background: "linear-gradient(90deg,#1B4D5C,#2C6678)",
+                }}
               >
-                <span className="text-[11px] sm:text-xs font-bold text-paper tabular-nums">
-                  {stage.value}%
+                <span className="font-bold text-[14px]">{stage.name}</span>
+                <span className="font-extrabold text-[13px] opacity-90 tabular-nums">
+                  {stage.pct}%
                 </span>
               </div>
 
-              <div className="ml-3 sm:ml-5 space-y-1.5">
-                <div
-                  className="flex items-start gap-2 rounded-md border border-sand border-l-[3px] border-l-clay bg-cream px-3 py-2"
-                  aria-label={`Leak. ${stage.leak}`}
-                >
+              {!isLast && (
+                <span
+                  aria-hidden="true"
+                  className="hero-drip absolute right-[6px] top-[32px] block w-2 h-2 bg-orange opacity-85"
+                  style={{
+                    borderRadius: "0 50% 50% 50%",
+                    transform: "rotate(45deg)",
+                  }}
+                />
+              )}
+
+              <div className="flex gap-[14px] mt-[7px] text-[12px] leading-[1.3]">
+                <div className="flex gap-[6px] flex-1 items-start">
                   <span
                     aria-hidden="true"
-                    className="h-1.5 w-1.5 shrink-0 mt-1.5 rounded-full bg-clay"
-                  />
-                  <p className="text-[11.5px] sm:text-[12px] leading-snug">
-                    <span className="sr-only">Leak. </span>
-                    <span className="font-semibold text-clay">Leak — </span>
-                    <span className="text-teal-deep/80">{stage.leak}</span>
-                  </p>
+                    className="flex-none w-[15px] h-[15px] rounded-full grid place-items-center text-[10px] font-bold mt-px bg-orange/15 text-orange"
+                  >
+                    ✕
+                  </span>
+                  <span className="text-[#9A5B34]">
+                    <span className="sr-only">Leak: </span>
+                    {stage.leak}
+                  </span>
                 </div>
-
-                <div
-                  className="flex items-start gap-2 rounded-md border border-mist border-l-[3px] border-l-teal bg-mist/40 px-3 py-2"
-                  aria-label={`Seal. ${stage.seal}`}
-                >
-                  <Check
+                <div className="flex gap-[6px] flex-1 items-start">
+                  <span
                     aria-hidden="true"
-                    className="h-3.5 w-3.5 shrink-0 mt-0.5 text-teal"
-                  />
-                  <p className="text-[11.5px] sm:text-[12px] leading-snug">
-                    <span className="sr-only">Seal. </span>
-                    <span className="font-semibold text-teal">Seal — </span>
-                    <span className="text-teal-deep/80">{stage.seal}</span>
-                  </p>
+                    className="flex-none w-[15px] h-[15px] rounded-full grid place-items-center text-[10px] font-bold mt-px bg-teal/12 text-teal"
+                  >
+                    ✓
+                  </span>
+                  <span className="text-teal font-medium">
+                    <span className="sr-only">Fix: </span>
+                    {stage.fix}
+                  </span>
                 </div>
               </div>
             </li>
@@ -123,9 +136,12 @@ const PatientLeakageFunnel = () => {
         })}
       </ol>
 
-      <p className="mt-5 sm:mt-6 text-[13px] sm:text-sm font-ui font-semibold text-teal text-center italic">
-        Five leaks, one platform. GrowthOS seals every stage — Drive, Capture,
-        Grow.
+      <p className="mt-[18px] pt-[14px] border-t border-dashed border-teal/20 font-display font-bold text-[13px] text-teal flex items-center gap-2">
+        <span
+          aria-hidden="true"
+          className="w-2 h-2 rounded-full bg-orange shrink-0"
+        />
+        GrowthOS seals all five — patients stay in the funnel.
       </p>
     </section>
   );
