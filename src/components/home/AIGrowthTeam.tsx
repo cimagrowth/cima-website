@@ -92,7 +92,7 @@ const AIGrowthTeam = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
+          className="text-center mb-10 md:mb-12 max-w-3xl mx-auto"
         >
           <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
             The Team
@@ -111,7 +111,7 @@ const AIGrowthTeam = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
           {roles.map((role, index) => {
             const Icon = role.icon;
             const styles = pillarStyles[role.pillar];
@@ -126,7 +126,7 @@ const AIGrowthTeam = () => {
                   delay: index * 0.08,
                   ease: "easeOut",
                 }}
-                className="bg-paper rounded-xl2 border border-sand p-7 md:p-8 shadow-[var(--shadow-sm)] flex flex-col h-full"
+                className="bg-paper rounded-xl2 border border-sand p-7 md:p-8 shadow-[var(--shadow-sm)] flex flex-col h-full w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
               >
                 <div className="flex items-center justify-between mb-5">
                   <div
@@ -159,7 +159,7 @@ const AIGrowthTeam = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="mt-12 md:mt-14 text-center text-base md:text-lg text-muted-foreground max-w-3xl mx-auto italic"
+          className="mt-8 md:mt-10 text-center text-base md:text-lg text-muted-foreground max-w-3xl mx-auto italic"
         >
           And when something high-stakes happens &mdash; a patient in crisis,
           a new booking, a hot lead identifying themselves &mdash; the senior
