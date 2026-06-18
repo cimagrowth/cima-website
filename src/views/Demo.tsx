@@ -33,6 +33,7 @@ type FormState = {
   first_name: string;
   last_name: string;
   email: string;
+  phone: string;
   company_name: string;
   company_website: string;
   industry: string;
@@ -46,6 +47,7 @@ const Demo = () => {
     first_name: "",
     last_name: "",
     email: "",
+    phone: "",
     company_name: "",
     company_website: "",
     industry: "",
@@ -93,6 +95,7 @@ const Demo = () => {
             first_name: formData.first_name,
             last_name: formData.last_name,
             email: formData.email,
+            phone: formData.phone || undefined,
             company_name: formData.company_name,
             company_website: formData.company_website || "",
             industry: formData.industry,
@@ -270,6 +273,29 @@ const Demo = () => {
                       required
                       placeholder="john@company.com"
                       value={formData.email}
+                      onChange={handleChange}
+                      className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-body-sm font-medium text-foreground mb-2"
+                    >
+                      Mobile Phone{" "}
+                      <span className="text-muted-foreground font-normal">
+                        (optional)
+                      </span>
+                    </label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      placeholder="(555) 123-4567"
+                      value={formData.phone}
                       onChange={handleChange}
                       className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"
                     />
