@@ -33,6 +33,7 @@ const Header = () => {
   const navLinks: NavLink[] = [
     { href: "/", label: "Home" },
     { href: "/product", label: "Platform" },
+    { href: "/patient-acquisition", label: "Solutions" },
     { href: "/how-it-works", label: "How It Works" },
     { href: "/features", label: "Features" },
     { href: "/outreach", label: "Outreach Engine" },

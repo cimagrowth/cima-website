@@ -11,6 +11,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
+    solutions: [
+      { label: "Patient Acquisition", href: "/patient-acquisition" },
+      { label: "Healthcare CRM", href: "/healthcare-crm" },
+      { label: "Medical Practice Marketing", href: "/medical-practice-marketing" },
+      { label: "Patient Engagement Platform", href: "/patient-engagement-platform" },
+      { label: "Med Spa Marketing", href: "/med-spa-marketing" },
+    ],
     product: [
       { label: "How It Works", href: "/how-it-works" },
       { label: "Features", href: "/features" },
@@ -65,7 +72,7 @@ const Footer = () => {
 
       <footer className="bg-primary text-primary-foreground">
         <div className="container-wide px-4 md:px-6 py-10 md:py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
             {/* Brand Column */}
             <div className="sm:col-span-2 lg:col-span-1">
               <Link href="/" className="flex items-center gap-3 mb-4">
@@ -97,6 +104,25 @@ const Footer = () => {
                   );
                 })}
               </div>
+            </div>
+
+            {/* Solutions Links */}
+            <div>
+              <h4 className="font-semibold text-base md:text-lg text-primary-foreground mb-4">
+                Solutions
+              </h4>
+              <ul className="space-y-3">
+                {footerLinks.solutions.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm md:text-base text-primary-foreground/70 hover:text-sand transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Product Links */}
