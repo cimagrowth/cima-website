@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'Privacy Policy – Cima Growth Solutions',
   description: 'Cima Growth Solutions privacy policy.',
   keywords: ['privacy policy', 'HIPAA compliance', 'healthcare data protection', 'GrowthOS privacy'],
-  alternates: { canonical: 'https://www.cimagrowth.com/privacy' },
+  alternates: { canonical: 'https://cimagrowth.com/privacy' },
   openGraph: {
     title: 'Privacy Policy – Cima Growth Solutions',
     description: 'Cima Growth Solutions privacy policy.',
-    url: 'https://www.cimagrowth.com/privacy',
+    url: 'https://cimagrowth.com/privacy',
     siteName: 'Cima Growth Solutions',
     images: [
       {

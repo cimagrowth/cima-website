@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'Contact | Cima Growth Solutions',
   description:
     "Get in touch with Cima Growth Solutions. Tell us what you're working on and we'll get back to you within one business day.",
-  alternates: { canonical: 'https://www.cimagrowth.com/contact' },
+  alternates: { canonical: 'https://cimagrowth.com/contact' },
   openGraph: {
     title: 'Contact Cima Growth Solutions',
     description: 'Get in touch with Cima Growth Solutions.',
-    url: 'https://www.cimagrowth.com/contact',
+    url: 'https://cimagrowth.com/contact',
     siteName: 'Cima Growth Solutions',
     type: 'website',
   },

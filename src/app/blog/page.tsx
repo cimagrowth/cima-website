@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     'med spa growth', 'healthcare marketing blog', 'patient retention strategies',
     'medical practice growth', 'wellness center marketing', 'regenerative medicine marketing',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/blog' },
+  alternates: { canonical: 'https://cimagrowth.com/blog' },
   openGraph: {
     title: 'Blog – Cima Growth Solutions',
     description: 'Insights on AI, patient acquisition strategies, and clinic growth.',
-    url: 'https://www.cimagrowth.com/blog',
+    url: 'https://cimagrowth.com/blog',
     siteName: 'Cima Growth Solutions',
     images: [
       {

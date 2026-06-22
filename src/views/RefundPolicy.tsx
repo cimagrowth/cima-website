@@ -88,7 +88,7 @@ const RefundPolicy = () => {
             For refund requests or billing questions, contact:<br />
             Cima Growth Solutions<br />
             Email: support@cimagrowth.com<br />
-            Website: <a href="https://www.cimagrowth.com">https://www.cimagrowth.com</a>
+            Website: <a href="https://cimagrowth.com">https://cimagrowth.com</a>
           </p>
         </article>
       </div>

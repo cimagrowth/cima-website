@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
           <h2>1. Scope of This Policy</h2>
           <p>This Policy applies to information collected:</p>
           <ul>
-            <li>Through www.cimagrowth.com and related domains</li>
+            <li>Through cimagrowth.com and related domains</li>
             <li>Through Cima-branded mobile applications</li>
             <li>Through email, SMS, voice, and in-app communications</li>
             <li>Through forms, CRM workflows, AI-assisted tools, and integrations</li>

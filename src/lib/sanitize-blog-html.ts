@@ -26,7 +26,7 @@ export function sanitizeBlogHtml(raw: string): string {
 
     let isExternal = false;
     try {
-      const url = new URL(href, 'https://www.cimagrowth.com');
+      const url = new URL(href, 'https://cimagrowth.com');
       isExternal = !INTERNAL_HOSTS.has(url.hostname);
     } catch {
       isExternal = false;

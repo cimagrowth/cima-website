@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     'medical spa AI', 'fertility clinic automation', 'appointment booking AI',
     'HIPAA compliant AI',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/ai-agent' },
+  alternates: { canonical: 'https://cimagrowth.com/ai-agent' },
   openGraph: {
     title: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
     description: 'Your clinic\'s AI front desk — responds in under 3 seconds, qualifies leads, books appointments 24/7, and hands off with full context. Starting at $297/mo.',
-    url: 'https://www.cimagrowth.com/ai-agent',
+    url: 'https://cimagrowth.com/ai-agent',
     siteName: 'Cima Growth Solutions',
     images: [
       {

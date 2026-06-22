@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'Terms of Service – Cima Growth Solutions',
   description: 'Cima Growth Solutions terms of service.',
   keywords: ['terms of service', 'GrowthOS terms', 'Cima Growth Solutions agreement'],
-  alternates: { canonical: 'https://www.cimagrowth.com/terms' },
+  alternates: { canonical: 'https://cimagrowth.com/terms' },
   openGraph: {
     title: 'Terms of Service – Cima Growth Solutions',
     description: 'Cima Growth Solutions terms of service.',
-    url: 'https://www.cimagrowth.com/terms',
+    url: 'https://cimagrowth.com/terms',
     siteName: 'Cima Growth Solutions',
     images: [
       {

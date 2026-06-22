@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     'patient reactivation campaigns', 'Salesforce healthcare integration',
     'HubSpot clinic integration', 'HIPAA CRM',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/product' },
+  alternates: { canonical: 'https://cimagrowth.com/product' },
   openGraph: {
     title: 'Platform – Everything a CRM does. None of the work. | GrowthOS by Cima',
     description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect — plus an AI team that actually does the work inside them. Compare against HubSpot and GoHighLevel.',
-    url: 'https://www.cimagrowth.com/product',
+    url: 'https://cimagrowth.com/product',
     siteName: 'Cima Growth Solutions',
     images: [
       {

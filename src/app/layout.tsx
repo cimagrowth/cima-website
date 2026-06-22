@@ -11,7 +11,7 @@ import { CookieConsent } from '@/components/CookieConsent';
 import { DynamicGTM } from './dynamic-gtm';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.cimagrowth.com'),
+  metadataBase: new URL('https://cimagrowth.com'),
   title: {
     default: 'Cima Growth Solutions – AI Patient Engagement for Healthcare Clinics',
     template: '%s',

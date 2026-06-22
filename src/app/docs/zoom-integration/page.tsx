@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'Zoom Integration | GrowthOS',
   description:
     'How to connect, use, and remove the GrowthOS Zoom integration. Required reading for users connecting their Zoom account to GrowthOS for automatic meeting link generation.',
-  alternates: { canonical: 'https://www.cimagrowth.com/docs/zoom-integration' },
+  alternates: { canonical: 'https://cimagrowth.com/docs/zoom-integration' },
   openGraph: {
     title: 'Zoom Integration — GrowthOS',
     description: 'How to connect, use, and remove the GrowthOS Zoom integration.',
-    url: 'https://www.cimagrowth.com/docs/zoom-integration',
+    url: 'https://cimagrowth.com/docs/zoom-integration',
     siteName: 'Cima Growth Solutions',
     type: 'article',
     locale: 'en_US',

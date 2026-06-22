@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     'GrowthOS demo', 'book a demo', 'healthcare CRM demo',
     'patient engagement demo', 'AI healthcare software trial', 'clinic software demo',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/demo' },
+  alternates: { canonical: 'https://cimagrowth.com/demo' },
   openGraph: {
     title: 'Book a Demo – Cima Growth Solutions',
     description: 'See how GrowthOS transforms patient acquisition for fertility clinics, med spas, and wellness centers.',
-    url: 'https://www.cimagrowth.com/demo',
+    url: 'https://cimagrowth.com/demo',
     siteName: 'Cima Growth Solutions',
     images: [
       {
