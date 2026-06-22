@@ -14,7 +14,54 @@ interface BlogPostProps {
   sanitizedContent: string;
 }
 
+type RelatedSolution = { href: string; label: string; blurb: string };
+
+/**
+ * Map a post to the single most relevant solution landing page based on its
+ * slug and keywords. Defaults to the patient acquisition pillar so every post
+ * links to at least one money page.
+ */
+const getRelatedSolution = (post: BlogPostType): RelatedSolution => {
+  const haystack = `${post.slug} ${(post.meta_keywords ?? []).join(" ")}`.toLowerCase();
+
+  if (/(med[\s-]?spa|aesthetic)/.test(haystack)) {
+    return {
+      href: "/med-spa-marketing",
+      label: "Med spa marketing",
+      blurb: "See how GrowthOS fills the chair and keeps aesthetic clients rebooking.",
+    };
+  }
+  if (/(crm|tool[\s-]?sprawl|pipeline|infrastructure)/.test(haystack)) {
+    return {
+      href: "/healthcare-crm",
+      label: "Healthcare CRM",
+      blurb: "See the CRM that acquires and retains patients, not just stores them.",
+    };
+  }
+  if (/(sms|email|engage|message|whatsapp|zeigarnik|soap|nurture|inquiry|inquiries|speed[\s-]?to[\s-]?lead|leak)/.test(haystack)) {
+    return {
+      href: "/patient-engagement-platform",
+      label: "Patient engagement platform",
+      blurb: "See engagement that converts and retains across every channel.",
+    };
+  }
+  if (/(ad|ads|headline|landing|funnel|marketing|lead|leads|conversion|offer)/.test(haystack)) {
+    return {
+      href: "/medical-practice-marketing",
+      label: "Medical practice marketing",
+      blurb: "See how one platform replaces the agency, ads manager, and chatbot.",
+    };
+  }
+  return {
+    href: "/patient-acquisition",
+    label: "Patient acquisition",
+    blurb: "See the full system for turning inquiries into booked, returning patients.",
+  };
+};
+
 const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
+  const relatedSolution = getRelatedSolution(post);
+
   return (
     <>
       <article className="section-padding bg-background">
@@ -97,6 +144,31 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
             className="prose prose-lg max-w-2xl mx-auto prose-headings:font-display prose-headings:text-primary prose-headings:font-[340] prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/85 prose-p:text-lg prose-p:leading-relaxed prose-li:text-foreground/85 prose-a:text-primary prose-a:underline hover:prose-a:text-accent-orange prose-strong:text-foreground"
             dangerouslySetInnerHTML={{ __html: sanitizedContent }}
           />
+
+          {/* Related solution */}
+          <motion.aside
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.4 }}
+            className="mt-12 max-w-2xl mx-auto"
+          >
+            <Link
+              href={relatedSolution.href}
+              className="group block rounded-2xl border border-sand bg-cream p-6 md:p-7 transition-all hover:border-clay/50"
+            >
+              <p className="font-ui text-xs font-semibold uppercase tracking-[.16em] text-clay mb-2">
+                Related solution
+              </p>
+              <h3 className="font-ui text-lg md:text-xl font-semibold text-teal-deep mb-1 inline-flex items-center gap-1.5">
+                {relatedSolution.label}
+                <ArrowRight className="w-4 h-4 text-clay transition-transform group-hover:translate-x-1" />
+              </h3>
+              <p className="text-sm md:text-base text-teal-deep/75 leading-relaxed">
+                {relatedSolution.blurb}
+              </p>
+            </Link>
+          </motion.aside>
 
           {/* Topic Tags */}
           {post.meta_keywords && post.meta_keywords.length > 0 && (
