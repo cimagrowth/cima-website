@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     'AI email sequences', 'B2B lead generation', 'outreach automation',
     'personalized cold email', 'sales engagement platform', 'AI prospecting tool',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/outreach' },
+  alternates: { canonical: 'https://cimagrowth.com/outreach' },
   openGraph: {
     title: 'AI Outreach Engine – Turn Prospects Into Warm Conversations at $0.07 Each',
     description: 'Import your list. AI scrapes every prospect, identifies pain points, and writes a personalized 12-step email sequence in your voice. Starting at $49/mo.',
-    url: 'https://www.cimagrowth.com/outreach',
+    url: 'https://cimagrowth.com/outreach',
     siteName: 'Cima Growth Solutions',
     images: [
       {

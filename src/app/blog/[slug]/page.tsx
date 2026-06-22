@@ -24,7 +24,7 @@ export async function generateMetadata(
     return { title: 'Post not found – Cima Growth Solutions' };
   }
 
-  const canonical = `https://www.cimagrowth.com/blog/${post.slug}`;
+  const canonical = `https://cimagrowth.com/blog/${post.slug}`;
   const title = post.meta_title ?? post.title;
   const description = post.meta_description ?? post.excerpt ?? undefined;
 
@@ -74,7 +74,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     image: post.featured_image_url ?? undefined,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.cimagrowth.com/blog/${post.slug}`,
+      '@id': `https://cimagrowth.com/blog/${post.slug}`,
     },
     author: {
       '@type': 'Person',
@@ -86,7 +86,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       name: 'Cima Growth Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.cimagrowth.com/icon-512.png',
+        url: 'https://cimagrowth.com/icon-512.png',
       },
     },
   };

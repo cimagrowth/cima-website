@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     'clinic software pricing', 'med spa CRM cost', 'fertility clinic software pricing',
     'AI healthcare software pricing', 'medical practice management cost',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/sign-up' },
+  alternates: { canonical: 'https://cimagrowth.com/sign-up' },
   openGraph: {
     title: 'Get Started with GrowthOS – Cima Growth Solutions',
     description: 'Start acquiring patients with AI today. Live onboarding in 24–48 hours.',
-    url: 'https://www.cimagrowth.com/sign-up',
+    url: 'https://cimagrowth.com/sign-up',
     siteName: 'Cima Growth Solutions',
     images: [
       {

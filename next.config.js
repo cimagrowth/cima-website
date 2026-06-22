@@ -19,6 +19,13 @@ const nextConfig = {
   // Preserve existing redirects from vercel.json
   async redirects() {
     return [
+      // Canonical host: 308-redirect www → non-www (never the reverse)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.cimagrowth.com' }],
+        destination: 'https://cimagrowth.com/:path*',
+        permanent: true,
+      },
       { source: '/home-6335', destination: '/', permanent: true },
       { source: '/demo870629', destination: '/demo', permanent: true },
       { source: '/demo-4386', destination: '/demo', permanent: true },

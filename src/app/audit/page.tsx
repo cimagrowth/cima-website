@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     'GrowthOS AI tools',
     'The Seven-Figure Leak',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/audit' },
+  alternates: { canonical: 'https://cimagrowth.com/audit' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: 'https://www.cimagrowth.com/audit',
+    url: 'https://cimagrowth.com/audit',
     siteName: 'Cima Growth Solutions',
     images: [
       {

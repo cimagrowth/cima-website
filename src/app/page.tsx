@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     'clinic growth software', 'medical practice AI',
     'automated patient response', 'healthcare marketing automation',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com' },
+  alternates: { canonical: 'https://cimagrowth.com' },
   openGraph: {
     title: 'Not a chatbot. Not a CRM. The operating system your clinic runs on.',
     description: 'The complete patient acquisition engine for fertility, aesthetics, and wellness clinics. Generate demand, convert inquiries, stop leakage, and retain patients in one platform. Replaces your agency, CRM, ads manager, and chatbot — for $999/mo.',
-    url: 'https://www.cimagrowth.com',
+    url: 'https://cimagrowth.com',
     siteName: 'Cima Growth Solutions',
     images: [
       {

@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     'Google Ads agency', 'paid search management',
     'Google Ads optimization', 'AI ad campaigns',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/ads' },
+  alternates: { canonical: 'https://cimagrowth.com/ads' },
   openGraph: {
     title: 'AI Ads for Healthcare – Stop Paying Agencies $5,000/Month. Use AI for $399.',
     description: 'AI builds, launches, and optimizes your Google and Facebook ad campaigns with healthcare compliance built in. Agency-level output at software pricing.',
-    url: 'https://www.cimagrowth.com/ads',
+    url: 'https://cimagrowth.com/ads',
     siteName: 'Cima Growth Solutions',
     images: [
       {

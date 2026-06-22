@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'Refund Policy – Cima Growth Solutions',
   description: 'Cima Growth Solutions refund policy.',
   keywords: ['refund policy', 'GrowthOS cancellation', 'subscription refund'],
-  alternates: { canonical: 'https://www.cimagrowth.com/refund-policy' },
+  alternates: { canonical: 'https://cimagrowth.com/refund-policy' },
   openGraph: {
     title: 'Refund Policy – Cima Growth Solutions',
     description: 'Cima Growth Solutions refund policy.',
-    url: 'https://www.cimagrowth.com/refund-policy',
+    url: 'https://cimagrowth.com/refund-policy',
     siteName: 'Cima Growth Solutions',
     images: [
       {

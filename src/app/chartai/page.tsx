@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     'electronic medical records', 'patient records automation',
     'GrowthOS', 'fertility clinic records', 'healthcare records',
   ],
-  alternates: { canonical: 'https://www.cimagrowth.com/chartai' },
+  alternates: { canonical: 'https://cimagrowth.com/chartai' },
   openGraph: {
     title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
     description: 'Stop chasing faxes. ChartAI retrieves medical records automatically — your staff fills the request, the patient signs via email, and records arrive in your system.',
-    url: 'https://www.cimagrowth.com/chartai',
+    url: 'https://cimagrowth.com/chartai',
     siteName: 'Cima Growth Solutions',
     images: [
       {
