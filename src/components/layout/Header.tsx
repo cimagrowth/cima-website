@@ -1,26 +1,49 @@
 'use client';
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import cimaLogoLightImg from "@/assets/cima-logo-light.png";
 
 const cimaLogoLight = typeof cimaLogoLightImg === 'string' ? cimaLogoLightImg : cimaLogoLightImg.src;
 
-type NavLink = {
+type NavChild = {
   href: string;
   label: string;
-  isAnchor?: boolean;
 };
+
+type NavLink = {
+  href?: string;
+  label: string;
+  children?: NavChild[];
+};
+
+const navLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/product", label: "Platform" },
+  { href: "/features", label: "Features" },
+  { href: "/hipaa-safe-tracking", label: "HIPAA-Safe Tracking" },
+  {
+    label: "Other Solutions",
+    children: [
+      { href: "/ai-agent", label: "AI Agent" },
+      { href: "/ads", label: "AI Ads" },
+      { href: "/chartai", label: "ChartAI" },
+      { href: "/outreach", label: "Outreach Engine" },
+    ],
+  },
+  { href: "/blog", label: "Blog" },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,48 +53,17 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks: NavLink[] = [
-    { href: "/", label: "Home" },
-    { href: "/product", label: "Platform" },
-    { href: "/patient-acquisition", label: "Solutions" },
-    { href: "/how-it-works", label: "How It Works" },
-    { href: "/features", label: "Features" },
-    { href: "/outreach", label: "Outreach Engine" },
-    { href: "/ai-agent", label: "AI Agent" },
-    { href: "/ads", label: "AI Ads" },
-    { href: "/chartai", label: "ChartAI" },
-    { href: "/blog", label: "Blog" },
-  ];
-
-  const isActive = (path: string) => {
-    if (path.includes("#")) {
-      return pathname === "/";
-    }
-    return pathname === path;
-  };
-
-  const handleNavClick = (link: NavLink) => {
+  // Close any open menus on navigation
+  useEffect(() => {
+    setOpenDropdown(null);
+    setExpandedMobile(null);
     setIsMobileMenuOpen(false);
+  }, [pathname]);
 
-    if (link.isAnchor) {
-      const hash = link.href.replace("/", "");
+  const isActive = (path?: string) => !!path && pathname === path;
 
-      if (pathname === "/") {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      } else {
-        router.push("/");
-        setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
-      }
-    }
-  };
+  const isGroupActive = (link: NavLink) =>
+    !!link.children?.some((child) => isActive(child.href));
 
   return (
     <header
@@ -105,23 +97,58 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              link.isAnchor ? (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link)}
-                  className={`font-ui text-sm font-medium transition-all duration-300 relative ${
-                    isActive(link.href)
-                      ? "text-teal-deep"
-                      : "text-teal-deep/75 hover:text-teal"
-                  }`}
+            {navLinks.map((link) =>
+              link.children ? (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => setOpenDropdown(link.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  {link.label}
-                </button>
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={openDropdown === link.label}
+                    onClick={() =>
+                      setOpenDropdown(openDropdown === link.label ? null : link.label)
+                    }
+                    className={`font-ui text-sm font-medium transition-all duration-300 inline-flex items-center gap-1 ${
+                      isGroupActive(link)
+                        ? "text-teal-deep"
+                        : "text-teal-deep/75 hover:text-teal"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        openDropdown === link.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {openDropdown === link.label && (
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3">
+                      <div className="min-w-[200px] rounded-xl2 border border-sand bg-cream/95 backdrop-blur-md shadow-card p-2">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={`block px-3 py-2 rounded-lg font-ui text-sm font-medium transition-colors ${
+                              isActive(child.href)
+                                ? "text-teal-deep bg-sand/50"
+                                : "text-teal-deep/80 hover:text-teal-deep hover:bg-sand/40"
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ) : (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={link.href!}
                   className={`font-ui text-sm font-medium transition-all duration-300 relative ${
                     isActive(link.href)
                       ? "text-teal-deep"
@@ -134,7 +161,7 @@ const Header = () => {
                   )}
                 </Link>
               )
-            ))}
+            )}
           </nav>
 
           {/* Desktop CTA */}
@@ -167,26 +194,56 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-        isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        isMobileMenuOpen ? "max-h-[760px] opacity-100" : "max-h-0 opacity-0"
       }`}>
         <nav className="bg-cream border-b border-sand px-4 py-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            link.isAnchor ? (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link)}
-                className={`font-ui text-base font-medium py-3 px-3 rounded-lg transition-colors text-left ${
-                  isActive(link.href)
-                    ? "text-teal-deep bg-sand/50"
-                    : "text-teal-deep hover:bg-sand/30"
-                }`}
-              >
-                {link.label}
-              </button>
+          {navLinks.map((link) =>
+            link.children ? (
+              <div key={link.label}>
+                <button
+                  type="button"
+                  aria-expanded={expandedMobile === link.label}
+                  onClick={() =>
+                    setExpandedMobile(
+                      expandedMobile === link.label ? null : link.label
+                    )
+                  }
+                  className={`w-full flex items-center justify-between font-ui text-base font-medium py-3 px-3 rounded-lg transition-colors text-left ${
+                    isGroupActive(link)
+                      ? "text-teal-deep bg-sand/50"
+                      : "text-teal-deep hover:bg-sand/30"
+                  }`}
+                >
+                  {link.label}
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${
+                      expandedMobile === link.label ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {expandedMobile === link.label && (
+                  <div className="ml-3 mt-1 flex flex-col gap-1 border-l border-sand pl-3">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`font-ui text-base font-medium py-2.5 px-3 rounded-lg transition-colors ${
+                          isActive(child.href)
+                            ? "text-teal-deep bg-sand/50"
+                            : "text-teal-deep hover:bg-sand/30"
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ) : (
               <Link
                 key={link.href}
-                href={link.href}
+                href={link.href!}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`font-ui text-base font-medium py-3 px-3 rounded-lg transition-colors ${
                   isActive(link.href)
@@ -197,7 +254,7 @@ const Header = () => {
                 {link.label}
               </Link>
             )
-          ))}
+          )}
           <div className="mt-2 flex flex-col gap-2">
             <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero" size="lg" className="w-full text-base">
