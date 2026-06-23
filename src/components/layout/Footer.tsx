@@ -17,6 +17,7 @@ const Footer = () => {
       { label: "Medical Practice Marketing", href: "/medical-practice-marketing" },
       { label: "Patient Engagement Platform", href: "/patient-engagement-platform" },
       { label: "Med Spa Marketing", href: "/med-spa-marketing" },
+      { label: "HIPAA-Safe Tracking", href: "/hipaa-safe-tracking" },
     ],
     product: [
       { label: "How It Works", href: "/how-it-works" },

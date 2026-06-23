@@ -6,7 +6,31 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const FinalCTA = () => {
+type CtaLink = {
+  label: string;
+  href: string;
+  variant?: "hero" | "hero-outline";
+};
+
+interface FinalCTAProps {
+  heading?: string;
+  description?: string;
+  ctas?: CtaLink[];
+}
+
+const DEFAULT_HEADING = "See where your clinic is leaking patients.";
+const DEFAULT_DESCRIPTION =
+  "Get a free growth audit. We analyze your current response times, channel coverage, and conversion paths, and show you specifically where patients are slipping through and what GrowthOS would change.";
+const DEFAULT_CTAS: CtaLink[] = [
+  { label: "Book a Demo", href: "/demo", variant: "hero" },
+  { label: "Start Now — Live in 48 Hours", href: "/sign-up", variant: "hero-outline" },
+];
+
+const FinalCTA = ({
+  heading = DEFAULT_HEADING,
+  description = DEFAULT_DESCRIPTION,
+  ctas = DEFAULT_CTAS,
+}: FinalCTAProps = {}) => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -35,31 +59,26 @@ const FinalCTA = () => {
       <div className="container-wide relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center px-2">
           <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-teal-deep mb-5 md:mb-7">
-            See where your clinic is leaking patients.
+            {heading}
           </h2>
           <p className="text-base md:text-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Get a free growth audit. We analyze your current response times, channel coverage, and conversion paths, and show you specifically where patients are slipping through and what GrowthOS would change.
+            {description}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/demo" className="inline-block">
-              <Button
-                variant="hero"
-                size="lg"
-                className="group text-base"
-              >
-                Book a Demo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <Link href="/sign-up" className="inline-block">
-              <Button
-                variant="hero-outline"
-                size="lg"
-                className="text-base"
-              >
-                Start Now — Live in 48 Hours
-              </Button>
-            </Link>
+            {ctas.map((cta, i) => (
+              <Link key={cta.href} href={cta.href} className="inline-block">
+                <Button
+                  variant={cta.variant ?? (i === 0 ? "hero" : "hero-outline")}
+                  size="lg"
+                  className={(cta.variant ?? (i === 0 ? "hero" : "hero-outline")) === "hero" ? "group text-base" : "text-base"}
+                >
+                  {cta.label}
+                  {(cta.variant ?? (i === 0 ? "hero" : "hero-outline")) === "hero" && (
+                    <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  )}
+                </Button>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
