@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Leak Map · Stopping Patient Leakage with AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#1B4D5C; --teal-deep:#12333C; --teal-tint:#EAF1F2; --teal-line:#CFE0E3;
+    --orange:#F97316; --orange-tint:#FCEBDC; --orange-deep:#D9610E;
+    --cream:#FDFBF7; --ink:#17282D; --mute:#5E747B; --paper:#FFFFFF;
+    --line:#ECE4D8; --good:#1B8A6B;
+    --head:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --body:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink); font-family:var(--body);
+    font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:0 22px;}
+  h1,h2,h3,h4{font-family:var(--head); margin:0; line-height:1.08; color:var(--teal); font-weight:800;}
+  p{margin:0 0 1em;}
+  a{color:var(--orange-deep);}
+  .eyebrow{font-family:var(--body); font-weight:700; letter-spacing:.16em; text-transform:uppercase; font-size:12.5px; color:var(--orange);}
+
+  /* ---------- top brand bar ---------- */
+  .topbar{background:var(--teal-deep); color:var(--cream);}
+  .topbar .wrap{display:flex; align-items:center; gap:12px; padding:16px 22px;}
+  .logo-dot{width:30px;height:30px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .logo-dot svg{width:16px;height:16px;}
+  .brand-name{font-family:var(--body); font-weight:700; letter-spacing:.14em; font-size:12.5px; text-transform:uppercase; color:var(--cream);}
+  .topbar .meta{margin-left:auto; font-size:12.5px; color:#9DB7BF; font-weight:500;}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--teal-deep); color:var(--cream); padding:38px 0 46px; position:relative; overflow:hidden;}
+  .hero .orb{position:absolute; border-radius:50%; pointer-events:none;}
+  .hero .orb1{width:280px;height:280px;background:#1B4D5C;opacity:.55;right:-90px;top:-120px;}
+  .hero .orb2{width:170px;height:170px;background:var(--orange);opacity:.16;right:60px;bottom:-70px;}
+  .hero h1{color:var(--cream); font-size:40px; letter-spacing:-.01em; margin:10px 0 12px; position:relative;}
+  .hero h1 .hl{color:var(--orange);}
+  .hero .lede{color:#C7DBE0; font-size:18px; max-width:620px; position:relative; margin:0;}
+  .hero .eyebrow{color:var(--orange);}
+
+  /* ---------- step blocks ---------- */
+  .step{padding:34px 0; border-bottom:1px solid var(--line);}
+  .step:last-of-type{border-bottom:none;}
+  .step-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px;}
+  .step-num{font-family:var(--head); font-weight:800; font-size:15px; color:var(--orange); background:var(--orange-tint);
+    border-radius:999px; padding:4px 13px; flex:0 0 auto; letter-spacing:.04em;}
+  .step h2{font-size:26px;}
+  .step .sub{color:var(--mute); margin:4px 0 22px; font-size:16px;}
+
+  /* ---------- inputs ---------- */
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px 20px;}
+  .field label{display:block; font-weight:600; font-size:14px; color:var(--teal); margin-bottom:6px;}
+  .field .hint{font-weight:400; color:var(--mute); font-size:12.5px;}
+  .field input{width:100%; font-family:var(--body); font-size:17px; color:var(--ink); background:var(--paper);
+    border:1.5px solid var(--line); border-radius:10px; padding:12px 14px; transition:border-color .15s;}
+  .field input:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 3px var(--orange-tint);}
+  .field.span2{grid-column:1 / -1;}
+  .inwrap{position:relative;}
+  .inwrap .pre{position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--mute); font-size:16px; pointer-events:none;}
+  .inwrap.has-pre input{padding-left:28px;}
+  .inwrap .post{position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--mute); font-size:15px; pointer-events:none;}
+
+  details.adv{margin-top:18px; border-top:1px dashed var(--line); padding-top:14px;}
+  details.adv summary{cursor:pointer; font-weight:600; color:var(--teal); font-size:14.5px; list-style:none;}
+  details.adv summary::-webkit-details-marker{display:none;}
+  details.adv summary::before{content:"＋ "; color:var(--orange); font-weight:800;}
+  details.adv[open] summary::before{content:"－ ";}
+  details.adv .grid{margin-top:16px;}
+
+  /* ---------- leak stage cards ---------- */
+  .stage{background:var(--paper); border:1.5px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:14px;
+    transition:border-color .2s, box-shadow .2s; position:relative;}
+  .stage.worst{border-color:var(--orange); box-shadow:0 6px 22px rgba(217,97,14,.12);}
+  .stage .badge-worst{position:absolute; top:-11px; left:18px; background:var(--orange); color:#fff; font-family:var(--body);
+    font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:3px 11px; border-radius:999px; display:none;}
+  .stage.worst .badge-worst{display:inline-block;}
+  .stage-top{display:flex; align-items:flex-start; gap:14px;}
+  .stage-ico{width:42px;height:42px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:var(--teal-tint);}
+  .stage-ico svg{width:21px;height:21px;}
+  .stage-name{font-family:var(--head); font-weight:800; font-size:18px; color:var(--teal); margin:0;}
+  .stage-alias{font-weight:700; color:var(--orange); font-size:13px; font-family:var(--body);}
+  .stage-desc{color:var(--mute); font-size:14px; margin:3px 0 0;}
+  .scorewrap{display:flex; align-items:center; gap:14px; margin-top:14px; flex-wrap:wrap;}
+  .scorewrap .lbl{font-size:12.5px; color:var(--mute); font-weight:600; width:78px;}
+  .scorewrap .lbl.r{text-align:right;}
+  .scale{display:flex; gap:8px; flex:1 1 auto; justify-content:center;}
+  .dot{appearance:none; -webkit-appearance:none; cursor:pointer; width:42px; height:42px; border-radius:11px;
+    border:1.5px solid var(--teal-line); background:var(--paper); color:var(--teal); font-family:var(--head);
+    font-weight:800; font-size:16px; transition:all .12s;}
+  .dot:hover{border-color:var(--orange);}
+  .dot:focus-visible{outline:3px solid var(--orange-tint); outline-offset:2px;}
+  .dot[aria-pressed="true"]{background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-1px);}
+  .dot.lowsel[aria-pressed="true"]{background:var(--orange); border-color:var(--orange);}
+  .scorehint{font-size:12px; color:var(--mute); text-align:center; margin-top:8px;}
+
+  /* ---------- leak number panel ---------- */
+  .number-panel{background:var(--teal-deep); color:var(--cream); border-radius:18px; padding:34px 30px; text-align:center; position:relative; overflow:hidden;}
+  .number-panel .cap{color:#9DB7BF; font-weight:600; letter-spacing:.04em; font-size:14px; margin:0 0 6px;}
+  .big-number{font-family:var(--head); font-weight:800; font-size:64px; line-height:1; color:var(--orange); margin:4px 0 8px; letter-spacing:-.02em;}
+  .number-panel .peryear{color:var(--cream); font-size:15px; opacity:.85; margin:0;}
+  .breakdown{display:flex; gap:14px; justify-content:center; margin-top:26px; flex-wrap:wrap;}
+  .bd{background:#1E5567; border-radius:12px; padding:16px 18px; min-width:150px;}
+  .bd .v{font-family:var(--head); font-weight:800; font-size:26px; color:var(--cream);}
+  .bd .l{font-size:12.5px; color:#9DB7BF; margin-top:2px;}
+  .disclaimer{font-size:12px; color:#88A4AC; margin:20px auto 0; max-width:560px;}
+
+  /* gauge */
+  .gauge{margin:0 0 26px;}
+  .gauge .track{height:14px; border-radius:999px; background:var(--teal-tint); overflow:hidden; border:1px solid var(--teal-line);}
+  .gauge .fill{height:100%; width:0%; background:linear-gradient(90deg,var(--teal),var(--orange)); transition:width .4s ease;}
+  .gauge .legend{display:flex; justify-content:space-between; font-size:12px; color:var(--mute); margin-top:7px; font-weight:600;}
+
+  /* ---------- fix panel ---------- */
+  .fix-card{background:var(--paper); border:1.5px solid var(--line); border-radius:14px; padding:22px 22px 24px;}
+  .fix-card .fx-stage{font-family:var(--head); font-weight:800; font-size:22px; color:var(--orange); margin:2px 0 2px;}
+  .fix-card .fx-lead{color:var(--mute); font-size:15px; margin:0 0 16px;}
+  .play{background:var(--teal-tint); border-radius:12px; padding:14px 16px; margin-bottom:18px;}
+  .play .pl{font-weight:700; color:var(--teal); font-size:13px; letter-spacing:.04em; text-transform:uppercase; margin-bottom:4px;}
+  .play .pt{color:var(--ink); font-size:15.5px;}
+  textarea{width:100%; font-family:var(--body); font-size:16px; color:var(--ink); background:var(--paper);
+    border:1.5px solid var(--line); border-radius:10px; padding:13px 14px; min-height:96px; resize:vertical; line-height:1.5;}
+  textarea:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 3px var(--orange-tint);}
+
+  /* ---------- CTA ---------- */
+  .cta-block{background:var(--orange); border-radius:18px; padding:32px 30px; color:#fff; text-align:center; margin:8px 0 12px;}
+  .cta-block h2{color:#fff; font-size:28px; margin-bottom:8px;}
+  .cta-block p{color:#FFE9D8; margin:0 auto 20px; max-width:520px;}
+  .btn{display:inline-block; font-family:var(--head); font-weight:800; font-size:17px; text-decoration:none;
+    background:#fff; color:var(--orange-deep); padding:14px 30px; border-radius:999px; transition:transform .12s, box-shadow .12s;
+    box-shadow:0 6px 18px rgba(0,0,0,.14);}
+  .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.2);}
+  .cta-sub{margin-top:16px; font-size:14px; color:#FFE9D8;}
+  .cta-sub a{color:#fff; font-weight:700; text-decoration:none;}
+
+  .actions{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:26px 0 8px;}
+  .btn-ghost{display:inline-flex; align-items:center; gap:8px; font-family:var(--head); font-weight:700; font-size:15px; cursor:pointer;
+    background:var(--paper); color:var(--teal); border:1.5px solid var(--teal-line); padding:12px 22px; border-radius:999px;}
+  .btn-ghost:hover{border-color:var(--orange); color:var(--orange-deep);}
+  .btn-ghost svg{width:16px;height:16px;}
+
+  /* footer */
+  footer{background:var(--teal-deep); color:#9DB7BF; text-align:center; padding:26px 22px; font-size:13px; margin-top:10px;}
+  footer .sig{color:var(--cream); font-family:var(--head); font-weight:700; font-size:16px; margin-bottom:6px;}
+
+  .printonly{display:none;}
+
+  /* ---------- email capture ---------- */
+  .emailcard{background:var(--paper); border:1.5px solid var(--line); border-radius:14px; padding:20px 22px;}
+  .emailrow{display:flex; gap:12px; flex-wrap:wrap;}
+  .emailrow input{flex:1 1 240px; font-family:var(--body); font-size:17px; color:var(--ink); background:var(--paper);
+    border:1.5px solid var(--line); border-radius:10px; padding:13px 14px;}
+  .emailrow input:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 3px var(--orange-tint);}
+  .btn-email{flex:0 0 auto; font-family:var(--head); font-weight:800; font-size:16px; cursor:pointer; color:#fff;
+    background:var(--orange); border:none; border-radius:10px; padding:13px 24px; transition:transform .12s, background .12s;}
+  .btn-email:hover{background:var(--orange-deep); transform:translateY(-1px);}
+  .btn-email:disabled{opacity:.6; cursor:default; transform:none;}
+  .email-status{margin:12px 0 0; font-size:14px; font-weight:600; min-height:18px;}
+  .email-status.ok{color:var(--good);}
+  .email-status.err{color:var(--orange-deep);}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:640px){
+    body{font-size:16px;}
+    .hero h1{font-size:30px;} .big-number{font-size:48px;}
+    .grid{grid-template-columns:1fr;}
+    .scorewrap{justify-content:center;} .scorewrap .lbl{width:auto;}
+    .dot{width:38px;height:38px;font-size:15px;}
+    .step h2{font-size:22px;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- print ---------- */
+  @media print{
+    body{background:#fff; font-size:12px;}
+    .topbar .meta, .actions, #emailme, .hero .orb{display:none !important;}
+    .hero{background:#fff; color:var(--ink); padding:10px 0 14px;}
+    .hero h1{color:var(--teal); font-size:24px;} .hero .lede{color:var(--mute); font-size:13px;}
+    .topbar{background:#fff; color:var(--teal); border-bottom:2px solid var(--teal);}
+    .brand-name{color:var(--teal);}
+    .logo-dot{background:var(--orange);}
+    .step{padding:14px 0; break-inside:avoid;}
+    .stage{break-inside:avoid; box-shadow:none;}
+    .number-panel,.cta-block,.fix-card,.play{ -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .number-panel{background:var(--teal-deep)!important; color:#fff!important;}
+    .cta-block{background:var(--orange)!important;}
+    .btn{box-shadow:none;}
+    .dot{border:1px solid #bbb;}
+    .dot[aria-pressed="true"]{ -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .printonly{display:block;}
+    a[href]:after{content:"";}
+    footer{background:#fff; color:var(--mute); border-top:1px solid var(--line);}
+    footer .sig{color:var(--teal);}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="logo-dot" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13zm0 18a5 5 0 0 1-5-5c0-1 .4-2.3 1.2-3.7C9 9.4 10.4 7.6 12 5.6c1.6 2 3 3.8 3.8 5.7C16.6 12.7 17 14 17 15a5 5 0 0 1-5 5z"/></svg>
+    </span>
+    <span class="brand-name">Cima Growth Solutions</span>
+    <span class="meta">Live Workshop · June 24, 2026</span>
+  </div>
+</div>
+
+<header class="hero">
+  <span class="orb orb1" aria-hidden="true"></span>
+  <span class="orb orb2" aria-hidden="true"></span>
+  <div class="wrap">
+    <span class="eyebrow">Your live leak map</span>
+    <h1>Where is your clinic <span class="hl">leaking patients?</span></h1>
+    <p class="lede">Fill this in as we go. In about ten minutes you'll know your five leak points, a dollar figure on what they cost, and the one to fix first. Save it at the end so you keep it.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- STEP 1 -->
+  <section class="step" id="step1">
+    <div class="step-head"><span class="step-num">Step 1</span><h2>Your clinic, in a few numbers</h2></div>
+    <p class="sub">Estimates are fine. You can change any of these and your leak number updates instantly.</p>
+    <div class="grid">
+      <div class="field span2">
+        <label for="clinic">Clinic name <span class="hint">(for your saved copy)</span></label>
+        <input id="clinic" type="text" placeholder="e.g. Pozitivf Fertility" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="inq">New inquiries per month <span class="hint">forms, calls, chats</span></label>
+        <div class="inwrap"><input id="inq" type="number" min="0" inputmode="numeric" value="40" /></div>
+      </div>
+      <div class="field">
+        <label for="val">Revenue from one patient who starts treatment <span class="hint">your best estimate</span></label>
+        <div class="inwrap has-pre"><span class="pre">$</span><input id="val" type="number" min="0" inputmode="numeric" value="15000" /></div>
+      </div>
+    </div>
+    <details class="adv">
+      <summary>Fine-tune the conversion assumptions</summary>
+      <div class="grid">
+        <div class="field">
+          <label for="consult">Inquiries that become a booked consult today</label>
+          <div class="inwrap"><input id="consult" type="number" min="0" max="100" value="25" /><span class="post">%</span></div>
+        </div>
+        <div class="field">
+          <label for="treat">Consults that go on to start treatment</label>
+          <div class="inwrap"><input id="treat" type="number" min="0" max="100" value="50" /><span class="post">%</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="step2">
+    <div class="step-head"><span class="step-num">Step 2</span><h2>Score your five leak stages</h2></div>
+    <p class="sub">Every clinic leaks at the same five moments. Rate how well yours handles each one right now. Be honest. The low scores are where the money is.</p>
+    <div id="stages"></div>
+    <div class="scorehint" style="margin-top:4px;">1 = we drop the ball here&nbsp;&nbsp;·&nbsp;&nbsp;5 = we nail it, every time</div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" id="step3">
+    <div class="step-head"><span class="step-num">Step 3</span><h2>Your leak number</h2></div>
+    <p class="sub">Based on your scores and numbers, here's a conservative estimate of the revenue slipping out of your pipeline every year.</p>
+    <div class="gauge">
+      <div class="track"><div class="fill" id="gaugeFill"></div></div>
+      <div class="legend"><span>Sealed tight</span><span id="gaugeLabel">-</span><span>Leaking badly</span></div>
+    </div>
+    <div class="number-panel">
+      <p class="cap">Estimated revenue you're leaking</p>
+      <div class="big-number" id="bigNumber">$0</div>
+      <p class="peryear">per year, from patients who already raised their hand</p>
+      <div class="breakdown">
+        <div class="bd"><div class="v" id="bdInq">0</div><div class="l">inquiries a year</div></div>
+        <div class="bd"><div class="v" id="bdLost">0</div><div class="l">recoverable patients / yr</div></div>
+        <div class="bd"><div class="v" id="bdMonth">$0</div><div class="l">leaking every month</div></div>
+      </div>
+      <p class="disclaimer">A directional estimate, not a quote. It models the patients who inquire but never start treatment, and assumes only a conservative share are winnable back with fast follow-up and nurture, scaled to the scores you gave above.</p>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step" id="step4">
+    <div class="step-head"><span class="step-num">Step 4</span><h2>Pick the one to fix first</h2></div>
+    <p class="sub">You can't fix all five at once. Your lowest score is highlighted below. That's usually the fastest money. Here's the AI play for it.</p>
+    <div class="fix-card">
+      <span class="eyebrow">Your biggest leak</span>
+      <div class="fx-stage" id="fixStage">-</div>
+      <p class="fx-lead" id="fixLead">Score your stages above and this fills in automatically.</p>
+      <div class="play">
+        <div class="pl">The AI play</div>
+        <div class="pt" id="fixPlay">-</div>
+      </div>
+      <label for="commit" style="display:block;font-weight:600;color:var(--teal);margin-bottom:8px;font-size:15px;">One thing you'll do about this in the next 30 days</label>
+      <textarea id="commit" placeholder="e.g. Turn on a 5-minute auto-response to every new inquiry, then add a 3-touch follow-up for anyone who doesn't book."></textarea>
+    </div>
+  </section>
+
+  <!-- STEP 5: EMAIL -->
+  <section class="step" id="emailme">
+    <div class="step-head"><span class="step-num">Step 5</span><h2>Email yourself the results</h2></div>
+    <p class="sub">Get your leak map and your biggest-leak fix in your inbox to keep.</p>
+    <div class="emailcard">
+      <div class="emailrow">
+        <input id="email" type="email" placeholder="you@yourclinic.com" autocomplete="email" aria-label="Your email" />
+        <button class="btn-email" id="emailBtn" type="button">Email me my leak map</button>
+      </div>
+      <p class="email-status" id="emailStatus" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="step" id="cta" style="border-bottom:none;">
+    <div class="cta-block">
+      <h2>Want us to map this live on your clinic?</h2>
+      <p>Book a free 30-minute GrowthOS demo. We'll walk your five leak stages together and show you exactly what AI would plug first. No slides, no pressure.</p>
+      <a class="btn" href="https://cimagrowth.com/demo" target="_blank" rel="noopener">Book my free demo →</a>
+      <div class="cta-sub">Prefer to talk? <a href="tel:+14844809296">484-480-9296</a> &nbsp;·&nbsp; <a href="mailto:brandon@cimagrowth.com">brandon@cimagrowth.com</a></div>
+    </div>
+    <div class="actions">
+      <button class="btn-ghost" id="printBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Save / print my leak map
+      </button>
+      <button class="btn-ghost" id="resetBtn" type="button">Start over</button>
+    </div>
+    <p class="printonly" style="text-align:center;color:var(--mute);font-size:12px;margin-top:8px;">Your leak map · Cima Growth Solutions · The Seven-Figure Leak workshop</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="sig">AI transformed the lab. Now you fix the front desk.</div>
+  <div>Cima Growth Solutions · The Seven-Figure Leak · cimagrowth.com/demo</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // ---- icons (inline svg) ----
+  var IC = {
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="#1B4D5C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    cal:'<svg viewBox="0 0 24 24" fill="none" stroke="#1B4D5C" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/><path d="M9 14l2 2 4-4"/></svg>',
+    hand:'<svg viewBox="0 0 24 24" fill="none" stroke="#1B4D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l4-4 5 5 3-3 6 6v3a2 2 0 0 1-2 2H8l-5-5z"/></svg>',
+    redo:'<svg viewBox="0 0 24 24" fill="none" stroke="#1B4D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>',
+    heart:'<svg viewBox="0 0 24 24" fill="none" stroke="#1B4D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-7.1 0L12 8.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21l8.8-8.8a5 5 0 0 0 0-7.1z"/></svg>'
+  };
+
+  // ---- the five universal leak stages (fertility-framed) ----
+  var STAGES = [
+    { key:'speed', icon:IC.clock, name:'Speed-to-Lead', alias:'The 13-hour patient',
+      desc:'A new inquiry comes in. How fast does a real reply go out, in minutes, or in hours and days?',
+      play:'An AI agent replies in seconds, day or night, qualifies the patient, and offers consult times before they call the next clinic.' },
+    { key:'booking', icon:IC.cal, name:'Booking → Show', alias:'The empty chair',
+      desc:'A consult is booked. How many actually show up instead of quietly no-showing?',
+      play:'Smart, friendly reminders plus easy reschedule nudges that fill the empty chair instead of losing it.' },
+    { key:'consult', icon:IC.hand, name:'Consult → Commit', alias:'The consult cliff',
+      desc:'They had the consult. How many move forward instead of stalling on cost, timing or fear?',
+      play:'Tailored follow-up that names the real hesitation, whether cost, timing or the emotional weight, and keeps the door open.' },
+    { key:'between', icon:IC.redo, name:'Between Cycles', alias:'The silent middle',
+      desc:'Mid-journey, between steps or cycles. How well do you keep quiet patients engaged?',
+      play:'Timed, warm check-ins through the silent middle so patients feel held, not forgotten, between steps.' },
+    { key:'post', icon:IC.heart, name:'Post-Treatment', alias:'The forgotten graduate',
+      desc:'Treatment ends. Do you re-engage for reviews, referrals and return care, or go silent?',
+      play:'Automated reactivation and referral campaigns that turn graduates into reviews, referrals and return visits.' }
+  ];
+
+  var scores = {}; // key -> 1..5
+
+  // ---- build stage cards ----
+  var host = document.getElementById('stages');
+  STAGES.forEach(function(s, idx){
+    var card = document.createElement('div');
+    card.className = 'stage'; card.dataset.key = s.key;
+    var scaleBtns = '';
+    for(var n=1;n<=5;n++){
+      scaleBtns += '<button class="dot" type="button" role="button" aria-pressed="false" '+
+        'data-key="'+s.key+'" data-score="'+n+'" aria-label="'+s.name+': score '+n+'">'+n+'</button>';
+    }
+    card.innerHTML =
+      '<span class="badge-worst">Biggest leak</span>'+
+      '<div class="stage-top">'+
+        '<span class="stage-ico" aria-hidden="true">'+s.icon+'</span>'+
+        '<div>'+
+          '<div class="stage-name">'+(idx+1)+'. '+s.name+' <span class="stage-alias">· '+s.alias+'</span></div>'+
+          '<p class="stage-desc">'+s.desc+'</p>'+
+        '</div>'+
+      '</div>'+
+      '<div class="scorewrap">'+
+        '<span class="lbl">Leaking</span>'+
+        '<div class="scale">'+scaleBtns+'</div>'+
+        '<span class="lbl r">Sealed</span>'+
+      '</div>';
+    host.appendChild(card);
+  });
+
+  // ---- helpers ----
+  function money(n){
+    n = Math.round(n);
+    return '$' + n.toLocaleString('en-US');
+  }
+  function moneyShort(n){
+    n = Math.round(n);
+    if(n >= 1000000) return '$' + (n/1000000).toFixed(n%1000000===0?0:1) + 'M';
+    if(n >= 1000) return '$' + Math.round(n/1000) + 'K';
+    return '$' + n.toLocaleString('en-US');
+  }
+  function num(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : 0; }
+
+  // ---- score buttons ----
+  host.addEventListener('click', function(e){
+    var b = e.target.closest('.dot'); if(!b) return;
+    var key = b.dataset.key, val = parseInt(b.dataset.score,10);
+    scores[key] = val;
+    // update pressed state within this card
+    var card = b.closest('.stage');
+    card.querySelectorAll('.dot').forEach(function(d){
+      var pressed = parseInt(d.dataset.score,10) <= val;
+      // "pressed" up to selected = filled meter feel; selected gets solid
+      d.setAttribute('aria-pressed', parseInt(d.dataset.score,10) === val ? 'true' : 'false');
+      d.classList.toggle('lowsel', val <= 2);
+    });
+    recompute();
+  });
+
+  // ---- recompute everything ----
+  function recompute(){
+    var N = num('inq'), V = num('val');
+    var consultRate = Math.min(Math.max(num('consult'),0),100)/100;
+    var treatRate = Math.min(Math.max(num('treat'),0),100)/100;
+
+    var annualInq = N * 12;
+
+    // average score across answered stages (default neutral 3 if none answered)
+    var keys = Object.keys(scores);
+    var answered = keys.length;
+    var avg = answered ? keys.reduce(function(a,k){return a+scores[k];},0)/answered : 3;
+
+    // recoverable share of leaked inquiries scales with how bad the scores are
+    // avg 5 -> 0.05 ; avg 1 -> 0.30 (linear)
+    var share = 0.30 - ((avg - 1)/4) * 0.25;
+    share = Math.min(Math.max(share, 0.05), 0.30);
+
+    var leakedInq = annualInq * (1 - consultRate);            // inquired, never booked consult
+    var recoverablePatients = leakedInq * share * treatRate;   // of those, a conservative share would convert
+    var recoverableRev = recoverablePatients * V;
+
+    document.getElementById('bigNumber').textContent = moneyShort(recoverableRev);
+    document.getElementById('bdInq').textContent = Math.round(annualInq).toLocaleString('en-US');
+    document.getElementById('bdLost').textContent = Math.round(recoverablePatients).toLocaleString('en-US');
+    document.getElementById('bdMonth').textContent = moneyShort(recoverableRev/12);
+
+    // gauge: 0% = avg5 (sealed), 100% = avg1 (leaking). only meaningful once answered
+    var leakPct = answered ? ((5 - avg)/4)*100 : 0;
+    document.getElementById('gaugeFill').style.width = leakPct.toFixed(0) + '%';
+    var gl = document.getElementById('gaugeLabel');
+    if(!answered){ gl.textContent = 'score your stages'; }
+    else if(avg >= 4){ gl.textContent = 'mostly sealed'; }
+    else if(avg >= 3){ gl.textContent = 'some leaks'; }
+    else if(avg >= 2){ gl.textContent = 'leaking'; }
+    else { gl.textContent = 'leaking badly'; }
+
+    updateWorst();
+  }
+
+  // ---- biggest leak (lowest score; earliest stage breaks ties) ----
+  function updateWorst(){
+    document.querySelectorAll('.stage').forEach(function(c){ c.classList.remove('worst'); });
+    var keys = Object.keys(scores);
+    if(!keys.length){
+      document.getElementById('fixStage').textContent = '-';
+      document.getElementById('fixLead').textContent = 'Score your stages above and this fills in automatically.';
+      document.getElementById('fixPlay').textContent = '-';
+      return;
+    }
+    var worstKey = null, worstVal = 99, worstIdx = 99;
+    STAGES.forEach(function(s, i){
+      if(scores[s.key] != null && (scores[s.key] < worstVal)){
+        worstVal = scores[s.key]; worstKey = s.key; worstIdx = i;
+      }
+    });
+    var s = STAGES.find(function(x){return x.key===worstKey;});
+    var card = document.querySelector('.stage[data-key="'+worstKey+'"]');
+    if(card) card.classList.add('worst');
+    document.getElementById('fixStage').textContent = s.name + ' · ' + s.alias;
+    document.getElementById('fixLead').textContent = s.desc;
+    document.getElementById('fixPlay').textContent = s.play;
+  }
+
+  // ---- wire numeric inputs ----
+  ['inq','val','consult','treat'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', recompute);
+  });
+
+  // ---- buttons ----
+  document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    scores = {};
+    document.querySelectorAll('.dot').forEach(function(d){ d.setAttribute('aria-pressed','false'); d.classList.remove('lowsel'); });
+    document.getElementById('clinic').value=''; document.getElementById('commit').value='';
+    document.getElementById('inq').value=40; document.getElementById('val').value=15000;
+    document.getElementById('consult').value=25; document.getElementById('treat').value=50;
+    recompute();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // ---- email results ----
+  var FN_URL = 'https://momssbzlofjodqodvvvk.supabase.co/functions/v1/webinar-leak-map-results';
+  function val(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+  var emailBtn = document.getElementById('emailBtn');
+  if(emailBtn){
+    emailBtn.addEventListener('click', async function(){
+      var status = document.getElementById('emailStatus');
+      var email = val('email');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ status.textContent='Please enter a valid email address.'; status.className='email-status err'; return; }
+      status.textContent='Sending...'; status.className='email-status'; emailBtn.disabled=true;
+      try{
+        var payload = { email: email, clinic_name: val('clinic'), inquiries: num('inq'), value: num('val'), consult_rate: num('consult'), treat_rate: num('treat'), scores: scores, commitment: val('commit') };
+        var r = await fetch(FN_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+        var d = await r.json().catch(function(){ return {}; });
+        if(r.ok && d.success){ status.textContent='Sent. Check your inbox in a minute.'; status.className='email-status ok'; }
+        else { status.textContent = (d && d.error) ? d.error : 'Could not send right now. Try saving as a PDF instead.'; status.className='email-status err'; emailBtn.disabled=false; }
+      }catch(e){ status.textContent='Could not send right now. Try saving as a PDF instead.'; status.className='email-status err'; emailBtn.disabled=false; }
+    });
+  }
+
+  recompute();
+})();
+</script>
+</body>
+</html>
