@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
+import {
+  getClusterLinks,
+  getDemoCtaCopy,
+  PAGE_META,
+} from "@/lib/blog-clusters";
 
 interface BlogPostProps {
   post: BlogPostType;
@@ -14,53 +19,48 @@ interface BlogPostProps {
   sanitizedContent: string;
 }
 
-type RelatedSolution = { href: string; label: string; blurb: string };
-
 /**
- * Map a post to the single most relevant solution landing page based on its
- * slug and keywords. Defaults to the patient acquisition pillar so every post
- * links to at least one money page.
+ * Split the post body so a mid-article CTA can be dropped between two real
+ * sections (after the problem is established). Prefers the <h2> nearest the
+ * midpoint; falls back to a paragraph boundary for heading-light posts. The
+ * first boundary is skipped so the CTA never lands above the intro. Returns
+ * null only when the post is too short for a sensible mid point.
  */
-const getRelatedSolution = (post: BlogPostType): RelatedSolution => {
-  const haystack = `${post.slug} ${(post.meta_keywords ?? []).join(" ")}`.toLowerCase();
-
-  if (/(med[\s-]?spa|aesthetic)/.test(haystack)) {
-    return {
-      href: "/med-spa-marketing",
-      label: "Med spa marketing",
-      blurb: "See how GrowthOS fills the chair and keeps aesthetic clients rebooking.",
-    };
-  }
-  if (/(crm|tool[\s-]?sprawl|pipeline|infrastructure)/.test(haystack)) {
-    return {
-      href: "/healthcare-crm",
-      label: "Healthcare CRM",
-      blurb: "See the CRM that acquires and retains patients, not just stores them.",
-    };
-  }
-  if (/(sms|email|engage|message|whatsapp|zeigarnik|soap|nurture|inquiry|inquiries|speed[\s-]?to[\s-]?lead|leak)/.test(haystack)) {
-    return {
-      href: "/patient-engagement-platform",
-      label: "Patient engagement platform",
-      blurb: "See engagement that converts and retains across every channel.",
-    };
-  }
-  if (/(ad|ads|headline|landing|funnel|marketing|lead|leads|conversion|offer)/.test(haystack)) {
-    return {
-      href: "/medical-practice-marketing",
-      label: "Medical practice marketing",
-      blurb: "See how one platform replaces the agency, ads manager, and chatbot.",
-    };
-  }
-  return {
-    href: "/patient-acquisition",
-    label: "Patient acquisition",
-    blurb: "See the full system for turning inquiries into booked, returning patients.",
+const splitForMidCta = (html: string): [string, string] | null => {
+  const boundariesFor = (re: RegExp): number[] => {
+    const out: number[] = [];
+    let match: RegExpExecArray | null;
+    while ((match = re.exec(html)) !== null) out.push(match.index);
+    return out;
   };
+
+  // Prefer section headings; fall back to paragraph starts.
+  let positions = boundariesFor(/<h2[\s>]/gi);
+  if (positions.length < 2) {
+    const paras = boundariesFor(/<p[\s>]/gi);
+    // Need enough paragraphs that a mid break reads naturally.
+    if (paras.length < 4) return null;
+    positions = paras;
+  }
+
+  const mid = html.length / 2;
+  const candidates = positions.slice(1); // keep an intro before the CTA
+  let best = candidates[0];
+  for (const p of candidates) {
+    if (Math.abs(p - mid) < Math.abs(best - mid)) best = p;
+  }
+  return [html.slice(0, best), html.slice(best)];
 };
 
 const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
-  const relatedSolution = getRelatedSolution(post);
+  const links = getClusterLinks(post.cluster);
+  const hubMeta = PAGE_META[links.hub];
+  const productMeta = PAGE_META[links.product];
+  const demoCtaCopy = getDemoCtaCopy(post.cluster);
+
+  const split = splitForMidCta(sanitizedContent);
+  const contentBefore = split ? split[0] : sanitizedContent;
+  const contentAfter = split ? split[1] : null;
 
   return (
     <>
@@ -142,32 +142,92 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="prose prose-lg max-w-2xl mx-auto prose-headings:font-display prose-headings:text-primary prose-headings:font-[340] prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/85 prose-p:text-lg prose-p:leading-relaxed prose-li:text-foreground/85 prose-a:text-primary prose-a:underline hover:prose-a:text-accent-orange prose-strong:text-foreground"
-            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-          />
+          >
+            <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
 
-          {/* Related solution */}
+            {/* Mid-article CTA */}
+            {contentAfter && (
+              <div className="not-prose my-10">
+                <Link
+                  href="/demo"
+                  className="group flex items-center justify-between gap-4 rounded-2xl bg-teal-deep px-6 py-5 no-underline transition-colors hover:bg-teal"
+                >
+                  <span className="font-ui text-base md:text-lg font-medium text-paper">
+                    {demoCtaCopy}
+                  </span>
+                  <ArrowRight className="w-5 h-5 shrink-0 text-clay transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            )}
+
+            {contentAfter && (
+              <div dangerouslySetInnerHTML={{ __html: contentAfter }} />
+            )}
+          </motion.div>
+
+          {/* Contextual hub + product callout (driven by cluster) */}
           <motion.aside
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4 }}
-            className="mt-12 max-w-2xl mx-auto"
+            className="mt-12 max-w-2xl mx-auto grid gap-4 sm:grid-cols-2"
           >
             <Link
-              href={relatedSolution.href}
-              className="group block rounded-2xl border border-sand bg-cream p-6 md:p-7 transition-all hover:border-clay/50"
+              href={links.hub}
+              className="group block rounded-2xl border border-sand bg-cream p-6 transition-all hover:border-clay/50"
             >
               <p className="font-ui text-xs font-semibold uppercase tracking-[.16em] text-clay mb-2">
                 Related solution
               </p>
-              <h3 className="font-ui text-lg md:text-xl font-semibold text-teal-deep mb-1 inline-flex items-center gap-1.5">
-                {relatedSolution.label}
+              <h3 className="font-ui text-lg font-semibold text-teal-deep mb-1 inline-flex items-center gap-1.5">
+                {hubMeta.label}
                 <ArrowRight className="w-4 h-4 text-clay transition-transform group-hover:translate-x-1" />
               </h3>
-              <p className="text-sm md:text-base text-teal-deep/75 leading-relaxed">
-                {relatedSolution.blurb}
+              <p className="text-sm text-teal-deep/75 leading-relaxed">
+                {hubMeta.blurb}
               </p>
             </Link>
+
+            <Link
+              href={links.product}
+              className="group block rounded-2xl border border-sand bg-cream p-6 transition-all hover:border-clay/50"
+            >
+              <p className="font-ui text-xs font-semibold uppercase tracking-[.16em] text-clay mb-2">
+                How it works
+              </p>
+              <h3 className="font-ui text-lg font-semibold text-teal-deep mb-1 inline-flex items-center gap-1.5">
+                {productMeta.label}
+                <ArrowRight className="w-4 h-4 text-clay transition-transform group-hover:translate-x-1" />
+              </h3>
+              <p className="text-sm text-teal-deep/75 leading-relaxed">
+                {productMeta.blurb}
+              </p>
+            </Link>
+          </motion.aside>
+
+          {/* End-of-article demo CTA */}
+          <motion.aside
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.4 }}
+            className="mt-6 max-w-2xl mx-auto"
+          >
+            <div className="rounded-2xl bg-teal-deep px-6 py-8 md:px-10 md:py-10 text-center">
+              <h3 className="font-display font-[340] text-2xl md:text-3xl text-paper mb-3">
+                See it working on your own inquiries
+              </h3>
+              <p className="text-paper/80 mb-6 max-w-lg mx-auto leading-relaxed">
+                {demoCtaCopy.replace(/\s*—\s*book a demo$/i, ".")}
+              </p>
+              <Link href="/demo">
+                <Button variant="hero" size="lg">
+                  Book a demo
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </motion.aside>
 
           {/* Topic Tags */}
@@ -220,7 +280,7 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
             </div>
           </motion.div>
 
-          {/* Read more */}
+          {/* Read more (same cluster) */}
           {relatedPosts.length > 0 && (
             <section className="mt-20 max-w-5xl mx-auto">
               <h2 className="text-heading text-foreground mb-8 text-center">

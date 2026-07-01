@@ -19,6 +19,8 @@ export interface BlogPost {
   published_at: string | null;
   created_at: string;
   updated_at: string;
+  /** Topic cluster used for internal linking (hub/product callout + related posts). */
+  cluster: string | null;
 }
 
 export interface CreateBlogPostData {
@@ -33,6 +35,7 @@ export interface CreateBlogPostData {
   meta_keywords?: string[];
   reading_time_minutes?: number;
   published_at?: string;
+  cluster?: string;
 }
 
 export function usePublishedPosts() {
