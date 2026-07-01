@@ -57,8 +57,8 @@ User-agent: Google-Extended
 Disallow: /
 
 # Sitemap location
-Sitemap: https://cimagrowth.com/sitemap.xml
-Host: https://cimagrowth.com
+Sitemap: https://www.cimagrowth.com/sitemap.xml
+Host: https://www.cimagrowth.com
 
 # LLM-specific content files
 # llms.txt - Concise product summary for AI systems
