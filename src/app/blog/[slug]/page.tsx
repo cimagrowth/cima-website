@@ -59,7 +59,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!post) notFound();
 
   const [relatedPosts] = await Promise.all([
-    getRelatedPosts(post.slug, 3),
+    getRelatedPosts(post.slug, post.cluster, 3),
   ]);
 
   const sanitizedContent = sanitizeBlogHtml(post.content ?? '');
