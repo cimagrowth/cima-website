@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllPublishedSlugsWithDates } from '@/lib/blog-data';
 
-const BASE = 'https://www.cimagrowth.com';
+const BASE = 'https://cimagrowth.com';
 
 export const revalidate = 3600;
 
