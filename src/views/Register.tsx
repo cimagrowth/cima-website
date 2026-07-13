@@ -110,8 +110,8 @@ const Register = () => {
 
   const planInfo =
     planType === "annual"
-      ? { label: "GrowthOS Annual", price: "$9,999/year, no setup fee", badge: true }
-      : { label: "GrowthOS Monthly", price: "$999/mo + $999 setup", badge: false };
+      ? { label: "GrowthOS Annual", price: "Billed annually", badge: true }
+      : { label: "GrowthOS Monthly", price: "Monthly billing", badge: false };
 
   const inputClasses = (field: keyof FormErrors) =>
     `w-full px-4 py-3 rounded-xl border-2 bg-background text-foreground placeholder:text-muted-foreground/60 transition-colors focus:outline-none focus:ring-0 ${

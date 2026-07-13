@@ -75,20 +75,15 @@ export interface SoftwareApplicationSchemaProps {
   applicationSubCategory?: string;
   operatingSystem?: string;
   image?: string;
-  offers?: {
-    price: string;
-    priceCurrency: string;
-  };
 }
 
 export const generateSoftwareSchema = ({
   name = PRODUCT_NAME,
-  description = "AI-powered patient engagement platform that responds instantly across every channel—web, phone, text, email, WhatsApp, and social media—then nurtures leads until your team steps in.",
+  description = "AI-powered patient engagement platform that responds instantly across every channel: web, phone, text, email, WhatsApp, and social media, then nurtures leads until your team steps in.",
   applicationCategory = "BusinessApplication",
   applicationSubCategory = "Healthcare Marketing Automation",
   operatingSystem = "Web, iOS, Android",
   image = `${SITE_URL}/og-image.png`,
-  offers = { price: "999", priceCurrency: "USD" },
 }: SoftwareApplicationSchemaProps = {}) => ({
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -101,9 +96,9 @@ export const generateSoftwareSchema = ({
   image,
   offers: {
     "@type": "Offer",
-    price: offers.price,
-    priceCurrency: offers.priceCurrency,
-    priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: `${SITE_URL}/demo`,
   },
   provider: {
     "@id": `${SITE_URL}/#organization`,

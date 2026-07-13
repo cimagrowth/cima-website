@@ -39,7 +39,6 @@ import {
   Moon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import AdsIntakeModal, { type AdsPlanType } from "@/components/checkout/AdsIntakeModal";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -320,7 +319,7 @@ const faqItems = [
   {
     question: "How is this different from hiring an agency?",
     answer:
-      "Agencies charge $2,000-5,000/mo and take weeks to launch. Our AI generates campaigns in minutes for $399/mo. You maintain full control of your ad accounts.",
+      "Agencies take weeks to launch and often control your ad accounts. Our AI generates campaigns in minutes, and you keep full control of your accounts. Pricing is tailored to your clinic and shared in your demo.",
   },
   {
     question: "Can I upgrade to GrowthOS later?",
@@ -354,13 +353,6 @@ const upgradePaths = [
 
 const AdsPage = () => {
   const [activeSpecialty, setActiveSpecialty] = useState("fertility");
-  const [intakeOpen, setIntakeOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<AdsPlanType>("ads_monthly");
-
-  const openIntake = (plan: AdsPlanType) => {
-    setSelectedPlan(plan);
-    setIntakeOpen(true);
-  };
 
   return (
     <>
@@ -385,8 +377,8 @@ const AdsPage = () => {
               variants={itemVariants}
               className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
-              Stop Paying Agencies $5,000/Month to Manage Your Ad Spend.{" "}
-              <span className="italic text-clay">Let AI Do It for $399.</span>
+              Let AI Run Your Ads.{" "}
+              <span className="italic text-clay">Built for Healthcare.</span>
             </motion.h1>
 
             <motion.p
@@ -394,22 +386,21 @@ const AdsPage = () => {
               className="text-body-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto"
             >
               AI builds, launches, and optimizes your Google and Facebook ad
-              campaigns — with healthcare compliance built in — so you get more
+              campaigns, with healthcare compliance built in, so you get more
               booked consultations without touching Ads Manager.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="xl" className="group" onClick={() => openIntake("ads_monthly")}>
-                Start for $399/mo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="outline" size="xl" className="group" onClick={() => openIntake("ads_annual")}>
-                Save $789/yr — Go Annual
+              <Button asChild variant="hero" size="xl" className="group">
+                <a href="/demo">
+                  Book a Demo
+                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
             </motion.div>
 
             <motion.p variants={itemVariants} className="text-body-sm text-teal-deep/80 mt-4">
-              Built for fertility & wellness clinics
+              Included in GrowthOS Growth and available with the Cima AI Agent Pro plan
             </motion.p>
           </motion.div>
         </div>
@@ -504,9 +495,11 @@ const AdsPage = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <Button variant="hero" size="lg" className="group" onClick={() => openIntake("ads_monthly")}>
-              Get Started
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Button asChild variant="hero" size="lg" className="group">
+              <a href="/demo">
+                Book a Demo
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
           </motion.div>
         </div>
@@ -560,9 +553,11 @@ const AdsPage = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <Button variant="hero" size="lg" className="group" onClick={() => openIntake("ads_monthly")}>
-              See Pricing
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Button asChild variant="hero" size="lg" className="group">
+              <a href="/demo">
+                Book a Demo
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
           </motion.div>
         </div>
@@ -723,7 +718,7 @@ const AdsPage = () => {
               Proof, Not Promises
             </span>
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              One-Click Reports That Would Cost You $2,000 From an Agency.
+              One-Click Reports That Would Take an Agency Weeks.
             </h2>
             <p className="text-body-lg text-muted-foreground">
               Generate client-ready Google Ads reports in seconds. Not spreadsheets
@@ -986,7 +981,7 @@ const AdsPage = () => {
         </div>
       </section>
 
-      {/* ────────── PRICING ────────── */}
+      {/* ────────── WHERE IT LIVES ────────── */}
       <section id="pricing" className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
@@ -994,92 +989,36 @@ const AdsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center max-w-3xl mx-auto mb-10"
           >
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
-              Pricing
+              Where It Lives
             </span>
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Agency-Level Output. Software Pricing.
+              Part of the GrowthOS Growth Plan.
             </h2>
-            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
-              No hidden fees. No long-term contracts. Your ad accounts stay yours.
+            <p className="text-body-lg text-muted-foreground">
+              AI Ads is built into the GrowthOS Growth plan, and it is available
+              with the Cima AI Agent Pro plan. Your ad accounts always stay
+              yours, and we never lock you in. Pricing is tailored to your clinic
+              and shared in your demo.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl lg:max-w-5xl mx-auto">
-            {/* Monthly */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="card-premium rounded-2xl p-8 flex flex-col"
-            >
-              <h3 className="text-heading-sm font-bold text-foreground mb-1">Monthly</h3>
-              <div className="flex items-baseline gap-1 mb-1">
-                <span className="text-display font-bold text-foreground">$399</span>
-                <span className="text-muted-foreground">/mo</span>
-              </div>
-              <p className="text-body-sm text-muted-foreground mb-6">
-                No contracts. Cancel anytime.
-              </p>
-              <ul className="space-y-2 mb-8 flex-1">
-                {["AI ad copy & keyword research", "Google & Facebook campaigns", "Healthcare compliance", "Performance dashboard", "AI optimization", "AI landing page builder", "Brand voice match", "Cancel anytime"].map((feat, j) => (
-                  <li key={j} className="flex items-start gap-2">
-                    <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-accent-orange/10">
-                      <Check className="w-2.5 h-2.5 text-accent-orange" />
-                    </div>
-                    <span className="text-body-sm text-foreground">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button variant="outline" size="lg" className="w-full group" onClick={() => openIntake("ads_monthly")}>
-                Start for $399/mo
-              </Button>
-            </motion.div>
-
-            {/* Annual */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-xl2 p-8 flex flex-col relative bg-teal text-paper shadow-[var(--shadow)]"
-            >
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-paper border border-sand text-clay shadow-[var(--shadow-sm)]">
-                Best Value
-              </span>
-              <h3 className="text-heading-sm font-bold text-paper mb-1">Annual</h3>
-              <div className="flex items-baseline gap-1 mb-1">
-                <span className="text-display font-bold text-paper">$333</span>
-                <span className="text-paper/70">/mo</span>
-              </div>
-              <p className="text-body-sm text-paper/70 mb-1">
-                Billed at $3,999/yr
-              </p>
-              <p className="text-body-sm font-semibold text-sand mb-6">
-                Save $789. Best value.
-              </p>
-              <ul className="space-y-2 mb-8 flex-1">
-                {["Everything in Monthly", "Priority support", "Save $789 per year"].map((feat, j) => (
-                  <li key={j} className="flex items-start gap-2">
-                    <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-paper/10">
-                      <Check className="w-2.5 h-2.5 text-sand" />
-                    </div>
-                    <span className="text-body-sm text-paper">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button variant="hero" size="lg" className="w-full group" onClick={() => openIntake("ads_annual")}>
-                Save $789/yr — Go Annual
-              </Button>
-            </motion.div>
-          </div>
-
-          <p className="text-center text-body-sm text-muted-foreground mt-8 max-w-xl mx-auto">
-            Your ad accounts stay yours. We never lock you in.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex justify-center"
+          >
+            <Button asChild variant="hero" size="lg" className="group">
+              <a href="/demo">
+                Book a Demo
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
@@ -1118,7 +1057,6 @@ const AdsPage = () => {
               </thead>
               <tbody className="bg-card">
                 {[
-                  { label: "Monthly cost", agency: "$2,000-5,000", cima: "$399" },
                   { label: "Campaign launch time", agency: "2-4 weeks", cima: "Under 1 hour" },
                   { label: "Healthcare compliance", agency: "Manual (error-prone)", cima: "Automatic" },
                   { label: "Ad account ownership", agency: "Often agency-controlled", cima: "Always yours" },
@@ -1233,12 +1171,11 @@ const AdsPage = () => {
               know exactly which dollars drive booked appointments.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <Button variant="hero" size="xl" className="group" onClick={() => openIntake("ads_monthly")}>
-                Start for $399/mo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="outline" size="xl" className="group border border-paper/40 bg-transparent text-paper hover:bg-paper/10" onClick={() => openIntake("ads_annual")}>
-                Save $789/yr — Go Annual
+              <Button asChild variant="hero" size="xl" className="group">
+                <a href="/demo">
+                  Book a Demo
+                  <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
             </div>
             <p className="text-body-sm text-paper/60">
@@ -1247,11 +1184,6 @@ const AdsPage = () => {
           </motion.div>
         </div>
       </section>
-      <AdsIntakeModal
-        open={intakeOpen}
-        onClose={() => setIntakeOpen(false)}
-        selectedPlan={selectedPlan}
-      />
     </>
   );
 };
