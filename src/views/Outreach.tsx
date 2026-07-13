@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,7 +12,6 @@ import {
   MessageSquare,
   Users,
   BarChart3,
-  Check,
   Sparkles,
   Zap,
 } from "lucide-react";
@@ -35,9 +33,9 @@ const itemVariants = {
 
 const stats = [
   { value: "40%", label: "More replies vs. generic outreach" },
-  { value: "12", label: "Personalized follow-ups per prospect — each with a different angle" },
-  { value: "$0.07", label: "Per AI-enriched prospect (vs. $50+ for an SDR)" },
-  { value: "100%", label: "Personalized — no templates, no mail merge" },
+  { value: "12", label: "Personalized follow-ups per prospect, each with a different angle" },
+  { value: "Usage-based", label: "Pay only for the prospects you enrich" },
+  { value: "100%", label: "Personalized, no templates, no mail merge" },
 ];
 
 const steps = [
@@ -100,78 +98,16 @@ const features = [
   },
 ];
 
-const tiers = [
-  {
-    name: "Starter",
-    monthlyPrice: 49,
-    annualPrice: 490,
-    annualSavings: 98,
-    enrichments: 100,
-    checkoutMonthly: "https://whop.com/checkout/plan_berBiVByOs7XV",
-    checkoutAnnual: "https://whop.com/checkout/plan_KYTU1DIPiGwSq",
-    features: [
-      "AI enrichment, 12-step sequences, brand voice, email regeneration",
-    ],
-    highlighted: false,
-  },
-  {
-    name: "Growth",
-    monthlyPrice: 99,
-    annualPrice: 999,
-    annualSavings: 189,
-    enrichments: 300,
-    checkoutMonthly: "https://whop.com/checkout/plan_L9q8TCSz61hlV",
-    checkoutAnnual: "https://whop.com/checkout/plan_OQO2RTuJ06jVJ",
-    features: ["Everything in Starter + priority enrichment"],
-    highlighted: false,
-  },
-  {
-    name: "Pro",
-    monthlyPrice: 199,
-    annualPrice: 1990,
-    annualSavings: 398,
-    enrichments: 750,
-    checkoutMonthly: "https://whop.com/checkout/plan_oUfC9HOmfK7Ft",
-    checkoutAnnual: "https://whop.com/checkout/plan_LAP2RdZ6K4JH4",
-    features: ["Everything in Growth + custom voice per campaign"],
-    highlighted: true,
-  },
-  {
-    name: "Agency",
-    monthlyPrice: 399,
-    annualPrice: 3990,
-    annualSavings: 798,
-    enrichments: 2000,
-    checkoutMonthly: "https://whop.com/checkout/plan_c4RZPciY5WUyF",
-    checkoutAnnual: "https://whop.com/checkout/plan_nOVJ2jzuQ1OFO",
-    features: ["Everything in Pro + white-label reports"],
-    highlighted: false,
-  },
-  {
-    name: "Enterprise",
-    monthlyPrice: 799,
-    annualPrice: 7990,
-    annualSavings: 1598,
-    enrichments: 5000,
-    checkoutMonthly: "https://whop.com/checkout/plan_2g0hcrD3EtkYr",
-    checkoutAnnual: "https://whop.com/checkout/plan_BKF0QRTw31KUF",
-    features: [
-      "Everything in Agency + dedicated queue + custom AI training",
-    ],
-    highlighted: false,
-  },
-];
-
 const faqItems = [
   {
-    question: "What's included in each plan?",
+    question: "What's included?",
     answer:
-      "Every plan includes the full outreach platform: unified inbox, contact management, voice configuration, email sequence builder, analytics, and CSV import. Plans differ by enrichment volume — the number of prospects AI enriches per month.",
+      "The full outreach platform: AI prospect enrichment, 12-step personalized sequences, brand voice configuration, unified inbox, contact management, analytics, and CSV import. You pay only for the prospects you enrich.",
   },
   {
-    question: "Are there overage charges?",
+    question: "How does pricing work?",
     answer:
-      "No. When you hit your monthly enrichment limit, enrichment stops and you see a prompt to upgrade. No surprise charges. Usage resets on the 1st of each month.",
+      "Simple usage-based pricing: pay only for the prospects you enrich. No monthly fee, no contracts. Enrichment stops when you want it to, so there are no surprise charges.",
   },
   {
     question: "Can I upgrade to the full GrowthOS platform later?",
@@ -180,17 +116,7 @@ const faqItems = [
   },
 ];
 
-const scrollToPricing = (e: React.MouseEvent) => {
-  e.preventDefault();
-  const el = document.getElementById("pricing");
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 const Outreach = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
-
   return (
     <>
 
@@ -224,18 +150,18 @@ const Outreach = () => {
             >
               Import your list. AI scrapes every prospect's website, identifies
               their pain points, and writes a personalized 12-step email
-              sequence — in your voice. At $0.07 per prospect.
+              sequence in your voice. You pay only for the prospects you enrich.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col items-center gap-3">
-              <a href="#pricing" onClick={scrollToPricing}>
+              <Link href="/demo">
                 <Button variant="hero" size="xl" className="group">
-                  Choose Your Plan
+                  Book a Demo
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </a>
+              </Link>
               <p className="text-body-sm text-teal-deep/80">
-                No contracts. Cancel anytime.
+                No monthly fee. No contracts.
               </p>
             </motion.div>
           </motion.div>
@@ -315,12 +241,12 @@ const Outreach = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <a href="#pricing" onClick={scrollToPricing}>
+            <Link href="/demo">
               <Button variant="hero" size="lg" className="group">
-                Get Started
+                Book a Demo
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -376,202 +302,35 @@ const Outreach = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center max-w-3xl mx-auto mb-10"
           >
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Pricing
             </span>
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Start Small. Scale When It Works.
+              Simple, Usage-Based Pricing.
             </h2>
+            <p className="text-body-lg text-muted-foreground">
+              Pay only for the prospects you enrich. No monthly fee, no
+              contracts. Scale up when it works, and never pay for volume you do
+              not use.
+            </p>
           </motion.div>
 
-          {/* Monthly / Annual Toggle */}
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <span
-              className={`text-body font-medium transition-colors ${
-                !isAnnual ? "text-foreground" : "text-muted-foreground"
-              }`}
-            >
-              Monthly
-            </span>
-            <button
-              onClick={() => setIsAnnual(!isAnnual)}
-              className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${
-                isAnnual ? "bg-accent-orange" : "bg-muted-foreground/30"
-              }`}
-              aria-label="Toggle annual billing"
-            >
-              <span
-                className={`absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white shadow transition-transform duration-300 ${
-                  isAnnual ? "translate-x-7" : "translate-x-0"
-                }`}
-              />
-            </button>
-            <span
-              className={`text-body font-medium transition-colors ${
-                isAnnual ? "text-foreground" : "text-muted-foreground"
-              }`}
-            >
-              Annual
-            </span>
-            {isAnnual && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay">
-                Save ~17%
-              </span>
-            )}
-          </div>
-
-          {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto overflow-x-auto">
-            {tiers.map((tier, i) => {
-              const displayPrice = isAnnual
-                ? Math.round(tier.annualPrice / 12)
-                : tier.monthlyPrice;
-              const billingNote = isAnnual
-                ? `Billed at $${tier.annualPrice.toLocaleString()}/yr`
-                : "Billed monthly";
-              const checkoutUrl = isAnnual
-                ? tier.checkoutAnnual
-                : tier.checkoutMonthly;
-
-              return (
-                <motion.div
-                  key={tier.name}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className={`rounded-xl2 p-6 flex flex-col relative ${
-                    tier.highlighted
-                      ? "bg-teal text-paper shadow-[var(--shadow)]"
-                      : "card-premium"
-                  }`}
-                >
-                  {tier.highlighted && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-paper border border-sand text-clay shadow-[var(--shadow-sm)]">
-                      Most Popular
-                    </span>
-                  )}
-
-                  <h3
-                    className={`text-heading-sm font-bold mb-1 ${
-                      tier.highlighted
-                        ? "text-paper"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {tier.name}
-                  </h3>
-
-                  <div className="flex items-baseline gap-1 mb-1">
-                    <span
-                      className={`text-display font-bold ${
-                        tier.highlighted
-                          ? "text-paper"
-                          : "text-foreground"
-                      }`}
-                    >
-                      ${displayPrice}
-                    </span>
-                    <span
-                      className={
-                        tier.highlighted
-                          ? "text-paper/70"
-                          : "text-muted-foreground"
-                      }
-                    >
-                      /mo
-                    </span>
-                  </div>
-
-                  <p
-                    className={`text-body-sm mb-2 ${
-                      tier.highlighted
-                        ? "text-paper/70"
-                        : "text-muted-foreground"
-                    }`}
-                  >
-                    {billingNote}
-                  </p>
-
-                  {isAnnual && (
-                    <span className="inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-semibold bg-paper border border-sand text-teal mb-2">
-                      Save ${tier.annualSavings.toLocaleString()}/year
-                    </span>
-                  )}
-
-                  <p
-                    className={`text-body font-semibold mb-2 ${
-                      tier.highlighted ? "text-sand" : "text-clay"
-                    }`}
-                  >
-                    {tier.enrichments.toLocaleString()} prospects/month
-                  </p>
-
-                  <span
-                    className={`inline-flex items-center self-start px-2 py-0.5 rounded-full text-xs font-medium mb-4 ${
-                      tier.highlighted
-                        ? "bg-paper/10 ring-1 ring-sand/40 text-sand"
-                        : "bg-muted-foreground/10 text-muted-foreground"
-                    }`}
-                  >
-                    No surprise charges
-                  </span>
-
-                  <ul className="space-y-2 mb-6 flex-1">
-                    {tier.features.map((feat, j) => (
-                      <li key={j} className="flex items-start gap-2">
-                        <div
-                          className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                            tier.highlighted
-                              ? "bg-paper/10"
-                              : "bg-accent-orange/10"
-                          }`}
-                        >
-                          <Check
-                            className={`w-2.5 h-2.5 ${
-                              tier.highlighted ? "text-sand" : "text-accent-orange"
-                            }`}
-                          />
-                        </div>
-                        <span
-                          className={`text-body-sm ${
-                            tier.highlighted
-                              ? "text-paper"
-                              : "text-foreground"
-                          }`}
-                        >
-                          {feat}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href={checkoutUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block mt-auto"
-                  >
-                    <Button
-                      variant={tier.highlighted ? "hero" : "outline"}
-                      size="lg"
-                      className="w-full group"
-                    >
-                      Get Started
-                    </Button>
-                  </a>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Hard limit note */}
-          <p className="text-center text-body-sm text-muted-foreground mt-8 max-w-xl mx-auto">
-            No surprise charges — enrichment stops at your plan limit. Upgrade
-            anytime.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex justify-center mb-10"
+          >
+            <Link href="/demo">
+              <Button variant="hero" size="lg" className="group">
+                Book a Demo
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </motion.div>
 
           {/* GrowthOS upsell */}
           <motion.div
@@ -640,17 +399,17 @@ const Outreach = () => {
               Your Pipeline Won't Fill Itself.
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
-              An SDR costs $5,000+/month and sends generic templates. The
-              Outreach Engine costs $0.07/prospect and writes sequences that
-              sound like you.
+              An SDR sends generic templates and takes months to ramp. The
+              Outreach Engine writes sequences that sound like you, and you pay
+              only for the prospects you enrich.
             </p>
             <div className="flex flex-col items-center gap-4">
-              <a href="#pricing" onClick={scrollToPricing}>
+              <Link href="/demo">
                 <Button variant="hero" size="xl" className="group">
-                  Choose Your Plan
+                  Book a Demo
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

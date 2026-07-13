@@ -617,11 +617,17 @@ const AIAgent = () => {
           >
             <div className="rounded-xl2 p-6 bg-paper border border-sand shadow-[var(--shadow-sm)] text-center">
               <p className="text-body font-semibold text-foreground mb-2">
-                Full Platform — $999/month
+                Want the full platform?
               </p>
-              <p className="text-body-sm text-muted-foreground">
-                Everything in Pro + the entire GrowthOS platform: outreach engine, campaign builder, ad manager, landing pages, pipeline management, lead scoring, EHR integration, and more. For clinics that want the complete patient acquisition system.
+              <p className="text-body-sm text-muted-foreground mb-4">
+                GrowthOS adds the entire patient acquisition system on top of your AI Agent: outreach engine, campaign builder, ad manager, landing pages, pipeline management, lead scoring, EHR integration, and more. Pricing is tailored to your clinic and shared in your demo.
               </p>
+              <Button asChild variant="hero-outline" size="lg" className="group">
+                <a href="/demo">
+                  Book a Demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
             </div>
           </motion.div>
         </div>

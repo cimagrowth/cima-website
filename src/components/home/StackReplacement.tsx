@@ -1,22 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-type Row = { label: string; cost: string };
-
-const rows: Row[] = [
-  { label: "Marketing coordinator / manager", cost: "$4,000 – $6,000" },
-  { label: "Marketing agency retainer", cost: "$3,000 – $8,000" },
-  { label: "Paid media buyer", cost: "$2,000 – $5,000" },
-  { label: "Patient coordinator doing follow-up", cost: "$3,000 – $4,000" },
-  { label: "Outreach / SDR", cost: "$4,000 – $6,000" },
-  { label: "Reputation / reviews management", cost: "$500 – $1,500" },
+const roles: string[] = [
+  "Marketing coordinator / manager",
+  "Marketing agency retainer",
+  "Paid media buyer",
+  "Patient coordinator doing follow-up",
+  "Outreach / SDR",
+  "Reputation / reviews management",
 ];
-
-const TOTAL = "$16,500 – $30,500";
 
 const StackReplacement = () => {
   return (
@@ -66,15 +62,15 @@ const StackReplacement = () => {
           className="text-center mb-12 md:mb-16"
         >
           <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand mb-4">
-            The Math
+            The Comparison
           </p>
           <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-paper mb-6 leading-tight">
             You&rsquo;re not replacing software.{" "}
             <span className="italic text-sand">You&rsquo;re replacing a department.</span>
           </h2>
           <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-            Here&rsquo;s what it costs to do everything GrowthOS does the old
-            way &mdash; with people and an agency:
+            Here is the growth team you would otherwise hire and manage to do
+            everything GrowthOS does. One platform covers all of it.
           </p>
         </motion.div>
 
@@ -93,46 +89,41 @@ const StackReplacement = () => {
                   scope="col"
                   className="text-left font-semibold text-white/90 px-6 py-4"
                 >
-                  The growth department you&rsquo;d otherwise pay for
+                  The growth department you&rsquo;d otherwise hire
                 </th>
                 <th
                   scope="col"
                   className="text-right font-semibold text-white/90 px-6 py-4"
                 >
-                  Typical monthly cost
+                  With GrowthOS
                 </th>
               </tr>
             </thead>
             <tbody>
-              {rows.map((row, i) => (
+              {roles.map((role, i) => (
                 <tr
-                  key={row.label}
+                  key={role}
                   className={
-                    i < rows.length - 1
+                    i < roles.length - 1
                       ? "border-b border-white/[0.06]"
                       : ""
                   }
                 >
-                  <td className="px-6 py-4 text-white/90">{row.label}</td>
-                  <td className="px-6 py-4 text-right text-white/70">
-                    {row.cost}
+                  <td className="px-6 py-4 text-white/90">{role}</td>
+                  <td className="px-6 py-4">
+                    <span className="flex items-center justify-end gap-2 text-sand font-semibold">
+                      <Check className="w-4 h-4" />
+                      Included
+                    </span>
                   </td>
                 </tr>
               ))}
-              <tr className="border-t-2 border-white/15 bg-white/[0.06]">
-                <td className="px-6 py-5 font-bold text-white">
-                  Total monthly cost of the department
-                </td>
-                <td className="px-6 py-5 text-right font-bold text-white">
-                  {TOTAL}
-                </td>
-              </tr>
               <tr className="bg-paper/10 ring-1 ring-sand/40">
                 <td className="px-6 py-5 font-bold text-lg md:text-xl text-white">
                   GrowthOS (the whole team, one platform)
                 </td>
                 <td className="px-6 py-5 text-right font-bold text-lg md:text-xl text-sand">
-                  $999/mo
+                  One login
                 </td>
               </tr>
             </tbody>
@@ -148,32 +139,25 @@ const StackReplacement = () => {
           className="sm:hidden space-y-3"
         >
           <ul className="rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm shadow-elevated divide-y divide-white/[0.06]">
-            {rows.map((row) => (
+            {roles.map((role) => (
               <li
-                key={row.label}
+                key={role}
                 className="px-5 py-4 flex items-center justify-between gap-4"
               >
-                <span className="text-sm text-white/90">{row.label}</span>
-                <span className="text-sm text-white/70 whitespace-nowrap">
-                  {row.cost}
+                <span className="text-sm text-white/90">{role}</span>
+                <span className="flex items-center gap-1.5 text-sm text-sand font-semibold whitespace-nowrap">
+                  <Check className="w-3.5 h-3.5" />
+                  Included
                 </span>
               </li>
             ))}
-            <li className="px-5 py-4 flex items-center justify-between gap-4 bg-white/[0.06]">
-              <span className="text-sm font-bold text-white">
-                Total monthly cost of the department
-              </span>
-              <span className="text-sm font-bold text-white whitespace-nowrap">
-                {TOTAL}
-              </span>
-            </li>
           </ul>
           <div className="rounded-2xl px-5 py-5 flex items-center justify-between gap-4 bg-paper/10 ring-1 ring-sand/40">
             <span className="text-base font-bold leading-snug text-white">
               GrowthOS (the whole team, one platform)
             </span>
             <span className="text-lg font-bold whitespace-nowrap text-sand">
-              $999/mo
+              One login
             </span>
           </div>
         </motion.div>
@@ -189,20 +173,19 @@ const StackReplacement = () => {
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             And unlike a department, the AI team doesn&rsquo;t call in sick,
             doesn&rsquo;t quit and take the playbook with it, and doesn&rsquo;t
-            go home at 5pm &mdash; which is exactly when patients fill out
-            your form.
+            go home at 5pm, which is exactly when patients fill out your form.
           </p>
         </motion.div>
 
         {/* CTA */}
         <div className="mt-10 flex justify-center">
-          <Link href="#pricing">
+          <Link href="/demo">
             <Button
               variant="hero-outline"
               size="lg"
               className="group border-white/30 text-white hover:bg-white/10 hover:border-white/50"
             >
-              See pricing
+              Book a Demo
               <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>

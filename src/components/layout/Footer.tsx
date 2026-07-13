@@ -33,7 +33,7 @@ const Footer = () => {
       { label: "Blog", href: "/blog" },
     ],
     resources: [
-      { label: "Pricing", href: "/sign-up" },
+      { label: "Plans", href: "/sign-up" },
       { label: "Product Overview", href: "/product" },
     ],
   };

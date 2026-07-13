@@ -170,7 +170,7 @@ const Header = () => {
               href="/sign-up"
               className="font-ui text-sm font-medium text-teal-deep/75 hover:text-teal transition-colors"
             >
-              Get Started
+              Plans
             </Link>
             <Link href="/demo">
               <Button variant="hero" size="default">
@@ -263,7 +263,7 @@ const Header = () => {
             </Link>
             <Link href="/sign-up" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero-outline" size="lg" className="w-full text-base">
-                Get Started
+                Plans
               </Button>
             </Link>
           </div>

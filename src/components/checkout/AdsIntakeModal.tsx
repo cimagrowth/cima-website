@@ -63,8 +63,8 @@ interface AdsIntakeModalProps {
 }
 
 const planLabels: Record<AdsPlanType, string> = {
-  ads_monthly: "Ads Monthly — $399/mo",
-  ads_annual: "Ads Annual — $3,999/yr",
+  ads_monthly: "Ads Monthly",
+  ads_annual: "Ads Annual",
 };
 
 const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) => {
