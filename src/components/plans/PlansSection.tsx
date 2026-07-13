@@ -7,51 +7,57 @@ import { Button } from "@/components/ui/button";
 
 type Plan = {
   name: string;
-  tagline: string;
-  inheritsFrom?: string;
-  highlights: string[];
+  kicker: string;
+  positioning: string;
+  bullets: string[];
+  who: string;
+  footnote?: string;
+  badge?: string;
   popular: boolean;
 };
 
 const plans: Plan[] = [
   {
     name: "GrowthOS Clinic",
-    tagline: "For single-location clinics ready to stop patient leakage.",
-    highlights: [
-      "Fertility-tuned CRM and pipeline",
-      "AI intake assistant",
-      "SMS and email sequences",
-      "Follow-up automations",
-      "Voice AI included",
-      "HIPAA-safe by design",
+    kicker: "Stop the bleeding",
+    positioning:
+      "Every inquiry answered in seconds. Every lead followed up. Automatically.",
+    bullets: [
+      "Your AI front desk answers calls and texts 24/7, so the 2am inquiry books instead of bouncing",
+      "Follow-up runs itself: sequences, reminders, and a pipeline built for how patients actually decide",
+      "Nobody falls through the cracks again, even when your coordinator is out",
     ],
+    who: "For the single-location clinic whose leads are leaking right now.",
+    footnote:
+      "Clinic fixes response and follow-up. It does not create demand.",
     popular: false,
   },
   {
     name: "GrowthOS Growth",
-    tagline: "The full front-end operating system.",
-    inheritsFrom: "Clinic",
-    highlights: [
-      "Done-for-you ad campaigns",
-      "Landing pages and quiz funnels",
-      "Call intelligence",
-      "Outreach and lead discovery",
-      "AI marketing engine",
-      "Priority onboarding",
+    kicker: "Own the whole pipe",
+    positioning:
+      "Demand in. Leads captured. Consults booked. One system, end to end.",
+    bullets: [
+      "Everything in Clinic, plus AI-managed Google and Meta campaigns that create the demand, not just catch it",
+      "Landing pages and quiz funnels built for you, converting clicks into booked consults",
+      "Call intelligence tells you exactly where consults are won and lost, so the leak never reopens",
+      "Outreach and lead discovery fill the pipe even when ads rest",
     ],
+    who: "For clinics done renting their growth from agencies that cannot see past the click.",
+    badge: "What serious clinics choose",
     popular: true,
   },
   {
     name: "GrowthOS Enterprise",
-    tagline: "For multi-location groups and networks.",
-    inheritsFrom: "Growth",
-    highlights: [
-      "One contract for the whole group with volume pricing",
-      "Pooled usage across locations",
-      "Dedicated implementation",
-      "Custom EHR integrations",
-      "Compliance and audit reporting",
+    kicker: "Run it across the network",
+    positioning:
+      "One contract. Every location. Pooled usage, group pricing, and numbers your board can read.",
+    bullets: [
+      "Everything in Growth, deployed hub-and-spoke across all your locations",
+      "One agreement with volume pricing that gets better as you grow",
+      "Custom EHR integrations, dedicated implementation, and compliance reporting built in",
     ],
+    who: "For groups and networks that want one operating system, not five vendors per site.",
     popular: false,
   },
 ];
@@ -70,8 +76,8 @@ const PlansSection = ({
   className = "bg-background",
   showHeader = true,
   eyebrow = "Plans",
-  heading = "One operating system. Three ways to run it.",
-  subhead = "Pick the plan that matches your clinic. Every plan is built on the same fertility-tuned platform.",
+  heading = "Every plan plugs the leak. One owns the whole pipe.",
+  subhead = "60 to 70% of patient inquiries never become consults. Pick how much of that you want back.",
 }: PlansSectionProps) => {
   return (
     <section
@@ -126,46 +132,44 @@ const PlansSection = ({
               transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
               className={`relative flex flex-col rounded-xl2 p-8 md:p-9 transition-all duration-300 ${
                 plan.popular
-                  ? "bg-teal text-paper shadow-[var(--shadow)] md:-translate-y-4 md:scale-[1.03] ring-2 ring-accent-orange/60 z-10"
+                  ? "bg-teal text-paper shadow-[var(--shadow)] md:-translate-y-4 md:scale-[1.04] ring-2 ring-accent-orange/60 z-10"
                   : "bg-paper border border-sand shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow)]"
               }`}
             >
-              {plan.popular && (
+              {plan.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center gap-1.5 whitespace-nowrap bg-accent-orange text-white text-xs md:text-sm font-semibold px-5 py-1.5 rounded-full shadow-card">
                     <Star className="w-3.5 h-3.5 fill-current" />
-                    Most Popular
+                    {plan.badge}
                   </span>
                 </div>
               )}
 
+              <p
+                className={`font-ui text-xs font-semibold uppercase tracking-[.16em] mb-3 ${
+                  plan.popular ? "text-sand" : "text-clay"
+                }`}
+              >
+                {plan.kicker}
+              </p>
+
               <h3
-                className={`text-xl md:text-2xl font-semibold mb-2 ${
+                className={`text-xl md:text-2xl font-semibold mb-3 ${
                   plan.popular ? "text-paper" : "text-foreground"
                 }`}
               >
                 {plan.name}
               </h3>
               <p
-                className={`text-sm md:text-base mb-6 leading-snug ${
-                  plan.popular ? "text-paper/80" : "text-muted-foreground"
+                className={`text-sm md:text-base mb-6 leading-snug font-medium ${
+                  plan.popular ? "text-paper/90" : "text-foreground"
                 }`}
               >
-                {plan.tagline}
+                {plan.positioning}
               </p>
 
-              {plan.inheritsFrom && (
-                <p
-                  className={`text-sm font-semibold mb-4 ${
-                    plan.popular ? "text-sand" : "text-clay"
-                  }`}
-                >
-                  Everything in {plan.inheritsFrom}, plus:
-                </p>
-              )}
-
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.highlights.map((item) => (
+              <ul className="space-y-3 mb-6 flex-1">
+                {plan.bullets.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span
                       className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
@@ -188,6 +192,24 @@ const PlansSection = ({
                   </li>
                 ))}
               </ul>
+
+              <p
+                className={`text-sm md:text-base leading-snug font-medium mb-4 ${
+                  plan.popular ? "text-sand" : "text-teal"
+                }`}
+              >
+                {plan.who}
+              </p>
+
+              {plan.footnote && (
+                <p
+                  className={`text-xs leading-snug mb-6 ${
+                    plan.popular ? "text-paper/60" : "text-muted-foreground"
+                  }`}
+                >
+                  {plan.footnote}
+                </p>
+              )}
 
               <Link href="/demo" className="block mt-auto">
                 <Button
@@ -215,8 +237,8 @@ const PlansSection = ({
           transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
           className="text-center text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-10 md:mt-12"
         >
-          Pricing is tailored to your clinic and shared in your demo. One
-          recovered patient typically covers months of GrowthOS.
+          Pricing is tailored in your demo. One recovered patient typically
+          covers months of GrowthOS.
         </motion.p>
       </div>
     </section>

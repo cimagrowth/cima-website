@@ -56,8 +56,8 @@ const Pricing = () => {
       <PlansSection
         className="bg-background"
         eyebrow="Plans"
-        heading="Choose the plan that matches your clinic."
-        subhead="Every plan runs on the same fertility-tuned platform, with Voice AI included. Move up as you grow."
+        heading="Every plan plugs the leak. One owns the whole pipe."
+        subhead="60 to 70% of patient inquiries never become consults. Pick how much of that you want back."
       />
 
       {/* FAQ */}

@@ -8,8 +8,8 @@ const ValueStack = () => {
       id="pricing"
       className="bg-background"
       eyebrow="Plans"
-      heading="One operating system. Three ways to run it."
-      subhead="Pick the plan that matches your clinic. Every plan runs on the same fertility-tuned platform, with Voice AI included."
+      heading="Every plan plugs the leak. One owns the whole pipe."
+      subhead="60 to 70% of patient inquiries never become consults. Pick how much of that you want back."
     />
   );
 };
