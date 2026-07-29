@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="font-display text-3xl md:text-4xl font-[340] tracking-tight mb-2">Healthcare Enterprise Privacy Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: May 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last Updated: July 2026</p>
 
           <p>
             Thank you for using the Cima Growth Solutions LLC platform, including our website, mobile applications, software, and related services (collectively, the "Services"). This Privacy Policy ("Policy") explains how Cima Growth Solutions LLC ("Cima," "Company," "we," "us," or "our") collects, uses, discloses, and safeguards information when providing a healthcare-focused SaaS platform.
@@ -261,18 +261,58 @@ const PrivacyPolicy = () => {
 
           <h2>16. Meta Platform (Facebook, Instagram, WhatsApp)</h2>
           <p>
-            When a clinic connects their Meta account to our Services for advertising purposes, we use Meta's Facebook Login for Business flow and request the following permissions. For each permission we describe what we access, why, and how long we retain it.
+            When a clinic connects their Meta account to our Services, we use Meta's Facebook Login for Business flow and request the following permissions. For each permission we describe what we access, why, and how long we retain it. A clinic may connect only the features they intend to use.
           </p>
+
+          <h3>Advertising</h3>
           <ul>
             <li><strong>ads_management, ads_read</strong> — we create, manage, and read ad campaigns, ad sets, creatives, and performance insights for the ad account you select, so our platform can publish campaigns on your behalf and show you analytics. Retained while your connection is active.</li>
-            <li><strong>business_management</strong> — we identify the Meta Business Manager assets you have access to so you can select the correct ad account and Facebook Page.</li>
+            <li><strong>business_management</strong> — we identify the Meta Business Manager assets you have access to so you can select the correct ad account and Facebook Page. Requested as a dependency of the advertising and lead-retrieval features below.</li>
             <li><strong>pages_show_list</strong> — we list the Facebook Pages you manage so you can choose which Page your ads will run from. Every Meta ad must reference a Page.</li>
             <li><strong>pages_read_engagement</strong> — we read Page engagement metrics to inform ad targeting and reporting.</li>
+            <li><strong>pages_manage_ads</strong> — we manage the ads associated with your selected Page, which Meta requires in order to run and report on ads that reference that Page.</li>
             <li><strong>instagram_basic</strong> — we identify the Instagram Business account, if any, linked to your Page so we can serve ads to Instagram placements.</li>
-            <li><strong>whatsapp_business_management, whatsapp_business_messaging</strong> — used only for Click-to-WhatsApp advertising features when you explicitly enable them; we read WhatsApp Business Account metadata and phone number status to enable this ad format.</li>
+          </ul>
+
+          <h3>Lead capture</h3>
+          <ul>
+            <li><strong>leads_retrieval</strong> — when a prospective patient completes one of your Facebook or Instagram lead forms, we retrieve the information they submitted (typically name, email address, phone number, and any custom questions you configured) so it appears in your GrowthOS pipeline and your configured follow-up sequences can contact them. Without this permission, you would have to export leads manually from Meta Ads Manager. Lead data is retained as a contact record in your GrowthOS account for the duration of your subscription, subject to Sections 8, 11 and 19.</li>
+            <li><strong>pages_manage_metadata</strong> — we subscribe your Page to Meta's real-time notifications so that new lead-form submissions and inbound messages reach GrowthOS as they happen rather than on a delay. We do not use this permission to change your Page settings.</li>
+          </ul>
+
+          <h3>Messaging</h3>
+          <ul>
+            <li><strong>pages_messaging</strong> — we read and send messages in Facebook Messenger conversations belonging to your Page, so your staff can view and reply to prospective-patient enquiries inside GrowthOS and send the automated follow-up replies you configure. We only message people who have messaged your Page first. Message content is stored as a conversation record in your GrowthOS account.</li>
+            <li><strong>instagram_manage_messages</strong> — the same capability for Instagram Direct messages received by the Instagram Business account linked to your Page.</li>
           </ul>
           <p>
-            We store the Facebook user ID of the person who authorized the connection, long-lived access tokens (encrypted at rest), the selected ad account ID, Facebook Page ID, and Instagram Business account ID (if applicable). We do not access, store, or process any Meta user's personal content (messages, posts, photos) beyond what is strictly necessary to operate the ad features you enable.
+            Where you enable automated replies, those messages disclose to the recipient that they are interacting with an automated experience.
+          </p>
+
+          <h3>WhatsApp</h3>
+          <ul>
+            <li><strong>whatsapp_business_management, whatsapp_business_messaging</strong> — used only for Click-to-WhatsApp advertising features when you explicitly enable them; we read WhatsApp Business Account metadata and phone number status to enable this ad format.</li>
+          </ul>
+
+          <h3>What we store</h3>
+          <p>
+            We store the Facebook user ID of the person who authorized the connection, long-lived access tokens (encrypted at rest), the selected ad account ID, Facebook Page ID, and Instagram Business account ID (if applicable).
+          </p>
+          <p>
+            Where you enable the lead-capture or messaging features described above, we also store the content those features exist to deliver: the responses a prospective patient submits through your lead forms, and the messages exchanged between your Page or Instagram account and people who contact it. This information is stored in your GrowthOS account, is accessible only to your authorized users and to our personnel under the access controls described in Section 12, and is used solely to enable you to respond to and manage those enquiries.
+          </p>
+          <p>
+            We do not access Meta users' posts, photos, profile content, or any other Platform Data beyond what the permissions listed above provide. We do not use Meta Platform Data for advertising, retargeting, audience modeling, or to train any artificial-intelligence or machine-learning model, whether by us or by our subprocessors.
+          </p>
+
+          <h3>Prospective patient information</h3>
+          <p>
+            Information a prospective patient submits through a lead form or sends in a message to a clinic may, depending on what that individual chooses to disclose, constitute Protected Health Information. Where a Business Associate Agreement is in place between Cima and the clinic, such information is handled in accordance with that Agreement and with Section 2 of this Policy. Clinics remain the data controller for information about their patients and prospective patients.
+          </p>
+
+          <h3>Revoking access and deletion</h3>
+          <p>
+            You can disconnect your Meta account at any time from within GrowthOS, or by removing our application from <a href="https://www.facebook.com/settings?tab=business_tools" target="_blank" rel="noopener noreferrer">Facebook Business Integrations</a>. On disconnection we revoke and delete the stored access tokens. For deletion of associated data, see Section 19.
           </p>
 
           <h2>17. Google Services</h2>
@@ -372,7 +412,7 @@ const PrivacyPolicy = () => {
             <li><strong>SendGrid</strong> — transactional and marketing email delivery</li>
             <li><strong>Twilio</strong> — SMS and voice messaging infrastructure</li>
             <li><strong>Whop, GoHighLevel, Stripe</strong> — billing and subscription management</li>
-            <li><strong>Meta Platforms, Google</strong> — advertising delivery and measurement, when a customer connects those platforms</li>
+            <li><strong>Meta Platforms, Google</strong> — advertising delivery and measurement, and lead capture and messaging where enabled, when a customer connects those platforms</li>
           </ul>
           <p>
             We require each subprocessor to provide appropriate contractual protections and technical safeguards, including Business Associate Agreements where the subprocessor will handle protected health information.
