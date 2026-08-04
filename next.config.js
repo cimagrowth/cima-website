@@ -1,3 +1,27 @@
+// Host-conditioned redirects for the retired sendafertility.com domain.
+// DNS for sendafertility.com must point at this deployment for any of these
+// to fire. Covers both the apex and the www host.
+const SENDA_HOSTS = ['sendafertility.com', 'www.sendafertility.com'];
+const CONSENT_URL = 'https://cimagrowth.com/consent';
+
+function sendafertilityRedirects() {
+  return SENDA_HOSTS.flatMap((host) => {
+    const has = [{ type: 'host', value: host }];
+    return [
+      // Named paths map to their cimagrowth equivalents.
+      { source: '/walkthrough', has, destination: 'https://cimagrowth.com/demo', permanent: true },
+      { source: '/sign-up', has, destination: CONSENT_URL, permanent: true },
+      { source: '/privacy', has, destination: 'https://cimagrowth.com/privacy', permanent: true },
+      { source: '/terms', has, destination: 'https://cimagrowth.com/terms', permanent: true },
+      // Everything else lands on /consent, including the root. /baa is
+      // deliberately excluded: it may be linked from a signed agreement, so
+      // that path is left serving rather than redirected.
+      { source: '/', has, destination: CONSENT_URL, permanent: true },
+      { source: '/:path((?!baa(?:/|$)).*)', has, destination: CONSENT_URL, permanent: true },
+    ];
+  });
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // No output: 'export' — Vercel handles SSR/SSG natively
@@ -39,6 +63,8 @@ const nextConfig = {
       { source: '/clinic-growth-engine', destination: '/', permanent: true },
       { source: '/b/:slug', destination: '/blog', permanent: true },
       { source: '/2024/:month/:day/:slug', destination: '/blog', permanent: true },
+      // Retired sendafertility.com domain -> /consent (host-conditioned).
+      ...sendafertilityRedirects(),
     ];
   },
   async headers() {

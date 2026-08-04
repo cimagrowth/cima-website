@@ -14,6 +14,7 @@ import SocialProof from "@/components/home/SocialProof";
 import HowItWorks from "@/components/home/HowItWorks";
 import IntegrationFlexibility from "@/components/home/IntegrationFlexibility";
 import FounderLetter from "@/components/home/FounderLetter";
+import ConsentBand from "@/components/home/ConsentBand";
 import FinalCTA from "@/components/home/FinalCTA";
 import HomepageOSCallout from "@/components/home/HomepageOSCallout";
 
@@ -31,6 +32,7 @@ const Index = () => {
       <StackReplacement />
       <ValueStack />
       <SocialProof />
+      <ConsentBand />
       <HowItWorks />
       <IntegrationFlexibility />
       <FounderLetter />

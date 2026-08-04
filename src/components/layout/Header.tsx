@@ -33,6 +33,7 @@ const navLinks: NavLink[] = [
       { href: "/ads", label: "AI Ads" },
       { href: "/chartai", label: "ChartAI" },
       { href: "/outreach", label: "Outreach Engine" },
+      { href: "/consent", label: "Patient Consent" },
     ],
   },
   { href: "/blog", label: "Blog" },
