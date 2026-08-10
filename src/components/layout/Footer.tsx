@@ -33,7 +33,7 @@ const Footer = () => {
       { label: "Blog", href: "/blog" },
     ],
     resources: [
-      { label: "Plans", href: "/sign-up" },
+      { label: "Book a Demo", href: "/demo" },
       { label: "Product Overview", href: "/product" },
     ],
   };
@@ -48,14 +48,14 @@ const Footer = () => {
 
   return (
     <>
-      {/* Pre-footer CTA — teal anchor block */}
+      {/* Pre-footer CTA: teal anchor block */}
       <section className="bg-teal py-[clamp(80px,10vw,140px)]">
         <div className="container-wide text-center">
           <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-5">
             Every day without GrowthOS is another day of patients choosing the clinic that responded first.
           </h2>
           <p className="text-base md:text-lg text-paper/80 max-w-xl mx-auto mb-10">
-            See results in 30 days or we'll work with you until you do. No setup fee. Live in 48 hours.
+            See results in 30 days or we'll work with you until you do. Setup fee waived on annual plans. Live in 48 hours.
           </p>
           <div className="flex justify-center">
             <Link href="/demo">

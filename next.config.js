@@ -24,7 +24,7 @@ function sendafertilityRedirects() {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // No output: 'export' — Vercel handles SSR/SSG natively
+  // No output: 'export'. Vercel handles SSR/SSG natively
   experimental: {
     serverComponentsExternalPackages: ['isomorphic-dompurify'],
   },
@@ -55,9 +55,13 @@ const nextConfig = {
       { source: '/demo-4386', destination: '/demo', permanent: true },
       { source: '/calendar-4597', destination: '/demo', permanent: true },
       { source: '/about-us', destination: '/', permanent: true },
-      { source: '/starter-plan', destination: '/sign-up', permanent: true },
-      { source: '/grow-plan', destination: '/sign-up', permanent: true },
-      { source: '/scale-plan', destination: '/sign-up', permanent: true },
+      // Self-serve signup and checkout are retired. GrowthOS is sold through
+      // Deal Desk, so every former signup and plan path routes to the demo.
+      { source: '/sign-up', destination: '/demo', permanent: true },
+      { source: '/sign-up/register', destination: '/demo', permanent: true },
+      { source: '/starter-plan', destination: '/demo', permanent: true },
+      { source: '/grow-plan', destination: '/demo', permanent: true },
+      { source: '/scale-plan', destination: '/demo', permanent: true },
       { source: '/sales-team', destination: '/', permanent: true },
       { source: '/ads-system', destination: '/', permanent: true },
       { source: '/clinic-growth-engine', destination: '/', permanent: true },

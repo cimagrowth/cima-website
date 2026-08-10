@@ -191,7 +191,7 @@ const modes: Mode[] = [
     title: "Transition Mode",
     subtitle: "Switch on your schedule",
     description:
-      "Already on HubSpot, Salesforce, GoHighLevel, or Tebra? We migrate you at your pace while GrowthOS does the heavy lifting — your team keeps working in familiar tools as the AI runs underneath.",
+      "Already on HubSpot, Salesforce, or Tebra? We migrate you at your pace while GrowthOS does the heavy lifting, so your team keeps working in familiar tools as the AI runs underneath.",
     featured: true,
   },
   {
@@ -199,14 +199,14 @@ const modes: Mode[] = [
     title: "Integration Mode",
     subtitle: "Keep your CRM, add the team",
     description:
-      "GrowthOS sits on top of your existing CRM via API. Pick the AI capabilities you need — front desk, nurture, ads, outreach — and leave your records and reporting where they live today.",
+      "GrowthOS sits on top of your existing CRM via API. Pick the AI capabilities you need, from front desk to nurture, ads, and outreach, and leave your records and reporting where they live today.",
   },
   {
     icon: Replace,
     title: "Full Platform",
     subtitle: "Replace the patchwork entirely",
     description:
-      "GrowthOS becomes your complete patient growth infrastructure — contacts, pipelines, inbox, automations, ads, and reporting in one place, run by the AI team.",
+      "GrowthOS becomes your complete patient growth infrastructure, with contacts, pipelines, inbox, automations, ads, and reporting in one place, run by the AI team.",
   },
 ];
 
@@ -253,7 +253,7 @@ const Product = () => {
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link href="/sign-up">
+              <Link href="/demo">
                 <Button
                   variant="hero-outline"
                   size="xl"
@@ -573,13 +573,13 @@ const Product = () => {
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link href="/sign-up">
+              <Link href="/demo">
                 <Button
                   variant="hero-outline"
                   size="xl"
                   className="border border-paper/40 bg-transparent text-paper hover:bg-paper/10"
                 >
-                  Get Started — live in 48 hours
+                  Get Started
                 </Button>
               </Link>
             </div>

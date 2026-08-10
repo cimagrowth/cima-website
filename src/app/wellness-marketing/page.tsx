@@ -13,20 +13,20 @@ const content: SolutionLandingProps = {
   h1Lead: 'Wellness marketing that fills the calendar and',
   h1Accent: 'keeps members coming back.',
   subhead:
-    'Wellness is a relationship, not a one-time visit. GrowthOS brings new clients in, answers every inquiry instantly, and keeps members rebooking and renewing — so your recurring revenue grows instead of leaking every month.',
+    'Wellness is a relationship, not a one-time visit. GrowthOS brings new clients in, answers every inquiry instantly, and keeps members rebooking and renewing, so your recurring revenue grows instead of leaking every month.',
   problem: {
     eyebrow: 'The problem',
     heading: 'Wellness clinics do not lose clients loudly.',
     accent: 'They lose them quietly.',
     paragraphs: [
-      'A prospective client fills out a form after seeing your post, hears nothing back for a day, and moves on. That is the visible leak. The bigger one is invisible: members who quietly stop booking, packages that go unused, and lapsed clients who would happily return if anyone reached out. Wellness lives on lifetime value — and lifetime value dies from silence, not from a bad visit.',
+      'A prospective client fills out a form after seeing your post, hears nothing back for a day, and moves on. That is the visible leak. The bigger one is invisible: members who quietly stop booking, packages that go unused, and lapsed clients who would happily return if anyone reached out. Wellness lives on lifetime value, and lifetime value dies from silence, not from a bad visit.',
       'Most clinics lean on a busy front desk to handle intake, reminders, rebooking, and win-backs by hand. It slips, every week, and the recurring revenue you already earned walks out the door.',
     ],
     points: [
       'New inquiries arrive after hours and never get a timely reply.',
       'Members drift away with no one re-engaging them.',
       'Unused packages and memberships quietly expire.',
-      'Reviews and referrals — your cheapest growth — never get asked for.',
+      'Reviews and referrals, your cheapest growth, never get asked for.',
     ],
   },
   solution: {
@@ -38,7 +38,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'zap',
         title: 'Instant inquiry response',
-        body: 'Every new lead answered in seconds across web chat, SMS, WhatsApp, email, and social DMs — booked before they cool off.',
+        body: 'Every new lead answered in seconds across web chat, SMS, WhatsApp, email, and social DMs, booked before they cool off.',
       },
       {
         icon: 'repeat',
@@ -48,7 +48,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'bell',
         title: 'Reactivation campaigns',
-        body: 'Wins back lapsed clients and unused packages with timely, personal outreach — recovering revenue you already earned.',
+        body: 'Wins back lapsed clients and unused packages with timely, personal outreach, recovering revenue you already earned.',
       },
       {
         icon: 'megaphone',
@@ -87,7 +87,7 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'Multi-service wellness centers',
-        body: 'One system across every service line, location, and provider — consistent voice, unified reporting.',
+        body: 'One system across every service line, location, and provider, consistent voice, unified reporting.',
       },
     ],
   },
@@ -168,7 +168,7 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'Every quiet month is recurring revenue walking out the door.',
-    body: 'See results in 30 days or we will work with you until you do. No setup fee. Live in 48 hours.',
+    body: 'See results in 30 days or we will work with you until you do. Setup fee waived on annual plans. Live in 48 hours.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },

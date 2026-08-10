@@ -167,12 +167,6 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/sign-up"
-              className="font-ui text-sm font-medium text-teal-deep/75 hover:text-teal transition-colors"
-            >
-              Plans
-            </Link>
             <Link href="/demo">
               <Button variant="hero" size="default">
                 Book a Demo
@@ -260,11 +254,6 @@ const Header = () => {
             <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="hero" size="lg" className="w-full text-base">
                 Book a Demo
-              </Button>
-            </Link>
-            <Link href="/sign-up" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button variant="hero-outline" size="lg" className="w-full text-base">
-                Plans
               </Button>
             </Link>
           </div>

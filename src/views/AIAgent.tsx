@@ -14,20 +14,11 @@ import {
   Inbox,
   Globe,
   ChevronDown,
-  Loader2,
   Plug,
   Sparkles,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { WhopCheckoutEmbed } from "@whop/checkout/react";
-
-const AGENT_PLAN_IDS = {
-  starter_monthly: "plan_KlfeYTy8fJrH1",
-  starter_annual: "plan_1L1PC2cyC3Md0",
-  pro_monthly: "plan_2NrtqXfZv9Hf3",
-  pro_annual: "plan_d1pO9lw8rdQzN",
-} as const;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -95,7 +86,7 @@ const features = [
     icon: Globe,
     title: "Multi-Channel Engagement",
     description:
-      "SMS, email, web chat, WhatsApp, Instagram DM, Facebook Messenger — one AI brain, every channel.",
+      "SMS, email, web chat, WhatsApp, Instagram DM, Facebook Messenger, one AI brain, every channel.",
   },
   {
     icon: Sparkles,
@@ -168,7 +159,7 @@ const faqItems = [
   {
     question: "Does this work with my CRM?",
     answer:
-      "Native GoHighLevel integration today. HubSpot in Q3, Salesforce in Q4. Or use it inside GrowthOS as the full platform — no external CRM needed.",
+      "Connects to your CRM today. HubSpot in Q3, Salesforce in Q4. Or use it inside GrowthOS as the full platform, no external CRM needed.",
   },
   {
     question: "How is this different from the chatbot that came with my CRM?",
@@ -204,7 +195,6 @@ const faqItems = [
 
 const AIAgent = () => {
   const [isAnnual, setIsAnnual] = useState(false);
-  const [checkoutPlan, setCheckoutPlan] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
@@ -228,14 +218,14 @@ const AIAgent = () => {
               Now Available
             </span>
             <h1 className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6">
-              Your Clinic's AI Front Desk —{" "}
+              Your Clinic's AI Front Desk:{" "}
               <span className="italic text-clay">
                 Responds in Seconds, Nurtures for Weeks, Hands Off With Full Context.
               </span>
             </h1>
             <p className="text-body-lg text-teal-deep/80 max-w-3xl mx-auto mb-10">
               Stop losing patients to slow response times. The Cima AI Agent
-              handles inquiries, qualifies leads, and books appointments 24/7 —
+              handles inquiries, qualifies leads, and books appointments 24/7,
               inside the CRM you already use, or inside GrowthOS.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -303,7 +293,7 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* DIFFERENTIATOR — Not a Chatbot */}
+      {/* DIFFERENTIATOR: Not a Chatbot */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <motion.div
@@ -321,7 +311,7 @@ const AIAgent = () => {
               <div className="card-premium p-6 border-l-4 border-muted-foreground/30">
                 <p className="font-ui text-sm font-semibold text-muted-foreground uppercase tracking-[.16em] mb-3">A chatbot:</p>
                 <p className="text-body text-muted-foreground">
-                  Matches keywords to canned responses. When it doesn't understand, it says "Let me connect you with a team member" — and that team member is unavailable until morning.
+                  Matches keywords to canned responses. When it doesn't understand, it says "Let me connect you with a team member," and that team member is unavailable until morning.
                 </p>
               </div>
               <div className="card-premium p-6 border-l-4 border-clay">
@@ -335,7 +325,7 @@ const AIAgent = () => {
         </div>
       </section>
 
-      {/* HOW IT WORKS — Setup */}
+      {/* HOW IT WORKS: Setup */}
       <section id="how-it-works" className="section-padding bg-tan">
         <div className="container-wide">
           <motion.div
@@ -366,7 +356,7 @@ const AIAgent = () => {
                   <step.icon className="w-7 h-7 text-accent-orange" />
                 </div>
                 <span className="font-ui text-xs font-semibold text-clay uppercase tracking-[.16em]">
-                  Step {i + 1} — {step.time}
+                  Step {i + 1}: {step.time}
                 </span>
                 <h3 className="text-heading-sm text-foreground mt-2 mb-3">
                   {step.title}
@@ -432,7 +422,7 @@ const AIAgent = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Everything Your Front Desk Does —{" "}
+              Everything Your Front Desk Does,{" "}
               <span className="italic text-clay">Without the Hold Music.</span>
             </h2>
           </motion.div>
@@ -475,7 +465,7 @@ const AIAgent = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Simple Pricing. No Setup Fees. Cancel Anytime.
+              Simple Pricing. Setup Fee Waived on Annual Plans. Cancel Anytime.
             </h2>
 
             {/* Monthly/Annual Toggle */}
@@ -589,19 +579,15 @@ const AIAgent = () => {
                   ))}
                 </ul>
                 <Button
+                  asChild
                   variant={tier.highlighted ? "hero" : "hero-outline"}
                   size="lg"
                   className="w-full group"
-                  onClick={() =>
-                    setCheckoutPlan(
-                      AGENT_PLAN_IDS[
-                        isAnnual ? tier.planKeyAnnual : tier.planKeyMonthly
-                      ]
-                    )
-                  }
                 >
-                  Start {tier.name}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <a href="/demo">
+                    Book a Demo
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
                 </Button>
               </motion.div>
             ))}
@@ -701,61 +687,23 @@ const AIAgent = () => {
               The clinic that responds first wins 78% of the time. Your AI agent responds in under 3 seconds.
             </p>
             <Button
+              asChild
               variant="hero"
               size="lg"
               className="group"
-              onClick={() =>
-                setCheckoutPlan(
-                  AGENT_PLAN_IDS[
-                    isAnnual ? "starter_annual" : "starter_monthly"
-                  ]
-                )
-              }
             >
-              Start Your AI Agent — $297/mo
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <a href="/demo">
+                Book a Demo
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
             <p className="text-sm text-paper/50 mt-4">
-              No setup fee. Cancel anytime.
+              Setup fee waived on annual plans. Cancel anytime.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* CHECKOUT MODAL */}
-      {checkoutPlan && (
-        <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setCheckoutPlan(null);
-          }}
-        >
-          <div className="bg-white rounded-xl p-6 max-w-md w-full mx-4 max-h-[90vh] overflow-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">
-                Complete Your Purchase
-              </h3>
-              <button
-                onClick={() => setCheckoutPlan(null)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                &times;
-              </button>
-            </div>
-            <WhopCheckoutEmbed
-              planId={checkoutPlan}
-              returnUrl="https://os.cimagrowth.com/agent-welcome"
-              theme="light"
-              fallback={
-                <div className="text-center py-8 text-gray-500">
-                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />
-                  Loading secure checkout...
-                </div>
-              }
-            />
-          </div>
-        </div>
-      )}
     </>
   );
 };
