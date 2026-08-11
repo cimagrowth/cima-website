@@ -41,7 +41,7 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Copy column — first in DOM = CTA above the fold on mobile */}
+        {/* Copy column: first in DOM = CTA above the fold on mobile */}
         <div>
           <motion.p
             variants={itemVariants}
@@ -65,8 +65,8 @@ const Hero = () => {
             The platform that <span className="text-orange">drives</span>{" "}
             patients in, <span className="text-orange">captures</span> every
             inquiry the second it lands, and{" "}
-            <span className="text-orange">grows</span> them into referrals
-            &mdash; one system, not another AI bolt-on.
+            <span className="text-orange">grows</span> them into referrals,
+            one system, not another AI bolt-on.
           </motion.p>
 
           <motion.p
@@ -74,7 +74,7 @@ const Hero = () => {
             className="font-body text-sm md:text-base text-teal-deep/70 mb-6 md:mb-7 max-w-[60ch] leading-relaxed"
           >
             A clinic doesn&rsquo;t leak patients in one place. It leaks at every
-            stage &mdash; the ads no one&rsquo;s optimizing, the inquiry that
+            stage, the ads no one&rsquo;s optimizing, the inquiry that
             sits for hours, the follow-up that stops at one, the patient who
             quietly disappears, the review you never ask for. GrowthOS runs all
             of it on one brain: acquisition, conversion, and retention in a
@@ -82,18 +82,18 @@ const Hero = () => {
             medical coat of paint. The system your clinic actually runs on.
           </motion.p>
 
-          {/* CTAs — stacked on mobile, inline on larger screens */}
+          {/* CTAs: stacked on mobile, inline on larger screens */}
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
-            <Link href="/sign-up" className="block">
+            <Link href="/demo" className="block">
               <Button
                 variant="hero"
                 size="lg"
                 className="w-full sm:w-auto group text-base"
               >
-                Launch Today
+                Get Started
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
@@ -109,7 +109,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Funnel column — side-by-side on desktop, below the fold on mobile */}
+        {/* Funnel column: side-by-side on desktop, below the fold on mobile */}
         <motion.div variants={itemVariants} className="w-full">
           <PatientLeakageFunnel />
         </motion.div>

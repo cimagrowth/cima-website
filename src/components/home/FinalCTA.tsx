@@ -23,7 +23,7 @@ const DEFAULT_DESCRIPTION =
   "Get a free growth audit. We analyze your current response times, channel coverage, and conversion paths, and show you specifically where patients are slipping through and what GrowthOS would change.";
 const DEFAULT_CTAS: CtaLink[] = [
   { label: "Book a Demo", href: "/demo", variant: "hero" },
-  { label: "Start Now — Live in 48 Hours", href: "/sign-up", variant: "hero-outline" },
+  { label: "See How It Works", href: "/how-it-works", variant: "hero-outline" },
 ];
 
 const FinalCTA = ({

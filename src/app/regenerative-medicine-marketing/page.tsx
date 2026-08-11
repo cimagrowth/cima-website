@@ -13,19 +13,19 @@ const content: SolutionLandingProps = {
   h1Lead: 'Regenerative marketing that educates, builds trust, and',
   h1Accent: 'books the consult.',
   subhead:
-    'Regenerative treatments are high-ticket and high-consideration — patients research for weeks and need to trust you before they commit. GrowthOS answers instantly, nurtures with the right education at the right time, and stays compliant, so serious patients book the consult instead of drifting to a competitor.',
+    'Regenerative treatments are high-ticket and high-consideration, patients research for weeks and need to trust you before they commit. GrowthOS answers instantly, nurtures with the right education at the right time, and stays compliant, so serious patients book the consult instead of drifting to a competitor.',
   problem: {
     eyebrow: 'The problem',
-    heading: 'In regenerative medicine, trust is the whole sale —',
+    heading: 'In regenerative medicine, trust is the whole sale',
     accent: 'and trust takes follow-up.',
     paragraphs: [
-      "A patient considering PRP, stem cell, or peptide therapy is spending real money on a decision they don't fully understand yet. They read everything, compare clinics, and hesitate. They need education, reassurance, and answers — delivered patiently over time. One fast reply won't close them, and neither will a hard sell. What closes them is a clinic that shows up consistently, informs them, and earns trust across the whole decision.",
-      "Most clinics can't do that by hand. The inquiry comes in, someone replies once, and the follow-up that would have built trust never happens — so a high-value patient quietly goes cold.",
+      "A patient considering PRP, stem cell, or peptide therapy is spending real money on a decision they don't fully understand yet. They read everything, compare clinics, and hesitate. They need education, reassurance, and answers, delivered patiently over time. One fast reply won't close them, and neither will a hard sell. What closes them is a clinic that shows up consistently, informs them, and earns trust across the whole decision.",
+      "Most clinics can't do that by hand. The inquiry comes in, someone replies once, and the follow-up that would have built trust never happens, so a high-value patient quietly goes cold.",
     ],
     points: [
       'High-ticket inquiries get one reply, then silence.',
       'Patients need education and reassurance the front desk has no time to send.',
-      'Compliance risk is high — the wrong claim in a message is a real liability.',
+      'Compliance risk is high, the wrong claim in a message is a real liability.',
       'Consult no-shows and unfollowed leads waste expensive traffic.',
     ],
   },
@@ -43,7 +43,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'sparkles',
         title: 'Education-led follow-up',
-        body: 'Delivers the right explainer, proof point, or answer at the right stage — building the trust that turns a researcher into a booked consult.',
+        body: 'Delivers the right explainer, proof point, or answer at the right stage, building the trust that turns a researcher into a booked consult.',
       },
       {
         icon: 'shield',
@@ -53,7 +53,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'megaphone',
         title: 'Ads that reach serious patients',
-        body: 'Healthcare-compliant Google and Meta campaigns that bring in high-intent, high-ticket inquiries — without an agency retainer.',
+        body: 'Healthcare-compliant Google and Meta campaigns that bring in high-intent, high-ticket inquiries, without an agency retainer.',
       },
       {
         icon: 'calendar',
@@ -168,7 +168,7 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: "Every high-ticket lead you don't follow up with is a competitor's consult.",
-    body: 'See results in 30 days or we will work with you until you do. No setup fee. Live in 48 hours.',
+    body: 'See results in 30 days or we will work with you until you do. Setup fee waived on annual plans. Live in 48 hours.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },

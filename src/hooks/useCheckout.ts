@@ -81,7 +81,7 @@ export function useCheckout() {
         description: "Please sign in to manage your subscription.",
         variant: "default",
       });
-      router.push("/admin/login?redirect=/sign-up");
+      router.push("/admin/login?redirect=/demo");
       return;
     }
 

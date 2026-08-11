@@ -13,18 +13,18 @@ const content: SolutionLandingProps = {
   h1Lead: 'Fertility marketing that',
   h1Accent: 'answers in seconds and nurtures for months.',
   subhead:
-    'A fertility patient may take months to decide — but they choose their shortlist in the first hour. GrowthOS answers every inquiry instantly, in the right tone, then nurtures patiently across the entire journey, so the patients who find you actually book the consult.',
+    'A fertility patient may take months to decide, but they choose their shortlist in the first hour. GrowthOS answers every inquiry instantly, in the right tone, then nurtures patiently across the entire journey, so the patients who find you actually book the consult.',
   problem: {
     eyebrow: 'The problem',
-    heading: 'In fertility, the clinic that responds first — and follows up longest —',
+    heading: 'In fertility, the clinic that responds first, and follows up longest',
     accent: 'wins.',
     paragraphs: [
-      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first — warmly, and with real information — earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: the average fertility patient needs 7 to 12 touchpoints over weeks before they commit, and most clinics stop after one or two.',
-      'Then there is everything a stretched front desk cannot keep up with. Inquiries that arrive after hours. Patients who go quiet mid-decision. Cycles that pause and never resume. Egg-freezing leads that were never followed up. Each one is a patient — and a high-value treatment — quietly lost.',
+      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: the average fertility patient needs 7 to 12 touchpoints over weeks before they commit, and most clinics stop after one or two.',
+      'Then there is everything a stretched front desk cannot keep up with. Inquiries that arrive after hours. Patients who go quiet mid-decision. Cycles that pause and never resume. Egg-freezing leads that were never followed up. Each one is a patient, and a high-value treatment, quietly lost.',
     ],
     points: [
       'Inquiries arrive after hours and on weekends, when no one is at the desk to reply.',
-      'The follow-up a fertility decision needs is long and emotional — and it is done by hand, so it slips.',
+      'The follow-up a fertility decision needs is long and emotional, and it is done by hand, so it slips.',
       'Patients in a sensitive moment get generic, mistimed, or clinically wrong responses.',
       'Paused cycles and dormant patients are never re-engaged.',
     ],
@@ -38,7 +38,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'zap',
         title: 'Instant, emotionally-aware response',
-        body: 'Every inquiry gets answered in seconds — on web chat, SMS, WhatsApp, email, and social DMs — in a tone trained for grief, hope, and anxiety, never a generic bot script.',
+        body: 'Every inquiry gets answered in seconds, on web chat, SMS, WhatsApp, email, and social DMs, in a tone trained for grief, hope, and anxiety, never a generic bot script.',
       },
       {
         icon: 'repeat',
@@ -75,7 +75,7 @@ const content: SolutionLandingProps = {
     segments: [
       {
         title: 'Single-location fertility clinics',
-        body: 'Punch above your size — instant response and tireless follow-up that competes with the big networks.',
+        body: 'Punch above your size, instant response and tireless follow-up that competes with the big networks.',
       },
       {
         title: 'Multi-location fertility networks',
@@ -83,7 +83,7 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'IVF & reproductive endocrinology',
-        body: 'Journeys mapped to real clinical reality — cycle stages, treatment series, and consult types — not blank automations.',
+        body: 'Journeys mapped to real clinical reality, cycle stages, treatment series, and consult types, not blank automations.',
       },
       {
         title: 'Egg freezing & fertility preservation',
@@ -173,7 +173,7 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'Every day without GrowthOS is another fertility patient choosing the clinic that answered first.',
-    body: 'See results in 30 days or we will work with you until you do. No setup fee. Live in 48 hours.',
+    body: 'See results in 30 days or we will work with you until you do. Setup fee waived on annual plans. Live in 48 hours.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },
