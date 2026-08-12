@@ -86,13 +86,13 @@ export default function RootLayout({
           </div>
           <DynamicGTM />
         </Providers>
-        {/* GrowthOS AI Chat Widget */}
+        <CookieConsent />
+        {/* CIMA EVA CHAT WIDGET — DO NOT REMOVE. See SPEC-protect-eva-chat-widget.md */}
         <Script
           id="cima-chat-widget"
           src="https://momssbzlofjodqodvvvk.supabase.co/functions/v1/chat-widget?org=1372de10-066f-437e-941e-643deefebf2f"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <CookieConsent />
       </body>
     </html>
   );
