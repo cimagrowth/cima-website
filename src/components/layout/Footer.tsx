@@ -26,6 +26,7 @@ const Footer = () => {
       { label: "Outreach Engine", href: "/outreach" },
       { label: "AI Ads", href: "/ads" },
       { label: "ChartAI", href: "/chartai" },
+      { label: "Training", href: "/training" },
       { label: "Demo", href: "/demo" },
     ],
     company: [

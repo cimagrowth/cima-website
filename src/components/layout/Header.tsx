@@ -34,6 +34,7 @@ const navLinks: NavLink[] = [
       { href: "/chartai", label: "ChartAI" },
       { href: "/outreach", label: "Outreach Engine" },
       { href: "/consent", label: "Patient Consent" },
+      { href: "/training", label: "Training" },
     ],
   },
   { href: "/blog", label: "Blog" },

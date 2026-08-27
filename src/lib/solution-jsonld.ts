@@ -30,6 +30,10 @@ export function buildSolutionSchema({
     inLanguage: "en-US",
   };
 
+  if (faqs.length === 0) {
+    return [webPage];
+  }
+
   const faqPage = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
