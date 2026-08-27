@@ -7,20 +7,12 @@ import {
   Check,
   Video,
   ClipboardCheck,
-  ShieldCheck,
-  FileSignature,
-  Users,
+  Award,
+  Building2,
   Workflow,
-  Lock,
+  BadgeCheck,
 } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { CONSENT_FAQS } from "@/lib/consent-faqs";
 
 const DEMO_ROUTE = "/demo";
 
@@ -37,7 +29,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   </p>
 );
 
-const Consent = () => {
+const Training = () => {
   return (
     <>
       {/* 1. Hero */}
@@ -49,15 +41,18 @@ const Consent = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
-            <Eyebrow>Patient consent and education</Eyebrow>
+            <Eyebrow>Training and certification</Eyebrow>
             <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Consent that lives where{" "}
-              <span className="italic text-clay">your patients do.</span>
+              Your customers need training.{" "}
+              <span className="italic text-clay">
+                You built a folder of videos.
+              </span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Branded video education and e-signature that runs inside your CRM.
-              It fires off your pipeline, gates on comprehension, and lands on
-              the patient record. Not another login for your staff to remember.
+              Onboarding, training, and certification for the companies you sell
+              to. It runs off your pipeline, tracks who finished, and issues
+              certificates they can prove. Not another platform for your
+              customers to log into and forget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link href={DEMO_ROUTE}>
@@ -77,8 +72,8 @@ const Consent = () => {
             <ul className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm md:text-base text-teal-deep/75">
               {[
                 "Your videos, your brand",
-                "Audit trail on every signature",
-                "Live in a day",
+                "Certificates that verify",
+                "Enrol a whole company at once",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <Check
@@ -99,17 +94,19 @@ const Consent = () => {
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
             <div className="relative pl-6 md:pl-10 border-l-2 border-orange/70">
               <p className="font-display text-[clamp(22px,3vw,34px)] font-[340] tracking-tight text-teal leading-snug">
-                Consent is the one part of the patient journey that still runs on
-                PDFs, printers, and a coordinator chasing signatures by phone. It
-                sits outside every other system you own, which is exactly why it
-                goes stale.
+                Every B2B company that sells into clinics ends up running a
+                training operation it never meant to build. Recorded calls, a
+                shared drive, a spreadsheet of who watched what, and a customer
+                success manager who becomes the person who chases people. It is
+                the least automated part of a business that automates everything
+                else.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* 3. The differentiator */}
+      {/* 3. How it works */}
       <section
         id="how"
         className="section-padding bg-paper relative overflow-hidden scroll-mt-24"
@@ -121,7 +118,7 @@ const Consent = () => {
           >
             <Eyebrow>How it works</Eyebrow>
             <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
-              Consent that knows where the patient is.
+              Training that knows where the customer is.
             </h2>
           </motion.div>
 
@@ -130,18 +127,18 @@ const Consent = () => {
             {[
               {
                 n: "01",
-                title: "A patient moves to Protocol Assigned.",
-                body: "Their consent packet sends automatically. No one remembers to do it.",
+                title: "A deal reaches Onboarding.",
+                body: "Every named contact at that company is enrolled automatically. Nobody remembers to do it.",
               },
               {
                 n: "02",
-                title: "Education gates the signature.",
-                body: "Comprehension questions must be answered correctly before a document unlocks. A signature means something.",
+                title: "Knowledge checks gate completion.",
+                body: "Questions must be answered before a module counts. Assignments go to a real person on your team to review and grade.",
               },
               {
                 n: "03",
-                title: "The stage will not advance until it is signed.",
-                body: "Consent is not a reminder your team ignores. It is a condition of moving forward.",
+                title: "The stage will not advance until they are trained.",
+                body: "Training stops being a task your CSM nags about. It becomes a condition of going live.",
               },
             ].map((step, i) => (
               <motion.div
@@ -172,8 +169,8 @@ const Consent = () => {
             {...fadeUp}
             className="font-display text-[clamp(20px,2.6vw,30px)] font-[340] tracking-tight text-teal-deep leading-snug text-center max-w-3xl mx-auto mt-14"
           >
-            No standalone consent tool can do this, because no standalone consent
-            tool owns your pipeline.
+            No standalone LMS can do this, because no standalone LMS owns your
+            pipeline.
           </motion.p>
         </div>
       </section>
@@ -187,29 +184,35 @@ const Consent = () => {
           >
             <Eyebrow>What it does</Eyebrow>
             <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
-              Three things, done properly.
+              Four things, done properly.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto">
             {[
               {
                 n: "01",
                 icon: Video,
-                title: "Your videos, your voice.",
-                body: "Upload your own education modules and the portal carries your clinic's colours, logo, and domain. Patients watch your clinicians explain your protocols, not stock footage recorded for someone else. Cima stays invisible.",
+                title: "Your videos, or ones you have not filmed yet.",
+                body: "Upload the training you already have, or type a script and generate a presenter video from it. Most companies never make the training they know they need because filming it is a project. Here it is a paragraph and a few minutes.",
               },
               {
                 n: "02",
                 icon: ClipboardCheck,
-                title: "Comprehension, not just consent.",
-                body: "Patients watch each module, then answer questions about it before a document unlocks. Wrong answers block progress and explain why. You get proof of understanding, not just a signature.",
+                title: "Proof they understood, not proof they logged in.",
+                body: "Every module carries a knowledge check. Written assignments route to whoever on your team should read them, who grades, gives feedback, or sends the work back for another attempt.",
               },
               {
                 n: "03",
-                icon: ShieldCheck,
-                title: "Signatures you can defend.",
-                body: "Every signature captures IP, timestamp, device, and signer identity, alongside how many education modules were watched, every comprehension answer including wrong attempts, and the exact document text that was signed with its hash. Partner and witness signing are built in, in the order you set.",
+                icon: Award,
+                title: "Certificates you can defend.",
+                body: "Finish a program and a certificate issues automatically, carrying your logo and the signature of whoever in your company signs off. Anyone can verify it from a public link. A certificate issued in 2026 still proves what it proved after you redesign the template, because the signature is captured at the moment it was issued.",
+              },
+              {
+                n: "04",
+                icon: Building2,
+                title: "Enrol a company, not a person.",
+                body: "Your customer is an organisation. Enrol all of them in one action, exclude anyone who does not need it, and read completion by seat. When your customer asks you to prove their staff are trained, you export the list.",
               },
             ].map((card, i) => {
               const Icon = card.icon;
@@ -256,107 +259,53 @@ const Consent = () => {
           >
             <Eyebrow>What is included</Eyebrow>
             <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
-              A full consent library on day one.
+              Everything the training operation needs, on day one.
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto">
-            <LibraryCard
-              title="Fertility"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
+            <IncludedCard
+              title="Build"
               items={[
-                "18 consent documents covering intake through embryo transfer",
-                "Packet presets mapped to each stage: intake, financial, baseline, IVF cycle, retrieval, transfer",
-                "Multi-party signing for partner and witness, in order",
-                "Embryo disposition directive with all ten circumstances addressed",
+                "Unlimited tracks, one per product line or audience",
+                "Modules from your own video, or generated from a script",
+                "Knowledge checks with explanations on wrong answers",
+                "Written, file, and link assignments with attempt limits",
               ]}
             />
-            <LibraryCard
-              title="Aesthetics and med spa"
+            <IncludedCard
+              title="Run"
               items={[
-                "16 documents covering neurotoxin, filler, laser, peels, microneedling, and body contouring",
-                "Photograph and media release with five separately granted permissions",
-                "Off-label use disclosure and aftercare acknowledgment",
+                "Enrol a contact or an entire company in one action",
+                "Automatic enrolment when a deal reaches a stage you choose",
+                "Kickoff, reminder, and overdue messages that send themselves",
+                "Every message editable in your own words",
+              ]}
+            />
+            <IncludedCard
+              title="Prove"
+              items={[
+                "Designed certificates with your logo and a locked signature",
+                "Public verification link on every certificate",
+                "Recertification on a schedule you set",
+                "Completion by person, by company, and by program",
               ]}
             />
           </div>
 
-          {/* Education framework, full width */}
-          <motion.div
-            {...fadeUp}
-            className="max-w-5xl mx-auto mt-5 md:mt-6 bg-teal text-paper rounded-xl2 p-7 md:p-9"
-          >
-            <h3 className="font-ui text-lg md:text-xl font-semibold mb-5">
-              Education framework, ready for your content
-            </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-              {[
-                "15 pre-built fertility education modules with topics, running order, and stage mapping already set",
-                "A comprehension question per module, written and ready to edit",
-                "Upload your own video to any module. Replace, reorder, or add your own topics.",
-                "Watch time, acknowledgment, and every comprehension answer recorded against the signature",
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <Check
-                    className="w-5 h-5 text-orange shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <span className="text-sm md:text-base text-paper/90 leading-relaxed">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
           <motion.p
             {...fadeUp}
-            className="max-w-5xl mx-auto mt-6 text-sm text-muted-foreground leading-relaxed"
+            className="max-w-6xl mx-auto mt-6 text-sm text-muted-foreground leading-relaxed"
           >
-            OBGYN, wellness, regenerative, and physical therapy libraries are in
-            development. Universal intake documents are available for every
-            specialty today.
-          </motion.p>
-
-          <motion.p
-            {...fadeUp}
-            className="max-w-5xl mx-auto mt-4 text-base md:text-lg text-foreground leading-relaxed"
-          >
-            Every document is a complete draft built on standard clinical
-            disclosure practice, ready for your counsel to review and adopt. You
-            can also send us the consents you already use and we will digitise
-            them.
+            Learners never create an account or set a password. They receive a
+            private link, and they can pick up where they left off from any
+            device. If you connect your own domain, they never see ours.
           </motion.p>
         </div>
       </section>
 
-      {/* 6. Audit trail */}
+      {/* 6. Pricing */}
       <section className="section-padding bg-cream relative overflow-hidden">
-        <div className="container-tight relative z-10">
-          <motion.div
-            {...fadeUp}
-            className="text-center mb-10 md:mb-12 max-w-3xl mx-auto"
-          >
-            <Eyebrow>Audit trail</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
-              An audit trail that holds up.
-            </h2>
-          </motion.div>
-
-          <AuditCard />
-
-          <motion.p
-            {...fadeUp}
-            className="max-w-2xl mx-auto mt-8 text-base md:text-lg text-foreground leading-relaxed text-center"
-          >
-            Consent only matters when you can prove it. Every signature stores the
-            exact text that was signed, hashed, so what a patient agreed to in
-            2026 is still provable in 2031 even after the template changes.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* 7. Pricing */}
-      <section className="section-padding bg-paper relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
             {...fadeUp}
@@ -364,29 +313,41 @@ const Consent = () => {
           >
             <Eyebrow>Pricing</Eyebrow>
             <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
-              One plan. No per-seat games.
+              One price. Everyone you train.
             </h2>
           </motion.div>
 
+          <motion.div
+            {...fadeUp}
+            className="max-w-3xl mx-auto mb-12 md:mb-14 text-center"
+          >
+            <p className="font-display text-[clamp(24px,3.2vw,38px)] font-[340] tracking-tight text-teal-deep leading-snug mb-4">
+              $299 per month, or $2,999 per year.
+            </p>
+            <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
+              Not per seat, not per learner, not per course. Video generation is
+              billed by the minute of finished video, and your first year
+              includes a credit to get started. Uploading video you already have
+              costs nothing per minute.
+            </p>
+          </motion.div>
+
+          {/* Comparison, two stacking cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto items-stretch">
-            {/* Legacy tool */}
+            {/* Standalone LMS */}
             <motion.div
               {...fadeUp}
               className="bg-white rounded-xl2 border border-sand p-7 md:p-9 flex flex-col"
             >
-              <p className="font-ui text-lg font-semibold text-foreground">
-                The legacy tool
-              </p>
-              <p className="font-ui text-sm font-medium text-muted-foreground mt-1 mb-6">
-                EngagedMD-class pricing
+              <p className="font-ui text-lg font-semibold text-foreground mb-6">
+                The standalone LMS
               </p>
               <ul className="space-y-3">
                 {[
-                  "Video education and e-signature",
-                  "Their brand on your patients' screens",
-                  "Per-seat and per-volume add-ons",
-                  "Enterprise sales cycle to get started",
-                  "Lives outside your CRM",
+                  "Priced per seat, so training your biggest customer costs the most",
+                  "Their brand on your customers' screens",
+                  "A separate system your CSM has to remember to update",
+                  "Reporting that lives away from the account record",
                 ].map((item) => (
                   <li
                     key={item}
@@ -402,25 +363,23 @@ const Consent = () => {
               </ul>
             </motion.div>
 
-            {/* Cima Consent */}
+            {/* Training in Cima */}
             <motion.div
               {...fadeUp}
               className="bg-teal text-paper rounded-xl2 p-7 md:p-9 flex flex-col shadow-[var(--shadow)] relative"
             >
               <span className="absolute top-5 right-5 font-ui text-[11px] font-semibold uppercase tracking-[.14em] text-teal bg-orange rounded-full px-3 py-1">
-                Cima Consent
+                Cima
               </span>
-              <p className="font-ui text-lg font-semibold">Cima Consent</p>
-              <p className="font-ui text-sm font-medium text-paper/80 mt-1 mb-6">
-                $297/mo or $2,997/yr
+              <p className="font-ui text-lg font-semibold mb-6">
+                Training in Cima
               </p>
               <ul className="space-y-3">
                 {[
-                  "Unlimited patients and signatures",
-                  "Full consent library for your specialty",
-                  "Education modules with your own videos, on your own domain",
-                  "Complete audit trail and multi-party signing",
-                  "Fires automatically from your pipeline",
+                  "One price, every learner",
+                  "Your brand, your domain",
+                  "Fires off the pipeline you already run",
+                  "Completion on the company record",
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm md:text-base">
                     <Check
@@ -441,75 +400,16 @@ const Consent = () => {
               </div>
             </motion.div>
           </div>
-
-          <motion.p
-            {...fadeUp}
-            className="max-w-5xl mx-auto mt-6 text-sm text-muted-foreground leading-relaxed text-center"
-          >
-            Already on GrowthOS? Consent is available as an add-on to your
-            existing account.
-          </motion.p>
         </div>
       </section>
 
-      {/* 8. FAQ */}
-      <section className="section-padding bg-cream relative overflow-hidden">
-        <div className="container-tight relative z-10">
-          <motion.div
-            {...fadeUp}
-            className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
-          >
-            <Eyebrow>Questions</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
-              Common questions
-            </h2>
-          </motion.div>
-
-          <motion.div {...fadeUp}>
-            <Accordion type="single" collapsible className="space-y-4">
-              {CONSENT_FAQS.map((item, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-white rounded-xl2 border border-sand px-6 border-b"
-                >
-                  <AccordionTrigger className="font-ui text-base md:text-lg font-semibold text-foreground text-left hover:no-underline">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
-
-          <motion.p
-            {...fadeUp}
-            className="max-w-2xl mx-auto mt-10 text-sm md:text-base text-muted-foreground leading-relaxed text-center"
-          >
-            Selling to businesses rather than treating patients?{" "}
-            <Link
-              href="/training"
-              className="text-teal font-medium underline underline-offset-4 hover:text-clay transition-colors"
-            >
-              See Training and Certification.
-            </Link>
-          </motion.p>
-        </div>
-      </section>
-
-      {/* 9. Closing CTA */}
+      {/* 7. Closing CTA */}
       <section className="section-padding bg-teal text-paper relative overflow-hidden">
         <div className="container-tight relative z-10 text-center">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
-            <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-5">
-              Modernise the front desk of your practice.
+            <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-10">
+              Stop being the person who chases people to watch videos.
             </h2>
-            <p className="text-base md:text-lg text-paper/85 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Book a walkthrough and we will show you consent firing from a live
-              pipeline.
-            </p>
             <Link href={DEMO_ROUTE}>
               <Button variant="hero" size="xl" className="group">
                 Book a walkthrough
@@ -524,10 +424,10 @@ const Consent = () => {
 };
 
 /* --------------------------------------------------------------------- */
-/* Library column card                                                    */
+/* Included column card                                                   */
 /* --------------------------------------------------------------------- */
 
-const LibraryCard = ({
+const IncludedCard = ({
   title,
   items,
 }: {
@@ -557,16 +457,16 @@ const LibraryCard = ({
 
 /* --------------------------------------------------------------------- */
 /* CSS-only pipeline visual                                               */
-/* Three stage columns, a patient card sitting in the final stage, and a  */
-/* consent badge in its signed state. No video, no heavy animation, and   */
-/* it stacks cleanly on mobile.                                           */
+/* Three stage columns, a company record sitting in the final stage, and  */
+/* a seat-completion readout. No video, no heavy animation, and it stacks */
+/* cleanly on mobile.                                                     */
 /* --------------------------------------------------------------------- */
 
 const PipelineVisual = () => {
   const stages = [
-    { label: "New Inquiry", active: false },
-    { label: "Protocol Assigned", active: false },
-    { label: "Consent Signed", active: true },
+    { label: "Closed Won", active: false },
+    { label: "Onboarding", active: false },
+    { label: "Certified", active: true },
   ];
 
   return (
@@ -596,28 +496,26 @@ const PipelineVisual = () => {
               <div className="rounded-lg border border-sand bg-white p-3 shadow-[var(--shadow-sm)]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center">
-                    <Users className="w-3.5 h-3.5 text-teal" />
+                    <Building2 className="w-3.5 h-3.5 text-teal" />
                   </span>
                   <div className="leading-tight">
                     <p className="font-ui text-xs font-semibold text-foreground">
-                      Northlake Fertility
+                      Meridian Labs
                     </p>
                     <p className="text-[10px] text-muted-foreground">
-                      Patient record
+                      Company record
                     </p>
                   </div>
                 </div>
                 <span className="inline-flex items-center gap-1 rounded-full bg-orange/15 text-orange-600 px-2 py-0.5 font-ui text-[10px] font-semibold uppercase tracking-[.1em]">
-                  <FileSignature className="w-3 h-3" />
-                  Signed
+                  <BadgeCheck className="w-3 h-3" />
+                  8 of 12 seats complete
                 </span>
               </div>
             ) : (
               <div className="rounded-lg border border-dashed border-sand bg-white/50 p-3 h-[74px] flex items-center justify-center">
                 <span className="font-ui text-[10px] uppercase tracking-[.12em] text-muted-foreground/60">
-                  {stage.label === "Protocol Assigned"
-                    ? "Packet sent"
-                    : "Awaiting"}
+                  {stage.label === "Onboarding" ? "Program sent" : "Won"}
                 </span>
               </div>
             )}
@@ -628,58 +526,4 @@ const PipelineVisual = () => {
   );
 };
 
-/* --------------------------------------------------------------------- */
-/* Audit record card                                                      */
-/* --------------------------------------------------------------------- */
-
-const AuditCard = () => {
-  const rows: Array<[string, React.ReactNode]> = [
-    ["Signed by", "Emily Carter · Patient"],
-    ["Document", "IVF Treatment Consent · v1.0"],
-    ["Timestamp", "Mar 14, 2026 · 10:41 AM"],
-    ["IP · device", "203.0.113.21 · Chrome / macOS"],
-    ["Education", "15 of 15 modules acknowledged"],
-    ["Comprehension", "15 of 15 answered correctly"],
-    [
-      "Witness",
-      <span key="w" className="inline-flex items-center gap-1 text-teal">
-        Signed <Check className="w-4 h-4" aria-hidden="true" />
-      </span>,
-    ],
-    ["Document hash", "a3f9c2…8e41"],
-  ];
-
-  return (
-    <motion.div
-      {...fadeUp}
-      className="max-w-2xl mx-auto bg-white rounded-xl2 border border-sand shadow-[var(--shadow)] overflow-hidden"
-    >
-      <div className="flex items-center justify-between bg-teal text-paper px-6 py-4">
-        <span className="flex items-center gap-2 font-ui text-sm font-semibold">
-          <Lock className="w-4 h-4" aria-hidden="true" />
-          Signature record
-        </span>
-        <span className="font-ui text-[11px] font-medium uppercase tracking-[.14em] text-paper/70">
-          Illustrative
-        </span>
-      </div>
-      <dl className="divide-y divide-sand">
-        {rows.map(([label, value]) => (
-          <div
-            key={label}
-            className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-6 py-3.5"
-          >
-            <dt className="font-ui text-xs font-semibold uppercase tracking-[.1em] text-muted-foreground sm:w-40 shrink-0">
-              {label}
-            </dt>
-            <dd className="font-body text-sm md:text-base text-foreground">
-              {value}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </motion.div>
-  );
-};
-
-export default Consent;
+export default Training;
