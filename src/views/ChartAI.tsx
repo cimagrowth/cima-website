@@ -40,7 +40,7 @@ const steps = [
     icon: PenTool,
     title: "Patient Signs via Email",
     description:
-      "Secure HIPAA authorization link sent to patient. They sign on their phone — 30 seconds.",
+      "Secure HIPAA authorization link sent to patient. They sign on their phone. 30 seconds.",
   },
   {
     icon: FileCheck,
@@ -230,7 +230,7 @@ const ChartAI = () => {
               Features
             </span>
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
-              Everything You Need to Retrieve Records —{" "}
+              Everything You Need to Retrieve Records,{" "}
               <span className="italic text-clay">Without the Hassle</span>
             </h2>
           </motion.div>
@@ -318,7 +318,7 @@ const ChartAI = () => {
               · No monthly fees · No contracts
             </h2>
             <p className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Included with GrowthOS — our AI-powered patient acquisition platform
+              Included with GrowthOS, our AI-powered patient acquisition platform
             </p>
             <CTAButtons />
           </motion.div>

@@ -14,7 +14,7 @@ const HowItWorks = () => {
     {
       number: "02",
       title: "Specialty + Clinic Training",
-      description: "We train the AI on your field — fertility, aesthetics, regenerative, wellness — then layer in your clinic specifics. Everything is reviewable in the dashboard before it goes live.",
+      description: "We train the AI on your field: fertility, aesthetics, regenerative, wellness. Then we layer in your clinic specifics. Everything is reviewable in the dashboard before it goes live.",
     },
     {
       number: "03",
@@ -29,7 +29,7 @@ const HowItWorks = () => {
     {
       number: "05",
       title: "First AI-Booked Appointment",
-      description: "Most clinics see one the same day. You watch every conversation in the GrowthOS inbox and correct anything you don’t like — the lesson sticks for every future patient.",
+      description: "Most clinics see one the same day. You watch every conversation in the GrowthOS inbox and correct anything you don’t like. The lesson sticks for every future patient.",
     },
   ];
 
@@ -45,7 +45,7 @@ const HowItWorks = () => {
             <span className="text-gradient-accent">within 24 hours.</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-left md:text-center">
-            We train the AI on your clinic in the first few hours. The bot goes live on web chat the same day. SMS, WhatsApp, email, and social channels turn on as you&rsquo;re ready. Most clinics see their first AI-booked appointment inside the first 24 hours. You don&rsquo;t replace any of your existing tools to start &mdash; GrowthOS works alongside them and can take over the pieces you&rsquo;re tired of paying for.
+            We train the AI on your clinic in the first few hours. The bot goes live on web chat the same day. SMS, WhatsApp, email, and social channels turn on as you&rsquo;re ready. Most clinics see their first AI-booked appointment inside the first 24 hours. You don&rsquo;t replace any of your existing tools to start. GrowthOS works alongside them and can take over the pieces you&rsquo;re tired of paying for.
           </p>
         </div>
 

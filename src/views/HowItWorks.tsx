@@ -67,7 +67,7 @@ const HowItWorksPage = () => {
             Clinics lose 30-40% of leads between first inquiry and booked
             appointment. Not because of bad marketing. Because of what happens AFTER
             someone raises their hand. GrowthOS is the AI-powered platform that
-            closes that gap — instant response, emotionally intelligent nurture,
+            closes that gap: instant response, emotionally intelligent nurture,
             and a full patient acquisition pipeline that runs whether your team is
             at the desk or not.
           </motion.p>
@@ -93,7 +93,7 @@ const HowItWorksPage = () => {
           >
             <motion.div variants={itemVariants} className="max-w-3xl lg:max-w-4xl mb-12 md:mb-16">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-[340] tracking-tight text-foreground mb-6">
-                You're Spending Thousands to Attract Patients —{" "}
+                You're Spending Thousands to Attract Patients.{" "}
                 <span className="italic text-clay">Then Losing Them to Silence.</span>
               </h2>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground">
@@ -180,7 +180,7 @@ const HowItWorksPage = () => {
             <motion.div variants={itemVariants}>
               <Link href="/demo">
                 <Button variant="hero" size="lg" className="group">
-                  Stop the Leak — Book a Demo
+                  Stop the Leak. Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -212,28 +212,28 @@ const HowItWorksPage = () => {
                   title: "Capture",
                   icon: MessageSquare,
                   description:
-                    "AI chatbot on your website qualifies leads 24/7. Answers clinical questions with specialty-specific knowledge. Books appointments. Captures leads from ads, landing pages, forms, and social DMs. Every inquiry gets a response in seconds — not days.",
+                    "AI chatbot on your website qualifies leads 24/7. Answers clinical questions with specialty-specific knowledge. Books appointments. Captures leads from ads, landing pages, forms, and social DMs. Every inquiry gets a response in seconds. Not days.",
                 },
                 {
                   step: "Stage 2",
                   title: "Nurture",
                   icon: Brain,
                   description:
-                    "AI generates personalized email, SMS, and WhatsApp sequences for every lead. Multi-step campaigns fire automatically based on the patient's behavior, engagement signals, and lead score. Not one follow-up — a 7-to-12 touchpoint nurture sequence that adapts tone and channel.",
+                    "AI generates personalized email, SMS, and WhatsApp sequences for every lead. Multi-step campaigns fire automatically based on the patient's behavior, engagement signals, and lead score. Not one follow-up: a 7-to-12 touchpoint nurture sequence that adapts tone and channel.",
                 },
                 {
                   step: "Stage 3",
                   title: "Convert",
                   icon: Users,
                   description:
-                    "Unified inbox lets your team respond across all channels from one screen. Behavioral lead scoring shows who's Hot, Warm, and Cold. AI alerts your team before a warm lead goes cold. Full conversation history means staff steps in with context — the patient never repeats themselves.",
+                    "Unified inbox lets your team respond across all channels from one screen. Behavioral lead scoring shows who's Hot, Warm, and Cold. AI alerts your team before a warm lead goes cold. Full conversation history means staff steps in with context. The patient never repeats themselves.",
                 },
                 {
                   step: "Stage 4",
                   title: "Grow",
                   icon: Rocket,
                   description:
-                    "AI Campaign Builder generates complete campaigns in 2 minutes — landing page, email drip, SMS sequence, and Google Ads copy. Outreach Engine enriches cold prospects and writes personalized 12-step sequences. Reactivation campaigns bring dormant leads back automatically.",
+                    "AI Campaign Builder generates complete campaigns in 2 minutes: landing page, email drip, SMS sequence, and Google Ads copy. Outreach Engine enriches cold prospects and writes personalized 12-step sequences. Reactivation campaigns bring dormant leads back automatically.",
                 },
               ].map((item) => {
                 const Icon = item.icon;
@@ -296,9 +296,9 @@ const HowItWorksPage = () => {
               {[
                 {
                   icon: Zap,
-                  title: "AI Does the Work — You Don't \"Figure It Out\"",
+                  title: "AI Does the Work. You Don't \"Figure It Out\"",
                   description:
-                    "Other platforms give you tools and leave you alone. GrowthOS generates campaigns, writes emails, enriches prospects, scores leads, manages ads, and monitors performance — autonomously. Your team focuses on patients.",
+                    "Other platforms give you tools and leave you alone. GrowthOS generates campaigns, writes emails, enriches prospects, scores leads, manages ads, and monitors performance. Autonomously. Your team focuses on patients.",
                 },
                 {
                   icon: Shield,
@@ -310,13 +310,13 @@ const HowItWorksPage = () => {
                   icon: TrendingDown,
                   title: "Not an Agency. Not Just Software.",
                   description:
-                    "Agencies charge $10K/month and move slowly. DIY software overwhelms your team. GrowthOS gives you agency-level output at software pricing — powered by AI trained on 47 proprietary direct response frameworks developed across 100+ real client engagements.",
+                    "Agencies charge $10K/month and move slowly. DIY software overwhelms your team. GrowthOS gives you agency-level output at software pricing. Powered by AI trained on 47 proprietary direct response frameworks developed across 100+ real client engagements.",
                 },
                 {
                   icon: Layers,
                   title: "Everything Connects",
                   description:
-                    "Chatbot, inbox, pipeline, campaigns, ads, landing pages, and EHR — all sharing the same data. When a patient fills out a form, it creates a contact, scores the lead, adds them to a pipeline, enrolls them in a nurture sequence, and notifies your team. Automatically.",
+                    "Chatbot, inbox, pipeline, campaigns, ads, landing pages, and EHR. All sharing the same data. When a patient fills out a form, it creates a contact, scores the lead, adds them to a pipeline, enrolls them in a nurture sequence, and notifies your team. Automatically.",
                 },
               ].map((item) => {
                 const Icon = item.icon;
@@ -409,7 +409,7 @@ const HowItWorksPage = () => {
             <motion.div variants={itemVariants} className="text-center">
               <Link href="/demo">
                 <Button variant="hero" size="lg" className="group">
-                  Start Growing — Book a Demo
+                  Start Growing. Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -446,7 +446,7 @@ const HowItWorksPage = () => {
                   number: "02",
                   title: "We Set Everything Up",
                   description:
-                    "We build your brand profile, connect your EHR, import your data, configure your AI agent, and register your A2P messaging. You're live in 24-48 hours — not months.",
+                    "We build your brand profile, connect your EHR, import your data, configure your AI agent, and register your A2P messaging. You're live in 24-48 hours. Not months.",
                 },
                 {
                   number: "03",

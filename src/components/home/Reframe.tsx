@@ -37,8 +37,7 @@ const Reframe = () => {
                 A slow reply at 9pm is what you notice. What you don&rsquo;t see
                 is everything upstream and downstream of it. The ads that need
                 a media buyer watching them. The outreach no one has time to
-                send. The seven follow-ups a patient needs before they book
-                &mdash; and the front desk that stops at one. The reviews you
+                send. The seven follow-ups a patient needs before they book, and the front desk that stops at one. The reviews you
                 never ask for.
               </motion.p>
               <motion.p
@@ -51,7 +50,7 @@ const Reframe = () => {
                 All of it depends on humans who are stretched thin, or an
                 agency that bills you whether or not the work happened.
                 That&rsquo;s not a clinic problem. It&rsquo;s a
-                staffing-and-reliability problem &mdash; and you can&rsquo;t
+                staffing-and-reliability problem, and you can&rsquo;t
                 fix it by spending more on ads.
               </motion.p>
             </div>

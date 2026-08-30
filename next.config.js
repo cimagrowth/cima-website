@@ -65,7 +65,7 @@ const nextConfig = {
       { source: '/sales-team', destination: '/', permanent: true },
       { source: '/ads-system', destination: '/', permanent: true },
       { source: '/clinic-growth-engine', destination: '/', permanent: true },
-      { source: '/b/:slug', destination: '/blog', permanent: true },
+      { source: '/b/:slug*', destination: '/blog', permanent: true },
       { source: '/2024/:month/:day/:slug', destination: '/blog', permanent: true },
       // Retired sendafertility.com domain -> /consent (host-conditioned).
       ...sendafertilityRedirects(),

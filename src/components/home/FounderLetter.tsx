@@ -18,7 +18,7 @@ const FounderLetter = () => {
             </p>
 
             <p>
-              I've worked with 100+ healthcare businesses across 6 countries over 15 years — running campaigns, managing real ad budgets, building funnels. I watched clinics spend $10K/month on marketing, then lose half those patients because the front desk was overwhelmed and the follow-up was manual.
+              I've worked with 100+ healthcare businesses across 6 countries over 15 years: running campaigns, managing real ad budgets, building funnels. I watched clinics spend $10K/month on marketing, then lose half those patients because the front desk was overwhelmed and the follow-up was manual.
             </p>
 
             <p>
@@ -27,7 +27,7 @@ const FounderLetter = () => {
           </div>
 
           <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border">
-            <p className="font-semibold text-foreground text-base md:text-lg">— Brandon Hensinger</p>
+            <p className="font-semibold text-foreground text-base md:text-lg">Brandon Hensinger</p>
             <p className="text-sm text-muted-foreground mt-1">
               Founder, Cima Growth Solutions
             </p>

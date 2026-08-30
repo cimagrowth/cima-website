@@ -60,7 +60,7 @@ const painPoints = [
   },
   {
     icon: CircleDollarSign,
-    text: "You end up spending $3K-10K/month on ads — plus $2K-5K on the agency managing them — and can't tell what's actually driving booked appointments vs. tire-kicker clicks",
+    text: "You end up spending $3K-10K/month on ads, plus $2K-5K on the agency managing them, and can't tell what's actually driving booked appointments vs. tire-kicker clicks",
   },
   {
     icon: SlidersHorizontal,
@@ -85,7 +85,7 @@ const steps = [
     icon: Rocket,
     title: "AI Generates, You Approve, It Launches",
     description:
-      "AI generates headlines, keywords, audience signals, ad copy, and creative images (powered by Imagen). You review and approve. Campaigns launch with healthcare keyword compliance handled automatically — including Google's medical exemption process.",
+      "AI generates headlines, keywords, audience signals, ad copy, and creative images (powered by Imagen). You review and approve. Campaigns launch with healthcare keyword compliance handled automatically, including Google's medical exemption process.",
   },
 ];
 
@@ -157,13 +157,13 @@ const optimizationFeatures = [
     icon: TrendingUp,
     title: "Reward Winners, Starve Losers",
     description:
-      "The optimization engine scores every campaign nightly on a 0-100 scale. Top performers get automatic budget increases. Underperformers get cut — and you see exactly why in your report.",
+      "The optimization engine scores every campaign nightly on a 0-100 scale. Top performers get automatic budget increases. Underperformers get cut, and you see exactly why in your report.",
   },
   {
     icon: ShieldCheck,
     title: "Safety Rails Built In",
     description:
-      "Budget changes are capped at 25% per cycle. Campaigns are never deleted — only paused. And the system waits 14 full days before making its first move, so Google's ML has time to learn.",
+      "Budget changes are capped at 25% per cycle. Campaigns are never deleted, only paused. And the system waits 14 full days before making its first move, so Google's ML has time to learn.",
   },
   {
     icon: Gauge,
@@ -220,7 +220,7 @@ const reportTypes = [
       "Campaign verdicts: Winner / Watch / Cut",
       "Full log of every change the optimization engine made",
     ],
-    quote: "\"What did my ads do this month?\" — answered in 10 seconds.",
+    quote: "\"What did my ads do this month?\" Answered in 10 seconds.",
   },
   {
     icon: LineChart,
@@ -232,9 +232,9 @@ const reportTypes = [
       "AI-generated insights (what's winning, what's failing, what to do)",
       "30-day projections: current trajectory vs with planned optimizations",
       "Planned changes with timelines and projected impact",
-      "Transparent assumptions block — shows the math, not just the answer",
+      "Transparent assumptions block: shows the math, not just the answer",
     ],
-    quote: "\"What should I do next?\" — the report tells you.",
+    quote: "\"What should I do next?\" The report tells you.",
   },
 ];
 
@@ -258,11 +258,11 @@ const specialties = [
     key: "fertility",
     label: "Fertility & IVF",
     icon: Baby,
-    tagline: "Reach patients at their most important moment — with copy that balances hope and clinical credibility.",
+    tagline: "Reach patients at their most important moment, with copy that balances hope and clinical credibility.",
     headlines: [
-      "Ready to Start Your Family? World-Class IVF — Success Rates Above National Average",
-      "Egg Freezing on Your Terms — Free Consultation, Flexible Financing",
-      "PGT Testing for Peace of Mind — Book Your Fertility Assessment Today",
+      "Ready to Start Your Family? World-Class IVF. Success Rates Above National Average",
+      "Egg Freezing on Your Terms: Free Consultation, Flexible Financing",
+      "PGT Testing for Peace of Mind. Book Your Fertility Assessment Today",
     ],
   },
   {
@@ -271,20 +271,20 @@ const specialties = [
     icon: Syringe,
     tagline: "Drive bookings with urgency and aspiration. AI knows the difference between Botox and a body contouring campaign.",
     headlines: [
-      "Look 10 Years Younger — Botox & Fillers Starting at $199",
-      "Body Contouring Without Surgery — See Results in One Session",
-      "Skin Rejuvenation Specialists — Free Consultation This Week Only",
+      "Look 10 Years Younger: Botox & Fillers Starting at $199",
+      "Body Contouring Without Surgery. See Results in One Session",
+      "Skin Rejuvenation Specialists: Free Consultation This Week Only",
     ],
   },
   {
     key: "wellness",
     label: "Wellness & Hormone Therapy",
     icon: HeartPulse,
-    tagline: "Speak to patients exploring options — educational tone that builds trust before asking for the booking.",
+    tagline: "Speak to patients exploring options: educational tone that builds trust before asking for the booking.",
     headlines: [
       "Tired of Feeling Tired? Hormone Optimization Changed Everything",
-      "IV Therapy for Peak Performance — Walk-Ins Welcome",
-      "Medical Weight Management — Doctor-Supervised, Real Results",
+      "IV Therapy for Peak Performance. Walk-Ins Welcome",
+      "Medical Weight Management: Doctor-Supervised, Real Results",
     ],
   },
   {
@@ -293,9 +293,9 @@ const specialties = [
     icon: Dna,
     tagline: "Position cutting-edge treatments with authority. AI highlights clinical differentiation.",
     headlines: [
-      "PRP Joint Therapy — Avoid Surgery, Recover Faster",
-      "Stem Cell Treatments for Chronic Pain — Schedule Your Evaluation",
-      "Sports Medicine Meets Regenerative Science — Athletes Trust Us",
+      "PRP Joint Therapy: Avoid Surgery, Recover Faster",
+      "Stem Cell Treatments for Chronic Pain. Schedule Your Evaluation",
+      "Sports Medicine Meets Regenerative Science. Athletes Trust Us",
     ],
   },
 ];
@@ -324,7 +324,7 @@ const faqItems = [
   {
     question: "Can I upgrade to GrowthOS later?",
     answer:
-      "Yes — your brand intake, ad accounts, and campaign history all carry over.",
+      "Yes. Your brand intake, ad accounts, and campaign history all carry over.",
   },
   {
     question: "What specialties does this work for?",
@@ -347,7 +347,7 @@ const upgradePaths = [
   {
     icon: Sparkles,
     title: "Full GrowthOS",
-    description: "Landing pages, campaigns, pipeline, inbox, lead scoring, EHR integration — the complete patient acquisition operating system. All your ad data carries over.",
+    description: "Landing pages, campaigns, pipeline, inbox, lead scoring, EHR integration: the complete patient acquisition operating system. All your ad data carries over.",
   },
 ];
 
@@ -519,7 +519,7 @@ const AdsPage = () => {
               What You Get
             </span>
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
-              Everything to Run Ads That Actually Convert Patients — Not Just Clicks.
+              Everything to Run Ads That Actually Convert Patients. Not Just Clicks.
             </h2>
           </motion.div>
 
@@ -581,7 +581,7 @@ const AdsPage = () => {
             </h2>
             <p className="text-body-lg text-muted-foreground">
               Most platforms launch your ads and walk away. GrowthOS watches every
-              campaign, every day — and automatically adjusts budgets, pauses waste,
+              campaign, every day, and automatically adjusts budgets, pauses waste,
               and doubles down on what's converting. No agency. No manual reviews.
               No wasted spend.
             </p>
@@ -721,8 +721,8 @@ const AdsPage = () => {
               One-Click Reports That Would Take an Agency Weeks.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Generate client-ready Google Ads reports in seconds. Not spreadsheets
-              — editorial-quality documents with campaign breakdowns, AI insights,
+              Generate client-ready Google Ads reports in seconds. Not spreadsheets.
+              Editorial-quality documents with campaign breakdowns, AI insights,
               change logs, and 30-day projections.
             </p>
           </motion.div>
@@ -791,7 +791,7 @@ const AdsPage = () => {
                   </p>
                   <p className="text-heading-sm text-paper">
                     A document you'd hand to your board, your investors, or your
-                    partner — with projections, AI insights, and a record of every
+                    partner. With projections, AI insights, and a record of every
                     optimization we made on your behalf.
                   </p>
                 </div>
@@ -906,7 +906,7 @@ const AdsPage = () => {
             className="text-center text-body-lg text-muted-foreground mt-12 max-w-3xl mx-auto"
           >
             The AI doesn't just run your ads. It runs your ads, monitors your ads,
-            optimizes your ads, and proves they're working — every single month.
+            optimizes your ads, and proves they're working. Every single month.
           </motion.p>
         </div>
       </section>
@@ -1167,7 +1167,7 @@ const AdsPage = () => {
               Every Dollar of Ad Spend Without AI Optimization Is a Dollar Half-Wasted.
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
-              Join clinics that launch campaigns in minutes — not weeks — and
+              Join clinics that launch campaigns in minutes, not weeks, and
               know exactly which dollars drive booked appointments.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">

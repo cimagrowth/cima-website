@@ -37,7 +37,7 @@ const roles: Role[] = [
     title: "AI Front Desk",
     pillar: "CAPTURE",
     description:
-      "Answers every inquiry in seconds, on every channel, 24/7 — qualifies, books, and knows when to hand off to a human.",
+      "Answers every inquiry in seconds, on every channel, 24/7. Qualifies, books, and knows when to hand off to a human.",
     icon: MessagesSquare,
   },
   {
@@ -105,7 +105,7 @@ const AIGrowthTeam = () => {
           </h2>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             You&rsquo;re not buying software you have to run. You&rsquo;re
-            staffing a department with AI employees &mdash; each trained on
+            staffing a department with AI employees, each trained on
             your specialty and your clinic, each doing a job you&rsquo;d
             otherwise hire, manage, and hope shows up.
           </p>
@@ -161,8 +161,8 @@ const AIGrowthTeam = () => {
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           className="mt-8 md:mt-10 text-center text-base md:text-lg text-muted-foreground max-w-3xl mx-auto italic"
         >
-          And when something high-stakes happens &mdash; a patient in crisis,
-          a new booking, a hot lead identifying themselves &mdash; the senior
+          And when something high-stakes happens, a patient in crisis,
+          a new booking, a hot lead identifying themselves, the senior
           specialists step in.
         </motion.p>
       </div>

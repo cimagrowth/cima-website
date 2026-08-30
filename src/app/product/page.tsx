@@ -3,7 +3,7 @@ import Product from '@/views/Product';
 
 export const metadata: Metadata = {
   title: 'Platform – Everything a CRM does. None of the work. | GrowthOS by Cima',
-  description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect from a CRM — plus an AI team that actually does the work inside them. Built for healthcare clinics. Compare against HubSpot and GoHighLevel.',
+  description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect from a CRM. Plus an AI team that actually does the work inside them. Built for healthcare clinics. Compare against HubSpot and GoHighLevel.',
   keywords: [
     'GrowthOS platform', 'healthcare CRM alternative', 'HubSpot alternative for clinics',
     'GoHighLevel alternative healthcare', 'AI patient engagement platform',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://cimagrowth.com/product' },
   openGraph: {
     title: 'Platform – Everything a CRM does. None of the work. | GrowthOS by Cima',
-    description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect — plus an AI team that actually does the work inside them. Compare against HubSpot and GoHighLevel.',
+    description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect. Plus an AI team that actually does the work inside them. Compare against HubSpot and GoHighLevel.',
     url: 'https://cimagrowth.com/product',
     siteName: 'Cima Growth Solutions',
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Platform – Everything a CRM does. None of the work. | GrowthOS by Cima',
-    description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect — plus an AI team that actually does the work inside them.',
+    description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect. Plus an AI team that actually does the work inside them.',
     images: ['/og/og-product.png'],
   },
 };

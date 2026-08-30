@@ -45,13 +45,13 @@ const HowGrowthOSStopsTheLeak = () => {
 
         <div className="max-w-3xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed space-y-5 mb-12 md:mb-16">
           <p>
-            Your AI growth team handles the day-to-day &mdash; the front-desk
+            Your AI growth team handles the day-to-day. The front-desk
             AI fields most patient questions in seconds. For the moments that
-            matter most &mdash; a patient in crisis, a new booking that needs
-            a warm welcome, a hot lead identifying themselves &mdash; the
+            matter most, a patient in crisis, a new booking that needs
+            a warm welcome, a hot lead identifying themselves, the
             senior specialists step in. These specialists do 60 to 90 seconds
-            of deep work in the background &mdash; reading the full patient
-            history, researching context, drafting tailored outreach &mdash;
+            of deep work in the background, reading the full patient
+            history, researching context, drafting tailored outreach,
             and produce a written briefing your team gets by email and inside
             the GrowthOS inbox. Nothing falls through the cracks because
             nothing has to live in someone&rsquo;s head.

@@ -3,7 +3,7 @@ import ChartAI from '@/views/ChartAI';
 
 export const metadata: Metadata = {
   title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
-  description: 'Stop chasing faxes. ChartAI retrieves medical records automatically — your staff fills the request, the patient signs via email, and records arrive in your system. Included with GrowthOS.',
+  description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system. Included with GrowthOS.',
   keywords: [
     'medical records retrieval', 'ChartAI', 'HIPAA records request',
     'electronic medical records', 'patient records automation',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://cimagrowth.com/chartai' },
   openGraph: {
     title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
-    description: 'Stop chasing faxes. ChartAI retrieves medical records automatically — your staff fills the request, the patient signs via email, and records arrive in your system.',
+    description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system.',
     url: 'https://cimagrowth.com/chartai',
     siteName: 'Cima Growth Solutions',
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
-    description: 'Stop chasing faxes. ChartAI retrieves medical records automatically — your staff fills the request, the patient signs via email, and records arrive in your system.',
+    description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system.',
     images: ['/og/og-home.png'],
   },
 };

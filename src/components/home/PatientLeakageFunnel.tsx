@@ -13,7 +13,7 @@ const stages: Stage[] = [
     name: "Demand",
     pct: 100,
     width: "100%",
-    leak: "Ads unoptimized — right patients never find you",
+    leak: "Ads unoptimized: right patients never find you",
     fix: "AI Media Buyer",
   },
   {
@@ -29,7 +29,7 @@ const stages: Stage[] = [
     name: "Nurture",
     pct: 40,
     width: "72%",
-    leak: "Goes quiet — needs 7–12 touches, gets 1–2",
+    leak: "Goes quiet: needs 7–12 touches, gets 1–2",
     fix: "AI Nurture Rep",
   },
   {
@@ -63,7 +63,7 @@ const PatientLeakageFunnel = () => {
         The 5-Stage Patient Leak
       </h2>
       <p className="text-[13px] text-[#6B7B80] mt-1 mb-[18px]">
-        Where clinics lose patients — and where GrowthOS seals each gap.
+        Where clinics lose patients, and where GrowthOS seals each gap.
       </p>
 
       <ol role="list" className="flex flex-col gap-3">
@@ -141,7 +141,7 @@ const PatientLeakageFunnel = () => {
           aria-hidden="true"
           className="w-2 h-2 rounded-full bg-orange shrink-0"
         />
-        GrowthOS seals all five — patients stay in the funnel.
+        GrowthOS seals all five: patients stay in the funnel.
       </p>
     </section>
   );

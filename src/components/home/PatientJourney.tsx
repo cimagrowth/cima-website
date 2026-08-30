@@ -32,7 +32,7 @@ const pillars: Pillar[] = [
   },
   {
     label: "CAPTURE",
-    tagline: "Answer, qualify, and book every inquiry — instantly.",
+    tagline: "Answer, qualify, and book every inquiry. Instantly.",
     icon: MessageCircle,
     bullets: [
       "7-specialty AI chat trained on your clinic’s voice, every channel, 24/7",

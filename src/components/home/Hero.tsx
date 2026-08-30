@@ -93,20 +93,28 @@ const Hero = () => {
                 size="lg"
                 className="w-full sm:w-auto group text-base"
               >
-                Get Started
+                Book a Demo
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link href="/demo" className="block">
+            <Link href="/growth" className="block">
               <Button
                 variant="hero-outline"
                 size="lg"
                 className="w-full sm:w-auto text-base"
               >
-                Book a Demo
+                Get Your Free Patient Leakage Audit
               </Button>
             </Link>
           </motion.div>
+
+          <motion.p
+            variants={itemVariants}
+            className="font-body text-sm md:text-base text-teal-deep/70 mt-5 max-w-[60ch] leading-relaxed"
+          >
+            At the best-run clinics we work with, one in five leads books a
+            consult. Most clinics have no idea what their number is.
+          </motion.p>
         </div>
 
         {/* Funnel column: side-by-side on desktop, below the fold on mobile */}

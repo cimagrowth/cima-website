@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import FinalCTA from "@/components/home/FinalCTA";
 import {
   ArrowRight,
   Check,
@@ -242,7 +243,7 @@ const Product = () => {
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
               GrowthOS has the contacts, pipelines, scoring, inbox, and
-              reporting you&rsquo;d expect &mdash; plus an AI team that
+              reporting you&rsquo;d expect, plus an AI team that
               actually does the work inside them. Most clinics realize they
               don&rsquo;t need a separate CRM at all.
             </p>
@@ -352,8 +353,8 @@ const Product = () => {
                 </span>
               </h2>
               <p className="text-base md:text-lg text-foreground leading-relaxed">
-                Every CRM gives you the boxes. Then it hands you the work
-                &mdash; someone still has to run the ads, answer the inquiry,
+                Every CRM gives you the boxes. Then it hands you the work:
+                someone still has to run the ads, answer the inquiry,
                 send the seventh follow-up, ask for the review, and keep the
                 records clean. GrowthOS is the only one where the records fill
                 themselves, because an AI team is already doing the work that
@@ -564,7 +565,7 @@ const Product = () => {
             </h2>
             <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">
               Twenty minutes. We&rsquo;ll show you the AI team handling real
-              patient inquiries in your specialty &mdash; not a generic demo.
+              patient inquiries in your specialty, not a generic demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">
@@ -586,6 +587,8 @@ const Product = () => {
           </motion.div>
         </div>
       </section>
+
+      <FinalCTA />
     </>
   );
 };
