@@ -216,7 +216,9 @@ const PlansSection = ({
           className="text-center text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-10 md:mt-12"
         >
           Pricing is tailored to your clinic and shared in your demo. One
-          recovered patient typically covers months of GrowthOS.
+          recovered patient typically covers months of GrowthOS. Every plan
+          carries our written performance commitment; commitments apply when
+          GrowthOS runs your full funnel.
         </motion.p>
       </div>
     </section>

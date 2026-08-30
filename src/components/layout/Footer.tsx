@@ -35,6 +35,7 @@ const Footer = () => {
     ],
     resources: [
       { label: "Book a Demo", href: "/demo" },
+      { label: "Patient Leakage Audit", href: "/growth" },
       { label: "Product Overview", href: "/product" },
     ],
   };
@@ -56,7 +57,7 @@ const Footer = () => {
             Every day without GrowthOS is another day of patients choosing the clinic that responded first.
           </h2>
           <p className="text-base md:text-lg text-paper/80 max-w-xl mx-auto mb-10">
-            See results in 30 days or we'll work with you until you do. Setup fee waived on annual plans. Live in 48 hours.
+            Our commitment, in writing: every lead answered in under 60 seconds, every patient followed up at every stage. Miss it and your next month is credited. Implementation included on annual plans. Live in 48 hours.
           </p>
           <div className="flex justify-center">
             <Link href="/demo">

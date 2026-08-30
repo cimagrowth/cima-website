@@ -194,9 +194,9 @@ const Audit = () => {
 
               <p className="text-body-lg text-muted-foreground max-w-2xl mb-6">
                 Three free AI tools that audit your website, your intake
-                response, and your compliance exposure — in the time it takes
+                response, and your compliance exposure, in the time it takes
                 to make coffee. Plus a free copy of{" "}
-                <em>The Seven-Figure Leak</em> — our 108-page patient leakage
+                <em>The Seven-Figure Leak</em>, our 108-page patient leakage
                 playbook. Built from 15 years inside 100+ fertility,
                 aesthetics, and wellness practices. No credit card. No sales
                 call. Keep them as long as you want.
@@ -425,7 +425,7 @@ const Audit = () => {
 
           <p className="text-center text-body text-muted-foreground max-w-3xl mx-auto mt-5">
             Plus, check the box on the form and I&apos;ll send you{" "}
-            <em>The Seven-Figure Leak</em> (108-page book) — where fertility
+            <em>The Seven-Figure Leak</em> (108-page book): where fertility
             patients disappear at every stage of the journey, what it costs,
             and how AI brings them back. All 47 direct-response frameworks
             included.
@@ -452,7 +452,7 @@ const Audit = () => {
             </p>
             <h2 className="font-display font-[340] text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
               15 years. 100+ clinics. One obsession: figuring out why leads
-              click, visit, and disappear — and what to do about it.
+              click, visit, and disappear, and what to do about it.
             </h2>
             <div className="space-y-5 text-[1.0625rem] md:text-[1.125rem] leading-relaxed text-primary-foreground/90">
               <p>
@@ -465,8 +465,8 @@ const Audit = () => {
               <p>
                 These three tools are the first 90 seconds of what I do when
                 I walk into a new clinic. I packaged them up because most
-                practice owners will never be able to afford the engagement
-                — but they still deserve to know what&apos;s broken.
+                practice owners will never be able to afford the engagement,
+                but they still deserve to know what&apos;s broken.
               </p>
               <p>
                 If you want to fix it yourself, these tools plus{" "}
@@ -478,7 +478,7 @@ const Audit = () => {
               </p>
             </div>
             <p className="mt-8 italic text-primary-foreground/75 text-body-sm">
-              — Brandon
+              Brandon
             </p>
           </div>
         </div>
@@ -503,7 +503,7 @@ const Audit = () => {
               {
                 id: "faq-1",
                 q: "Is this really free? What's the catch?",
-                a: "No catch. I give the tools away because clinic owners who use them become better customers for my bigger offerings — but 80% of people who run their audit never spend a dime with me, and that's fine. I'd rather you have the information.",
+                a: "No catch. I give the tools away because clinic owners who use them become better customers for my bigger offerings. But 80% of people who run their audit never spend a dime with me, and that's fine. I'd rather you have the information.",
               },
               {
                 id: "faq-2",
@@ -513,7 +513,7 @@ const Audit = () => {
               {
                 id: "faq-3",
                 q: "How is this different from other audit tools?",
-                a: "Most audit tools are built by generalists for generic SaaS. These are built for one thing — clinics that take insurance, cash, or a mix of both, and need more patients in chairs. Every dimension these tools score on is something I've watched cost real clinics real revenue.",
+                a: "Most audit tools are built by generalists for generic SaaS. These are built for one thing: clinics that take insurance, cash, or a mix of both, and need more patients in chairs. Every dimension these tools score on is something I've watched cost real clinics real revenue.",
               },
               {
                 id: "faq-4",
@@ -804,7 +804,7 @@ const SuccessCard = ({
       >
         brandon@cimagrowth.com
       </a>{" "}
-      — I read every one.
+      I read every one.
     </p>
   </div>
 );

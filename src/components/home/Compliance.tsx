@@ -39,7 +39,7 @@ const cards: ComplianceCard[] = [
   {
     icon: Map,
     title: "Pre-built clinical patient journeys",
-    body: "Mapped to real clinical reality (e.g. IVF cycle stages, treatment series) — not blank automations you build from scratch.",
+    body: "Mapped to real clinical reality (e.g. IVF cycle stages, treatment series), not blank automations you build from scratch.",
   },
 ];
 
@@ -61,7 +61,7 @@ const Compliance = () => {
             Built For Healthcare
           </p>
           <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
-            Built for healthcare from day one &mdash;{" "}
+            Built for healthcare from day one:{" "}
             <span className="text-gradient-accent">
               not a generic tool with a medical coat of paint.
             </span>
@@ -69,7 +69,7 @@ const Compliance = () => {
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             HubSpot and GoHighLevel were built for everyone, which means they
             were built for no one in particular. The things a clinic actually
-            needs are afterthoughts there &mdash; and workarounds for you. For
+            needs are afterthoughts there, and workarounds for you. For
             us they&rsquo;re the foundation.
           </p>
         </motion.div>

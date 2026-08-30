@@ -168,7 +168,7 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: "Every high-ticket lead you don't follow up with is a competitor's consult.",
-    body: 'See results in 30 days or we will work with you until you do. Setup fee waived on annual plans. Live in 48 hours.',
+    body: 'Our commitment, in writing: every lead answered in under 60 seconds, every patient followed up at every stage. Miss it and your next month is credited. Implementation included on annual plans. Live in 48 hours.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },

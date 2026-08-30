@@ -12,7 +12,7 @@ const IntegrationFlexibility = () => {
       subtitle: "Most Popular",
       bestFor: "Clinics ready to simplify",
       whatHappens: "GrowthOS replaces your CRM entirely",
-      integratesWith: "Native — nothing else needed",
+      integratesWith: "Native: nothing else needed",
       gradient: "from-accent-orange to-secondary",
       featured: true,
     },

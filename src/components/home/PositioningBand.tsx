@@ -11,7 +11,7 @@ const PositioningBand = () => {
           Not a chatbot. Not an ads platform. Not a CRM. The operating system.
         </p>
         <p className="font-body text-sm md:text-base leading-relaxed mt-5 md:mt-6 text-paper/85">
-          Acquisition, conversion, and retention run on one brain &mdash; so a
+          Acquisition, conversion, and retention run on one brain, so a
           patient who clicks a Google ad Saturday morning is qualified that
           afternoon, nurtured through Sunday, and sitting in your chair Tuesday,
           without anyone on your team touching the keyboard.

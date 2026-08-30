@@ -43,13 +43,13 @@ const steps = [
     icon: Upload,
     title: "Import Prospects",
     description:
-      "Upload a CSV or add contacts manually. Just include a website URL — the AI handles the rest.",
+      "Upload a CSV or add contacts manually. Just include a website URL. The AI handles the rest.",
   },
   {
     icon: Brain,
     title: "AI Enriches and Writes",
     description:
-      "Every prospect's website gets scraped, analyzed for pain points and personalization hooks, and matched with the best outreach angle. Then AI writes a custom 12-step cold email sequence — in your voice, with your positioning, using a different persuasion angle on every follow-up.",
+      "Every prospect's website gets scraped, analyzed for pain points and personalization hooks, and matched with the best outreach angle. Then AI writes a custom 12-step cold email sequence: in your voice, with your positioning, using a different persuasion angle on every follow-up.",
   },
   {
     icon: Send,
@@ -64,13 +64,13 @@ const features = [
     icon: Search,
     title: "AI Prospect Enrichment (Gemini 2.5 Flash)",
     description:
-      "Website scraping + AI analysis identifies pain points, competitive positioning, tech stack, and the best angle for your first email. Not a template — a strategy per prospect.",
+      "Website scraping + AI analysis identifies pain points, competitive positioning, tech stack, and the best angle for your first email. Not a template. A strategy per prospect.",
   },
   {
     icon: Mail,
     title: "12-Step Personalized Sequences",
     description:
-      "Each prospect gets a unique sequence. Every follow-up uses a different angle — not just \"checking in.\" All written in your configured voice.",
+      "Each prospect gets a unique sequence. Every follow-up uses a different angle, not just \"checking in.\" All written in your configured voice.",
   },
   {
     icon: Mic,
@@ -94,7 +94,7 @@ const features = [
     icon: BarChart3,
     title: "Outreach Analytics",
     description:
-      "Enrichment progress, delivery rates, opens, replies, click tracking, and pipeline conversion — across your entire prospect list.",
+      "Enrichment progress, delivery rates, opens, replies, click tracking, and pipeline conversion, across your entire prospect list.",
   },
 ];
 
@@ -265,7 +265,7 @@ const Outreach = () => {
               What You Get
             </span>
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
-              Everything to Run Outreach at Scale — Without an Outreach Team
+              Everything to Run Outreach at Scale, Without an Outreach Team
             </h2>
           </motion.div>
 

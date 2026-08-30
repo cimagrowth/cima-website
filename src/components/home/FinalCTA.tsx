@@ -18,11 +18,11 @@ interface FinalCTAProps {
   ctas?: CtaLink[];
 }
 
-const DEFAULT_HEADING = "See where your clinic is leaking patients.";
+const DEFAULT_HEADING = "The Patient Leakage Audit";
 const DEFAULT_DESCRIPTION =
-  "Get a free growth audit. We analyze your current response times, channel coverage, and conversion paths, and show you specifically where patients are slipping through and what GrowthOS would change.";
+  "Free audit. We benchmark your lead-to-consult rate against the best-run clinics we work with, map your leak stages, and show you the projected recovery. Results in 48 hours.";
 const DEFAULT_CTAS: CtaLink[] = [
-  { label: "Book a Demo", href: "/demo", variant: "hero" },
+  { label: "Get Your Free Audit", href: "/growth", variant: "hero" },
   { label: "See How It Works", href: "/how-it-works", variant: "hero-outline" },
 ];
 
