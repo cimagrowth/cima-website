@@ -14,14 +14,6 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: 'https://cimagrowth.com/growth',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Patient Leakage Audit by Cima Growth Solutions',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -29,7 +21,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/og-image.png'],
   },
 };
 
