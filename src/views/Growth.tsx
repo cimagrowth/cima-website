@@ -68,6 +68,11 @@ const whatYouGet = [
   },
 ];
 
+// A2P 10DLC / TCR compliant opt-in disclosure. Kept as a single source of
+// truth so the exact text shown to the user is also recorded with consent.
+const SMS_CONSENT_TEXT =
+  'I agree to receive text messages from Cima Growth Solutions at the mobile number provided about my Patient Leakage Audit, my results, and related follow-up. Up to 6 messages per month. Consent is not a condition of any purchase or service. Message and data rates may apply. Reply STOP to opt out, HELP for help.';
+
 const labelClasses = 'mb-2 block font-ui text-sm font-medium text-teal-deep';
 const controlClasses =
   'h-12 w-full rounded-lg border border-sand bg-paper px-4 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-0';
@@ -78,6 +83,7 @@ function RequiredMark() {
 
 export default function Growth() {
   const [status, setStatus] = useState<Status>('idle');
+  const [smsConsent, setSmsConsent] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const isSubmitting = status === 'submitting';
 
@@ -118,6 +124,9 @@ export default function Growth() {
       funnel_systems: formData.getAll('funnel_systems').map(String),
       location_count: String(formData.get('location_count') || ''),
       primary_ehr: String(formData.get('primary_ehr') || '').trim(),
+      sms_consent: smsConsent,
+      sms_consent_text: smsConsent ? SMS_CONSENT_TEXT : '',
+      sms_consent_timestamp: smsConsent ? new Date().toISOString() : '',
       page_path: PAGE_PATH,
       source_url: typeof window !== 'undefined' ? window.location.href : '',
     };
@@ -521,6 +530,33 @@ export default function Growth() {
                       disabled={isSubmitting}
                       className={controlClasses}
                     />
+                  </div>
+
+                  {/* SMS consent (A2P 10DLC / TCR). Optional, unchecked by
+                      default. Consent is never a condition of the audit. */}
+                  <div className="flex items-start gap-3 rounded-lg border border-sand bg-paper px-4 py-4">
+                    <input
+                      type="checkbox"
+                      id="sms_consent"
+                      name="sms_consent"
+                      checked={smsConsent}
+                      onChange={(e) => setSmsConsent(e.target.checked)}
+                      disabled={isSubmitting}
+                      className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-teal/30 text-orange accent-orange focus:ring-2 focus:ring-orange/40"
+                    />
+                    <label
+                      htmlFor="sms_consent"
+                      className="cursor-pointer font-body text-sm leading-relaxed text-teal-deep/80"
+                    >
+                      {SMS_CONSENT_TEXT} See our{' '}
+                      <a
+                        href="/privacy"
+                        className="underline underline-offset-2 hover:text-orange"
+                      >
+                        Privacy Policy
+                      </a>
+                      .
+                    </label>
                   </div>
 
                   {status === 'error' && (
