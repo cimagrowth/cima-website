@@ -318,14 +318,13 @@ export default function Growth() {
                   {/* Mobile */}
                   <div>
                     <label htmlFor="phone" className={labelClasses}>
-                      Mobile
-                      <RequiredMark />
+                      Mobile{' '}
+                      <span className="text-muted-foreground/70">(optional)</span>
                     </label>
                     <input
                       id="phone"
                       name="phone"
                       type="tel"
-                      required
                       placeholder="+1 555 123 4567"
                       autoComplete="tel"
                       disabled={isSubmitting}
