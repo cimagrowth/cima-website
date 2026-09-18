@@ -363,7 +363,7 @@ const PrivacyPolicy = () => {
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>business.manage</code></td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To show your Google Business Profile reviews in GrowthOS, draft replies for your team to approve, and post a reply only after a team member approves it.</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To show your Google Business Profile reviews and questions in GrowthOS, draft replies, answers and posts about your services, and publish them to your profile. By default nothing is published until a member of your team approves it; you can choose to let GrowthOS publish review replies and posts automatically.</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>tagmanager.readonly</code></td>
