@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="font-display text-3xl md:text-4xl font-[340] tracking-tight mb-2">Healthcare Enterprise Privacy Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: July 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last Updated: September 2026</p>
 
           <p>
             Thank you for using the Cima Growth Solutions LLC platform, including our website, mobile applications, software, and related services (collectively, the "Services"). This Privacy Policy ("Policy") explains how Cima Growth Solutions LLC ("Cima," "Company," "we," "us," or "our") collects, uses, discloses, and safeguards information when providing a healthcare-focused SaaS platform.
@@ -341,41 +341,41 @@ const PrivacyPolicy = () => {
               <thead>
                 <tr className="bg-gray-100 dark:bg-gray-800">
                   <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Scope</th>
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Tier</th>
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">What We Access</th>
-                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Why We Need It</th>
+                  <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Why GrowthOS requests it</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>openid</code>, <code>userinfo.email</code>, <code>userinfo.profile</code></td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Basic</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Your Google account email, name, and profile photo</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To identify the connected Google account and display your name and photo within the application</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>gmail.readonly</code></td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Restricted</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Read-only access to your Gmail inbox messages and metadata</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To surface inbound patient and prospective lead emails inside GrowthOS conversations (the "Lead Discovery" feature), so your team can respond from one place instead of switching between Gmail and GrowthOS. We do not send email through Gmail (outbound email is sent through SendGrid from your verified domain) and we do not modify, label, or delete any Gmail messages.</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To identify which Google account you connected and show its name and email in GrowthOS.</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>calendar.readonly</code></td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Sensitive</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Read-only access to your calendar list and free/busy data</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To detect when you are available for patient consultations and avoid scheduling conflicts</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To read your availability so patients are only offered consultation times when you are free, and to avoid double booking.</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>calendar.events</code></td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Sensitive</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Read and write access to events on your calendar</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To create patient consultation appointments on your Google Calendar, update events when patients reschedule, and remove events when patients cancel</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To add patient consultations to your Google Calendar, update them when a patient reschedules, and remove them when a patient cancels.</td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>adwords</code> (Google Ads API)</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Sensitive</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Your Google Ads campaign, ad group, and performance data</td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To create and manage Google Ads campaigns on behalf of your clinic, when you enable the AI Ads feature</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>analytics.readonly</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To read your Google Analytics 4 reports (traffic, conversions and lead sources) and show them in your GrowthOS dashboards and reports. GrowthOS never changes your Analytics configuration.</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>business.manage</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To show your Google Business Profile reviews in GrowthOS, draft replies for your team to approve, and post a reply only after a team member approves it.</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>tagmanager.readonly</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To list your Google Tag Manager containers so you can pick which one GrowthOS installs on the landing pages it hosts for you. GrowthOS never edits your containers.</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>adwords</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To create and manage Google Ads campaigns for your clinic and report on their performance, when you enable the AI Ads feature.</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>datamanager</code></td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To send offline conversions (for example, a lead who became a booked patient) back to your Google Ads account so campaigns optimize toward real patients.</td>
                 </tr>
               </tbody>
             </table>
