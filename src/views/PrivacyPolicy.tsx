@@ -317,7 +317,7 @@ const PrivacyPolicy = () => {
 
           <h2>17. Google Services</h2>
           <p>
-            When a customer connects their Google account to our Services for Gmail, Google Calendar, Google Ads, or Google Business Profile features, we request only the OAuth scopes necessary for the feature being used. This section describes our practices for Google user data in detail.
+            When a customer connects their Google account to our Services for Google Calendar, Google Analytics, Google Business Profile, Google Tag Manager, or Google Ads features, we request only the OAuth scopes necessary for the feature being used. This section describes our practices for Google user data in detail.
           </p>
 
           <h3>Limited Use Disclosure</h3>
@@ -326,10 +326,10 @@ const PrivacyPolicy = () => {
           </p>
           <p>Specifically, with respect to data obtained through Google APIs, Cima Growth Solutions:</p>
           <ol>
-            <li><strong>Will only use access</strong> to Gmail message bodies, attachments, metadata, headers, and settings, and to Google Calendar events, to provide or improve user-facing features that are prominent in the GrowthOS user interface — specifically inbound email reading for lead discovery and patient conversation surfacing, and consultation scheduling.</li>
+            <li><strong>Will only use access</strong> to Google Calendar events, Google Analytics reports, Google Business Profile reviews, Google Tag Manager container listings, and Google Ads campaign and conversion data, to provide or improve user-facing features that are prominent in the GrowthOS user interface: consultation scheduling, analytics dashboards and reports, review management with team approval, container selection for the landing pages we host for you, and advertising campaign management and measurement.</li>
             <li><strong>Will not transfer</strong> Google user data to others except as necessary to provide or improve these user-facing features, comply with applicable law, or as part of a merger, acquisition, or sale of assets with notice to the affected user.</li>
             <li><strong>Will not use</strong> Google user data to serve advertisements, including retargeting, personalized, or interest-based advertising.</li>
-            <li><strong>Will not allow</strong> human personnel to read Google user data unless (a) the user has given explicit consent for specific messages, (b) it is necessary for security purposes (such as investigating abuse), (c) it is necessary to comply with applicable law, or (d) the data has been aggregated and anonymized for internal operational purposes.</li>
+            <li><strong>Will not allow</strong> human personnel to read Google user data unless (a) the user has given explicit consent for the specific data concerned, (b) it is necessary for security purposes (such as investigating abuse), (c) it is necessary to comply with applicable law, or (d) the data has been aggregated and anonymized for internal operational purposes.</li>
           </ol>
 
           <h3>Google OAuth Scopes We Request</h3>
@@ -383,8 +383,8 @@ const PrivacyPolicy = () => {
 
           <h3>What We Do With Google User Data</h3>
           <ul>
-            <li><strong>Storage:</strong> OAuth refresh tokens are encrypted at rest in our database (Supabase, US region) using industry-standard encryption. Gmail message content accessed through the Gmail API is stored only insofar as it appears in a corresponding GrowthOS conversation thread (the same way a SendGrid-delivered email body is stored), so your team can read it inside our platform. Calendar event data is stored as a GrowthOS appointment record.</li>
-            <li><strong>Processing:</strong> Limited to the user-facing features described above. Where AI classification is applied to inbound email (for example, to detect unsubscribe requests or auto-replies), the email content is sent to the Anthropic Claude API for classification and is not used by Anthropic to train its models under our enterprise API terms.</li>
+            <li><strong>Storage:</strong> OAuth refresh tokens are encrypted at rest in our database (Supabase, US region) using industry-standard encryption. Calendar event data is stored as a GrowthOS appointment record. Google Analytics report data, Google Business Profile reviews, and Google Ads campaign and performance data are stored as the metric, review, and campaign records shown in your GrowthOS dashboards and reports. Google Tag Manager data is limited to the names and identifiers of your containers, stored so that you can select one. Offline conversions sent to Google are generated from your own GrowthOS lead and patient records and are not retained as a separate copy of Google user data.</li>
+            <li><strong>Processing:</strong> Limited to the user-facing features described above. Where AI is applied to Google user data (for example, to draft a suggested reply to a Google Business Profile review, which a member of your team must approve before it is posted), the relevant content is sent to the Anthropic Claude API and is not used by Anthropic to train its models under our enterprise API terms.</li>
             <li><strong>Retention:</strong> Google user data and OAuth tokens are retained for the duration of your active GrowthOS subscription plus 30 days after cancellation or disconnection, after which all tokens are revoked and associated data is deleted.</li>
             <li><strong>Sharing:</strong> We do not sell Google user data. We do not share Google user data with third parties except for the specific subprocessors required to deliver the user-facing feature (for example, Anthropic for classification, Supabase for storage), each of which is listed in Section 18 and bound by contractual confidentiality and security obligations.</li>
             <li><strong>AI / Machine Learning:</strong> Google user data is <strong>not</strong> used to train any AI or machine-learning models, whether by Cima Growth Solutions or by our subprocessors.</li>
