@@ -264,7 +264,7 @@
           "addon_name": "Voice AI",
           "help_count": 7,
           "module_key": "settings_ai_voice",
-          "description": "Answers and books phone calls 24/7, included on every plan."
+          "description": "Answers and books phone calls 24/7 in a natural voice. An add-on to any plan."
         },
         {
           "name": "Phone trees",
@@ -1144,27 +1144,19 @@
   "changelog": [
     {
       "date": "2026-09-24",
-      "text": "Forms in First response can now qualify every submission red, yellow or green."
+      "text": "Voice AI description corrected: it is an add-on, not included on every plan."
     },
     {
       "date": "2026-09-24",
       "text": "Qualification Agent in Nurture and qualify is now in every account, blank until the clinic names it and sets it up."
     },
     {
-      "date": "2026-09-22",
-      "text": "Added Call intelligence to First response."
+      "date": "2026-09-24",
+      "text": "Forms in First response can now qualify every submission red, yellow or green."
     },
     {
       "date": "2026-09-22",
       "text": "Renamed Landing pages and quiz funnels to Landing pages in Get found."
-    },
-    {
-      "date": "2026-09-22",
-      "text": "Renamed Phone trees and call intelligence to Phone trees in First response."
-    },
-    {
-      "date": "2026-09-22",
-      "text": "Added Quiz funnels to Get found."
     },
     {
       "date": "2026-09-22",
@@ -1173,6 +1165,18 @@
     {
       "date": "2026-09-22",
       "text": "Added Workflows and automations to Nurture and qualify."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Quiz funnels to Get found."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Renamed Phone trees and call intelligence to Phone trees in First response."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Call intelligence to First response."
     },
     {
       "date": "2026-09-22",

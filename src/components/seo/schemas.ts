@@ -53,6 +53,7 @@ export const generateFounderSchema = () => ({
   "@type": "Person",
   "@id": `${SITE_URL}/#brandon-hensinger`,
   name: "Brandon Hensinger",
+  image: `${SITE_URL}/brandon-hensinger.jpg`,
   jobTitle: "Founder and CEO",
   worksFor: {
     "@type": "Organization",

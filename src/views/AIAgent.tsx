@@ -189,7 +189,14 @@ const faqItems = [
   },
 ];
 
-const AIAgent = () => {
+export interface AIAgentFigures {
+  medianSeconds: number;
+  pctUnder60: string;
+  conversations: string;
+  windowDays: number;
+}
+
+const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
@@ -257,20 +264,20 @@ const AIAgent = () => {
           >
             {[
               {
-                stat: "78%",
-                text: "of patients choose the first clinic to respond",
+                stat: `${figures.medianSeconds} sec`,
+                text: "median GrowthOS first reply to a patient message",
+              },
+              {
+                stat: figures.pctUnder60,
+                text: "of patient messages answered in under 60 seconds",
+              },
+              {
+                stat: figures.conversations,
+                text: `patient conversations handled in the last ${figures.windowDays} days`,
               },
               {
                 stat: "24/7",
                 text: "Coverage your staff physically can't provide",
-              },
-              {
-                stat: "15-20",
-                text: "potential patients lost per month to slow follow-up",
-              },
-              {
-                stat: "< 3 sec",
-                text: "average AI response time",
               },
             ].map((item, i) => (
               <motion.div
@@ -285,6 +292,9 @@ const AIAgent = () => {
               </motion.div>
             ))}
           </motion.div>
+          <p className="mt-8 text-center text-xs text-teal-deep/75">
+            Live GrowthOS figures, active clinic accounts only, last {figures.windowDays} days.
+          </p>
         </div>
       </section>
 
@@ -629,7 +639,7 @@ const AIAgent = () => {
               Every Hour Without an AI Agent Is an Hour of Leads Going to Your Competitor.
             </h2>
             <p className="text-body-lg text-paper/70 max-w-xl mx-auto mb-8">
-              The clinic that responds first wins 78% of the time. Your AI agent responds in under 3 seconds.
+              The clinic that responds first usually wins the patient. Your AI agent responds in seconds.
             </p>
             <Button
               asChild

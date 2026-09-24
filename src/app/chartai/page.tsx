@@ -15,22 +15,16 @@ export const metadata: Metadata = {
     description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system.',
     url: 'https://cimagrowth.com/chartai',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-home.png',
-        width: 1200,
-        height: 630,
-        alt: 'ChartAI – Automated Medical Records Retrieval',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
+    // Shared GrowthOS card from src/app/opengraph-image.tsx.
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['/opengraph-image'],
     title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
     description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system.',
-    images: ['/og/og-home.png'],
   },
 };
 

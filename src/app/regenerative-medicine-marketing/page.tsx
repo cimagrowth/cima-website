@@ -148,7 +148,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/why-your-clinic-loses-40-percent-of-inquiries',
-        label: 'Why Your Clinic Loses 40% of Inquiries',
+        label: 'Why Clinics Lose Inquiries',
         description: 'The slow-response gap that quietly hands expensive leads to faster clinics.',
       },
       {

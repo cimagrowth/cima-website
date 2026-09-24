@@ -60,7 +60,7 @@ const painPoints = [
   },
   {
     icon: CircleDollarSign,
-    text: "You end up spending $3K-10K/month on ads, plus $2K-5K on the agency managing them, and can't tell what's actually driving booked appointments vs. tire-kicker clicks",
+    text: "You end up paying for ads, plus an agency to manage them, and can't tell what's actually driving booked appointments vs. tire-kicker clicks",
   },
   {
     icon: SlidersHorizontal,
@@ -79,7 +79,7 @@ const steps = [
     icon: Link,
     title: "Connect Google & Facebook (One click)",
     description:
-      "Your accounts stay 100% yours. We never lock you in.",
+      "Your accounts stay yours. We never lock you in.",
   },
   {
     icon: Rocket,
@@ -169,7 +169,7 @@ const optimizationFeatures = [
     icon: Gauge,
     title: "Closed-Loop Impact Tracking",
     description:
-      "Seven days after every change, the engine measures whether it actually worked. Your report shows: \"We increased this budget → projected +6 conversions → actual: +8.\" That's accountability most agencies can't match.",
+      "Seven days after every change, the engine measures whether it actually worked. Your report shows: \"We increased this budget → projected +[N] conversions → actual: +[N].\" That's accountability most agencies can't match.",
   },
 ];
 
@@ -187,24 +187,24 @@ const activityFeed: {
     timestamp: "Apr 15 · 2:04 AM",
     status: "success",
     title: "Increased Leads-Search-English budget",
-    change: "$10/day → $40/day",
-    reason: "Lowest CPA in account ($13.51), impression-constrained",
-    note: "Projected: +6 conversions/week",
+    change: "$[X]/day → $[Y]/day",
+    reason: "Lowest CPA in the account, limited by impressions",
+    note: "Projected: +[N] conversions/week",
   },
   {
     timestamp: "Apr 15 · 2:04 AM",
     status: "cut",
     title: "Cut PMAX · IVF · Bay Area budget",
-    change: "$12/day → $6/day",
-    reason: "21 days, $180 spend, 0 conversions",
+    change: "$[X]/day → $[Y]/day",
+    reason: "[N] days of spend, no conversions",
     note: "Status: Auto-executed",
   },
   {
     timestamp: "Apr 15 · 2:05 AM",
     status: "pending",
     title: "Pending approval: Pause Leads-Search-Korean",
-    change: "$10/day → Paused",
-    reason: "No landing page, 0 conversions in 30 days",
+    change: "$[X]/day → Paused",
+    reason: "No landing page, no conversions in [N] days",
     note: "",
   },
 ];
@@ -220,7 +220,7 @@ const reportTypes = [
       "Campaign verdicts: Winner / Watch / Cut",
       "Full log of every change the optimization engine made",
     ],
-    quote: "\"What did my ads do this month?\" Answered in 10 seconds.",
+    quote: "\"What did my ads do this month?\" Answered in seconds.",
   },
   {
     icon: LineChart,
@@ -240,15 +240,15 @@ const reportTypes = [
 
 const beforeAfter = {
   before: [
-    { label: "Avg response time to ad inquiries", value: "4.2 hours" },
-    { label: "Monthly wasted ad spend (non-converting campaigns)", value: "$1,800" },
-    { label: "Time spent reviewing ad performance", value: "6 hrs/week" },
+    { label: "Response time to ad inquiries", value: "Hours, often the next day" },
+    { label: "Wasted ad spend (non-converting campaigns)", value: "Unknown until someone checks" },
+    { label: "Time spent reviewing ad performance", value: "Hours every week" },
     { label: "Report quality", value: "Screenshot of Google Ads Manager" },
   ],
   after: [
-    { label: "Avg response time", value: "3 seconds", sub: "AI chatbot + ads = instant" },
+    { label: "Response time", value: "Seconds", sub: "AI chatbot + ads = instant" },
     { label: "Monthly wasted spend", value: "Automatically cut", sub: "by optimization engine" },
-    { label: "Time spent reviewing performance", value: "2 minutes", sub: "one-click report" },
+    { label: "Time spent reviewing performance", value: "One click", sub: "one-click report" },
     { label: "Report quality", value: "Client-ready document", sub: "with projections & insights" },
   ],
 };
@@ -260,7 +260,7 @@ const specialties = [
     icon: Baby,
     tagline: "Reach patients at their most important moment, with copy that balances hope and clinical credibility.",
     headlines: [
-      "Ready to Start Your Family? World-Class IVF. Success Rates Above National Average",
+      "Ready to Start Your Family? Personal IVF Care From Your First Visit",
       "Egg Freezing on Your Terms: Free Consultation, Flexible Financing",
       "PGT Testing for Peace of Mind. Book Your Fertility Assessment Today",
     ],
@@ -271,7 +271,7 @@ const specialties = [
     icon: Syringe,
     tagline: "Drive bookings with urgency and aspiration. AI knows the difference between Botox and a body contouring campaign.",
     headlines: [
-      "Look 10 Years Younger: Botox & Fillers Starting at $199",
+      "Natural-Looking Botox & Fillers. Book a Free Consultation",
       "Body Contouring Without Surgery. See Results in One Session",
       "Skin Rejuvenation Specialists: Free Consultation This Week Only",
     ],
@@ -1057,7 +1057,7 @@ const AdsPage = () => {
               </thead>
               <tbody className="bg-card">
                 {[
-                  { label: "Campaign launch time", agency: "2-4 weeks", cima: "Under 1 hour" },
+                  { label: "Campaign launch time", agency: "Weeks", cima: "Same day" },
                   { label: "Healthcare compliance", agency: "Manual (error-prone)", cima: "Automatic" },
                   { label: "Ad account ownership", agency: "Often agency-controlled", cima: "Always yours" },
                   { label: "Landing pages", agency: "Extra cost", cima: "Included" },

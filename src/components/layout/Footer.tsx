@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import cimaLogoDarkImg from "@/assets/cima-logo-dark.png";
+import { IOS_APP_STORE_URL } from "@/content/apps";
 import { BRANDON_SOCIAL, CIMA_SOCIAL, type SocialProfile } from "@/content/social";
 import {
   firstReplyCommitment,
@@ -13,7 +14,7 @@ import CookiePreferencesButton from "./CookiePreferencesButton";
 
 const cimaLogoDark = typeof cimaLogoDarkImg === 'string' ? cimaLogoDarkImg : cimaLogoDarkImg.src;
 
-type FooterLink = { label: string; href: string };
+type FooterLink = { label: string; href: string; external?: boolean };
 
 const platformLinks: FooterLink[] = [
   { label: "Platform overview", href: "/product" },
@@ -42,6 +43,7 @@ const specialtyLinks: FooterLink[] = [
 const companyLinks: FooterLink[] = [
   { label: "Research", href: "/#research" },
   { label: "Blog", href: "/blog" },
+  { label: "GrowthOS app for iPhone", href: IOS_APP_STORE_URL, external: true },
   { label: "Get your Leak Map", href: "/growth" },
   { label: "Book a demo", href: "/demo" },
 ];
@@ -63,9 +65,15 @@ function LinkColumn({ title, links, titleHref }: { title: string; links: FooterL
       <ul className="space-y-3">
         {links.map((link) => (
           <li key={link.href + link.label}>
-            <Link href={link.href} className={linkClass}>
-              {link.label}
-            </Link>
+            {link.external ? (
+              <a href={link.href} target="_blank" rel="noopener" className={linkClass}>
+                {link.label}
+              </a>
+            ) : (
+              <Link href={link.href} className={linkClass}>
+                {link.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

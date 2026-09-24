@@ -27,14 +27,6 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: 'https://cimagrowth.com',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-home.png',
-        width: 1200,
-        height: 630,
-        alt: TITLE,
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -42,7 +34,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/og/og-home.png'],
   },
 };
 

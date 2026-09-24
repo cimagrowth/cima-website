@@ -32,10 +32,10 @@ const itemVariants = {
 };
 
 const stats = [
-  { value: "40%", label: "More replies vs. generic outreach" },
+  { value: "Every email", label: "Written from the prospect's own website" },
   { value: "12", label: "Personalized follow-ups per prospect, each with a different angle" },
   { value: "Usage-based", label: "Pay only for the prospects you enrich" },
-  { value: "100%", label: "Personalized, no templates, no mail merge" },
+  { value: "No templates", label: "Personalized, no mail merge" },
 ];
 
 const steps = [

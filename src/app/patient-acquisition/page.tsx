@@ -21,7 +21,7 @@ const content: SolutionLandingProps = {
     accent: 'They have a leak problem.',
     paragraphs: [
       'Patient acquisition is the full path a stranger takes to becoming a booked, returning patient: demand, inquiry, response, consultation, treatment, and retention. Most clinics only invest in the first step. They buy more ads, get more inquiries, and then watch most of them slip away unanswered.',
-      'The math is unforgiving. If you lose 40 percent of inquiries before anyone replies, doubling ad spend just doubles the leak. The fastest growth almost never comes from more leads. It comes from converting the demand you are already paying for, then keeping those patients longer.',
+      'The math is unforgiving. If inquiries go cold before anyone replies, doubling ad spend just doubles the leak. The fastest growth almost never comes from more leads. It comes from converting the demand you are already paying for, then keeping those patients longer.',
     ],
     points: [
       'Demand without fast response is wasted spend.',
@@ -151,7 +151,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/the-50k-revenue-leak-speed-to-lead-fertility-clinic',
-        label: 'The $50K revenue leak',
+        label: 'What slow replies cost a clinic',
         description: 'Why speed to lead is your entire business model.',
       },
       {
@@ -161,7 +161,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/why-your-clinic-loses-40-percent-of-inquiries',
-        label: 'Losing 40% of inquiries',
+        label: 'Why clinics lose inquiries',
         description: 'Where inquiries disappear before anyone picks up the phone.',
       },
       {

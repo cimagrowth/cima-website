@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AIAgent from '@/views/AIAgent';
+import { formatConversations, formatPct, getPlatformStats } from '@/lib/growthos-map';
 
 export const metadata: Metadata = {
   title: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
@@ -34,6 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <AIAgent />;
+export const revalidate = 3600;
+
+export default async function Page() {
+  const stats = await getPlatformStats();
+  return (
+    <AIAgent
+      figures={{
+        medianSeconds: stats.median_first_reply_seconds,
+        pctUnder60: formatPct(stats.pct_first_reply_under_60s),
+        conversations: formatConversations(stats.patient_conversations),
+        windowDays: stats.window_days,
+      }}
+    />
+  );
 }

@@ -25,7 +25,7 @@ const content: SolutionLandingProps = {
     heading: 'In fertility, the clinic that responds first, and follows up longest',
     accent: 'wins.',
     paragraphs: [
-      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: the average fertility patient needs 7 to 12 touchpoints over weeks before they commit, and most clinics stop after one or two.',
+      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: a fertility decision takes many conversations over weeks, and most clinics stop after one or two.',
       'Then there is everything a stretched front desk cannot keep up with. Inquiries that arrive after hours. Patients who go quiet mid-decision. Cycles that pause and never resume. Egg-freezing leads that were never followed up. Each one is a patient, and a high-value treatment, quietly lost.',
     ],
     points: [
@@ -49,7 +49,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'repeat',
         title: 'Long-cycle nurture that never fades',
-        body: 'Follows up 7 to 12 times across days and weeks, adapting to where the patient is in their journey and IVF cycle stage. It never forgets and never goes cold after day three.',
+        body: 'Follows up again and again across days and weeks, adapting to where the patient is in their journey and IVF cycle stage. It never forgets and never goes cold after day three.',
       },
       {
         icon: 'megaphone',
@@ -99,7 +99,7 @@ const content: SolutionLandingProps = {
   },
   proofPoints: [
     'Instant multi-channel response',
-    '7 to 12 touch long-cycle nurture',
+    'Long-cycle nurture that keeps following up',
     'HIPAA-grade with a BAA',
     'Leads flowing on day one',
   ],
@@ -112,7 +112,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How does GrowthOS handle the long fertility decision cycle?',
       answer:
-        'It follows up 7 to 12 times across days and weeks, adapting tone and content to where the patient is emotionally and clinically, so patients who need time are nurtured patiently instead of forgotten after the first reply.',
+        'It keeps following up across days and weeks, adapting tone and content to where the patient is emotionally and clinically, so patients who need time are nurtured patiently instead of forgotten after the first reply.',
     },
     {
       question: 'Is GrowthOS HIPAA compliant?',
@@ -147,7 +147,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/why-your-clinic-loses-40-percent-of-inquiries',
-        label: 'Why Your Clinic Loses 40% of Inquiries',
+        label: 'Why Clinics Lose Inquiries',
         description: 'The slow-response gap that quietly hands patients to faster clinics.',
       },
       {
