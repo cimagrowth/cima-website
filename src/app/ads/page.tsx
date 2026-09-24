@@ -15,14 +15,6 @@ export const metadata: Metadata = {
     description: 'AI builds, launches, and optimizes your Google and Facebook ad campaigns with healthcare compliance built in. Included in GrowthOS Growth and available with the Cima AI Agent Pro plan.',
     url: 'https://cimagrowth.com/ads',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-ads.png',
-        width: 1200,
-        height: 630,
-        alt: 'AI Ads for Healthcare – Let AI Run Your Ads',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -30,7 +22,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Ads for Healthcare – Let AI Run Your Ads',
     description: 'AI builds, launches, and optimizes your Google and Facebook ad campaigns with healthcare compliance built in. Included in GrowthOS Growth and available with the Cima AI Agent Pro plan.',
-    images: ['/og/og-ads.png'],
   },
 };
 

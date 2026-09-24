@@ -11,14 +11,6 @@ export const metadata: Metadata = {
     description: 'AI patient engagement, CRM, marketing automation, reputation management, ads, reporting, and more. All HIPAA compliant.',
     url: 'https://cimagrowth.com/features',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-features.png',
-        width: 1200,
-        height: 630,
-        alt: 'GrowthOS Features: Everything Your Clinic Needs in One Platform',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -26,7 +18,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GrowthOS Features: Everything Your Clinic Needs in One Platform',
     description: 'AI patient engagement, CRM, marketing automation, reputation management, ads, reporting, and more. All HIPAA compliant.',
-    images: ['/og/og-features.png'],
   },
 };
 

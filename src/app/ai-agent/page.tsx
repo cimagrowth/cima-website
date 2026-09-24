@@ -16,14 +16,6 @@ export const metadata: Metadata = {
     description: 'Your clinic\'s AI front desk. Responds in seconds, qualifies leads, books appointments 24/7, and hands off with full context.',
     url: 'https://cimagrowth.com/ai-agent',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-ai-agent.png',
-        width: 1200,
-        height: 630,
-        alt: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -31,7 +23,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
     description: 'Your clinic\'s AI front desk. Responds in seconds, qualifies leads, books appointments 24/7, and hands off with full context.',
-    images: ['/og/og-ai-agent.png'],
   },
 };
 

@@ -18,14 +18,6 @@ export const metadata: Metadata = {
     description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect. Plus an AI team that actually does the work inside them. Compare against HubSpot and GoHighLevel.',
     url: 'https://cimagrowth.com/product',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-product.png',
-        width: 1200,
-        height: 630,
-        alt: 'GrowthOS Platform – Everything a CRM does. None of the work.',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -33,7 +25,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Platform – Everything a CRM does. None of the work. | GrowthOS by Cima',
     description: 'GrowthOS has the contacts, pipelines, scoring, inbox, and reporting you\'d expect. Plus an AI team that actually does the work inside them.',
-    images: ['/og/og-product.png'],
   },
 };
 
