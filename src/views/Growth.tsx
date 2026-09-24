@@ -29,26 +29,45 @@ const specialtyOptions: { value: string; label: string }[] = [
   { value: 'general', label: 'Other' },
 ];
 
-// For these fields the value IS the label. Copied verbatim from the engine contract.
-const monthlyLeadsOptions = ['Under 50', '50 to 150', '150 to 400', '400+', 'Not sure'];
-const monthlyConsultsOptions = ['Under 10', '10 to 25', '25 to 60', '60+', 'Not sure'];
-const leadResponderOptions = [
-  'Front desk',
-  'Dedicated coordinator',
-  'Chatbot',
-  'AI agent',
-  'Mix of these',
+// For these fields the submitted value is read by the engine verbatim: never
+// change a value. The label is only what the visitor reads.
+type Choice = { value: string; label: string };
+
+const monthlyLeadsOptions: Choice[] = [
+  { value: 'Under 50', label: 'Fewer than 50' },
+  { value: '50 to 150', label: '50 to 150' },
+  { value: '150 to 400', label: '150 to 400' },
+  { value: '400+', label: 'More than 400' },
+  { value: 'Not sure', label: 'Not sure' },
 ];
-const funnelSystemOptions = [
-  'Marketing agency',
-  'CRM',
-  'Spreadsheets',
-  'Chatbot',
-  'Online scheduling',
-  'Call answering service',
-  'None of these',
+const monthlyConsultsOptions: Choice[] = [
+  { value: 'Under 10', label: 'Fewer than 10' },
+  { value: '10 to 25', label: '10 to 25' },
+  { value: '25 to 60', label: '25 to 60' },
+  { value: '60+', label: 'More than 60' },
+  { value: 'Not sure', label: 'Not sure' },
 ];
-const locationOptions = ['1', '2 to 3', '4+'];
+const leadResponderOptions: Choice[] = [
+  { value: 'Front desk', label: 'Front desk staff' },
+  { value: 'Dedicated coordinator', label: 'A dedicated patient coordinator' },
+  { value: 'Chatbot', label: 'A chatbot on our website' },
+  { value: 'AI agent', label: 'An AI assistant' },
+  { value: 'Mix of these', label: 'A mix of these' },
+];
+const funnelSystemOptions: Choice[] = [
+  { value: 'Marketing agency', label: 'A marketing agency' },
+  { value: 'CRM', label: 'A CRM to track leads' },
+  { value: 'Spreadsheets', label: 'Spreadsheets' },
+  { value: 'Chatbot', label: 'A chatbot on our website' },
+  { value: 'Online scheduling', label: 'Online booking' },
+  { value: 'Call answering service', label: 'A call answering service' },
+  { value: 'None of these', label: 'None of these' },
+];
+const locationOptions: Choice[] = [
+  { value: '1', label: '1' },
+  { value: '2 to 3', label: '2 to 3' },
+  { value: '4+', label: '4 or more' },
+];
 
 const whatYouGet = [
   {
@@ -70,12 +89,12 @@ const whatYouGet = [
 
 // Step 2: the GrowthOS Map questions. Option strings are read by the audit
 // engine (run-patient-leakage-audit) character for character: never rename or
-// re-case them. value IS the label.
+// re-case a value. Only the label is shown to the visitor.
 type MapQuestion = {
   name: string;
   stage: string;
   question: string;
-  options: string[];
+  options: Choice[];
   fertilityOnly?: boolean;
 };
 
@@ -83,69 +102,125 @@ const mapQuestions: MapQuestion[] = [
   {
     name: 'map_ad_tracking',
     stage: '1 · Get found',
-    question: 'Can you see which ads and pages turn into booked consults?',
-    options: ['Yes, by source', 'Partly', 'No', 'We do not run ads', 'Not sure'],
+    question: 'Can you tell which ads or web pages bring in patients who actually book a consult?',
+    options: [
+      { value: 'Yes, by source', label: 'Yes, for every source' },
+      { value: 'Partly', label: 'For some sources' },
+      { value: 'No', label: 'No' },
+      { value: 'We do not run ads', label: "We don't run ads" },
+      { value: 'Not sure', label: 'Not sure' },
+    ],
   },
   {
     name: 'map_form_fields',
     stage: '2 · First response',
-    question: 'How many fields are on your website inquiry form?',
-    options: ['3 or fewer', '4 to 7', '8 or more', 'No form, phone only', 'Not sure'],
+    question: 'How many fields does the inquiry form on your website ask patients to fill in?',
+    options: [
+      { value: '3 or fewer', label: '3 or fewer' },
+      { value: '4 to 7', label: '4 to 7' },
+      { value: '8 or more', label: '8 or more' },
+      { value: 'No form, phone only', label: 'We have no form, only a phone number' },
+      { value: 'Not sure', label: 'Not sure' },
+    ],
   },
   {
     name: 'map_after_hours',
     stage: '2 · First response',
-    question: 'What happens to an inquiry that arrives at 9pm on a Saturday?',
-    options: ['Answered within minutes', 'Next business day', 'It depends', 'Not sure'],
+    question: 'When a patient sends an inquiry at night or on the weekend, how soon do they get a reply?',
+    options: [
+      { value: 'Answered within minutes', label: 'Within minutes, even after hours' },
+      { value: 'Next business day', label: 'The next business day' },
+      { value: 'It depends', label: 'It depends on who is working' },
+      { value: 'Not sure', label: 'Not sure' },
+    ],
   },
   {
     name: 'map_follow_up',
     stage: '3 · Nurture and qualify',
-    question: 'If a lead does not book on first contact, how many follow-ups do they get?',
-    options: ['None or one', '2 to 4', '5 or more, automated', 'Not sure'],
+    question: "When a new lead doesn't book on the first contact, how many more times does your team reach out?",
+    options: [
+      { value: 'None or one', label: 'Once or not at all' },
+      { value: '2 to 4', label: '2 to 4 times' },
+      { value: '5 or more, automated', label: '5 or more times, sent automatically' },
+      { value: 'Not sure', label: 'Not sure' },
+    ],
   },
   {
     name: 'map_reminders',
     stage: '4 · Book and show up',
-    question: 'Do booked consults get automatic reminders?',
-    options: ['Text and email', 'Email only', 'Phone call only', 'No reminders', 'Not sure'],
+    question: 'How are patients reminded about a booked consultation?',
+    options: [
+      { value: 'Text and email', label: 'Text and email' },
+      { value: 'Email only', label: 'Email only' },
+      { value: 'Phone call only', label: 'A phone call from our staff' },
+      { value: 'No reminders', label: 'No reminders are sent' },
+      { value: 'Not sure', label: 'Not sure' },
+    ],
   },
   {
     name: 'map_post_consult',
     stage: '5 · Consult to commitment',
-    question: 'After a consult, what happens if the patient does not decide in the room?',
-    options: ['Structured follow-up until they decide', 'A call or two', 'Nothing systematic', 'Not sure'],
+    question: 'When a patient leaves a consultation without deciding to start treatment, what does your team do next?',
+    options: [
+      { value: 'Structured follow-up until they decide', label: 'We follow up on a set schedule until they decide' },
+      { value: 'A call or two', label: 'We call them once or twice' },
+      { value: 'Nothing systematic', label: 'Nothing is set up' },
+      { value: 'Not sure', label: 'Not sure' },
+    ],
   },
   {
     name: 'map_financing',
     stage: '5 · Consult to commitment',
-    question: 'Do you present financing options before or at the consult?',
-    options: ['Yes, before or at the consult', 'Only if asked', 'No', 'Not applicable'],
+    question: 'Do patients hear about payment or financing options before or during the consultation?',
+    options: [
+      { value: 'Yes, before or at the consult', label: 'Yes, before or during the consult' },
+      { value: 'Only if asked', label: 'Only if the patient asks' },
+      { value: 'No', label: 'No' },
+      { value: 'Not applicable', label: "Doesn't apply to us" },
+    ],
   },
   {
     name: 'map_between_visits',
     stage: '6 · In treatment',
-    question: 'Between visits or cycles, does anyone check in with patients?',
-    options: ['Yes, on a schedule', 'Only when they reach out', 'No', 'Not applicable'],
+    question: 'Between visits or treatment cycles, does anyone on your team check in with patients?',
+    options: [
+      { value: 'Yes, on a schedule', label: 'Yes, on a set schedule' },
+      { value: 'Only when they reach out', label: 'Only when the patient contacts us' },
+      { value: 'No', label: 'No' },
+      { value: 'Not applicable', label: 'Our treatment is a single visit' },
+    ],
   },
   {
     name: 'map_stored_followup',
     stage: '7 · After the cycle',
-    question: 'Patients with stored eggs or embryos: when did they last hear from you?',
-    options: ['Within the last year', 'Only at storage billing', 'Not sure', 'We do not store'],
+    question: 'For patients with frozen eggs or embryos in storage, when did your clinic last contact them about next steps?',
+    options: [
+      { value: 'Within the last year', label: 'Within the last year' },
+      { value: 'Only at storage billing', label: 'Only when we send the storage bill' },
+      { value: 'Not sure', label: 'Not sure' },
+      { value: 'We do not store', label: "We don't store eggs or embryos" },
+    ],
     fertilityOnly: true,
   },
   {
     name: 'map_reviews',
     stage: '8 · Advocate and return',
-    question: 'Do you ask every patient for a review?',
-    options: ['Yes, automatically', 'Sometimes', 'No'],
+    question: 'After treatment, are patients asked to leave a review or refer a friend?',
+    options: [
+      { value: 'Yes, automatically', label: 'Yes, every patient, automatically' },
+      { value: 'Sometimes', label: 'Sometimes' },
+      { value: 'No', label: 'No' },
+    ],
   },
   {
     name: 'map_measure',
     stage: 'Measure',
-    question: 'Can you see where patients drop off between stages?',
-    options: ['Yes, by stage', 'Roughly', 'No'],
+    question: 'Can you see how many patients you lose at each step, from first inquiry to starting treatment?',
+    options: [
+      { value: 'Yes, by stage', label: 'Yes, for each step' },
+      { value: 'Roughly', label: 'Roughly, not exactly' },
+      { value: 'No', label: 'No' },
+    ],
   },
 ];
 
@@ -180,18 +255,18 @@ function MapQuestionField({ q, disabled }: { q: MapQuestion; disabled: boolean }
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {q.options.map((opt) => (
           <label
-            key={opt}
+            key={opt.value}
             className="flex min-h-[48px] cursor-pointer items-center gap-3 rounded-lg border border-sand bg-cream px-4 py-3 font-body text-[15px] text-teal-deep transition-colors hover:border-teal/50 has-[:checked]:border-teal has-[:checked]:bg-mist has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-teal"
           >
             <input
               type="radio"
               name={q.name}
-              value={opt}
+              value={opt.value}
               required
               disabled={disabled}
               className="h-4 w-4 shrink-0 accent-teal"
             />
-            {opt}
+            {opt.label}
           </label>
         ))}
       </div>
@@ -338,7 +413,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
               Where does your clinic leak? See it on the GrowthOS Map.
             </h1>
             <p className="font-body text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking and the modules that close each one. Results in 48 hours.
+              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking and the modules that close each one. Your report arrives in your inbox in a few minutes.
             </p>
             <div className="flex flex-col items-center gap-4">
               <Button
@@ -352,7 +427,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               <p className="font-body text-sm text-teal-deep/70 max-w-2xl">
-                Free audit. Results in 48 hours. Includes The Seven-Figure Leak framework guide.
+                Free audit. Your report arrives in your inbox in a few minutes. Includes The Seven-Figure Leak framework guide.
               </p>
             </div>
           </div>
@@ -405,7 +480,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   Your audit is underway.
                 </h2>
                 <p className="font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-                  Your audit is underway. Check your email for The Seven-Figure Leak guide. Your results arrive within 48 hours.
+                  Your audit is underway. Check your email for The Seven-Figure Leak guide. Your report arrives in your inbox in a few minutes.
                 </p>
               </div>
             ) : (
@@ -415,7 +490,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                     Get My Free Audit
                   </h2>
                   <p className="font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-                    Free audit. Results in 48 hours. Includes The Seven-Figure Leak framework guide.
+                    Free audit. Your report arrives in your inbox in a few minutes. Includes The Seven-Figure Leak framework guide.
                   </p>
                 </div>
 
@@ -583,7 +658,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   {/* Monthly leads */}
                   <div>
                     <label htmlFor="monthly_leads" className={labelClasses}>
-                      New leads per month
+                      New patient inquiries per month
                       <RequiredMark />
                     </label>
                     <select
@@ -598,8 +673,8 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                         Select one
                       </option>
                       {monthlyLeadsOptions.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
                         </option>
                       ))}
                     </select>
@@ -608,7 +683,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   {/* Monthly consults */}
                   <div>
                     <label htmlFor="monthly_consults" className={labelClasses}>
-                      Consults per month
+                      Consultations per month
                       <RequiredMark />
                     </label>
                     <select
@@ -623,8 +698,8 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                         Select one
                       </option>
                       {monthlyConsultsOptions.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
                         </option>
                       ))}
                     </select>
@@ -648,8 +723,8 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                         Select one
                       </option>
                       {leadResponderOptions.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
                         </option>
                       ))}
                     </select>
@@ -658,22 +733,22 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   {/* Funnel systems */}
                   <fieldset>
                     <legend className={labelClasses}>
-                      What touches your funnel today?
+                      Which of these do you use to bring in or follow up with new patients?
                     </legend>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {funnelSystemOptions.map((opt) => (
                         <label
-                          key={opt}
+                          key={opt.value}
                           className="flex items-center gap-3 rounded-lg border border-sand bg-paper px-4 py-3 font-body text-sm text-foreground cursor-pointer hover:border-primary/50"
                         >
                           <input
                             type="checkbox"
                             name="funnel_systems"
-                            value={opt}
+                            value={opt.value}
                             disabled={isSubmitting}
                             className="h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-teal/30 text-orange accent-orange focus:ring-2 focus:ring-orange/40"
                           />
-                          {opt}
+                          {opt.label}
                         </label>
                       ))}
                     </div>
@@ -682,7 +757,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   {/* Locations */}
                   <div>
                     <label htmlFor="location_count" className={labelClasses}>
-                      Locations
+                      Number of clinic locations
                     </label>
                     <select
                       id="location_count"
@@ -693,8 +768,8 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                     >
                       <option value="">Select one</option>
                       {locationOptions.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
                         </option>
                       ))}
                     </select>
@@ -703,7 +778,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   {/* EHR / practice system */}
                   <div>
                     <label htmlFor="primary_ehr" className={labelClasses}>
-                      EHR / practice system{' '}
+                      EHR or practice management system{' '}
                       <span className="text-teal-deep/75">(optional)</span>
                     </label>
                     <input
@@ -818,7 +893,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       )}
                     </Button>
                     <p className="mt-4 font-body text-sm text-teal-deep/75">
-                      Your results arrive by email within 48 hours. No spam. No obligation.
+                      Your report arrives in your inbox in a few minutes. No spam. No obligation.
                     </p>
                   </div>
                   </div>
