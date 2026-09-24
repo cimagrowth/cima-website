@@ -322,7 +322,7 @@ const Training = () => {
             className="max-w-3xl mx-auto mb-12 md:mb-14 text-center"
           >
             <p className="font-display text-[clamp(24px,3.2vw,38px)] font-[340] tracking-tight text-teal-deep leading-snug mb-4">
-              $299 per month, or $2,999 per year.
+              Pricing is shared in your demo.
             </p>
             <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
               Not per seat, not per learner, not per course. Video generation is

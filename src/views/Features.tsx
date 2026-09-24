@@ -123,7 +123,7 @@ const aiEngagementCards = [
     icon: Zap,
     title: "Instant Lead Response",
     description:
-      "Every new inquiry gets a response in under 60 seconds. The AI engages, qualifies, and routes, so your team only handles patients who are ready.",
+      "Every new inquiry gets a response in seconds. The AI engages, qualifies, and routes, so your team only handles patients who are ready.",
   },
   {
     icon: Bell,

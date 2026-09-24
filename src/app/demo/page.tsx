@@ -14,14 +14,6 @@ export const metadata: Metadata = {
     description: 'See how GrowthOS transforms patient acquisition for fertility clinics, med spas, and wellness centers.',
     url: 'https://cimagrowth.com/demo',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-demo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Book a Demo – Cima Growth Solutions',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -29,7 +21,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Book a Demo – Cima Growth Solutions',
     description: 'See how GrowthOS transforms patient acquisition for fertility clinics, med spas, and wellness centers.',
-    images: ['/og/og-demo.png'],
   },
 };
 

@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -125,6 +126,8 @@ export interface SolutionLandingProps {
     primaryCta: Cta;
     secondaryCta?: Cta;
   };
+  /** The GrowthOS Map, rendered on the server and shown under the hero. */
+  mapSection?: ReactNode;
 }
 
 const SolutionLanding = ({
@@ -141,6 +144,7 @@ const SolutionLanding = ({
   faqs,
   related,
   closing,
+  mapSection,
 }: SolutionLandingProps) => {
   return (
     <>
@@ -178,6 +182,8 @@ const SolutionLanding = ({
           </motion.div>
         </div>
       </section>
+
+      {mapSection}
 
       {/* The problem */}
       <section className="section-padding bg-background relative overflow-hidden">

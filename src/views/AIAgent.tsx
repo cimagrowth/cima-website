@@ -117,8 +117,6 @@ const features = [
 const pricingTiers = [
   {
     name: "Starter",
-    monthlyPrice: 297,
-    annualPrice: 247,
     planKeyMonthly: "starter_monthly" as const,
     planKeyAnnual: "starter_annual" as const,
     description: "For clinics ready to automate patient follow-up",
@@ -136,8 +134,6 @@ const pricingTiers = [
   },
   {
     name: "Pro",
-    monthlyPrice: 497,
-    annualPrice: 414,
     planKeyMonthly: "pro_monthly" as const,
     planKeyAnnual: "pro_annual" as const,
     description: "For multi-location clinics and high-volume practices",
@@ -193,8 +189,14 @@ const faqItems = [
   },
 ];
 
-const AIAgent = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
+export interface AIAgentFigures {
+  medianSeconds: number;
+  pctUnder60: string;
+  conversations: string;
+  windowDays: number;
+}
+
+const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
@@ -262,20 +264,20 @@ const AIAgent = () => {
           >
             {[
               {
-                stat: "78%",
-                text: "of patients choose the first clinic to respond",
+                stat: `${figures.medianSeconds} sec`,
+                text: "median GrowthOS first reply to a patient message",
+              },
+              {
+                stat: figures.pctUnder60,
+                text: "of patient messages answered in under 60 seconds",
+              },
+              {
+                stat: figures.conversations,
+                text: `patient conversations handled in the last ${figures.windowDays} days`,
               },
               {
                 stat: "24/7",
                 text: "Coverage your staff physically can't provide",
-              },
-              {
-                stat: "15-20",
-                text: "potential patients lost per month to slow follow-up",
-              },
-              {
-                stat: "< 3 sec",
-                text: "average AI response time",
               },
             ].map((item, i) => (
               <motion.div
@@ -290,6 +292,9 @@ const AIAgent = () => {
               </motion.div>
             ))}
           </motion.div>
+          <p className="mt-8 text-center text-xs text-teal-deep/75">
+            Live GrowthOS figures, active clinic accounts only, last {figures.windowDays} days.
+          </p>
         </div>
       </section>
 
@@ -465,33 +470,12 @@ const AIAgent = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Simple Pricing. Setup Fee Waived on Annual Plans. Cancel Anytime.
+              Two plans. Pricing is shared in your demo.
             </h2>
 
-            {/* Monthly/Annual Toggle */}
-            <div className="inline-flex items-center gap-3 bg-card border border-border rounded-full p-1.5">
-              <button
-                onClick={() => setIsAnnual(false)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  !isAnnual
-                    ? "bg-accent-orange text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setIsAnnual(true)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  isAnnual
-                    ? "bg-accent-orange text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Annual
-                <span className="ml-1.5 text-xs opacity-80">Save 17%</span>
-              </button>
-            </div>
+            <p className="text-body-lg text-teal-deep/80">
+              Setup fee waived on six-month and annual terms.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl lg:max-w-6xl mx-auto">
@@ -529,35 +513,6 @@ const AIAgent = () => {
                 >
                   {tier.description}
                 </p>
-                <div className="mb-6">
-                  <span
-                    className={`text-display font-bold ${
-                      tier.highlighted ? "text-paper" : "text-foreground"
-                    }`}
-                  >
-                    ${isAnnual ? tier.annualPrice : tier.monthlyPrice}
-                  </span>
-                  <span
-                    className={`text-body-sm ${
-                      tier.highlighted
-                        ? "text-paper/70"
-                        : "text-muted-foreground"
-                    }`}
-                  >
-                    /mo
-                  </span>
-                  {isAnnual && (
-                    <span
-                      className={`block text-body-sm mt-1 ${
-                        tier.highlighted
-                          ? "text-paper/50"
-                          : "text-muted-foreground"
-                      }`}
-                    >
-                      Billed annually
-                    </span>
-                  )}
-                </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-2.5">
@@ -684,7 +639,7 @@ const AIAgent = () => {
               Every Hour Without an AI Agent Is an Hour of Leads Going to Your Competitor.
             </h2>
             <p className="text-body-lg text-paper/70 max-w-xl mx-auto mb-8">
-              The clinic that responds first wins 78% of the time. Your AI agent responds in under 3 seconds.
+              The clinic that responds first usually wins the patient. Your AI agent responds in seconds.
             </p>
             <Button
               asChild
@@ -697,8 +652,8 @@ const AIAgent = () => {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-            <p className="text-sm text-paper/50 mt-4">
-              Setup fee waived on annual plans. Cancel anytime.
+            <p className="text-sm text-paper/75 mt-4">
+              Setup fee waived on six-month and annual terms.
             </p>
           </motion.div>
         </div>

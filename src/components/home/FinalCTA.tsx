@@ -23,7 +23,7 @@ const DEFAULT_DESCRIPTION =
   "Free audit. We benchmark your lead-to-consult rate against the best-run clinics we work with, map your leak stages, and show you the projected recovery. Results in 48 hours.";
 const DEFAULT_CTAS: CtaLink[] = [
   { label: "Get Your Free Audit", href: "/growth", variant: "hero" },
-  { label: "See How It Works", href: "/how-it-works", variant: "hero-outline" },
+  { label: "See the GrowthOS Map", href: "/map", variant: "hero-outline" },
 ];
 
 const FinalCTA = ({

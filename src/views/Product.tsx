@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import FinalCTA from "@/components/home/FinalCTA";
+import IntegrationsPanel from "@/components/map/IntegrationsPanel";
 import {
   ArrowRight,
   Check,
@@ -118,7 +119,7 @@ const compareRows: CompareRow[] = [
     ghl: "Manual",
   },
   {
-    label: "EHR / EMR integration (ModMed, etc.)",
+    label: "EHR / EMR integration",
     growthos: "yes",
     hubspot: "no",
     ghl: "no",
@@ -209,15 +210,6 @@ const modes: Mode[] = [
     description:
       "GrowthOS becomes your complete patient growth infrastructure, with contacts, pipelines, inbox, automations, ads, and reporting in one place, run by the AI team.",
   },
-];
-
-const integrations = [
-  "HubSpot",
-  "Salesforce",
-  "Zoho",
-  "Keap",
-  "Tebra",
-  "DearDoc",
 ];
 
 const Product = () => {
@@ -530,22 +522,12 @@ const Product = () => {
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             className="mt-12 md:mt-14 text-center"
           >
-            <p className="text-sm text-muted-foreground mb-5">
-              Migrating from or integrating with:
+            <IntegrationsPanel className="max-w-3xl mx-auto text-left" />
+            <p className="mt-8 text-base">
+              <Link href="/features" className="font-semibold text-teal underline underline-offset-2">
+                See every GrowthOS feature
+              </Link>
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-10 gap-y-3 opacity-70">
-              {integrations.map((name) => (
-                <span
-                  key={name}
-                  className="text-base md:text-lg font-semibold text-foreground"
-                >
-                  {name}
-                </span>
-              ))}
-              <span className="text-base md:text-lg font-semibold text-foreground">
-                + API
-              </span>
-            </div>
           </motion.div>
         </div>
       </section>

@@ -18,14 +18,6 @@ export const metadata: Metadata = {
     description: 'Insights on AI, patient acquisition strategies, and clinic growth.',
     url: 'https://cimagrowth.com/blog',
     siteName: 'Cima Growth Solutions',
-    images: [
-      {
-        url: '/og/og-blog.png',
-        width: 1200,
-        height: 630,
-        alt: 'Blog – Cima Growth Solutions',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -33,7 +25,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Blog – Cima Growth Solutions',
     description: 'Insights on AI, patient acquisition strategies, and clinic growth.',
-    images: ['/og/og-blog.png'],
   },
 };
 

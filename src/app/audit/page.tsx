@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Audit from '@/views/Audit';
 
 const TITLE =
-  'Free Clinic Audit \u2014 See Where You\u2019re Losing Patients in 90 Seconds';
+  'Free Clinic Audit: See Where You\u2019re Losing Patients in 90 Seconds';
 const DESCRIPTION =
-  'Three free AI tools that audit your website, intake response, and compliance exposure \u2014 plus The Seven-Figure Leak, a free 108-page book on where fertility patients fall out of the journey and how AI fixes it. No credit card.';
+  'Three free AI tools that audit your website, intake response, and compliance exposure, plus The Seven-Figure Leak, a free 108-page book on where fertility patients fall out of the journey and how AI fixes it. No credit card.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Free Clinic Audit \u2014 Cima Growth Solutions',
+        alt: 'Free Clinic Audit | Cima Growth Solutions',
       },
     ],
     locale: 'en_US',

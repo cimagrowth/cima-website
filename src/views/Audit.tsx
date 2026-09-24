@@ -167,7 +167,7 @@ const Audit = () => {
 
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            {/* Left column — copy */}
+            {/* Left column: copy */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -175,16 +175,15 @@ const Audit = () => {
               className="lg:col-span-7"
             >
               <h1 className="font-display font-[340] tracking-tight text-foreground text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
-                The average clinic loses{" "}
+                Leads that click, visit, and vanish are{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10">$8,000–$23,000 a month</span>
+                  <span className="relative z-10">patients you already paid for.</span>
                   <span
                     aria-hidden
                     className="absolute left-0 right-0 bottom-1 h-3 bg-accent-orange/25 rounded-sm"
                     style={{ zIndex: 0 }}
                   />
-                </span>{" "}
-                to leads that click, visit, and vanish.
+                </span>
                 <br />
                 <span className="text-gradient-accent">
                   In 90 seconds, I&apos;ll show you exactly where yours is
@@ -197,14 +196,14 @@ const Audit = () => {
                 response, and your compliance exposure, in the time it takes
                 to make coffee. Plus a free copy of{" "}
                 <em>The Seven-Figure Leak</em>, our 108-page patient leakage
-                playbook. Built from 15 years inside 100+ fertility,
+                playbook. Built from 15 years inside fertility,
                 aesthetics, and wellness practices. No credit card. No sales
                 call. Keep them as long as you want.
               </p>
 
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
                 {[
-                  "Used by 100+ clinics",
+                  "Built for clinics",
                   "HIPAA-conscious",
                   "Results in under 2 minutes",
                   "No credit card",
@@ -219,7 +218,7 @@ const Audit = () => {
               </div>
             </motion.div>
 
-            {/* Right column — form (sticky on desktop) */}
+            {/* Right column: form (sticky on desktop) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -281,14 +280,14 @@ const Audit = () => {
                 icon: Ghost,
                 title:
                   "Someone filled out your form yesterday. You'll never know they booked with the clinic two miles away.",
-                body: "Your front desk took 4 hours to respond. They were polite, generic, and never asked for the appointment. The patient had already moved on.",
+                body: "Your front desk took hours to respond. They were polite, generic, and never asked for the appointment. The patient had already moved on.",
                 tag: "Found by the Lead Response Grader.",
               },
               {
                 icon: Unplug,
                 title:
-                  "Your homepage takes 6 seconds to load. Your pricing is three clicks deep. Your booking button is below the fold.",
-                body: "Every second of load time costs you ~7% of visitors. Every unclear path costs you more. Most practice owners have never once audited their own site from a patient's perspective.",
+                  "Your homepage loads slowly. Your pricing is three clicks deep. Your booking button is below the fold.",
+                body: "Every second of load time costs you visitors. Every unclear path costs you more. Most practice owners have never once audited their own site from a patient's perspective.",
                 tag: "Found by the Patient Journey Audit.",
               },
               {
@@ -354,7 +353,7 @@ const Audit = () => {
                 bullets: [
                   "Scores your website across 8 dimensions patients actually care about",
                   "Flags every friction point between \u201cI\u2019m curious\u201d and \u201cI booked\u201d",
-                  "Benchmarks your performance against 100+ clinics from inside the industry",
+                  "Benchmarks your performance against clinics from inside the industry",
                   "Runs in about 2 minutes",
                 ],
               },
@@ -367,7 +366,7 @@ const Audit = () => {
                   "Crawls your homepage + 4 internal pages",
                   "Flags specific regulatory red flags in plain English",
                   "Tells you which risks are \u201cfix today\u201d vs \u201cfix this month\u201d",
-                  "Doesn\u2019t replace a compliance attorney, but will 10x what one catches",
+                  "Doesn\u2019t replace a compliance attorney, but gives yours a head start",
                 ],
               },
               {
@@ -379,7 +378,7 @@ const Audit = () => {
                   "Grades tone, speed, clarity, CTA strength, and objection handling",
                   "Scores each reply out of 100 with specific rewrites",
                   "Works for SMS, email, and chat responses",
-                  "Most clinic owners find $30k+/year leaking here",
+                  "Shows what slow or generic replies are costing you",
                 ],
               },
             ].map((tool, i) => {
@@ -451,7 +450,7 @@ const Audit = () => {
               Who&apos;s behind this
             </p>
             <h2 className="font-display font-[340] text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
-              15 years. 100+ clinics. One obsession: figuring out why leads
+              15 years. One obsession: figuring out why leads
               click, visit, and disappear, and what to do about it.
             </h2>
             <div className="space-y-5 text-[1.0625rem] md:text-[1.125rem] leading-relaxed text-primary-foreground/90">
@@ -470,7 +469,7 @@ const Audit = () => {
               </p>
               <p>
                 If you want to fix it yourself, these tools plus{" "}
-                <em>The Seven-Figure Leak</em> will get you 80% of the way.
+                <em>The Seven-Figure Leak</em> will get you most of the way.
                 If you&apos;d
                 rather I do it for you, there&apos;s a way for that too. But
                 that&apos;s a conversation for later. Right now, just run
@@ -503,7 +502,7 @@ const Audit = () => {
               {
                 id: "faq-1",
                 q: "Is this really free? What's the catch?",
-                a: "No catch. I give the tools away because clinic owners who use them become better customers for my bigger offerings. But 80% of people who run their audit never spend a dime with me, and that's fine. I'd rather you have the information.",
+                a: "No catch. I give the tools away because clinic owners who use them become better customers for my bigger offerings. Most people who run their audit never spend a dime with me, and that's fine. I'd rather you have the information.",
               },
               {
                 id: "faq-2",
@@ -563,7 +562,7 @@ const Audit = () => {
             <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <p className="mt-5 text-xs text-muted-foreground">
-            100+ clinics. 15 years. Zero credit cards asked for.
+            15 years. Zero credit cards asked for.
           </p>
         </div>
       </section>

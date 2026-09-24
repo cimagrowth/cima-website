@@ -1,5 +1,7 @@
 // JSON-LD Schema generators for SEO
 
+import { BRANDON_SOCIAL, CIMA_SOCIAL } from "@/content/social";
+
 const SITE_URL = "https://cimagrowth.com";
 const COMPANY_NAME = "Cima Growth Solutions";
 const PRODUCT_NAME = "GrowthOS";
@@ -17,7 +19,7 @@ export const generateOrganizationSchema = ({
   url = SITE_URL,
   logo = `${SITE_URL}/og-image.png`,
   description = "AI-powered patient engagement and marketing automation platform for fertility clinics, med spas, and regenerative medicine practices.",
-  sameAs = [],
+  sameAs = CIMA_SOCIAL.map((p) => p.url),
 }: OrganizationSchemaProps = {}) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -44,6 +46,21 @@ export const generateOrganizationSchema = ({
     "Regenerative Medicine Marketing",
     "HIPAA Compliant CRM",
   ],
+});
+
+export const generateFounderSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/#brandon-hensinger`,
+  name: "Brandon Hensinger",
+  image: `${SITE_URL}/brandon-hensinger.jpg`,
+  jobTitle: "Founder and CEO",
+  worksFor: {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: COMPANY_NAME,
+  },
+  sameAs: BRANDON_SOCIAL.map((p) => p.url),
 });
 
 export interface WebsiteSchemaProps {
@@ -227,4 +244,22 @@ export const generateServiceSchema = ({
     "@type": "Audience",
     audienceType: "Fertility Clinics and Reproductive Medicine Practices",
   },
+});
+
+export interface ItemListSchemaProps {
+  name: string;
+  items: { name: string; url: string }[];
+}
+
+export const generateItemListSchema = ({ name, items }: ItemListSchemaProps) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name,
+  numberOfItems: items.length,
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    url: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+  })),
 });

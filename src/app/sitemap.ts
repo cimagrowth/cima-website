@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllPublishedSlugsWithDates } from '@/lib/blog-data';
+import { STAGE_SLUGS } from '@/lib/growthos-map';
 
 const BASE = 'https://cimagrowth.com';
 
@@ -8,11 +9,18 @@ export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1.0 },
+    { url: `${BASE}/map`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.95 },
+    ...Object.values(STAGE_SLUGS).map((slug) => ({
+      url: `${BASE}/map/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
+    { url: `${BASE}/keep`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/product`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/features`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/demo`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/growth`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/how-it-works`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/ai-agent`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/outreach`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/ads`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },

@@ -25,6 +25,12 @@ export default {
         teal: "#1B4D5C",
         "teal-deep": "#143038",
         clay: "#D2693B",
+        // White text on a filled button needs clay-deep: white on clay fails WCAG AA.
+        "clay-deep": "#B5501C",
+        "clay-soft": "#F2B48E",
+        "clay-wash": "#FCE9DD",
+        // Small clay text on light grounds: clay-deep text on cream is 4.45:1, under AA.
+        "clay-ink": "#8A3A12",
         orange: {
           DEFAULT: "#F97316",
           600: "#EA580C",

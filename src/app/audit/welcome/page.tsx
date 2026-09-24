@@ -57,7 +57,7 @@ function getVariant(status: Status, name: string): Variant {
         icon: 'success',
         headline: `You're in, ${displayName}.`,
         subcopy:
-          'Your copy of The Seven-Figure Leak is on its way \u2014 check the email we just sent.',
+          'Your copy of The Seven-Figure Leak is on its way. Check the email we just sent.',
         secondary: 'The email also has a link to your free AI tools dashboard.',
       };
     case 'already_verified':
@@ -65,14 +65,14 @@ function getVariant(status: Status, name: string): Variant {
         icon: 'success',
         headline: `Welcome back, ${displayName}.`,
         subcopy:
-          'Looks like you already verified this email. We just re-sent your copy of The Seven-Figure Leak and your login link \u2014 check your inbox.',
+          'Looks like you already verified this email. We just re-sent your copy of The Seven-Figure Leak and your login link. Check your inbox.',
       };
     case 'invalid_link':
       return {
         icon: 'warning',
         headline: "This link doesn't look right.",
         subcopy:
-          "Your verification link may have been mistyped or from a different browser. The easiest fix: sign up again at the link below \u2014 you'll get a fresh email in seconds.",
+          "Your verification link may have been mistyped or from a different browser. The easiest fix: sign up again at the link below and you'll get a fresh email in seconds.",
         cta: { label: 'Sign up again \u2192', href: '/audit' },
       };
     case 'expired':
@@ -80,7 +80,7 @@ function getVariant(status: Status, name: string): Variant {
         icon: 'warning',
         headline: 'This link has expired.',
         subcopy:
-          "Verification links last 24 hours. No problem \u2014 sign up again and we'll send a fresh one.",
+          "Verification links last 24 hours. No problem: sign up again and we'll send a fresh one.",
         cta: { label: 'Sign up again \u2192', href: '/audit' },
       };
     case 'rate_limited':
@@ -96,7 +96,7 @@ function getVariant(status: Status, name: string): Variant {
         icon: 'warning',
         headline: 'Something went wrong.',
         subcopy:
-          'We hit an issue finishing your signup. Please try signing up again \u2014 if it keeps failing, email brandon@cimagrowth.com.',
+          'We hit an issue finishing your signup. Please try signing up again. If it keeps failing, email brandon@cimagrowth.com.',
         cta: { label: 'Sign up again \u2192', href: '/audit' },
       };
   }
@@ -160,7 +160,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
           <div className="mt-8">
             <Link
               href={variant.cta.href}
-              className="inline-flex items-center justify-center rounded-lg bg-clay px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-lg bg-clay-deep px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-clay-deep/90 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
             >
               {variant.cta.label}
             </Link>

@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
+import { getGrowthosMap, getPlatformStats, firstReplyCommitment } from '@/lib/growthos-map';
+import MapExplorer from '@/components/home/MapExplorer';
+import { buildExplorerStages, explorerSourceKeys } from '@/components/map/explorer-data';
+import SourcesList from '@/components/map/SourcesList';
+import { WRAP } from '@/components/map/ui';
+import { ANY_EHR_LINE, EHR_SYSTEMS } from '@/content/integrations';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'fertility-clinic-marketing';
@@ -19,7 +25,7 @@ const content: SolutionLandingProps = {
     heading: 'In fertility, the clinic that responds first, and follows up longest',
     accent: 'wins.',
     paragraphs: [
-      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: the average fertility patient needs 7 to 12 touchpoints over weeks before they commit, and most clinics stop after one or two.',
+      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: a fertility decision takes many conversations over weeks, and most clinics stop after one or two.',
       'Then there is everything a stretched front desk cannot keep up with. Inquiries that arrive after hours. Patients who go quiet mid-decision. Cycles that pause and never resume. Egg-freezing leads that were never followed up. Each one is a patient, and a high-value treatment, quietly lost.',
     ],
     points: [
@@ -43,7 +49,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'repeat',
         title: 'Long-cycle nurture that never fades',
-        body: 'Follows up 7 to 12 times across days and weeks, adapting to where the patient is in their journey and IVF cycle stage. It never forgets and never goes cold after day three.',
+        body: 'Follows up again and again across days and weeks, adapting to where the patient is in their journey and IVF cycle stage. It never forgets and never goes cold after day three.',
       },
       {
         icon: 'megaphone',
@@ -93,9 +99,9 @@ const content: SolutionLandingProps = {
   },
   proofPoints: [
     'Instant multi-channel response',
-    '7 to 12 touch long-cycle nurture',
+    'Long-cycle nurture that keeps following up',
     'HIPAA-grade with a BAA',
-    'Live in 48 hours',
+    'Leads flowing on day one',
   ],
   faqs: [
     {
@@ -106,7 +112,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How does GrowthOS handle the long fertility decision cycle?',
       answer:
-        'It follows up 7 to 12 times across days and weeks, adapting tone and content to where the patient is emotionally and clinically, so patients who need time are nurtured patiently instead of forgotten after the first reply.',
+        'It keeps following up across days and weeks, adapting tone and content to where the patient is emotionally and clinically, so patients who need time are nurtured patiently instead of forgotten after the first reply.',
     },
     {
       question: 'Is GrowthOS HIPAA compliant?',
@@ -126,7 +132,7 @@ const content: SolutionLandingProps = {
     {
       question: 'Does it work with our EHR or existing CRM?',
       answer:
-        'Yes. GrowthOS integrates with ModMed and others, and can sit on top of Salesforce, HubSpot, or Zoho, or replace your CRM entirely.',
+        `Yes. GrowthOS integrates with ${EHR_SYSTEMS.join(', ')}. ${ANY_EHR_LINE} It can sit on top of Salesforce, HubSpot, GoHighLevel or Zoho, or replace your CRM entirely.`,
     },
   ],
   related: {
@@ -141,7 +147,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/why-your-clinic-loses-40-percent-of-inquiries',
-        label: 'Why Your Clinic Loses 40% of Inquiries',
+        label: 'Why Clinics Lose Inquiries',
         description: 'The slow-response gap that quietly hands patients to faster clinics.',
       },
       {
@@ -173,7 +179,8 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'Every day without GrowthOS is another fertility patient choosing the clinic that answered first.',
-    body: 'Our commitment, in writing: every lead answered in under 60 seconds, every patient followed up at every stage. Miss it and your next month is credited. Implementation included on annual plans. Live in 48 hours.',
+    // Filled from live platform figures in Page().
+    body: '',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },
@@ -206,7 +213,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export const revalidate = 3600;
+
+export default async function Page() {
+  const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
+  const explorerStages = buildExplorerStages(map, stats);
+  const mapSection = (
+    <>
+      <MapExplorer stages={explorerStages} defaultStage="after_cycle" />
+      <div className={`${WRAP} pb-16`}>
+        <SourcesList map={map} sourceKeys={explorerSourceKeys(explorerStages)} windowDays={stats.window_days} />
+      </div>
+    </>
+  );
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,
@@ -220,7 +239,11 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <SolutionLanding {...content} />
+      <SolutionLanding
+        {...content}
+        closing={{ ...content.closing, body: firstReplyCommitment(stats) }}
+        mapSection={mapSection}
+      />
     </>
   );
 }
