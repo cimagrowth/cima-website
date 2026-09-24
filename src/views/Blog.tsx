@@ -24,12 +24,12 @@ const Blog = ({ posts }: BlogProps) => {
 
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center mb-16"
           >
-            <h1 className="font-display font-[340] tracking-tight text-display-lg md:text-display-xl text-foreground mb-6">
+            <h1 className="font-display font-semibold tracking-tight text-display-lg md:text-display-xl text-foreground mb-6">
               Insights for{" "}
               <span className="text-gradient-accent">Clinic Growth</span>
             </h1>

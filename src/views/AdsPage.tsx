@@ -362,7 +362,7 @@ const AdsPage = () => {
         <div className="container-wide relative z-10">
           <motion.div
             variants={containerVariants}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
@@ -375,10 +375,10 @@ const AdsPage = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
+              className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
               Let AI Run Your Ads.{" "}
-              <span className="italic text-clay">Built for Healthcare.</span>
+              <span className="text-clay">Built for Healthcare.</span>
             </motion.h1>
 
             <motion.p
@@ -419,7 +419,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               The Problem
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
               Running Ads for a Medical Practice Is a Specialized Skill. Most Agencies Don't Have It.
             </h2>
           </motion.div>
@@ -457,7 +457,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It Works
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               From Brand Intake to Live Campaigns in Under an Hour.
             </h2>
           </motion.div>
@@ -518,7 +518,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               What You Get
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
               Everything to Run Ads That Actually Convert Patients. Not Just Clicks.
             </h2>
           </motion.div>
@@ -576,7 +576,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It's Different
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Your Ads Get Smarter Every Night While You Sleep.
             </h2>
             <p className="text-body-lg text-muted-foreground">
@@ -717,7 +717,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Proof, Not Promises
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               One-Click Reports That Would Take an Agency Weeks.
             </h2>
             <p className="text-body-lg text-muted-foreground">
@@ -829,7 +829,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Real Results
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
               What Happens When AI Manages Your Ad Spend.
             </h2>
           </motion.div>
@@ -924,7 +924,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Built For Your Specialty
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               AI Ads Tailored to Your Practice
             </h2>
             <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
@@ -994,7 +994,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Where It Lives
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Part of the GrowthOS Growth Plan.
             </h2>
             <p className="text-body-lg text-muted-foreground">
@@ -1035,7 +1035,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               The Comparison
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Why Clinics Switch From Agencies to Cima AI Ads
             </h2>
           </motion.div>
@@ -1088,7 +1088,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Grow With Us
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Ads Are Just the Beginning.
             </h2>
           </motion.div>
@@ -1163,7 +1163,7 @@ const AdsPage = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand mb-4 block">
               Ready?
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Every Dollar of Ad Spend Without AI Optimization Is a Dollar Half-Wasted.
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">

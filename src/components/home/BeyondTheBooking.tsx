@@ -73,7 +73,7 @@ export default function BeyondTheBooking({ map }: { map: GrowthosMap }) {
               </p>
               <p className="rounded-full bg-mist px-2.5 py-1 text-xs font-bold text-teal">INCLUDED IN EVERY PLAN</p>
             </div>
-            <h3 className="font-display text-[clamp(28px,3.4vw,40px)] font-medium leading-[1.1]">
+            <h3 className="font-display text-[clamp(28px,3.4vw,40px)] font-bold leading-[1.1]">
               Keep. For every egg, embryo and sample still in your tanks.
             </h3>
             <p className="text-[17px] leading-relaxed text-teal-deep/80">{KEEP_COPY.body}</p>

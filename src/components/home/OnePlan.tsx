@@ -18,7 +18,7 @@ export default function OnePlan() {
         <div className="grid gap-10 rounded-[26px] bg-teal p-6 text-paper md:p-14 lg:grid-cols-12 lg:gap-12">
           <div className="flex flex-col gap-4 lg:col-span-5">
             <Eyebrow tone="soft">One plan</Eyebrow>
-            <h2 id="plan-title" className="text-paper font-display text-[clamp(32px,4vw,48px)] font-medium leading-[1.05]">
+            <h2 id="plan-title" className="text-paper font-display text-[clamp(32px,4vw,48px)] font-bold leading-[1.05]">
               GrowthOS Growth. The whole Map.
             </h2>
             <p className="text-[17px] leading-relaxed text-paper/85">

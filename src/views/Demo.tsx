@@ -144,11 +144,11 @@ const Demo = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left: headline + trust content */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="font-display font-[340] tracking-tight text-display-lg md:text-display-xl text-foreground mb-6">
+              <h1 className="font-display font-semibold tracking-tight text-display-lg md:text-display-xl text-foreground mb-6">
                 See GrowthOS{" "}
                 <span className="text-gradient-accent">in Action</span>
               </h1>
@@ -205,7 +205,7 @@ const Demo = () => {
 
             {/* Right: form */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"

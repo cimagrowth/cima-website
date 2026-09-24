@@ -112,13 +112,13 @@ export default function AuditWelcomePage({ searchParams }: Props) {
   const variant = getVariant(status, safeName);
 
   const isSuccess = variant.icon === 'success';
-  const iconBg = isSuccess ? 'bg-[#1B4D5C]/10' : 'bg-clay/10';
-  const iconColor = isSuccess ? 'text-[#1B4D5C]' : 'text-clay';
+  const iconBg = isSuccess ? 'bg-[#112434]/10' : 'bg-clay/10';
+  const iconColor = isSuccess ? 'text-[#112434]' : 'text-clay';
   const IconComponent = isSuccess ? CheckCircle2 : AlertTriangle;
 
   return (
-    <section className="min-h-[calc(100vh-8rem)] bg-[#FDFBF7] flex items-center justify-center px-6 py-16">
-      <div className="max-w-[560px] w-full bg-white rounded-2xl shadow-sm border border-[#1B4D5C]/10 p-8 md:p-10 text-center">
+    <section className="min-h-[calc(100vh-8rem)] bg-white flex items-center justify-center px-6 py-16">
+      <div className="max-w-[560px] w-full bg-white rounded-2xl shadow-sm border border-[#112434]/10 p-8 md:p-10 text-center">
         <div className="flex justify-center mb-8">
           <img
             src={cimaLogo}
@@ -134,7 +134,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
         </div>
 
         <h1
-          className="font-display font-[340] text-[#1B4D5C] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
+          className="font-display font-semibold text-[#112434] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {variant.headline}
@@ -160,17 +160,17 @@ export default function AuditWelcomePage({ searchParams }: Props) {
           <div className="mt-8">
             <Link
               href={variant.cta.href}
-              className="inline-flex items-center justify-center rounded-lg bg-clay-deep px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-clay-deep/90 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-lg bg-clay-deep px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
             >
               {variant.cta.label}
             </Link>
           </div>
         )}
 
-        <div className="mt-10 pt-6 border-t border-[#1B4D5C]/10">
+        <div className="mt-10 pt-6 border-t border-[#112434]/10">
           <Link
             href="/"
-            className="text-sm text-[#1B4D5C]/70 hover:text-[#1B4D5C] transition-colors"
+            className="text-sm text-[#112434]/70 hover:text-[#112434] transition-colors"
           >
             {'Back to cimagrowth.com \u2192'}
           </Link>

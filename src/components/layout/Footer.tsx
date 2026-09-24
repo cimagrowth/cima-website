@@ -117,7 +117,7 @@ const Footer = async () => {
       {/* Pre-footer CTA: teal anchor block */}
       <section className="bg-teal py-[clamp(80px,10vw,140px)]">
         <div className="container-wide text-center">
-          <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-5">
+          <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-5">
             Every day without GrowthOS is another day of patients choosing the clinic that responded first.
           </h2>
           <p className="text-base md:text-lg text-paper/85 max-w-xl mx-auto mb-10">
@@ -126,7 +126,7 @@ const Footer = async () => {
           <div className="flex justify-center">
             <Link
               href="/demo"
-              className="group inline-flex h-12 items-center rounded-btn bg-clay-deep px-7 text-base font-semibold text-white transition-colors hover:bg-clay-deep/90"
+              className="group inline-flex h-12 items-center rounded-btn bg-clay-deep px-7 text-base font-semibold text-white transition-colors hover:bg-orange-600"
             >
               Book a demo
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />

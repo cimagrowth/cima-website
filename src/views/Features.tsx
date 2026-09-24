@@ -73,7 +73,7 @@ const SectionHeader = ({
     <span className="text-body-sm font-semibold tracking-widest text-accent-orange uppercase mb-4 block">
       {label}
     </span>
-    <h2 className={`font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4 ${centered ? "mx-auto" : ""} max-w-3xl ${centered ? "mx-auto" : ""}`}>
+    <h2 className={`font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4 ${centered ? "mx-auto" : ""} max-w-3xl ${centered ? "mx-auto" : ""}`}>
       {title}
     </h2>
     <p className={`text-body-lg text-muted-foreground max-w-2xl ${centered ? "mx-auto" : ""}`}>
@@ -406,7 +406,7 @@ const Features = () => {
       {/* ── HERO ── */}
       <section className="pt-28 pb-[clamp(64px,8vw,120px)] md:pt-36 bg-cream relative overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="container-wide relative z-10 text-center"
@@ -415,9 +415,9 @@ const Features = () => {
             <Sparkles className="w-4 h-4" />
             Platform Overview
           </span>
-          <h1 className="font-display font-[340] tracking-[-.02em] text-3xl sm:text-4xl md:text-5xl lg:text-display text-teal-deep mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight">
+          <h1 className="font-display font-semibold tracking-[-.02em] text-3xl sm:text-4xl md:text-5xl lg:text-display text-teal-deep mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight">
             One platform.{" "}
-            <em className="italic text-clay">Everything</em>{" "}
+            <em className="text-clay">Everything</em>{" "}
             your clinic needs.
           </h1>
           <p className="text-lg md:text-xl text-teal-deep/80 max-w-3xl mx-auto mb-10">

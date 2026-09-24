@@ -63,7 +63,7 @@ export default function StageDetail({
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
         <div className="flex flex-col gap-4 lg:col-span-7">
           <p className="text-sm font-bold uppercase tracking-[0.1em] text-clay-ink">Stage {stage.number}</p>
-          <Heading className="font-display text-[clamp(32px,4vw,48px)] font-medium leading-[1.06] tracking-[-0.02em] text-teal-deep">
+          <Heading className="font-display text-[clamp(32px,4vw,48px)] font-bold leading-[1.06] tracking-[-0.02em] text-teal-deep">
             {stage.name}
           </Heading>
           <ul className="flex flex-col gap-1.5">

@@ -149,10 +149,10 @@ const SolutionLanding = ({
   return (
     <>
       {/* Hero */}
-      <section className="section-padding bg-cream relative overflow-hidden">
+      <section className="pb-16 pt-10 md:pb-20 md:pt-14 bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
@@ -160,8 +160,8 @@ const SolutionLanding = ({
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               {eyebrow}
             </p>
-            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              {h1Lead} <span className="italic text-clay">{h1Accent}</span>
+            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
+              {h1Lead} <span className="text-clay">{h1Accent}</span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
               {subhead}
@@ -199,10 +199,10 @@ const SolutionLanding = ({
               <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
                 {problem.eyebrow}
               </p>
-              <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+              <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
                 {problem.heading}{" "}
                 {problem.accent && (
-                  <span className="italic text-clay">{problem.accent}</span>
+                  <span className="text-clay">{problem.accent}</span>
                 )}
               </h2>
               {problem.paragraphs.map((p, i) => (
@@ -241,7 +241,7 @@ const SolutionLanding = ({
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               {solution.eyebrow}
             </p>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
               {solution.heading}
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -292,7 +292,7 @@ const SolutionLanding = ({
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               {whyClinics.eyebrow}
             </p>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
               {whyClinics.heading}
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -356,7 +356,7 @@ const SolutionLanding = ({
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               Questions
             </p>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Common questions
             </h2>
           </motion.div>
@@ -394,7 +394,7 @@ const SolutionLanding = ({
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-center mb-12 max-w-3xl mx-auto"
             >
-              <h2 className="font-display text-[clamp(24px,3.4vw,40px)] font-[340] tracking-tight text-foreground leading-tight mb-4">
+              <h2 className="font-display text-[clamp(24px,3.4vw,40px)] font-semibold tracking-tight text-foreground leading-tight mb-4">
                 {related.heading}
               </h2>
               {related.intro && (
@@ -444,7 +444,7 @@ const SolutionLanding = ({
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-paper mb-6 leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-paper mb-6 leading-tight">
               {closing.heading}
             </h2>
             <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">

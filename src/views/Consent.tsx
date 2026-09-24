@@ -44,15 +44,15 @@ const Consent = () => {
       <section className="section-padding bg-paper relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
             <Eyebrow>Patient consent and education</Eyebrow>
-            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Consent that lives where{" "}
-              <span className="italic text-clay">your patients do.</span>
+              <span className="text-clay">your patients do.</span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
               Branded video education and e-signature that runs inside your CRM.
@@ -98,7 +98,7 @@ const Consent = () => {
         <div className="container-tight relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
             <div className="relative pl-6 md:pl-10 border-l-2 border-orange/70">
-              <p className="font-display text-[clamp(22px,3vw,34px)] font-[340] tracking-tight text-teal leading-snug">
+              <p className="font-display text-[clamp(22px,3vw,34px)] font-semibold tracking-tight text-teal leading-snug">
                 Consent is the one part of the patient journey that still runs on
                 PDFs, printers, and a coordinator chasing signatures by phone. It
                 sits outside every other system you own, which is exactly why it
@@ -120,7 +120,7 @@ const Consent = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>How it works</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Consent that knows where the patient is.
             </h2>
           </motion.div>
@@ -170,7 +170,7 @@ const Consent = () => {
 
           <motion.p
             {...fadeUp}
-            className="font-display text-[clamp(20px,2.6vw,30px)] font-[340] tracking-tight text-teal-deep leading-snug text-center max-w-3xl mx-auto mt-14"
+            className="font-display text-[clamp(20px,2.6vw,30px)] font-semibold tracking-tight text-teal-deep leading-snug text-center max-w-3xl mx-auto mt-14"
           >
             No standalone consent tool can do this, because no standalone consent
             tool owns your pipeline.
@@ -186,7 +186,7 @@ const Consent = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>What it does</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Three things, done properly.
             </h2>
           </motion.div>
@@ -255,7 +255,7 @@ const Consent = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>What is included</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               A full consent library on day one.
             </h2>
           </motion.div>
@@ -337,7 +337,7 @@ const Consent = () => {
             className="text-center mb-10 md:mb-12 max-w-3xl mx-auto"
           >
             <Eyebrow>Audit trail</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               An audit trail that holds up.
             </h2>
           </motion.div>
@@ -363,7 +363,7 @@ const Consent = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>Pricing</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               One plan. No per-seat games.
             </h2>
           </motion.div>
@@ -460,7 +460,7 @@ const Consent = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>Questions</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Common questions
             </h2>
           </motion.div>
@@ -503,7 +503,7 @@ const Consent = () => {
       <section className="section-padding bg-teal text-paper relative overflow-hidden">
         <div className="container-tight relative z-10 text-center">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
-            <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-5">
+            <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-5">
               Modernise the front desk of your practice.
             </h2>
             <p className="text-base md:text-lg text-paper/85 mb-10 max-w-2xl mx-auto leading-relaxed">

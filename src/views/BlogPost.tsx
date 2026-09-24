@@ -94,7 +94,7 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mb-10"
           >
-            <h1 className="font-display font-[340] tracking-tight text-display-lg md:text-display-xl text-foreground mb-4">
+            <h1 className="font-display font-semibold tracking-tight text-display-lg md:text-display-xl text-foreground mb-4">
               {post.title}
             </h1>
 
@@ -141,7 +141,7 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="prose prose-lg max-w-2xl mx-auto prose-headings:font-display prose-headings:text-primary prose-headings:font-[340] prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/85 prose-p:text-lg prose-p:leading-relaxed prose-li:text-foreground/85 prose-a:text-primary prose-a:underline hover:prose-a:text-accent-orange prose-strong:text-foreground"
+            className="prose prose-lg max-w-2xl mx-auto prose-headings:font-display prose-headings:text-primary prose-headings:font-semibold prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-foreground/85 prose-p:text-lg prose-p:leading-relaxed prose-li:text-foreground/85 prose-a:text-primary prose-a:underline hover:prose-a:text-accent-orange prose-strong:text-foreground"
           >
             <div dangerouslySetInnerHTML={{ __html: contentBefore }} />
 
@@ -215,7 +215,7 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
             className="mt-6 max-w-2xl mx-auto"
           >
             <div className="rounded-2xl bg-teal-deep px-6 py-8 md:px-10 md:py-10 text-center">
-              <h3 className="font-display font-[340] text-2xl md:text-3xl text-paper mb-3">
+              <h3 className="font-display font-semibold text-2xl md:text-3xl text-paper mb-3">
                 See it working on your own inquiries
               </h3>
               <p className="text-paper/80 mb-6 max-w-lg mx-auto leading-relaxed">

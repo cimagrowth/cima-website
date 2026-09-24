@@ -37,7 +37,7 @@ export default function AuditMapPreview({ map }: { map: GrowthosMap }) {
           ))}
         </span>
       </figcaption>
-      <p className="mb-4 font-display text-2xl font-medium text-teal-deep">Your GrowthOS Map</p>
+      <p className="mb-4 font-display text-2xl font-bold text-teal-deep">Your GrowthOS Map</p>
       <ol className="flex flex-col divide-y divide-sand">
         {map.stages.map((stage, i) => {
           const status = EXAMPLE_STATUSES[i] ?? "at-risk";

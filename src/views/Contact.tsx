@@ -17,9 +17,9 @@ const SMS_CONSENT_TEXT =
   'I agree to receive SMS messages from Cima Growth Solutions at the phone number provided regarding consultation scheduling, GrowthOS onboarding updates, and educational resources. Up to 4 msgs/month. Consent is not a condition of purchase. Msg & data rates may apply. Reply STOP to opt out, HELP for help. View our Privacy Policy.';
 
 const inputClasses =
-  'h-12 rounded-lg border border-[#E3E7ED] bg-white px-4 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:border-white/10 dark:bg-white/5 dark:text-[#FDFBF7] dark:placeholder:text-white/40 dark:focus-visible:border-accent-orange';
+  'h-12 rounded-lg border border-[#E3E7ED] bg-white px-4 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40 dark:focus-visible:border-accent-orange';
 
-const labelClasses = 'mb-2 block text-sm font-medium text-[#5a6b7e] dark:text-[#FDFBF7]/80';
+const labelClasses = 'mb-2 block text-sm font-medium text-[#5a6b7e] dark:text-white/80';
 
 function RequiredMark() {
   return <span className="ml-0.5 text-accent-orange">*</span>;
@@ -92,20 +92,20 @@ export default function Contact() {
     <div className="bg-background">
       <div className="container-wide mx-auto max-w-[640px] px-4 py-16 md:px-6 md:py-24">
         <header className="mb-10 md:mb-12">
-          <h1 className="font-display text-4xl font-[340] tracking-tight text-teal md:text-5xl">
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-teal md:text-5xl">
             Get in touch.
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/90">
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground dark:text-white/90">
             Tell us what you&rsquo;re working on. Our team typically responds within one business day.
           </p>
         </header>
 
         {status === 'success' ? (
           <div className="rounded-xl border border-[#E3E7ED] bg-white p-8 shadow-soft dark:border-white/10 dark:bg-white/5">
-            <h2 className="font-ui text-2xl font-semibold text-primary dark:text-[#FDFBF7]">
+            <h2 className="font-ui text-2xl font-semibold text-primary dark:text-white">
               Message sent.
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground dark:text-[#FDFBF7]/80">
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground dark:text-white/80">
               Thanks for reaching out. Our team typically responds within one business day.
             </p>
           </div>
@@ -201,7 +201,7 @@ export default function Contact() {
                 placeholder="Tell us what you're looking for. The more context the better."
                 disabled={isSubmitting}
                 className={cn(
-                  'min-h-[140px] rounded-lg border border-[#E3E7ED] bg-white px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:border-white/10 dark:bg-white/5 dark:text-[#FDFBF7] dark:placeholder:text-white/40 dark:focus-visible:border-accent-orange',
+                  'min-h-[140px] rounded-lg border border-[#E3E7ED] bg-white px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40 dark:focus-visible:border-accent-orange',
                 )}
               />
             </div>
@@ -215,11 +215,11 @@ export default function Contact() {
                 checked={smsConsent}
                 onChange={(e) => setSmsConsent(e.target.checked)}
                 disabled={isSubmitting}
-                className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-[#1B4D5C]/30 text-accent-orange accent-accent-orange focus:ring-2 focus:ring-accent-orange/40 dark:border-white/20"
+                className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-[#112434]/30 text-accent-orange accent-accent-orange focus:ring-2 focus:ring-accent-orange/40 dark:border-white/20"
               />
               <label
                 htmlFor="sms_consent"
-                className="cursor-pointer text-sm leading-relaxed text-[#1B4D5C]/80 dark:text-[#FDFBF7]/80"
+                className="cursor-pointer text-sm leading-relaxed text-[#112434]/80 dark:text-white/80"
               >
                 I agree to receive SMS messages from Cima Growth Solutions at the phone number
                 provided regarding consultation scheduling, GrowthOS onboarding updates, and
@@ -272,7 +272,7 @@ export default function Contact() {
               </Button>
             </div>
 
-            <p className="pt-4 text-center text-xs text-[#1B4D5C]/60 dark:text-[#FDFBF7]/60">
+            <p className="pt-4 text-center text-xs text-[#112434]/60 dark:text-white/60">
               By submitting this form you agree to our{' '}
               <a
                 href="/privacy"

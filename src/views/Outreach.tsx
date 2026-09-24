@@ -125,7 +125,7 @@ const Outreach = () => {
         <div className="container-wide relative z-10">
           <motion.div
             variants={containerVariants}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
@@ -138,10 +138,10 @@ const Outreach = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
+              className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
               Turn a Spreadsheet of Prospects Into a{" "}
-              <span className="italic text-clay">Pipeline of Warm Conversations.</span>
+              <span className="text-clay">Pipeline of Warm Conversations.</span>
             </motion.h1>
 
             <motion.p
@@ -168,7 +168,7 @@ const Outreach = () => {
 
           {/* Stats bar */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl lg:max-w-5xl mx-auto"
@@ -203,7 +203,7 @@ const Outreach = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It Works
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Three Steps to a Full Pipeline
             </h2>
           </motion.div>
@@ -264,7 +264,7 @@ const Outreach = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               What You Get
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
               Everything to Run Outreach at Scale, Without an Outreach Team
             </h2>
           </motion.div>
@@ -307,7 +307,7 @@ const Outreach = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Pricing
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Simple, Usage-Based Pricing.
             </h2>
             <p className="text-body-lg text-muted-foreground">
@@ -395,7 +395,7 @@ const Outreach = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Your Pipeline Won't Fill Itself.
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">

@@ -34,7 +34,7 @@ const HipaaSafeTracking = () => {
       <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
@@ -42,9 +42,9 @@ const HipaaSafeTracking = () => {
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               For specialty clinics
             </p>
-            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Run real ad campaigns{" "}
-              <span className="italic text-clay">without leaking patient data</span>
+              <span className="text-clay">without leaking patient data</span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 max-w-3xl mx-auto leading-relaxed">
               Most clinics face a bad choice. Turn off tracking and fly blind, or keep it on and risk a HIPAA violation. GrowthOS removes the choice.
@@ -70,7 +70,7 @@ const HipaaSafeTracking = () => {
               className="max-w-3xl mx-auto"
             >
               <div className="relative pl-6 md:pl-10 border-l-2 border-accent-orange/70">
-                <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+                <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
                   {section.heading}
                 </h2>
                 <p className="text-base md:text-lg text-foreground leading-relaxed">
