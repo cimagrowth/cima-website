@@ -15,7 +15,7 @@ export default function LeakMapCTA() {
             </h2>
             <p className="text-lg leading-relaxed text-teal-deep/80">
               Get your free Leak Map: where your clinic loses patients, scored against the clinics we run,
-              your 90-day recovery number, and the fixes in order. Results in 48 hours.
+              your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:col-span-4">
