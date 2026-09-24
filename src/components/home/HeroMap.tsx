@@ -31,7 +31,7 @@ export default function HeroMap({ map }: { map: GrowthosMap }) {
             </Link>
           </div>
           <p className="text-sm text-teal-deep/75">
-            See where your clinic leaks, benchmarked against the clinics we run. Results in 48 hours.
+            See where your clinic leaks, benchmarked against the clinics we run. Your report arrives in your inbox in a few minutes.
           </p>
         </div>
 
