@@ -160,7 +160,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
           <div className="mt-8">
             <Link
               href={variant.cta.href}
-              className="inline-flex items-center justify-center rounded-lg bg-clay px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-lg bg-clay-deep px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-clay-deep/90 focus:outline-none focus:ring-2 focus:ring-teal-deep focus:ring-offset-2"
             >
               {variant.cta.label}
             </Link>

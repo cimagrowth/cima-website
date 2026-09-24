@@ -219,7 +219,7 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
                 See it working on your own inquiries
               </h3>
               <p className="text-paper/80 mb-6 max-w-lg mx-auto leading-relaxed">
-                {demoCtaCopy.replace(/\s*—\s*book a demo$/i, ".")}
+                {demoCtaCopy.replace(/\.\s*book a demo$/i, ".")}
               </p>
               <Link href="/demo">
                 <Button variant="hero" size="lg">

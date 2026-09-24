@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
+import { getGrowthosMap, getPlatformStats, firstReplyCommitment } from '@/lib/growthos-map';
+import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'regenerative-medicine-marketing';
@@ -95,7 +97,7 @@ const content: SolutionLandingProps = {
     'Instant multi-channel response',
     'Education-led nurture',
     'Compliant by design with a BAA',
-    'Live in 48 hours',
+    'Leads flowing on day one',
   ],
   faqs: [
     {
@@ -168,7 +170,8 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: "Every high-ticket lead you don't follow up with is a competitor's consult.",
-    body: 'Our commitment, in writing: every lead answered in under 60 seconds, every patient followed up at every stage. Miss it and your next month is credited. Implementation included on annual plans. Live in 48 hours.',
+    // Filled from live platform figures in Page().
+    body: '',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },
@@ -201,7 +204,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export const revalidate = 3600;
+
+export default async function Page() {
+  const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
+  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,
@@ -215,7 +222,11 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <SolutionLanding {...content} />
+      <SolutionLanding
+        {...content}
+        closing={{ ...content.closing, body: firstReplyCommitment(stats) }}
+        mapSection={mapSection}
+      />
     </>
   );
 }

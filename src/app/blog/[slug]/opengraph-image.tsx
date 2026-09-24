@@ -5,11 +5,11 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Cima Growth Solutions — blog post';
+export const alt = 'Cima Growth Solutions blog post';
 
-const FALLBACK_TITLE = 'Cima Growth Solutions — Fertility Marketing';
+const FALLBACK_TITLE = 'Cima Growth Solutions: Fertility Marketing';
 
-// Brand tokens (do not change — must match Tailwind config)
+// Brand tokens (do not change: must match Tailwind config)
 const TEAL = '#1B4D5C';
 const OFF_WHITE = '#FDFBF7'; // paper
 const CLAY = '#D2693B';
@@ -18,7 +18,7 @@ const SAND = '#E7DCC8';
 // Glyph set requested from Google Fonts so dynamic titles render with the
 // brand fonts (Google returns a ttf subset, which satori/next-og can parse).
 const GLYPHS =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,!?:;'\"()[]{}@#$%&*-+=/\\|<>~`^_…—–’‘“”";
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,!?:;'\"()[]{}@#$%&*-+=/\\|<>~`^_…\u2014–’‘“”";
 
 interface PostMeta {
   title: string;
@@ -27,7 +27,7 @@ interface PostMeta {
 
 async function fetchPost(slug: string): Promise<PostMeta | null> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  // Public anon key only — never a service-role key in the edge bundle.
+  // Public anon key only, never a service-role key in the edge bundle.
   const key =
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
@@ -101,7 +101,7 @@ export default async function Image({
       ? `${post.reading_time_minutes} min read`
       : null;
 
-  // Load brand fonts (graceful: render even if a fetch fails — never throw).
+  // Load brand fonts (graceful: render even if a fetch fails, never throw).
   const [fraunces, jakarta, dmSans] = await Promise.all([
     loadGoogleFont('Fraunces', 340, GLYPHS + title),
     loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS + title),

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import cimaLogoLightImg from "@/assets/cima-logo-light.png";
@@ -22,19 +21,28 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
+  { href: "/map", label: "The Map" },
   { href: "/product", label: "Platform" },
-  { href: "/features", label: "Features" },
-  { href: "/hipaa-safe-tracking", label: "HIPAA-Safe Tracking" },
   {
-    label: "Other Solutions",
+    label: "Solutions",
     children: [
       { href: "/ai-agent", label: "AI Agent" },
       { href: "/ads", label: "AI Ads" },
       { href: "/chartai", label: "ChartAI" },
       { href: "/outreach", label: "Outreach Engine" },
       { href: "/consent", label: "Patient Consent" },
+      { href: "/keep", label: "Keep" },
       { href: "/training", label: "Training" },
+    ],
+  },
+  {
+    label: "Specialties",
+    children: [
+      { href: "/fertility-clinic-marketing", label: "Fertility & IVF" },
+      { href: "/med-spa-marketing", label: "Med spa" },
+      { href: "/regenerative-medicine-marketing", label: "Regenerative medicine" },
+      { href: "/wellness-marketing", label: "Wellness" },
+      { href: "/medical-practice-marketing", label: "Medical practice" },
     ],
   },
   { href: "/blog", label: "Blog" },
@@ -62,7 +70,8 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  const isActive = (path?: string) => !!path && pathname === path;
+  const isActive = (path?: string) =>
+    !!path && (pathname === path || (path !== "/" && pathname.startsWith(`${path}/`)));
 
   const isGroupActive = (link: NavLink) =>
     !!link.children?.some((child) => isActive(child.href));
@@ -98,7 +107,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) =>
               link.children ? (
                 <div
@@ -167,16 +176,23 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/demo">
-              <Button variant="hero" size="default">
-                Book a Demo
-              </Button>
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/growth"
+              className="inline-flex h-11 items-center rounded-btn border-[1.5px] border-teal px-4 font-ui text-sm font-semibold text-teal transition-colors hover:bg-teal/5"
+            >
+              Get your Leak Map
+            </Link>
+            <Link
+              href="/demo"
+              className="inline-flex h-11 items-center rounded-btn bg-clay-deep px-5 font-ui text-sm font-semibold text-white transition-colors hover:bg-clay-deep/90"
+            >
+              Book a demo
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-1">
+          <div className="lg:hidden flex items-center gap-1">
             <button
               className="p-2.5 text-teal-deep transition-colors hover:text-teal"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -189,8 +205,8 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-        isMobileMenuOpen ? "max-h-[760px] opacity-100" : "max-h-0 opacity-0"
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
+        isMobileMenuOpen ? "max-h-[760px] opacity-100" : "max-h-0 opacity-0 invisible"
       }`}>
         <nav className="bg-cream border-b border-sand px-4 py-4 flex flex-col gap-1">
           {navLinks.map((link) =>
@@ -252,10 +268,19 @@ const Header = () => {
             )
           )}
           <div className="mt-2 flex flex-col gap-2">
-            <Link href="/demo" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button variant="hero" size="lg" className="w-full text-base">
-                Book a Demo
-              </Button>
+            <Link
+              href="/growth"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="inline-flex h-12 items-center justify-center rounded-btn border-[1.5px] border-teal font-ui text-base font-semibold text-teal"
+            >
+              Get your Leak Map
+            </Link>
+            <Link
+              href="/demo"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="inline-flex h-12 items-center justify-center rounded-btn bg-clay-deep font-ui text-base font-semibold text-white"
+            >
+              Book a demo
             </Link>
           </div>
         </nav>

@@ -411,8 +411,8 @@ const Consent = () => {
                 Cima Consent
               </span>
               <p className="font-ui text-lg font-semibold">Cima Consent</p>
-              <p className="font-ui text-sm font-medium text-paper/80 mt-1 mb-6">
-                $297/mo or $2,997/yr
+              <p className="font-ui text-sm font-medium text-paper/85 mt-1 mb-6">
+                Pricing is shared in your demo.
               </p>
               <ul className="space-y-3">
                 {[

@@ -25,10 +25,10 @@
     --primary-foreground: 40 33% 96%;
     --primary-light: 187 32% 48%;       /* #548E96 medium teal */
 
-    --accent-orange: 18 63% 53%;        /* #D2693B clay — warm accent, no neon */
+    --accent-orange: 18 63% 53%;        /* #D2693B clay: warm accent, no neon */
     --accent-orange-foreground: 40 33% 98%;
 
-    --secondary: 190 30% 50%;           /* #5994A1 — muted teal, NOT green */
+    --secondary: 190 30% 50%;           /* #5994A1: muted teal, NOT green */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 39 39% 91%;                /* quiet sand-tinted fill */
@@ -51,7 +51,7 @@
     --shadow-soft: 0 1px 2px 0 rgba(20, 48, 56, 0.04), 0 1px 6px -1px rgba(20, 48, 56, 0.03);
     --shadow-card: var(--shadow-sm);
     --shadow-elevated: var(--shadow);
-    --shadow-glow: var(--shadow-sm);    /* glows retired — calm soft shadow */
+    --shadow-glow: var(--shadow-sm);    /* glows retired, calm soft shadow */
 
     --gradient-primary: linear-gradient(135deg, #1B4D5C, #548E96);
     --gradient-accent: linear-gradient(135deg, #D2693B, #C05E33);
@@ -92,7 +92,7 @@
   }
 
   .dark {
-    --background: 210 20% 11%;          /* #182028 — warm dark, not pure black */
+    --background: 210 20% 11%;          /* #182028: warm dark, not pure black */
     --background-soft: 210 18% 14%;
     --foreground: 40 12% 90%;
 
@@ -101,7 +101,7 @@
     --popover: 210 18% 15%;
     --popover-foreground: 40 12% 90%;
 
-    --primary: 195 45% 25%;             /* #234E5C — stays dark and rich in dark mode */
+    --primary: 195 45% 25%;             /* #234E5C: stays dark and rich in dark mode */
     --primary-foreground: 40 12% 90%;
     --primary-light: 187 28% 35%;
 
@@ -181,7 +181,7 @@
 }
 
 @layer components {
-  /* Premium section styling — generous, calm vertical rhythm */
+  /* Premium section styling: generous, calm vertical rhythm */
   .section-padding {
     padding-block: clamp(4rem, 8vh, 6rem);
   }
@@ -293,7 +293,7 @@
     50% { box-shadow: 0 0 40px -5px hsl(var(--accent-orange) / 0.5); }
   }
 
-  /* Hero funnel "leak" drip — subtle, only when motion is welcome */
+  /* Hero funnel "leak" drip: subtle, only when motion is welcome */
   @keyframes heroDripFall {
     0%   { transform: rotate(45deg) translate(0, 0); opacity: 0.85; }
     60%  { opacity: 0.4; }

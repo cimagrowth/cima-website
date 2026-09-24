@@ -53,7 +53,7 @@ export default function ScheduledPage({ searchParams }: Props) {
           </p>
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center h-12 px-6 rounded-md bg-clay text-white font-semibold hover:bg-clay/90 transition-colors"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-md bg-clay-deep text-white font-semibold hover:bg-clay-deep/90 transition-colors"
           >
             Restart from the demo form →
           </Link>

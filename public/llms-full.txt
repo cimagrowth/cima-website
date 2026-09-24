@@ -55,18 +55,7 @@ GrowthOS becomes your complete patient management infrastructure. No more spread
 
 ## Pricing
 
-**Monthly Plan**
-- $999 per month
-- $999 one-time setup fee
-- Full access to all features
-- Unlimited leads, AI conversations, and team members
-
-**Annual Plan**
-- $9,999 per year
-- No setup fee
-- $500 Meta & Google Ads credit included
-- Full access to all features
-- Unlimited leads, AI conversations, and team members
+One plan, GrowthOS Growth: every stage of the GrowthOS Map (https://cimagrowth.com/map), the full AI team and Keep, included. Pricing is tailored to the clinic and number of locations, and shared in a demo. Monthly, six-month and annual terms. Add-ons: Voice AI, Patient Waiting Room, Telehealth, Custom AI Agent, Consent & Education, Website Management.
 
 No per-lead charges. No usage fees. One plan with full access.
 
@@ -80,7 +69,7 @@ GrowthOS is specifically designed for:
 
 ## Implementation
 
-GrowthOS is typically live within 24-48 hours. Setup includes:
+The clinic's existing website forms start sending leads in on day one. Setup includes:
 - AI training on your clinic's voice, protocols, and FAQs
 - Channel integration (web forms, phone, SMS, email, social)
 - CRM connection if applicable
@@ -91,7 +80,7 @@ GrowthOS is typically live within 24-48 hours. Setup includes:
 **Cima Growth Solutions**
 Website: https://cimagrowth.com
 Product: https://cimagrowth.com/product
-Pricing: https://cimagrowth.com/sign-up
+The GrowthOS Map: https://cimagrowth.com/map
 Demo: https://cimagrowth.com/demo
 Blog: https://cimagrowth.com/blog
 

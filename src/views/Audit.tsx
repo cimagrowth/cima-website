@@ -167,7 +167,7 @@ const Audit = () => {
 
         <div className="container-wide relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            {/* Left column — copy */}
+            {/* Left column: copy */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -219,7 +219,7 @@ const Audit = () => {
               </div>
             </motion.div>
 
-            {/* Right column — form (sticky on desktop) */}
+            {/* Right column: form (sticky on desktop) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

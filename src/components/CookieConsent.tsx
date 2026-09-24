@@ -408,7 +408,7 @@ function CustomizeView({
         />
         <CategoryRow
           title="Marketing"
-          description="Cookies used to measure the effectiveness of our marketing and — if you connect — to deliver more relevant ads on Meta and Google."
+          description="Cookies used to measure the effectiveness of our marketing and, if you connect, to deliver more relevant ads on Meta and Google."
           checked={choices.marketing}
           onChange={(v) => setChoices({ ...choices, marketing: v })}
         />

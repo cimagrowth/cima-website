@@ -54,7 +54,7 @@ const whatYouGet = [
   {
     icon: Map,
     title: 'Your Leak Map',
-    body: 'Nine stages, where patients fall out, benchmarked against real clinic data.',
+    body: 'Every stage where patients fall out, benchmarked against real clinic data.',
   },
   {
     icon: Calculator,

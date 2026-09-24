@@ -1,38 +1,48 @@
-"use client";
+import { brandonProfile } from "@/content/social";
+import { WRAP } from "@/components/map/ui";
 
+// No headshot of Brandon exists in public/ yet, so the photo frame is a
+// labelled placeholder until one is added.
 const FounderLetter = () => {
+  const linkedin = brandonProfile("linkedin");
+  const youtube = brandonProfile("youtube");
   return (
-    <section className="section-padding bg-background relative">
-      {/* Subtle side accent - hidden on mobile */}
-      <div className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-gradient-to-b from-transparent via-accent-orange to-transparent hidden md:block" />
-
-      <div className="container-tight relative z-10">
-        <div className="max-w-3xl lg:max-w-4xl mx-auto">
-          <h3 className="font-ui text-xs md:text-sm font-semibold text-clay uppercase tracking-[.16em] mb-6 md:mb-8">
-            Why I Built This
-          </h3>
-
-          <div className="space-y-4 md:space-y-6 text-base md:text-lg text-foreground">
-            <p>
-              AI transformed the lab side of fertility medicine. Nobody modernized the front end.
-            </p>
-
-            <p>
-              I've worked with 100+ healthcare businesses across 6 countries over 15 years: running campaigns, managing real ad budgets, building funnels. I watched clinics spend $10K/month on marketing, then lose half those patients because the front desk was overwhelmed and the follow-up was manual.
-            </p>
-
-            <p>
-              GrowthOS closes that gap. It's the system I wish existed when I was running campaigns for fertility clinics and watching leads die in spreadsheets.
-            </p>
-          </div>
-
-          <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border">
-            <p className="font-semibold text-foreground text-base md:text-lg">Brandon Hensinger</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Founder, Cima Growth Solutions
-            </p>
-          </div>
+    <section aria-labelledby="founder-title" className="pb-10 pt-20 md:pt-24">
+      <div className={`${WRAP} grid items-center gap-8 md:grid-cols-12 md:gap-10`}>
+        <div
+          role="img"
+          aria-label="Photo of Brandon Hensinger (placeholder)"
+          className="flex aspect-square w-40 items-center justify-center rounded-[22px] bg-sand text-sm text-teal-deep/75 md:col-span-3 md:w-auto"
+        >
+          [BRANDON PHOTO]
         </div>
+        <figure className="flex flex-col gap-4 md:col-span-9">
+          <h2 id="founder-title" className="text-sm font-bold uppercase tracking-[0.1em] text-clay-ink">
+            Why I built this
+          </h2>
+          <blockquote className="font-display text-[clamp(22px,2.6vw,30px)] font-normal leading-[1.35] text-teal-deep">
+            <p>
+              &ldquo;AI transformed the lab side of fertility medicine. Nobody modernized the front end.
+              After 15 years in this industry, I watched clinics spend real money to find patients and
+              then lose them in the gaps between one stage and the next. The Map is how we close every
+              one of those gaps.&rdquo;
+            </p>
+          </blockquote>
+          <figcaption className="flex flex-col gap-1.5 text-base">
+            <span>
+              <span className="font-bold">Brandon Hensinger</span>{" "}
+              <span className="text-teal-deep/75">· Founder, Cima Growth Solutions</span>
+            </span>
+            <span className="flex gap-4 text-sm">
+              <a href={linkedin.url} target="_blank" rel="noopener" className="font-semibold text-teal underline underline-offset-2">
+                LinkedIn
+              </a>
+              <a href={youtube.url} target="_blank" rel="noopener" className="font-semibold text-teal underline underline-offset-2">
+                YouTube
+              </a>
+            </span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

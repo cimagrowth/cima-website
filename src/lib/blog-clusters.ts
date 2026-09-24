@@ -3,7 +3,7 @@
  *
  * Every published post is tagged with a `cluster` (stored on
  * `website_blog_posts.cluster`). The cluster drives three pieces of internal
- * linking rendered by the post template — with zero edits to post HTML:
+ * linking rendered by the post template, with zero edits to post HTML:
  *
  *  1. A contextual hub + product callout (cluster → commercial pages).
  *  2. "Related posts" pulled from the same cluster.
@@ -46,7 +46,7 @@ export const PAGE_META: Record<string, { label: string; blurb: string }> = {
   },
   '/healthcare-crm': {
     label: 'Healthcare CRM',
-    blurb: 'The CRM that acquires and retains patients — not just stores them.',
+    blurb: 'The CRM that acquires and retains patients, not just stores them.',
   },
   '/med-spa-marketing': {
     label: 'Med spa marketing',
@@ -94,13 +94,13 @@ export function getClusterLinks(cluster: string | null | undefined): ClusterLink
  */
 export function getDemoCtaCopy(cluster: string | null | undefined): string {
   if (cluster === 'med-spa') {
-    return 'See how GrowthOS fills your med spa calendar — book a demo';
+    return 'See how GrowthOS fills your med spa calendar. Book a demo';
   }
   if (cluster === 'healthcare-crm' || cluster === 'medical-practice') {
-    return 'See how GrowthOS turns inquiries into booked patients — book a demo';
+    return 'See how GrowthOS turns inquiries into booked patients. Book a demo';
   }
   if (cluster && cluster.startsWith('fertility')) {
-    return 'See how GrowthOS books fertility consults — book a demo';
+    return 'See how GrowthOS books fertility consults. Book a demo';
   }
-  return 'See how GrowthOS turns inquiries into booked patients — book a demo';
+  return 'See how GrowthOS turns inquiries into booked patients. Book a demo';
 }

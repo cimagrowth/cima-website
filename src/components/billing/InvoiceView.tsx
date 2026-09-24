@@ -64,7 +64,7 @@ export function InvoiceView({ invoiceId, mode = "staff" }: InvoiceViewProps) {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          {/* Print controls — staff only */}
+          {/* Print controls: staff only */}
           {!isPatient && (
             <>
               <label className="flex items-center gap-1.5 text-xs text-gray-600 print:hidden">

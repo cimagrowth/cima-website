@@ -3,7 +3,7 @@ import Growth from '@/views/Growth';
 
 const TITLE = 'Free Patient Leakage Audit for Clinics | Cima Growth Solutions';
 const DESCRIPTION =
-  'Find out where your clinic loses patients you already paid for. A free nine-stage leak map benchmarked against real clinic data, delivered in 48 hours.';
+  'Find out where your clinic loses patients you already paid for. A free leak map of every stage benchmarked against real clinic data, delivered in 48 hours.';
 
 export const metadata: Metadata = {
   title: TITLE,

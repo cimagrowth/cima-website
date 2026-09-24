@@ -363,7 +363,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     message.role === "user"
-                      ? "bg-accent-orange text-white"
+                      ? "bg-clay-deep text-white"
                       : "bg-secondary text-white"
                   }`}
                 >
@@ -376,7 +376,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
                 <div
                   className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                     message.role === "user"
-                      ? "bg-accent-orange text-white rounded-tr-sm"
+                      ? "bg-clay-deep text-white rounded-tr-sm"
                       : "bg-accent text-foreground dark:text-white rounded-tl-sm"
                   }`}
                 >

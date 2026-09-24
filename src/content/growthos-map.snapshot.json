@@ -1,0 +1,1303 @@
+{
+  "stages": [
+    {
+      "name": "Get found",
+      "ideal": "Every service line has a campaign in market and a page that sounds like the clinic, and every dollar is attributed without sending health data to an ad platform.",
+      "leaks": [
+        {
+          "name": "The Invisible Clinic",
+          "description": "You never show up at the search"
+        }
+      ],
+      "stats": [],
+      "nostat": "No benchmark we trust yet for how many patients never find a clinic. GrowthOS attribution data can produce one.",
+      "number": 1,
+      "metrics": [
+        "Leads by source",
+        "Cost per lead",
+        "Cost per booked consult"
+      ],
+      "features": [
+        {
+          "name": "Campaign engine",
+          "route": "/dashboard/campaigns",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "campaigns",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 13,
+          "module_key": "campaigns",
+          "description": "One brief in; landing page, Google and Meta ads, email, SMS and WhatsApp out, in the clinic's own voice."
+        },
+        {
+          "name": "Ads Manager and AI Ad Optimizer",
+          "route": "/dashboard/ads",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "ads",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 8,
+          "module_key": "ads",
+          "description": "Google and Meta campaigns with wasted-spend detection and fixes you approve."
+        },
+        {
+          "name": "Landing pages",
+          "route": "/dashboard/campaigns/landing-pages",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "landing_pages",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 6,
+          "module_key": "landing_pages",
+          "description": "Service pages in the clinic's colors and voice, on its own domain, edited by chatting with them."
+        },
+        {
+          "name": "Quiz funnels",
+          "route": "/dashboard/campaigns/quiz-funnels",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "quiz_funnels",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 3,
+          "module_key": "quiz_funnels",
+          "description": "Candidacy quizzes that give the patient a useful answer and sort every lead hot, warm or cold into the right stage and follow up."
+        },
+        {
+          "name": "Events",
+          "route": "/dashboard/campaigns/events",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "events",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 4,
+          "module_key": "events",
+          "description": "Seminars, open houses and webinars with registration, reminders and attendance, rolling to the next date on their own."
+        },
+        {
+          "name": "Website management and SEO",
+          "route": null,
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": null,
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 0,
+          "module_key": null,
+          "description": "Page edits, new pages, and compliance monitoring on the clinic's own site."
+        },
+        {
+          "name": "Doctor referral campaigns",
+          "route": "/dashboard/campaigns",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "campaigns",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 13,
+          "module_key": "campaigns",
+          "description": "Referring doctors send patients in; the doctor is thanked and optionally nurtured."
+        },
+        {
+          "name": "Server-side conversion tracking",
+          "route": "/dashboard/settings/tracking",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "settings_tracking",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 0,
+          "module_key": "settings_tracking",
+          "description": "Every lead attributed to the click that earned it, with nothing identifying sent to ad platforms."
+        }
+      ],
+      "stage_key": "get_found",
+      "patient_says": "I'm comparing clinics at 11pm and reading everything.",
+      "setup_progress": null,
+      "tour_step_number": 11
+    },
+    {
+      "name": "First response",
+      "ideal": "Every inquiry answered in under 60 seconds, on the channel the patient chose, at any hour.",
+      "leaks": [
+        {
+          "name": "The Form That Kills",
+          "description": "Capture that quietly loses people"
+        },
+        {
+          "name": "The 13-Hour Patient",
+          "description": "First reply comes far too late"
+        }
+      ],
+      "stats": [
+        {
+          "label": "average wait before a human responds to a new lead",
+          "value": "13 hrs",
+          "source_key": "leak"
+        },
+        {
+          "label": "the window to respond before a lead goes cold",
+          "value": "5 min",
+          "source_key": "leak"
+        }
+      ],
+      "nostat": null,
+      "number": 2,
+      "metrics": [
+        "Time to first reply",
+        "After-hours inquiries answered",
+        "Missed-call rate"
+      ],
+      "features": [
+        {
+          "name": "Website lead sources",
+          "route": "/dashboard/settings/lead-sources",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "lead_sources",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 0,
+          "module_key": "lead_sources",
+          "description": "The forms already on the clinic's website send every inquiry into GrowthOS, so follow up starts on day one."
+        },
+        {
+          "name": "AI front desk",
+          "route": "/dashboard/ai-assistant",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "ai_assistant",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 7,
+          "module_key": "ai_assistant",
+          "description": "Answers web chat, SMS, email, WhatsApp, Messenger and Instagram in seconds, day or night, trained on the clinic."
+        },
+        {
+          "name": "Voice AI",
+          "route": "/dashboard/settings/ai-voice",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "settings_ai_voice",
+          "addon_key": "voice_ai",
+          "has_guide": true,
+          "addon_name": "Voice AI",
+          "help_count": 7,
+          "module_key": "settings_ai_voice",
+          "description": "Answers and books phone calls 24/7, included on every plan."
+        },
+        {
+          "name": "Phone trees",
+          "route": "/dashboard/phone-trees",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "phone_trees",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 3,
+          "module_key": "phone_trees",
+          "description": "The clinic designs its own call flow: greeting, menu, business-hours routing, and where every call ends up."
+        },
+        {
+          "name": "Call intelligence",
+          "route": "/dashboard/calls/intelligence",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "call_intelligence",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 9,
+          "module_key": "call_intelligence",
+          "description": "Every recorded call transcribed and analyzed: new patient or not, what they asked about, whether they booked, and why not."
+        },
+        {
+          "name": "Forms and lead scoring",
+          "route": "/dashboard/forms",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "forms",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 12,
+          "module_key": "forms",
+          "description": "Every submission becomes a contact, a deal and a sequence the moment it lands, and can be qualified red, yellow or green with its own rules or the Qualification Agent's."
+        },
+        {
+          "name": "AI lead discovery",
+          "route": "/dashboard/lead-discovery",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "lead_discovery",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 2,
+          "module_key": "lead_discovery",
+          "description": "Finds patient inquiries sitting in the clinic's Gmail and puts them in the pipeline."
+        }
+      ],
+      "stage_key": "first_response",
+      "patient_says": "I filled out the form. Is anyone there?",
+      "setup_progress": null,
+      "tour_step_number": 2
+    },
+    {
+      "name": "Nurture and qualify",
+      "ideal": "Every lead is qualified with the clinic's own questions, on forms and in chat, and every lead has an owner, a next step and a message written for where they are. Dormant lists get worked, not deleted.",
+      "leaks": [
+        {
+          "name": "The Silent Middle",
+          "description": "No nurture between touchpoints"
+        }
+      ],
+      "stats": [
+        {
+          "label": "of inquiries never reach a booked consult",
+          "value": "60-70%",
+          "source_key": "leak"
+        }
+      ],
+      "nostat": null,
+      "number": 3,
+      "metrics": [
+        "Inquiry to booked consult",
+        "Leads qualified green, yellow or red",
+        "Leads with no next step",
+        "Reactivated leads"
+      ],
+      "features": [
+        {
+          "name": "Email and SMS sequences",
+          "route": "/dashboard/campaigns/email-sequences",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "sequences",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 1,
+          "module_key": "sequences",
+          "description": "Written for the stage the patient is in, and stopped the moment they reply or book."
+        },
+        {
+          "name": "Qualification Agent",
+          "route": "/dashboard/agents/managed/clinical-screening",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "managed_agent_clinical_screening",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 3,
+          "module_key": "managed_agent_clinical_screening",
+          "description": "Every account has one, blank and switched off until the clinic names it, adds its own questions and red and yellow rules, and turns it on. The same questions and rules can run on forms."
+        },
+        {
+          "name": "Unified inbox with contact owners",
+          "route": "/dashboard/inbox",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "inbox",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 5,
+          "module_key": "inbox",
+          "description": "One thread per patient across every channel, an owner on every lead, and team chat beside it."
+        },
+        {
+          "name": "Follow-up reminders",
+          "route": "/dashboard/settings/follow-up-templates",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "settings_follow_up_templates",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 1,
+          "module_key": null,
+          "description": "Surfaces every patient who has gone too long without a contact, by pipeline stage."
+        },
+        {
+          "name": "Reactivation campaigns",
+          "route": "/dashboard/campaigns/reactivation",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "campaigns_reactivation",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 1,
+          "module_key": "campaigns_reactivation",
+          "description": "Works the dormant list the clinic already paid for, once, on purpose."
+        },
+        {
+          "name": "Newsletters",
+          "route": "/dashboard/campaigns/newsletters",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "newsletters",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 6,
+          "module_key": "newsletters",
+          "description": "Drag-and-drop email to the whole list, with unsubscribe and consent enforced."
+        },
+        {
+          "name": "Workflows and automations",
+          "route": "/dashboard/workflows",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "automations",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 3,
+          "module_key": "automations",
+          "description": "Trigger-based workflows with branches that send, tag, move, enroll, book and alert, so repeatable steps stop depending on memory."
+        }
+      ],
+      "stage_key": "nurture",
+      "patient_says": "I'm not ready yet. Don't forget me, and don't spam me.",
+      "setup_progress": null,
+      "tour_step_number": 4
+    },
+    {
+      "name": "Book and show up",
+      "ideal": "Booking takes one conversation, every appointment gets reminders on the patient's channel, and nobody arrives as a stranger.",
+      "leaks": [
+        {
+          "name": "The Empty Chair",
+          "description": "Booked consults that never show"
+        }
+      ],
+      "stats": [
+        {
+          "label": "average relative drop in missed appointments when phone or SMS reminders are sent (29 studies)",
+          "value": "34%",
+          "source_key": "hasvold"
+        }
+      ],
+      "nostat": null,
+      "number": 4,
+      "metrics": [
+        "Show rate",
+        "Days from inquiry to consult",
+        "No-show recovery"
+      ],
+      "features": [
+        {
+          "name": "Booking and appointment automations",
+          "route": "/dashboard/appointments",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "appointments",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 7,
+          "module_key": "appointments",
+          "description": "Self-serve scheduling, reminders on every channel, and follow-up when someone does not show."
+        },
+        {
+          "name": "Consult Booking Agent",
+          "route": "/dashboard/agents/managed",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "managed_agents",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 13,
+          "module_key": "managed_agents",
+          "description": "Checks real availability, books, and writes it back to the calendar and the EHR."
+        },
+        {
+          "name": "Patient Onboarding Agent",
+          "route": "/dashboard/agents/managed",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "managed_agents",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 13,
+          "module_key": "managed_agents",
+          "description": "A pre-visit message written to what that patient actually said."
+        },
+        {
+          "name": "Patient Waiting Room",
+          "route": "/dashboard/waiting-room",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "waiting_room",
+          "addon_key": "waiting_room",
+          "has_guide": true,
+          "addon_name": "Patient Waiting Room",
+          "help_count": 10,
+          "module_key": "waiting_room",
+          "description": "Patients see their place in line and their wait on their own phone."
+        },
+        {
+          "name": "Telehealth and virtual visits",
+          "route": "/dashboard/virtual-visits",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "virtual_visits",
+          "addon_key": "telehealth",
+          "has_guide": true,
+          "addon_name": "Telehealth",
+          "help_count": 6,
+          "module_key": "virtual_visits",
+          "description": "Video consults with transcription, inside the same record."
+        },
+        {
+          "name": "Cross-location recognition",
+          "route": null,
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": null,
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 0,
+          "module_key": null,
+          "description": "A patient who contacts the wrong location is recognized, and the right team is alerted."
+        }
+      ],
+      "stage_key": "book",
+      "patient_says": "Let me pick a time, and remind me.",
+      "setup_progress": null,
+      "tour_step_number": 13
+    },
+    {
+      "name": "Consult to commitment",
+      "ideal": "Nobody leaves a consult without a next step. Consent is done before the visit, and a stalled decision is flagged before it goes cold.",
+      "leaks": [
+        {
+          "name": "The Consult Cliff",
+          "description": "Consult happens, commitment doesn't"
+        },
+        {
+          "name": "The Money Stall",
+          "description": "Cost and financing stall the yes"
+        }
+      ],
+      "stats": [
+        {
+          "label": "of the reasons patients give for stopping fertility treatment are postponement (22 studies, 21,453 patients)",
+          "value": "39%",
+          "source_key": "gameiro"
+        }
+      ],
+      "nostat": null,
+      "number": 5,
+      "metrics": [
+        "Consult to treatment",
+        "Days from consult to start",
+        "Deals in a leak stage"
+      ],
+      "features": [
+        {
+          "name": "Pipelines with leak stages",
+          "route": "/dashboard/pipeline",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "pipeline",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 7,
+          "module_key": "pipeline",
+          "description": "Every stalled decision flagged by stage, with the clinic's own playbook for each one."
+        },
+        {
+          "name": "Consent and education",
+          "route": "/dashboard/consent",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "consent",
+          "addon_key": "consent_module",
+          "has_guide": true,
+          "addon_name": "Consent Module",
+          "help_count": 4,
+          "module_key": "consent",
+          "description": "Multi-party consent with the education video, finished on a phone before the visit."
+        },
+        {
+          "name": "ChartAI records retrieval",
+          "route": "/dashboard/chart-ai",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "chart_ai",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 3,
+          "module_key": "chart_ai",
+          "description": "Outside medical records requested and organized before the consult."
+        },
+        {
+          "name": "Billing automation",
+          "route": "/dashboard/invoicing",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "invoicing",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 4,
+          "module_key": "invoicing",
+          "description": "A pipeline stage sends the invoice or payment link by email and SMS the moment a patient enters it, and the payment lands on the same record."
+        }
+      ],
+      "stage_key": "commit",
+      "patient_says": "I understand the plan. Now I have to decide, and pay.",
+      "setup_progress": null,
+      "tour_step_number": 6
+    },
+    {
+      "name": "In treatment",
+      "ideal": "No cycle-timed test is missed, and every escalation reaches a person with context in minutes.",
+      "leaks": [
+        {
+          "name": "The Mid-Journey Walkaway",
+          "description": "Patients drift mid-treatment"
+        }
+      ],
+      "stats": [
+        {
+          "label": "of the reasons patients give for stopping are organizational or clinic problems",
+          "value": "19%",
+          "source_key": "gameiro"
+        }
+      ],
+      "nostat": null,
+      "number": 6,
+      "metrics": [
+        "Missed test windows",
+        "Escalations resolved",
+        "Mid-treatment discontinuation"
+      ],
+      "features": [
+        {
+          "name": "Cycle Coordinator",
+          "route": "/dashboard/cycle-coordinator",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "cycle-coordinator",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 15,
+          "module_key": "cycle-coordinator",
+          "description": "Projects when each cycle-timed test is due, books it inside its window, and confirms dates with the patient."
+        },
+        {
+          "name": "Crisis Triage Agent",
+          "route": "/dashboard/agents/managed",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "managed_agents",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 13,
+          "module_key": "managed_agents",
+          "description": "Builds a one-page briefing from the patient's history and pages staff. It never gives clinical advice."
+        },
+        {
+          "name": "EHR integrations",
+          "route": "/dashboard/settings/integrations",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "integrations",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 7,
+          "module_key": "integrations",
+          "description": "Appointments and records kept in sync with the clinic's existing system."
+        },
+        {
+          "name": "GrowthOS mobile app",
+          "route": "/dashboard/settings/mobile-app",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "settings_mobile_app",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 1,
+          "module_key": "settings_mobile_app",
+          "description": "Staff answer patients from their phone, with the full thread and chart context."
+        }
+      ],
+      "stage_key": "treatment",
+      "patient_says": "This is hard. I need to know what happens next.",
+      "setup_progress": null,
+      "tour_step_number": 5
+    },
+    {
+      "name": "After the cycle",
+      "ideal": "Every stored specimen has an owner, a renewal date, and a patient who heard from the clinic this year.",
+      "leaks": [
+        {
+          "name": "The Full Tank",
+          "description": "Eggs and embryos stored, patient gone quiet"
+        }
+      ],
+      "stats": [
+        {
+          "label": "of US fresh IVF cycles that froze embryos never had a later frozen transfer",
+          "value": "52.5%",
+          "source_key": "christianson"
+        },
+        {
+          "label": "of egg-freezing patients came back to use their eggs within 5 to 7 years",
+          "value": "5.7%",
+          "source_key": "lee"
+        },
+        {
+          "label": "of patients with stored embryos report high conflict over what to do with them",
+          "value": "39%",
+          "source_key": "lyerly"
+        }
+      ],
+      "nostat": null,
+      "number": 7,
+      "metrics": [
+        "Return for transfer",
+        "Documented dispositions",
+        "Time to reply"
+      ],
+      "features": [
+        {
+          "name": "Cryo ledger",
+          "route": "/dashboard/keep",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "keep",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 16,
+          "module_key": null,
+          "description": "Eggs or embryos, storage date, consent renewal and fee status for every patient, synced from the lab system and never replacing it."
+        },
+        {
+          "name": "Storage and return outreach",
+          "route": "/dashboard/keep",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "keep",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 16,
+          "module_key": null,
+          "description": "Anniversaries, renewal deadlines and return-for-transfer nudges. Paused after a known loss, handed to a person when it matters."
+        },
+        {
+          "name": "Disposition decision support",
+          "route": "/dashboard/keep",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "keep",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 16,
+          "module_key": null,
+          "description": "Plain-language options, a counselor one tap away, every answer recorded against the consent on file."
+        },
+        {
+          "name": "Research log and Leakage Index",
+          "route": "/dashboard/keep",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "keep",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 16,
+          "module_key": null,
+          "description": "Time to reply, time to return and which message worked, benchmarked across clinics and structured for publication."
+        }
+      ],
+      "stage_key": "after_cycle",
+      "patient_says": "I have embryos frozen. I'm not ready to decide.",
+      "setup_progress": null,
+      "tour_step_number": 62
+    },
+    {
+      "name": "Advocate and return",
+      "ideal": "Every good outcome gets a review ask at the right moment, every referrer is thanked, and alumni hear from the clinic.",
+      "leaks": [
+        {
+          "name": "The Forgotten Graduate",
+          "description": "No alumni, reviews, or referrals"
+        }
+      ],
+      "stats": [],
+      "nostat": "No benchmark we trust yet for alumni referral or return rates. The Patient Continuity research log is built to measure it.",
+      "number": 8,
+      "metrics": [
+        "Reviews per month",
+        "Referred patients",
+        "Returning patients"
+      ],
+      "features": [
+        {
+          "name": "Google reviews and replies",
+          "route": "/dashboard/reviews",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "reviews",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 4,
+          "module_key": "reviews",
+          "description": "Import every review and answer it with an AI draft the clinic approves."
+        },
+        {
+          "name": "Review requests from pipeline stages",
+          "route": "/dashboard/pipeline#settings",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "pipeline_settings",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 1,
+          "module_key": null,
+          "description": "The clinic picks the stage that sends the review link, what it says, and when it resends."
+        },
+        {
+          "name": "Referral asks and doctor thank-yous",
+          "route": "/dashboard/campaigns",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "campaigns",
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 13,
+          "module_key": null,
+          "description": "Patients and referring doctors are thanked and asked at the right moment."
+        },
+        {
+          "name": "Alumni journeys and retargeting",
+          "route": null,
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": null,
+          "addon_key": null,
+          "has_guide": false,
+          "addon_name": null,
+          "help_count": 0,
+          "module_key": null,
+          "description": "Outcome-aware re-engagement, so a graduate hears from the clinic without a sales pitch."
+        },
+        {
+          "name": "Newsletters to alumni",
+          "route": "/dashboard/campaigns/newsletters",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "newsletters",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 6,
+          "module_key": "newsletters",
+          "description": "The same drag-and-drop newsletters keep graduates close to the clinic between visits."
+        }
+      ],
+      "stage_key": "advocate",
+      "patient_says": "They were there for me. I'll tell people.",
+      "setup_progress": null,
+      "tour_step_number": 19
+    }
+  ],
+  "totals": {
+    "leaks": 10,
+    "stages": 8,
+    "features": 45,
+    "foundation": 8
+  },
+  "sources": {
+    "lee": {
+      "url": "https://doi.org/10.1016/j.ajog.2025.08.032",
+      "citation": "Lee MB, Siavoshi M, Kwan L, Kroener L. Elective fertility preservation: a national database study on trends in oocyte cryopreservation and oocyte utilization. Am J Obstet Gynecol 2025;234(2):432-439."
+    },
+    "leak": {
+      "url": null,
+      "citation": "Cima Growth Solutions, The Seven-Figure Leak (playbook behind the platform), as used on slide 3 of the Platform Overview deck."
+    },
+    "lyerly": {
+      "url": "https://doi.org/10.1093/humrep/deq368",
+      "citation": "Lyerly AD, Nakagawa S, Kuppermann M. Decisional conflict and the disposition of frozen embryos: implications for informed consent. Hum Reprod 2011;26(3):646-54."
+    },
+    "gameiro": {
+      "url": "https://doi.org/10.1093/humupd/dms031",
+      "citation": "Gameiro S, Boivin J, Peronace L, Verhaak CM. Why do patients discontinue fertility treatment? A systematic review. Hum Reprod Update 2012;18(6):652-69."
+    },
+    "hasvold": {
+      "url": "https://doi.org/10.1258/jtt.2011.110707",
+      "citation": "Hasvold PE, Wootton R. Use of telephone and SMS reminders to improve attendance at hospital appointments: a systematic review. J Telemed Telecare 2011;17(7):358-64."
+    },
+    "christianson": {
+      "url": "https://doi.org/10.1016/j.xfre.2020.05.010",
+      "citation": "Christianson MS, Stern JE, Sun F, et al. Embryo cryopreservation and utilization in the United States from 2004-2013. F&S Reports 2020;1(2):71-77."
+    }
+  },
+  "version": "1.8",
+  "changelog": [
+    {
+      "date": "2026-09-24",
+      "text": "Forms in First response can now qualify every submission red, yellow or green."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Qualification Agent in Nurture and qualify is now in every account, blank until the clinic names it and sets it up."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Call intelligence to First response."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Renamed Landing pages and quiz funnels to Landing pages in Get found."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Renamed Phone trees and call intelligence to Phone trees in First response."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Quiz funnels to Get found."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Events to Get found."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Workflows and automations to Nurture and qualify."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Website lead sources to First response."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added billing automation to Consult to commitment and newsletters to Advocate and return."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "First version. Eight stages, the nine leaks from The Seven-Figure Leak plus a tenth (The Full Tank), and Patient Continuity for the after-the-cycle stage."
+    }
+  ],
+  "foundation": [
+    {
+      "name": "BAA with the contract",
+      "route": null,
+      "page_key": null,
+      "description": "Signed in the same package as the services agreement; PHI encrypted at rest and isolated per clinic."
+    },
+    {
+      "name": "GDPR and UK GDPR",
+      "route": null,
+      "page_key": null,
+      "description": "DPA, sub-processor register, breach notice and patient data rights handled in the platform."
+    },
+    {
+      "name": "EHR and CRM integrations",
+      "route": "/dashboard/settings/integrations",
+      "page_key": "integrations",
+      "description": "Fertility EHRs and Salesforce kept in sync, so staff work in one place."
+    },
+    {
+      "name": "Network and multi-location",
+      "route": "/dashboard/org-management",
+      "page_key": "org_management",
+      "description": "Every location reports against the same definitions; records stay separate."
+    },
+    {
+      "name": "The scorecard",
+      "route": "/dashboard/reports/goals",
+      "page_key": "reports_goals",
+      "description": "The clinic's own stages and targets, graded green or red every morning."
+    },
+    {
+      "name": "Server-side attribution",
+      "route": "/dashboard/settings/tracking",
+      "page_key": "settings_tracking",
+      "description": "Our own conversion pipeline; nothing identifying leaves for an ad platform."
+    },
+    {
+      "name": "Consent and opt-out enforced",
+      "route": null,
+      "page_key": null,
+      "description": "Every channel checks consent and unsubscribe before it sends."
+    },
+    {
+      "name": "Agents under control",
+      "route": "/dashboard/agents/managed",
+      "page_key": "managed_agents",
+      "description": "The clinic decides which agents run and what they touch; every run is logged."
+    }
+  ],
+  "updated_at": "2026-09-24T13:43:14.84912+00:00",
+  "stage_order": [
+    {
+      "name": "Set up the basics",
+      "stage_key": "basics",
+      "in_journey": false,
+      "short_name": "Basics"
+    },
+    {
+      "name": "Get found",
+      "stage_key": "get_found",
+      "in_journey": true,
+      "short_name": "Get found"
+    },
+    {
+      "name": "First response",
+      "stage_key": "first_response",
+      "in_journey": true,
+      "short_name": "First response"
+    },
+    {
+      "name": "Nurture and qualify",
+      "stage_key": "nurture",
+      "in_journey": true,
+      "short_name": "Nurture and qualify"
+    },
+    {
+      "name": "Book and show up",
+      "stage_key": "book",
+      "in_journey": true,
+      "short_name": "Book and show up"
+    },
+    {
+      "name": "Consult to commitment",
+      "stage_key": "commit",
+      "in_journey": true,
+      "short_name": "Consult to commitment"
+    },
+    {
+      "name": "In treatment",
+      "stage_key": "treatment",
+      "in_journey": true,
+      "short_name": "In treatment"
+    },
+    {
+      "name": "After the cycle",
+      "stage_key": "after_cycle",
+      "in_journey": true,
+      "short_name": "After the cycle"
+    },
+    {
+      "name": "Advocate and return",
+      "stage_key": "advocate",
+      "in_journey": true,
+      "short_name": "Advocate and return"
+    },
+    {
+      "name": "Measure",
+      "stage_key": "measure",
+      "in_journey": false,
+      "short_name": "Measure"
+    }
+  ]
+}

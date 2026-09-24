@@ -1,0 +1,20 @@
+{
+  "channels": [
+    "sms",
+    "whatsapp",
+    "web_chat",
+    "facebook",
+    "instagram"
+  ],
+  "countries": 5,
+  "window_end": "2026-09-24",
+  "window_days": 90,
+  "generated_at": "2026-09-24T13:49:01.924003+00:00",
+  "window_start": "2026-06-26",
+  "clinics_active": 92,
+  "patient_conversations": 16915,
+  "measured_first_replies": 4793,
+  "pct_first_reply_under_60s": 94.8,
+  "clinics_with_conversations": 53,
+  "median_first_reply_seconds": 2
+}

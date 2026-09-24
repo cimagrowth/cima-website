@@ -55,6 +55,8 @@ const nextConfig = {
       { source: '/demo-4386', destination: '/demo', permanent: true },
       { source: '/calendar-4597', destination: '/demo', permanent: true },
       { source: '/about-us', destination: '/', permanent: true },
+      // The old How It Works page is replaced by the GrowthOS Map.
+      { source: '/how-it-works', destination: '/map', permanent: true },
       // Self-serve signup and checkout are retired. GrowthOS is sold through
       // Deal Desk, so every former signup and plan path routes to the demo.
       { source: '/sign-up', destination: '/demo', permanent: true },

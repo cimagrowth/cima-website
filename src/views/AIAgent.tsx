@@ -117,8 +117,6 @@ const features = [
 const pricingTiers = [
   {
     name: "Starter",
-    monthlyPrice: 297,
-    annualPrice: 247,
     planKeyMonthly: "starter_monthly" as const,
     planKeyAnnual: "starter_annual" as const,
     description: "For clinics ready to automate patient follow-up",
@@ -136,8 +134,6 @@ const pricingTiers = [
   },
   {
     name: "Pro",
-    monthlyPrice: 497,
-    annualPrice: 414,
     planKeyMonthly: "pro_monthly" as const,
     planKeyAnnual: "pro_annual" as const,
     description: "For multi-location clinics and high-volume practices",
@@ -194,7 +190,6 @@ const faqItems = [
 ];
 
 const AIAgent = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
@@ -465,33 +460,12 @@ const AIAgent = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Simple Pricing. Setup Fee Waived on Annual Plans. Cancel Anytime.
+              Two plans. Pricing is shared in your demo.
             </h2>
 
-            {/* Monthly/Annual Toggle */}
-            <div className="inline-flex items-center gap-3 bg-card border border-border rounded-full p-1.5">
-              <button
-                onClick={() => setIsAnnual(false)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  !isAnnual
-                    ? "bg-accent-orange text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setIsAnnual(true)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  isAnnual
-                    ? "bg-accent-orange text-white shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Annual
-                <span className="ml-1.5 text-xs opacity-80">Save 17%</span>
-              </button>
-            </div>
+            <p className="text-body-lg text-teal-deep/80">
+              Setup fee waived on six-month and annual terms.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl lg:max-w-6xl mx-auto">
@@ -529,35 +503,6 @@ const AIAgent = () => {
                 >
                   {tier.description}
                 </p>
-                <div className="mb-6">
-                  <span
-                    className={`text-display font-bold ${
-                      tier.highlighted ? "text-paper" : "text-foreground"
-                    }`}
-                  >
-                    ${isAnnual ? tier.annualPrice : tier.monthlyPrice}
-                  </span>
-                  <span
-                    className={`text-body-sm ${
-                      tier.highlighted
-                        ? "text-paper/70"
-                        : "text-muted-foreground"
-                    }`}
-                  >
-                    /mo
-                  </span>
-                  {isAnnual && (
-                    <span
-                      className={`block text-body-sm mt-1 ${
-                        tier.highlighted
-                          ? "text-paper/50"
-                          : "text-muted-foreground"
-                      }`}
-                    >
-                      Billed annually
-                    </span>
-                  )}
-                </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-2.5">
@@ -697,8 +642,8 @@ const AIAgent = () => {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-            <p className="text-sm text-paper/50 mt-4">
-              Setup fee waived on annual plans. Cancel anytime.
+            <p className="text-sm text-paper/75 mt-4">
+              Setup fee waived on six-month and annual terms.
             </p>
           </motion.div>
         </div>

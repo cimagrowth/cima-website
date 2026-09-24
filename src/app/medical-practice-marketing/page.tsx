@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
+import { getGrowthosMap } from '@/lib/growthos-map';
+import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'medical-practice-marketing';
@@ -94,7 +96,7 @@ const content: SolutionLandingProps = {
     'Replaces agency, ads, chatbot, and CRM',
     'Built for specialty clinics',
     'HIPAA-grade data handling',
-    'Live in 48 hours',
+    'Leads flowing on day one',
   ],
   faqs: [
     {
@@ -184,7 +186,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export const revalidate = 3600;
+
+export default async function Page() {
+  const map = await getGrowthosMap();
+  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,
@@ -198,7 +204,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <SolutionLanding {...content} />
+      <SolutionLanding {...content} mapSection={mapSection} />
     </>
   );
 }

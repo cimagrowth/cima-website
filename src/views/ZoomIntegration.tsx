@@ -50,10 +50,10 @@ const ZoomIntegration = () => {
             Sign in to Zoom (if not already signed in) and review the requested permissions:
             <ul>
               <li>
-                Create a meeting for a user (<code>meeting:write:meeting</code>) — required so GrowthOS can schedule meetings when bookings happen.
+                Create a meeting for a user (<code>meeting:write:meeting</code>) is required so GrowthOS can schedule meetings when bookings happen.
               </li>
               <li>
-                View a user (<code>user:read:user</code>) — required so GrowthOS can display the email of the connected Zoom account.
+                View a user (<code>user:read:user</code>) is required so GrowthOS can display the email of the connected Zoom account.
               </li>
             </ul>
           </li>
@@ -77,7 +77,7 @@ const ZoomIntegration = () => {
           <li>Save.</li>
         </ol>
         <p>
-          You can configure different appointment types to use different meeting platforms — for example, sales calls on Zoom, follow-ups on Google Meet, in-person consultations with no link. The meeting type is set per appointment type, not globally.
+          You can configure different appointment types to use different meeting platforms: for example, sales calls on Zoom, follow-ups on Google Meet, in-person consultations with no link. The meeting type is set per appointment type, not globally.
         </p>
 
         <h3>What happens when a booking is made</h3>
@@ -156,7 +156,7 @@ const ZoomIntegration = () => {
           with the subject &quot;Zoom integration deletion request.&quot;
         </p>
         <p>
-          Zoom meetings that were already created in your Zoom account before disconnection remain in your Zoom account and are not deleted by the disconnect action — they are managed entirely within Zoom.
+          Zoom meetings that were already created in your Zoom account before disconnection remain in your Zoom account and are not deleted by the disconnect action; they are managed entirely within Zoom.
         </p>
 
         <h2>Troubleshooting</h2>
@@ -173,7 +173,7 @@ const ZoomIntegration = () => {
           <strong>My connection moved to &quot;Reauth Required.&quot;</strong>
         </p>
         <p>
-          This happens when Zoom&apos;s tokens become invalid — usually because the GrowthOS app was removed from inside Zoom, the password was changed, or the user&apos;s Zoom account access was modified by an administrator. Click Reconnect to repeat the OAuth flow.
+          This happens when Zoom&apos;s tokens become invalid, usually because the GrowthOS app was removed from inside Zoom, the password was changed, or the user&apos;s Zoom account access was modified by an administrator. Click Reconnect to repeat the OAuth flow.
         </p>
 
         <p>

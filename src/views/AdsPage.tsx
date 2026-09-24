@@ -588,7 +588,7 @@ const AdsPage = () => {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start max-w-6xl mx-auto">
-            {/* Left — feature blocks */}
+            {/* Left: feature blocks */}
             <div className="space-y-6">
               {optimizationFeatures.map((feat, i) => (
                 <motion.div
@@ -614,7 +614,7 @@ const AdsPage = () => {
               ))}
             </div>
 
-            {/* Right — Engine Activity mock card */}
+            {/* Right: Engine Activity mock card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -940,7 +940,7 @@ const AdsPage = () => {
                 onClick={() => setActiveSpecialty(spec.key)}
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-300 ${
                   activeSpecialty === spec.key
-                    ? "bg-clay text-paper shadow-[var(--shadow-sm)]"
+                    ? "bg-clay-deep text-paper shadow-[var(--shadow-sm)]"
                     : "bg-muted/50 text-muted-foreground hover:bg-muted"
                 }`}
               >

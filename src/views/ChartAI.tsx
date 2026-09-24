@@ -314,8 +314,7 @@ const ChartAI = () => {
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
             <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              <span className="italic text-clay">$35 per records request</span>{" "}
-              · No monthly fees · No contracts
+              Pricing is shared in your demo.
             </h2>
             <p className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
               Included with GrowthOS, our AI-powered patient acquisition platform

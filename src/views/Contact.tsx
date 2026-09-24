@@ -206,7 +206,7 @@ export default function Contact() {
               />
             </div>
 
-            {/* SMS Consent — TCR / A2P 10DLC compliance — DO NOT REMOVE */}
+            {/* SMS Consent: TCR / A2P 10DLC compliance. DO NOT REMOVE */}
             <div className="flex items-start gap-3 pt-1">
               <input
                 type="checkbox"

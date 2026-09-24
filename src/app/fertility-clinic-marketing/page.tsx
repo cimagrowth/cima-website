@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
+import { getGrowthosMap, getPlatformStats, firstReplyCommitment } from '@/lib/growthos-map';
+import MapExplorer from '@/components/home/MapExplorer';
+import { buildExplorerStages, explorerSourceKeys } from '@/components/map/explorer-data';
+import SourcesList from '@/components/map/SourcesList';
+import { WRAP } from '@/components/map/ui';
+import { ANY_EHR_LINE, EHR_SYSTEMS } from '@/content/integrations';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'fertility-clinic-marketing';
@@ -95,7 +101,7 @@ const content: SolutionLandingProps = {
     'Instant multi-channel response',
     '7 to 12 touch long-cycle nurture',
     'HIPAA-grade with a BAA',
-    'Live in 48 hours',
+    'Leads flowing on day one',
   ],
   faqs: [
     {
@@ -126,7 +132,7 @@ const content: SolutionLandingProps = {
     {
       question: 'Does it work with our EHR or existing CRM?',
       answer:
-        'Yes. GrowthOS integrates with ModMed and others, and can sit on top of Salesforce, HubSpot, or Zoho, or replace your CRM entirely.',
+        `Yes. GrowthOS integrates with ${EHR_SYSTEMS.join(', ')}. ${ANY_EHR_LINE} It can sit on top of Salesforce, HubSpot, GoHighLevel or Zoho, or replace your CRM entirely.`,
     },
   ],
   related: {
@@ -173,7 +179,8 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'Every day without GrowthOS is another fertility patient choosing the clinic that answered first.',
-    body: 'Our commitment, in writing: every lead answered in under 60 seconds, every patient followed up at every stage. Miss it and your next month is credited. Implementation included on annual plans. Live in 48 hours.',
+    // Filled from live platform figures in Page().
+    body: '',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },
@@ -206,7 +213,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export const revalidate = 3600;
+
+export default async function Page() {
+  const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
+  const explorerStages = buildExplorerStages(map, stats);
+  const mapSection = (
+    <>
+      <MapExplorer stages={explorerStages} defaultStage="after_cycle" />
+      <div className={`${WRAP} pb-16`}>
+        <SourcesList map={map} sourceKeys={explorerSourceKeys(explorerStages)} windowDays={stats.window_days} />
+      </div>
+    </>
+  );
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,
@@ -220,7 +239,11 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <SolutionLanding {...content} />
+      <SolutionLanding
+        {...content}
+        closing={{ ...content.closing, body: firstReplyCommitment(stats) }}
+        mapSection={mapSection}
+      />
     </>
   );
 }

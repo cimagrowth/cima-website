@@ -4,23 +4,27 @@ import {
   generateWebsiteSchema,
   generateOrganizationSchema,
   generateSoftwareSchema,
+  generateFounderSchema,
 } from '@/components/seo/schemas';
 
+export const revalidate = 3600;
+
+const TITLE = 'GrowthOS by Cima: the patient journey operating system for clinics';
+const DESCRIPTION =
+  'Clinics lose patients at eight stages, from the first search to years after treatment. GrowthOS closes every one: ads, instant AI response, nurture, booking, consent, cycle coordination, stored-specimen follow-up and reviews in one platform.';
+
 export const metadata: Metadata = {
-  title: 'AI Patient Acquisition Platform for Healthcare Clinics – GrowthOS by Cima',
-  description: 'The complete patient acquisition engine for fertility, aesthetics, and wellness clinics. Generate demand, convert inquiries, stop leakage, and retain patients in one platform. Replaces your agency, CRM, ads manager, and chatbot. Pricing tailored to your clinic and shared in your demo.',
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
-    'patient engagement software', 'healthcare CRM', 'AI patient communication',
-    'fertility clinic software', 'med spa CRM', 'wellness center management',
-    'regenerative medicine software', 'patient follow-up automation',
-    'healthcare lead nurturing', 'patient leakage prevention',
-    'clinic growth software', 'medical practice AI',
-    'automated patient response', 'healthcare marketing automation',
+    'patient journey', 'patient leakage', 'patient engagement software',
+    'fertility clinic software', 'healthcare CRM', 'AI patient communication',
+    'egg and embryo storage follow-up', 'clinic growth software',
   ],
   alternates: { canonical: 'https://cimagrowth.com' },
   openGraph: {
-    title: 'Not a chatbot. Not a CRM. The operating system your clinic runs on.',
-    description: 'The complete patient acquisition engine for fertility, aesthetics, and wellness clinics. Generate demand, convert inquiries, stop leakage, and retain patients in one platform. Replaces your agency, CRM, ads manager, and chatbot. Pricing tailored to your clinic and shared in your demo.',
+    title: TITLE,
+    description: DESCRIPTION,
     url: 'https://cimagrowth.com',
     siteName: 'Cima Growth Solutions',
     images: [
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
         url: '/og/og-home.png',
         width: 1200,
         height: 630,
-        alt: 'AI Patient Acquisition Platform for Healthcare Clinics – GrowthOS by Cima',
+        alt: TITLE,
       },
     ],
     locale: 'en_US',
@@ -36,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Not a chatbot. Not a CRM. The operating system your clinic runs on.',
-    description: 'The complete patient acquisition engine for fertility, aesthetics, and wellness clinics. Generate demand, convert inquiries, stop leakage, and retain patients in one platform. Replaces your agency, CRM, ads manager, and chatbot. Pricing tailored to your clinic and shared in your demo.',
+    title: TITLE,
+    description: DESCRIPTION,
     images: ['/og/og-home.png'],
   },
 };
@@ -47,6 +51,7 @@ export default function HomePage() {
     generateWebsiteSchema(),
     generateOrganizationSchema(),
     generateSoftwareSchema(),
+    generateFounderSchema(),
   ];
 
   return (
