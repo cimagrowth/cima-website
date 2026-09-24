@@ -185,7 +185,7 @@ const Header = () => {
             </Link>
             <Link
               href="/demo"
-              className="inline-flex h-11 items-center rounded-btn bg-clay-deep px-5 font-ui text-sm font-semibold text-white transition-colors hover:bg-clay-deep/90"
+              className="inline-flex h-11 items-center rounded-btn bg-clay-deep px-5 font-ui text-sm font-semibold text-white transition-colors hover:bg-orange-600"
             >
               Book a demo
             </Link>

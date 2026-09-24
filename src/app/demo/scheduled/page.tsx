@@ -42,9 +42,9 @@ export default function ScheduledPage({ searchParams }: Props) {
 
   if (!email) {
     return (
-      <section className="min-h-[calc(100vh-8rem)] bg-[#FDFBF7] flex items-center justify-center px-6 py-16">
-        <div className="max-w-[560px] w-full bg-white rounded-2xl shadow-sm border border-[#1B4D5C]/10 p-8 md:p-10 text-center">
-          <h1 className="font-display font-[340] text-[#1B4D5C] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4">
+      <section className="min-h-[calc(100vh-8rem)] bg-white flex items-center justify-center px-6 py-16">
+        <div className="max-w-[560px] w-full bg-white rounded-2xl shadow-sm border border-[#112434]/10 p-8 md:p-10 text-center">
+          <h1 className="font-display font-semibold text-[#112434] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4">
             We couldn't find your registration.
           </h1>
           <p className="text-[1rem] md:text-[1.0625rem] leading-relaxed text-[#444] mb-6">
@@ -53,7 +53,7 @@ export default function ScheduledPage({ searchParams }: Props) {
           </p>
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center h-12 px-6 rounded-md bg-clay-deep text-white font-semibold hover:bg-clay-deep/90 transition-colors"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-md bg-clay-deep text-white font-semibold hover:bg-orange-600 transition-colors"
           >
             Restart from the demo form →
           </Link>
@@ -75,10 +75,10 @@ export default function ScheduledPage({ searchParams }: Props) {
   const greetingName = first_name || 'there';
 
   return (
-    <section className="bg-[#FDFBF7] py-12 md:py-16 px-4 md:px-6">
+    <section className="bg-white py-12 md:py-16 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8 md:mb-10">
-          <h1 className="font-display font-[340] text-[#1B4D5C] text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+          <h1 className="font-display font-semibold text-[#112434] text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
             Pick a time, {greetingName} →
           </h1>
           <p className="text-[1.0625rem] md:text-[1.125rem] leading-relaxed text-[#444] max-w-2xl mx-auto mb-3">
@@ -91,7 +91,7 @@ export default function ScheduledPage({ searchParams }: Props) {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-[#1B4D5C]/10 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-sm border border-[#112434]/10 overflow-hidden">
           <iframe
             src={bookingUrl.toString()}
             title="Book your GrowthOS demo"

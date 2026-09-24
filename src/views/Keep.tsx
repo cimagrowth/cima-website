@@ -26,7 +26,7 @@ export default async function KeepView() {
   return (
     <>
       {/* Hero */}
-      <section aria-labelledby="keep-title" className="pb-14 pt-12 md:pb-20 md:pt-20">
+      <section aria-labelledby="keep-title" className="pb-14 pt-6 md:pb-20 md:pt-10">
         <div className={`${WRAP} grid items-center gap-10 lg:grid-cols-12`}>
           <div className="flex flex-col gap-6 lg:col-span-6">
             <div className="flex flex-wrap items-center gap-2.5">
@@ -40,7 +40,7 @@ export default async function KeepView() {
             </div>
             <h1
               id="keep-title"
-              className="font-display text-[clamp(38px,5vw,60px)] font-medium leading-[1.04] tracking-[-0.025em] text-teal-deep"
+              className="font-display text-[clamp(38px,5vw,60px)] font-bold leading-[1.04] tracking-[-0.025em] text-teal-deep"
             >
               Keep. For every egg, embryo and sample still in your tanks.
             </h1>
@@ -142,7 +142,7 @@ export default async function KeepView() {
       <section aria-labelledby="keep-cta-title" className="pb-20 pt-16 md:pb-24">
         <div className={WRAP}>
           <div className="flex flex-col items-start gap-5 rounded-[26px] bg-clay-wash p-7 md:p-14">
-            <h2 id="keep-cta-title" className="font-display text-[clamp(30px,3.6vw,44px)] font-medium leading-[1.08] text-teal-deep">
+            <h2 id="keep-cta-title" className="font-display text-[clamp(30px,3.6vw,44px)] font-bold leading-[1.08] text-teal-deep">
               See Keep on your own storage list.
             </h2>
             <p className="max-w-2xl text-lg leading-relaxed text-teal-deep/80">

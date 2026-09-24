@@ -24,13 +24,13 @@ export default async function GrowthosMapView() {
   return (
     <>
       {/* Intro */}
-      <section aria-labelledby="map-page-title" className="pb-12 pt-12 md:pb-16 md:pt-20">
+      <section aria-labelledby="map-page-title" className="pb-12 pt-6 md:pb-16 md:pt-10">
         <div className={`${WRAP} grid gap-10 lg:grid-cols-12`}>
           <div className="flex flex-col gap-6 lg:col-span-7">
             <Eyebrow>The GrowthOS Map</Eyebrow>
             <h1
               id="map-page-title"
-              className="font-display text-[clamp(38px,5.4vw,64px)] font-medium leading-[1.03] tracking-[-0.025em] text-teal-deep"
+              className="font-display text-[clamp(38px,5.4vw,64px)] font-bold leading-[1.03] tracking-[-0.025em] text-teal-deep"
             >
               The patient journey, and every place it leaks.
             </h1>

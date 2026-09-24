@@ -4,20 +4,20 @@ import { BTN_OUTLINE, BTN_PRIMARY, WRAP } from "@/components/map/ui";
 
 export default function HeroMap({ map }: { map: GrowthosMap }) {
   return (
-    <section aria-labelledby="hero-title" className="pb-14 pt-12 md:pb-[72px] md:pt-24">
+    <section aria-labelledby="hero-title" className="pb-12 pt-6 md:pb-16 md:pt-10 lg:pt-12">
       <div className={`${WRAP} grid items-center gap-10 lg:grid-cols-12 lg:gap-6`}>
-        <div className="flex flex-col gap-7 lg:col-span-7">
+        <div className="flex flex-col gap-5 md:gap-6 lg:col-span-7">
           <p className="inline-flex items-center gap-2.5 self-start rounded-full bg-mist px-3.5 py-2 text-sm font-semibold text-teal">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-clay-deep" />
             The front-end operating system for fertility and specialty clinics
           </p>
           <h1
             id="hero-title"
-            className="font-display text-[clamp(40px,6vw,72px)] font-medium leading-[1.02] tracking-[-0.025em] text-teal-deep"
+            className="font-display text-[clamp(34px,4.4vw,60px)] font-bold leading-[1.04] tracking-[-0.03em] text-teal-deep"
           >
             Your clinic leaks patients at eight stages. GrowthOS closes every one.
           </h1>
-          <p className="max-w-[620px] text-lg leading-relaxed text-teal-deep/80 md:text-[21px]">
+          <p className="max-w-[620px] text-base leading-relaxed text-teal-deep/80 md:text-lg">
             From the first search to years after treatment. One system runs your ads, answers every
             inquiry, keeps patients moving through consult and treatment, and brings them back for the
             eggs and embryos they already stored.

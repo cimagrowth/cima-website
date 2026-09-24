@@ -334,7 +334,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       <section className="section-padding relative overflow-hidden">
         <div className="container-wide relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Where does your clinic leak? See it on the GrowthOS Map.
             </h1>
             <p className="font-body text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
@@ -401,7 +401,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
           <div className="mx-auto max-w-[640px]">
             {status === 'success' ? (
               <div className="card-elevated p-8 md:p-10 text-center">
-                <h2 className="font-display text-3xl font-[340] tracking-tight text-teal-deep mb-4">
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-teal-deep mb-4">
                   Your audit is underway.
                 </h2>
                 <p className="font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
@@ -411,7 +411,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
             ) : (
               <>
                 <div className="mb-8 text-center">
-                  <h2 className="font-display text-[clamp(28px,4vw,44px)] font-[340] tracking-tight text-teal-deep leading-tight mb-4">
+                  <h2 className="font-display text-[clamp(28px,4vw,44px)] font-semibold tracking-tight text-teal-deep leading-tight mb-4">
                     Get My Free Audit
                   </h2>
                   <p className="font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
@@ -749,7 +749,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       Back
                     </button>
                   </div>
-                  <h3 className="font-display text-2xl font-medium text-teal-deep">Map your patient journey</h3>
+                  <h3 className="font-display text-2xl font-bold text-teal-deep">Map your patient journey</h3>
 
                   {mapQuestions
                     .filter((q) => !q.fertilityOnly || isFertility)

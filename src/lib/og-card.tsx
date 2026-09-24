@@ -5,11 +5,11 @@ import { ImageResponse } from 'next/og';
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-const TEAL_DEEP = '#143038';
-const PAPER = '#FDFBF7';
-const CLAY_SOFT = '#F2B48E';
-const CLAY_DEEP = '#B5501C';
-const MIST = '#E7EFEC';
+const NAVY = '#112434';
+const WHITE = '#FFFFFF';
+const ORANGE_SOFT = '#F59E7A';
+const ORANGE = '#D74117';
+const MIST = '#C7D2DD';
 
 const GLYPHS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,!?:;'\"()[]{}@#$%&*-+=/\\|<>~`^_·";
@@ -41,14 +41,14 @@ export async function renderOgCard({
   title: string;
   sub: string;
 }) {
-  const [fraunces, dmSans, dmSansBold] = await Promise.all([
-    loadGoogleFont('Fraunces', 500, GLYPHS + title),
+  const [jakarta, dmSans, dmSansBold] = await Promise.all([
+    loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS + title),
     loadGoogleFont('DM Sans', 400, GLYPHS + sub),
     loadGoogleFont('DM Sans', 700, GLYPHS + eyebrow),
   ]);
 
   const fonts: NonNullable<ConstructorParameters<typeof ImageResponse>[1]>['fonts'] = [];
-  if (fraunces) fonts.push({ name: 'Fraunces', data: fraunces, weight: 500, style: 'normal' });
+  if (jakarta) fonts.push({ name: 'Plus Jakarta Sans', data: jakarta, weight: 700, style: 'normal' });
   if (dmSans) fonts.push({ name: 'DM Sans', data: dmSans, weight: 400, style: 'normal' });
   if (dmSansBold) fonts.push({ name: 'DM Sans', data: dmSansBold, weight: 700, style: 'normal' });
 
@@ -60,8 +60,8 @@ export async function renderOgCard({
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: TEAL_DEEP,
-          color: PAPER,
+          backgroundColor: NAVY,
+          color: WHITE,
           padding: '72px 80px',
           fontFamily: '"DM Sans"',
         }}
@@ -72,7 +72,7 @@ export async function renderOgCard({
               width: '14px',
               height: '14px',
               borderRadius: '9999px',
-              backgroundColor: CLAY_DEEP,
+              backgroundColor: ORANGE,
               marginRight: '16px',
               display: 'flex',
             }}
@@ -84,7 +84,7 @@ export async function renderOgCard({
               fontWeight: 700,
               letterSpacing: '4px',
               textTransform: 'uppercase',
-              color: CLAY_SOFT,
+              color: ORANGE_SOFT,
             }}
           >
             {eyebrow}
@@ -97,9 +97,9 @@ export async function renderOgCard({
               display: 'flex',
               fontSize: '70px',
               lineHeight: 1.08,
-              fontWeight: 500,
-              letterSpacing: '-0.02em',
-              fontFamily: '"Fraunces"',
+              fontWeight: 700,
+              letterSpacing: '-0.025em',
+              fontFamily: '"Plus Jakarta Sans"',
               maxWidth: '1000px',
             }}
           >

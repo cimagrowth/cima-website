@@ -58,7 +58,7 @@ const FinalCTA = ({
 
       <div className="container-wide relative z-10">
         <div className="max-w-3xl lg:max-w-4xl mx-auto text-center px-2">
-          <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-teal-deep mb-5 md:mb-7">
+          <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-teal-deep mb-5 md:mb-7">
             {heading}
           </h2>
           <p className="text-base md:text-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">

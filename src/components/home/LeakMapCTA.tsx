@@ -9,7 +9,7 @@ export default function LeakMapCTA() {
           <div className="flex flex-col gap-4 lg:col-span-8">
             <h2
               id="leakmap-title"
-              className="font-display text-[clamp(32px,4vw,48px)] font-medium leading-[1.05] tracking-[-0.02em] text-teal-deep"
+              className="font-display text-[clamp(32px,4vw,48px)] font-bold leading-[1.05] tracking-[-0.02em] text-teal-deep"
             >
               Where does your clinic leak?
             </h2>

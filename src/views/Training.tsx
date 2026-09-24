@@ -36,15 +36,15 @@ const Training = () => {
       <section className="section-padding bg-paper relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
             <Eyebrow>Training and certification</Eyebrow>
-            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Your customers need training.{" "}
-              <span className="italic text-clay">
+              <span className="text-clay">
                 You built a folder of videos.
               </span>
             </h1>
@@ -93,7 +93,7 @@ const Training = () => {
         <div className="container-tight relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
             <div className="relative pl-6 md:pl-10 border-l-2 border-orange/70">
-              <p className="font-display text-[clamp(22px,3vw,34px)] font-[340] tracking-tight text-teal leading-snug">
+              <p className="font-display text-[clamp(22px,3vw,34px)] font-semibold tracking-tight text-teal leading-snug">
                 Every B2B company that sells into clinics ends up running a
                 training operation it never meant to build. Recorded calls, a
                 shared drive, a spreadsheet of who watched what, and a customer
@@ -117,7 +117,7 @@ const Training = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>How it works</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Training that knows where the customer is.
             </h2>
           </motion.div>
@@ -167,7 +167,7 @@ const Training = () => {
 
           <motion.p
             {...fadeUp}
-            className="font-display text-[clamp(20px,2.6vw,30px)] font-[340] tracking-tight text-teal-deep leading-snug text-center max-w-3xl mx-auto mt-14"
+            className="font-display text-[clamp(20px,2.6vw,30px)] font-semibold tracking-tight text-teal-deep leading-snug text-center max-w-3xl mx-auto mt-14"
           >
             No standalone LMS can do this, because no standalone LMS owns your
             pipeline.
@@ -183,7 +183,7 @@ const Training = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>What it does</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Four things, done properly.
             </h2>
           </motion.div>
@@ -258,7 +258,7 @@ const Training = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>What is included</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               Everything the training operation needs, on day one.
             </h2>
           </motion.div>
@@ -312,7 +312,7 @@ const Training = () => {
             className="text-center mb-12 md:mb-16 max-w-3xl mx-auto"
           >
             <Eyebrow>Pricing</Eyebrow>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
               One price. Everyone you train.
             </h2>
           </motion.div>
@@ -321,7 +321,7 @@ const Training = () => {
             {...fadeUp}
             className="max-w-3xl mx-auto mb-12 md:mb-14 text-center"
           >
-            <p className="font-display text-[clamp(24px,3.2vw,38px)] font-[340] tracking-tight text-teal-deep leading-snug mb-4">
+            <p className="font-display text-[clamp(24px,3.2vw,38px)] font-semibold tracking-tight text-teal-deep leading-snug mb-4">
               Pricing is shared in your demo.
             </p>
             <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
@@ -407,7 +407,7 @@ const Training = () => {
       <section className="section-padding bg-teal text-paper relative overflow-hidden">
         <div className="container-tight relative z-10 text-center">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
-            <h2 className="font-display font-[340] tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-10">
+            <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-10">
               Stop being the person who chases people to watch videos.
             </h2>
             <Link href={DEMO_ROUTE}>

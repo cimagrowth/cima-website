@@ -18,7 +18,7 @@ const buttonVariants = cva(
         ghost: "text-teal hover:bg-sand/30 hover:text-teal-deep",
         link: "text-teal underline-offset-4 hover:underline",
         // Premium variants for the landing page
-        hero: "bg-clay-deep text-white hover:bg-clay-deep/90 shadow-[var(--shadow-sm)] text-base font-semibold",
+        hero: "bg-clay-deep text-white hover:bg-orange-600 shadow-[var(--shadow-sm)] text-base font-semibold",
         "hero-outline": "bg-teal text-paper hover:bg-teal-deep text-base font-medium",
         subtle: "bg-accent text-accent-foreground hover:bg-accent/80",
         // Secondary blue variant

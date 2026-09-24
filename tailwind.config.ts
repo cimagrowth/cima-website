@@ -15,28 +15,31 @@ export default {
     extend: {
       fontFamily: {
         sans: ["DM Sans", "system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        display: ["Fraunces", "Georgia", "serif"],
+        display: ["Plus Jakarta Sans", "DM Sans", "system-ui", "sans-serif"],
         ui: ["Plus Jakarta Sans", "DM Sans", "system-ui", "sans-serif"],
         body: ["DM Sans", "system-ui", "sans-serif"],
       },
       colors: {
-        cream: "#F6EFE3",
-        paper: "#FDFBF7",
-        teal: "#1B4D5C",
-        "teal-deep": "#143038",
-        clay: "#D2693B",
-        // White text on a filled button needs clay-deep: white on clay fails WCAG AA.
-        "clay-deep": "#B5501C",
-        "clay-soft": "#F2B48E",
-        "clay-wash": "#FCE9DD",
-        // Small clay text on light grounds: clay-deep text on cream is 4.45:1, under AA.
-        "clay-ink": "#8A3A12",
+        // Cima brand: white grounds, Cima navy ink, Cima orange for actions.
+        // Token names are kept from the earlier palette so every page picks up
+        // the new values without a rename.
+        cream: "#FFFFFF",
+        paper: "#FFFFFF",
+        teal: "#1F3B55",
+        "teal-deep": "#112434",
+        clay: "#D74117",
+        // Filled buttons with white text (4.51:1). Hover darkens to orange-600.
+        "clay-deep": "#D74117",
+        "clay-soft": "#F59E7A",
+        "clay-wash": "#FDEEE8",
+        // Small orange text on light grounds (5.9:1 on white).
+        "clay-ink": "#B8350F",
         orange: {
-          DEFAULT: "#F97316",
-          600: "#EA580C",
+          DEFAULT: "#D74117",
+          600: "#B8350F",
         },
-        sand: "#E7DCC8",
-        mist: "#E7EFEC",
+        sand: "#E2E6EB",
+        mist: "#EEF2F6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

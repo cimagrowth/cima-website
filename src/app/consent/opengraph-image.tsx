@@ -8,11 +8,11 @@ export const contentType = 'image/png';
 export const alt = 'Patient Consent and Education for Clinics | Cima';
 
 // Brand tokens (must match Tailwind config)
-const TEAL = '#1B4D5C';
-const OFF_WHITE = '#FDFBF7';
-const CLAY = '#D2693B';
-const ORANGE = '#F97316';
-const SAND = '#E7DCC8';
+const TEAL = '#112434';
+const OFF_WHITE = '#FFFFFF';
+const CLAY = '#D74117';
+const ORANGE = '#D74117';
+const SAND = '#E2E6EB';
 
 const TITLE = 'Consent that lives where your patients do.';
 const SUB = 'Branded video education and e-signature that runs inside your CRM.';
@@ -47,8 +47,8 @@ async function loadGoogleFont(
 }
 
 export default async function Image() {
-  const [fraunces, jakarta, dmSans] = await Promise.all([
-    loadGoogleFont('Fraunces', 340, GLYPHS + TITLE),
+  const [titleFont, jakarta, dmSans] = await Promise.all([
+    loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS + TITLE),
     loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS),
     loadGoogleFont('DM Sans', 400, GLYPHS + SUB),
   ]);
@@ -56,8 +56,8 @@ export default async function Image() {
   const fonts: NonNullable<
     ConstructorParameters<typeof ImageResponse>[1]
   >['fonts'] = [];
-  if (fraunces)
-    fonts.push({ name: 'Fraunces', data: fraunces, weight: 300, style: 'normal' });
+  if (titleFont)
+    fonts.push({ name: 'Plus Jakarta Sans', data: titleFont, weight: 700, style: 'normal' });
   if (jakarta)
     fonts.push({
       name: 'Plus Jakarta Sans',
@@ -93,7 +93,7 @@ export default async function Image() {
             width: '420px',
             height: '420px',
             borderRadius: '9999px',
-            backgroundColor: 'rgba(249, 115, 22, 0.14)',
+            backgroundColor: 'rgba(215, 65, 23, 0.14)',
             display: 'flex',
           }}
         />
@@ -128,10 +128,10 @@ export default async function Image() {
             style={{
               fontSize: '68px',
               lineHeight: 1.12,
-              fontWeight: 300,
+              fontWeight: 700,
               letterSpacing: '-0.02em',
               color: OFF_WHITE,
-              fontFamily: '"Fraunces", "Plus Jakarta Sans"',
+              fontFamily: '"Plus Jakarta Sans"',
               display: 'flex',
               maxWidth: '900px',
             }}

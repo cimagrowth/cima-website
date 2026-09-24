@@ -169,12 +169,12 @@ const Audit = () => {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             {/* Left column: copy */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-7"
             >
-              <h1 className="font-display font-[340] tracking-tight text-foreground text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
+              <h1 className="font-display font-semibold tracking-tight text-foreground text-[2.25rem] leading-[1.08] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] mb-6">
                 Leads that click, visit, and vanish are{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10">patients you already paid for.</span>
@@ -220,7 +220,7 @@ const Audit = () => {
 
             {/* Right column: form (sticky on desktop) */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
               className="lg:col-span-5"
@@ -261,7 +261,7 @@ const Audit = () => {
       <section className="bg-background-soft section-padding-sm">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="font-display font-[340] text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+            <h2 className="font-display font-semibold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
               You know something is broken.{" "}
               <span className="text-gradient-accent">
                 You just can&apos;t see where.
@@ -317,7 +317,7 @@ const Audit = () => {
                   <p className="text-body-sm text-muted-foreground mb-4 flex-1">
                     {card.body}
                   </p>
-                  <p className="text-xs italic text-accent-orange font-medium">
+                  <p className="text-xs text-accent-orange font-medium">
                     {card.tag}
                   </p>
                 </motion.div>
@@ -331,7 +331,7 @@ const Audit = () => {
       <section className="bg-background section-padding-sm">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="font-display font-[340] text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
+            <h2 className="font-display font-semibold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight mb-4">
               Three tools.{" "}
               <span className="text-gradient-accent">
                 Zero fluff. Unlimited use.
@@ -449,7 +449,7 @@ const Audit = () => {
             <p className="text-xs md:text-sm font-ui font-semibold text-clay uppercase tracking-[.16em] mb-5">
               Who&apos;s behind this
             </p>
-            <h2 className="font-display font-[340] text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
+            <h2 className="font-display font-semibold text-primary-foreground text-[1.875rem] md:text-[2.5rem] leading-tight tracking-tight mb-6">
               15 years. One obsession: figuring out why leads
               click, visit, and disappear, and what to do about it.
             </h2>
@@ -487,7 +487,7 @@ const Audit = () => {
       <section className="bg-background section-padding-sm">
         <div className="container-tight">
           <div className="text-center mb-10">
-            <h2 className="font-display font-[340] text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight">
+            <h2 className="font-display font-semibold text-foreground text-[2rem] md:text-[2.5rem] leading-tight tracking-tight">
               Questions before you sign up
             </h2>
           </div>
@@ -545,7 +545,7 @@ const Audit = () => {
       {/* ───────────── Section 6: Final CTA ───────────── */}
       <section className="bg-background-soft section-padding-sm">
         <div className="container-tight text-center">
-          <h2 className="font-display font-[340] text-foreground text-[2.5rem] md:text-[3.25rem] leading-tight tracking-tight mb-5">
+          <h2 className="font-display font-semibold text-foreground text-[2.5rem] md:text-[3.25rem] leading-tight tracking-tight mb-5">
             Still here?
           </h2>
           <p className="text-body-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

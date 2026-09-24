@@ -219,7 +219,7 @@ const Product = () => {
       <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
@@ -227,9 +227,9 @@ const Product = () => {
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               The Platform
             </p>
-            <h1 className="font-display text-4xl md:text-6xl font-[340] tracking-[-.02em] text-teal-deep mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Everything a CRM does.{" "}
-              <span className="italic text-clay">
+              <span className="text-clay">
                 None of the work it makes you do.
               </span>
             </h1>
@@ -275,7 +275,7 @@ const Product = () => {
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               The Boxes You Came To Check
             </p>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
               Everything you&rsquo;d verify on a CRM switcher checklist.
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -338,9 +338,9 @@ const Product = () => {
               <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
                 System Of Action
               </p>
-              <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+              <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
                 But a CRM is{" "}
-                <span className="italic text-clay">
+                <span className="text-clay">
                   a filing cabinet you fill by hand.
                 </span>
               </h2>
@@ -373,7 +373,7 @@ const Product = () => {
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               Stack Up
             </p>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
               GrowthOS vs HubSpot vs GoHighLevel
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -463,7 +463,7 @@ const Product = () => {
             <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4">
               Migration
             </p>
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-foreground leading-tight mb-6">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight mb-6">
               Switch on your schedule.
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -542,7 +542,7 @@ const Product = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-[340] tracking-tight text-paper mb-6 leading-tight">
+            <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-paper mb-6 leading-tight">
               See it run on your clinic.
             </h2>
             <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">

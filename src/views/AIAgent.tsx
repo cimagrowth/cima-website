@@ -211,7 +211,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
       <section className="section-padding bg-cream relative overflow-hidden">
         <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-4xl lg:max-w-5xl mx-auto"
@@ -219,9 +219,9 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             <span className="inline-block bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay font-ui text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
               Now Available
             </span>
-            <h1 className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6">
+            <h1 className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6">
               Your Clinic's AI Front Desk:{" "}
-              <span className="italic text-clay">
+              <span className="text-clay">
                 Responds in Seconds, Nurtures for Weeks, Hands Off With Full Context.
               </span>
             </h1>
@@ -308,9 +308,9 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl lg:max-w-4xl mx-auto"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-6 text-center">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-6 text-center">
               Most "AI Chatbots" Are Glorified FAQ Pages.{" "}
-              <span className="italic text-clay">This Is an AI Employee.</span>
+              <span className="text-clay">This Is an AI Employee.</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-6 mt-10">
               <div className="card-premium p-6 border-l-4 border-muted-foreground/30">
@@ -340,7 +340,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Live in Under 10 Minutes. No Code. No IT.
             </h2>
           </motion.div>
@@ -426,9 +426,9 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Everything Your Front Desk Does,{" "}
-              <span className="italic text-clay">Without the Hold Music.</span>
+              <span className="text-clay">Without the Hold Music.</span>
             </h2>
           </motion.div>
           <motion.div
@@ -469,7 +469,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Two plans. Pricing is shared in your demo.
             </h2>
 
@@ -584,7 +584,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Frequently Asked Questions
             </h2>
           </motion.div>
@@ -635,7 +635,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Every Hour Without an AI Agent Is an Hour of Leads Going to Your Competitor.
             </h2>
             <p className="text-body-lg text-paper/70 max-w-xl mx-auto mb-8">

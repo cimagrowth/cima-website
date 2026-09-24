@@ -3,92 +3,89 @@
 @tailwind utilities;
 
 /* Cima Growth Solutions / GrowthOS Design System
-   Warm, trustworthy healthcare aesthetic
-   Brand Colors: Deep Teal #1B4D5C, Orange #F97316, Medium Teal #58A3AD, Warm Sand #EDE5D6
+   White grounds, Cima navy ink, Cima orange for actions.
+   Brand Colors: Cima Navy #112434, Cima Orange #D74117, Cima Blue #3D6E85
    All colors in HSL format
 */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap');
 
 @layer base {
   :root {
-    --background: 38 51% 93%;           /* #F6EFE3 warm cream canvas */
-    --background-soft: 39 39% 89%;
-    --foreground: 193 47% 15%;          /* #143038 teal-charcoal ink */
+    --background: 0 0% 100%;            /* #FFFFFF white canvas */
+    --background-soft: 210 22% 96%;     /* #F4F6F8 */
+    --foreground: 207 51% 14%;          /* #112434 Cima navy ink */
 
-    --card: 40 33% 98%;                 /* #FDFBF7 paper surfaces */
-    --card-foreground: 193 47% 15%;
-    --popover: 40 33% 98%;
-    --popover-foreground: 193 47% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 207 51% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 207 51% 14%;
 
-    --primary: 195 52% 22%;             /* #1B4D5C deep teal */
-    --primary-foreground: 40 33% 96%;
-    --primary-light: 187 32% 48%;       /* #548E96 medium teal */
+    --primary: 207 51% 14%;             /* #112434 Cima navy */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 199 37% 38%;       /* #3D6E85 Cima blue, deep */
 
-    --accent-orange: 18 63% 53%;        /* #D2693B clay: warm accent, no neon */
-    --accent-orange-foreground: 40 33% 98%;
+    --accent-orange: 13 81% 47%;        /* #D74117 Cima orange: actions */
+    --accent-orange-foreground: 0 0% 100%;
 
-    --secondary: 190 30% 50%;           /* #5994A1: muted teal, NOT green */
+    --secondary: 199 37% 38%;           /* #3D6E85 */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 39 39% 91%;                /* quiet sand-tinted fill */
-    --muted-foreground: 168 6% 46%;     /* #6E7D7A secondary text */
+    --muted: 210 22% 96%;               /* #F4F6F8 quiet fill */
+    --muted-foreground: 210 11% 38%;    /* #56616C secondary text */
 
-    --accent: 190 15% 93%;
-    --accent-foreground: 210 29% 24%;
+    --accent: 210 31% 95%;              /* #EEF2F6 */
+    --accent-foreground: 207 51% 14%;
 
-    --tan: 37 33% 91%;                  /* #EDE5D6 warm sand */
-    --tan-foreground: 210 29% 24%;
+    --tan: 210 22% 96%;                 /* #F4F6F8 alternate band */
+    --tan-foreground: 207 51% 14%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 39 39% 85%;               /* #E7DCC8 sand hairlines */
-    --input: 39 39% 85%;
-    --ring: 195 52% 22%;                /* teal focus ring */
+    --border: 213 18% 90%;              /* #E2E6EB hairlines */
+    --input: 213 18% 90%;
+    --ring: 207 51% 14%;                /* navy focus ring */
     --radius: 0.75rem;
 
-    --shadow-soft: 0 1px 2px 0 rgba(20, 48, 56, 0.04), 0 1px 6px -1px rgba(20, 48, 56, 0.03);
+    --shadow-soft: 0 1px 2px 0 rgba(17, 36, 52, 0.04), 0 1px 6px -1px rgba(17, 36, 52, 0.03);
     --shadow-card: var(--shadow-sm);
     --shadow-elevated: var(--shadow);
-    --shadow-glow: var(--shadow-sm);    /* glows retired, calm soft shadow */
+    --shadow-glow: var(--shadow-sm);
 
-    --gradient-primary: linear-gradient(135deg, #1B4D5C, #548E96);
-    --gradient-accent: linear-gradient(135deg, #D2693B, #C05E33);
-    --gradient-hero: linear-gradient(180deg, #F6EFE3, #F0E7D5);
-    --gradient-radial: radial-gradient(ellipse at top, rgba(89, 148, 161, 0.06) 0%, transparent 60%);
+    --gradient-primary: linear-gradient(135deg, #112434, #1F3B55);
+    --gradient-accent: linear-gradient(135deg, #D74117, #B8350F);
+    --gradient-hero: linear-gradient(180deg, #FFFFFF, #FFFFFF);
+    --gradient-radial: radial-gradient(ellipse at top, rgba(61, 110, 133, 0.05) 0%, transparent 60%);
 
-    --sidebar-background: 195 52% 22%;
-    --sidebar-foreground: 40 33% 96%;
-    --sidebar-primary: 24 95% 53%;
+    --sidebar-background: 207 51% 14%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 13 81% 47%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 195 42% 28%;
-    --sidebar-accent-foreground: 40 33% 96%;
-    --sidebar-border: 195 38% 30%;
-    --sidebar-ring: 24 95% 53%;
+    --sidebar-accent: 209 47% 23%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 209 47% 23%;
+    --sidebar-ring: 13 81% 47%;
 
-    /* ── Elegant rebrand tokens (brand book, Elegant Edition) ──
-       canvas + ink */
-    --color-cream: #F6EFE3;      /* dominant page background (warm) */
-    --color-paper: #FDFBF7;      /* cards / elevated surfaces */
-    --color-teal: #1B4D5C;       /* anchor: dark sections, headings, 2ndary btn */
-    --color-teal-deep: #143038;  /* body ink (teal-charcoal) */
-    --color-muted: #6E7D7A;      /* secondary text */
-    /* warm */
-    --color-clay: #D2693B;       /* warm PRIMARY button + warm fills */
-    --color-orange: #F97316;     /* ACCENT ONLY: italic hero word, dots, tiny */
-    /* neutrals */
-    --color-sand: #E7DCC8;       /* hairline borders, dividers, quiet fills */
-    --color-mist: #E7EFEC;       /* soft teal panels behind product imagery */
+    /* Brand tokens: canvas + ink */
+    --color-cream: #FFFFFF;      /* page background */
+    --color-paper: #FFFFFF;      /* cards / elevated surfaces */
+    --color-teal: #1F3B55;       /* navy, secondary: outlines, eyebrows */
+    --color-teal-deep: #112434;  /* Cima navy: body ink and dark bands */
+    --color-muted: #56616C;      /* secondary text */
+    --color-clay: #D74117;       /* Cima orange: primary buttons and actions */
+    --color-orange: #D74117;
+    --color-sand: #E2E6EB;       /* hairline borders, dividers */
+    --color-mist: #EEF2F6;       /* quiet cool panels */
 
     /* type roles */
-    --font-display: "Fraunces", Georgia, serif;
+    --font-display: "Plus Jakarta Sans", "DM Sans", system-ui, sans-serif;
     --font-ui: "Plus Jakarta Sans", system-ui, sans-serif;
     --font-body: "DM Sans", system-ui, sans-serif;
 
     /* shape */
-    --shadow: 0 1px 2px rgba(20,48,56,.04), 0 18px 40px -24px rgba(20,48,56,.22);
-    --shadow-sm: 0 1px 2px rgba(20,48,56,.05), 0 8px 22px -16px rgba(20,48,56,.18);
+    --shadow: 0 1px 2px rgba(17,36,52,.04), 0 18px 40px -24px rgba(17,36,52,.18);
+    --shadow-sm: 0 1px 2px rgba(17,36,52,.05), 0 8px 22px -16px rgba(17,36,52,.14);
   }
 
   .dark {
@@ -159,16 +156,16 @@
 
   body {
     @apply antialiased;
-    background: var(--color-cream, #F6EFE3);
-    color: var(--color-teal-deep, #143038);
+    background: var(--color-cream, #FFFFFF);
+    color: var(--color-teal-deep, #112434);
     font-family: var(--font-body, "DM Sans"), system-ui, sans-serif;
     line-height: 1.65;
     font-feature-settings: "cv11", "ss01", "ss03";
   }
 
   ::selection {
-    background: #F6E0CE;
-    color: #143038;
+    background: #FDE3D8;
+    color: #112434;
   }
 
   h1, h2, h3, h4, h5, h6 {

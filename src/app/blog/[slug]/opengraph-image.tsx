@@ -10,10 +10,10 @@ export const alt = 'Cima Growth Solutions blog post';
 const FALLBACK_TITLE = 'Cima Growth Solutions: Fertility Marketing';
 
 // Brand tokens (do not change: must match Tailwind config)
-const TEAL = '#1B4D5C';
-const OFF_WHITE = '#FDFBF7'; // paper
-const CLAY = '#D2693B';
-const SAND = '#E7DCC8';
+const TEAL = '#112434';
+const OFF_WHITE = '#FFFFFF'; // paper
+const CLAY = '#D74117';
+const SAND = '#E2E6EB';
 
 // Glyph set requested from Google Fonts so dynamic titles render with the
 // brand fonts (Google returns a ttf subset, which satori/next-og can parse).
@@ -102,8 +102,8 @@ export default async function Image({
       : null;
 
   // Load brand fonts (graceful: render even if a fetch fails, never throw).
-  const [fraunces, jakarta, dmSans] = await Promise.all([
-    loadGoogleFont('Fraunces', 340, GLYPHS + title),
+  const [titleFont, jakarta, dmSans] = await Promise.all([
+    loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS + title),
     loadGoogleFont('Plus Jakarta Sans', 700, GLYPHS + title),
     loadGoogleFont('DM Sans', 400, GLYPHS),
   ]);
@@ -111,13 +111,13 @@ export default async function Image({
   const fonts: NonNullable<
     ConstructorParameters<typeof ImageResponse>[1]
   >['fonts'] = [];
-  if (fraunces)
+  if (titleFont)
     fonts.push({
       // Fetched as the 340 variable-font instance; satori's Weight type only
       // accepts standard stops, so it is registered/matched as 300.
-      name: 'Fraunces',
-      data: fraunces,
-      weight: 300,
+      name: 'Plus Jakarta Sans',
+      data: titleFont,
+      weight: 700,
       style: 'normal',
     });
   if (jakarta)
@@ -204,10 +204,10 @@ export default async function Image({
             style={{
               fontSize: '64px',
               lineHeight: 1.12,
-              fontWeight: 300,
+              fontWeight: 700,
               letterSpacing: '-0.02em',
               color: OFF_WHITE,
-              fontFamily: '"Fraunces", "Plus Jakarta Sans"',
+              fontFamily: '"Plus Jakarta Sans"',
               display: '-webkit-box',
               WebkitBoxOrient: 'vertical',
               WebkitLineClamp: 3,

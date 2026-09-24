@@ -8,7 +8,7 @@ const BTN_BASE =
   "inline-flex min-h-[48px] items-center justify-center rounded-xl px-6 py-3 text-base font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal";
 
 /** Filled button. White text needs clay-deep for AA contrast. */
-export const BTN_PRIMARY = `${BTN_BASE} bg-clay-deep text-white hover:bg-clay-deep/90`;
+export const BTN_PRIMARY = `${BTN_BASE} bg-clay-deep text-white hover:bg-orange-600`;
 export const BTN_OUTLINE = `${BTN_BASE} border-[1.5px] border-teal text-teal hover:bg-teal/5`;
 export const BTN_OUTLINE_DARK = `${BTN_BASE} border-[1.5px] border-paper/80 text-paper hover:bg-paper/10`;
 
@@ -33,7 +33,7 @@ export function H2({ children, className = "", id }: { children: ReactNode; clas
   return (
     <h2
       id={id}
-      className={`font-display text-[clamp(32px,4.4vw,54px)] font-medium leading-[1.06] tracking-[-0.02em] ${className}`}
+      className={`font-display text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.1] tracking-[-0.025em] ${className}`}
     >
       {children}
     </h2>

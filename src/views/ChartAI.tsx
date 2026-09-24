@@ -132,7 +132,7 @@ const ChartAI = () => {
         <div className="container-wide relative z-10">
           <motion.div
             variants={containerVariants}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="max-w-3xl lg:max-w-5xl mx-auto text-center"
           >
@@ -144,10 +144,10 @@ const ChartAI = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="font-display font-[340] tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
+              className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
               Stop chasing faxes.{" "}
-              <span className="italic text-clay">
+              <span className="text-clay">
                 ChartAI retrieves records automatically.
               </span>
             </motion.h1>
@@ -183,7 +183,7 @@ const ChartAI = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               How It Works
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Three Steps. No Fax Machine Required.
             </h2>
           </motion.div>
@@ -229,9 +229,9 @@ const ChartAI = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Features
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
               Everything You Need to Retrieve Records,{" "}
-              <span className="italic text-clay">Without the Hassle</span>
+              <span className="text-clay">Without the Hassle</span>
             </h2>
           </motion.div>
 
@@ -273,7 +273,7 @@ const ChartAI = () => {
             <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
               Built For
             </span>
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Designed for Clinics That Need Records Fast
             </h2>
           </motion.div>
@@ -313,7 +313,7 @@ const ChartAI = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-foreground mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
               Pricing is shared in your demo.
             </h2>
             <p className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
@@ -334,7 +334,7 @@ const ChartAI = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl lg:max-w-4xl mx-auto text-center"
           >
-            <h2 className="font-display font-[340] tracking-tight text-heading-lg md:text-display text-paper mb-4">
+            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-paper mb-4">
               Ready to ditch the fax machine?
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
