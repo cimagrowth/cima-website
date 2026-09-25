@@ -245,7 +245,7 @@ function MapQuestionField({ q, disabled }: { q: MapQuestion; disabled: boolean }
   return (
     <fieldset className="rounded-xl2 border border-sand bg-paper p-4 md:p-5">
       <legend className="sr-only">{q.question}</legend>
-      <p aria-hidden="true" className="mb-1 font-ui text-xs font-bold uppercase tracking-[0.1em] text-clay-ink">
+      <p aria-hidden="true" className="mb-1 font-ui text-xs font-bold uppercase tracking-[0.1em] text-teal">
         {q.stage}
       </p>
       <p aria-hidden="true" className="mb-3 font-ui text-base font-semibold text-teal-deep">
@@ -824,7 +824,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       Back
                     </button>
                   </div>
-                  <h3 className="font-display text-2xl font-bold text-teal-deep">Map your patient journey</h3>
+                  <h3 className="font-display text-2xl font-semibold text-teal-deep">Map your patient journey</h3>
 
                   {mapQuestions
                     .filter((q) => !q.fertilityOnly || isFertility)

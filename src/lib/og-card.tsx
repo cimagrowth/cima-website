@@ -5,11 +5,11 @@ import { ImageResponse } from 'next/og';
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-const NAVY = '#112434';
+const NAVY = '#173B4F';
 const WHITE = '#FFFFFF';
-const ORANGE_SOFT = '#F59E7A';
+const ORANGE_SOFT = '#9FD6E6';
 const ORANGE = '#D74117';
-const MIST = '#C7D2DD';
+const MIST = '#D6EBF3';
 
 const GLYPHS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,!?:;'\"()[]{}@#$%&*-+=/\\|<>~`^_·";

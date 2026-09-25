@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   other: {
-    'theme-color': '#112434',
-    'msapplication-TileColor': '#112434',
+    'theme-color': '#173B4F',
+    'msapplication-TileColor': '#173B4F',
   },
 };
 

@@ -8,7 +8,7 @@ export const contentType = 'image/png';
 export const alt = 'Patient Consent and Education for Clinics | Cima';
 
 // Brand tokens (must match Tailwind config)
-const TEAL = '#112434';
+const TEAL = '#173B4F';
 const OFF_WHITE = '#FFFFFF';
 const CLAY = '#D74117';
 const ORANGE = '#D74117';

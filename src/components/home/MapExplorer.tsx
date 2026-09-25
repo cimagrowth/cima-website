@@ -93,7 +93,7 @@ export default function MapExplorer({
                     <p className="text-[13px] font-bold uppercase tracking-[0.06em] text-clay-ink">
                       The leak · {s.leakNames}
                     </p>
-                    <p className="font-display text-[clamp(22px,2.4vw,30px)] font-bold leading-snug text-teal-deep">
+                    <p className="font-display text-[clamp(22px,2.4vw,30px)] font-semibold leading-snug text-teal-deep">
                       {s.leak}
                     </p>
                   </div>
@@ -121,7 +121,7 @@ export default function MapExplorer({
                 <div className="flex flex-col justify-center gap-3.5 rounded-[18px] bg-teal-deep p-7 text-paper md:p-9 lg:col-span-5">
                   {s.stat ? (
                     <>
-                      <p className="font-display text-[clamp(48px,6vw,64px)] font-bold leading-none text-clay-soft">
+                      <p className="font-display text-[clamp(48px,6vw,64px)] font-semibold leading-none text-clay-soft">
                         {s.stat.value}
                       </p>
                       <p className="text-lg leading-normal">

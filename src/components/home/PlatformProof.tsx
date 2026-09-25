@@ -26,7 +26,7 @@ export default function PlatformProof({ stats }: { stats: PlatformStats }) {
         {figures.map((f) => (
           <div key={f.label} className="flex flex-col-reverse justify-end gap-1.5">
             <dt className="text-[15px] leading-snug text-teal-deep/80">{f.label}</dt>
-            <dd className="font-display text-[clamp(32px,3.6vw,44px)] font-bold text-teal">{f.value}</dd>
+            <dd className="font-display text-[clamp(32px,3.6vw,44px)] font-semibold text-teal">{f.value}</dd>
           </div>
         ))}
       </dl>
