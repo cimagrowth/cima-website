@@ -30,7 +30,7 @@ export default async function GrowthosMapView() {
             <Eyebrow>The GrowthOS Map</Eyebrow>
             <h1
               id="map-page-title"
-              className="font-display text-[clamp(38px,5.4vw,64px)] font-bold leading-[1.03] tracking-[-0.025em] text-teal-deep"
+              className="font-display text-[clamp(38px,5.4vw,64px)] font-semibold leading-[1.03] tracking-[-0.025em] text-teal-deep"
             >
               The patient journey, and every place it leaks.
             </h1>

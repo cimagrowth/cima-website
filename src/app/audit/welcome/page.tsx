@@ -112,13 +112,13 @@ export default function AuditWelcomePage({ searchParams }: Props) {
   const variant = getVariant(status, safeName);
 
   const isSuccess = variant.icon === 'success';
-  const iconBg = isSuccess ? 'bg-[#112434]/10' : 'bg-clay/10';
-  const iconColor = isSuccess ? 'text-[#112434]' : 'text-clay';
+  const iconBg = isSuccess ? 'bg-[#173B4F]/10' : 'bg-clay/10';
+  const iconColor = isSuccess ? 'text-[#173B4F]' : 'text-clay';
   const IconComponent = isSuccess ? CheckCircle2 : AlertTriangle;
 
   return (
     <section className="min-h-[calc(100vh-8rem)] bg-white flex items-center justify-center px-6 py-16">
-      <div className="max-w-[560px] w-full bg-white rounded-2xl shadow-sm border border-[#112434]/10 p-8 md:p-10 text-center">
+      <div className="max-w-[560px] w-full bg-white rounded-2xl shadow-sm border border-[#173B4F]/10 p-8 md:p-10 text-center">
         <div className="flex justify-center mb-8">
           <img
             src={cimaLogo}
@@ -134,7 +134,7 @@ export default function AuditWelcomePage({ searchParams }: Props) {
         </div>
 
         <h1
-          className="font-display font-semibold text-[#112434] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
+          className="font-display font-semibold text-[#173B4F] text-[1.75rem] md:text-[2rem] leading-tight tracking-tight mb-4"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {variant.headline}
@@ -167,10 +167,10 @@ export default function AuditWelcomePage({ searchParams }: Props) {
           </div>
         )}
 
-        <div className="mt-10 pt-6 border-t border-[#112434]/10">
+        <div className="mt-10 pt-6 border-t border-[#173B4F]/10">
           <Link
             href="/"
-            className="text-sm text-[#112434]/70 hover:text-[#112434] transition-colors"
+            className="text-sm text-[#173B4F]/70 hover:text-[#173B4F] transition-colors"
           >
             {'Back to cimagrowth.com \u2192'}
           </Link>

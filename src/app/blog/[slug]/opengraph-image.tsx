@@ -10,7 +10,7 @@ export const alt = 'Cima Growth Solutions blog post';
 const FALLBACK_TITLE = 'Cima Growth Solutions: Fertility Marketing';
 
 // Brand tokens (do not change: must match Tailwind config)
-const TEAL = '#112434';
+const TEAL = '#173B4F';
 const OFF_WHITE = '#FFFFFF'; // paper
 const CLAY = '#D74117';
 const SAND = '#E2E6EB';

@@ -281,7 +281,7 @@ function BannerView({
         <div className="max-w-xl">
           <h2
             id="cookie-consent-title"
-            className="text-base font-semibold text-[#112434]"
+            className="text-base font-semibold text-[#173B4F]"
             style={{
               fontFamily:
                 "'Plus Jakarta Sans', 'DM Sans', sans-serif",
@@ -299,7 +299,7 @@ function BannerView({
             categories to allow. See our{' '}
             <a
               href="/privacy"
-              className="font-medium text-[#112434] underline underline-offset-2"
+              className="font-medium text-[#173B4F] underline underline-offset-2"
             >
               Privacy Policy
             </a>
@@ -310,7 +310,7 @@ function BannerView({
           <button
             type="button"
             onClick={onCustomize}
-            className="inline-flex items-center justify-center rounded-lg border border-[#112434]/20 bg-white px-4 py-2 text-sm font-medium text-[#112434] transition hover:bg-[#112434]/5 focus:outline-none focus:ring-2 focus:ring-[#112434]/40"
+            className="inline-flex items-center justify-center rounded-lg border border-[#173B4F]/20 bg-white px-4 py-2 text-sm font-medium text-[#173B4F] transition hover:bg-[#173B4F]/5 focus:outline-none focus:ring-2 focus:ring-[#173B4F]/40"
           >
             Customize
           </button>
@@ -324,7 +324,7 @@ function BannerView({
           <button
             type="button"
             onClick={onAcceptAll}
-            className="inline-flex items-center justify-center rounded-lg bg-[#112434] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#163d4a] focus:outline-none focus:ring-2 focus:ring-[#112434]/60"
+            className="inline-flex items-center justify-center rounded-lg bg-[#173B4F] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#163d4a] focus:outline-none focus:ring-2 focus:ring-[#173B4F]/60"
           >
             Accept all
           </button>
@@ -356,7 +356,7 @@ function CustomizeView({
       <div className="flex items-start justify-between gap-4">
         <div>
           <h2
-            className="text-base font-semibold text-[#112434]"
+            className="text-base font-semibold text-[#173B4F]"
             style={{
               fontFamily:
                 "'Plus Jakarta Sans', 'DM Sans', sans-serif",
@@ -373,7 +373,7 @@ function CustomizeView({
           type="button"
           onClick={onBack}
           aria-label="Back to summary"
-          className="rounded-md p-1 text-gray-400 transition hover:text-[#112434] focus:outline-none focus:ring-2 focus:ring-[#112434]/40"
+          className="rounded-md p-1 text-gray-400 transition hover:text-[#173B4F] focus:outline-none focus:ring-2 focus:ring-[#173B4F]/40"
         >
           <svg
             width="20"
@@ -426,7 +426,7 @@ function CustomizeView({
           <button
             type="button"
             onClick={onAcceptAll}
-            className="inline-flex items-center justify-center rounded-lg border border-[#112434]/20 bg-white px-4 py-2 text-sm font-medium text-[#112434] transition hover:bg-[#112434]/5 focus:outline-none focus:ring-2 focus:ring-[#112434]/40"
+            className="inline-flex items-center justify-center rounded-lg border border-[#173B4F]/20 bg-white px-4 py-2 text-sm font-medium text-[#173B4F] transition hover:bg-[#173B4F]/5 focus:outline-none focus:ring-2 focus:ring-[#173B4F]/40"
           >
             Accept all
           </button>
@@ -434,7 +434,7 @@ function CustomizeView({
         <button
           type="button"
           onClick={onSave}
-          className="inline-flex items-center justify-center rounded-lg bg-[#112434] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#163d4a] focus:outline-none focus:ring-2 focus:ring-[#112434]/60"
+          className="inline-flex items-center justify-center rounded-lg bg-[#173B4F] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#163d4a] focus:outline-none focus:ring-2 focus:ring-[#173B4F]/60"
         >
           Save preferences
         </button>
@@ -459,14 +459,14 @@ function CategoryRow({
   return (
     <div className="flex items-start justify-between gap-4 rounded-lg border border-gray-100 bg-white p-4">
       <div>
-        <p className="text-sm font-semibold text-[#112434]">{title}</p>
+        <p className="text-sm font-semibold text-[#173B4F]">{title}</p>
         <p className="mt-1 text-sm leading-relaxed text-gray-600">
           {description}
         </p>
       </div>
       <label
         className={`relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full transition ${
-          checked ? 'bg-[#112434]' : 'bg-gray-300'
+          checked ? 'bg-[#173B4F]' : 'bg-gray-300'
         } ${disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
       >
         <input

@@ -23,7 +23,7 @@ export function Eyebrow({
   as?: "p" | "div" | "span";
   className?: string;
 }) {
-  const color = tone === "clay" ? "text-clay-ink" : tone === "soft" ? "text-clay-soft" : "text-teal";
+  const color = tone === "clay" ? "text-teal" : tone === "soft" ? "text-clay-soft" : "text-teal";
   return (
     <Tag className={`text-sm font-bold uppercase tracking-[0.1em] ${color} ${className}`}>{children}</Tag>
   );
@@ -33,7 +33,7 @@ export function H2({ children, className = "", id }: { children: ReactNode; clas
   return (
     <h2
       id={id}
-      className={`font-display text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.1] tracking-[-0.025em] ${className}`}
+      className={`font-display text-[clamp(28px,3.6vw,44px)] font-semibold leading-[1.1] tracking-[-0.025em] ${className}`}
     >
       {children}
     </h2>

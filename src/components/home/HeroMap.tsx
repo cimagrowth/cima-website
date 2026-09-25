@@ -13,7 +13,7 @@ export default function HeroMap({ map }: { map: GrowthosMap }) {
           </p>
           <h1
             id="hero-title"
-            className="font-display text-[clamp(34px,4.4vw,60px)] font-bold leading-[1.04] tracking-[-0.03em] text-teal-deep"
+            className="font-display text-[clamp(34px,4.4vw,60px)] font-semibold leading-[1.04] tracking-[-0.03em] text-teal-deep"
           >
             Your clinic leaks patients at eight stages. GrowthOS closes every one.
           </h1>

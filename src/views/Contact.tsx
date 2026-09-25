@@ -215,11 +215,11 @@ export default function Contact() {
                 checked={smsConsent}
                 onChange={(e) => setSmsConsent(e.target.checked)}
                 disabled={isSubmitting}
-                className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-[#112434]/30 text-accent-orange accent-accent-orange focus:ring-2 focus:ring-accent-orange/40 dark:border-white/20"
+                className="mt-1 h-5 w-5 shrink-0 cursor-pointer rounded border-2 border-[#173B4F]/30 text-accent-orange accent-accent-orange focus:ring-2 focus:ring-accent-orange/40 dark:border-white/20"
               />
               <label
                 htmlFor="sms_consent"
-                className="cursor-pointer text-sm leading-relaxed text-[#112434]/80 dark:text-white/80"
+                className="cursor-pointer text-sm leading-relaxed text-[#173B4F]/80 dark:text-white/80"
               >
                 I agree to receive SMS messages from Cima Growth Solutions at the phone number
                 provided regarding consultation scheduling, GrowthOS onboarding updates, and
@@ -272,7 +272,7 @@ export default function Contact() {
               </Button>
             </div>
 
-            <p className="pt-4 text-center text-xs text-[#112434]/60 dark:text-white/60">
+            <p className="pt-4 text-center text-xs text-[#173B4F]/60 dark:text-white/60">
               By submitting this form you agree to our{' '}
               <a
                 href="/privacy"

@@ -8,7 +8,7 @@ export default function MapStrip({ map, exclude = [] }: { map: GrowthosMap; excl
   return (
     <nav aria-label="The GrowthOS Map" className="border-y border-sand bg-paper py-6">
       <div className={`${WRAP} flex flex-col gap-3 md:flex-row md:items-center md:gap-6`}>
-        <Link href="/map" className="shrink-0 text-sm font-bold uppercase tracking-[0.1em] text-clay-ink hover:underline">
+        <Link href="/map" className="shrink-0 text-sm font-bold uppercase tracking-[0.1em] text-teal hover:underline">
           The GrowthOS Map
         </Link>
         <ol className="flex flex-wrap gap-2">

@@ -15,7 +15,7 @@ const EXAMPLE_STATUSES: PreviewStatus[] = [
 ];
 
 const STATUS_LABEL: Record<PreviewStatus, string> = { open: "Open", "at-risk": "At risk" };
-const STATUS_DOT: Record<PreviewStatus, string> = { open: "bg-clay-deep", "at-risk": "bg-clay-soft" };
+const STATUS_DOT: Record<PreviewStatus, string> = { open: "bg-clay-deep", "at-risk": "bg-[#E0A233]" };
 
 /** Static, non-interactive sample of the "Your GrowthOS Map" report page. */
 export default function AuditMapPreview({ map }: { map: GrowthosMap }) {
@@ -37,7 +37,7 @@ export default function AuditMapPreview({ map }: { map: GrowthosMap }) {
           ))}
         </span>
       </figcaption>
-      <p className="mb-4 font-display text-2xl font-bold text-teal-deep">Your GrowthOS Map</p>
+      <p className="mb-4 font-display text-2xl font-semibold text-teal-deep">Your GrowthOS Map</p>
       <ol className="flex flex-col divide-y divide-sand">
         {map.stages.map((stage, i) => {
           const status = EXAMPLE_STATUSES[i] ?? "at-risk";

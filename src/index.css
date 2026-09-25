@@ -4,7 +4,7 @@
 
 /* Cima Growth Solutions / GrowthOS Design System
    White grounds, Cima navy ink, Cima orange for actions.
-   Brand Colors: Cima Navy #112434, Cima Orange #D74117, Cima Blue #3D6E85
+   Brand Colors: Deep Blue-Teal #173B4F, Cima Blue #2F6078, Cima Orange #D74117 (actions)
    All colors in HSL format
 */
 
@@ -13,70 +13,70 @@
 @layer base {
   :root {
     --background: 0 0% 100%;            /* #FFFFFF white canvas */
-    --background-soft: 210 22% 96%;     /* #F4F6F8 */
-    --foreground: 207 51% 14%;          /* #112434 Cima navy ink */
+    --background-soft: 197 41% 97%;     /* #F3F8FA soft blue */
+    --foreground: 201 55% 20%;          /* #173B4F deep blue-teal ink */
 
     --card: 0 0% 100%;
-    --card-foreground: 207 51% 14%;
+    --card-foreground: 201 55% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 207 51% 14%;
+    --popover-foreground: 201 55% 20%;
 
-    --primary: 207 51% 14%;             /* #112434 Cima navy */
+    --primary: 201 55% 20%;             /* #173B4F deep blue-teal */
     --primary-foreground: 0 0% 100%;
     --primary-light: 199 37% 38%;       /* #3D6E85 Cima blue, deep */
 
     --accent-orange: 13 81% 47%;        /* #D74117 Cima orange: actions */
     --accent-orange-foreground: 0 0% 100%;
 
-    --secondary: 199 37% 38%;           /* #3D6E85 */
+    --secondary: 200 44% 33%;           /* #2F6078 Cima blue */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 22% 96%;               /* #F4F6F8 quiet fill */
+    --muted: 197 41% 97%;               /* #F3F8FA quiet fill */
     --muted-foreground: 210 11% 38%;    /* #56616C secondary text */
 
-    --accent: 210 31% 95%;              /* #EEF2F6 */
-    --accent-foreground: 207 51% 14%;
+    --accent: 198 45% 94%;              /* #EAF3F7 */
+    --accent-foreground: 201 55% 20%;
 
-    --tan: 210 22% 96%;                 /* #F4F6F8 alternate band */
-    --tan-foreground: 207 51% 14%;
+    --tan: 197 41% 97%;                 /* #F3F8FA soft blue band */
+    --tan-foreground: 201 55% 20%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 213 18% 90%;              /* #E2E6EB hairlines */
-    --input: 213 18% 90%;
-    --ring: 207 51% 14%;                /* navy focus ring */
+    --border: 199 30% 89%;              /* #DCE7EC hairlines */
+    --input: 199 30% 89%;
+    --ring: 200 44% 33%;                /* Cima blue focus ring */
     --radius: 0.75rem;
 
-    --shadow-soft: 0 1px 2px 0 rgba(17, 36, 52, 0.04), 0 1px 6px -1px rgba(17, 36, 52, 0.03);
+    --shadow-soft: 0 1px 2px 0 rgba(23, 59, 79, 0.04), 0 1px 6px -1px rgba(23, 59, 79, 0.03);
     --shadow-card: var(--shadow-sm);
     --shadow-elevated: var(--shadow);
     --shadow-glow: var(--shadow-sm);
 
-    --gradient-primary: linear-gradient(135deg, #112434, #1F3B55);
+    --gradient-primary: linear-gradient(135deg, #173B4F, #2F6078);
     --gradient-accent: linear-gradient(135deg, #D74117, #B8350F);
     --gradient-hero: linear-gradient(180deg, #FFFFFF, #FFFFFF);
     --gradient-radial: radial-gradient(ellipse at top, rgba(61, 110, 133, 0.05) 0%, transparent 60%);
 
-    --sidebar-background: 207 51% 14%;
+    --sidebar-background: 201 55% 20%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 13 81% 47%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 209 47% 23%;
+    --sidebar-accent: 200 44% 33%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 209 47% 23%;
+    --sidebar-border: 200 44% 33%;
     --sidebar-ring: 13 81% 47%;
 
     /* Brand tokens: canvas + ink */
     --color-cream: #FFFFFF;      /* page background */
     --color-paper: #FFFFFF;      /* cards / elevated surfaces */
-    --color-teal: #1F3B55;       /* navy, secondary: outlines, eyebrows */
-    --color-teal-deep: #112434;  /* Cima navy: body ink and dark bands */
+    --color-teal: #2F6078;       /* Cima blue: outlines, eyebrows, accents */
+    --color-teal-deep: #173B4F;  /* deep blue-teal: body ink and dark bands */
     --color-muted: #56616C;      /* secondary text */
-    --color-clay: #D74117;       /* Cima orange: primary buttons and actions */
+    --color-clay: #2F6078;       /* accent (Cima blue); buttons use clay-deep orange */
     --color-orange: #D74117;
-    --color-sand: #E2E6EB;       /* hairline borders, dividers */
-    --color-mist: #EEF2F6;       /* quiet cool panels */
+    --color-sand: #DCE7EC;       /* hairline borders, dividers */
+    --color-mist: #EAF3F7;       /* soft blue panels */
 
     /* type roles */
     --font-display: "Plus Jakarta Sans", "DM Sans", system-ui, sans-serif;
@@ -84,8 +84,8 @@
     --font-body: "DM Sans", system-ui, sans-serif;
 
     /* shape */
-    --shadow: 0 1px 2px rgba(17,36,52,.04), 0 18px 40px -24px rgba(17,36,52,.18);
-    --shadow-sm: 0 1px 2px rgba(17,36,52,.05), 0 8px 22px -16px rgba(17,36,52,.14);
+    --shadow: 0 1px 2px rgba(23,59,79,.04), 0 18px 40px -24px rgba(23,59,79,.18);
+    --shadow-sm: 0 1px 2px rgba(23,59,79,.05), 0 8px 22px -16px rgba(23,59,79,.14);
   }
 
   .dark {
@@ -157,15 +157,15 @@
   body {
     @apply antialiased;
     background: var(--color-cream, #FFFFFF);
-    color: var(--color-teal-deep, #112434);
+    color: var(--color-teal-deep, #173B4F);
     font-family: var(--font-body, "DM Sans"), system-ui, sans-serif;
     line-height: 1.65;
     font-feature-settings: "cv11", "ss01", "ss03";
   }
 
   ::selection {
-    background: #FDE3D8;
-    color: #112434;
+    background: #D6EBF3;
+    color: #173B4F;
   }
 
   h1, h2, h3, h4, h5, h6 {

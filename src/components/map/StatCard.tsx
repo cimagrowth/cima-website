@@ -8,7 +8,7 @@ export default function StatCard({ stat, dark = false }: { stat: DisplayStat; da
       }`}
     >
       <p
-        className={`font-display text-[clamp(44px,5vw,58px)] font-bold leading-none ${
+        className={`font-display text-[clamp(44px,5vw,58px)] font-semibold leading-none ${
           dark ? "text-clay-soft" : "text-teal"
         }`}
       >

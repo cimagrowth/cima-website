@@ -20,26 +20,29 @@ export default {
         body: ["DM Sans", "system-ui", "sans-serif"],
       },
       colors: {
-        // Cima brand: white grounds, Cima navy ink, Cima orange for actions.
-        // Token names are kept from the earlier palette so every page picks up
-        // the new values without a rename.
+        // Cima brand, healthcare register: white grounds, a calm deep
+        // blue-teal ink, Cima blue accents and soft blue washes. Cima orange
+        // is reserved for buttons and actions. Token names are kept from the
+        // earlier palette so every page picks up the new values.
         cream: "#FFFFFF",
         paper: "#FFFFFF",
-        teal: "#1F3B55",
-        "teal-deep": "#112434",
-        clay: "#D74117",
+        teal: "#2F6078",
+        "teal-deep": "#173B4F",
+        // Decorative accent (eyebrows, accent words on older pages): Cima blue.
+        clay: "#2F6078",
         // Filled buttons with white text (4.51:1). Hover darkens to orange-600.
         "clay-deep": "#D74117",
-        "clay-soft": "#F59E7A",
-        "clay-wash": "#FDEEE8",
-        // Small orange text on light grounds (5.9:1 on white).
+        // Figures on dark bands: soft aqua (7.5:1 on teal-deep).
+        "clay-soft": "#9FD6E6",
+        "clay-wash": "#EAF3F7",
+        // Small warm text on light grounds, used for leak labels (5.9:1 on white).
         "clay-ink": "#B8350F",
         orange: {
           DEFAULT: "#D74117",
           600: "#B8350F",
         },
-        sand: "#E2E6EB",
-        mist: "#EEF2F6",
+        sand: "#DCE7EC",
+        mist: "#EAF3F7",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -99,7 +102,7 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
         xl2: "18px",
-        btn: "11px",
+        btn: "9999px",
       },
       fontSize: {
         "display-xl": ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.03em" }],

@@ -18,7 +18,7 @@ const FounderLetter = () => {
           />
         </div>
         <figure className="flex flex-col gap-4 md:col-span-9">
-          <h2 id="founder-title" className="text-sm font-bold uppercase tracking-[0.1em] text-clay-ink">
+          <h2 id="founder-title" className="text-sm font-bold uppercase tracking-[0.1em] text-teal">
             Why I built this
           </h2>
           <blockquote className="font-display text-[clamp(22px,2.6vw,30px)] font-normal leading-[1.35] text-teal-deep">
