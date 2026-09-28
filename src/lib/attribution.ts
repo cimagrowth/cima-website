@@ -201,8 +201,8 @@ export function captureAttribution(): void {
 
 /**
  * Flat attribution for a form payload. Session-touch values under their own
- * names; first-touch values under a first_ prefix when they exist and differ.
- * The first touch's timestamp is sent as first_touch_at. Empty values are
+ * names; first-touch values under a _first_ prefix when they exist and differ.
+ * The first touch's timestamp is sent as _first_touch_at. Empty values are
  * omitted. Never throws.
  */
 export function getAttribution(): Record<string, string> {
@@ -220,10 +220,10 @@ export function getAttribution(): Record<string, string> {
       for (const [key, value] of Object.entries(first)) {
         if (!value) continue;
         if (key === 'first_seen_at') {
-          if (value !== out.first_seen_at) out.first_touch_at = value;
+          if (value !== out.first_seen_at) out._first_touch_at = value;
           continue;
         }
-        if (value !== out[key]) out[`first_${key}`] = value;
+        if (value !== out[key]) out[`_first_${key}`] = value;
       }
     }
     return out;

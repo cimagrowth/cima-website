@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Loader2, CalendarCheck, Sparkles, MonitorPlay } from "lucide-react";
 import { motion } from "framer-motion";
-import { currentPageUrl, getAttribution, pushLeadEvent } from "@/lib/attribution";
+import { getAttribution, pushLeadEvent } from "@/lib/attribution";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
 const ANON_KEY =
@@ -97,7 +97,6 @@ const Demo = () => {
           // inside it. Attribution goes first so every existing answer wins.
           data: {
             ...attribution,
-            page_url: currentPageUrl(),
             first_name: formData.first_name,
             last_name: formData.last_name,
             email: formData.email,

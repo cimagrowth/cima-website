@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Loader2 } from "lucide-react";
-import { currentPageUrl, getAttribution, pushLeadEvent } from "@/lib/attribution";
+import { getAttribution, pushLeadEvent } from "@/lib/attribution";
 
 interface EnterpriseInquiryModalProps {
   open: boolean;
@@ -68,7 +68,7 @@ const EnterpriseInquiryModal = ({ open, onOpenChange }: EnterpriseInquiryModalPr
           body: JSON.stringify({
             form_id: "ac1f2a60-102a-450b-9941-e31cbab298f5",
             org_id: "1372de10-066f-437e-941e-643deefebf2f",
-            data: { ...attribution, page_url: currentPageUrl(), ...formData },
+            data: { ...attribution, ...formData },
             source_url: window.location.href,
             utm_source: params.get("utm_source") || attribution.utm_source || undefined,
             utm_medium: params.get("utm_medium") || attribution.utm_medium || undefined,
