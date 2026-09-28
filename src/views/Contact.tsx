@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+import { currentPageUrl, getAttribution, pushLeadEvent } from '@/lib/attribution';
 
 const FORM_ID = '09a31a52-8149-479b-9c01-8df68c9c7527';
 const ENDPOINT = 'https://momssbzlofjodqodvvvk.supabase.co/functions/v1/form-submit';
@@ -43,9 +44,14 @@ export default function Contact() {
     }
 
     const params = new URLSearchParams(window.location.search);
+    const attribution = getAttribution();
+    // form-submit stores `data` on the submission, so attribution rides inside
+    // it. Attribution goes first so every existing answer wins on a collision.
     const payload = {
       form_id: FORM_ID,
       data: {
+        ...attribution,
+        page_url: currentPageUrl(),
         first_name: String(formData.get('first_name') || '').trim(),
         last_name: String(formData.get('last_name') || '').trim(),
         email: String(formData.get('email') || '').trim().toLowerCase(),
@@ -56,10 +62,10 @@ export default function Contact() {
         sms_consent_text: SMS_CONSENT_TEXT,
       },
       source_url: typeof window !== 'undefined' ? window.location.href : '',
-      utm_source: params.get('utm_source') || '',
-      utm_medium: params.get('utm_medium') || '',
-      utm_campaign: params.get('utm_campaign') || '',
-      utm_content: params.get('utm_content') || '',
+      utm_source: params.get('utm_source') || attribution.utm_source || '',
+      utm_medium: params.get('utm_medium') || attribution.utm_medium || '',
+      utm_campaign: params.get('utm_campaign') || attribution.utm_campaign || '',
+      utm_content: params.get('utm_content') || attribution.utm_content || '',
     };
 
     try {
@@ -81,6 +87,7 @@ export default function Contact() {
         return;
       }
 
+      pushLeadEvent('contact', attribution);
       setStatus('success');
     } catch (err) {
       console.error('Contact form network error:', err);
