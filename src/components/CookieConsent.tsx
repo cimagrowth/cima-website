@@ -125,6 +125,16 @@ function isGpcOn(): boolean {
     .globalPrivacyControl === true;
 }
 
+/**
+ * True only when the visitor has saved a choice that grants analytics.
+ * Unknown (no choice yet, expired, unreadable storage) counts as not granted.
+ */
+export function hasAnalyticsConsent(): boolean {
+  return readStoredConsent()?.categories.analytics === true;
+}
+
+export const COOKIE_CONSENT_EVENT = EVENT_NAME;
+
 // ---------- Public hook (optional) ----------
 
 /**

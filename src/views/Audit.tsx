@@ -22,6 +22,7 @@ import {
   Scale,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { getAttribution, pushLeadEvent } from "@/lib/attribution";
 
 const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -112,6 +113,9 @@ const Audit = () => {
 
     try {
       const params = new URLSearchParams(window.location.search);
+      // lead-magnet-signup stores only utm_* and source_url, so the session's
+      // UTMs fill in when this page was reached without them.
+      const attribution = getAttribution();
       const payload = {
         email: formData.email.trim(),
         full_name: formData.full_name.trim(),
@@ -120,10 +124,10 @@ const Audit = () => {
         specialty: formData.specialty || undefined,
         phone: formData.phone.trim() || undefined,
         opted_in_ebook: formData.opted_in_ebook,
-        utm_source: params.get("utm_source") || undefined,
-        utm_medium: params.get("utm_medium") || undefined,
-        utm_campaign: params.get("utm_campaign") || undefined,
-        utm_content: params.get("utm_content") || undefined,
+        utm_source: params.get("utm_source") || attribution.utm_source || undefined,
+        utm_medium: params.get("utm_medium") || attribution.utm_medium || undefined,
+        utm_campaign: params.get("utm_campaign") || attribution.utm_campaign || undefined,
+        utm_content: params.get("utm_content") || attribution.utm_content || undefined,
         source_url: window.location.href,
       };
 
@@ -145,6 +149,7 @@ const Audit = () => {
         throw new Error(json.error || "Signup failed");
       }
 
+      pushLeadEvent("seven_figure_leak_audit", attribution);
       setSuccess(json as SignupResponse);
     } catch (err) {
       setError(

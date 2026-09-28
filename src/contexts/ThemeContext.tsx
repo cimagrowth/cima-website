@@ -46,7 +46,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme]);
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // Storage blocked (private mode, cookies disabled): keep the in-memory theme.
+    }
   }, [theme]);
 
   return (

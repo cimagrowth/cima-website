@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Loader2, ArrowRight, Map, Calculator, ListOrdered } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { currentPageUrl, getAttribution, pushLeadEvent } from '@/lib/attribution';
 
 declare global {
   interface Window {
@@ -63,6 +64,17 @@ const funnelSystemOptions: Choice[] = [
   { value: 'Call answering service', label: 'A call answering service' },
   { value: 'None of these', label: 'None of these' },
 ];
+// Value equals label. Optional; never blocks submission.
+const heardAboutOptions = [
+  'Google search',
+  'LinkedIn',
+  'A colleague or referral',
+  'A conference or event',
+  'Email from Cima',
+  'AI assistant (ChatGPT, Claude, etc.)',
+  'Other',
+];
+
 const locationOptions: Choice[] = [
   { value: '1', label: '1' },
   { value: '2 to 3', label: '2 to 3' },
@@ -297,6 +309,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
   const step2HeadingRef = useRef<HTMLParagraphElement>(null);
   const isFertility = specialty === 'fertility';
   const [smsConsent, setSmsConsent] = useState(false);
+  const [heardAbout, setHeardAbout] = useState('');
   const formRef = useRef<HTMLDivElement>(null);
   const isSubmitting = status === 'submitting';
 
@@ -348,7 +361,16 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
         ? `https://${websiteRaw}`
         : websiteRaw;
 
+    const attribution = getAttribution();
+    const heardAboutValue = String(formData.get('heard_about') || '');
+    const heardAboutOther =
+      heardAboutValue === 'Other'
+        ? String(formData.get('heard_about_other') || '').trim()
+        : '';
+
+    // Attribution first so every existing key wins on a name collision.
     const payload = {
+      ...attribution,
       first_name: String(formData.get('first_name') || '').trim(),
       last_name: String(formData.get('last_name') || '').trim(),
       email: String(formData.get('email') || '').trim(),
@@ -373,7 +395,10 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       sms_consent: smsConsent,
       sms_consent_text: smsConsent ? SMS_CONSENT_TEXT : '',
       sms_consent_timestamp: smsConsent ? new Date().toISOString() : '',
+      ...(heardAboutValue ? { heard_about: heardAboutValue } : {}),
+      ...(heardAboutOther ? { heard_about_other: heardAboutOther } : {}),
       page_path: PAGE_PATH,
+      page_url: currentPageUrl(),
       source_url: typeof window !== 'undefined' ? window.location.href : '',
     };
 
@@ -395,6 +420,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'growth_audit_requested' });
       }
+      pushLeadEvent('patient_leakage_audit', attribution);
 
       setStatus('success');
     } catch (err) {
@@ -790,6 +816,41 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       disabled={isSubmitting}
                       className={controlClasses}
                     />
+                  </div>
+
+                  {/* How did you hear about us */}
+                  <div>
+                    <label htmlFor="heard_about" className={labelClasses}>
+                      How did you hear about us?{' '}
+                      <span className="text-teal-deep/75">(optional)</span>
+                    </label>
+                    <select
+                      id="heard_about"
+                      name="heard_about"
+                      value={heardAbout}
+                      onChange={(e) => setHeardAbout(e.target.value)}
+                      disabled={isSubmitting}
+                      className={controlClasses}
+                    >
+                      <option value="">Select one</option>
+                      {heardAboutOptions.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                    {heardAbout === 'Other' && (
+                      <input
+                        id="heard_about_other"
+                        name="heard_about_other"
+                        type="text"
+                        maxLength={200}
+                        aria-label="Where did you hear about us? (optional)"
+                        placeholder="Where did you hear about us?"
+                        disabled={isSubmitting}
+                        className={`${controlClasses} mt-3`}
+                      />
+                    )}
                   </div>
 
                   <div className="pt-2">

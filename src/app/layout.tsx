@@ -8,6 +8,7 @@ import ScrollToTop from '@/components/layout/ScrollToTop';
 import ScrollToTopOnNavigate from '@/components/layout/ScrollToTopOnNavigate';
 import DemoChatWidget from '@/components/demo/DemoChatWidget';
 import { CookieConsent } from '@/components/CookieConsent';
+import { AttributionCapture } from '@/components/AttributionCapture';
 import { DynamicGTM } from './dynamic-gtm';
 
 export const metadata: Metadata = {
@@ -68,6 +69,7 @@ export default function RootLayout({
         </noscript>
         <Providers>
           <ScrollToTopOnNavigate />
+          <AttributionCapture />
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1 pt-16 md:pt-20">{children}</main>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Loader2, CalendarCheck, Sparkles, MonitorPlay } from "lucide-react";
 import { motion } from "framer-motion";
+import { getAttribution, pushLeadEvent } from "@/lib/attribution";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
 const ANON_KEY =
@@ -83,6 +84,7 @@ const Demo = () => {
 
     try {
       const params = new URLSearchParams(window.location.search);
+      const attribution = getAttribution();
       const response = await fetch(`${SUPABASE_URL}/functions/v1/form-submit`, {
         method: "POST",
         headers: {
@@ -91,7 +93,10 @@ const Demo = () => {
         },
         body: JSON.stringify({
           form_id: FORM_ID,
+          // form-submit stores `data` on the submission, so attribution rides
+          // inside it. Attribution goes first so every existing answer wins.
           data: {
+            ...attribution,
             first_name: formData.first_name,
             last_name: formData.last_name,
             email: formData.email,
@@ -103,9 +108,10 @@ const Demo = () => {
             primary_goal: formData.primary_goal,
           },
           source_url: window.location.href,
-          utm_source: params.get("utm_source") || "",
-          utm_medium: params.get("utm_medium") || "",
-          utm_campaign: params.get("utm_campaign") || "",
+          utm_source: params.get("utm_source") || attribution.utm_source || "",
+          utm_medium: params.get("utm_medium") || attribution.utm_medium || "",
+          utm_campaign: params.get("utm_campaign") || attribution.utm_campaign || "",
+          utm_content: params.get("utm_content") || attribution.utm_content || "",
         }),
       });
 
@@ -115,6 +121,7 @@ const Demo = () => {
       }
 
       await response.json();
+      pushLeadEvent("demo_request", attribution);
 
       const redirectParams = new URLSearchParams({
         email: formData.email,
