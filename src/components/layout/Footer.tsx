@@ -43,6 +43,7 @@ const specialtyLinks: FooterLink[] = [
 const companyLinks: FooterLink[] = [
   { label: "Research", href: "/#research" },
   { label: "Blog", href: "/blog" },
+  { label: "Speaking", href: "/speaking" },
   { label: "GrowthOS app for iPhone", href: IOS_APP_STORE_URL, external: true },
   { label: "Get your Leak Map", href: "/growth" },
   { label: "Book a demo", href: "/demo" },
