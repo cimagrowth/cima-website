@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BTN_OUTLINE, BTN_PRIMARY, Eyebrow, H2, SectionHead, WRAP } from "@/components/map/ui";
 import SpeakerInquiryForm from "@/components/speaking/SpeakerInquiryForm";
 import CopyBioButton from "@/components/speaking/CopyBioButton";
+import { brandonProfile } from "@/content/social";
 import {
   APPEARANCES,
   FORMATS,
@@ -62,6 +63,7 @@ function AppearanceGroup({ title, items }: { title: string; items: Appearance[] 
 
 export default function SpeakingView() {
   const today = new Date().toISOString().slice(0, 10);
+  const linkedin = brandonProfile("linkedin");
   // APPEARANCES is newest first; upcoming reads soonest first.
   const upcoming = APPEARANCES.filter((a) => a.date >= today).reverse();
   const past = APPEARANCES.filter((a) => a.date < today);
@@ -102,7 +104,17 @@ export default function SpeakingView() {
                 Download headshot
               </a>
             </div>
-            <p className="text-sm text-teal-deep/70 dark:text-white/70">{SPEAKER.languagesNote}</p>
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-teal-deep/70 dark:text-white/70">
+              <span>{SPEAKER.languagesNote}</span>
+              <a
+                href={linkedin.url}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex min-h-[48px] items-center font-semibold text-teal underline underline-offset-2 dark:text-clay-soft"
+              >
+                Brandon on LinkedIn
+              </a>
+            </p>
           </div>
         </div>
       </section>
