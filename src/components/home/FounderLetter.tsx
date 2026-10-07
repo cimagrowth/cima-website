@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { brandonProfile } from "@/content/social";
 import { WRAP } from "@/components/map/ui";
 
@@ -42,6 +43,9 @@ const FounderLetter = () => {
                 YouTube
               </a>
             </span>
+            <Link href="/speaking" className="text-sm font-semibold text-teal underline underline-offset-2">
+              Brandon speaks on patient leakage: see talks
+            </Link>
           </figcaption>
         </figure>
       </div>
