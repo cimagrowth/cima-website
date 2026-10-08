@@ -347,12 +347,6 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
 
     const formData = new FormData(e.currentTarget);
 
-    // Honeypot: if filled, silently skip submission and show success anyway.
-    if (String(formData.get('company_website') || '').trim() !== '') {
-      setStatus('success');
-      return;
-    }
-
     setStatus('submitting');
 
     const websiteRaw = String(formData.get('website') || '').trim();
@@ -521,21 +515,6 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                 </div>
 
                 <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                  {/* Honeypot: visually hidden, must stay empty. */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden"
-                  >
-                    <label htmlFor="company_website">Company website</label>
-                    <input
-                      type="text"
-                      id="company_website"
-                      name="company_website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
-                  </div>
-
                   {/* Step 1: About your clinic. Kept mounted on step 2 (hidden) so
                       its values are still submitted. */}
                   <div ref={step1Ref} hidden={step !== 1} className="space-y-5">
