@@ -1,7 +1,15 @@
 'use client';
 
 import { useRef, useState, type FormEvent, type ReactNode } from 'react';
-import { Loader2, ArrowRight, Map, Calculator, ListOrdered } from 'lucide-react';
+import {
+  Loader2,
+  ArrowRight,
+  Map,
+  Calculator,
+  CircleDollarSign,
+  MapPin,
+  ListOrdered,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import RevenueStep from '@/components/growth/RevenueStep';
 import { currentPageUrl, getAttribution, pushLeadEvent } from '@/lib/attribution';
@@ -112,7 +120,17 @@ const whatYouGet = [
   {
     icon: Calculator,
     title: 'Your 90-Day Recovery Number',
-    body: 'The consults you are leaving on the table, with the method shown.',
+    body: 'The consults you are leaving on the table, and what they are worth, with the method shown.',
+  },
+  {
+    icon: CircleDollarSign,
+    title: 'What the leak costs',
+    body: 'Your lost consults turned into dollars at your own prices and service mix. Every assumption is shown.',
+  },
+  {
+    icon: MapPin,
+    title: 'Your market',
+    body: 'The people in your metro area, local search demand, and the competitors patients see on Google. Fertility clinics also see CDC IVF volumes for every clinic in their metro.',
   },
   {
     icon: ListOrdered,
@@ -460,7 +478,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
               Where does your clinic leak? See it on the GrowthOS Map.
             </h1>
             <p className="font-body text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking and the modules that close each one. Your report arrives in your inbox in a few minutes.
+              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking, what the leak costs in revenue, and how much opportunity is in your local market. Your report arrives in your inbox in a few minutes.
             </p>
             <div className="flex flex-col items-center gap-4">
               <Button
@@ -508,7 +526,10 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
 
           {/* Proof line */}
           <p className="mt-10 md:mt-12 mx-auto max-w-3xl text-center font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-            Benchmarked against thousands of real patient inquiries at clinics we operate for, plus published research for your specialty.
+            Benchmarked against thousands of real patient inquiries at clinics we operate for, plus published research for your specialty and US Census, CDC and Google data for your area.
+          </p>
+          <p className="mt-2 text-center font-body text-sm text-teal-deep/70">
+            Market data covers US clinics.
           </p>
         </div>
       </section>
@@ -988,7 +1009,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       )}
                     </Button>
                     <p className="mt-4 font-body text-sm text-teal-deep/75">
-                      Your report arrives in your inbox in a few minutes. No spam. No obligation.
+                      Your report arrives in your inbox in a few minutes. Add your services on the next screen to see your leak in dollars. No spam. No obligation.
                     </p>
                   </div>
                   </div>
