@@ -1,8 +1,17 @@
 'use client';
 
 import { useRef, useState, type FormEvent, type ReactNode } from 'react';
-import { Loader2, ArrowRight, Map, Calculator, ListOrdered } from 'lucide-react';
+import {
+  Loader2,
+  ArrowRight,
+  Map,
+  Calculator,
+  CircleDollarSign,
+  MapPin,
+  ListOrdered,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import RevenueStep from '@/components/growth/RevenueStep';
 import { currentPageUrl, getAttribution, pushLeadEvent } from '@/lib/attribution';
 
 declare global {
@@ -16,7 +25,28 @@ const ENDPOINT_BASE =
 const WEBHOOK_TOKEN = process.env.NEXT_PUBLIC_GROWTH_WEBHOOK_TOKEN || '';
 const PAGE_PATH = '/growth';
 
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+// 'revenue' is the optional dollar-number step shown between a successful
+// submit and the thank-you state.
+type Status = 'idle' | 'submitting' | 'revenue' | 'success' | 'error';
+
+/** Links the main submit to the optional revenue step. */
+function newSubmissionKey(): string {
+  try {
+    if (typeof crypto !== 'undefined') {
+      if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+      if (typeof crypto.getRandomValues === 'function') {
+        return Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) =>
+          b.toString(16).padStart(2, '0'),
+        ).join('');
+      }
+    }
+  } catch {
+    // Fall through to Math.random.
+  }
+  let hex = '';
+  for (let i = 0; i < 32; i++) hex += Math.floor(Math.random() * 16).toString(16);
+  return hex;
+}
 
 // specialty is the only field whose value differs from its display label.
 const specialtyOptions: { value: string; label: string }[] = [
@@ -90,7 +120,17 @@ const whatYouGet = [
   {
     icon: Calculator,
     title: 'Your 90-Day Recovery Number',
-    body: 'The consults you are leaving on the table, with the method shown.',
+    body: 'The consults you are leaving on the table, and what they are worth, with the method shown.',
+  },
+  {
+    icon: CircleDollarSign,
+    title: 'What the leak costs',
+    body: 'Your lost consults turned into dollars at your own prices and service mix. Every assumption is shown.',
+  },
+  {
+    icon: MapPin,
+    title: 'Your market',
+    body: 'The people in your metro area, local search demand, and the competitors patients see on Google. Fertility clinics also see CDC IVF volumes for every clinic in their metro.',
   },
   {
     icon: ListOrdered,
@@ -303,6 +343,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
   const [status, setStatus] = useState<Status>('idle');
   const [step, setStep] = useState<1 | 2>(1);
   const [specialty, setSpecialty] = useState('');
+  const [submissionKey] = useState(newSubmissionKey);
   const step1Ref = useRef<HTMLDivElement>(null);
   const step2Ref = useRef<HTMLDivElement>(null);
   const step1HeadingRef = useRef<HTMLParagraphElement>(null);
@@ -371,6 +412,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       phone: String(formData.get('phone') || '').trim(),
       clinic_name: String(formData.get('clinic_name') || '').trim(),
       website,
+      clinic_zip: String(formData.get('clinic_zip') || '').trim().slice(0, 10),
       specialty: String(formData.get('specialty') || ''),
       monthly_leads: String(formData.get('monthly_leads') || ''),
       monthly_consults: String(formData.get('monthly_consults') || ''),
@@ -394,6 +436,9 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       page_path: PAGE_PATH,
       page_url: currentPageUrl(),
       source_url: typeof window !== 'undefined' ? window.location.href : '',
+      // Tells the backend to hold the audit for the optional revenue step.
+      submission_key: submissionKey,
+      revenue_step: 'offered',
     };
 
     try {
@@ -416,7 +461,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       }
       pushLeadEvent('patient_leakage_audit', attribution);
 
-      setStatus('success');
+      setStatus('revenue');
     } catch (err) {
       console.error('Growth audit submission network error:', err);
       setStatus('error');
@@ -433,7 +478,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
               Where does your clinic leak? See it on the GrowthOS Map.
             </h1>
             <p className="font-body text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking and the modules that close each one. Your report arrives in your inbox in a few minutes.
+              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking, what the leak costs in revenue, and how much opportunity is in your local market. Your report arrives in your inbox in a few minutes.
             </p>
             <div className="flex flex-col items-center gap-4">
               <Button
@@ -481,7 +526,10 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
 
           {/* Proof line */}
           <p className="mt-10 md:mt-12 mx-auto max-w-3xl text-center font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-            Benchmarked against thousands of real patient inquiries at clinics we operate for, plus published research for your specialty.
+            Benchmarked against thousands of real patient inquiries at clinics we operate for, plus published research for your specialty and US Census, CDC and Google data for your area.
+          </p>
+          <p className="mt-2 text-center font-body text-sm text-teal-deep/70">
+            Market data covers US clinics.
           </p>
         </div>
       </section>
@@ -494,7 +542,13 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       >
         <div className="container-wide relative z-10">
           <div className="mx-auto max-w-[640px]">
-            {status === 'success' ? (
+            {status === 'revenue' ? (
+              <RevenueStep
+                submissionKey={submissionKey}
+                specialty={specialty}
+                onDone={() => setStatus('success')}
+              />
+            ) : status === 'success' ? (
               <div className="card-elevated p-8 md:p-10 text-center">
                 <h2 className="font-display text-3xl font-semibold tracking-tight text-teal-deep mb-4">
                   Your audit is underway.
@@ -632,6 +686,28 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       disabled={isSubmitting}
                       className={controlClasses}
                     />
+                  </div>
+
+                  {/* Clinic ZIP or postal code. Optional, no format check:
+                      clinics outside the US use other formats. */}
+                  <div>
+                    <label htmlFor="clinic_zip" className={labelClasses}>
+                      Clinic ZIP or postal code{' '}
+                      <span className="text-teal-deep/75">(optional)</span>
+                    </label>
+                    <input
+                      id="clinic_zip"
+                      name="clinic_zip"
+                      type="text"
+                      maxLength={10}
+                      autoComplete="postal-code"
+                      aria-describedby="clinic_zip_help"
+                      disabled={isSubmitting}
+                      className={controlClasses}
+                    />
+                    <p id="clinic_zip_help" className="mt-2 font-body text-sm text-teal-deep/70">
+                      Used to build your local market report.
+                    </p>
                   </div>
 
                   {/* Specialty */}
@@ -933,7 +1009,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                       )}
                     </Button>
                     <p className="mt-4 font-body text-sm text-teal-deep/75">
-                      Your report arrives in your inbox in a few minutes. No spam. No obligation.
+                      Your report arrives in your inbox in a few minutes. Add your services on the next screen to see your leak in dollars. No spam. No obligation.
                     </p>
                   </div>
                   </div>
