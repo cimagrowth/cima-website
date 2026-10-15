@@ -489,3 +489,9 @@
   .delay-700 { animation-delay: 700ms; }
   .delay-800 { animation-delay: 800ms; }
 }
+
+/* Specialty switcher: hide the regions that vary by specialty until the
+   visitor's pick has been applied (see SPECIALTY_PENDING_SCRIPT). */
+html[data-sv-pending] [data-sv-region] {
+  visibility: hidden;
+}

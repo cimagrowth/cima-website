@@ -10,6 +10,7 @@ import DemoChatWidget from '@/components/demo/DemoChatWidget';
 import { CookieConsent } from '@/components/CookieConsent';
 import { AttributionCapture } from '@/components/AttributionCapture';
 import { DynamicGTM } from './dynamic-gtm';
+import { SPECIALTY_PENDING_SCRIPT } from '@/content/specialty';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cimagrowth.com'),
@@ -50,6 +51,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Blocking on purpose: hides specialty regions before first paint for returning non-fertility visitors. */}
+        <script dangerouslySetInnerHTML={{ __html: SPECIALTY_PENDING_SCRIPT }} />
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
