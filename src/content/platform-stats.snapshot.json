@@ -7,14 +7,14 @@
     "instagram"
   ],
   "countries": 5,
-  "window_end": "2026-09-24",
+  "window_end": "2026-10-15",
   "window_days": 90,
-  "generated_at": "2026-09-24T13:49:01.924003+00:00",
-  "window_start": "2026-06-26",
-  "clinics_active": 92,
-  "patient_conversations": 16915,
-  "measured_first_replies": 4793,
-  "pct_first_reply_under_60s": 94.8,
-  "clinics_with_conversations": 53,
-  "median_first_reply_seconds": 2
+  "generated_at": "2026-10-15T16:43:58.503559+00:00",
+  "window_start": "2026-07-17",
+  "clinics_active": 99,
+  "patient_conversations": 41194,
+  "measured_first_replies": 4844,
+  "pct_first_reply_under_60s": 90.2,
+  "clinics_with_conversations": 57,
+  "median_first_reply_seconds": 3
 }
