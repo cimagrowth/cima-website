@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import cimaLogoDarkImg from "@/assets/cima-logo-dark.png";
@@ -9,12 +10,15 @@ import {
   getPlatformStats,
   stageHref,
 } from "@/lib/growthos-map";
+import { specializeMap } from "@/lib/specialty-map";
+import { SPECIALTIES } from "@/content/specialty";
+import BySpecialty from "@/components/specialty/BySpecialty";
 import SocialIcon from "./SocialIcon";
 import CookiePreferencesButton from "./CookiePreferencesButton";
 
 const cimaLogoDark = typeof cimaLogoDarkImg === 'string' ? cimaLogoDarkImg : cimaLogoDarkImg.src;
 
-type FooterLink = { label: string; href: string; external?: boolean };
+type FooterLink = { label: ReactNode; href: string; external?: boolean };
 
 const platformLinks: FooterLink[] = [
   { label: "Platform overview", href: "/product" },
@@ -65,7 +69,7 @@ function LinkColumn({ title, links, titleHref }: { title: string; links: FooterL
       </h2>
       <ul className="space-y-3">
         {links.map((link) => (
-          <li key={link.href + link.label}>
+          <li key={link.href + (typeof link.label === "string" ? link.label : "")}>
             {link.external ? (
               <a href={link.href} target="_blank" rel="noopener" className={linkClass}>
                 {link.label}
@@ -107,8 +111,14 @@ function SocialLinks({ profiles, size }: { profiles: SocialProfile[]; size: "lg"
 const Footer = async () => {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
   const currentYear = new Date().getFullYear();
+  // Stage names follow the visitor's specialty (stage 7 is named per specialty).
+  const specialized = SPECIALTIES.map(({ key }) => [key, specializeMap(map, key)] as const);
+  const stageLabel = (i: number): ReactNode => {
+    const names = Object.fromEntries(specialized.map(([key, m]) => [key, m.stages[i].name]));
+    return new Set(Object.values(names)).size === 1 ? names.fertility : <BySpecialty fertility={names.fertility} {...names} />;
+  };
   const mapLinks: FooterLink[] = [
-    ...map.stages.map((s) => ({ label: s.name, href: stageHref(s.stage_key) })),
+    ...map.stages.map((s, i) => ({ label: stageLabel(i), href: stageHref(s.stage_key) })),
     { label: "Measure", href: "/map#measure" },
   ];
   const half = Math.ceil(mapLinks.length / 2);

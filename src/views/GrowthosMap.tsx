@@ -4,7 +4,13 @@ import {
   getPlatformStats,
   sourceKeysForStages,
   stageHref,
+  type GrowthosMap,
+  type PlatformStats,
 } from "@/lib/growthos-map";
+import { specializeMap, stageCopyFor } from "@/lib/specialty-map";
+import { MAP_INTRO } from "@/content/specialty-map";
+import { PERSON, SPECIALTIES, type Specialty } from "@/content/specialty";
+import BySpecialty from "@/components/specialty/BySpecialty";
 import { BTN_OUTLINE, BTN_PRIMARY, Eyebrow, H2, WRAP } from "@/components/map/ui";
 import StageDetail from "@/components/map/StageDetail";
 import SourcesList from "@/components/map/SourcesList";
@@ -14,6 +20,17 @@ import LeakMapCTA from "@/components/home/LeakMapCTA";
 
 export default async function GrowthosMapView() {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
+  const variants = Object.fromEntries(
+    SPECIALTIES.map(({ key }) => [key, <MapBody key={key} map={specializeMap(map, key)} stats={stats} specialty={key} />]),
+  );
+  return <BySpecialty fertility={variants.fertility} {...variants} />;
+}
+
+/** The whole /map page for one specialty. */
+function MapBody({ map, stats, specialty }: { map: GrowthosMap; stats: PlatformStats; specialty: Specialty }) {
+  const copy = stageCopyFor(specialty);
+  const intro = MAP_INTRO[specialty];
+  const personOne = PERSON[specialty].One.toUpperCase();
   const basics = map.stage_order.find((s) => s.stage_key === "basics");
   const measure = map.stage_order.find((s) => s.stage_key === "measure");
   const journey = map.stage_order
@@ -32,14 +49,13 @@ export default async function GrowthosMapView() {
               id="map-page-title"
               className="font-display text-[clamp(38px,5.4vw,64px)] font-semibold leading-[1.03] tracking-[-0.025em] text-teal-deep"
             >
-              The patient journey, and every place it leaks.
+              {intro.h1}
             </h1>
             <p className="text-lg leading-relaxed text-teal-deep/80 md:text-xl">
-              Patient leakage rarely happens in one place. It happens in the gaps between stages: the
-              search that never finds you, the inquiry nobody answers, the consult that never becomes a
-              commitment, the embryos that stay in storage while the patient goes quiet. The GrowthOS Map
-              names {map.totals.stages} stages and {map.totals.leaks} leaks, and the {map.totals.features}{" "}
-              modules that close them. Your onboarding, your reports and your Leak Map all follow it.
+              {intro.body
+                .replace("{stages}", String(map.totals.stages))
+                .replace("{leaks}", String(map.totals.leaks))
+                .replace("{features}", String(map.totals.features))}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="/growth" className={BTN_PRIMARY}>
@@ -109,7 +125,13 @@ export default async function GrowthosMapView() {
           className={`scroll-mt-24 py-16 md:py-20 ${i % 2 === 0 ? "border-t border-sand" : "bg-paper/60"}`}
         >
           <div className={WRAP}>
-            <StageDetail map={map} stage={stage} stats={stats} />
+            <StageDetail
+              map={map}
+              stage={stage}
+              stats={stats}
+              copy={copy[stage.stage_key]}
+              personOne={personOne}
+            />
           </div>
         </section>
       ))}
@@ -121,8 +143,9 @@ export default async function GrowthosMapView() {
             <Eyebrow>Around the journey</Eyebrow>
             <H2 id="measure-title" className="text-teal-deep">{measure?.name ?? "Measure"}</H2>
             <p className="text-[17px] leading-relaxed text-teal-deep/80">
-              Reports, funnel stages and goals time every stage of the Map, so you see where patients
-              wait and where they leave. These are the numbers GrowthOS tracks for each stage.
+              Reports, funnel stages and goals time every stage of the Map, so you see where{" "}
+              {PERSON[specialty].many} wait and where they leave. These are the numbers GrowthOS tracks for
+              each stage.
             </p>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

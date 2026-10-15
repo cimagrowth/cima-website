@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -39,6 +39,8 @@ import {
   Moon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ADS_PAGE } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -353,6 +355,14 @@ const upgradePaths = [
 
 const AdsPage = () => {
   const [activeSpecialty, setActiveSpecialty] = useState("fertility");
+  const { specialty } = useSpecialty();
+  const adsCopy = ADS_PAGE[specialty];
+
+  // The headline tabs start on the visitor's specialty. Clicking a tab here
+  // does not change the site specialty.
+  useEffect(() => {
+    setActiveSpecialty(specialty === "regenerative" ? "regen" : specialty);
+  }, [specialty]);
 
   return (
     <>
@@ -437,7 +447,11 @@ const AdsPage = () => {
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-orange to-secondary flex items-center justify-center mx-auto mb-5">
                   <point.icon className="w-7 h-7 text-white" />
                 </div>
-                <p className="text-body text-muted-foreground">{point.text}</p>
+                {i === 0 ? (
+                  <p data-sv-region className="text-body text-muted-foreground">{adsCopy.painPoint}</p>
+                ) : (
+                  <p className="text-body text-muted-foreground">{point.text}</p>
+                )}
               </motion.div>
             ))}
           </div>
@@ -665,9 +679,15 @@ const AdsPage = () => {
                       </div>
                       <div className={`flex items-start gap-2 ${statusColor} mb-1.5`}>
                         <StatusIcon className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                        <span className="text-white font-medium leading-snug">
-                          {entry.title}
-                        </span>
+                        {entry.status === "cut" ? (
+                          <span data-sv-region className="text-white font-medium leading-snug">
+                            {adsCopy.cutTitle}
+                          </span>
+                        ) : (
+                          <span className="text-white font-medium leading-snug">
+                            {entry.title}
+                          </span>
+                        )}
                       </div>
                       <div className="text-white/70 pl-6 leading-relaxed">
                         {entry.change}
@@ -951,33 +971,35 @@ const AdsPage = () => {
           </div>
 
           {/* Tab Content */}
-          {specialties
-            .filter((spec) => spec.key === activeSpecialty)
-            .map((spec) => (
-              <motion.div
-                key={spec.key}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="max-w-3xl lg:max-w-5xl mx-auto"
-              >
-                <p className="text-center text-body-lg text-muted-foreground mb-8">
-                  {spec.tagline}
-                </p>
-                <div className="space-y-4">
-                  {spec.headlines.map((headline, i) => (
-                    <div
-                      key={i}
-                      className="card-premium rounded-xl p-6 border-l-4 border-accent-orange"
-                    >
-                      <p className="text-body font-medium text-foreground">
-                        "{headline}"
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div data-sv-region style={{ display: "contents" }}>
+            {specialties
+              .filter((spec) => spec.key === activeSpecialty)
+              .map((spec) => (
+                <motion.div
+                  key={spec.key}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="max-w-3xl lg:max-w-5xl mx-auto"
+                >
+                  <p className="text-center text-body-lg text-muted-foreground mb-8">
+                    {spec.tagline}
+                  </p>
+                  <div className="space-y-4">
+                    {spec.headlines.map((headline, i) => (
+                      <div
+                        key={i}
+                        className="card-premium rounded-xl p-6 border-l-4 border-accent-orange"
+                      >
+                        <p className="text-body font-medium text-foreground">
+                          "{headline}"
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+          </div>
         </div>
       </section>
 

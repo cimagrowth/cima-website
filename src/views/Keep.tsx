@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { KEEP_COPY, STAGE_COPY } from "@/content/map-copy";
 import {
   displayStatsForStage,
   findStage,
@@ -7,7 +6,14 @@ import {
   getPlatformStats,
   sourceKeysForStages,
   stageHref,
+  type GrowthosMap,
+  type PlatformStats,
 } from "@/lib/growthos-map";
+import { specializeMap, stageCopyFor } from "@/lib/specialty-map";
+import { HOME_COPY } from "@/content/home-specialty";
+import { KEEP_PAGE } from "@/content/specialty-pages";
+import { SPECIALTIES, type Specialty } from "@/content/specialty";
+import BySpecialty from "@/components/specialty/BySpecialty";
 import { BTN_OUTLINE, BTN_PRIMARY, Eyebrow, H2, SectionHead, WRAP } from "@/components/map/ui";
 import StatCard from "@/components/map/StatCard";
 import SourcesList from "@/components/map/SourcesList";
@@ -16,8 +22,21 @@ import { KeepRecordPanel } from "@/components/home/BeyondTheBooking";
 
 export default async function KeepView() {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
+  if (!findStage(map, "after_cycle")) return null;
+  const variants = Object.fromEntries(
+    SPECIALTIES.map(({ key }) => [key, <KeepBody key={key} map={specializeMap(map, key)} stats={stats} specialty={key} />]),
+  );
+  return <BySpecialty fertility={variants.fertility} {...variants} />;
+}
+
+/** The /keep page for one specialty. */
+function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: PlatformStats; specialty: Specialty }) {
   const stage = findStage(map, "after_cycle");
   if (!stage) return null;
+  const page = KEEP_PAGE[specialty];
+  const panel = HOME_COPY[specialty].beyond;
+  const copy = stageCopyFor(specialty).after_cycle;
+  const isFertility = specialty === "fertility";
   const leak = stage.leaks[0];
   const statCards = displayStatsForStage(map, stage, stats);
   const outreach = stage.features.find((f) => /outreach/i.test(f.name));
@@ -42,9 +61,9 @@ export default async function KeepView() {
               id="keep-title"
               className="font-display text-[clamp(38px,5vw,60px)] font-semibold leading-[1.04] tracking-[-0.025em] text-teal-deep"
             >
-              Keep. For every egg, embryo and sample still in your tanks.
+              {page.h1}
             </h1>
-            <p className="text-lg leading-relaxed text-teal-deep/80">{KEEP_COPY.body}</p>
+            <p className="text-lg leading-relaxed text-teal-deep/80">{page.body}</p>
             <p className="text-base font-semibold text-teal-deep">
               Keep is included in every GrowthOS plan. It is not an add-on.
             </p>
@@ -58,7 +77,7 @@ export default async function KeepView() {
             </div>
           </div>
           <div className="lg:col-span-6">
-            <KeepRecordPanel />
+            <KeepRecordPanel caption={panel.panelCaption} tiles={panel.tiles} rows={panel.rows} />
           </div>
         </div>
       </section>
@@ -70,14 +89,22 @@ export default async function KeepView() {
             dark
             eyebrow={`The leak · ${leak?.name ?? ""}`}
             titleId="keep-leak-title"
-            title={STAGE_COPY.after_cycle.leak}
+            title={copy.leak}
             side={`What good looks like: ${stage.ideal}`}
           />
-          <div className="grid gap-5 md:grid-cols-3">
-            {statCards.map((s) => (
-              <StatCard key={s.sourceKey} stat={s} dark />
-            ))}
-          </div>
+          {isFertility ? (
+            <div className="grid gap-5 md:grid-cols-3">
+              {statCards.map((s) => (
+                <StatCard key={s.sourceKey} stat={s} dark />
+              ))}
+            </div>
+          ) : (
+            stage.nostat && (
+              <p className="max-w-3xl rounded-2xl border border-dashed border-paper/30 p-5 text-[15px] leading-relaxed text-paper/80">
+                {stage.nostat}
+              </p>
+            )
+          )}
         </div>
       </section>
 
@@ -87,29 +114,31 @@ export default async function KeepView() {
           <SectionHead
             eyebrow="How Keep works"
             titleId="keep-features-title"
-            title="A ledger, a voice and a record for every stored specimen."
-            side={STAGE_COPY.after_cycle.fix}
+            title={page.featuresTitle}
+            side={copy.fix}
           />
           <FeatureList stage={stage} headingLevel="h3" />
         </div>
       </section>
 
       {/* Grief-aware pause */}
-      <section aria-labelledby="keep-grief-title" className="border-t border-sand py-20 md:py-24">
-        <div className={`${WRAP} grid gap-8 lg:grid-cols-12 lg:gap-10`}>
-          <div className="flex flex-col gap-4 lg:col-span-6">
-            <Eyebrow>Grief-aware by design</Eyebrow>
-            <H2 id="keep-grief-title" className="text-teal-deep">It stops when it should.</H2>
+      {isFertility && (
+        <section aria-labelledby="keep-grief-title" className="border-t border-sand py-20 md:py-24">
+          <div className={`${WRAP} grid gap-8 lg:grid-cols-12 lg:gap-10`}>
+            <div className="flex flex-col gap-4 lg:col-span-6">
+              <Eyebrow>Grief-aware by design</Eyebrow>
+              <H2 id="keep-grief-title" className="text-teal-deep">It stops when it should.</H2>
+            </div>
+            <div className="flex flex-col gap-4 text-[17px] leading-relaxed text-teal-deep/80 lg:col-span-6">
+              <p>
+                Keep pauses automatically after a known loss. Anniversary messages and renewal nudges
+                stop, and the conversation is handed to a person on your team when it matters.
+              </p>
+              {outreach && <p>{outreach.description}</p>}
+            </div>
           </div>
-          <div className="flex flex-col gap-4 text-[17px] leading-relaxed text-teal-deep/80 lg:col-span-6">
-            <p>
-              Keep pauses automatically after a known loss. Anniversary messages and renewal nudges
-              stop, and the conversation is handed to a person on your team when it matters.
-            </p>
-            {outreach && <p>{outreach.description}</p>}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Research log */}
       <section aria-labelledby="keep-research-title" className="border-t border-sand py-20 md:py-24">
@@ -143,11 +172,10 @@ export default async function KeepView() {
         <div className={WRAP}>
           <div className="flex flex-col items-start gap-5 rounded-[26px] bg-clay-wash p-7 md:p-14">
             <h2 id="keep-cta-title" className="font-display text-[clamp(30px,3.6vw,44px)] font-semibold leading-[1.08] text-teal-deep">
-              See Keep on your own storage list.
+              {page.ctaTitle}
             </h2>
             <p className="max-w-2xl text-lg leading-relaxed text-teal-deep/80">
-              Keep is included in every plan. Book a demo and we will walk through how it syncs with your
-              lab system and what your patients would see.
+              {page.ctaBody}
             </p>
             <Link href="/demo" className={BTN_PRIMARY}>
               Book a demo

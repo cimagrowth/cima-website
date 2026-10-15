@@ -5,18 +5,25 @@ import {
   type PlatformStats,
 } from "@/lib/growthos-map";
 import { WRAP } from "@/components/map/ui";
+import { HOME_COPY, type HomeCopy } from "@/content/home-specialty";
 
 /** Four live figures from get_public_platform_stats. Nothing here is hardcoded. */
-export default function PlatformProof({ stats }: { stats: PlatformStats }) {
+export default function PlatformProof({
+  stats,
+  copy = HOME_COPY.fertility.proof,
+}: {
+  stats: PlatformStats;
+  copy?: HomeCopy["proof"];
+}) {
   const figures = [
-    { value: `${stats.median_first_reply_seconds} sec`, label: "median first reply to a patient message" },
+    { value: `${stats.median_first_reply_seconds} sec`, label: copy.reply },
     {
       value: formatPct(stats.pct_first_reply_under_60s),
-      label: "of patient messages answered in under 60 seconds",
+      label: copy.under60,
     },
     {
       value: formatConversations(stats.patient_conversations),
-      label: `patient conversations handled in the last ${stats.window_days} days`,
+      label: copy.conversations.replace("{days}", String(stats.window_days)),
     },
     { value: formatClinics(stats.clinics_active), label: `clinic accounts live in ${stats.countries} countries` },
   ];

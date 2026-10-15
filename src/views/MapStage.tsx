@@ -5,8 +5,13 @@ import {
   getPlatformStats,
   sourceKeysForStages,
   stageHref,
+  type GrowthosMap,
+  type PlatformStats,
   type StageKey,
 } from "@/lib/growthos-map";
+import { specializeMap, stageCopyFor } from "@/lib/specialty-map";
+import { PERSON, SPECIALTIES, type Specialty } from "@/content/specialty";
+import BySpecialty from "@/components/specialty/BySpecialty";
 import { WRAP } from "@/components/map/ui";
 import StageDetail from "@/components/map/StageDetail";
 import SourcesList from "@/components/map/SourcesList";
@@ -14,6 +19,28 @@ import LeakMapCTA from "@/components/home/LeakMapCTA";
 
 export default async function MapStageView({ stageKey }: { stageKey: StageKey }) {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
+  if (!map.stages.some((s) => s.stage_key === stageKey)) return null;
+  const variants = Object.fromEntries(
+    SPECIALTIES.map(({ key }) => [
+      key,
+      <MapStageBody key={key} map={specializeMap(map, key)} stats={stats} specialty={key} stageKey={stageKey} />,
+    ]),
+  );
+  return <BySpecialty fertility={variants.fertility} {...variants} />;
+}
+
+/** One /map/[stage] page for one specialty. */
+function MapStageBody({
+  map,
+  stats,
+  specialty,
+  stageKey,
+}: {
+  map: GrowthosMap;
+  stats: PlatformStats;
+  specialty: Specialty;
+  stageKey: StageKey;
+}) {
   const index = map.stages.findIndex((s) => s.stage_key === stageKey);
   const stage = map.stages[index];
   if (!stage) return null;
@@ -39,7 +66,15 @@ export default async function MapStageView({ stageKey }: { stageKey: StageKey })
 
       <section aria-label={`Stage ${stage.number}: ${stage.name}`} className="py-10 md:py-14">
         <div className={WRAP}>
-          <StageDetail map={map} stage={stage} stats={stats} headingLevel="h1" linkToStagePage={false} />
+          <StageDetail
+            map={map}
+            stage={stage}
+            stats={stats}
+            headingLevel="h1"
+            linkToStagePage={false}
+            copy={stageCopyFor(specialty)[stageKey]}
+            personOne={PERSON[specialty].One.toUpperCase()}
+          />
         </div>
       </section>
 
