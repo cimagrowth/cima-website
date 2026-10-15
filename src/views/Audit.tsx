@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { getAttribution, pushLeadEvent } from "@/lib/attribution";
+import { FORM_SPECIALTY_VALUES, PLACEHOLDERS } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 
 const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -84,6 +86,12 @@ function scrollToForm() {
 
 const Audit = () => {
   const [formData, setFormData] = useState<FormState>(initialState);
+  const { specialty, ready } = useSpecialty();
+  // Start on the visitor's specialty while the field is still empty.
+  useEffect(() => {
+    if (!ready) return;
+    setFormData((prev) => (prev.specialty ? prev : { ...prev, specialty: FORM_SPECIALTY_VALUES.audit[specialty] }));
+  }, [specialty, ready]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<SignupResponse | null>(null);
@@ -241,6 +249,7 @@ const Audit = () => {
                       />
                     ) : (
                       <FormCard
+                        clinicPlaceholder={PLACEHOLDERS[specialty].audit}
                         formData={formData}
                         isSubmitting={isSubmitting}
                         error={error}
@@ -586,6 +595,7 @@ type FormCardProps = {
   ) => void;
   onCheckboxChange: (checked: boolean) => void;
   onSubmit: (e: React.FormEvent) => void;
+  clinicPlaceholder: string;
 };
 
 const FormCard = ({
@@ -595,6 +605,7 @@ const FormCard = ({
   onChange,
   onCheckboxChange,
   onSubmit,
+  clinicPlaceholder,
 }: FormCardProps) => (
   <form onSubmit={onSubmit} className="space-y-4" noValidate>
     <div>
@@ -683,7 +694,7 @@ const FormCard = ({
           name="clinic_name"
           type="text"
           autoComplete="organization"
-          placeholder="Bay Area Fertility"
+          placeholder={clinicPlaceholder}
           value={formData.clinic_name}
           onChange={onChange}
           className="h-12 border-border focus:border-accent-orange focus:ring-accent-orange"

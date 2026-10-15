@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Link from "next/link";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -28,6 +29,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { FORM_SPECIALTY_VALUES, PLACEHOLDERS } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
 
@@ -80,6 +83,12 @@ const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) =>
       acceptTerms: undefined as unknown as true,
     },
   });
+
+  const { specialty, ready } = useSpecialty();
+  // Start on the visitor's specialty while the field is still empty.
+  useEffect(() => {
+    if (ready && !form.getValues("specialty")) form.setValue("specialty", FORM_SPECIALTY_VALUES.adsIntake[specialty]);
+  }, [form, specialty, ready]);
 
   const isLoading = form.formState.isSubmitting;
   const apiError = form.formState.errors.root?.message;
@@ -194,7 +203,7 @@ const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) =>
                 <FormItem>
                   <FormLabel>Practice Name *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Bright Fertility Clinic" {...field} />
+                    <Input placeholder={PLACEHOLDERS[specialty].checkout} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

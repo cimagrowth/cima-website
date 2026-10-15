@@ -20,6 +20,14 @@ interface DemoChatWindowProps {
 
 const CHAT_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/website-demo-chat`;
 
+/** Clinic name in the fallback greeting, by the session's clinic type. */
+const FALLBACK_CLINIC_NAMES: Record<ChatSession["clinicType"], string> = {
+  fertility: "Cima Fertility Clinic",
+  med_spa: "Cima Med Spa",
+  regenerative: "Cima Regenerative Clinic",
+  other: "Cima Clinic",
+};
+
 const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -151,7 +159,7 @@ const DemoChatWindow = ({ session, onNewMessage }: DemoChatWindowProps) => {
           {
             id: "greeting",
             role: "assistant",
-            content: `Hi ${session.visitorName}! Welcome to Cima Fertility Clinic. I'm here to help you learn about our services and answer any questions. What brings you in today?`,
+            content: `Hi ${session.visitorName}! Welcome to ${FALLBACK_CLINIC_NAMES[session.clinicType] ?? "Cima Clinic"}. I'm here to help you learn about our services and answer any questions. What brings you in today?`,
           },
         ]);
         setIsLoading(false);

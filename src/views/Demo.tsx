@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Loader2, CalendarCheck, Sparkles, MonitorPlay } from "lucide-react";
 import { motion } from "framer-motion";
 import { getAttribution, pushLeadEvent } from "@/lib/attribution";
+import { FORM_SPECIALTY_VALUES } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
 const ANON_KEY =
@@ -56,6 +58,12 @@ const Demo = () => {
     primary_goal: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { specialty, ready } = useSpecialty();
+  // Start on the visitor's specialty while the field is still empty.
+  useEffect(() => {
+    if (!ready) return;
+    setFormData((prev) => (prev.industry ? prev : { ...prev, industry: FORM_SPECIALTY_VALUES.demo[specialty] }));
+  }, [specialty, ready]);
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (

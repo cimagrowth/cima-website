@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
+import { FORM_SPECIALTY_VALUES, PLACEHOLDERS } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 import { Loader2 } from "lucide-react";
 import type { ChatSession } from "./DemoChatWidget";
 
@@ -23,6 +25,14 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
     phone: "",
     clinicType: "fertility" as "fertility" | "med_spa" | "regenerative" | "other",
   });
+  const { specialty } = useSpecialty();
+  const clinicTypeTouched = useRef(false);
+  // Start on the visitor's specialty until the visitor picks a clinic type.
+  useEffect(() => {
+    if (clinicTypeTouched.current) return;
+    const clinicType = FORM_SPECIALTY_VALUES.demoChat[specialty] as ChatSession["clinicType"];
+    setFormData((prev) => ({ ...prev, clinicType }));
+  }, [specialty]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -128,7 +138,7 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
           <Label htmlFor="demo-business" className="text-xs">Clinic / Business Name <span className="text-destructive">*</span></Label>
           <Input
             id="demo-business"
-            placeholder="Sunrise Fertility Clinic"
+            placeholder={PLACEHOLDERS[specialty].demoChat}
             value={formData.businessName}
             onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
             className="h-9 text-sm"
@@ -172,9 +182,10 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
           <Label className="text-xs">What type of clinic are you?</Label>
           <RadioGroup
             value={formData.clinicType}
-            onValueChange={(value) => 
-              setFormData({ ...formData, clinicType: value as typeof formData.clinicType })
-            }
+            onValueChange={(value) => {
+              clinicTypeTouched.current = true;
+              setFormData({ ...formData, clinicType: value as typeof formData.clinicType });
+            }}
             className="grid grid-cols-2 gap-1.5"
             disabled={isSubmitting}
           >
