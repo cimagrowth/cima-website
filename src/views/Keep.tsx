@@ -40,7 +40,7 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
   const leak = stage.leaks[0];
   const statCards = displayStatsForStage(map, stage, stats);
   const outreach = stage.features.find((f) => /outreach/i.test(f.name));
-  const research = stage.features.find((f) => /research/i.test(f.name));
+  const research = stage.features.find((f) => /publish|research/i.test(f.name));
 
   return (
     <>
