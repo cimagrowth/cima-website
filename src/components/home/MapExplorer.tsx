@@ -28,10 +28,15 @@ export default function MapExplorer({
   stages,
   defaultStage = "after_cycle",
   headingLevel = "h2",
+  title = "One map, from the first search to the last stored embryo.",
+  personOne = "patient",
 }: {
   stages: ExplorerStage[];
   defaultStage?: string;
   headingLevel?: "h2" | "h3";
+  title?: string;
+  /** Lower-case person word, such as "client". */
+  personOne?: string;
 }) {
   const initial = stages.some((s) => s.key === defaultStage) ? defaultStage : stages[0]?.key;
   const listRef = useRef<HTMLDivElement>(null);
@@ -52,7 +57,7 @@ export default function MapExplorer({
         <SectionHead
           eyebrow="The GrowthOS Map"
           titleId="map-title"
-          title="One map, from the first search to the last stored embryo."
+          title={title}
           side="Every stage has a leak. Every leak has a module that closes it. Your onboarding, your reports and your audit all follow the same map."
         />
 
@@ -132,7 +137,7 @@ export default function MapExplorer({
                   ) : (
                     <>
                       <Eyebrow tone="soft" className="!text-[13px] !tracking-[0.08em]">
-                        What the patient is thinking
+                        What the {personOne} is thinking
                       </Eyebrow>
                       <p className="font-display text-[clamp(24px,2.8vw,32px)] leading-snug">
                         &ldquo;{s.patientSays}&rdquo;

@@ -47,17 +47,22 @@ export default function StageDetail({
   stats,
   headingLevel = "h2",
   linkToStagePage = true,
+  copy = STAGE_COPY[stage.stage_key],
+  personOne = "PATIENT",
 }: {
   map: GrowthosMap;
   stage: MapStage;
   stats: PlatformStats;
   headingLevel?: "h1" | "h2";
   linkToStagePage?: boolean;
+  /** Leak and fix copy for this stage. Defaults to the fertility STAGE_COPY. */
+  copy?: { leak: string; fix: string };
+  /** Upper-case person word for the caption, such as "CLIENT". */
+  personOne?: string;
 }) {
   const Heading = headingLevel;
   const SubHeading = headingLevel === "h1" ? "h2" : "h3";
   const display = displayStatsForStage(map, stage, stats);
-  const copy = STAGE_COPY[stage.stage_key];
   return (
     <div className="flex flex-col gap-8">
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
@@ -79,7 +84,7 @@ export default function StageDetail({
           {copy && <p className="font-display text-[clamp(20px,2.2vw,26px)] leading-snug text-teal-deep">{copy.leak}</p>}
         </div>
         <figure className="flex flex-col justify-center gap-3 rounded-[18px] bg-teal-deep p-7 text-paper lg:col-span-5">
-          <figcaption className="text-[13px] font-bold tracking-[0.08em] text-clay-soft">WHAT THE PATIENT IS THINKING</figcaption>
+          <figcaption className="text-[13px] font-bold tracking-[0.08em] text-clay-soft">WHAT THE {personOne} IS THINKING</figcaption>
           <blockquote className="font-display text-[clamp(22px,2.4vw,28px)] leading-snug">
             &ldquo;{stage.patient_says}&rdquo;
           </blockquote>

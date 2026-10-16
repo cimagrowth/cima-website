@@ -22,6 +22,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { PLACEHOLDERS } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 
 const signupSchema = z.object({
   fullName: z.string().trim().min(2, "Name is required").max(100),
@@ -45,6 +47,7 @@ interface PreCheckoutFormProps {
 }
 
 const PreCheckoutForm = ({ open, onClose, onSubmit, planName, isLoading }: PreCheckoutFormProps) => {
+  const { specialty } = useSpecialty();
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -95,7 +98,7 @@ const PreCheckoutForm = ({ open, onClose, onSubmit, planName, isLoading }: PreCh
                 <FormItem>
                   <FormLabel>Clinic Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Bright Fertility Clinic" {...field} />
+                    <Input placeholder={PLACEHOLDERS[specialty].checkout} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

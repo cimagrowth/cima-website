@@ -19,6 +19,9 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AI_AGENT_EXAMPLE } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
+import SpecialtyText from "@/components/specialty/SpecialtyText";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -197,6 +200,7 @@ export interface AIAgentFigures {
 }
 
 const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
+  const { specialty } = useSpecialty();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const scrollTo = (id: string) => {
@@ -321,8 +325,8 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               </div>
               <div className="card-premium p-6 border-l-4 border-clay">
                 <p className="font-ui text-sm font-semibold text-clay uppercase tracking-[.16em] mb-3">The Cima AI Agent:</p>
-                <p className="text-body text-foreground">
-                  Reads the emotional context of every message. Knows that a patient asking about egg freezing at 11 PM is probably anxious and needs reassurance, not a pricing sheet. Nurtures across days or weeks. Then hands off with the complete conversation history.
+                <p data-sv-region className="text-body text-foreground">
+                  {AI_AGENT_EXAMPLE[specialty]}
                 </p>
               </div>
             </div>
@@ -451,7 +455,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                   {feature.title}
                 </h3>
                 <p className="text-body-sm text-muted-foreground">
-                  {feature.description}
+                  <SpecialtyText text={feature.description} />
                 </p>
               </motion.div>
             ))}
@@ -617,7 +621,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                   }`}
                 >
                   <p className="px-5 text-body text-muted-foreground">
-                    {item.answer}
+                    <SpecialtyText text={item.answer} />
                   </p>
                 </div>
               </motion.div>

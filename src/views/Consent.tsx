@@ -21,6 +21,9 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CONSENT_FAQS } from "@/lib/consent-faqs";
+import { CONSENT_PAGE, type ConsentPageCopy } from "@/content/specialty-pages";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
+import SpecialtyText from "@/components/specialty/SpecialtyText";
 
 const DEMO_ROUTE = "/demo";
 
@@ -38,6 +41,8 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Consent = () => {
+  const { specialty, person } = useSpecialty();
+  const page = CONSENT_PAGE[specialty];
   return (
     <>
       {/* 1. Hero */}
@@ -166,7 +171,7 @@ const Consent = () => {
           </div>
 
           {/* CSS-only pipeline visual */}
-          <PipelineVisual />
+          <PipelineVisual clinic={page.clinic} recordLabel={`${person.One} record`} />
 
           <motion.p
             {...fadeUp}
@@ -260,24 +265,17 @@ const Consent = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto">
-            <LibraryCard
-              title="Fertility"
-              items={[
-                "18 consent documents covering intake through embryo transfer",
-                "Packet presets mapped to each stage: intake, financial, baseline, IVF cycle, retrieval, transfer",
-                "Multi-party signing for partner and witness, in order",
-                "Embryo disposition directive with all ten circumstances addressed",
-              ]}
-            />
-            <LibraryCard
-              title="Aesthetics and med spa"
-              items={[
-                "16 documents covering neurotoxin, filler, laser, peels, microneedling, and body contouring",
-                "Photograph and media release with five separately granted permissions",
-                "Off-label use disclosure and aftercare acknowledgment",
-              ]}
-            />
+          <div
+            data-sv-region
+            className={
+              page.cards.length > 1
+                ? "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto"
+                : "grid grid-cols-1 gap-5 md:gap-6 max-w-2xl mx-auto"
+            }
+          >
+            {page.cards.map((card) => (
+              <LibraryCard key={card.title} title={card.title} items={card.items} />
+            ))}
           </div>
 
           {/* Education framework, full width */}
@@ -288,9 +286,9 @@ const Consent = () => {
             <h3 className="font-ui text-lg md:text-xl font-semibold mb-5">
               Education framework, ready for your content
             </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+            <ul data-sv-region className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
               {[
-                "15 pre-built fertility education modules with topics, running order, and stage mapping already set",
+                page.education,
                 "A comprehension question per module, written and ready to edit",
                 "Upload your own video to any module. Replace, reorder, or add your own topics.",
                 "Watch time, acknowledgment, and every comprehension answer recorded against the signature",
@@ -342,7 +340,7 @@ const Consent = () => {
             </h2>
           </motion.div>
 
-          <AuditCard />
+          <AuditCard page={page} />
 
           <motion.p
             {...fadeUp}
@@ -396,7 +394,9 @@ const Consent = () => {
                       className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-muted-foreground/50"
                       aria-hidden="true"
                     />
-                    <span className="leading-relaxed">{item}</span>
+                    <span className="leading-relaxed">
+                      <SpecialtyText text={item} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -477,7 +477,7 @@ const Consent = () => {
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {item.answer}
+                    {index === 0 ? <span data-sv-region>{page.faqVideos}</span> : item.answer}
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -562,7 +562,7 @@ const LibraryCard = ({
 /* it stacks cleanly on mobile.                                           */
 /* --------------------------------------------------------------------- */
 
-const PipelineVisual = () => {
+const PipelineVisual = ({ clinic, recordLabel }: { clinic: string; recordLabel: string }) => {
   const stages = [
     { label: "New Inquiry", active: false },
     { label: "Protocol Assigned", active: false },
@@ -598,12 +598,12 @@ const PipelineVisual = () => {
                   <span className="w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center">
                     <Users className="w-3.5 h-3.5 text-teal" />
                   </span>
-                  <div className="leading-tight">
+                  <div data-sv-region className="leading-tight">
                     <p className="font-ui text-xs font-semibold text-foreground">
-                      Northlake Fertility
+                      {clinic}
                     </p>
                     <p className="text-[10px] text-muted-foreground">
-                      Patient record
+                      {recordLabel}
                     </p>
                   </div>
                 </div>
@@ -632,14 +632,14 @@ const PipelineVisual = () => {
 /* Audit record card                                                      */
 /* --------------------------------------------------------------------- */
 
-const AuditCard = () => {
+const AuditCard = ({ page }: { page: ConsentPageCopy }) => {
   const rows: Array<[string, React.ReactNode]> = [
-    ["Signed by", "Emily Carter · Patient"],
-    ["Document", "IVF Treatment Consent · v1.0"],
+    ["Signed by", page.signedBy],
+    ["Document", page.document],
     ["Timestamp", "Mar 14, 2026 · 10:41 AM"],
     ["IP · device", "203.0.113.21 · Chrome / macOS"],
-    ["Education", "15 of 15 modules acknowledged"],
-    ["Comprehension", "15 of 15 answered correctly"],
+    ["Education", page.educationRow],
+    ["Comprehension", page.comprehensionRow],
     [
       "Witness",
       <span key="w" className="inline-flex items-center gap-1 text-teal">
@@ -663,7 +663,7 @@ const AuditCard = () => {
           Illustrative
         </span>
       </div>
-      <dl className="divide-y divide-sand">
+      <dl data-sv-region className="divide-y divide-sand">
         {rows.map(([label, value]) => (
           <div
             key={label}

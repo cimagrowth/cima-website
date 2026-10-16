@@ -14,6 +14,7 @@ export function buildExplorerStages(
   map: GrowthosMap,
   stats: PlatformStats,
   opts: { exclude?: StageKey[] } = {},
+  stageCopy: Record<StageKey, { leak: string; fix: string }> = STAGE_COPY,
 ): ExplorerStage[] {
   return map.stages
     .filter((s) => !opts.exclude?.includes(s.stage_key))
@@ -23,8 +24,8 @@ export function buildExplorerStages(
       name: s.name,
       slug: stageSlug(s.stage_key),
       leakNames: leakNames(s),
-      leak: STAGE_COPY[s.stage_key]?.leak ?? s.leaks.map((l) => l.description).join(". "),
-      fix: STAGE_COPY[s.stage_key]?.fix ?? s.ideal,
+      leak: stageCopy[s.stage_key]?.leak ?? s.leaks.map((l) => l.description).join(". "),
+      fix: stageCopy[s.stage_key]?.fix ?? s.ideal,
       modules: s.features.map((f) => ({ name: f.name, addon: !!f.addon_key })),
       stat: primaryStatForStage(map, s, stats),
       patientSays: s.patient_says,

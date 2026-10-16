@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
   Loader2,
   ArrowRight,
@@ -12,6 +12,8 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import RevenueStep from '@/components/growth/RevenueStep';
+import { FORM_SPECIALTY_VALUES } from '@/content/specialty-pages';
+import { useSpecialty } from '@/contexts/SpecialtyContext';
 import { currentPageUrl, getAttribution, pushLeadEvent } from '@/lib/attribution';
 
 declare global {
@@ -343,6 +345,12 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
   const [status, setStatus] = useState<Status>('idle');
   const [step, setStep] = useState<1 | 2>(1);
   const [specialty, setSpecialty] = useState('');
+  const { specialty: siteSpecialty, ready: specialtyReady, chosen: specialtyChosen } = useSpecialty();
+  // Start on the visitor's chosen specialty while the field is still empty.
+  useEffect(() => {
+    if (!specialtyReady || !specialtyChosen) return;
+    setSpecialty((current) => current || FORM_SPECIALTY_VALUES.growth[siteSpecialty]);
+  }, [siteSpecialty, specialtyReady, specialtyChosen]);
   const [submissionKey] = useState(newSubmissionKey);
   const step1Ref = useRef<HTMLDivElement>(null);
   const step2Ref = useRef<HTMLDivElement>(null);

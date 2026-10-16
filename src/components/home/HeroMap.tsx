@@ -1,26 +1,25 @@
 import Link from "next/link";
 import type { GrowthosMap } from "@/lib/growthos-map";
 import { BTN_OUTLINE, BTN_PRIMARY, WRAP } from "@/components/map/ui";
+import { HOME_COPY, type HomeCopy } from "@/content/home-specialty";
 
-export default function HeroMap({ map }: { map: GrowthosMap }) {
+export default function HeroMap({ map, copy = HOME_COPY.fertility.hero }: { map: GrowthosMap; copy?: HomeCopy["hero"] }) {
   return (
-    <section aria-labelledby="hero-title" className="pb-12 pt-6 md:pb-16 md:pt-10 lg:pt-12">
+    <section aria-labelledby="hero-title" className="pb-12 pt-6 md:pb-16 md:pt-8">
       <div className={`${WRAP} grid items-center gap-10 lg:grid-cols-12 lg:gap-6`}>
         <div className="flex flex-col gap-5 md:gap-6 lg:col-span-7">
           <p className="inline-flex items-center gap-2.5 self-start rounded-full bg-mist px-3.5 py-2 text-sm font-semibold text-teal">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-clay-deep" />
-            The front-end operating system for fertility and specialty clinics
+            {copy.pill}
           </p>
           <h1
             id="hero-title"
             className="font-display text-[clamp(34px,4.4vw,60px)] font-semibold leading-[1.04] tracking-[-0.03em] text-teal-deep"
           >
-            Your clinic leaks patients at eight stages. GrowthOS closes every one.
+            {copy.h1}
           </h1>
           <p className="max-w-[620px] text-base leading-relaxed text-teal-deep/80 md:text-lg">
-            From the first search to years after treatment. One system runs your ads, answers every
-            inquiry, keeps patients moving through consult and treatment, and brings them back for the
-            eggs and embryos they already stored.
+            {copy.sub}
           </p>
           <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
             <Link href="/growth" className={`${BTN_PRIMARY} md:text-[17px]`}>
@@ -31,7 +30,7 @@ export default function HeroMap({ map }: { map: GrowthosMap }) {
             </Link>
           </div>
           <p className="text-sm text-teal-deep/75">
-            See where your clinic leaks, benchmarked against the clinics we run. Your report arrives in your inbox in a few minutes.
+            {copy.footnote}
           </p>
         </div>
 

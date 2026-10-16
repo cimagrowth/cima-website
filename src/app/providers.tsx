@@ -7,6 +7,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { VisitorProvider } from "@/contexts/VisitorContext";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { SpecialtyProvider } from "@/contexts/SpecialtyContext";
 import { useState } from "react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -20,7 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             <TooltipProvider>
               <Toaster />
               <Sonner />
-              {children}
+              <SpecialtyProvider>{children}</SpecialtyProvider>
             </TooltipProvider>
           </AuthProvider>
         </VisitorProvider>

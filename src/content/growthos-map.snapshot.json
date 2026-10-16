@@ -319,7 +319,7 @@
           "addon_key": null,
           "has_guide": true,
           "addon_name": null,
-          "help_count": 12,
+          "help_count": 13,
           "module_key": "forms",
           "description": "Every submission becomes a contact, a deal and a sequence the moment it lands, and can be qualified red, yellow or green with its own rules or the Qualification Agent's."
         },
@@ -500,10 +500,10 @@
           "status": "live",
           "page_key": "automations",
           "addon_key": null,
-          "has_guide": true,
+          "has_guide": false,
           "addon_name": null,
-          "help_count": 3,
-          "module_key": "automations",
+          "help_count": 2,
+          "module_key": null,
           "description": "Trigger-based workflows with branches that send, tag, move, enroll, book and alert, so repeatable steps stop depending on memory."
         }
       ],
@@ -626,7 +626,7 @@
           "page_key": "virtual_visits",
           "addon_key": "telehealth",
           "has_guide": true,
-          "addon_name": "Telehealth",
+          "addon_name": "Virtual Visits",
           "help_count": 6,
           "module_key": "virtual_visits",
           "description": "Video consults with transcription, inside the same record."
@@ -699,9 +699,28 @@
           "addon_key": null,
           "has_guide": true,
           "addon_name": null,
-          "help_count": 7,
+          "help_count": 9,
           "module_key": "pipeline",
           "description": "Every stalled decision flagged by stage, with the clinic's own playbook for each one."
+        },
+        {
+          "name": "Leak Stages",
+          "route": "/dashboard/leak-stages",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "leak_stages",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 2,
+          "module_key": "leak_stages",
+          "description": "One page for every place patients go quiet: the follow-up timing and wording for each, the clinic's own additions, and which pipeline stages use them."
         },
         {
           "name": "Consent and education",
@@ -756,9 +775,28 @@
           "addon_key": null,
           "has_guide": true,
           "addon_name": null,
-          "help_count": 4,
+          "help_count": 6,
           "module_key": "invoicing",
           "description": "A pipeline stage sends the invoice or payment link by email and SMS the moment a patient enters it, and the payment lands on the same record."
+        },
+        {
+          "name": "Stage-to-stage timing",
+          "route": "/dashboard/pipeline",
+          "setup": {
+            "steps": null,
+            "total": 0,
+            "verified": 0,
+            "next_reason": null
+          },
+          "locked": null,
+          "status": "live",
+          "page_key": "pipeline",
+          "addon_key": null,
+          "has_guide": true,
+          "addon_name": null,
+          "help_count": 9,
+          "module_key": "pipeline",
+          "description": "Every stage change is kept permanently with when it happened and who or what made it. Match each of your pipeline stages to a milestone once, and your team records why patients do not go ahead, so you can see how long patients take from lead to consult to treatment and why the ones who stop do not go ahead."
         }
       ],
       "stage_key": "commit",
@@ -791,7 +829,7 @@
       ],
       "features": [
         {
-          "name": "Cycle Coordinator",
+          "name": "Cycle and Treatment Coordinator",
           "route": "/dashboard/cycle-coordinator",
           "setup": {
             "steps": null,
@@ -805,9 +843,9 @@
           "addon_key": null,
           "has_guide": true,
           "addon_name": null,
-          "help_count": 15,
+          "help_count": 20,
           "module_key": "cycle-coordinator",
-          "description": "Projects when each cycle-timed test is due, books it inside its window, and confirms dates with the patient."
+          "description": "Cycle-timed tests booked inside their window for fertility clinics, and timed plans for any treatment in every clinic, drafted from the clinic's own protocol and started from a pipeline stage."
         },
         {
           "name": "Crisis Triage Agent",
@@ -907,7 +945,7 @@
       ],
       "features": [
         {
-          "name": "Cryo ledger",
+          "name": "What each patient has with you",
           "route": "/dashboard/keep",
           "setup": {
             "steps": null,
@@ -921,9 +959,9 @@
           "addon_key": null,
           "has_guide": false,
           "addon_name": null,
-          "help_count": 16,
+          "help_count": 18,
           "module_key": null,
-          "description": "Eggs or embryos, storage date, consent renewal and fee status for every patient, synced from the lab system and never replacing it."
+          "description": "Eggs, embryos, sperm or tissue for fertility clinics, prepaid packages and memberships for other specialties: what each patient has, where it is kept and when it renews or expires. Imported, entered by hand, or added when an invoice is paid."
         },
         {
           "name": "Storage and return outreach",
@@ -940,12 +978,12 @@
           "addon_key": null,
           "has_guide": false,
           "addon_name": null,
-          "help_count": 16,
+          "help_count": 18,
           "module_key": null,
-          "description": "Anniversaries, renewal deadlines and return-for-transfer nudges. Paused after a known loss, handed to a person when it matters."
+          "description": "A note before storage renews or a package expires, and a check-in on the schedule you choose. Paused after a known loss until a person reviews."
         },
         {
-          "name": "Disposition decision support",
+          "name": "A private link for every patient",
           "route": "/dashboard/keep",
           "setup": {
             "steps": null,
@@ -959,12 +997,12 @@
           "addon_key": null,
           "has_guide": false,
           "addon_name": null,
-          "help_count": 16,
+          "help_count": 18,
           "module_key": null,
-          "description": "Plain-language options, a counselor one tap away, every answer recorded against the consent on file."
+          "description": "Opened with a date of birth check, it shows what is being kept for the patient. One tap asks your team to talk about using it, and the request lands on the Requests tab."
         },
         {
-          "name": "Research log and Leakage Index",
+          "name": "Results you can publish",
           "route": "/dashboard/keep",
           "setup": {
             "steps": null,
@@ -978,9 +1016,9 @@
           "addon_key": null,
           "has_guide": false,
           "addon_name": null,
-          "help_count": 16,
+          "help_count": 18,
           "module_key": null,
-          "description": "Time to reply, time to return and which message worked, benchmarked across clinics and structured for publication."
+          "description": "Patients reached, links opened, requests made and patients who came back, logged touch by touch in a structure built for publication."
         }
       ],
       "stage_key": "after_cycle",
@@ -1040,7 +1078,7 @@
           "addon_key": null,
           "has_guide": false,
           "addon_name": null,
-          "help_count": 1,
+          "help_count": 2,
           "module_key": null,
           "description": "The clinic picks the stage that sends the review link, what it says, and when it resends."
         },
@@ -1111,7 +1149,7 @@
   "totals": {
     "leaks": 10,
     "stages": 8,
-    "features": 45,
+    "features": 47,
     "foundation": 8
   },
   "sources": {
@@ -1140,8 +1178,56 @@
       "citation": "Christianson MS, Stern JE, Sun F, et al. Embryo cryopreservation and utilization in the United States from 2004-2013. F&S Reports 2020;1(2):71-77."
     }
   },
-  "version": "1.8",
+  "version": "1.16",
   "changelog": [
+    {
+      "date": "2026-09-29",
+      "text": "Stage-to-stage timing in Consult to commitment now explains that stages are matched to milestones and lost reasons are recorded."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Keep in After the cycle now also covers prepaid packages and memberships for clinics outside fertility."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Cycle Coordinator in In treatment now serves every specialty as the Cycle and Treatment Coordinator: timed plans for any treatment, drafted from the clinic's own protocol, started from a pipeline stage."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Qualification Agent, Coordinator, Keep and Leak Stages now sit together under Patient Journey in the sidebar."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Added Leak Stages to Consult to commitment."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Renamed What each patient has stored to What each patient has with you in After the cycle."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Renamed Cycle Coordinator to Cycle and Treatment Coordinator in In treatment."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Added Stage-to-stage timing to Consult to commitment."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Renamed Cryo ledger to What each patient has stored in After the cycle."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Renamed Disposition decision support to A private link for every patient in After the cycle."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Renamed Research log and Leakage Index to Results you can publish in After the cycle."
+    },
+    {
+      "date": "2026-09-24",
+      "text": "Keep features in After the cycle reworded to match what Keep does today: no lab sync, fee tracking or cross-clinic benchmark is claimed."
+    },
     {
       "date": "2026-09-24",
       "text": "Voice AI description corrected: it is an add-on, not included on every plan."
@@ -1156,15 +1242,15 @@
     },
     {
       "date": "2026-09-22",
-      "text": "Renamed Landing pages and quiz funnels to Landing pages in Get found."
-    },
-    {
-      "date": "2026-09-22",
       "text": "Added Events to Get found."
     },
     {
       "date": "2026-09-22",
-      "text": "Added Workflows and automations to Nurture and qualify."
+      "text": "Renamed Landing pages and quiz funnels to Landing pages in Get found."
+    },
+    {
+      "date": "2026-09-22",
+      "text": "Added Call intelligence to First response."
     },
     {
       "date": "2026-09-22",
@@ -1173,22 +1259,6 @@
     {
       "date": "2026-09-22",
       "text": "Renamed Phone trees and call intelligence to Phone trees in First response."
-    },
-    {
-      "date": "2026-09-22",
-      "text": "Added Call intelligence to First response."
-    },
-    {
-      "date": "2026-09-22",
-      "text": "Added Website lead sources to First response."
-    },
-    {
-      "date": "2026-09-22",
-      "text": "Added billing automation to Consult to commitment and newsletters to Advocate and return."
-    },
-    {
-      "date": "2026-09-22",
-      "text": "First version. Eight stages, the nine leaks from The Seven-Figure Leak plus a tenth (The Full Tank), and Patient Continuity for the after-the-cycle stage."
     }
   ],
   "foundation": [
@@ -1241,7 +1311,7 @@
       "description": "The clinic decides which agents run and what they touch; every run is logged."
     }
   ],
-  "updated_at": "2026-09-24T13:43:14.84912+00:00",
+  "updated_at": "2026-09-29T14:02:27.620135+00:00",
   "stage_order": [
     {
       "name": "Set up the basics",

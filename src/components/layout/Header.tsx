@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import cimaLogoLightImg from "@/assets/cima-logo-light.png";
+import SpecialtyPicker from "@/components/specialty/SpecialtyPicker";
 
 const cimaLogoLight = typeof cimaLogoLightImg === 'string' ? cimaLogoLightImg : cimaLogoLightImg.src;
 
@@ -177,6 +178,7 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <SpecialtyPicker variant="menu" />
             <Link
               href="/growth"
               className="inline-flex h-11 items-center rounded-btn border-[1.5px] border-teal px-4 font-ui text-sm font-semibold text-teal transition-colors hover:bg-teal/5"
@@ -206,9 +208,10 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
-        isMobileMenuOpen ? "max-h-[760px] opacity-100" : "max-h-0 opacity-0 invisible"
+        isMobileMenuOpen ? "max-h-[900px] opacity-100" : "max-h-0 opacity-0 invisible"
       }`}>
         <nav className="bg-cream border-b border-sand px-4 py-4 flex flex-col gap-1">
+          <SpecialtyPicker variant="pills" wrap className="px-3 pb-3" />
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label}>
