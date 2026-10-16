@@ -345,12 +345,12 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
   const [status, setStatus] = useState<Status>('idle');
   const [step, setStep] = useState<1 | 2>(1);
   const [specialty, setSpecialty] = useState('');
-  const { specialty: siteSpecialty, ready: specialtyReady } = useSpecialty();
-  // Start on the visitor's specialty while the field is still empty.
+  const { specialty: siteSpecialty, ready: specialtyReady, chosen: specialtyChosen } = useSpecialty();
+  // Start on the visitor's chosen specialty while the field is still empty.
   useEffect(() => {
-    if (!specialtyReady) return;
+    if (!specialtyReady || !specialtyChosen) return;
     setSpecialty((current) => current || FORM_SPECIALTY_VALUES.growth[siteSpecialty]);
-  }, [siteSpecialty, specialtyReady]);
+  }, [siteSpecialty, specialtyReady, specialtyChosen]);
   const [submissionKey] = useState(newSubmissionKey);
   const step1Ref = useRef<HTMLDivElement>(null);
   const step2Ref = useRef<HTMLDivElement>(null);

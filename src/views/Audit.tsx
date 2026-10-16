@@ -86,12 +86,12 @@ function scrollToForm() {
 
 const Audit = () => {
   const [formData, setFormData] = useState<FormState>(initialState);
-  const { specialty, ready } = useSpecialty();
-  // Start on the visitor's specialty while the field is still empty.
+  const { specialty, ready, chosen } = useSpecialty();
+  // Start on the visitor's chosen specialty while the field is still empty.
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || !chosen) return;
     setFormData((prev) => (prev.specialty ? prev : { ...prev, specialty: FORM_SPECIALTY_VALUES.audit[specialty] }));
-  }, [specialty, ready]);
+  }, [specialty, ready, chosen]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<SignupResponse | null>(null);

@@ -18,6 +18,11 @@ interface SpecialtyContextType {
   person: (typeof PERSON)[Specialty];
   /** False until the visitor's pick has been read after mount. */
   ready: boolean;
+  /**
+   * True when the specialty came from ?for=, a specialty landing page, a
+   * stored pick or setSpecialty(); false when it fell back to the default.
+   */
+  chosen: boolean;
 }
 
 const SpecialtyContext = createContext<SpecialtyContextType | undefined>(undefined);
@@ -59,6 +64,7 @@ export const SpecialtyProvider = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   const resolved = useRef(false);
   const [ready, setReady] = useState(false);
+  const [chosen, setChosen] = useState(false);
 
   // Resolve once after mount: ?for=, then a landing page, then storage.
   useEffect(() => {
@@ -70,9 +76,11 @@ export const SpecialtyProvider = ({ children }: { children: ReactNode }) => {
     }
     const fromParam = isSpecialty(param) ? param : null;
     const fromLanding = landingSpecialty(window.location.pathname);
-    const next = fromParam ?? fromLanding ?? readStored() ?? DEFAULT_SPECIALTY;
+    const picked = fromParam ?? fromLanding ?? readStored();
+    const next = picked ?? DEFAULT_SPECIALTY;
     if (fromParam || fromLanding) store(next);
     setState(next);
+    setChosen(picked !== null);
     setReady(true);
     resolved.current = true;
     clearPending();
@@ -85,11 +93,13 @@ export const SpecialtyProvider = ({ children }: { children: ReactNode }) => {
     if (fromLanding) {
       store(fromLanding);
       setState(fromLanding);
+      setChosen(true);
     }
   }, [pathname]);
 
   const setSpecialty = useCallback((key: Specialty) => {
     setState(key);
+    setChosen(true);
     store(key);
     window.dataLayer?.push({ event: "specialty_switch", specialty: key });
     try {
@@ -105,7 +115,7 @@ export const SpecialtyProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <SpecialtyContext.Provider value={{ specialty, setSpecialty, person: PERSON[specialty], ready }}>
+    <SpecialtyContext.Provider value={{ specialty, setSpecialty, person: PERSON[specialty], ready, chosen }}>
       {children}
     </SpecialtyContext.Provider>
   );

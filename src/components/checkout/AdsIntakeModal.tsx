@@ -84,11 +84,11 @@ const AdsIntakeModal = ({ open, onClose, selectedPlan }: AdsIntakeModalProps) =>
     },
   });
 
-  const { specialty, ready } = useSpecialty();
-  // Start on the visitor's specialty while the field is still empty.
+  const { specialty, ready, chosen } = useSpecialty();
+  // Start on the visitor's chosen specialty while the field is still empty.
   useEffect(() => {
-    if (ready && !form.getValues("specialty")) form.setValue("specialty", FORM_SPECIALTY_VALUES.adsIntake[specialty]);
-  }, [form, specialty, ready]);
+    if (ready && chosen && !form.getValues("specialty")) form.setValue("specialty", FORM_SPECIALTY_VALUES.adsIntake[specialty]);
+  }, [form, specialty, ready, chosen]);
 
   const isLoading = form.formState.isSubmitting;
   const apiError = form.formState.errors.root?.message;

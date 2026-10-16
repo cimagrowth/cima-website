@@ -58,12 +58,12 @@ const Demo = () => {
     primary_goal: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { specialty, ready } = useSpecialty();
-  // Start on the visitor's specialty while the field is still empty.
+  const { specialty, ready, chosen } = useSpecialty();
+  // Start on the visitor's chosen specialty while the field is still empty.
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || !chosen) return;
     setFormData((prev) => (prev.industry ? prev : { ...prev, industry: FORM_SPECIALTY_VALUES.demo[specialty] }));
-  }, [specialty, ready]);
+  }, [specialty, ready, chosen]);
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (

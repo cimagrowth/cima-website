@@ -25,14 +25,15 @@ const DemoChatForm = ({ onSessionCreated }: DemoChatFormProps) => {
     phone: "",
     clinicType: "fertility" as "fertility" | "med_spa" | "regenerative" | "other",
   });
-  const { specialty } = useSpecialty();
+  const { specialty, ready, chosen } = useSpecialty();
   const clinicTypeTouched = useRef(false);
-  // Start on the visitor's specialty until the visitor picks a clinic type.
+  // Start on the visitor's chosen specialty until the visitor picks a clinic type.
+  // Without a choice it keeps main's default.
   useEffect(() => {
-    if (clinicTypeTouched.current) return;
+    if (!ready || !chosen || clinicTypeTouched.current) return;
     const clinicType = FORM_SPECIALTY_VALUES.demoChat[specialty] as ChatSession["clinicType"];
     setFormData((prev) => ({ ...prev, clinicType }));
-  }, [specialty]);
+  }, [specialty, ready, chosen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
