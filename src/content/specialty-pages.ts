@@ -222,3 +222,22 @@ export const FORM_SPECIALTY_VALUES: Record<
     wellness: "Wellness",
   },
 };
+
+/**
+ * General lines on /consent, /ai-agent and /ads that name fertility or use
+ * "cycle" in its everyday sense. Fertility visitors keep the original text;
+ * the other specialties see the swap. Keyed by the exact original string.
+ */
+export const GENERAL_LINE_SWAPS: Record<string, string> = {
+  "Enterprise sales cycle to get started": "Enterprise sales process to get started",
+  "Pre-loaded with fertility, med spa, aesthetic, regenerative, and wellness conversation frameworks. Then fine-tuned on YOUR clinic's specific services, policies, and voice.":
+    "Pre-loaded with med spa, aesthetic, regenerative, and wellness conversation frameworks. Then fine-tuned on YOUR clinic's specific services, policies, and voice.",
+  "Yes, you can switch between Starter and Pro at any time. Changes take effect on your next billing cycle. No penalties or hidden fees.":
+    "Yes, you can switch between Starter and Pro at any time. Changes take effect on your next billing period. No penalties or hidden fees.",
+  "Specialty-specific copy for fertility, aesthetics, wellness, and regenerative services. Written to convert patients, not impressions.":
+    "Specialty-specific copy for aesthetics, wellness, and regenerative services. Written to convert patients, not impressions.",
+  "Budget changes are capped at 25% per cycle. Campaigns are never deleted, only paused. And the system waits 14 full days before making its first move, so Google's ML has time to learn.":
+    "Budget changes are capped at 25% per optimization run. Campaigns are never deleted, only paused. And the system waits 14 full days before making its first move, so Google's ML has time to learn.",
+  "Fertility/IVF, aesthetics/med spa, wellness, regenerative medicine, hormone therapy, and more.":
+    "Aesthetics/med spa, wellness, regenerative medicine, hormone therapy, and more.",
+};

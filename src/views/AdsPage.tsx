@@ -41,6 +41,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ADS_PAGE } from "@/content/specialty-pages";
 import { useSpecialty } from "@/contexts/SpecialtyContext";
+import SpecialtyText from "@/components/specialty/SpecialtyText";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -554,7 +555,7 @@ const AdsPage = () => {
                   {feat.title}
                 </h3>
                 <p className="text-body text-muted-foreground">
-                  {feat.description}
+                  <SpecialtyText text={feat.description} />
                 </p>
               </motion.div>
             ))}
@@ -621,7 +622,7 @@ const AdsPage = () => {
                       {feat.title}
                     </h3>
                     <p className="text-body text-muted-foreground">
-                      {feat.description}
+                      <SpecialtyText text={feat.description} />
                     </p>
                   </div>
                 </motion.div>
@@ -1165,7 +1166,7 @@ const AdsPage = () => {
                 <h4 className="font-semibold text-foreground mb-2">
                   {item.question}
                 </h4>
-                <p className="text-body text-muted-foreground">{item.answer}</p>
+                <p className="text-body text-muted-foreground"><SpecialtyText text={item.answer} /></p>
               </motion.div>
             ))}
           </div>

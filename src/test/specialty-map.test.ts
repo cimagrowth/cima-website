@@ -1,7 +1,9 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import mapSnapshot from "@/content/growthos-map.snapshot.json";
 import { STAGE_COPY } from "@/content/map-copy";
 import { MAP_INTRO } from "@/content/specialty-map";
+import { GENERAL_LINE_SWAPS } from "@/content/specialty-pages";
 import type { GrowthosMap } from "@/lib/growthos-map";
 import { specializeMap, stageCopyFor } from "@/lib/specialty-map";
 
@@ -50,5 +52,17 @@ describe("specializeMap", () => {
     expect(names).toContain("Patient Waiting Room");
     const descriptions = m.stages.flatMap((s) => [s.ideal, s.nostat ?? "", ...s.features.map((f) => f.description)]);
     expect(descriptions.join(" ")).not.toMatch(/\bpatients?\b/i);
+  });
+});
+
+describe("GENERAL_LINE_SWAPS", () => {
+  const sources = ["Consent", "AIAgent", "AdsPage"]
+    .map((v) => readFileSync(`src/views/${v}.tsx`, "utf8"))
+    .join("\n");
+
+  it.each(Object.entries(GENERAL_LINE_SWAPS))("%s", (original, swap) => {
+    // The original must still be on the page, or the swap silently stops applying.
+    expect(sources).toContain(original);
+    expect(swap.match(FERTILITY_WORDS)).toBeNull();
   });
 });

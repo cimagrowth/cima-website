@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { AI_AGENT_EXAMPLE } from "@/content/specialty-pages";
 import { useSpecialty } from "@/contexts/SpecialtyContext";
+import SpecialtyText from "@/components/specialty/SpecialtyText";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -454,7 +455,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                   {feature.title}
                 </h3>
                 <p className="text-body-sm text-muted-foreground">
-                  {feature.description}
+                  <SpecialtyText text={feature.description} />
                 </p>
               </motion.div>
             ))}
@@ -620,7 +621,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                   }`}
                 >
                   <p className="px-5 text-body text-muted-foreground">
-                    {item.answer}
+                    <SpecialtyText text={item.answer} />
                   </p>
                 </div>
               </motion.div>

@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { CONSENT_FAQS } from "@/lib/consent-faqs";
 import { CONSENT_PAGE, type ConsentPageCopy } from "@/content/specialty-pages";
 import { useSpecialty } from "@/contexts/SpecialtyContext";
+import SpecialtyText from "@/components/specialty/SpecialtyText";
 
 const DEMO_ROUTE = "/demo";
 
@@ -393,7 +394,9 @@ const Consent = () => {
                       className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-muted-foreground/50"
                       aria-hidden="true"
                     />
-                    <span className="leading-relaxed">{item}</span>
+                    <span className="leading-relaxed">
+                      <SpecialtyText text={item} />
+                    </span>
                   </li>
                 ))}
               </ul>
