@@ -43,8 +43,8 @@ const HipaaSafeTracking = () => {
               For specialty clinics
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Run real ad campaigns{" "}
-              <span className="text-clay">without leaking patient data</span>
+              Privacy-safe conversion tracking{" "}
+              <span className="text-clay">for your clinic&apos;s own ad accounts</span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 max-w-3xl mx-auto leading-relaxed">
               Most clinics face a bad choice. Turn off tracking and fly blind, or keep it on and risk a HIPAA violation. GrowthOS removes the choice.
@@ -82,10 +82,10 @@ const HipaaSafeTracking = () => {
         </section>
       ))}
 
-      {/* Closing CTA: reuse the standard 47 Frameworks lead-magnet CTA */}
+      {/* Closing CTA: reuse the standard 47 Frameworks guide CTA */}
       <FinalCTA
         heading="See where your patients are leaking out"
-        description="Get the 47 direct-response frameworks behind compliant clinic growth, plus the free tools that show exactly where patients slip away."
+        description="Get the free 47 patient-conversion frameworks guide, plus the free tools that show exactly where patients slip away."
         ctas={[{ label: "Get the 47 Frameworks", href: "/audit", variant: "hero" }]}
       />
     </>

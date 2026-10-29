@@ -11,6 +11,7 @@
 import { unstable_cache } from "next/cache";
 import mapSnapshot from "@/content/growthos-map.snapshot.json";
 import statsSnapshot from "@/content/platform-stats.snapshot.json";
+import { HIDDEN_FEATURES, SITE_FEATURE_COPY, SITE_STAGE_PHRASES } from "@/content/map-site-copy";
 
 // ---------------------------------------------------------------------------
 // Types (only what the site reads)
@@ -141,10 +142,33 @@ function isUsableStats(data: unknown): data is PlatformStats {
   );
 }
 
+/**
+ * The map with the website's wording applied (content/map-site-copy.ts):
+ * hidden features dropped, a few module names and descriptions rewritten.
+ * Returns a new object; the input is never mutated.
+ */
+export function applySiteCopy(map: GrowthosMap): GrowthosMap {
+  const phrase = (key: StageKey, text: string) =>
+    (SITE_STAGE_PHRASES[key] ?? []).reduce((t, [from, to]) => t.split(from).join(to), text);
+  const stages = map.stages.map((stage) => ({
+    ...stage,
+    ideal: phrase(stage.stage_key, stage.ideal),
+    metrics: stage.metrics?.map((m) => phrase(stage.stage_key, m)),
+    features: stage.features
+      .filter((f) => !HIDDEN_FEATURES.has(f.name))
+      .map((f) => {
+        const copy = SITE_FEATURE_COPY[f.name];
+        return copy ? { ...f, name: copy.name ?? f.name, description: copy.description ?? f.description } : { ...f };
+      }),
+  }));
+  const features = stages.reduce((n, s) => n + s.features.length, 0);
+  return { ...map, stages, totals: { ...map.totals, features } };
+}
+
 export const getGrowthosMap = unstable_cache(
   async (): Promise<GrowthosMap> => {
     const data = await callRpc("get_public_platform_map");
-    return isUsableMap(data) ? data : MAP_SNAPSHOT;
+    return applySiteCopy(isUsableMap(data) ? data : MAP_SNAPSHOT);
   },
   ["growthos-map"],
   { revalidate: 3600 },
@@ -299,4 +323,4 @@ export const sourceKeysForStages = (map: GrowthosMap, stages: MapStage[], stats:
 
 /** The pre-footer and closing line: a measured first-reply figure, not a promise. */
 export const firstReplyCommitment = (stats: PlatformStats) =>
-  `Median first reply in ${stats.median_first_reply_seconds} seconds across every live clinic, measured, not promised. Your existing forms start sending leads in on day one.`;
+  `Median first reply in ${stats.median_first_reply_seconds} seconds across every live clinic, measured, not promised. Your existing website forms connect on day one, so every inquiry lands in one inbox.`;

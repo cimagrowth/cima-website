@@ -1,5 +1,11 @@
 import { supabaseServer } from '@/integrations/supabase/server';
 import type { BlogPost } from '@/hooks/useBlogPosts';
+import blogRedirects from '@/content/blog-redirects.json';
+
+// Duplicate posts 301 to a kept post (next.config.js). Their rows stay in the
+// table, so every listing here leaves them out.
+const REDIRECTED_SLUGS = Object.keys(blogRedirects.redirects);
+const NOT_REDIRECTED = `(${REDIRECTED_SLUGS.join(',')})`;
 
 const PUBLISHED_COLUMNS =
   'id,title,slug,excerpt,content,featured_image_url,author_id,status,meta_title,meta_description,meta_keywords,reading_time_minutes,published_at,created_at,updated_at,cluster';
@@ -9,6 +15,7 @@ export async function getPublishedPosts(limit = 24): Promise<BlogPost[]> {
     .from('website_blog_posts')
     .select(PUBLISHED_COLUMNS)
     .eq('status', 'published')
+    .not('slug', 'in', NOT_REDIRECTED)
     .not('published_at', 'is', null)
     .lte('published_at', new Date().toISOString())
     .order('published_at', { ascending: false })
@@ -26,6 +33,7 @@ export async function getAllPublishedSlugs(): Promise<string[]> {
     .from('website_blog_posts')
     .select('slug,published_at')
     .eq('status', 'published')
+    .not('slug', 'in', NOT_REDIRECTED)
     .not('published_at', 'is', null)
     .lte('published_at', new Date().toISOString());
 
@@ -43,6 +51,7 @@ export async function getAllPublishedSlugsWithDates(): Promise<
     .from('website_blog_posts')
     .select('slug,published_at')
     .eq('status', 'published')
+    .not('slug', 'in', NOT_REDIRECTED)
     .not('published_at', 'is', null)
     .lte('published_at', new Date().toISOString())
     .order('published_at', { ascending: false });
@@ -60,6 +69,7 @@ export async function getPublishedPostBySlug(slug: string): Promise<BlogPost | n
     .select(PUBLISHED_COLUMNS)
     .eq('slug', slug)
     .eq('status', 'published')
+    .not('slug', 'in', NOT_REDIRECTED)
     .not('published_at', 'is', null)
     .lte('published_at', new Date().toISOString())
     .maybeSingle();
@@ -87,6 +97,7 @@ export async function getRelatedPosts(
     .from('website_blog_posts')
     .select(PUBLISHED_COLUMNS)
     .eq('status', 'published')
+    .not('slug', 'in', NOT_REDIRECTED)
     .not('published_at', 'is', null)
     .lte('published_at', new Date().toISOString())
     .neq('slug', excludeSlug)

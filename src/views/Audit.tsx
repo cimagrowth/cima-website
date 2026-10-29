@@ -440,8 +440,8 @@ const Audit = () => {
             Plus, check the box on the form and I&apos;ll send you{" "}
             <em>The Seven-Figure Leak</em> (108-page book): where fertility
             patients disappear at every stage of the journey, what it costs,
-            and how AI brings them back. All 47 direct-response frameworks
-            included.
+            and how clinics can win them back. All 47 patient-conversion
+            frameworks included.
           </p>
         </div>
       </section>

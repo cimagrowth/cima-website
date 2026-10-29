@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="font-display text-3xl md:text-4xl font-[340] tracking-tight mb-2">Healthcare Enterprise Privacy Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: September 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last Updated: October 28, 2026</p>
 
           <p>
             Thank you for using the Cima Growth Solutions LLC platform, including our website, mobile applications, software, and related services (collectively, the "Services"). This Privacy Policy ("Policy") explains how Cima Growth Solutions LLC ("Cima," "Company," "we," "us," or "our") collects, uses, discloses, and safeguards information when providing a healthcare-focused SaaS platform.
@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
           <p>This Policy does not apply to third-party websites or services accessed through integrations or links. Their privacy practices are governed by their own policies.</p>
 
           <h2>2. Healthcare Data, PHI, and HIPAA</h2>
-          <p>Cima is a technology platform provider and does not provide medical care or clinical services.</p>
+          <p>Cima is a technology platform provider and does not provide medical care or clinical services. Cima is the controller of personal information about our own customers, website visitors and account users. For information about a clinic's patients and prospective patients, the clinic is the controller and Cima processes it on the clinic's behalf, as a Business Associate where a BAA is in place.</p>
 
           <h3>Business Associate Role</h3>
           <p>
@@ -48,7 +48,7 @@ const PrivacyPolicy = () => {
           <ul>
             <li>Identifiers: Name, email, phone number, organization, job title, username</li>
             <li>Account Data: Login credentials, preferences, permissions</li>
-            <li>Transaction Data: Billing details processed via PCI-compliant processors (e.g., Stripe)</li>
+            <li>Transaction Data: billing details processed by Paddle.com, our Merchant of Record for orders placed through our online checkout, and by other PCI-compliant processors for directly invoiced accounts. Cima does not store full card numbers.</li>
             <li>User Content: Data submitted through forms, CRM records, messages, and uploads</li>
             <li>Communications: Support requests, calls, emails, and chat records</li>
           </ul>
@@ -99,6 +99,7 @@ const PrivacyPolicy = () => {
           <h2>6. Sharing and Disclosure</h2>
           <p>We may share information with:</p>
           <ul>
+            <li>Paddle.com: as Merchant of Record for orders placed through our online checkout, Paddle receives the information needed to process payment, calculate tax, and handle invoices and refunds, under Paddle's own privacy notice (<a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">https://www.paddle.com/legal/privacy</a>).</li>
             <li>Service Providers &amp; Subprocessors: Hosting, communications, payments, analytics</li>
             <li>Affiliates: Under common ownership</li>
             <li>Legal Authorities: As required by law</li>
@@ -266,24 +267,24 @@ const PrivacyPolicy = () => {
 
           <h3>Advertising</h3>
           <ul>
-            <li><strong>ads_management, ads_read</strong> — we create, manage, and read ad campaigns, ad sets, creatives, and performance insights for the ad account you select, so our platform can publish campaigns on your behalf and show you analytics. Retained while your connection is active.</li>
-            <li><strong>business_management</strong> — we identify the Meta Business Manager assets you have access to so you can select the correct ad account and Facebook Page. Requested as a dependency of the advertising and lead-retrieval features below.</li>
-            <li><strong>pages_show_list</strong> — we list the Facebook Pages you manage so you can choose which Page your ads will run from. Every Meta ad must reference a Page.</li>
-            <li><strong>pages_read_engagement</strong> — we read Page engagement metrics to inform ad targeting and reporting.</li>
-            <li><strong>pages_manage_ads</strong> — we manage the ads associated with your selected Page, which Meta requires in order to run and report on ads that reference that Page.</li>
-            <li><strong>instagram_basic</strong> — we identify the Instagram Business account, if any, linked to your Page so we can serve ads to Instagram placements.</li>
+            <li><strong>ads_management, ads_read</strong>: we create, manage, and read ad campaigns, ad sets, creatives, and performance insights for the ad account you select, so our platform can publish the campaigns you approve to that ad account and show you analytics. Retained while your connection is active.</li>
+            <li><strong>business_management</strong>: we identify the Meta Business Manager assets you have access to so you can select the correct ad account and Facebook Page. Requested as a dependency of the advertising and lead-retrieval features below.</li>
+            <li><strong>pages_show_list</strong>: we list the Facebook Pages you manage so you can choose which Page your ads will run from. Every Meta ad must reference a Page.</li>
+            <li><strong>pages_read_engagement</strong>: we read Page engagement metrics to inform ad targeting and reporting.</li>
+            <li><strong>pages_manage_ads</strong>: we manage the ads associated with your selected Page, which Meta requires in order to run and report on ads that reference that Page.</li>
+            <li><strong>instagram_basic</strong>: we identify the Instagram Business account, if any, linked to your Page so we can serve ads to Instagram placements.</li>
           </ul>
 
           <h3>Lead capture</h3>
           <ul>
-            <li><strong>leads_retrieval</strong> — when a prospective patient completes one of your Facebook or Instagram lead forms, we retrieve the information they submitted (typically name, email address, phone number, and any custom questions you configured) so it appears in your GrowthOS pipeline and your configured follow-up sequences can contact them. Without this permission, you would have to export leads manually from Meta Ads Manager. Lead data is retained as a contact record in your GrowthOS account for the duration of your subscription, subject to Sections 8, 11 and 19.</li>
-            <li><strong>pages_manage_metadata</strong> — we subscribe your Page to Meta's real-time notifications so that new lead-form submissions and inbound messages reach GrowthOS as they happen rather than on a delay. We do not use this permission to change your Page settings.</li>
+            <li><strong>leads_retrieval</strong>: when a prospective patient completes one of your Facebook or Instagram lead forms, we retrieve the information they submitted (typically name, email address, phone number, and any custom questions you configured) so it appears in your GrowthOS pipeline and your configured follow-up sequences can contact them. Without this permission, you would have to export leads manually from Meta Ads Manager. Lead data is retained as a contact record in your GrowthOS account for the duration of your subscription, subject to Sections 8, 11 and 19.</li>
+            <li><strong>pages_manage_metadata</strong>: we subscribe your Page to Meta's real-time notifications so that new lead-form submissions and inbound messages reach GrowthOS as they happen rather than on a delay. We do not use this permission to change your Page settings.</li>
           </ul>
 
           <h3>Messaging</h3>
           <ul>
-            <li><strong>pages_messaging</strong> — we read and send messages in Facebook Messenger conversations belonging to your Page, so your staff can view and reply to prospective-patient enquiries inside GrowthOS and send the automated follow-up replies you configure. We only message people who have messaged your Page first. Message content is stored as a conversation record in your GrowthOS account.</li>
-            <li><strong>instagram_manage_messages</strong> — the same capability for Instagram Direct messages received by the Instagram Business account linked to your Page.</li>
+            <li><strong>pages_messaging</strong>: we read and send messages in Facebook Messenger conversations belonging to your Page, so your staff can view and reply to prospective-patient enquiries inside GrowthOS and send the automated follow-up replies you configure. We only message people who have messaged your Page first. Message content is stored as a conversation record in your GrowthOS account.</li>
+            <li><strong>instagram_manage_messages</strong>: the same capability for Instagram Direct messages received by the Instagram Business account linked to your Page.</li>
           </ul>
           <p>
             Where you enable automated replies, those messages disclose to the recipient that they are interacting with an automated experience.
@@ -291,7 +292,7 @@ const PrivacyPolicy = () => {
 
           <h3>WhatsApp</h3>
           <ul>
-            <li><strong>whatsapp_business_management, whatsapp_business_messaging</strong> — used only for Click-to-WhatsApp advertising features when you explicitly enable them; we read WhatsApp Business Account metadata and phone number status to enable this ad format.</li>
+            <li><strong>whatsapp_business_management, whatsapp_business_messaging</strong>: used only for Click-to-WhatsApp advertising features when you explicitly enable them; we read WhatsApp Business Account metadata and phone number status to enable this ad format.</li>
           </ul>
 
           <h3>What we store</h3>
@@ -406,13 +407,13 @@ const PrivacyPolicy = () => {
             We use the following third-party service providers (subprocessors) to operate the Services. A current list is available on request to <a href="mailto:privacy@cimagrowth.com">privacy@cimagrowth.com</a> and includes, at the time this Policy was last updated:
           </p>
           <ul>
-            <li><strong>Supabase</strong> — database, authentication, storage, and serverless function hosting</li>
-            <li><strong>Anthropic</strong> — Claude large-language-model API for AI features; inputs are not used to train Anthropic's models under our API terms</li>
-            <li><strong>Google (Google Cloud, Vertex AI)</strong> — Gemini API for specific text-generation tasks</li>
-            <li><strong>SendGrid</strong> — transactional and marketing email delivery</li>
-            <li><strong>Twilio</strong> — SMS and voice messaging infrastructure</li>
-            <li><strong>Whop, GoHighLevel, Stripe</strong> — billing and subscription management</li>
-            <li><strong>Meta Platforms, Google</strong> — advertising delivery and measurement, and lead capture and messaging where enabled, when a customer connects those platforms</li>
+            <li><strong>Supabase</strong>: database, authentication, storage, and serverless function hosting</li>
+            <li><strong>Anthropic</strong>: Claude large-language-model API for AI features; inputs are not used to train Anthropic's models under our API terms</li>
+            <li><strong>Google (Google Cloud, Vertex AI)</strong>: Gemini API for specific text-generation tasks</li>
+            <li><strong>SendGrid</strong>: transactional and marketing email delivery</li>
+            <li><strong>Twilio</strong>: SMS and voice messaging infrastructure</li>
+            <li><strong>Paddle.com (Merchant of Record for online checkout), Whop, GoHighLevel, Stripe</strong>: billing and subscription management</li>
+            <li><strong>Meta Platforms, Google</strong>: advertising delivery and measurement, and lead capture and messaging where enabled, when a customer connects those platforms</li>
           </ul>
           <p>
             We require each subprocessor to provide appropriate contractual protections and technical safeguards, including Business Associate Agreements where the subprocessor will handle protected health information.
@@ -434,7 +435,7 @@ const PrivacyPolicy = () => {
 
           <h2>20. Cookies and Tracking Technologies</h2>
           <p>
-            We use strictly necessary cookies for login sessions and security; these cannot be disabled without breaking core functionality. We use analytics and marketing cookies only with your consent. On your first visit you will be asked to accept all, reject all, or customize your choices; you can change those preferences at any time by clicking <strong>Cookie Preferences</strong> in the site footer. We honor the Global Privacy Control (GPC) signal where legally required — when your browser sends GPC we automatically reject non-essential cookies without prompting.
+            We use strictly necessary cookies for login sessions and security; these cannot be disabled without breaking core functionality. We use analytics and marketing cookies only with your consent. On your first visit you will be asked to accept all, reject all, or customize your choices; you can change those preferences at any time by clicking <strong>Cookie Preferences</strong> in the site footer. We honor the Global Privacy Control (GPC) signal where legally required. When your browser sends GPC we automatically reject non-essential cookies without prompting.
           </p>
 
           <h2>21. SMS and Text Messaging Communications</h2>

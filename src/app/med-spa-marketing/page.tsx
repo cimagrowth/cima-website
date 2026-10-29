@@ -7,14 +7,14 @@ import { buildSolutionSchema } from '@/lib/solution-jsonld';
 const SLUG = 'med-spa-marketing';
 const TITLE = 'Med Spa Marketing Software for Aesthetic Clinics | Cima';
 const DESCRIPTION =
-  'Med spa marketing software for aesthetic clinics. GrowthOS runs ads, instant follow-up, membership, rebooking, no-show recovery, and review velocity in one platform.';
+  'Med spa marketing software for aesthetic clinics. GrowthOS handles instant follow-up, membership, rebooking, no-show recovery, review requests and ad account management in one platform your team runs.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Med spa marketing',
-  h1Lead: 'Med spa marketing that',
+  h1Lead: 'Med spa software that',
   h1Accent: 'books the chair and keeps it full.',
   subhead:
-    'An empty chair is lost revenue you never get back. GrowthOS runs the ads, answers every inquiry instantly, and keeps clients rebooking, so your aesthetic clinic stays full without manual chasing.',
+    'An empty chair is lost revenue you never get back. GrowthOS answers every inquiry instantly, tracks your ad results and helps your team rebook clients, so your aesthetic clinic stays full without manual chasing.',
   problem: {
     eyebrow: 'The problem',
     heading: 'In aesthetics, the fast clinic wins',
@@ -34,7 +34,7 @@ const content: SolutionLandingProps = {
     eyebrow: 'How GrowthOS solves it',
     heading: 'The same engine, tuned for aesthetics.',
     intro:
-      'GrowthOS runs demand generation, instant follow-up, retention, and reviews for your med spa in one platform. It books new clients fast and keeps existing ones coming back.',
+      'GrowthOS handles instant replies, follow-up, rebooking and reviews in one platform your team runs. It books new clients fast and keeps existing ones coming back.',
     features: [
       {
         icon: 'zap',
@@ -43,8 +43,8 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'megaphone',
-        title: 'Ads that fill the calendar',
-        body: 'AI builds and optimizes promotions and ads for treatments and packages, so new bookings arrive consistently.',
+        title: 'Ads that book appointments, measured',
+        body: 'Draft treatment promotions with AI, then publish them from your own ad accounts.',
       },
       {
         icon: 'calendar',
@@ -54,7 +54,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'repeat',
         title: 'Membership and rebooking',
-        body: 'GrowthOS keeps members and package clients active with timely rebooking and reactivation, lifting lifetime value.',
+        body: 'GrowthOS keeps members and package clients active with rebooking and follow-up messages to your own patients and inquirers who opted in, lifting lifetime value.',
       },
       {
         icon: 'star',
@@ -88,7 +88,7 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'Wellness and body',
-        body: 'Package and membership programs depend on retention. GrowthOS keeps clients engaged and renewing without manual outreach.',
+        body: 'Package and membership programs depend on retention. GrowthOS keeps clients engaged and renewing without manual follow-up.',
       },
     ],
   },
@@ -137,7 +137,7 @@ const content: SolutionLandingProps = {
       {
         href: '/medical-practice-marketing',
         label: 'Medical practice marketing',
-        description: 'Replace the agency, ads manager, and chatbot with one platform.',
+        description: 'Replace disconnected tools with one platform your team runs.',
       },
       {
         href: '/patient-engagement-platform',
@@ -147,13 +147,13 @@ const content: SolutionLandingProps = {
       {
         href: '/product',
         label: 'See the GrowthOS platform',
-        description: 'Ads, inbox, rebooking, and the AI team that runs them.',
+        description: 'Ads, inbox and rebooking in one platform your team runs.',
       },
     ],
   },
   closing: {
     heading: 'See your med spa stay full.',
-    body: 'Twenty minutes. We will show the AI team answering inquiries, recovering no-shows, and rebooking clients for an aesthetic clinic, not a generic demo.',
+    body: 'Twenty minutes. We will show the software answering inquiries, recovering no-shows, and rebooking clients for an aesthetic clinic, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },

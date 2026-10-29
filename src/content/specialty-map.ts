@@ -32,19 +32,19 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
   aesthetics: {
     get_found: {
       leak: "You never show up at the search. Clients looking for a treatment never find you, and the promotions meant to reach them run unwatched.",
-      fix: "Campaigns drafts the landing page, emails, texts and ads together for each treatment and promotion. Ads Manager watches spend against booked consults, not clicks, without sending health data to an ad platform. Outreach reaches your referral partners.",
+      fix: "Campaigns drafts the landing page, ad copy for your own ad accounts, and follow-up messages for people who inquire, for each treatment and promotion, for your team to review. Ads Manager connects your own Google and Meta ad accounts and measures spend against booked consults, not clicks, without sending health data to an ad platform. Referral Partners tracks the referral partners your team already works with.",
     },
     first_response: {
       leak: "A message lands at 9pm on a Friday and waits until Monday. By then the client has booked with the med spa that answered first.",
-      fix: "The AI front desk answers every message in seconds, on text, WhatsApp, web chat, email and social, in your voice. The forms already on your website feed straight in. It answers treatment questions, books on your real calendar and hands off with the full history.",
+      fix: "The AI front desk answers every message in seconds, on text, WhatsApp, web chat, email and social, in your clinic's tone and wording. The forms already on your website feed straight in. It answers treatment questions, books on your real calendar and hands off with the full history.",
     },
     nurture: {
       leak: "Clients who are not ready to book today never hear from you again.",
-      fix: "Sequences follow up over days and weeks on every channel. The Qualification Agent checks fit with your own questions, on forms and in chat. Reactivation works the lapsed client list instead of letting it go cold.",
+      fix: "Consent-based follow-up (email and SMS) continues over days and weeks. The Qualification Agent checks fit with your own questions, on forms and in chat. Re-engagement lets your team re-contact past inquirers and clients who opted in, with opt-out on every message.",
     },
     book: {
       leak: "The consult is booked, then missed, and the chair sits empty.",
-      fix: "Appointments syncs every booking and sends reminders on the channel the client chose. AI Staff hands your team a written briefing before each consult. The Waiting Room and Telehealth run the visit itself.",
+      fix: "Appointments syncs every booking and sends reminders on the channel the client chose. Consult Briefings give your team a written summary before each consult. The Waiting Room and Telehealth run the visit itself.",
     },
     commit: {
       leak: "The consult happens, the treatment never gets booked. \"Let me think about it\" turns into silence.",
@@ -73,7 +73,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       name: "Between treatments",
       leaks: [{ name: "The Faded Result", description: "Packages unused, results faded, client gone quiet" }],
       leak: "Results fade, packages sit half used, and the client books the next touch-up somewhere else.",
-      fix: "Keep records the packages, memberships, product credit and gift cards each client holds, reaches out before they expire and when results typically fade, and gives clients a secure link to see what they have and decide what comes next. Every touch is logged.",
+      fix: "Keep records the packages, memberships, product credit and gift cards each client holds, sends scheduled reminders before they expire and when results typically fade, and gives clients a secure link to see what they have and decide what comes next. Every touch is logged.",
       patient_says: "I still have three sessions left. I just never got around to booking.",
       ideal:
         "Every package, membership and credit has an owner and an expiry date, and every client heard from the clinic before results faded.",
@@ -86,9 +86,9 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
           description:
             "Packages, memberships, product credit and gift cards: what each client has and when it renews or expires. Imported, entered by hand, or added when an invoice is paid.",
         },
-        "Storage and return outreach": {
-          name: "Renewal and return outreach",
-          description: "A note before a package or membership expires, and a check-in on the schedule you choose.",
+        "Storage reminders and check-ins": {
+          name: "Renewal reminders and check-ins",
+          description: "Sends scheduled reminders before a package or membership expires, and a check-in on the schedule you choose.",
         },
         "A private link for every patient": {
           name: "A private link for every client",
@@ -134,7 +134,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       name: "Between phases",
       leaks: [{ name: "The Unfinished Protocol", description: "Cells banked, series unfinished, patient gone quiet" }],
       leak: "Banked cells sit unused and treatment series go unfinished while the patient goes quiet.",
-      fix: "Keep records the banked cells, treatment series and memberships each patient holds, reaches out before they renew or expire and at the follow-up windows you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged.",
+      fix: "Keep records the banked cells, treatment series and memberships each patient holds, sends scheduled reminders before they renew or expire and at the follow-up windows you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged.",
       patient_says: "I still have cells banked. I'm not sure what to do next.",
       ideal:
         "Every banked vial and unfinished series has an owner, a renewal date, and a patient who heard from the clinic this year.",
@@ -146,9 +146,9 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
           description:
             "Banked cells, treatment series and memberships: what each patient has, where it is kept and when it renews or expires. Imported, entered by hand, or added when an invoice is paid.",
         },
-        "Storage and return outreach": {
+        "Storage reminders and check-ins": {
           description:
-            "A note before storage renews or a series or membership expires, and a check-in on the schedule you choose.",
+            "Sends scheduled reminders before storage renews or a series or membership expires, and a check-in on the schedule you choose.",
         },
       },
     },
@@ -160,7 +160,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
     },
     commit: {
       leak: "The consult happens, the program never starts. Cost and time commitment stall the yes.",
-      fix: "Pipeline flags a stalled decision before it goes cold. ChartAI requests outside records for you. Consent sends documents and education before the visit. Invoicing sends a payment link for programs and packages.",
+      fix: "Pipeline flags a stalled decision before it goes cold. ChartAI sends records requests and tracks them until the records arrive. Consent sends documents and education before the visit. Invoicing sends a payment link for programs and packages.",
       nostat: "No published benchmark we trust yet for consult-to-program drop-off. GrowthOS stage timing can produce one.",
     },
     treatment: {
@@ -182,7 +182,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       name: "Between visits",
       leaks: [{ name: "The Lapsed Plan", description: "Packages unused, membership lapsed, patient gone quiet" }],
       leak: "Packages sit unused and memberships lapse while the patient drifts away.",
-      fix: "Keep records the packages, memberships and IV therapy sessions each patient holds, reaches out before they expire and on the check-in schedule you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged.",
+      fix: "Keep records the packages, memberships and IV therapy sessions each patient holds, sends scheduled reminders before they expire and on the check-in schedule you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged.",
       patient_says: "I still have sessions on my package. I keep meaning to book.",
       ideal:
         "Every package and membership has an owner and an expiry date, and every patient heard from the clinic before their plan lapsed.",
@@ -194,9 +194,9 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
           description:
             "Packages, memberships and IV therapy sessions: what each patient has and when it renews or expires. Imported, entered by hand, or added when an invoice is paid.",
         },
-        "Storage and return outreach": {
-          name: "Renewal and return outreach",
-          description: "A note before a package or membership expires, and a check-in on the schedule you choose.",
+        "Storage reminders and check-ins": {
+          name: "Renewal reminders and check-ins",
+          description: "Sends scheduled reminders before a package or membership expires, and a check-in on the schedule you choose.",
         },
       },
     },

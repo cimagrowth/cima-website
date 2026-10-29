@@ -1,6 +1,6 @@
 # GrowthOS by Cima Growth Solutions
 
-> AI-powered patient engagement platform for healthcare clinics
+> Subscription software for healthcare clinics. Clinic teams operate their own accounts and message only their own patients and inquirers.
 
 GrowthOS helps fertility clinics, med spas, wellness centers, and regenerative medicine practices stop patient leakage through instant AI response and automated lead nurturing.
 
@@ -10,20 +10,20 @@ GrowthOS helps fertility clinics, med spas, wellness centers, and regenerative m
 - Nurtures leads automatically until staff is ready to step in
 - Provides unified inbox combining AI and human conversations
 - Manages patient pipelines and journey tracking
-- Runs reactivation campaigns for cold leads
+- Sends consent-based follow-up to past inquirers and patients who opted in, with opt-out on every message
 - Delivers reporting on response times and conversion rates
 
 ## Key Features
 
-- Custom-trained AI that uses your clinic's voice and rules
+- Custom-trained AI that uses your clinic's tone, wording and rules
 - Multi-channel patient communication
 - Staff handoff with full conversation context
 - Integration with Salesforce, HubSpot, Zoho, and other CRMs
-- No per-lead or usage fees
+- No per-lead fees
 
 ## Pricing
 
-One plan, GrowthOS Growth: every stage of the GrowthOS Map, the full AI team and Keep. Pricing is tailored to the clinic and number of locations, and shared in a demo (https://cimagrowth.com/demo). Monthly, six-month and annual terms.
+One plan, GrowthOS Growth: every stage of the GrowthOS Map, the built-in AI agents and Keep. Pricing is tailored to the clinic and number of locations, and shared in a demo (https://cimagrowth.com/demo). Monthly, six-month and annual terms.
 
 ## Target Customers
 
@@ -34,6 +34,8 @@ One plan, GrowthOS Growth: every stage of the GrowthOS Map, the full AI team and
 
 ## Contact
 
+Company: Cima Growth Solutions, LLC, 3467 Trexler Blvd, Allentown, PA 18104
+Support: support@cimagrowth.com, +1-484-480-9296
 Website: https://cimagrowth.com
 Demo: https://cimagrowth.com/demo
 

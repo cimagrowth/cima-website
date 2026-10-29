@@ -31,7 +31,7 @@ export const CONSENT_FAQS: ConsentFaq[] = [
   {
     question: "Has this been reviewed by an attorney?",
     answer:
-      "The library is a complete set of drafts built on standard clinical disclosure practice. We expect every clinic to have its own counsel review and adopt them, and we make that easy. If you already have attorney-approved consents, we will load those instead.",
+      "The library is a complete set of drafts built on standard clinical disclosure practice. We expect every clinic to have its own counsel review and adopt them, and we make that easy. If you already have attorney-approved consents, you can upload those instead.",
   },
   {
     question: "What about partner and witness signatures?",

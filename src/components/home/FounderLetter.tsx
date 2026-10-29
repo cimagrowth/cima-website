@@ -26,8 +26,8 @@ const FounderLetter = () => {
             <p>
               &ldquo;AI transformed the lab side of fertility medicine. Nobody modernized the front end.
               After 15 years in this industry, I watched clinics spend real money to find patients and
-              then lose them in the gaps between one stage and the next. The Map is how we close every
-              one of those gaps.&rdquo;
+              then lose them in the gaps between one stage and the next. The Map is how GrowthOS helps
+              clinics close every one of those gaps.&rdquo;
             </p>
           </blockquote>
           <figcaption className="flex flex-col gap-1.5 text-base">

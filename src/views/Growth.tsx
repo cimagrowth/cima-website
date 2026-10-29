@@ -486,7 +486,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
               Where does your clinic leak? See it on the GrowthOS Map.
             </h1>
             <p className="font-body text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send you a report showing which stages are leaking, what the leak costs in revenue, and how much opportunity is in your local market. Your report arrives in your inbox in a few minutes.
+              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against anonymized data from active GrowthOS clinic accounts, and send you a report showing which stages are leaking, what the leak costs in revenue, and how much opportunity is in your local market. Your report arrives in your inbox in a few minutes.
             </p>
             <div className="flex flex-col items-center gap-4">
               <Button
@@ -534,7 +534,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
 
           {/* Proof line */}
           <p className="mt-10 md:mt-12 mx-auto max-w-3xl text-center font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-            Benchmarked against thousands of real patient inquiries at clinics we operate for, plus published research for your specialty and US Census, CDC and Google data for your area.
+            Benchmarked against anonymized inquiry data from GrowthOS clinic accounts, plus published research for your specialty and US Census, CDC and Google data for your area.
           </p>
           <p className="mt-2 text-center font-body text-sm text-teal-deep/70">
             Market data covers US clinics.

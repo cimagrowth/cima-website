@@ -30,6 +30,9 @@ export default function HeroMap({ map, copy = HOME_COPY.fertility.hero }: { map:
             </Link>
           </div>
           <p className="text-sm text-teal-deep/75">
+            GrowthOS is subscription software. Your team runs it, and it messages only your own patients and inquirers.
+          </p>
+          <p className="text-sm text-teal-deep/75">
             {copy.footnote}
           </p>
         </div>

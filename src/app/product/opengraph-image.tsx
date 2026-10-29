@@ -9,7 +9,7 @@ export const alt = "GrowthOS platform for healthcare clinics";
 export default function Image() {
   return renderOgCard({
     eyebrow: "The GrowthOS platform",
-    title: "Everything a CRM does. None of the work it makes you do.",
-    sub: "An AI team that works inside your pipeline, built for healthcare clinics.",
+    title: "Everything a CRM does, with AI automation built in.",
+    sub: "AI automation that handles routine work inside your pipeline, built for healthcare clinics.",
   });
 }

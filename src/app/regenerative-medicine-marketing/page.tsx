@@ -8,11 +8,11 @@ const SLUG = 'regenerative-medicine-marketing';
 const TITLE = 'Regenerative Medicine Marketing Software for Clinics | Cima';
 const OG_TITLE = 'Regenerative Medicine Marketing Software for Clinics';
 const DESCRIPTION =
-  'Regenerative medicine marketing software for high-ticket clinics. GrowthOS runs compliant ads, instant response, and education-led nurture that books consults.';
+  'Regenerative medicine software for high-ticket clinics. GrowthOS gives regenerative clinics instant inquiry response, education follow-up and ad account management that books consults.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Regenerative medicine marketing',
-  h1Lead: 'Regenerative marketing that educates, builds trust, and',
+  h1Lead: 'Regenerative medicine software that educates, builds trust, and',
   h1Accent: 'books the consult.',
   subhead:
     'Regenerative treatments are high-ticket and high-consideration, patients research for weeks and need to trust you before they commit. GrowthOS answers instantly, nurtures with the right education at the right time, and stays compliant, so serious patients book the consult instead of drifting to a competitor.',
@@ -35,7 +35,7 @@ const content: SolutionLandingProps = {
     eyebrow: 'How GrowthOS solves it',
     heading: 'The same engine, tuned for regenerative medicine.',
     intro:
-      'GrowthOS runs compliant demand generation, instant response, education-led nurture, and consult protection for your regenerative clinic in one platform, built for a long, high-consideration, high-ticket decision.',
+      'GrowthOS handles instant replies, follow-up, rebooking and reviews in one platform your team runs, built for a long, high-consideration, high-ticket decision.',
     features: [
       {
         icon: 'zap',
@@ -54,13 +54,13 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'megaphone',
-        title: 'Ads that reach serious patients',
-        body: 'Healthcare-compliant Google and Meta campaigns that bring in high-intent, high-ticket inquiries, without an agency retainer.',
+        title: 'Ads measured against booked consults',
+        body: 'Healthcare-compliant campaigns in your own Google and Meta accounts, measured against booked consults.',
       },
       {
         icon: 'calendar',
-        title: 'Consult protection & reactivation',
-        body: 'Reminders and rebooking that reduce expensive no-shows, plus reactivation of leads who went quiet mid-decision.',
+        title: 'Consult protection & follow-up',
+        body: 'Reminders that reduce expensive no-shows, plus rebooking and follow-up messages to your own patients and inquirers who opted in, including inquirers who went quiet mid-decision.',
       },
       {
         icon: 'inbox',
@@ -89,7 +89,7 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'Multi-location regenerative groups',
-        body: 'Consistent voice, compliance, and reporting across every location and provider.',
+        body: 'Consistent tone, compliance, and reporting across every location and provider.',
       },
     ],
   },
@@ -103,7 +103,7 @@ const content: SolutionLandingProps = {
     {
       question: 'What is regenerative medicine marketing software?',
       answer:
-        'Regenerative medicine marketing software helps high-ticket clinics attract patients, respond instantly, and nurture them through a long, education-heavy decision. GrowthOS combines compliant ads, instant response, education-led follow-up, and reactivation in one platform.',
+        'Regenerative medicine marketing software helps high-ticket clinics attract patients, respond instantly, and nurture them through a long, education-heavy decision. GrowthOS combines ad account management, instant response, education-led follow-up, and rebooking and follow-up messages to your own patients and inquirers who opted in in one platform.',
     },
     {
       question: 'How does GrowthOS handle a long, high-consideration decision?',
@@ -137,7 +137,7 @@ const content: SolutionLandingProps = {
       'See how regenerative medicine marketing connects to the wider acquisition system, and read the playbooks behind it.',
     links: [
       {
-        href: '/blog/the-13-hour-patient-fertility-clinic-patient-leakage',
+        href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
         label: 'The 13-Hour Patient',
         description: 'Where high-ticket clinics leak patients between inquiry and booked consult.',
       },
@@ -154,17 +154,17 @@ const content: SolutionLandingProps = {
       {
         href: '/ai-agent',
         label: 'See the AI agent',
-        description: 'The AI team that answers, educates, and nurtures high-ticket patients around the clock.',
+        description: 'The AI assistant that answers, educates, and follows up with high-ticket patients around the clock, supervised by your team.',
       },
       {
         href: '/features',
         label: 'Explore the features',
-        description: 'Compliant ads, unified inbox, education-led nurture, and reactivation in one platform.',
+        description: 'Ad account management, unified inbox, education-led nurture, and rebooking in one platform.',
       },
       {
         href: '/demo',
         label: 'Book a demo',
-        description: 'See the AI team run a real regenerative journey, not a generic walkthrough.',
+        description: 'See the software handle a sample regenerative journey, not a generic walkthrough.',
       },
     ],
   },

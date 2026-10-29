@@ -41,7 +41,7 @@ const Training = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl lg:max-w-5xl mx-auto text-center"
           >
-            <Eyebrow>Training and certification</Eyebrow>
+            <Eyebrow>Training and certification, a GrowthOS module</Eyebrow>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
               Your customers need training.{" "}
               <span className="text-clay">
@@ -49,8 +49,8 @@ const Training = () => {
               </span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Onboarding, training, and certification for the companies you sell
-              to. It runs off your pipeline, tracks who finished, and issues
+              Training is a GrowthOS module for onboarding, training, and
+              certification for the companies you sell to. It runs off your pipeline, tracks who finished, and issues
               certificates they can prove. Not another platform for your
               customers to log into and forget.
             </p>
@@ -194,7 +194,7 @@ const Training = () => {
                 n: "01",
                 icon: Video,
                 title: "Your videos, or ones you have not filmed yet.",
-                body: "Upload the training you already have, or type a script and generate a presenter video from it. Most companies never make the training they know they need because filming it is a project. Here it is a paragraph and a few minutes.",
+                body: "Generate training videos from a script, or upload your own. Most companies never make the training they know they need because filming it is a project. Here it is a paragraph and a few minutes.",
               },
               {
                 n: "02",

@@ -12,12 +12,12 @@ const SLUG = 'fertility-clinic-marketing';
 const TITLE = 'Fertility Clinic Marketing Software for IVF Practices | Cima';
 const OG_TITLE = 'Fertility Clinic Marketing Software for IVF Practices';
 const DESCRIPTION =
-  'Fertility clinic marketing software for IVF and reproductive practices. GrowthOS runs ads, instant follow-up, and long-cycle nurture that books consults.';
+  'Fertility clinic marketing software for IVF and reproductive practices. GrowthOS handles instant follow-up, long-cycle nurture and ad account management that books consults, in one platform your team runs.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Fertility clinic marketing',
-  h1Lead: 'Fertility marketing that',
-  h1Accent: 'answers in seconds and nurtures for months.',
+  h1Lead: 'Fertility clinic software that',
+  h1Accent: 'answers in seconds and follows up for months.',
   subhead:
     'A fertility patient may take months to decide, but they choose their shortlist in the first hour. GrowthOS answers every inquiry instantly, in the right tone, then nurtures patiently across the entire journey, so the patients who find you actually book the consult.',
   problem: {
@@ -32,14 +32,14 @@ const content: SolutionLandingProps = {
       'Inquiries arrive after hours and on weekends, when no one is at the desk to reply.',
       'The follow-up a fertility decision needs is long and emotional, and it is done by hand, so it slips.',
       'Patients in a sensitive moment get generic, mistimed, or clinically wrong responses.',
-      'Paused cycles and dormant patients are never re-engaged.',
+      'Patients whose cycles paused never hear from the clinic again.',
     ],
   },
   solution: {
     eyebrow: 'How GrowthOS solves it',
     heading: 'The same engine, tuned for fertility.',
     intro:
-      'GrowthOS runs demand generation, instant response, long-cycle nurture, and reactivation for your fertility clinic in one platform, tuned for a long and emotional decision instead of a quick transaction.',
+      'GrowthOS handles instant replies, follow-up, rebooking and reviews in one platform your team runs, tuned for a long and emotional decision instead of a quick transaction.',
     features: [
       {
         icon: 'zap',
@@ -54,12 +54,12 @@ const content: SolutionLandingProps = {
       {
         icon: 'megaphone',
         title: 'Ads that bring qualified patients',
-        body: 'Builds and optimizes healthcare-compliant Google and Meta campaigns that reach people actively considering fertility care, without an agency retainer.',
+        body: 'Healthcare-compliant campaigns in your own Google and Meta accounts, measured against booked consults.',
       },
       {
         icon: 'bell',
-        title: 'Dormant-patient reactivation',
-        body: 'Automatically re-engages patients whose cycles paused and egg-freezing leads that went quiet months ago, bringing high-intent patients back on their own timeline.',
+        title: 'Follow-up for paused patients',
+        body: 'Rebooking and follow-up messages to your own patients and inquirers who opted in, including patients whose cycles paused and egg-freezing inquirers who went quiet, on their own timeline.',
       },
       {
         icon: 'shield',
@@ -85,7 +85,7 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'Multi-location fertility networks',
-        body: 'Consistent voice, routing, and reporting across every location and provider.',
+        body: 'Consistent tone, routing, and reporting across every location and provider.',
       },
       {
         title: 'IVF & reproductive endocrinology',
@@ -107,7 +107,7 @@ const content: SolutionLandingProps = {
     {
       question: 'What is fertility clinic marketing software?',
       answer:
-        'Fertility clinic marketing software helps reproductive practices attract patients, respond to inquiries instantly, and nurture them through a long, emotional decision. GrowthOS combines ads, instant multi-channel follow-up, long-cycle nurture, and dormant-patient reactivation in one platform built for fertility care.',
+        'Fertility clinic marketing software helps reproductive practices attract patients, respond to inquiries instantly, and nurture them through a long, emotional decision. GrowthOS combines ad account management, instant multi-channel replies, long-cycle nurture, and rebooking and follow-up messages to your own patients and inquirers who opted in in one platform built for fertility care.',
     },
     {
       question: 'How does GrowthOS handle the long fertility decision cycle?',
@@ -125,9 +125,9 @@ const content: SolutionLandingProps = {
         'Yes. GrowthOS answers web chat, SMS, WhatsApp, email, and social DMs in seconds from one unified inbox, which is critical in fertility where patients message several clinics and remember whoever responded first and best.',
     },
     {
-      question: 'How does it help reactivate patients who paused treatment?',
+      question: 'How does it help with patients who paused treatment?',
       answer:
-        'GrowthOS runs automated reactivation campaigns that re-engage paused cycles and dormant leads at the right moment, bringing high-intent patients back without your team chasing them manually.',
+        'GrowthOS sends rebooking and follow-up messages to your own patients and inquirers who opted in, including patients whose cycles paused, at the right moment, with opt-out on every message, so your team does not chase them manually.',
     },
     {
       question: 'Does it work with our EHR or existing CRM?',
@@ -141,7 +141,7 @@ const content: SolutionLandingProps = {
       'See how fertility clinic marketing connects to the wider acquisition system, and read the playbooks behind it.',
     links: [
       {
-        href: '/blog/the-13-hour-patient-fertility-clinic-patient-leakage',
+        href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
         label: 'The 13-Hour Patient',
         description: 'Where fertility clinics leak patients between inquiry and booked consult.',
       },
@@ -163,17 +163,17 @@ const content: SolutionLandingProps = {
       {
         href: '/ai-agent',
         label: 'See the AI agent',
-        description: 'The AI team that answers, nurtures, and reactivates patients around the clock.',
+        description: 'The AI assistant that answers and follows up with patients around the clock, supervised by your team.',
       },
       {
         href: '/features',
         label: 'Explore the features',
-        description: 'Ads, unified inbox, nurture, and reactivation in one platform.',
+        description: 'Ad account management, unified inbox, nurture, and rebooking in one platform.',
       },
       {
         href: '/demo',
         label: 'Book a demo',
-        description: 'See the AI team run a real fertility journey, not a generic walkthrough.',
+        description: 'See the software handle a sample fertility journey, not a generic walkthrough.',
       },
     ],
   },

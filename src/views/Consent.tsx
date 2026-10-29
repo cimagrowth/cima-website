@@ -320,9 +320,10 @@ const Consent = () => {
             className="max-w-5xl mx-auto mt-4 text-base md:text-lg text-foreground leading-relaxed"
           >
             Every document is a complete draft built on standard clinical
-            disclosure practice, ready for your counsel to review and adopt. You
-            can also send us the consents you already use and we will digitise
-            them.
+            disclosure practice, ready for your counsel to review and adopt.
+            Templates are a starting point for your counsel to review and are not
+            medical or legal advice. Upload the consents you already use and they
+            are converted into GrowthOS templates.
           </motion.p>
         </div>
       </section>

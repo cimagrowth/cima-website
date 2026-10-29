@@ -7,7 +7,7 @@ import { buildSolutionSchema } from '@/lib/solution-jsonld';
 const SLUG = 'patient-engagement-platform';
 const TITLE = 'Patient Engagement Platform for Clinics | GrowthOS';
 const DESCRIPTION =
-  'GrowthOS is a patient engagement platform that converts and retains, not just messages. Multi-channel SMS, email, WhatsApp, LINE, web chat, and voice with an AI patient bot.';
+  'GrowthOS is a patient engagement platform that converts and retains, not just messages. One inbox for patients who contact you by text, email, WhatsApp, LINE, web chat or phone, with an AI patient bot.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient engagement platform',
@@ -20,7 +20,7 @@ const content: SolutionLandingProps = {
     heading: 'Sending messages is not',
     accent: 'the same as engaging patients.',
     paragraphs: [
-      'Plenty of platforms can blast an SMS or schedule an email. That is broadcasting, not engagement. Real engagement means the right reply, on the channel the patient chose, fast enough to matter, every single time. Most tools fall down on speed and consistency, which is exactly when patients lose interest.',
+      'Plenty of tools can send a message. That is not engagement. Real engagement means the right reply, on the channel the patient chose, fast enough to matter, every single time. Most tools fall down on speed and consistency, which is exactly when patients lose interest.',
       'A patient who messages at 9:14pm does not want an auto-reply that says someone will be in touch. They want an answer. The clinic that responds in seconds with a real, accurate reply earns the consultation. The one that waits until morning loses it to whoever answered first.',
     ],
     points: [
@@ -39,7 +39,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'message',
         title: 'Multi-channel by default',
-        body: 'SMS, email, WhatsApp, LINE, web chat, and voice in one platform, so patients reach you wherever they already are.',
+        body: 'One inbox for patients who contact you by text, email, WhatsApp, LINE, web chat or phone.',
       },
       {
         icon: 'bot',
@@ -59,7 +59,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'repeat',
         title: 'Retention and rebooking',
-        body: 'Reminders, rebooking, and reactivation keep patients engaged after the first visit, not just before it.',
+        body: 'Reminders, rebooking and follow-up messages to your own patients and inquirers who opted in, keep patients engaged after the first visit, not just before it.',
       },
       {
         icon: 'inbox',
@@ -122,7 +122,7 @@ const content: SolutionLandingProps = {
     {
       question: 'Does patient engagement help with retention?',
       answer:
-        'Yes. GrowthOS continues engaging patients after the first visit with reminders, rebooking, and reactivation campaigns, which raises retention and lifetime value rather than focusing only on new inquiries.',
+        'Yes. GrowthOS continues engaging patients after the first visit with reminders, rebooking and follow-up messages to your own patients and inquirers who opted in, which raises retention and lifetime value rather than focusing only on new inquiries.',
     },
   ],
   related: {
@@ -142,12 +142,12 @@ const content: SolutionLandingProps = {
       {
         href: '/medical-practice-marketing',
         label: 'Medical practice marketing',
-        description: 'Replace the agency, ads manager, and chatbot with one platform.',
+        description: 'Replace disconnected tools with one platform your team runs.',
       },
       {
         href: '/product',
         label: 'See the GrowthOS platform',
-        description: 'The unified inbox and the AI team that runs your engagement.',
+        description: 'The unified inbox and built-in AI, operated by your team.',
       },
     ],
   },

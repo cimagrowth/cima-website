@@ -1,6 +1,8 @@
 // Host-conditioned redirects for the retired sendafertility.com domain.
 // DNS for sendafertility.com must point at this deployment for any of these
 // to fire. Covers both the apex and the www host.
+const BLOG_REDIRECTS = require('./src/content/blog-redirects.json').redirects;
+
 const SENDA_HOSTS = ['sendafertility.com', 'www.sendafertility.com'];
 const CONSENT_URL = 'https://cimagrowth.com/consent';
 
@@ -67,6 +69,14 @@ const nextConfig = {
       { source: '/sales-team', destination: '/', permanent: true },
       { source: '/ads-system', destination: '/', permanent: true },
       { source: '/clinic-growth-engine', destination: '/', permanent: true },
+      // The Outreach Engine page is retired; its traffic goes to the platform page.
+      { source: '/outreach', destination: '/product', permanent: true },
+      // Duplicate blog posts point at the one post kept per topic.
+      ...Object.entries(BLOG_REDIRECTS).map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}`,
+        permanent: true,
+      })),
       { source: '/b/:slug*', destination: '/blog', permanent: true },
       { source: '/2024/:month/:day/:slug', destination: '/blog', permanent: true },
       // Retired sendafertility.com domain -> /consent (host-conditioned).

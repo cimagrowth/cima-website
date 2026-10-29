@@ -6,23 +6,23 @@ import type { StageKey } from "@/lib/growthos-map";
 export const STAGE_COPY: Record<StageKey, { leak: string; fix: string }> = {
   get_found: {
     leak: "You never show up at the search. The right patients never find you, and the ads meant to reach them run unwatched.",
-    fix: "Campaigns drafts the landing page, emails, texts and ads together. Ads Manager watches spend against booked consults, not clicks, without sending health data to an ad platform. Outreach reaches referring doctors and partner practices.",
+    fix: "Campaigns drafts the landing page, ad copy for your own ad accounts, and follow-up messages for people who inquire, for your team to review. Ads Manager connects your clinic's own Google and Meta ad accounts and measures spend against booked consults, not clicks, without sending health data to an ad platform. Referral Partners tracks the referring doctors and partner practices your team already works with.",
   },
   first_response: {
     leak: "An inquiry lands at 9pm and waits until morning. By then the patient has booked with the clinic that answered first.",
-    fix: "The AI front desk answers every message in seconds, on text, WhatsApp, web chat, email and social, in your voice. The forms already on your website feed straight in. It qualifies, books on your real calendar and hands off with the full history.",
+    fix: "The AI front desk answers every message in seconds, on text, WhatsApp, web chat, email and social, in your clinic's tone and wording. The forms already on your website feed straight in. It qualifies, books on your real calendar and hands off with the full history.",
   },
   nurture: {
     leak: "Patients who are not ready today never hear from you again.",
-    fix: "Sequences follow up over days and weeks on every channel. The Qualification Agent checks fit with your own questions, on forms and in chat. Reactivation works the dormant list instead of deleting it.",
+    fix: "Consent-based follow-up (email and SMS) continues over days and weeks. The Qualification Agent checks fit with your own questions, on forms and in chat. Re-engagement lets your team re-contact past inquirers and patients who opted in, with opt-out on every message.",
   },
   book: {
     leak: "The consult is booked, then missed, and nobody follows up.",
-    fix: "Appointments syncs every booking and sends reminders on the channel the patient chose. AI Staff hands your team a written briefing before each consult. The Waiting Room and Telehealth run the visit itself.",
+    fix: "Appointments syncs every booking and sends reminders on the channel the patient chose. Consult Briefings give your team a written summary before each consult. The Waiting Room and Telehealth run the visit itself.",
   },
   commit: {
     leak: "The consult happens, the commitment does not. Paperwork, records and cost stall the yes.",
-    fix: "Pipeline flags a stalled decision before it goes cold. ChartAI requests outside records for you. Consent sends documents and education before the visit. Invoicing sends a payment link.",
+    fix: "Pipeline flags a stalled decision before it goes cold. ChartAI sends records requests and tracks them until the records arrive. Consent sends documents and education before the visit. Invoicing sends a payment link.",
   },
   treatment: {
     leak: "A cycle-timed test is missed, the cycle slips a month, or the patient quietly stops.",
@@ -30,7 +30,7 @@ export const STAGE_COPY: Record<StageKey, { leak: string; fix: string }> = {
   },
   after_cycle: {
     leak: "Eggs and embryos sit in your tanks for years while the patient goes quiet.",
-    fix: "Keep records what each patient has stored, reaches out on anniversaries and renewal dates, and gives patients a secure link to decide what comes next. It pauses after a loss and logs every touch.",
+    fix: "Keep records what each patient has stored, sends scheduled reminders on storage anniversaries and renewal dates, and gives patients a secure link to decide what comes next. Automated messages pause after a loss, and every touch is logged.",
   },
   advocate: {
     leak: "Happy patients are never asked for a review, a referral or a return visit.",
@@ -41,8 +41,7 @@ export const STAGE_COPY: Record<StageKey, { leak: string; fix: string }> = {
 /** Product pages that go deeper on a stage. Linked from /map/[stage]. */
 export const STAGE_CROSS_LINKS: Partial<Record<StageKey, { href: string; label: string }[]>> = {
   get_found: [
-    { href: "/ads", label: "AI Ads" },
-    { href: "/outreach", label: "Outreach Engine" },
+    { href: "/ads", label: "Ads Manager" },
   ],
   first_response: [{ href: "/ai-agent", label: "AI Agent" }],
   commit: [
@@ -53,5 +52,5 @@ export const STAGE_CROSS_LINKS: Partial<Record<StageKey, { href: string; label: 
 };
 
 export const KEEP_COPY = {
-  body: "Keep records what each patient has stored, reaches out on storage anniversaries and renewal dates, and gives patients a secure link to see what they have and decide what comes next. It pauses automatically after a loss. Every touch is logged, so you can measure who returns.",
+  body: "Keep records what each patient has stored, sends scheduled reminders on storage anniversaries and renewal dates, and gives patients a secure link to see what they have and decide what comes next. Automated messages pause after a loss. Every touch is logged, so you can measure who returns.",
 };

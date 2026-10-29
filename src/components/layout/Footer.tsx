@@ -24,9 +24,8 @@ const platformLinks: FooterLink[] = [
   { label: "Platform overview", href: "/product" },
   { label: "Features", href: "/features" },
   { label: "AI Agent", href: "/ai-agent" },
-  { label: "AI Ads", href: "/ads" },
+  { label: "Ads Manager", href: "/ads" },
   { label: "ChartAI", href: "/chartai" },
-  { label: "Outreach Engine", href: "/outreach" },
   { label: "Patient Consent", href: "/consent" },
   { label: "Keep", href: "/keep" },
   { label: "Training", href: "/training" },
@@ -157,6 +156,9 @@ const Footer = async () => {
               <p className="text-sm md:text-base text-primary-foreground/75 max-w-xs leading-relaxed">
                 GrowthOS, the patient journey operating system for clinics.
               </p>
+              <p className="mt-3 text-sm text-primary-foreground/75 max-w-xs leading-relaxed">
+                GrowthOS is subscription software from Cima Growth Solutions, LLC. Clinics operate their own accounts and message only their own patients and inquirers.
+              </p>
               <div className="mt-5">
                 <SocialLinks profiles={CIMA_SOCIAL} size="lg" />
               </div>
@@ -187,9 +189,14 @@ const Footer = async () => {
 
           {/* Bottom bar */}
           <div className="h-px bg-primary-foreground/10 mt-10 md:mt-12 mb-6 md:mb-8" />
+          <p className="text-sm text-primary-foreground/70 text-center md:text-left mb-4">
+            Cima Growth Solutions, LLC · 3467 Trexler Blvd, Allentown, PA 18104 ·{" "}
+            <a href="mailto:support@cimagrowth.com" className="hover:text-sand transition-colors">support@cimagrowth.com</a> ·{" "}
+            <a href="tel:+14844809296" className="hover:text-sand transition-colors">+1-484-480-9296</a>
+          </p>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/70 text-center md:text-left">
-              &copy; {currentYear} Cima Growth Solutions. All rights reserved.
+              &copy; {currentYear} Cima Growth Solutions, LLC. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
               <Link href="/privacy" className="text-sm text-primary-foreground/70 hover:text-sand transition-colors">
