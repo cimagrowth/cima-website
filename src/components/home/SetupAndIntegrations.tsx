@@ -33,12 +33,12 @@ export default function SetupAndIntegrations() {
         <div className="flex flex-col gap-5 lg:col-span-6">
           <Eyebrow>The Basics · Setup</Eyebrow>
           <H2 id="setup-title" className="!text-[clamp(30px,3.6vw,44px)] text-teal-deep">
-            We connect the plumbing first, and prove it works.
+            GrowthOS checks every connection before launch.
           </H2>
           <p className="text-[17px] leading-relaxed text-teal-deep/80">
-            Your existing website forms start sending leads in on day one. Your domain, sending email,
-            texting registration and EHR are checked against the live systems, not a checkbox. Then we
-            walk your team through the Map, stage by stage.
+            Your existing website forms connect on day one, so every inquiry lands in one inbox. Your
+            domain, sending email, texting registration and EHR are checked against the live systems, not
+            a checkbox. Guided onboarding then walks your team through the Map, stage by stage.
           </p>
           <SetupSteps />
         </div>

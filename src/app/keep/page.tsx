@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 const TITLE = 'Keep: follow-up for stored eggs and embryos | GrowthOS';
 const DESCRIPTION =
-  'Keep records what each patient has stored, reaches out on storage anniversaries and renewal dates, and gives patients a secure link to decide what comes next. Grief-aware, fully logged, and included in every GrowthOS plan.';
+  'Keep records what each patient has stored, sends scheduled reminders on storage anniversaries and renewal dates, and gives patients a secure link to decide what comes next. Grief-aware, fully logged, and included in every GrowthOS plan.';
 
 export const metadata: Metadata = {
   title: TITLE,

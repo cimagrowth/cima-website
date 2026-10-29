@@ -39,7 +39,7 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
   const isFertility = specialty === "fertility";
   const leak = stage.leaks[0];
   const statCards = displayStatsForStage(map, stage, stats);
-  const outreach = stage.features.find((f) => /outreach/i.test(f.name));
+  const reminders = stage.features.find((f) => /reminder|check-in/i.test(f.name));
   const research = stage.features.find((f) => /publish|research/i.test(f.name));
 
   return (
@@ -134,7 +134,7 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
                 Keep pauses automatically after a known loss. Anniversary messages and renewal nudges
                 stop, and the conversation is handed to a person on your team when it matters.
               </p>
-              {outreach && <p>{outreach.description}</p>}
+              {reminders && <p>{reminders.description}</p>}
             </div>
           </div>
         </section>

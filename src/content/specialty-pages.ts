@@ -168,23 +168,23 @@ export const AI_AGENT_EXAMPLE: Record<Specialty, string> = {
 export const ADS_PAGE: Record<Specialty, { painPoint: string; cutTitle: string }> = {
   fertility: {
     painPoint:
-      "Generic agencies don't understand fertility compliance, healthcare keyword restrictions, or why your landing page needs to say different things to an egg freezing patient vs. an IUI patient",
-    cutTitle: "Cut PMAX · IVF · Bay Area budget",
+      "Generic ad tools don't understand fertility compliance, healthcare keyword restrictions, or why your landing page needs to say different things to an egg freezing patient vs. an IUI patient",
+    cutTitle: "Budget rule applied: PMAX · IVF · Bay Area",
   },
   aesthetics: {
     painPoint:
-      "Generic agencies don't understand healthcare ad rules, med spa keyword restrictions, or why your landing page needs to say different things to a first-time neurotoxin client vs. a laser package client",
-    cutTitle: "Cut PMAX · Filler · Bay Area budget",
+      "Generic ad tools don't understand healthcare ad rules, med spa keyword restrictions, or why your landing page needs to say different things to a first-time neurotoxin client vs. a laser package client",
+    cutTitle: "Budget rule applied: PMAX · Filler · Bay Area",
   },
   regenerative: {
     painPoint:
-      "Generic agencies don't understand healthcare ad rules, regenerative medicine keyword restrictions, or why your landing page needs to say different things to a PRP joint patient vs. a sports medicine patient",
-    cutTitle: "Cut PMAX · PRP · Bay Area budget",
+      "Generic ad tools don't understand healthcare ad rules, regenerative medicine keyword restrictions, or why your landing page needs to say different things to a PRP joint patient vs. a sports medicine patient",
+    cutTitle: "Budget rule applied: PMAX · PRP · Bay Area",
   },
   wellness: {
     painPoint:
-      "Generic agencies don't understand healthcare ad rules, wellness keyword restrictions, or why your landing page needs to say different things to a hormone therapy patient vs. an IV therapy patient",
-    cutTitle: "Cut PMAX · IV Therapy · Bay Area budget",
+      "Generic ad tools don't understand healthcare ad rules, wellness keyword restrictions, or why your landing page needs to say different things to a hormone therapy patient vs. an IV therapy patient",
+    cutTitle: "Budget rule applied: PMAX · IV Therapy · Bay Area",
   },
 };
 

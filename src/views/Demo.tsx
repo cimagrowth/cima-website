@@ -26,7 +26,7 @@ const industryOptions = [
 const primaryGoalOptions = [
   "Need more leads/patients",
   "Poor conversion rates",
-  "No outreach system",
+  "No follow-up system",
   "Marketing is too manual",
   "Cannot track ROI",
   "Other",

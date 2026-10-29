@@ -5,26 +5,26 @@ import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'medical-practice-marketing';
-const TITLE = 'Medical Practice Marketing That Fills Your Calendar | Cima';
+const TITLE = 'Medical Practice Software That Fills Your Calendar';
 const DESCRIPTION =
-  'Medical practice marketing that replaces the agency, the ads manager, the chatbot, and the CRM with one platform. Generate demand, convert inquiries, stop leakage.';
+  'Medical practice software that combines inbox, CRM, booking and ad management in one platform your staff operates. Capture inquiries, convert them, stop leakage.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Medical practice marketing',
-  h1Lead: 'Medical practice marketing that',
-  h1Accent: 'fills your calendar, not your inbox.',
+  h1Lead: 'Practice software that turns inquiries',
+  h1Accent: 'into booked appointments.',
   subhead:
-    'Most clinics buy more marketing. They do not buy marketing that works together. GrowthOS replaces the agency, the ads manager, the chatbot, and the CRM with one platform that runs the full funnel.',
+    'Most clinics buy more marketing. They do not buy marketing that works together. GrowthOS combines inbox, CRM, booking and ad management in one platform your staff operates.',
   problem: {
     eyebrow: 'The problem',
-    heading: 'You are paying four retainers',
+    heading: 'You are paying for four tools',
     accent: 'for tools that do not talk.',
     paragraphs: [
-      'A typical clinic stack looks like this: an agency runs the ads, a chatbot answers the website, a CRM stores the contacts, and a staff member stitches it all together by hand. Each piece bills you separately, and none of them owns the result. Leads fall through the seams.',
+      'A typical clinic stack looks like this: an ad tool here, a chatbot on the website, a CRM stores the contacts, and a staff member stitches it all together by hand. Each piece bills you separately, and none of them owns the result. Leads fall through the seams.',
       'More activity is not more infrastructure. Running campaigns is not the same as having a system that turns a click into a booked consultation. When the pieces are disconnected, you pay for demand you never convert and blame the ads when the real leak is everything that happens after the click.',
     ],
     points: [
-      'The agency reports on clicks, not booked patients.',
+      'Ad reports show clicks, not booked patients.',
       'The chatbot deflects questions instead of booking consultations.',
       'The CRM stores the lead but never follows up.',
       'No single owner is accountable for revenue from inquiry to consult.',
@@ -34,12 +34,12 @@ const content: SolutionLandingProps = {
     eyebrow: 'How GrowthOS solves it',
     heading: 'One platform for the entire funnel.',
     intro:
-      'GrowthOS runs demand generation, conversion, leak-stage follow-up, and retention in one place. The same system that creates the inquiry also answers it, books it, and brings the patient back.',
+      'GrowthOS gives your team inquiry capture, conversion, leak-stage follow-up, and retention in one place. The same system that creates the inquiry also answers it, books it, and brings the patient back.',
     features: [
       {
         icon: 'megaphone',
-        title: 'Generate demand',
-        body: 'AI builds, launches, and optimizes ads and outreach across channels, so qualified inquiries arrive consistently instead of in bursts.',
+        title: 'Manage your ad accounts',
+        body: 'AI drafts ad copy and budgets that your team reviews and publishes in your own ad accounts.',
       },
       {
         icon: 'zap',
@@ -54,7 +54,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'repeat',
         title: 'Retain and rebook',
-        body: 'Automated rebooking, membership, and reactivation campaigns keep patients coming back and lift lifetime value.',
+        body: 'Automated membership reminders, rebooking and follow-up messages to your own patients and inquirers who opted in, keep patients coming back and lift lifetime value.',
       },
       {
         icon: 'layers',
@@ -72,7 +72,7 @@ const content: SolutionLandingProps = {
     eyebrow: 'Why specialty clinics',
     heading: 'Marketing built for how patients actually decide.',
     intro:
-      'A generic marketing agency runs the same playbook for a plumber and a fertility clinic. Specialty care is high-consideration and regulated. GrowthOS is built for the way patients research, hesitate, and choose in healthcare.',
+      'Generic software treats a plumber and a fertility clinic the same way. Specialty care is high-consideration and regulated. GrowthOS is built for the way patients research, hesitate, and choose in healthcare.',
     segments: [
       {
         title: 'Fertility and reproductive medicine',
@@ -88,12 +88,12 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'Wellness and longevity',
-        body: 'Programs and memberships depend on retention. GrowthOS keeps members engaged and renewing without manual outreach.',
+        body: 'Programs and memberships depend on retention. GrowthOS keeps members engaged and renewing without manual follow-up.',
       },
     ],
   },
   proofPoints: [
-    'Replaces agency, ads, chatbot, and CRM',
+    'Inbox, CRM, booking and ad management in one',
     'Built for specialty clinics',
     'HIPAA-grade data handling',
     'Leads flowing on day one',
@@ -102,12 +102,12 @@ const content: SolutionLandingProps = {
     {
       question: 'What does medical practice marketing include?',
       answer:
-        'Effective medical practice marketing covers the full funnel: generating demand through ads and outreach, converting inquiries into booked consultations, following up on leads that stall, and retaining existing patients. GrowthOS runs all four in one platform instead of across separate vendors.',
+        'Effective medical practice marketing covers the full funnel: attracting patients through ads in your own accounts, converting inquiries into booked consultations, following up on leads that stall, and retaining existing patients. GrowthOS covers all four in one platform your staff operates instead of across separate vendors.',
     },
     {
-      question: 'Can GrowthOS replace our marketing agency?',
+      question: 'Can GrowthOS replace our separate tools?',
       answer:
-        'Yes. GrowthOS runs the ads, answers inquiries, follows up, and reports on booked patients, which is the work most clinics outsource to an agency. You keep ownership of the results and the data, and you stop paying a retainer for disconnected activity.',
+        'Yes. GrowthOS gives your team one place to manage your ad accounts, answer inquiries, follow up and report on booked patients. You keep ownership of the results and the data.',
     },
     {
       question: 'How is this different from hiring a chatbot or an ads tool?',
@@ -117,7 +117,7 @@ const content: SolutionLandingProps = {
     {
       question: 'Do we need technical staff to run it?',
       answer:
-        'No. GrowthOS ships pre-built for your specialty and the AI team does the day-to-day work. Your staff oversees results rather than operating four separate tools.',
+        'No. GrowthOS ships pre-built for your specialty. AI handles routine replies, and your staff stays in control rather than operating four separate tools.',
     },
     {
       question: 'How fast will we see booked consultations?',
@@ -147,13 +147,13 @@ const content: SolutionLandingProps = {
       {
         href: '/product',
         label: 'See the GrowthOS platform',
-        description: 'Ads, inbox, CRM, and the AI team that runs them in one place.',
+        description: 'Inbox, CRM, booking and ad management in one place.',
       },
     ],
   },
   closing: {
     heading: 'See marketing that fills the calendar.',
-    body: 'Twenty minutes. We will show the AI team running ads, answering inquiries, and booking consults in your specialty, not a generic demo.',
+    body: 'Twenty minutes. We will show the software answering inquiries and helping staff book consults in your specialty, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },
@@ -166,7 +166,6 @@ export const metadata: Metadata = {
     'medical practice marketing',
     'healthcare marketing',
     'clinic marketing',
-    'medical marketing agency alternative',
     'patient acquisition marketing',
     'specialty clinic marketing',
   ],

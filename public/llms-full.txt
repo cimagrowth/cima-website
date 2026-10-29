@@ -1,8 +1,8 @@
 # GrowthOS by Cima Growth Solutions
 
-> AI-powered patient engagement platform for healthcare clinics
+> Subscription software for healthcare clinics. Clinic teams operate their own accounts and message only their own patients and inquirers.
 
-GrowthOS is built on a core belief: most clinics don't have a lead problem—they have a communication and systems problem. Patient leakage happens when inquiries go unanswered, follow-ups fall through the cracks, and leads go cold before staff can respond.
+GrowthOS is built on a core belief: most clinics don't have a lead problem. They have a communication and systems problem. Patient leakage happens when inquiries go unanswered, follow-ups fall through the cracks, and leads go cold before staff can respond.
 
 ## The Problem GrowthOS Solves
 
@@ -11,7 +11,7 @@ Healthcare clinics lose potential patients every day because:
 - Staff is too busy with in-clinic patients to follow up consistently
 - Leads require multiple touchpoints but manual follow-up is unsustainable
 - Patient communication is scattered across channels with no unified view
-- Cold leads sit untouched because reactivation takes too much effort
+- Past inquirers who opted in never hear from the clinic again because follow-up takes too much effort
 
 ## How GrowthOS Works
 
@@ -28,7 +28,7 @@ GrowthOS uses a custom-trained AI that:
 GrowthOS provides the infrastructure clinics need:
 
 **Unified Inbox**
-All patient conversations in one place—AI and staff messages combined. Multi-channel aggregation, conversation threading, and team assignment.
+All patient conversations in one place, AI and staff messages combined. Multi-channel aggregation, conversation threading, and team assignment.
 
 **Pipelines and Patient Journeys**
 Clear stages so every lead is tracked. Custom configuration, automatic progression, and stale lead alerts.
@@ -36,8 +36,8 @@ Clear stages so every lead is tracked. Custom configuration, automatic progressi
 **Follow-up Rules and Automations**
 Set standards once. Missed-call text back, appointment reminders, no-show sequences.
 
-**Reactivation Campaigns**
-Bring cold leads back with scheduled SMS and email outreach. Segmented targeting, multi-touch sequences, response tracking.
+**Re-engagement**
+Lets your team re-contact past inquirers and patients who opted in, with opt-out on every message. Segments, scheduled follow-up and response tracking.
 
 **Reporting and Visibility**
 See response speed, conversion movement, and where patients drop off. Source attribution, stage conversion rates, team performance.
@@ -48,16 +48,16 @@ See response speed, conversion movement, and where patients drop off. Source att
 GrowthOS sits on top of Salesforce, HubSpot, Zoho, or any CRM. The AI handles patient engagement while your team works in familiar tools.
 
 ### Hybrid Mode
-Pick the modules you need—AI follow-up, unified inbox, pipelines—and integrate with your existing stack via API.
+Pick the modules you need (AI follow-up, unified inbox, pipelines) and integrate with your existing stack via API.
 
 ### Full Platform Mode
 GrowthOS becomes your complete patient management infrastructure. No more spreadsheets, no more tool juggling.
 
 ## Pricing
 
-One plan, GrowthOS Growth: every stage of the GrowthOS Map (https://cimagrowth.com/map), the full AI team and Keep, included. Pricing is tailored to the clinic and number of locations, and shared in a demo. Monthly, six-month and annual terms. Add-ons: Voice AI, Patient Waiting Room, Telehealth, Custom AI Agent, Consent & Education, Website Management.
+One plan, GrowthOS Growth: every stage of the GrowthOS Map (https://cimagrowth.com/map), the built-in AI agents and Keep, included. Pricing is tailored to the clinic and number of locations, and shared in a demo. Monthly, six-month and annual terms. Add-ons: Voice AI, Patient Waiting Room, Telehealth, Custom AI Agent, Consent & Education.
 
-No per-lead charges. No usage fees. One plan with full access.
+No per-lead charges. Messaging, calling and AI usage are billed by usage at the rates in your account or agreement. One plan with full access.
 
 ## Target Industries
 
@@ -69,15 +69,17 @@ GrowthOS is specifically designed for:
 
 ## Implementation
 
-The clinic's existing website forms start sending leads in on day one. Setup includes:
-- AI training on your clinic's voice, protocols, and FAQs
+The clinic's existing website forms connect on day one, so every inquiry lands in one inbox. Setup includes:
+- AI training on your clinic's tone, wording, protocols, and FAQs
 - Channel integration (web forms, phone, SMS, email, social)
 - CRM connection if applicable
 - Staff onboarding and configuration
 
 ## Company Information
 
-**Cima Growth Solutions**
+**Cima Growth Solutions, LLC**
+3467 Trexler Blvd, Allentown, PA 18104
+Support: support@cimagrowth.com, +1-484-480-9296
 Website: https://cimagrowth.com
 Product: https://cimagrowth.com/product
 The GrowthOS Map: https://cimagrowth.com/map
@@ -100,13 +102,13 @@ The GrowthOS blog focuses on:
 Patient leakage refers to potential patients who inquire about services but never convert because of slow response times, inconsistent follow-up, or poor communication systems.
 
 **How quickly does the AI respond?**
-GrowthOS responds instantly—within seconds—to any inquiry on any connected channel.
+GrowthOS responds within seconds to any inquiry on any connected channel.
 
 **Does GrowthOS replace my CRM?**
 It can. GrowthOS works as a standalone platform or integrates with existing CRMs like Salesforce, HubSpot, and Zoho.
 
-**Are there per-lead or usage fees?**
-No. Your subscription covers unlimited leads, AI conversations, and team members.
+**Are there per-lead fees?**
+No. Your subscription covers unlimited leads and team members. Messaging, calling and AI usage are billed by usage at the rates in your account or agreement.
 
 **How long does setup take?**
 Most clinics are live within 24-48 hours.

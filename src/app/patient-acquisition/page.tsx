@@ -5,13 +5,13 @@ import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'patient-acquisition';
-const TITLE = 'Patient Acquisition for Specialty Clinics | GrowthOS';
+const TITLE = 'Patient Acquisition Software for Specialty Clinics';
 const DESCRIPTION =
-  'Patient acquisition for specialty clinics, end to end. GrowthOS generates demand, converts inquiries, stops leakage, and retains patients in one platform.';
+  'Patient acquisition for specialty clinics, end to end. GrowthOS captures inquiries, converts them, stops leakage, and retains patients in one platform.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient acquisition',
-  h1Lead: 'Patient acquisition for specialty clinics,',
+  h1Lead: 'Patient acquisition software for specialty clinics,',
   h1Accent: 'from first click to rebooking.',
   subhead:
     'More leads is not the answer. A system that converts the leads you already get is. GrowthOS is the complete patient acquisition platform for fertility, aesthetics, regenerative, and wellness clinics.',
@@ -34,12 +34,12 @@ const content: SolutionLandingProps = {
     eyebrow: 'The system',
     heading: 'Patient acquisition as one connected system.',
     intro:
-      'GrowthOS runs every stage of acquisition in one platform, so the funnel does not leak between tools. This page is the hub. Each stage below has a dedicated solution you can dig into.',
+      'GrowthOS covers every stage of acquisition in one platform your team runs, so the funnel does not leak between tools. This page is the hub. Each stage below has a dedicated solution you can dig into.',
     features: [
       {
         icon: 'megaphone',
-        title: 'Generate demand',
-        body: 'AI plans and runs ads and outreach so qualified inquiries arrive consistently. See medical practice marketing for the full approach.',
+        title: 'Manage your ad accounts',
+        body: 'Your team plans and manages campaigns in your own Google and Meta ad accounts, with AI drafting suggestions. See medical practice marketing for the full approach.',
       },
       {
         icon: 'zap',
@@ -64,7 +64,7 @@ const content: SolutionLandingProps = {
       {
         icon: 'repeat',
         title: 'Retain and rebook',
-        body: 'Membership, rebooking, and reactivation keep patients active, turning one visit into lifetime value.',
+        body: 'Membership reminders, rebooking and follow-up messages to your own patients and inquirers who opted in keep patients active, turning one visit into lifetime value.',
       },
     ],
   },
@@ -102,7 +102,7 @@ const content: SolutionLandingProps = {
     {
       question: 'What is patient acquisition?',
       answer:
-        'Patient acquisition is the complete process of turning a stranger into a booked, returning patient: generating demand, capturing inquiries, responding quickly, converting to a consultation, and retaining the patient over time. GrowthOS runs all of these stages in one connected system.',
+        'Patient acquisition is the complete process of turning a stranger into a booked, returning patient: attracting interest, capturing inquiries, responding quickly, converting to a consultation, and retaining the patient over time. GrowthOS covers all of these stages in one connected system your team runs.',
     },
     {
       question: 'Why is speed to lead so important for patient acquisition?',
@@ -117,7 +117,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How does GrowthOS improve retention, not just acquisition?',
       answer:
-        'GrowthOS continues engaging patients after the first visit with rebooking, membership, and reactivation campaigns. Retention raises lifetime value, so each acquired patient is worth more over time.',
+        'GrowthOS continues engaging patients after the first visit with membership reminders, rebooking and follow-up messages to your own patients and inquirers who opted in. Retention raises lifetime value, so each acquired patient is worth more over time.',
     },
     {
       question: 'Which clinics is GrowthOS built for?',
@@ -132,7 +132,7 @@ const content: SolutionLandingProps = {
       {
         href: '/medical-practice-marketing',
         label: 'Medical practice marketing',
-        description: 'Generate demand and replace the agency, ads manager, and chatbot.',
+        description: 'One software platform in place of separate ad tools, chat widgets and spreadsheets.',
       },
       {
         href: '/patient-engagement-platform',
@@ -150,12 +150,12 @@ const content: SolutionLandingProps = {
         description: 'Aesthetics-specific acquisition, rebooking, and reviews.',
       },
       {
-        href: '/blog/the-50k-revenue-leak-speed-to-lead-fertility-clinic',
+        href: '/blog/the-50k-revenue-leak-fertility-clinic-inquiry-response',
         label: 'What slow replies cost a clinic',
         description: 'Why speed to lead is your entire business model.',
       },
       {
-        href: '/blog/the-13-hour-patient-fertility-clinic-patient-leakage',
+        href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
         label: 'The 13-hour patient',
         description: 'How clinics lose revenue to leakage while they sleep.',
       },
@@ -175,7 +175,7 @@ const content: SolutionLandingProps = {
         description: 'Why disconnected tools make busy clinics feel disorganized.',
       },
       {
-        href: '/blog/loss-aversion-fertility-clinic-patient-acquisition',
+        href: '/blog/loss-aversion-fertility-clinic-growth-system',
         label: 'Loss aversion in acquisition',
         description: 'The psychology behind the revenue clinics quietly lose.',
       },
@@ -183,7 +183,7 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See patient acquisition run end to end.',
-    body: 'Twenty minutes. We will show the AI team generating demand, answering inquiries, and rebooking patients in your specialty, not a generic demo.',
+    body: 'Twenty minutes. We will show how GrowthOS answers inquiries and helps your staff rebook patients, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
     secondaryCta: { label: 'See GrowthOS', href: '/product' },
   },

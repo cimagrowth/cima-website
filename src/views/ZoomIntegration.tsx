@@ -121,7 +121,7 @@ const ZoomIntegration = () => {
           </li>
           <li>Open Appointments → Settings → Calendar Connections.</li>
           <li>On the Zoom connection card, click Disconnect.</li>
-          <li>Confirm. GrowthOS will mark the connection as disconnected and stop making any further Zoom API calls on your behalf.</li>
+          <li>Confirm. GrowthOS will mark the connection as disconnected and stop making any further Zoom API calls for your connected account.</li>
         </ol>
         <p>
           After disconnecting, any appointment types still configured to use Zoom will continue to be bookable, but new bookings will not generate Zoom links until the user reconnects. The calendar event still gets created so the time block is preserved on the user&apos;s calendar.
@@ -144,7 +144,7 @@ const ZoomIntegration = () => {
           <li>Click Remove.</li>
         </ol>
         <p>
-          Revoking from Zoom directly invalidates the access and refresh tokens that GrowthOS holds. The next time GrowthOS tries to create a meeting on your behalf, the call will fail and your connection in GrowthOS will move to a Reauth Required state.
+          Revoking from Zoom directly invalidates the access and refresh tokens that GrowthOS holds. The next time GrowthOS tries to create a meeting for your connected account, the call will fail and your connection in GrowthOS will move to a Reauth Required state.
         </p>
 
         <h3>Data handling on removal</h3>

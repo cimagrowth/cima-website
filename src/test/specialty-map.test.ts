@@ -4,10 +4,10 @@ import mapSnapshot from "@/content/growthos-map.snapshot.json";
 import { STAGE_COPY } from "@/content/map-copy";
 import { MAP_INTRO } from "@/content/specialty-map";
 import { GENERAL_LINE_SWAPS } from "@/content/specialty-pages";
-import type { GrowthosMap } from "@/lib/growthos-map";
+import { applySiteCopy, type GrowthosMap } from "@/lib/growthos-map";
 import { specializeMap, stageCopyFor } from "@/lib/specialty-map";
 
-const map = mapSnapshot as unknown as GrowthosMap;
+const map = applySiteCopy(mapSnapshot as unknown as GrowthosMap);
 const FERTILITY_WORDS = /IVF|embryo|egg|sperm|tank|cryo|cycle|transfer|fertility/i;
 const OTHERS = ["aesthetics", "regenerative", "wellness"] as const;
 

@@ -11,7 +11,7 @@ export const revalidate = 3600;
 
 const TITLE = 'GrowthOS by Cima: the patient journey operating system for clinics';
 const DESCRIPTION =
-  'Clinics lose patients at eight stages, from the first search to years after treatment. GrowthOS closes every one: ads, instant AI response, nurture, booking, consent, cycle coordination, stored-specimen follow-up and reviews in one platform.';
+  'Clinics lose patients at eight stages, from the first search to years after treatment. GrowthOS closes every one: ad account management, instant AI response, nurture, booking, consent, cycle coordination, stored-specimen follow-up and reviews in one platform.';
 
 export const metadata: Metadata = {
   title: TITLE,

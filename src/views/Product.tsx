@@ -131,7 +131,7 @@ const compareRows: CompareRow[] = [
     ghl: "no",
   },
   {
-    label: "AI actually runs ads / outreach / follow-up for you",
+    label: "Built-in AI for inquiries, follow-up and ad account management",
     growthos: "yes",
     hubspot: "no",
     ghl: "no",
@@ -139,20 +139,14 @@ const compareRows: CompareRow[] = [
   {
     label: "Pre-built for your specialty (live in ~24h)",
     growthos: "yes",
-    hubspot: "Weeks + agency",
-    ghl: "Weeks + agency",
+    hubspot: "Weeks of setup",
+    ghl: "Weeks of setup",
   },
   {
     label: "Contacts, pipelines, scoring, reporting",
     growthos: "yes",
     hubspot: "yes",
     ghl: "yes",
-  },
-  {
-    label: "Replaces your marketing agency",
-    growthos: "yes",
-    hubspot: "no",
-    ghl: "no",
   },
 ];
 
@@ -193,22 +187,22 @@ const modes: Mode[] = [
     title: "Transition Mode",
     subtitle: "Switch on your schedule",
     description:
-      "Already on HubSpot, Salesforce, or Tebra? We migrate you at your pace while GrowthOS does the heavy lifting, so your team keeps working in familiar tools as the AI runs underneath.",
+      "Already on HubSpot, Salesforce, or Tebra? Import tools move your data at your pace while your team keeps working.",
     featured: true,
   },
   {
     icon: Plug,
     title: "Integration Mode",
-    subtitle: "Keep your CRM, add the team",
+    subtitle: "Keep your CRM, add the AI",
     description:
-      "GrowthOS sits on top of your existing CRM via API. Pick the AI capabilities you need, from front desk to nurture, ads, and outreach, and leave your records and reporting where they live today.",
+      "GrowthOS sits on top of your existing CRM via API. Pick the AI capabilities you need, from front desk to follow-up and ad management, and leave your records and reporting where they live today.",
   },
   {
     icon: Replace,
     title: "Full Platform",
     subtitle: "Replace the patchwork entirely",
     description:
-      "GrowthOS becomes your complete patient growth infrastructure, with contacts, pipelines, inbox, automations, ads, and reporting in one place, run by the AI team.",
+      "GrowthOS becomes your complete patient growth infrastructure, with contacts, pipelines, inbox, automations, ads, and reporting in one place, operated by your team, with AI automation.",
   },
 ];
 
@@ -228,15 +222,15 @@ const Product = () => {
               The Platform
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Everything a CRM does.{" "}
+              Everything a CRM does,{" "}
               <span className="text-clay">
-                None of the work it makes you do.
+                with AI automation built in.
               </span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
               GrowthOS has the contacts, pipelines, scoring, inbox, and
-              reporting you&rsquo;d expect, plus an AI team that
-              actually does the work inside them. Most clinics realize they
+              reporting you&rsquo;d expect, plus AI automation that
+              handles routine work inside them. Most clinics realize they
               don&rsquo;t need a separate CRM at all.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -345,12 +339,10 @@ const Product = () => {
                 </span>
               </h2>
               <p className="text-base md:text-lg text-foreground leading-relaxed">
-                Every CRM gives you the boxes. Then it hands you the work:
-                someone still has to run the ads, answer the inquiry,
-                send the seventh follow-up, ask for the review, and keep the
-                records clean. GrowthOS is the only one where the records fill
-                themselves, because an AI team is already doing the work that
-                creates them.
+                Every CRM gives you the boxes. Then it hands you the work.
+                GrowthOS automates the routine steps, answering inquiries,
+                sending follow-up reminders and requesting reviews, so records
+                fill themselves.
               </p>
             </div>
           </motion.div>
@@ -377,7 +369,7 @@ const Product = () => {
               GrowthOS vs HubSpot vs GoHighLevel
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              The basics are a tie. The healthcare depth and the work-done-for-you aren&rsquo;t.
+              The basics are a tie. The healthcare depth and the built-in automation aren&rsquo;t.
             </p>
           </motion.div>
 
@@ -546,7 +538,7 @@ const Product = () => {
               See it run on your clinic.
             </h2>
             <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">
-              Twenty minutes. We&rsquo;ll show you the AI team handling real
+              Twenty minutes. We&rsquo;ll show you the software handling sample
               patient inquiries in your specialty, not a generic demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

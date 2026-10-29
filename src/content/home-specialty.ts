@@ -29,9 +29,9 @@ const fertility: HomeCopy = {
   hero: {
     pill: "The front-end operating system for fertility and specialty clinics",
     h1: "Your clinic leaks patients at eight stages. GrowthOS closes every one.",
-    sub: "From the first search to years after treatment. One system runs your ads, answers every inquiry, keeps patients moving through consult and treatment, and brings them back for the eggs and embryos they already stored.",
+    sub: "From the first search to years after treatment. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, keep patients moving through consult and treatment, and check in with patients who have eggs and embryos in storage.",
     footnote:
-      "See where your clinic leaks, benchmarked against the clinics we run. Your report arrives in your inbox in a few minutes.",
+      "See where your clinic leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
   },
   proof: {
     reply: "median first reply to a patient message",
@@ -65,7 +65,7 @@ const fertility: HomeCopy = {
   },
   healthcare: {
     hipaa: { title: "HIPAA and BAA", body: "Patient data handled to clinical standard, with a signed BAA." },
-    grief: { title: "Grief-aware", body: "Outreach pauses after a loss, and tone follows the patient." },
+    grief: { title: "Grief-aware", body: "Automated messages pause after a loss, and tone follows the patient." },
   },
 };
 
@@ -81,9 +81,9 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
     hero: {
       pill: "The front-end operating system for aesthetics and med spa clinics",
       h1: "Your med spa leaks clients at eight stages. GrowthOS closes every one.",
-      sub: "From the first search to the next touch-up. One system runs your ads, answers every inquiry, moves clients from consult to booked treatment, and brings them back when results fade and packages sit unused.",
+      sub: "From the first search to the next touch-up. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, move clients from consult to booked treatment, and check in when results fade and packages sit unused.",
       footnote:
-        "See where your med spa leaks, benchmarked against the clinics we run. Your report arrives in your inbox in a few minutes.",
+        "See where your med spa leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
     },
     proof: OTHER_PROOF,
     map: { title: "One map, from the first search to the next rebooking." },
@@ -92,7 +92,7 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
       showStats: false,
       keepTitle: "Keep. For every package, membership and credit your clients already paid for.",
       keepBody:
-        "Keep records the packages, memberships, product credit and gift cards each client holds, reaches out before they expire and when results typically fade, and gives clients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
+        "Keep records the packages, memberships, product credit and gift cards each client holds, sends scheduled reminders before they expire and when results typically fade, and gives clients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
       panelCaption: "CLIENT RECORD · KEEP",
       tiles: [
         ["Sessions left", "[#]"],
@@ -121,9 +121,9 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
     hero: {
       pill: "The front-end operating system for regenerative medicine clinics",
       h1: "Your clinic leaks patients at eight stages. GrowthOS closes every one.",
-      sub: "From the first search to the last session of the protocol. One system runs your ads, answers every inquiry, moves patients from consult to treatment start, and brings them back for the series, memberships and banked cells they already hold.",
+      sub: "From the first search to the last session of the protocol. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, move patients from consult to treatment start, and check in with patients about the series, memberships and banked cells they already hold.",
       footnote:
-        "See where your clinic leaks, benchmarked against the clinics we run. Your report arrives in your inbox in a few minutes.",
+        "See where your clinic leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
     },
     proof: OTHER_PROOF,
     map: { title: "One map, from the first search to the final follow-up." },
@@ -132,7 +132,7 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
       showStats: false,
       keepTitle: "Keep. For every banked vial, series and membership your patients already hold.",
       keepBody:
-        "Keep records the banked cells, treatment series and memberships each patient holds, reaches out before they renew or expire and at the follow-up windows you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
+        "Keep records the banked cells, treatment series and memberships each patient holds, sends scheduled reminders before they renew or expire and at the follow-up windows you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
       panelCaption: "PATIENT RECORD · KEEP",
       tiles: [
         ["Vials banked", "[#]"],
@@ -163,9 +163,9 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
     hero: {
       pill: "The front-end operating system for wellness and integrative clinics",
       h1: "Your practice leaks patients at eight stages. GrowthOS closes every one.",
-      sub: "From the first search to the next visit. One system runs your ads, answers every inquiry, moves patients from first visit to a started program, and brings them back for the packages and memberships they already have.",
+      sub: "From the first search to the next visit. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, move patients from first visit to a started program, and check in about the packages and memberships they already have.",
       footnote:
-        "See where your practice leaks, benchmarked against the clinics we run. Your report arrives in your inbox in a few minutes.",
+        "See where your practice leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
     },
     proof: OTHER_PROOF,
     map: { title: "One map, from the first search to the next visit." },
@@ -174,7 +174,7 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
       showStats: false,
       keepTitle: "Keep. For every package, membership and session your patients already paid for.",
       keepBody:
-        "Keep records the packages, memberships and IV therapy sessions each patient holds, reaches out before they expire and on the check-in schedule you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
+        "Keep records the packages, memberships and IV therapy sessions each patient holds, sends scheduled reminders before they expire and on the check-in schedule you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
       panelCaption: "PATIENT RECORD · KEEP",
       tiles: [
         ["Sessions left", "[#]"],
@@ -204,19 +204,19 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
 export const LEAK_CTA: Record<Specialty, { title: string; body: string }> = {
   fertility: {
     title: "Where does your clinic leak?",
-    body: "Get your free Leak Map: where your clinic loses patients, scored against the clinics we run, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    body: "Get your free Leak Map: where your clinic loses patients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
   },
   aesthetics: {
     title: "Where does your med spa leak?",
-    body: "Get your free Leak Map: where your med spa loses clients, scored against the clinics we run, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    body: "Get your free Leak Map: where your med spa loses clients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
   },
   // The fertility strings are already neutral.
   regenerative: {
     title: "Where does your clinic leak?",
-    body: "Get your free Leak Map: where your clinic loses patients, scored against the clinics we run, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    body: "Get your free Leak Map: where your clinic loses patients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
   },
   wellness: {
     title: "Where does your practice leak?",
-    body: "Get your free Leak Map: where your practice loses patients, scored against the clinics we run, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    body: "Get your free Leak Map: where your practice loses patients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
   },
 };

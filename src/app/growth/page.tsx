@@ -5,7 +5,7 @@ import { getGrowthosMap } from '@/lib/growthos-map';
 
 const TITLE = 'Free Leak Map: see where your clinic leaks on the GrowthOS Map | Cima';
 const DESCRIPTION =
-  'Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against the clinics we run, and send a report of which stages are leaking and the modules that close each one. Your report arrives in your inbox in a few minutes.';
+  'Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against anonymized data from active GrowthOS clinic accounts, and send a report of which stages are leaking and the modules that close each one. Your report arrives in your inbox in a few minutes.';
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -49,7 +49,7 @@ const steps = [
     title: "Train Your Agent",
     time: "5 minutes",
     description:
-      "Upload your services, FAQs, booking rules, and qualification criteria. The AI learns your clinic's voice instantly.",
+      "Upload your services, FAQs, booking rules, and qualification criteria. The AI learns your clinic's tone and wording instantly.",
   },
   {
     icon: Zap,
@@ -144,7 +144,7 @@ const pricingTiers = [
       "Everything in Starter",
       "Unlimited conversations",
       "All CRM integrations",
-      "Multi-channel (SMS, email, web chat, WhatsApp, social DMs)",
+      "Replies on the channels patients use to contact you: web chat, SMS, email, WhatsApp and social DMs",
       "Custom AI training",
       "Human escalation workflows",
       "Advanced analytics",
@@ -163,7 +163,7 @@ const faqItems = [
   {
     question: "How is this different from the chatbot that came with my CRM?",
     answer:
-      "Most CRM chatbots match keywords to canned responses. The Cima AI Agent is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI employee.",
+      "Most CRM chatbots match keywords to canned responses. The Cima AI Agent is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI assistant your team configures.",
   },
   {
     question: "Can my staff see what the AI is saying?",
@@ -183,7 +183,7 @@ const faqItems = [
   {
     question: "Can I customize what the AI says?",
     answer:
-      "You control personality, tone, FAQs, booking rules, qualification criteria, and escalation triggers. It speaks in your voice.",
+      "You control personality, tone, FAQs, booking rules, qualification criteria, and escalation triggers. It uses your clinic's tone and wording.",
   },
   {
     question: "Can I upgrade or downgrade my plan?",
@@ -281,7 +281,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               },
               {
                 stat: "24/7",
-                text: "Coverage your staff physically can't provide",
+                text: "24/7 replies to your patients, supervised by your staff",
               },
             ].map((item, i) => (
               <motion.div
@@ -314,7 +314,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
           >
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-6 text-center">
               Most "AI Chatbots" Are Glorified FAQ Pages.{" "}
-              <span className="text-clay">This Is an AI Employee.</span>
+              <span className="text-clay">An AI Assistant Your Team Controls.</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-6 mt-10">
               <div className="card-premium p-6 border-l-4 border-muted-foreground/30">
@@ -565,7 +565,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                 Want the full platform?
               </p>
               <p className="text-body-sm text-muted-foreground mb-4">
-                GrowthOS adds the entire patient acquisition system on top of your AI Agent: outreach engine, campaign builder, ad manager, landing pages, pipeline management, lead scoring, EHR integration, and more. Pricing is tailored to your clinic and shared in your demo.
+                GrowthOS adds pipelines, scheduling, forms, consent, reporting and EHR integration on top of your AI Agent. Pricing is tailored to your clinic and shared in your demo.
               </p>
               <Button asChild variant="hero-outline" size="lg" className="group">
                 <a href="/demo">

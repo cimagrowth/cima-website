@@ -8,11 +8,11 @@ const SLUG = 'wellness-marketing';
 const TITLE = 'Wellness Center Marketing Software for Clinics | Cima';
 const OG_TITLE = 'Wellness Center Marketing Software for Clinics';
 const DESCRIPTION =
-  'Wellness center marketing software that fills the calendar and keeps members active. GrowthOS runs ads, instant follow-up, rebooking, and reactivation.';
+  'Wellness center marketing software that fills the calendar and keeps members active. GrowthOS handles instant replies, follow-up, rebooking and reviews in one platform your team runs.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Wellness marketing',
-  h1Lead: 'Wellness marketing that fills the calendar and',
+  h1Lead: 'Wellness clinic software that fills the calendar and',
   h1Accent: 'keeps members coming back.',
   subhead:
     'Wellness is a relationship, not a one-time visit. GrowthOS brings new clients in, answers every inquiry instantly, and keeps members rebooking and renewing, so your recurring revenue grows instead of leaking every month.',
@@ -22,11 +22,11 @@ const content: SolutionLandingProps = {
     accent: 'They lose them quietly.',
     paragraphs: [
       'A prospective client fills out a form after seeing your post, hears nothing back for a day, and moves on. That is the visible leak. The bigger one is invisible: members who quietly stop booking, packages that go unused, and lapsed clients who would happily return if anyone reached out. Wellness lives on lifetime value, and lifetime value dies from silence, not from a bad visit.',
-      'Most clinics lean on a busy front desk to handle intake, reminders, rebooking, and win-backs by hand. It slips, every week, and the recurring revenue you already earned walks out the door.',
+      'Most clinics lean on a busy front desk to handle intake, reminders, rebooking, and follow-up by hand. It slips, every week, and the recurring revenue you already earned walks out the door.',
     ],
     points: [
       'New inquiries arrive after hours and never get a timely reply.',
-      'Members drift away with no one re-engaging them.',
+      'Members drift away with no one checking in.',
       'Unused packages and memberships quietly expire.',
       'Reviews and referrals, your cheapest growth, never get asked for.',
     ],
@@ -35,7 +35,7 @@ const content: SolutionLandingProps = {
     eyebrow: 'How GrowthOS solves it',
     heading: 'The same engine, tuned for wellness.',
     intro:
-      'GrowthOS runs demand generation, instant follow-up, retention, and reactivation for your wellness clinic in one platform. It books new clients fast and keeps existing members active and renewing.',
+      'GrowthOS handles instant replies, follow-up, rebooking and reviews in one platform your team runs. It books new clients fast and keeps existing members active and renewing.',
     features: [
       {
         icon: 'zap',
@@ -49,13 +49,13 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'bell',
-        title: 'Reactivation campaigns',
-        body: 'Wins back lapsed clients and unused packages with timely, personal outreach, recovering revenue you already earned.',
+        title: 'Follow-up for lapsed members',
+        body: 'Rebooking and follow-up messages to your own patients and inquirers who opted in, including lapsed members and unused packages, recovering revenue you already earned.',
       },
       {
         icon: 'megaphone',
-        title: 'Ads that fill the calendar',
-        body: 'Healthcare-compliant Google and Meta campaigns that bring in the right clients, without an agency retainer.',
+        title: 'Ads that book appointments, measured',
+        body: 'Healthcare-compliant campaigns in your own Google and Meta accounts, measured against booked consults.',
       },
       {
         icon: 'star',
@@ -89,31 +89,31 @@ const content: SolutionLandingProps = {
       },
       {
         title: 'Multi-service wellness centers',
-        body: 'One system across every service line, location, and provider, consistent voice, unified reporting.',
+        body: 'One system across every service line, location, and provider, consistent tone, unified reporting.',
       },
     ],
   },
   proofPoints: [
     'Instant multi-channel response',
     'Membership retention and rebooking',
-    'Reactivation built in',
+    'Opted-in follow-up built in',
     'Leads flowing on day one',
   ],
   faqs: [
     {
       question: 'What is wellness center marketing software?',
       answer:
-        'Wellness center marketing software helps clinics attract new clients, respond to inquiries instantly, and keep members active. GrowthOS combines ads, instant follow-up, rebooking, reactivation, and review requests in one platform built for wellness.',
+        'Wellness center marketing software helps clinics attract new clients, respond to inquiries instantly, and keep members active. GrowthOS combines ad account management, instant follow-up, rebooking and follow-up messages to your own patients and inquirers who opted in, and review requests in one platform built for wellness.',
     },
     {
       question: 'How does GrowthOS improve member retention?',
       answer:
-        'It automates rebooking and membership nurture, and flags members whose engagement is slipping so you can re-engage them before they lapse, protecting the recurring revenue you already earned.',
+        'It automates rebooking and membership nurture, and flags members whose engagement is slipping so your team can check in before they lapse, protecting the recurring revenue you already earned.',
     },
     {
-      question: 'Can it reactivate lapsed clients automatically?',
+      question: 'Can it follow up with lapsed clients automatically?',
       answer:
-        'Yes. GrowthOS runs automated reactivation campaigns that win back dormant clients and unused packages with timely, personal outreach.',
+        'Yes. GrowthOS sends rebooking and follow-up messages to your own patients and inquirers who opted in, including lapsed clients with unused packages, with opt-out on every message.',
     },
     {
       question: 'Does it respond to inquiries across every channel?',
@@ -154,17 +154,17 @@ const content: SolutionLandingProps = {
       {
         href: '/ai-agent',
         label: 'See the AI agent',
-        description: 'The AI team that answers, rebooks, and reactivates clients around the clock.',
+        description: 'The AI assistant that answers and rebooks clients around the clock, supervised by your team.',
       },
       {
         href: '/features',
         label: 'Explore the features',
-        description: 'Ads, unified inbox, retention, and reactivation in one platform.',
+        description: 'Ad account management, unified inbox, retention, and rebooking in one platform.',
       },
       {
         href: '/demo',
         label: 'Book a demo',
-        description: 'See the AI team run a real wellness journey, not a generic walkthrough.',
+        description: 'See the software handle a sample wellness journey, not a generic walkthrough.',
       },
     ],
   },

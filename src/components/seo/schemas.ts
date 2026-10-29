@@ -126,7 +126,7 @@ export const generateSoftwareSchema = ({
     "Automated Lead Nurturing",
     "Unified Inbox",
     "Pipeline Management",
-    "Reactivation Campaigns",
+    "Consent-Based Follow-up",
     "HIPAA Compliant",
   ],
 });

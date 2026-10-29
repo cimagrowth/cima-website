@@ -34,8 +34,7 @@ const Blog = ({ posts }: BlogProps) => {
               <span className="text-gradient-accent">Clinic Growth</span>
             </h1>
             <p className="text-body-lg text-muted-foreground">
-              Expert strategies, industry insights, and actionable advice for
-              fertility clinics, med spas, wellness centers, and regenerative medicine clinics.
+              Patient journey research and practical guides from the GrowthOS team
             </p>
 
             {isAdmin && (
@@ -52,12 +51,7 @@ const Blog = ({ posts }: BlogProps) => {
           {posts.length > 0 ? (
             // TODO: pagination at N>24
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => {
-                // Manual override (real featured image) always wins; otherwise
-                // fall back to the branded title card from the OG route.
-                const thumb =
-                  post.featured_image_url ?? `/blog/${post.slug}/opengraph-image`;
-                return (
+              {posts.map((post, index) => (
                 <motion.article
                   key={post.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -68,15 +62,29 @@ const Blog = ({ posts }: BlogProps) => {
                     href={`/blog/${post.slug}`}
                     className="card-premium p-0 overflow-hidden block group h-full"
                   >
-                    <div className="h-48 overflow-hidden">
-                      <img
-                        src={thumb}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
+                    {/* The title is printed once, below. Without a featured
+                        image the card shows a plain brand panel, not the OG
+                        title card, so the title never repeats. */}
+                    {post.featured_image_url ? (
+                      <div className="h-48 overflow-hidden">
+                        <img
+                          src={post.featured_image_url}
+                          alt=""
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    ) : (
+                      <div aria-hidden="true" className="h-48 bg-teal-deep relative overflow-hidden">
+                        <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-clay/30" />
+                        <div className="absolute -left-8 -bottom-12 w-36 h-36 rounded-full bg-mist/20" />
+                      </div>
+                    )}
 
                     <div className="p-6">
+                      <h2 className="text-heading-sm text-foreground mb-3 group-hover:text-accent-orange transition-colors">
+                        {post.title}
+                      </h2>
+
                       <div className="flex items-center gap-4 text-body-sm text-muted-foreground mb-3">
                         {post.published_at && (
                           <span className="flex items-center gap-1">
@@ -92,10 +100,6 @@ const Blog = ({ posts }: BlogProps) => {
                         )}
                       </div>
 
-                      <h2 className="text-heading-sm text-foreground mb-3 group-hover:text-accent-orange transition-colors">
-                        {post.title}
-                      </h2>
-
                       {post.excerpt && (
                         <p className="text-body text-muted-foreground line-clamp-2 mb-4">
                           {post.excerpt}
@@ -109,8 +113,7 @@ const Blog = ({ posts }: BlogProps) => {
                     </div>
                   </Link>
                 </motion.article>
-                );
-              })}
+              ))}
             </div>
           ) : (
             <motion.div
@@ -146,7 +149,7 @@ const Blog = ({ posts }: BlogProps) => {
               Every day without GrowthOS is revenue lost.
             </h2>
             <p className="text-body text-muted-foreground mb-6">
-              See how Cima's agentic platform turns insights like these into booked
+              See how GrowthOS helps your team turn insights like these into booked
               consults for fertility clinics, med spas, and wellness centers.
             </p>
             <Link href="/demo">

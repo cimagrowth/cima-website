@@ -6,89 +6,35 @@ const RefundPolicy = () => {
       <div className="container-wide px-4 md:px-6 py-12 md:py-20 max-w-4xl mx-auto">
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <h1 className="font-display text-3xl md:text-4xl font-[340] tracking-tight mb-2">Refund Policy</h1>
-          <p className="text-muted-foreground text-lg mb-8">Last Updated: February 10, 2026</p>
+          <p className="text-muted-foreground text-lg mb-8">Last updated: October 28, 2026</p>
 
           <p>
-            This Refund Policy applies to all purchases made through Cima Growth Solutions ("Cima," "we," "our," or "us"), including GrowthOS subscriptions and any associated setup fees.
+            This Refund Policy applies to GrowthOS subscriptions and add-ons purchased through our online checkout, where Paddle.com is the Merchant of Record. Subscriptions invoiced directly by Cima Growth Solutions, LLC ("Cima") under a signed GrowthOS Platform Services Agreement follow the refund terms in that agreement.
           </p>
-          <p>By purchasing or using our services, you agree to this Refund Policy.</p>
 
-          <h2>1. 14-Day Cancellation &amp; Refund Window</h2>
+          <h2>1. 14-day refund</h2>
           <p>
-            Customers may cancel their initial purchase within fourteen (14) calendar days of the original transaction date and request a refund without providing a reason, provided the conditions below are met.
+            If you are not satisfied, you can request a full refund within 14 days of your initial purchase, for any reason.
           </p>
-          <p>To request a refund, the customer must submit a written request to support@cimagrowth.com within the 14-day window.</p>
 
-          <h2>2. Conditions &amp; Deductions During the 14-Day Period</h2>
-          <p>Refunds within the 14-day period may be reduced or denied if any of the following have occurred:</p>
-          <ul>
-            <li>The platform has been substantially accessed or used, including but not limited to:
-              <ul>
-                <li>Activation of AI systems</li>
-                <li>Deployment of automations, workflows, or campaigns</li>
-                <li>Use of proprietary tools, templates, or configurations</li>
-                <li>Live integrations or production environments being enabled</li>
-              </ul>
-            </li>
-            <li>Custom setup, onboarding, or configuration work has been completed</li>
-            <li>The customer expressly requested immediate access or performance</li>
-          </ul>
-          <p>Where services have already been delivered during the 14-day period, Cima reserves the right to issue a partial refund, deducting the reasonable value of services rendered.</p>
-
-          <h2>3. Setup Fees</h2>
-          <p>Setup fees cover immediate services including:</p>
-          <ul>
-            <li>System provisioning</li>
-            <li>Platform and account configuration</li>
-            <li>AI initialization and customization</li>
-            <li>Onboarding preparation and internal resource allocation</li>
-          </ul>
-          <p>Because setup work begins immediately after purchase, setup fees are non-refundable once work has commenced, even if a cancellation occurs within the 14-day period.</p>
-
-          <h2>4. After the 14-Day Period</h2>
-          <p>Once fourteen (14) days have passed from the initial purchase date:</p>
-          <ul>
-            <li>All payments are final and non-refundable</li>
-            <li>No refunds will be issued for:
-              <ul>
-                <li>Partial billing periods</li>
-                <li>Unused subscription time</li>
-                <li>Early cancellation</li>
-                <li>Failure to use or fully implement the platform</li>
-              </ul>
-            </li>
-          </ul>
-          <p>Canceling a subscription after the 14-day period will prevent future billing but does not entitle the customer to a refund of past charges.</p>
-
-          <h2>5. Performance-Based Services</h2>
-          <p>Any performance-based fees, usage-based charges, or outcome-dependent services are non-refundable once incurred.</p>
-          <p>Results may vary due to factors outside Cima's control, including market conditions, ad spend, lead quality, responsiveness, compliance requirements, and operational capacity.</p>
-
-          <h2>6. Chargebacks &amp; Payment Disputes</h2>
-          <p>Customers agree to contact Cima Growth Solutions first to resolve billing concerns before initiating a chargeback or payment dispute.</p>
-          <p>Unauthorized chargebacks may result in:</p>
-          <ul>
-            <li>Immediate suspension or termination of services</li>
-            <li>Loss of platform access</li>
-          </ul>
-
-          <h2>7. Exceptions</h2>
-          <p>Refunds outside of this policy may be issued solely at Cima's discretion in limited circumstances such as:</p>
-          <ul>
-            <li>Duplicate charges</li>
-            <li>Billing errors caused by Cima</li>
-            <li>Legal or regulatory requirements</li>
-          </ul>
-
-          <h2>8. Policy Updates</h2>
-          <p>Cima Growth Solutions reserves the right to modify this Refund Policy at any time. Updates will apply to purchases made after the effective date of the change.</p>
-
-          <h2>9. Contact</h2>
+          <h2>2. How to request a refund</h2>
           <p>
-            For refund requests or billing questions, contact:<br />
-            Cima Growth Solutions<br />
-            Email: support@cimagrowth.com<br />
-            Website: <a href="https://cimagrowth.com">https://cimagrowth.com</a>
+            Request a refund at <a href="https://paddle.net" target="_blank" rel="noopener">https://paddle.net</a>, or email <a href="mailto:support@cimagrowth.com">support@cimagrowth.com</a> and we will arrange it with Paddle.
+          </p>
+          <p>
+            Approved refunds are returned to the original payment method, usually within 5 to 10 business days.
+          </p>
+
+          <h2>3. After 14 days</h2>
+          <p>
+            After the 14-day window, you can cancel at any time and you will not be charged again. Cancellation takes effect at the end of your current billing period. Charges already made for that period are not refunded, except where required by law or in the case of a duplicate charge or billing error.
+          </p>
+
+          <h2>4. Contact</h2>
+          <p>
+            Cima Growth Solutions, LLC<br />
+            3467 Trexler Blvd, Allentown, PA 18104<br />
+            <a href="mailto:support@cimagrowth.com">support@cimagrowth.com</a>
           </p>
         </article>
       </div>

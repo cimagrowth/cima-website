@@ -4,12 +4,12 @@ import { renderOgCard, OG_SIZE } from '@/lib/og-card';
 export const runtime = 'edge';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
-export const alt = "AI Ads for healthcare clinics | GrowthOS";
+export const alt = "Ads Manager for clinics | GrowthOS";
 
 export default function Image() {
   return renderOgCard({
-    eyebrow: "AI Ads · Stage 1 · Get found",
-    title: "Let AI run your ads, with healthcare compliance built in.",
-    sub: "Google and Meta campaigns measured against booked consults, not clicks.",
+    eyebrow: "Ads Manager · Stage 1 · Get found",
+    title: "Your clinic's own Google and Meta accounts in one place.",
+    sub: "Changes your team approves, measured against booked consults, not clicks.",
   });
 }

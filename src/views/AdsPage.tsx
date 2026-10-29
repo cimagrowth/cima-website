@@ -21,7 +21,6 @@ import {
   BarChart3,
   Palette,
   MessageSquare,
-  Mail,
   Sparkles,
   Check,
   Baby,
@@ -59,11 +58,11 @@ const itemVariants = {
 const painPoints = [
   {
     icon: ShieldAlert,
-    text: "Generic agencies don't understand fertility compliance, healthcare keyword restrictions, or why your landing page needs to say different things to an egg freezing patient vs. an IUI patient",
+    text: "Generic ad tools don't understand fertility compliance, healthcare keyword restrictions, or why your landing page needs to say different things to an egg freezing patient vs. an IUI patient",
   },
   {
     icon: CircleDollarSign,
-    text: "You end up paying for ads, plus an agency to manage them, and can't tell what's actually driving booked appointments vs. tire-kicker clicks",
+    text: "You pay for ads but can't tell what's actually driving booked appointments vs. tire-kicker clicks",
   },
   {
     icon: SlidersHorizontal,
@@ -76,19 +75,19 @@ const steps = [
     icon: ClipboardList,
     title: "Complete Your Brand Intake (15 minutes)",
     description:
-      "AI learns your clinic's voice, services, differentiators, and ideal patients.",
+      "AI learns your clinic's tone and wording, services, differentiators, and ideal patients.",
   },
   {
     icon: Link,
-    title: "Connect Google & Facebook (One click)",
+    title: "Connect Your Own Google & Meta Accounts (One click)",
     description:
-      "Your accounts stay yours. We never lock you in.",
+      "Your clinic owns its ad accounts. GrowthOS connects to them, and your team stays in control.",
   },
   {
     icon: Rocket,
-    title: "AI Generates, You Approve, It Launches",
+    title: "AI Drafts, Your Team Approves and Publishes",
     description:
-      "AI generates headlines, keywords, audience signals, ad copy, and creative images (powered by Imagen). You review and approve. Campaigns launch with healthcare keyword compliance handled automatically, including Google's medical exemption process.",
+      "AI drafts headlines, keywords, audience signals, ad copy, and AI-generated ad images. Your team reviews, approves and publishes in your own accounts, with healthcare keyword compliance checks built in, including Google's medical exemption process.",
   },
 ];
 
@@ -107,9 +106,9 @@ const features = [
   },
   {
     icon: Sparkles,
-    title: "AI-Generated Creative (Imagen)",
+    title: "AI-Generated Ad Images",
     description:
-      "AI creates ad images tailored to your specialty. No stock photos. No designer needed.",
+      "AI-generated ad images tailored to your specialty, for your team to review. No stock photos. No designer needed.",
   },
   {
     icon: Target,
@@ -121,13 +120,13 @@ const features = [
     icon: LayoutDashboard,
     title: "Google Search + Performance Max",
     description:
-      "Launch both campaign types from one dashboard with AI-optimized settings and sitelinks.",
+      "Manage both campaign types in your own Google Ads account from one dashboard, with AI-suggested settings and sitelinks.",
   },
   {
     icon: MonitorSmartphone,
     title: "Facebook & Instagram Campaigns",
     description:
-      "Create and manage campaigns for both platforms. AI handles creative, targeting, and budget allocation.",
+      "Create and manage campaigns in your own Meta account. AI suggests creative, targeting, and budget allocation for your team to approve.",
   },
   {
     icon: Globe,
@@ -139,28 +138,28 @@ const features = [
     icon: BarChart3,
     title: "Real-Time Performance Dashboard",
     description:
-      "Live dashboard plus one-click editorial-quality reports with campaign verdicts, AI insights, 30-day projections, and a full log of every optimization the system made.",
+      "Live dashboard plus one-click performance reports with campaign verdicts, AI insights, 30-day projections, and a log of every change in your account.",
   },
   {
     icon: Bot,
-    title: "AI Optimization Agent",
+    title: "AI Optimization Assistant",
     description:
-      "Nightly AI engine scores every campaign 0-100, automatically increases budgets on winners, cuts spend on losers, and tracks the actual impact 7 days later. Full change log in your report.",
+      "Scores every campaign 0-100 each night and applies budget rules you set, with caps, that suggest or apply changes in your own account. Tracks the actual impact 7 days later. Full change log in your report.",
   },
   {
     icon: Palette,
-    title: "Brand Voice Match",
+    title: "Your Clinic's Tone and Wording",
     description:
-      "Every ad sounds like your practice. AI learns your tone, positioning, and differentiators during brand intake.",
+      "Drafts match your practice. AI learns your tone, positioning, and differentiators during brand intake.",
   },
 ];
 
 const optimizationFeatures = [
   {
     icon: TrendingUp,
-    title: "Reward Winners, Starve Losers",
+    title: "Budget Rules You Set",
     description:
-      "The optimization engine scores every campaign nightly on a 0-100 scale. Top performers get automatic budget increases. Underperformers get cut, and you see exactly why in your report.",
+      "Every campaign is scored nightly on a 0-100 scale. Budget rules you set, with caps, suggest or apply changes in your own account, and you see exactly why in your report.",
   },
   {
     icon: ShieldCheck,
@@ -172,7 +171,7 @@ const optimizationFeatures = [
     icon: Gauge,
     title: "Closed-Loop Impact Tracking",
     description:
-      "Seven days after every change, the engine measures whether it actually worked. Your report shows: \"We increased this budget → projected +[N] conversions → actual: +[N].\" That's accountability most agencies can't match.",
+      "Seven days after every change, GrowthOS measures whether it actually worked. Your report shows: \"Budget rule applied: projected +[N] conversions, actual: +[N].\"",
   },
 ];
 
@@ -189,7 +188,7 @@ const activityFeed: {
   {
     timestamp: "Apr 15 · 2:04 AM",
     status: "success",
-    title: "Increased Leads-Search-English budget",
+    title: "Budget rule applied: Leads-Search-English",
     change: "$[X]/day → $[Y]/day",
     reason: "Lowest CPA in the account, limited by impressions",
     note: "Projected: +[N] conversions/week",
@@ -200,7 +199,7 @@ const activityFeed: {
     title: "Cut PMAX · IVF · Bay Area budget",
     change: "$[X]/day → $[Y]/day",
     reason: "[N] days of spend, no conversions",
-    note: "Status: Auto-executed",
+    note: "Status: Applied by a rule your team approved",
   },
   {
     timestamp: "Apr 15 · 2:05 AM",
@@ -221,7 +220,7 @@ const reportTypes = [
       "Per-campaign performance with spend, clicks, CTR, conversions, CPA",
       "Daily trend chart",
       "Campaign verdicts: Winner / Watch / Cut",
-      "Full log of every change the optimization engine made",
+      "Log of every change in your account, made by your team or by rules you approved",
     ],
     quote: "\"What did my ads do this month?\" Answered in seconds.",
   },
@@ -250,9 +249,9 @@ const beforeAfter = {
   ],
   after: [
     { label: "Response time", value: "Seconds", sub: "AI chatbot + ads = instant" },
-    { label: "Monthly wasted spend", value: "Automatically cut", sub: "by optimization engine" },
+    { label: "Monthly wasted spend", value: "Flagged daily", sub: "with fixes your team approves" },
     { label: "Time spent reviewing performance", value: "One click", sub: "one-click report" },
-    { label: "Report quality", value: "Client-ready document", sub: "with projections & insights" },
+    { label: "Report quality", value: "Board-ready document", sub: "with projections & insights" },
   ],
 };
 
@@ -307,7 +306,7 @@ const faqItems = [
   {
     question: "Do I need a Google Ads account?",
     answer:
-      "Yes, you'll connect your existing account. Don't have one? We'll help you set one up during onboarding.",
+      "Yes, you'll connect your clinic's own account. Don't have one? Guided setup walks you through creating an ad account.",
   },
   {
     question: "Can I use my own landing pages?",
@@ -317,12 +316,12 @@ const faqItems = [
   {
     question: "What about Facebook/Instagram?",
     answer:
-      "Fully supported. Create campaigns for both platforms from one dashboard.",
+      "Fully supported. Connect your clinic's own Meta account and manage campaigns for both platforms from one dashboard.",
   },
   {
-    question: "How is this different from hiring an agency?",
+    question: "Who controls the ad accounts?",
     answer:
-      "Agencies take weeks to launch and often control your ad accounts. Our AI generates campaigns in minutes, and you keep full control of your accounts. Pricing is tailored to your clinic and shared in your demo.",
+      "Your clinic does. GrowthOS connects to your own Google and Meta accounts, AI drafts campaigns in minutes, and your team approves every change. Pricing is tailored to your clinic and shared in your demo.",
   },
   {
     question: "Can I upgrade to GrowthOS later?",
@@ -341,11 +340,6 @@ const upgradePaths = [
     icon: MessageSquare,
     title: "AI Agent",
     description: "Convert website visitors into booked consultations 24/7 with emotionally intelligent conversation.",
-  },
-  {
-    icon: Mail,
-    title: "AI Outreach",
-    description: "Find and nurture prospects with AI-enriched, personalized 12-step email sequences.",
   },
   {
     icon: Sparkles,
@@ -380,7 +374,7 @@ const AdsPage = () => {
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-paper border border-sand shadow-[var(--shadow-sm)] text-clay font-ui text-body-sm font-semibold mb-6">
                 <Zap className="w-4 h-4" />
-                AI-Powered Google & Facebook Ads
+                Ads Manager for Google & Meta
               </span>
             </motion.div>
 
@@ -388,17 +382,17 @@ const AdsPage = () => {
               variants={itemVariants}
               className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
-              Let AI Run Your Ads.{" "}
-              <span className="text-clay">Built for Healthcare.</span>
+              Ads Manager for Clinics.{" "}
+              <span className="text-clay">Your Google and Meta Accounts in One Place.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-body-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto"
             >
-              AI builds, launches, and optimizes your Google and Facebook ad
-              campaigns, with healthcare compliance built in, so you get more
-              booked consultations without touching Ads Manager.
+              Manage your clinic&apos;s own Google and Meta ad accounts from
+              GrowthOS: AI drafts campaigns, your team reviews and approves, and
+              every result is tracked to booked consults.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -431,7 +425,7 @@ const AdsPage = () => {
               The Problem
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
-              Running Ads for a Medical Practice Is a Specialized Skill. Most Agencies Don't Have It.
+              See which ads bring in booked consults.
             </h2>
           </motion.div>
 
@@ -473,7 +467,7 @@ const AdsPage = () => {
               How It Works
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              From Brand Intake to Live Campaigns in Under an Hour.
+              From Brand Intake to Approved Campaigns in Under an Hour.
             </h2>
           </motion.div>
 
@@ -534,7 +528,7 @@ const AdsPage = () => {
               What You Get
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
-              Everything to Run Ads That Actually Convert Patients. Not Just Clicks.
+              Everything Your Team Needs to Manage Ads That Convert Patients. Not Just Clicks.
             </h2>
           </motion.div>
 
@@ -592,13 +586,12 @@ const AdsPage = () => {
               How It's Different
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Your Ads Get Smarter Every Night While You Sleep.
+              Your Ads Are Checked Every Night.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Most platforms launch your ads and walk away. GrowthOS watches every
-              campaign, every day, and automatically adjusts budgets, pauses waste,
-              and doubles down on what's converting. No agency. No manual reviews.
-              No wasted spend.
+              Your team manages your ads. GrowthOS monitors them and recommends changes
+              you approve, flags wasted spend, and applies only the budget rules
+              your team has set.
             </p>
           </motion.div>
 
@@ -739,10 +732,10 @@ const AdsPage = () => {
               Proof, Not Promises
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              One-Click Reports That Would Take an Agency Weeks.
+              One-click performance reports for your ad accounts.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Generate client-ready Google Ads reports in seconds. Not spreadsheets.
+              Generate board-ready ad reports in seconds. Not spreadsheets.
               Editorial-quality documents with campaign breakdowns, AI insights,
               change logs, and 30-day projections.
             </p>
@@ -812,8 +805,8 @@ const AdsPage = () => {
                   </p>
                   <p className="text-heading-sm text-paper">
                     A document you'd hand to your board, your investors, or your
-                    partner. With projections, AI insights, and a record of every
-                    optimization we made on your behalf.
+                    partner. With projections, AI insights, and a log of every
+                    change in your account, made by your team or by rules you approved.
                   </p>
                 </div>
               </div>
@@ -851,7 +844,7 @@ const AdsPage = () => {
               Real Results
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
-              What Happens When AI Manages Your Ad Spend.
+              What Changes When Your Team Has One Ad Dashboard.
             </h2>
           </motion.div>
 
@@ -926,8 +919,8 @@ const AdsPage = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center text-body-lg text-muted-foreground mt-12 max-w-3xl mx-auto"
           >
-            The AI doesn't just run your ads. It runs your ads, monitors your ads,
-            optimizes your ads, and proves they're working. Every single month.
+            Your team manages your ads. GrowthOS monitors them and recommends changes
+            you approve, and shows whether they are working. Every single month.
           </motion.p>
         </div>
       </section>
@@ -946,7 +939,7 @@ const AdsPage = () => {
               Built For Your Specialty
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              AI Ads Tailored to Your Practice
+              Ad Drafts Tailored to Your Practice
             </h2>
             <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
               See example AI-generated headlines for your specialty.
@@ -1021,9 +1014,9 @@ const AdsPage = () => {
               Part of the GrowthOS Growth Plan.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              AI Ads is built into the GrowthOS Growth plan, and it is available
-              with the Cima AI Agent Pro plan. Your ad accounts always stay
-              yours, and we never lock you in. Pricing is tailored to your clinic
+              Ads Manager is built into the GrowthOS Growth plan, and it is
+              available with the Cima AI Agent Pro plan. Your ad accounts always
+              stay yours. Pricing is tailored to your clinic
               and shared in your demo.
             </p>
           </motion.div>
@@ -1041,59 +1034,6 @@ const AdsPage = () => {
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ────────── VS AGENCY COMPARISON ────────── */}
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <span className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-clay mb-4 block">
-              The Comparison
-            </span>
-            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Why Clinics Switch From Agencies to Cima AI Ads
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="overflow-x-auto rounded-2xl border border-border shadow-card max-w-3xl lg:max-w-5xl mx-auto"
-          >
-            <table className="w-full text-sm md:text-base">
-              <thead>
-                <tr className="bg-teal text-paper">
-                  <th className="text-left px-4 md:px-6 py-4 font-semibold rounded-tl-2xl"></th>
-                  <th className="text-left px-4 md:px-6 py-4 font-semibold">Marketing Agency</th>
-                  <th className="text-left px-4 md:px-6 py-4 font-semibold text-sand rounded-tr-2xl">Cima AI Ads</th>
-                </tr>
-              </thead>
-              <tbody className="bg-card">
-                {[
-                  { label: "Campaign launch time", agency: "Weeks", cima: "Same day" },
-                  { label: "Healthcare compliance", agency: "Manual (error-prone)", cima: "Automatic" },
-                  { label: "Ad account ownership", agency: "Often agency-controlled", cima: "Always yours" },
-                  { label: "Landing pages", agency: "Extra cost", cima: "Included" },
-                  { label: "Reporting", agency: "Monthly PDF", cima: "Real-time dashboard" },
-                ].map((row, i, arr) => (
-                  <tr key={row.label} className={i < arr.length - 1 ? "border-b border-border" : ""}>
-                    <td className="px-4 md:px-6 py-4 font-medium text-foreground">{row.label}</td>
-                    <td className="px-4 md:px-6 py-4 text-muted-foreground">{row.agency}</td>
-                    <td className="px-4 md:px-6 py-4 font-semibold text-accent-orange">{row.cima}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </motion.div>
         </div>
       </section>
@@ -1187,11 +1127,11 @@ const AdsPage = () => {
               Ready?
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-paper mb-4">
-              Every Dollar of Ad Spend Without AI Optimization Is a Dollar Half-Wasted.
+              Know which ad dollars bring in booked consults.
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
-              Join clinics that launch campaigns in minutes, not weeks, and
-              know exactly which dollars drive booked appointments.
+              See your own ad accounts, every change your team approves, and the
+              booked appointments behind every dollar.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <Button asChild variant="hero" size="xl" className="group">

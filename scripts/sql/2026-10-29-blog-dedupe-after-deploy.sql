@@ -1,0 +1,174 @@
+-- Run AFTER the Paddle compliance deploy is live (the 301s in next.config.js
+-- must already be serving, or these URLs 404 in the meantime).
+--
+-- 1. Copies a topic cluster onto the kept post when the kept post has none, so
+--    its related-solution card and "Read more" grid keep working.
+-- 2. Marks every redirected duplicate as a draft. Rows are not deleted; the
+--    kept/redirected pairs live in src/content/blog-redirects.json. To restore
+--    a post, set it back to 'published' and delete its entry from that file.
+--
+-- A full copy of the table before any 2026-10-29 edit is in
+-- public.website_blog_posts_backup_20261029.
+
+begin;
+
+with pairs(from_slug, to_slug) as (values
+  ('sms-98-percent-open-rate-fertility-clinic-patient-engagement', 'sms-98-percent-open-rate-fertility-clinics'),
+  ('sms-98-percent-open-rate-fertility-clinics-mvp36ufz', 'sms-98-percent-open-rate-fertility-clinics'),
+  ('the-50k-revenue-leak-fertility-patient-attrition-math', 'the-50k-revenue-leak-fertility-clinic-inquiry-response'),
+  ('the-50k-revenue-leak-speed-to-lead-fertility-clinic', 'the-50k-revenue-leak-fertility-clinic-inquiry-response'),
+  ('one-creative-79-percent-leads-fertility-ad-testing', 'one-creative-79-percent-leads-fertility-campaign-data'),
+  ('one-creative-79-percent-leads-fertility-campaign-data-mvjdf9ju', 'one-creative-79-percent-leads-fertility-campaign-data'),
+  ('5-hook-types-fertility-ads-first-line', '5-hook-types-fertility-ads-stop-scroll'),
+  ('5-hook-types-fertility-ads-that-convert', '5-hook-types-fertility-ads-stop-scroll'),
+  ('7-section-landing-page-fertility-clinic-growth-system', '7-section-landing-page-fertility-clinic-conversion'),
+  ('7-section-landing-page-fertility-clinic-patient-conversion', '7-section-landing-page-fertility-clinic-conversion'),
+  ('below-button-subtext-fertility-consultation-conversion', 'below-button-subtext-fertility-clinic-conversion'),
+  ('below-button-subtext-fertility-consultation-conversion-muxxti74', 'below-button-subtext-fertility-clinic-conversion'),
+  ('ethical-urgency-fertility-marketing-framework-45', 'ethical-urgency-fertility-marketing-framework'),
+  ('ethical-urgency-fertility-marketing-without-manipulation', 'ethical-urgency-fertility-marketing-framework'),
+  ('google-ads-headline-architecture-fertility-clinics', 'google-rsa-headline-architecture-fertility-clinics'),
+  ('google-rsa-headline-architecture-fertility-clinic-ads', 'google-rsa-headline-architecture-fertility-clinics'),
+  ('google-rsa-headline-architecture-fertility-clinic-system', 'google-rsa-headline-architecture-fertility-clinics'),
+  ('halbert-headline-formula-fertility-clinic-patient-inquiry', 'halbert-headline-formula-fertility-clinic-first-5-minutes'),
+  ('halbert-headline-formula-patient-leakage-fertility-clinics', 'halbert-headline-formula-fertility-clinic-first-5-minutes'),
+  ('kennedys-sales-letter-structure-fertility-clinic-acquisition-stack', 'kennedys-sales-letter-structure-fertility-clinic-websites'),
+  ('kennedys-sales-letter-structure-fertility-patient-acquisition', 'kennedys-sales-letter-structure-fertility-clinic-websites'),
+  ('loss-aversion-fertility-clinic-patient-acquisition', 'loss-aversion-fertility-clinic-growth-system'),
+  ('loss-aversion-fertility-marketing-loss-formula', 'loss-aversion-fertility-clinic-growth-system'),
+  ('loss-aversion-loss-formula-fertility-clinic-patient-leakage', 'loss-aversion-fertility-clinic-growth-system'),
+  ('soap-opera-sequence-fertility-clinic-email-nurture', 'soap-opera-sequence-fertility-email-nurture'),
+  ('soap-opera-sequence-fertility-email-automation', 'soap-opera-sequence-fertility-email-nurture'),
+  ('zeigarnik-effect-fertility-clinic-patient-acquisition', 'zeigarnik-loop-fertility-clinic-inquiry-response'),
+  ('zeigarnik-effect-fertility-clinic-patient-inquiry', 'zeigarnik-loop-fertility-clinic-inquiry-response'),
+  ('the-13-hour-patient-fertility-clinic-patient-leakage', '13-hour-patient-fertility-clinic-response-time-revenue'),
+  ('the-13-hour-patient-fertility-clinic-revenue-leak', '13-hour-patient-fertility-clinic-response-time-revenue'),
+  ('the-mirror-test-fertility-clinic-inquiry-response', 'the-mirror-test-submit-inquiry-fertility-clinic-response-time'),
+  ('3-field-rule-fertility-clinic-form-conversion', '3-field-rule-fertility-clinic-form-conversions'),
+  ('4u-subheadline-formula-fertility-clinic-copy', '4u-subheadline-formula-fertility-clinic-marketing'),
+  ('content-rotation-fertility-email-sequences-mvqimt7g', 'content-rotation-fertility-email-sequences'),
+  ('direct-response-legends-fertility-clinic-content-rotation', 'content-rotation-fertility-email-sequences'),
+  ('email-subject-line-formulas-fertility-clinics-mvnnqxtl', 'email-subject-line-formulas-fertility-clinics'),
+  ('fertility-email-subject-line-formulas-framework-17', 'email-subject-line-formulas-fertility-clinics'),
+  ('emotional-vs-logical-ad-copy-fertility-clinic-framework', 'emotional-vs-logical-ad-copy-fertility-clinics'),
+  ('hook-story-offer-email-framework-fertility-clinics', 'hook-story-offer-fertility-clinic-email-framework'),
+  ('pastor-framework-fertility-email-conversion', 'pastor-framework-fertility-marketing-mistake'),
+  ('patient-segmentation-journey-stage-fertility-clinics', 'patient-segmentation-journey-stage-fertility-clinic-ai-gap'),
+  ('quality-score-keyword-ad-alignment-fertility-clinic-ads', 'quality-score-keyword-ad-alignment-fertility-clinics'),
+  ('quiz-funnels-fertility-clinic-patient-conversion', 'quiz-funnels-fertility-clinic-patient-acquisition'),
+  ('schwartz-awareness-levels-fertility-clinic-marketing-funnel', 'schwartz-awareness-levels-fertility-clinic-first-5-minutes'),
+  ('send-time-optimization-fertility-email-timing', 'send-time-optimization-fertility-clinic-first-5-minutes'),
+  ('sms-tapering-schedule-patient-leakage-fertility-clinics', 'sms-tapering-schedule-fertility-clinic-first-5-minutes'),
+  ('social-proof-hierarchy-fertility-marketing', 'social-proof-hierarchy-fertility-clinic-authority'),
+  ('the-front-end-gap-fertility-clinic-patient-acquisition', 'front-end-gap-fertility-clinic-patient-acquisition'),
+  ('chaperons-indoctrination-sequence-fertility-email-framework', 'chaperon-indoctrination-sequence-fertility-clinic-email-automation'),
+  ('hope-framework-fertility-patient-ethics-conversion', 'hope-framework-ethical-automation-fertility-clinics'),
+  ('trust-stack-fertility-clinic-patient-conversion', 'trust-stack-hipaa-badge-form-abandonment-fertility-clinics'),
+  ('hopkins-replace-every-vague-claim-fertility-marketing', 'hopkins-framework-replace-vague-claims-fertility-marketing'),
+  ('a-pile-framework-fertility-clinic-emails', 'the-a-pile-fertility-clinic-email-marketing'),
+  ('post-failed-cycle-patient-retention-halbert-starving-crowd', 'halbert-starving-crowd-fertility-patient-segments'),
+  ('first-person-cta-fertility-clinic-button-copy', 'first-person-ctas-fertility-clinic-button-copy'),
+  ('unified-system-why-tools-are-not-a-growth-strategy', 'unified-system-fertility-marketing-framework'),
+  ('email-length-by-purpose-fertility-marketing', 'patient-leakage-email-length-fertility-clinics'),
+  ('healthcare-crm', 'healthcare-crm-software'),
+  ('crm-for-medical-practice', 'healthcare-crm-software'),
+  ('medical-crm', 'healthcare-crm-software'),
+  ('patient-engagement-platform', 'patient-engagement-solutions'),
+  ('patient-engagement-software', 'patient-engagement-solutions'),
+  ('patient-communication-platform', 'patient-communication-software'),
+  ('patient-retention', 'patient-retention-software'),
+  ('patient-retention-strategies', 'patient-retention-software'),
+  ('med-spa-marketing', 'med-spa-marketing-ideas'),
+  ('medical-spa-marketing', 'med-spa-marketing-ideas'),
+  ('medical-practice-marketing', 'medical-practice-marketing-ideas'),
+  ('patient-acquisition', 'patient-acquisition-strategies'),
+  ('new-patient-acquisition', 'patient-acquisition-strategies')
+)
+update website_blog_posts kept
+set cluster = src.cluster
+from (
+  select distinct on (p.to_slug) p.to_slug, b.cluster
+  from pairs p join website_blog_posts b on b.slug = p.from_slug
+  where b.cluster is not null
+  order by p.to_slug, b.published_at
+) src
+where kept.slug = src.to_slug and kept.cluster is null;
+
+with pairs(from_slug, to_slug) as (values
+  ('sms-98-percent-open-rate-fertility-clinic-patient-engagement', 'sms-98-percent-open-rate-fertility-clinics'),
+  ('sms-98-percent-open-rate-fertility-clinics-mvp36ufz', 'sms-98-percent-open-rate-fertility-clinics'),
+  ('the-50k-revenue-leak-fertility-patient-attrition-math', 'the-50k-revenue-leak-fertility-clinic-inquiry-response'),
+  ('the-50k-revenue-leak-speed-to-lead-fertility-clinic', 'the-50k-revenue-leak-fertility-clinic-inquiry-response'),
+  ('one-creative-79-percent-leads-fertility-ad-testing', 'one-creative-79-percent-leads-fertility-campaign-data'),
+  ('one-creative-79-percent-leads-fertility-campaign-data-mvjdf9ju', 'one-creative-79-percent-leads-fertility-campaign-data'),
+  ('5-hook-types-fertility-ads-first-line', '5-hook-types-fertility-ads-stop-scroll'),
+  ('5-hook-types-fertility-ads-that-convert', '5-hook-types-fertility-ads-stop-scroll'),
+  ('7-section-landing-page-fertility-clinic-growth-system', '7-section-landing-page-fertility-clinic-conversion'),
+  ('7-section-landing-page-fertility-clinic-patient-conversion', '7-section-landing-page-fertility-clinic-conversion'),
+  ('below-button-subtext-fertility-consultation-conversion', 'below-button-subtext-fertility-clinic-conversion'),
+  ('below-button-subtext-fertility-consultation-conversion-muxxti74', 'below-button-subtext-fertility-clinic-conversion'),
+  ('ethical-urgency-fertility-marketing-framework-45', 'ethical-urgency-fertility-marketing-framework'),
+  ('ethical-urgency-fertility-marketing-without-manipulation', 'ethical-urgency-fertility-marketing-framework'),
+  ('google-ads-headline-architecture-fertility-clinics', 'google-rsa-headline-architecture-fertility-clinics'),
+  ('google-rsa-headline-architecture-fertility-clinic-ads', 'google-rsa-headline-architecture-fertility-clinics'),
+  ('google-rsa-headline-architecture-fertility-clinic-system', 'google-rsa-headline-architecture-fertility-clinics'),
+  ('halbert-headline-formula-fertility-clinic-patient-inquiry', 'halbert-headline-formula-fertility-clinic-first-5-minutes'),
+  ('halbert-headline-formula-patient-leakage-fertility-clinics', 'halbert-headline-formula-fertility-clinic-first-5-minutes'),
+  ('kennedys-sales-letter-structure-fertility-clinic-acquisition-stack', 'kennedys-sales-letter-structure-fertility-clinic-websites'),
+  ('kennedys-sales-letter-structure-fertility-patient-acquisition', 'kennedys-sales-letter-structure-fertility-clinic-websites'),
+  ('loss-aversion-fertility-clinic-patient-acquisition', 'loss-aversion-fertility-clinic-growth-system'),
+  ('loss-aversion-fertility-marketing-loss-formula', 'loss-aversion-fertility-clinic-growth-system'),
+  ('loss-aversion-loss-formula-fertility-clinic-patient-leakage', 'loss-aversion-fertility-clinic-growth-system'),
+  ('soap-opera-sequence-fertility-clinic-email-nurture', 'soap-opera-sequence-fertility-email-nurture'),
+  ('soap-opera-sequence-fertility-email-automation', 'soap-opera-sequence-fertility-email-nurture'),
+  ('zeigarnik-effect-fertility-clinic-patient-acquisition', 'zeigarnik-loop-fertility-clinic-inquiry-response'),
+  ('zeigarnik-effect-fertility-clinic-patient-inquiry', 'zeigarnik-loop-fertility-clinic-inquiry-response'),
+  ('the-13-hour-patient-fertility-clinic-patient-leakage', '13-hour-patient-fertility-clinic-response-time-revenue'),
+  ('the-13-hour-patient-fertility-clinic-revenue-leak', '13-hour-patient-fertility-clinic-response-time-revenue'),
+  ('the-mirror-test-fertility-clinic-inquiry-response', 'the-mirror-test-submit-inquiry-fertility-clinic-response-time'),
+  ('3-field-rule-fertility-clinic-form-conversion', '3-field-rule-fertility-clinic-form-conversions'),
+  ('4u-subheadline-formula-fertility-clinic-copy', '4u-subheadline-formula-fertility-clinic-marketing'),
+  ('content-rotation-fertility-email-sequences-mvqimt7g', 'content-rotation-fertility-email-sequences'),
+  ('direct-response-legends-fertility-clinic-content-rotation', 'content-rotation-fertility-email-sequences'),
+  ('email-subject-line-formulas-fertility-clinics-mvnnqxtl', 'email-subject-line-formulas-fertility-clinics'),
+  ('fertility-email-subject-line-formulas-framework-17', 'email-subject-line-formulas-fertility-clinics'),
+  ('emotional-vs-logical-ad-copy-fertility-clinic-framework', 'emotional-vs-logical-ad-copy-fertility-clinics'),
+  ('hook-story-offer-email-framework-fertility-clinics', 'hook-story-offer-fertility-clinic-email-framework'),
+  ('pastor-framework-fertility-email-conversion', 'pastor-framework-fertility-marketing-mistake'),
+  ('patient-segmentation-journey-stage-fertility-clinics', 'patient-segmentation-journey-stage-fertility-clinic-ai-gap'),
+  ('quality-score-keyword-ad-alignment-fertility-clinic-ads', 'quality-score-keyword-ad-alignment-fertility-clinics'),
+  ('quiz-funnels-fertility-clinic-patient-conversion', 'quiz-funnels-fertility-clinic-patient-acquisition'),
+  ('schwartz-awareness-levels-fertility-clinic-marketing-funnel', 'schwartz-awareness-levels-fertility-clinic-first-5-minutes'),
+  ('send-time-optimization-fertility-email-timing', 'send-time-optimization-fertility-clinic-first-5-minutes'),
+  ('sms-tapering-schedule-patient-leakage-fertility-clinics', 'sms-tapering-schedule-fertility-clinic-first-5-minutes'),
+  ('social-proof-hierarchy-fertility-marketing', 'social-proof-hierarchy-fertility-clinic-authority'),
+  ('the-front-end-gap-fertility-clinic-patient-acquisition', 'front-end-gap-fertility-clinic-patient-acquisition'),
+  ('chaperons-indoctrination-sequence-fertility-email-framework', 'chaperon-indoctrination-sequence-fertility-clinic-email-automation'),
+  ('hope-framework-fertility-patient-ethics-conversion', 'hope-framework-ethical-automation-fertility-clinics'),
+  ('trust-stack-fertility-clinic-patient-conversion', 'trust-stack-hipaa-badge-form-abandonment-fertility-clinics'),
+  ('hopkins-replace-every-vague-claim-fertility-marketing', 'hopkins-framework-replace-vague-claims-fertility-marketing'),
+  ('a-pile-framework-fertility-clinic-emails', 'the-a-pile-fertility-clinic-email-marketing'),
+  ('post-failed-cycle-patient-retention-halbert-starving-crowd', 'halbert-starving-crowd-fertility-patient-segments'),
+  ('first-person-cta-fertility-clinic-button-copy', 'first-person-ctas-fertility-clinic-button-copy'),
+  ('unified-system-why-tools-are-not-a-growth-strategy', 'unified-system-fertility-marketing-framework'),
+  ('email-length-by-purpose-fertility-marketing', 'patient-leakage-email-length-fertility-clinics'),
+  ('healthcare-crm', 'healthcare-crm-software'),
+  ('crm-for-medical-practice', 'healthcare-crm-software'),
+  ('medical-crm', 'healthcare-crm-software'),
+  ('patient-engagement-platform', 'patient-engagement-solutions'),
+  ('patient-engagement-software', 'patient-engagement-solutions'),
+  ('patient-communication-platform', 'patient-communication-software'),
+  ('patient-retention', 'patient-retention-software'),
+  ('patient-retention-strategies', 'patient-retention-software'),
+  ('med-spa-marketing', 'med-spa-marketing-ideas'),
+  ('medical-spa-marketing', 'med-spa-marketing-ideas'),
+  ('medical-practice-marketing', 'medical-practice-marketing-ideas'),
+  ('patient-acquisition', 'patient-acquisition-strategies'),
+  ('new-patient-acquisition', 'patient-acquisition-strategies')
+)
+update website_blog_posts b
+set status = 'draft', updated_at = now()
+from pairs p
+where b.slug = p.from_slug and b.status = 'published';
+
+commit;

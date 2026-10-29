@@ -7,7 +7,6 @@ const ADD_ONS = [
   { stage: "STAGE 4", name: "Telehealth" },
   { stage: "STAGE 4", name: "Custom AI Agent" },
   { stage: "STAGE 5", name: "Consent & Education" },
-  { stage: "ANY STAGE", name: "Website Management" },
 ];
 
 /** One plan, no prices. Pricing is shared in the demo. */
@@ -22,7 +21,7 @@ export default function OnePlan() {
               GrowthOS Growth. The whole Map.
             </h2>
             <p className="text-[17px] leading-relaxed text-paper/85">
-              Every stage, the full AI team and Keep, included. Pricing is tailored to your clinic and
+              Every stage, the built-in AI agents and Keep, included. Pricing is tailored to your clinic and
               number of locations, and shared in your demo. Monthly, six-month and annual terms.
             </p>
             <Link href="/demo" className={`${BTN_PRIMARY} mt-2 self-start md:text-[17px]`}>

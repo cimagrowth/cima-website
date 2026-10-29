@@ -18,8 +18,8 @@ export type ClusterLink = { hub: string; product: string };
 /** cluster -> { hub page, product page } */
 export const CLUSTER_LINKS: Record<string, ClusterLink> = {
   'fertility-email': { hub: '/fertility-clinic-marketing', product: '/ai-agent' },
-  'fertility-copywriting': { hub: '/fertility-clinic-marketing', product: '/ads' },
-  'fertility-ads': { hub: '/fertility-clinic-marketing', product: '/ads' },
+  'fertility-copywriting': { hub: '/fertility-clinic-marketing', product: '/product' },
+  'fertility-ads': { hub: '/fertility-clinic-marketing', product: '/product' },
   'fertility-conversion': { hub: '/fertility-clinic-marketing', product: '/features' },
   'fertility-leakage': { hub: '/fertility-clinic-marketing', product: '/ai-agent' },
   'fertility-trust': { hub: '/fertility-clinic-marketing', product: '/features' },
@@ -28,7 +28,7 @@ export const CLUSTER_LINKS: Record<string, ClusterLink> = {
   'healthcare-crm': { hub: '/healthcare-crm', product: '/product' },
   'med-spa': { hub: '/med-spa-marketing', product: '/ai-agent' },
   'medical-practice': { hub: '/medical-practice-marketing', product: '/product' },
-  'patient-acquisition': { hub: '/patient-acquisition', product: '/ads' },
+  'patient-acquisition': { hub: '/patient-acquisition', product: '/product' },
   'patient-engagement': { hub: '/patient-engagement-platform', product: '/ai-agent' },
 };
 
@@ -53,8 +53,8 @@ export const PAGE_META: Record<string, { label: string; blurb: string }> = {
     blurb: 'Fill the chair and keep aesthetic clients rebooking.',
   },
   '/medical-practice-marketing': {
-    label: 'Medical practice marketing',
-    blurb: 'One platform in place of the agency, ads manager, and chatbot.',
+    label: 'Medical practice software',
+    blurb: 'Inbox, CRM, booking and ad management in one platform your staff operates.',
   },
   '/patient-acquisition': {
     label: 'Patient acquisition',
@@ -67,10 +67,6 @@ export const PAGE_META: Record<string, { label: string; blurb: string }> = {
   '/ai-agent': {
     label: 'The AI patient agent',
     blurb: 'An AI front desk that answers inquiries in seconds, day or night.',
-  },
-  '/ads': {
-    label: 'Done-for-you patient ads',
-    blurb: 'Ad creative and targeting built to book high-intent patients.',
   },
   '/features': {
     label: 'The GrowthOS platform',
