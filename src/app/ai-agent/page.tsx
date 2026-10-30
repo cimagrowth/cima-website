@@ -3,7 +3,7 @@ import AIAgent from '@/views/AIAgent';
 import { formatClinics, formatConversations, getPlatformStats } from '@/lib/growthos-map';
 
 export const metadata: Metadata = {
-  title: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
+  title: 'AI Front Desk for Healthcare Clinics: Replies in Seconds, Follows Up for Weeks',
   description: 'Your clinic\'s AI front desk. Responds in seconds, qualifies leads, books appointments 24/7, and hands off with full context.',
   keywords: [
     'AI agent', 'clinic AI', 'patient engagement', 'GoHighLevel AI',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://cimagrowth.com/ai-agent' },
   openGraph: {
-    title: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
+    title: 'AI Front Desk for Healthcare Clinics: Replies in Seconds, Follows Up for Weeks',
     description: 'Your clinic\'s AI front desk. Responds in seconds, qualifies leads, books appointments 24/7, and hands off with full context.',
     url: 'https://cimagrowth.com/ai-agent',
     siteName: 'Cima Growth Solutions',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Agent for Healthcare Clinics – Responds in Seconds, Nurtures for Weeks',
+    title: 'AI Front Desk for Healthcare Clinics: Replies in Seconds, Follows Up for Weeks',
     description: 'Your clinic\'s AI front desk. Responds in seconds, qualifies leads, books appointments 24/7, and hands off with full context.',
   },
 };

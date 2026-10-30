@@ -163,7 +163,7 @@ const content: SolutionLandingProps = {
         description: 'The AI assistant that answers and rebooks clients around the clock, supervised by your team.',
       },
       {
-        href: '/features',
+        href: '/product#features',
         label: 'Explore the features',
         description: 'Ad account management, unified inbox, retention, and rebooking in one platform.',
       },

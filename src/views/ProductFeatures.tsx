@@ -1,10 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import FinalCTA from "@/components/home/FinalCTA";
 import {
-  ArrowRight,
   Brain,
   Zap,
   Phone,
@@ -21,7 +18,6 @@ import {
   Database,
   Star,
   Sparkles,
-  Send,
   LayoutDashboard,
   CreditCard,
   Share2,
@@ -33,7 +29,6 @@ import {
   Settings,
   MessageCircle,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -146,8 +141,6 @@ const inboxChannels = [
   "WhatsApp",
   "Instagram DM",
   "Facebook Messenger",
-  "TikTok",
-  "Google Business Chat",
   "Web Chat",
   "Web Forms",
 ];
@@ -268,13 +261,13 @@ const reputationCards = [
     icon: Globe,
     title: "Google Business Optimization",
     description:
-      "Drive your Google Business Profile to the top of local search with review velocity, post scheduling, and listing accuracy tools.",
+      "Review velocity, post scheduling, and listing accuracy tools for your Google Business Profile.",
   },
   {
     icon: TrendingUp,
     title: "SEO & Website Analytics",
     description:
-      "Track keyword rankings, website traffic, and lead sources. Semrush and Google Analytics-level data, built right into your CRM.",
+      "Track keyword rankings, website traffic, and lead sources, built right into your CRM.",
   },
 ];
 
@@ -360,64 +353,22 @@ const hipaaTags = [
   "Audit Logs",
 ];
 
-const migrationCards = [
-  {
-    icon: Send,
-    title: "HubSpot Migration",
-    description:
-      "Contacts, deals, workflows, and email templates: import tools move everything over and map it to GrowthOS pipelines.",
-  },
-  {
-    icon: Database,
-    title: "Salesforce Migration",
-    description:
-      "Full CRM data migration with field mapping, custom object support, and parallel-run capability during transition.",
-  },
-  {
-    icon: Share2,
-    title: "Tebra & Others",
-    description:
-      "GrowthOS works with your existing stack: EMRs, billing platforms, phone systems. This ensures a smooth, complete transition.",
-  },
-];
 
 // ──────────────────────────────────────────────
 // Main component
 // ──────────────────────────────────────────────
 
-const Features = () => {
+/** Every GrowthOS feature, shown at the end of /product under #features. */
+const ProductFeatures = () => {
   return (
-    <>
-      {/* ── HERO ── */}
-      <section className="pt-28 pb-[clamp(64px,8vw,120px)] md:pt-36 bg-cream relative overflow-hidden">
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="container-wide relative z-10 text-center"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-paper border border-sand text-clay text-body-sm font-semibold shadow-[var(--shadow-sm)] mb-6">
-            <Sparkles className="w-4 h-4" />
-            Platform Overview
-          </span>
-          <h1 className="font-display font-semibold tracking-[-.02em] text-3xl sm:text-4xl md:text-5xl lg:text-display text-teal-deep mb-6 max-w-4xl lg:max-w-5xl mx-auto leading-tight">
-            One platform.{" "}
-            <em className="text-clay">Everything</em>{" "}
-            your clinic needs.
-          </h1>
-          <p className="text-lg md:text-xl text-teal-deep/80 max-w-3xl mx-auto mb-10">
-            GrowthOS replaces your CRM, patient inbox, scheduling and reporting tools,
-            plus your review tools and analytics suite. All HIPAA-compliant, all in one place.
-          </p>
-          <Link href="/demo">
-            <Button variant="hero" size="lg" className="text-base group">
-              Schedule a Demo
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
-        </motion.div>
+    <div id="features" className="scroll-mt-24">
+      <section className="pt-[clamp(64px,8vw,120px)] bg-background">
+        <div className="container-wide text-center">
+          <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground">
+            Everything in GrowthOS
+          </h2>
+        </div>
       </section>
-
       {/* ── SECTION 1: AI PATIENT ENGAGEMENT ── */}
       <section className="section-padding bg-background">
         <div className="container-wide">
@@ -451,7 +402,7 @@ const Features = () => {
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 md:max-w-[240px] md:justify-end">
-                {["Specialty-trained", "Multilingual", "24/7 auto-response", "Smart handoff to staff", "21-day nurture"].map(
+                {["Specialty-trained", "Multilingual", "24/7 auto-response", "Smart handoff to staff", "nurture sequence"].map(
                   (tag) => <Chip key={tag} label={tag} />
                 )}
               </div>
@@ -645,7 +596,7 @@ const Features = () => {
           <SectionHeader
             label="Records"
             title="Medical Records Retrieval"
-            description="Pull patient medical records from any provider in the country. Digitally, securely, and without the fax machine runaround."
+            description="Pull patient medical records from previous providers. Digitally, securely, and without the fax machine runaround."
           />
 
           <motion.div
@@ -718,63 +669,8 @@ const Features = () => {
         </motion.div>
       </section>
 
-      {/* ── SECTION 11: MIGRATION SUPPORT ── */}
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <SectionHeader
-            label="Migration"
-            title="Already Using Something Else?"
-            description="Stuck in HubSpot, Salesforce, or Tebra? Import tools move your data from HubSpot, Salesforce or Tebra at your pace. No downtime, no disruption."
-          />
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {migrationCards.map((card) => (
-              <FeatureCard key={card.title} {...card} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── FINAL CTA ── */}
-      <section className="section-padding bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-light" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
-
-        <div className="container-wide relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-2xl mx-auto"
-          >
-            <h2 className="text-heading-lg md:text-display text-white mb-4">
-              Ready to see it in action?
-            </h2>
-            <p className="text-body-lg text-white/70 mb-10">
-              Book a 30-minute demo and see exactly how GrowthOS works for your
-              specialty.
-            </p>
-            <Link href="/demo">
-              <Button variant="hero" size="lg" className="group text-base">
-                Schedule a Demo
-                <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <FinalCTA />
-    </>
+    </div>
   );
 };
 
-export default Features;
+export default ProductFeatures;

@@ -5,6 +5,11 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import FinalCTA from "@/components/home/FinalCTA";
 import IntegrationsPanel from "@/components/map/IntegrationsPanel";
+import { GrowthSide, JourneyCards } from "@/components/home/WhatGrowthOSDoes";
+import ProductFeatures from "@/views/ProductFeatures";
+import { HOME_COPY } from "@/content/home-specialty";
+import { PERSON } from "@/content/specialty";
+import { useSpecialty } from "@/contexts/SpecialtyContext";
 import {
   ArrowRight,
   Check,
@@ -187,7 +192,7 @@ const modes: Mode[] = [
     title: "Transition Mode",
     subtitle: "Switch on your schedule",
     description:
-      "Already on HubSpot, Salesforce, or Tebra? Import tools move your data at your pace while your team keeps working.",
+      "Already on HubSpot, Salesforce, or Tebra? Import tools move contacts, deals, workflows and email templates at your pace, with field mapping and a parallel run while your team keeps working.",
     featured: true,
   },
   {
@@ -202,11 +207,12 @@ const modes: Mode[] = [
     title: "Full Platform",
     subtitle: "Replace the patchwork entirely",
     description:
-      "GrowthOS becomes your complete patient growth infrastructure, with contacts, pipelines, inbox, automations, ads, and reporting in one place, operated by your team, with AI automation.",
+      "GrowthOS becomes your one platform, with contacts, pipelines, inbox, automations, ads, and reporting in one place, operated by your team, with AI automation.",
   },
 ];
 
 const Product = () => {
+  const { specialty } = useSpecialty();
   return (
     <>
       {/* Hero */}
@@ -222,16 +228,16 @@ const Product = () => {
               The Platform
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Everything a CRM does,{" "}
+              No patient falls through the cracks,{" "}
               <span className="text-clay">
-                with AI automation built in.
+                even when your clinic gets busy.
               </span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              GrowthOS has the contacts, pipelines, scoring, inbox, and
-              reporting you&rsquo;d expect, plus AI automation that
-              handles routine work inside them. Most clinics realize they
-              don&rsquo;t need a separate CRM at all.
+              GrowthOS automates everything that happens to a patient outside
+              the lab: answering, qualifying and booking in seconds, following up
+              at every stage, and handling consents, payment links and reviews.
+              More patients and more revenue, in less of your team&rsquo;s time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">
@@ -240,18 +246,22 @@ const Product = () => {
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link href="/demo">
+              <Link href="/growth">
                 <Button
                   variant="hero-outline"
                   size="xl"
                 >
-                  Get Started
+                  Get your free Leak Map
                 </Button>
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* What GrowthOS does, and the growth side (shared with the home page) */}
+      <JourneyCards does={HOME_COPY[specialty].story.does} />
+      <GrowthSide person={PERSON[specialty].one} people={PERSON[specialty].many} />
 
       {/* Feature parity grid */}
       <section
@@ -516,13 +526,15 @@ const Product = () => {
           >
             <IntegrationsPanel className="max-w-3xl mx-auto text-left" />
             <p className="mt-8 text-base">
-              <Link href="/features" className="font-semibold text-teal underline underline-offset-2">
+              <Link href="#features" className="font-semibold text-teal underline underline-offset-2">
                 See every GrowthOS feature
               </Link>
             </p>
           </motion.div>
         </div>
       </section>
+
+      <ProductFeatures />
 
       {/* Closing CTA */}
       <section className="section-padding bg-teal relative overflow-hidden">
@@ -548,13 +560,13 @@ const Product = () => {
                   <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link href="/demo">
+              <Link href="/growth">
                 <Button
                   variant="hero-outline"
                   size="xl"
                   className="border border-paper/40 bg-transparent text-paper hover:bg-paper/10"
                 >
-                  Get Started
+                  Get your free Leak Map
                 </Button>
               </Link>
             </div>

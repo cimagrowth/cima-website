@@ -3,18 +3,18 @@ import Training from '@/views/Training';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
 const SLUG = 'training';
-const TITLE = 'Training and Certification for B2B | Cima';
+const TITLE = 'Staff Training and Certification for Clinics | GrowthOS';
 const DESCRIPTION =
-  'Build onboarding, training, and certification programs for the companies you sell to. Video, knowledge checks, graded assignments, and verifiable certificates, automated off your pipeline.';
+  "Assign training by role, check understanding with short quizzes, and see who's certified, so service doesn't slip when your clinic is busy or short-staffed.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
-    'B2B training platform',
-    'customer training and certification',
-    'customer onboarding software',
-    'partner certification program',
+    'clinic staff training',
+    'staff training and certification',
+    'new hire onboarding for clinics',
+    'front desk training',
     'LMS alternative',
     'automated onboarding',
     'verifiable certificates',

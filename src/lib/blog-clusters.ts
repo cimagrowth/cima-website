@@ -20,9 +20,9 @@ export const CLUSTER_LINKS: Record<string, ClusterLink> = {
   'fertility-email': { hub: '/fertility-clinic-marketing', product: '/ai-agent' },
   'fertility-copywriting': { hub: '/fertility-clinic-marketing', product: '/product' },
   'fertility-ads': { hub: '/fertility-clinic-marketing', product: '/product' },
-  'fertility-conversion': { hub: '/fertility-clinic-marketing', product: '/features' },
+  'fertility-conversion': { hub: '/fertility-clinic-marketing', product: '/product#features' },
   'fertility-leakage': { hub: '/fertility-clinic-marketing', product: '/ai-agent' },
-  'fertility-trust': { hub: '/fertility-clinic-marketing', product: '/features' },
+  'fertility-trust': { hub: '/fertility-clinic-marketing', product: '/product#features' },
   'fertility-channels': { hub: '/fertility-clinic-marketing', product: '/ai-agent' },
   'fertility-ops': { hub: '/fertility-clinic-marketing', product: '/product' },
   'healthcare-crm': { hub: '/healthcare-crm', product: '/product' },
@@ -65,10 +65,10 @@ export const PAGE_META: Record<string, { label: string; blurb: string }> = {
     blurb: 'Engagement that converts and retains across every channel.',
   },
   '/ai-agent': {
-    label: 'The AI patient agent',
+    label: 'The AI front desk',
     blurb: 'An AI front desk that answers inquiries in seconds, day or night.',
   },
-  '/features': {
+  '/product#features': {
     label: 'The GrowthOS platform',
     blurb: 'Landing pages, forms, and trust signals that convert more visitors.',
   },

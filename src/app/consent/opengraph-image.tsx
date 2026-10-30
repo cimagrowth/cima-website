@@ -14,8 +14,8 @@ const CLAY = '#D74117';
 const ORANGE = '#D74117';
 const SAND = '#E2E6EB';
 
-const TITLE = 'Consent that lives where your patients do.';
-const SUB = 'Branded video education and e-signature that runs inside your CRM.';
+const TITLE = 'Every consent signed and understood before treatment starts.';
+const SUB = 'Consent packets go out automatically at each stage.';
 
 const GLYPHS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,!?:;'\"()[]{}@#$%&*-+=/\\|<>~`^_.";

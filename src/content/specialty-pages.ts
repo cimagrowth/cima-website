@@ -99,7 +99,7 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
     educationRow: "4 of 4 modules acknowledged",
     comprehensionRow: "4 of 4 answered correctly",
     faqVideos:
-      "You set the topics and order for each treatment and add a comprehension question to each module. You upload the video for each one, which means clients hear it from your own team rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "You set the topics and order for each treatment and add a comprehension question to each module. You upload the video for each one, which means clients hear it from your own team rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
   regenerative: {
     cards: [
@@ -120,7 +120,7 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
     educationRow: "4 of 4 modules acknowledged",
     comprehensionRow: "4 of 4 answered correctly",
     faqVideos:
-      "You set the topics and order for each protocol and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "You set the topics and order for each protocol and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
   wellness: {
     cards: [
@@ -141,7 +141,7 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
     educationRow: "4 of 4 modules acknowledged",
     comprehensionRow: "4 of 4 answered correctly",
     faqVideos:
-      "You set the topics and order for each program and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "You set the topics and order for each program and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
 };
 

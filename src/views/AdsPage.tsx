@@ -102,7 +102,7 @@ const features = [
     icon: ShieldAlert,
     title: "Healthcare Keyword Compliance",
     description:
-      "Google restricts medical advertising terms. GrowthOS handles the two-step exemption process automatically. No rejected campaigns, no wasted time.",
+      "Google restricts medical advertising terms. GrowthOS handles the two-step exemption process automatically.",
   },
   {
     icon: Sparkles,
@@ -171,7 +171,7 @@ const optimizationFeatures = [
     icon: Gauge,
     title: "Closed-Loop Impact Tracking",
     description:
-      "Seven days after every change, GrowthOS measures whether it actually worked. Your report shows: \"Budget rule applied: projected +[N] conversions, actual: +[N].\"",
+      "Seven days after every change, GrowthOS measures whether it actually worked. Your report shows, for example: \"Budget rule applied: projected +6 booked consults, actual: +5.\"",
   },
 ];
 
@@ -189,24 +189,24 @@ const activityFeed: {
     timestamp: "Apr 15 · 2:04 AM",
     status: "success",
     title: "Budget rule applied: Leads-Search-English",
-    change: "$[X]/day → $[Y]/day",
+    change: "$40/day → $55/day",
     reason: "Lowest CPA in the account, limited by impressions",
-    note: "Projected: +[N] conversions/week",
+    note: "Projected: +6 booked consults/week",
   },
   {
     timestamp: "Apr 15 · 2:04 AM",
     status: "cut",
     title: "Cut PMAX · IVF · Bay Area budget",
-    change: "$[X]/day → $[Y]/day",
-    reason: "[N] days of spend, no conversions",
+    change: "$55/day → $40/day",
+    reason: "21 days of spend, no conversions",
     note: "Status: Applied by a rule your team approved",
   },
   {
     timestamp: "Apr 15 · 2:05 AM",
     status: "pending",
     title: "Pending approval: Pause Leads-Search-Korean",
-    change: "$[X]/day → Paused",
-    reason: "No landing page, no conversions in [N] days",
+    change: "$40/day → Paused",
+    reason: "No landing page, no conversions in 21 days",
     note: "",
   },
 ];
@@ -215,7 +215,7 @@ const reportTypes = [
   {
     icon: FileText,
     title: "Campaign Report",
-    badge: "Included in all plans",
+    badge: "Included in GrowthOS",
     bullets: [
       "Per-campaign performance with spend, clicks, CTR, conversions, CPA",
       "Daily trend chart",
@@ -227,7 +227,7 @@ const reportTypes = [
   {
     icon: LineChart,
     title: "Advanced Report",
-    badge: "Included in all plans",
+    badge: "Included in GrowthOS",
     bullets: [
       "Everything in Campaign Report, plus:",
       "Geographic and service-line breakdowns",
@@ -242,16 +242,12 @@ const reportTypes = [
 
 const beforeAfter = {
   before: [
-    { label: "Response time to ad inquiries", value: "Hours, often the next day" },
     { label: "Wasted ad spend (non-converting campaigns)", value: "Unknown until someone checks" },
     { label: "Time spent reviewing ad performance", value: "Hours every week" },
-    { label: "Report quality", value: "Screenshot of Google Ads Manager" },
   ],
   after: [
-    { label: "Response time", value: "Seconds", sub: "AI chatbot + ads = instant" },
     { label: "Monthly wasted spend", value: "Flagged daily", sub: "with fixes your team approves" },
     { label: "Time spent reviewing performance", value: "One click", sub: "one-click report" },
-    { label: "Report quality", value: "Board-ready document", sub: "with projections & insights" },
   ],
 };
 
@@ -382,17 +378,17 @@ const AdsPage = () => {
               variants={itemVariants}
               className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
-              Ads Manager for Clinics.{" "}
-              <span className="text-clay">Your Google and Meta Accounts in One Place.</span>
+              Know which ads bring in booked patients,{" "}
+              <span className="text-clay">not just clicks.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-body-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto"
             >
-              Manage your clinic&apos;s own Google and Meta ad accounts from
-              GrowthOS: AI drafts campaigns, your team reviews and approves, and
-              every result is tracked to booked consults.
+              Run Google and Meta ads in your clinic&apos;s own accounts. GrowthOS
+              drafts campaigns, your team approves them, and you see which ad spend
+              turned into booked consults.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -405,7 +401,12 @@ const AdsPage = () => {
             </motion.div>
 
             <motion.p variants={itemVariants} className="text-body-sm text-teal-deep/80 mt-4">
-              Included in GrowthOS Growth
+              Included in GrowthOS
+            </motion.p>
+            <motion.p variants={itemVariants} className="text-body-sm mt-2">
+              <a href="/hipaa-safe-tracking" className="font-semibold text-teal underline underline-offset-2">
+                How tracking works without sending health data
+              </a>
             </motion.p>
           </motion.div>
         </div>
@@ -467,7 +468,7 @@ const AdsPage = () => {
               How It Works
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              From Brand Intake to Approved Campaigns in Under an Hour.
+              From Brand Intake to Approved Campaigns.
             </h2>
           </motion.div>
 
@@ -623,6 +624,8 @@ const AdsPage = () => {
             </div>
 
             {/* Right: Engine Activity mock card */}
+            <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[.12em] text-teal-deep/75">Illustrative example</p>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -699,6 +702,7 @@ const AdsPage = () => {
                 })}
               </div>
             </motion.div>
+            </div>
           </div>
 
           <motion.div
@@ -735,9 +739,8 @@ const AdsPage = () => {
               One-click performance reports for your ad accounts.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Generate board-ready ad reports in seconds. Not spreadsheets.
-              Editorial-quality documents with campaign breakdowns, AI insights,
-              change logs, and 30-day projections.
+              Generate ad reports in seconds. Not spreadsheets. Documents with
+              campaign breakdowns, AI insights, change logs, and 30-day projections.
             </p>
           </motion.div>
 
@@ -780,38 +783,6 @@ const AdsPage = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Contrast callout */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mt-10 max-w-5xl mx-auto"
-          >
-            <div className="relative rounded-xl2 p-8 md:p-10 overflow-hidden bg-teal text-paper shadow-[var(--shadow)]">
-              <div className="relative z-10 grid md:grid-cols-2 gap-8">
-                <div>
-                  <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand/70 mb-3">
-                    What GoHighLevel gives you
-                  </p>
-                  <p className="text-heading-sm text-paper/80">
-                    A dashboard with numbers.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-ui text-xs md:text-sm font-semibold uppercase tracking-[.16em] text-sand mb-3">
-                    What GrowthOS gives you
-                  </p>
-                  <p className="text-heading-sm text-paper">
-                    A document you'd hand to your board, your investors, or your
-                    partner. With projections, AI insights, and a log of every
-                    change in your account, made by your team or by rules you approved.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1011,12 +982,11 @@ const AdsPage = () => {
               Where It Lives
             </span>
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Part of the GrowthOS Growth Plan.
+              Included in GrowthOS.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Ads Manager is built into the GrowthOS Growth plan. Your ad
-              accounts always stay yours. Pricing is tailored to your clinic
-              and shared in your demo.
+              Ads Manager is built into GrowthOS. Your ad accounts always stay
+              yours. Pricing depends on your clinic and is shared in your demo.
             </p>
           </motion.div>
 
@@ -1140,9 +1110,6 @@ const AdsPage = () => {
                 </a>
               </Button>
             </div>
-            <p className="text-body-sm text-paper/60">
-              Questions? Email brandon@cimagrowth.com
-            </p>
           </motion.div>
         </div>
       </section>

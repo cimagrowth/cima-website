@@ -146,9 +146,9 @@ const ChartAI = () => {
               variants={itemVariants}
               className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6"
             >
-              Stop chasing faxes.{" "}
+              Prior records in hand before the first consult,{" "}
               <span className="text-clay">
-                ChartAI retrieves records automatically.
+                without a fax machine.
               </span>
             </motion.h1>
 
@@ -156,8 +156,9 @@ const ChartAI = () => {
               variants={itemVariants}
               className="text-body-lg text-teal-deep/80 mb-10 max-w-3xl mx-auto"
             >
-              Your staff fills out the request. The patient signs via email.
-              Records arrive in your system. That&apos;s it.
+              Your staff enters the previous providers, the patient signs on their
+              phone, and records arrive in the patient&apos;s chart, usually within
+              5 to 14 business days depending on the provider.
             </motion.p>
 
             <motion.div variants={itemVariants}>
@@ -317,7 +318,7 @@ const ChartAI = () => {
               Pricing is shared in your demo.
             </h2>
             <p className="text-body-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Included with GrowthOS, our AI-powered patient acquisition platform
+              Included with GrowthOS.
             </p>
             <CTAButtons />
           </motion.div>
@@ -338,7 +339,7 @@ const ChartAI = () => {
               Ready to ditch the fax machine?
             </h2>
             <p className="text-body-lg text-paper/80 mb-10 max-w-xl mx-auto">
-              Join clinics that retrieve medical records in minutes, not weeks.
+              Stop chasing records by fax and phone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">

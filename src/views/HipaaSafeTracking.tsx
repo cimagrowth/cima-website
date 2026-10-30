@@ -6,6 +6,7 @@ import FinalCTA from "@/components/home/FinalCTA";
 type Section = {
   heading: string;
   body: string;
+  link?: { href: string; label: string };
 };
 
 const sections: Section[] = [
@@ -15,15 +16,12 @@ const sections: Section[] = [
   },
   {
     heading: "How GrowthOS handles it",
-    body: "Visitor activity flows through GrowthOS first. Patient-identifying details are stripped and contact details are encrypted before any event reaches Meta or Google. The platforms receive only what they need to attribute a conversion. Health information never leaves your environment. There is no pixel to install and no tag manager to configure.",
+    body: "Visitor activity flows through GrowthOS first. Patient-identifying details are stripped and contact details are encrypted before any event reaches Meta or Google. The platforms receive only what they need to attribute a conversion. Patient details are removed before any event is sent to an ad platform. There is no pixel to install and no tag manager to configure. Connect Meta, Google Ads and Analytics, and compliant tracking switches on automatically from the moment you connect.",
   },
   {
     heading: "Your numbers, in one place",
-    body: "Because the data is first-party and server-side, your real performance lives in GrowthOS. Spend, leads, booked consults, and ROI in one view. The ad platforms own dashboards will show smaller numbers, by design, for health accounts. GrowthOS is your scoreboard.",
-  },
-  {
-    heading: "Set up by connecting your accounts",
-    body: "Connect Meta. Connect Google Ads. Connect Analytics. That is the entire setup. Compliant tracking switches on automatically from the moment you connect.",
+    body: "Because the data is first-party and server-side, your real performance lives in GrowthOS. Spend, leads, booked consults, and ROI in one view. The ad platforms' own dashboards will show smaller numbers, by design, for health accounts. GrowthOS is your scoreboard.",
+    link: { href: "/ads", label: "See how Ads Manager uses it" },
   },
 ];
 
@@ -43,17 +41,17 @@ const HipaaSafeTracking = () => {
               For specialty clinics
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Privacy-safe conversion tracking{" "}
-              <span className="text-clay">for your clinic&apos;s own ad accounts</span>
+              See which ads bring in patients,{" "}
+              <span className="text-clay">without sending health data to Meta or Google.</span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 max-w-3xl mx-auto leading-relaxed">
-              Most clinics face a bad choice. Turn off tracking and fly blind, or keep it on and risk a HIPAA violation. GrowthOS removes the choice.
+              GrowthOS strips patient details before any conversion event leaves your clinic, so you can measure ad spend to booked consults and keep tracking switched on.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Four sections, alternating backgrounds */}
+      {/* Sections, alternating backgrounds */}
       {sections.map((section, index) => (
         <section
           key={section.heading}
@@ -76,17 +74,24 @@ const HipaaSafeTracking = () => {
                 <p className="text-base md:text-lg text-foreground leading-relaxed">
                   {section.body}
                 </p>
+                {section.link && (
+                  <a href={section.link.href} className="mt-4 inline-block font-semibold text-teal underline underline-offset-2">
+                    {section.link.label}
+                  </a>
+                )}
               </div>
             </motion.div>
           </div>
         </section>
       ))}
 
-      {/* Closing CTA: reuse the standard 47 Frameworks guide CTA */}
       <FinalCTA
         heading="See where your patients are leaking out"
-        description="Get the free 47 patient-conversion frameworks guide, plus the free tools that show exactly where patients slip away."
-        ctas={[{ label: "Get the 47 Frameworks", href: "/audit", variant: "hero" }]}
+        description="Your free Leak Map shows where patients drop off, benchmarked against clinics on GrowthOS, and what it is worth to fix."
+        ctas={[
+          { label: "Book a demo", href: "/demo", variant: "hero" },
+          { label: "Get your free Leak Map", href: "/growth", variant: "hero-outline" },
+        ]}
       />
     </>
   );

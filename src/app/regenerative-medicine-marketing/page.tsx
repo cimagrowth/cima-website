@@ -163,7 +163,7 @@ const content: SolutionLandingProps = {
         description: 'The AI assistant that answers, educates, and follows up with high-ticket patients around the clock, supervised by your team.',
       },
       {
-        href: '/features',
+        href: '/product#features',
         label: 'Explore the features',
         description: 'Ad account management, unified inbox, education-led nurture, and rebooking in one platform.',
       },
