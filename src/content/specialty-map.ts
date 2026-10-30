@@ -24,6 +24,10 @@ export interface StageOverride {
   leak?: string;
   /** STAGE_COPY.fix override. */
   fix?: string;
+  /** STAGE_HERO.outcome override (stage page H1). */
+  outcome?: string;
+  /** STAGE_HERO.how override. */
+  how?: string;
 }
 
 export type OtherSpecialty = Exclude<Specialty, "fertility">;
@@ -31,8 +35,8 @@ export type OtherSpecialty = Exclude<Specialty, "fertility">;
 export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, StageOverride>>> = {
   aesthetics: {
     get_found: {
-      leak: "You never show up at the search. Clients looking for a treatment never find you, and the promotions meant to reach them run unwatched.",
-      fix: "Campaigns drafts the landing page, ad copy for your own ad accounts, and follow-up messages for people who inquire, for each treatment and promotion, for your team to review. Ads Manager connects your own Google and Meta ad accounts and measures spend against booked consults, not clicks, without sending health data to an ad platform. Referral Partners tracks the referral partners your team already works with.",
+      leak: "You don't show up when clients search. Clients looking for a treatment never find you, and nobody can tell which promotion brought one in.",
+      fix: "Campaign builder drafts the landing page, ad copy for your own ad accounts, and follow-up messages for people who inquire, for each treatment and promotion, for your team to review. Ads Manager connects your own Google and Meta ad accounts and measures spend against booked consults, not clicks, without sending health data to an ad platform. Referral Partners tracks the referral partners your team already works with.",
     },
     first_response: {
       leak: "A message lands at 9pm on a Friday and waits until Monday. By then the client has booked with the med spa that answered first.",
@@ -44,16 +48,18 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
     },
     book: {
       leak: "The consult is booked, then missed, and the chair sits empty.",
-      fix: "Appointments syncs every booking and sends reminders on the channel the client chose. Consult Briefings give your team a written summary before each consult. The Waiting Room and Telehealth run the visit itself.",
+      fix: "Appointments syncs every booking and sends reminders on the channel the client chose. Consult briefings give your team a written summary before each consult. The Waiting Room and Telehealth run the visit itself.",
     },
     commit: {
       leak: "The consult happens, the treatment never gets booked. \"Let me think about it\" turns into silence.",
-      fix: "Pipeline flags a client who consulted but has not booked, before they go cold. Consent sends forms and aftercare education before the visit. Invoicing sends a payment link for treatments and packages.",
+      fix: "Pipeline follow-ups flag a client who consulted but has not booked, before they go cold. Consent and education sends forms and aftercare education before the visit. Payment links send a payment link for treatments and packages.",
       patient_says: "I love the idea. Now I have to decide, and pay.",
       nostat:
         "No published benchmark we trust yet for consult-to-treatment drop-off in aesthetics. GrowthOS stage timing can produce one.",
     },
     treatment: {
+      outcome: "No missed treatment windows. No client left wondering what's next.",
+      how: "GrowthOS works out when each client is due, books the next session inside the window, checks in until it's done, and gets urgent messages to the right person with full context.",
       leak: "A series stalls after the second session, or the client quietly stops coming in.",
       fix: "Treatment Coordinator tracks each client's series and maintenance timing, books the next session in the right window and checks in until it is done. Escalations reach a person with context in minutes.",
       patient_says: "I want to know it's working, and when I'm due next.",
@@ -70,6 +76,8 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       },
     },
     after_cycle: {
+      outcome: "Clients with sessions and credit waiting come back to use them.",
+      how: "GrowthOS keeps a record of what each client has with you, sends reminders before packages and memberships expire, and gives each client a private link to tell you what's next.",
       name: "Between treatments",
       leaks: [{ name: "The Faded Result", description: "Packages unused, results faded, client gone quiet" }],
       leak: "Results fade, packages sit half used, and the client books the next touch-up somewhere else.",
@@ -95,15 +103,14 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
           description:
             "Opened with a date of birth check, it shows what the client has with you. One tap asks your team to talk about using it, and the request lands on the Requests tab.",
         },
-        "Results you can publish": {
-          description:
-            "Clients reached, links opened, requests made and clients who came back, logged touch by touch in a structure built for publication.",
+        "Return reporting": {
+          description: "See which clients with packages and memberships came back.",
         },
       },
     },
     advocate: {
       leak: "Happy clients are never asked for a review, a referral or a return visit.",
-      fix: "Reviews brings your Google reviews into one place with AI-drafted replies and asks for new ones at the right pipeline stage. Referral Accounts tracks and thanks the partners who send you clients.",
+      fix: "Reviews brings your Google reviews into one place with AI-drafted replies and asks for new ones at the right pipeline stage. Referral Partners tracks and thanks the partners who send you clients.",
       patient_says: "I love how it looks. I'm telling my friends.",
     },
   },
@@ -116,6 +123,8 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
         "No published benchmark we trust yet for consult-to-treatment drop-off in regenerative medicine. GrowthOS stage timing can produce one.",
     },
     treatment: {
+      outcome: "No missed protocol windows. No patient left wondering what's next.",
+      how: "GrowthOS works out when each patient is due, books the next phase inside the window, checks in until it's done, and gets urgent messages to the right person with full context.",
       leak: "A phase of the protocol is missed, a follow-up window passes, or the patient quietly stops.",
       fix: "Treatment Coordinator tracks each patient's protocol series, books the next phase in the right window and checks in on how they are doing until it is done. Escalations reach a person with context in minutes.",
       patient_says: "I need to know what happens next, and whether it's working.",
@@ -131,6 +140,8 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       },
     },
     after_cycle: {
+      outcome: "Patients with banked cells and unfinished series come back to finish them.",
+      how: "GrowthOS keeps a record of what each patient has banked or left in a series, sends renewal and follow-up check-ins, and gives each patient a private link to tell you what's next.",
       name: "After the procedure",
       leaks: [{ name: "The Unfinished Protocol", description: "Cells banked, series unfinished, patient gone quiet" }],
       leak: "Banked cells sit unused and treatment series go unfinished while the patient goes quiet.",
@@ -146,6 +157,9 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
           description:
             "Banked cells, treatment series and memberships: what each patient has, where it is kept and when it renews or expires. Imported, entered by hand, or added when an invoice is paid.",
         },
+        "Return reporting": {
+          description: "See which patients with banked cells or unfinished series came back.",
+        },
         "Storage reminders and check-ins": {
           description:
             "Sends scheduled reminders before storage renews or a series or membership expires, and a check-in on the schedule you choose.",
@@ -160,10 +174,12 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
     },
     commit: {
       leak: "The consult happens, the program never starts. Cost and time commitment stall the yes.",
-      fix: "Pipeline flags a stalled decision before it goes cold. ChartAI sends records requests and tracks them until the records arrive. Consent sends documents and education before the visit. Invoicing sends a payment link for programs and packages.",
+      fix: "Pipeline follow-ups flag a stalled decision before it goes cold. ChartAI sends records requests and tracks them until the records arrive. Consent and education sends documents and education before the visit. Payment links send a payment link for programs and packages.",
       nostat: "No published benchmark we trust yet for consult-to-program drop-off. GrowthOS stage timing can produce one.",
     },
     treatment: {
+      outcome: "No missed visits. No patient left wondering what's next.",
+      how: "GrowthOS works out when each patient is due, books the next visit inside the window, checks in until it's done, and gets urgent messages to the right person with full context.",
       leak: "Visits get spaced out, the plan loses momentum, or the patient quietly stops.",
       fix: "Treatment Coordinator tracks each patient's care plan cadence, books the next visit in the right window and checks in until it is done. Escalations reach a person with context in minutes.",
       patient_says: "Life got busy. I want to stay on track.",
@@ -179,6 +195,8 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       },
     },
     after_cycle: {
+      outcome: "Patients with sessions and memberships waiting come back to use them.",
+      how: "GrowthOS keeps a record of what each patient has with you, sends reminders before packages and memberships expire, and gives each patient a private link to tell you what's next.",
       name: "Between visits",
       leaks: [{ name: "The Lapsed Plan", description: "Packages unused, membership lapsed, patient gone quiet" }],
       leak: "Packages sit unused and memberships lapse while the patient drifts away.",
@@ -193,6 +211,9 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
         "What each patient has with you": {
           description:
             "Packages, memberships and IV therapy sessions: what each patient has and when it renews or expires. Imported, entered by hand, or added when an invoice is paid.",
+        },
+        "Return reporting": {
+          description: "See which patients with packages and memberships came back.",
         },
         "Storage reminders and check-ins": {
           name: "Renewal reminders and check-ins",
@@ -217,22 +238,22 @@ export const FOUNDATION_OVERRIDES: Record<OtherSpecialty, Record<string, Feature
   },
 };
 
-/** The /map intro. `body` uses {stages}, {leaks} and {features} for the live totals. */
+/** The /map intro. */
 export const MAP_INTRO: Record<Specialty, { h1: string; body: string }> = {
   fertility: {
-    h1: "The patient journey, and every place it leaks.",
-    body: "Patient leakage rarely happens in one place. It happens in the gaps between stages: the search that never finds you, the inquiry nobody answers, the consult that never becomes a commitment, the embryos that stay in storage while the patient goes quiet. The GrowthOS Map names {stages} stages and {leaks} leaks, and the {features} modules that close them. Your onboarding, your reports and your Leak Map all follow it.",
+    h1: "No patient falls through the cracks, from first search to years after treatment.",
+    body: "When clinics get busy, patients stop hearing from you. Patient leakage happens in the gaps between stages: the inquiry nobody answers, the consult that never becomes a commitment, the embryos that stay in storage while the patient goes quiet. GrowthOS automates everything that happens to a patient outside the lab, across eight stages, so you get more patients and more revenue in less staff time.",
   },
   aesthetics: {
-    h1: "The client journey, and every place it leaks.",
-    body: "Client leakage rarely happens in one place. It happens in the gaps between stages: the search that never finds you, the inquiry nobody answers, the consult that never becomes a booked treatment, the package that sits half used while the client books elsewhere. The GrowthOS Map names {stages} stages and {leaks} leaks, and the {features} modules that close them. Your onboarding, your reports and your Leak Map all follow it.",
+    h1: "No client falls through the cracks, from first search to the next touch-up.",
+    body: "When med spas get busy, clients stop hearing from you. Client leakage happens in the gaps between stages: the inquiry nobody answers, the consult that never becomes a booked treatment, the package that sits half used while the client books elsewhere. GrowthOS automates everything that happens to a client outside the treatment room, across eight stages, so you get more clients and more revenue in less staff time.",
   },
   regenerative: {
-    h1: "The patient journey, and every place it leaks.",
-    body: "Patient leakage rarely happens in one place. It happens in the gaps between stages: the search that never finds you, the inquiry nobody answers, the consult that never becomes a treatment start, the banked cells and unfinished series while the patient goes quiet. The GrowthOS Map names {stages} stages and {leaks} leaks, and the {features} modules that close them. Your onboarding, your reports and your Leak Map all follow it.",
+    h1: "No patient falls through the cracks, from first search to the final follow-up.",
+    body: "When clinics get busy, patients stop hearing from you. Patient leakage happens in the gaps between stages: the inquiry nobody answers, the consult that never becomes a booked protocol, the banked cells and unfinished series while the patient goes quiet. GrowthOS automates everything that happens to a patient outside the treatment room, across eight stages, so you get more patients and more revenue in less staff time.",
   },
   wellness: {
-    h1: "The patient journey, and every place it leaks.",
-    body: "Patient leakage rarely happens in one place. It happens in the gaps between stages: the search that never finds you, the inquiry nobody answers, the consult that never becomes a started program, the membership that lapses while the patient drifts away. The GrowthOS Map names {stages} stages and {leaks} leaks, and the {features} modules that close them. Your onboarding, your reports and your Leak Map all follow it.",
+    h1: "No patient falls through the cracks, from first search to the next visit.",
+    body: "When practices get busy, patients stop hearing from you. Patient leakage happens in the gaps between stages: the inquiry nobody answers, the first visit that never becomes a started program, the membership that lapses while the patient drifts away. GrowthOS automates everything that happens to a patient outside the treatment room, across eight stages, so you get more patients and more revenue in less staff time.",
   },
 };

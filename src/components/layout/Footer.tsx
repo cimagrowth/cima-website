@@ -25,10 +25,10 @@ type FooterLink = { label: ReactNode; href: string; external?: boolean };
 const platformLinks: FooterLink[] = [
   { label: "Platform overview", href: "/product" },
   { label: "Features", href: "/features" },
-  { label: "AI Agent", href: "/ai-agent" },
+  { label: "AI front desk", href: "/ai-agent" },
   { label: "Ads Manager", href: "/ads" },
   { label: "ChartAI", href: "/chartai" },
-  { label: "Patient Consent", href: "/consent" },
+  { label: "Consent and education", href: "/consent" },
   { label: "Keep", href: "/keep" },
   { label: "Training", href: "/training" },
   { label: "HIPAA-Safe Tracking", href: "/hipaa-safe-tracking" },

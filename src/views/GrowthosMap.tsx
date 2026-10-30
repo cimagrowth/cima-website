@@ -52,10 +52,7 @@ function MapBody({ map, stats, specialty }: { map: GrowthosMap; stats: PlatformS
               {intro.h1}
             </h1>
             <p className="text-lg leading-relaxed text-teal-deep/80 md:text-xl">
-              {intro.body
-                .replace("{stages}", String(map.totals.stages))
-                .replace("{leaks}", String(map.totals.leaks))
-                .replace("{features}", String(map.totals.features))}
+              {intro.body}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="/growth" className={BTN_PRIMARY}>
@@ -68,7 +65,7 @@ function MapBody({ map, stats, specialty }: { map: GrowthosMap; stats: PlatformS
           </div>
           <nav aria-label="Stages on this page" className="rounded-[22px] bg-teal-deep p-6 text-paper lg:col-span-5">
             <ol className="flex flex-col gap-1">
-              {map.stage_order.map((o) => {
+              {map.stage_order.filter((o) => o.stage_key !== "measure").map((o) => {
                 const stage = map.stages.find((s) => s.stage_key === o.stage_key);
                 return (
                   <li key={o.stage_key}>
@@ -97,7 +94,7 @@ function MapBody({ map, stats, specialty }: { map: GrowthosMap; stats: PlatformS
             <p className="text-[17px] leading-relaxed text-teal-deep/80">
               Domains, sending email, texting registration, integrations and your team are set up and
               verified against the live systems before any stage turns on. Your existing website forms
-              start sending leads in on day one.
+              start sending leads in from the first day.
             </p>
             <SetupSteps />
           </div>

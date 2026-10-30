@@ -103,17 +103,17 @@ const fertility: HomeCopy = {
   beyond: {
     side: "A chatbot can answer a lead. A CRM can hold a record. Neither notices the patient who froze eggs in 2021 and never came back, or the family with two embryos left in storage. GrowthOS does.",
     showStats: true,
-    keepTitle: "Keep. For every egg, embryo and sample still in your tanks.",
+    keepTitle: "Turn the eggs and embryos in your tanks into patients who come back.",
     keepBody: KEEP_COPY.body,
     panelCaption: "PATIENT RECORD · KEEP",
     tiles: [
-      ["Embryos stored", "[#]"],
-      ["Eggs stored", "[#]"],
-      ["In storage since", "[DATE]"],
+      ["Embryos stored", "3"],
+      ["Eggs stored", "0"],
+      ["In storage since", "March 2022"],
     ],
     rows: [
       { label: "Anniversary check-in", value: "Scheduled", warn: false },
-      { label: "Consent renewal", value: "Due in [N] days", warn: true },
+      { label: "Consent renewal", value: "Due in 21 days", warn: true },
       { label: "Patient decision link", value: "Opened", warn: false },
     ],
   },
@@ -166,13 +166,13 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
         "Keep records the packages, memberships, product credit and gift cards each client holds, sends scheduled reminders before they expire and when results typically fade, and gives clients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
       panelCaption: "CLIENT RECORD · KEEP",
       tiles: [
-        ["Sessions left", "[#]"],
-        ["Membership", "[STATUS]"],
-        ["Last treatment", "[DATE]"],
+        ["Sessions left", "4"],
+        ["Membership", "Active"],
+        ["Last treatment", "March 2022"],
       ],
       rows: [
         { label: "Touch-up check-in", value: "Scheduled", warn: false },
-        { label: "Package expiring", value: "Due in [N] days", warn: true },
+        { label: "Package expiring", value: "Due in 21 days", warn: true },
         { label: "Client link", value: "Opened", warn: false },
       ],
     },
@@ -214,13 +214,13 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
         "Keep records the banked cells, treatment series and memberships each patient holds, sends scheduled reminders before they renew or expire and at the follow-up windows you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
       panelCaption: "PATIENT RECORD · KEEP",
       tiles: [
-        ["Vials banked", "[#]"],
-        ["Sessions left", "[#]"],
-        ["Banked since", "[DATE]"],
+        ["Vials banked", "2"],
+        ["Sessions left", "3"],
+        ["Banked since", "March 2022"],
       ],
       rows: [
         { label: "Follow-up check-in", value: "Scheduled", warn: false },
-        { label: "Storage renewal", value: "Due in [N] days", warn: true },
+        { label: "Storage renewal", value: "Due in 21 days", warn: true },
         { label: "Patient link", value: "Opened", warn: false },
       ],
     },
@@ -265,13 +265,13 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
         "Keep records the packages, memberships and IV therapy sessions each patient holds, sends scheduled reminders before they expire and on the check-in schedule you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged, so you can measure who returns.",
       panelCaption: "PATIENT RECORD · KEEP",
       tiles: [
-        ["Sessions left", "[#]"],
-        ["Membership", "[STATUS]"],
-        ["Last visit", "[DATE]"],
+        ["Sessions left", "7"],
+        ["Membership", "Active"],
+        ["Last visit", "March 2022"],
       ],
       rows: [
         { label: "Next visit check-in", value: "Scheduled", warn: false },
-        { label: "Package expiring", value: "Due in [N] days", warn: true },
+        { label: "Package expiring", value: "Due in 21 days", warn: true },
         { label: "Patient link", value: "Opened", warn: false },
       ],
     },
@@ -285,20 +285,20 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
 /** The Leak Map call to action, used on every page that shows it. */
 export const LEAK_CTA: Record<Specialty, { title: string; body: string }> = {
   fertility: {
-    title: "Where does your clinic leak?",
-    body: "Get your free Leak Map: where your clinic loses patients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    title: "Find out where your clinic is losing patients.",
+    body: "Your free Leak Map shows where patients drop off, benchmarked against clinics on GrowthOS, and what it is worth to fix. It lands in your inbox in a few minutes.",
   },
   aesthetics: {
-    title: "Where does your med spa leak?",
-    body: "Get your free Leak Map: where your med spa loses clients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    title: "Find out where your med spa is losing clients.",
+    body: "Your free Leak Map shows where clients drop off, benchmarked against clinics on GrowthOS, and what it is worth to fix. It lands in your inbox in a few minutes.",
   },
   // The fertility strings are already neutral.
   regenerative: {
-    title: "Where does your clinic leak?",
-    body: "Get your free Leak Map: where your clinic loses patients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    title: "Find out where your clinic is losing patients.",
+    body: "Your free Leak Map shows where patients drop off, benchmarked against clinics on GrowthOS, and what it is worth to fix. It lands in your inbox in a few minutes.",
   },
   wellness: {
-    title: "Where does your practice leak?",
-    body: "Get your free Leak Map: where your practice loses patients, benchmarked against anonymized data from active GrowthOS clinic accounts, your 90-day recovery number, and the fixes in order. Your report arrives in your inbox in a few minutes.",
+    title: "Find out where your practice is losing patients.",
+    body: "Your free Leak Map shows where patients drop off, benchmarked against clinics on GrowthOS, and what it is worth to fix. It lands in your inbox in a few minutes.",
   },
 };

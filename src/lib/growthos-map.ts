@@ -11,7 +11,18 @@
 import { unstable_cache } from "next/cache";
 import mapSnapshot from "@/content/growthos-map.snapshot.json";
 import statsSnapshot from "@/content/platform-stats.snapshot.json";
-import { HIDDEN_FEATURES, SITE_FEATURE_COPY, SITE_STAGE_PHRASES } from "@/content/map-site-copy";
+import {
+  HIDDEN_FEATURES,
+  HIDDEN_LEAKS,
+  SITE_ALSO_USED,
+  SITE_EXTRA_FEATURES,
+  SITE_FEATURE_COPY,
+  SITE_FOUNDATION_NAMES,
+  SITE_LEAK_COPY,
+  SITE_PHRASES,
+  SITE_STAGE_PHRASES,
+  SITE_STAT_LABELS,
+} from "@/content/map-site-copy";
 import { SITE_NUMBERS, SITE_STATS } from "@/lib/site-stats";
 
 // ---------------------------------------------------------------------------
@@ -59,6 +70,8 @@ export interface MapStage {
   nostat?: string | null;
   metrics?: string[];
   features: MapFeature[];
+  /** One line under the grid naming modules not shown as cards (site copy). */
+  also_used?: string;
 }
 
 export interface MapSource {
@@ -150,26 +163,46 @@ function isUsableStats(data: unknown): data is PlatformStats {
  */
 export function applySiteCopy(map: GrowthosMap): GrowthosMap {
   const phrase = (key: StageKey, text: string) =>
-    (SITE_STAGE_PHRASES[key] ?? []).reduce((t, [from, to]) => t.split(from).join(to), text);
-  const stages = map.stages.map((stage) => ({
-    ...stage,
-    ideal: phrase(stage.stage_key, stage.ideal),
-    metrics: stage.metrics?.map((m) => phrase(stage.stage_key, m)),
-    features: stage.features
-      .filter((f) => !HIDDEN_FEATURES.has(f.name))
-      .map((f) => {
-        const copy = SITE_FEATURE_COPY[f.name];
-        return copy ? { ...f, name: copy.name ?? f.name, description: copy.description ?? f.description } : { ...f };
-      })
-      .reduce<MapFeature[]>((out, f) => {
-        const same = out.find((o) => o.name === f.name);
-        if (same) same.description = `${same.description} ${f.description}`;
-        else out.push(f);
-        return out;
-      }, []),
-  }));
+    [...(SITE_STAGE_PHRASES[key] ?? []), ...SITE_PHRASES].reduce((t, [from, to]) => t.split(from).join(to), text);
+  const stages = map.stages.map((stage) => {
+    const key = stage.stage_key;
+    const also = SITE_ALSO_USED[key];
+    const extra: MapFeature[] = (SITE_EXTRA_FEATURES[key] ?? []).map((f) => ({
+      ...f,
+      addon_key: null,
+      addon_name: null,
+      status: "live",
+      module_key: null,
+    }));
+    return {
+      ...stage,
+      ideal: phrase(key, stage.ideal),
+      nostat: stage.nostat ? phrase(key, stage.nostat) : stage.nostat,
+      metrics: stage.metrics?.map((m) => phrase(key, m)),
+      stats: stage.stats.map((st) => ({ ...st, label: SITE_STAT_LABELS[`${key}:${st.source_key}`] ?? st.label })),
+      leaks: stage.leaks
+        .filter((l) => !HIDDEN_LEAKS.has(l.name))
+        .map((l) => ({ ...l, description: phrase(key, SITE_LEAK_COPY[l.name] ?? l.description) })),
+      features: [...stage.features, ...extra]
+        .filter((f) => !HIDDEN_FEATURES.has(f.name) && !also?.hide.includes(f.name))
+        .map((f) => {
+          const copy = SITE_FEATURE_COPY[f.name];
+          const named = copy ? { ...f, name: copy.name ?? f.name, description: copy.description ?? f.description } : { ...f };
+          return { ...named, description: phrase(key, named.description) };
+        })
+        .reduce<MapFeature[]>((out, f) => {
+          const same = out.find((o) => o.name === f.name);
+          if (!same) out.push(f);
+          else if (same.description !== f.description) same.description = `${same.description} ${f.description}`;
+          return out;
+        }, []),
+      ...(also ? { also_used: also.line } : {}),
+    };
+  });
   const features = stages.reduce((n, s) => n + s.features.length, 0);
-  return { ...map, stages, totals: { ...map.totals, features } };
+  const leaks = stages.reduce((n, s) => n + s.leaks.length, 0);
+  const foundation = map.foundation.map((f) => ({ ...f, name: SITE_FOUNDATION_NAMES[f.name] ?? f.name }));
+  return { ...map, stages, foundation, totals: { ...map.totals, features, leaks } };
 }
 
 export const getGrowthosMap = unstable_cache(

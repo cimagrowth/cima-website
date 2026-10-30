@@ -35,8 +35,8 @@ function HomeBody({
       <HomeStory copy={copy.story} person={PERSON[specialty].one} people={PERSON[specialty].many} />
       <SetupAndIntegrations />
       <BuiltForHealthcare copy={copy.healthcare} />
-      <OnePlan />
       <FounderLetter />
+      <OnePlan />
       <LeakMapCTA />
       <div className={`${WRAP} pb-20 pt-16 md:pb-24`}>
         <SourcesList map={map} sourceKeys={[]} windowDays={stats.window_days} />

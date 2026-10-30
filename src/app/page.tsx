@@ -9,9 +9,9 @@ import {
 
 export const revalidate = 3600;
 
-const TITLE = 'GrowthOS by Cima: every patient answered, followed up and moved to treatment';
+const TITLE = 'GrowthOS: automate every patient touch outside the lab';
 const DESCRIPTION =
-  'GrowthOS automates everything that happens to a patient outside the lab. AI trained on your clinic answers in seconds, qualifies every inquiry and follows up at every stage, so no patient slips through when your team gets busy.';
+  'GrowthOS automates everything that happens to a patient outside the lab: instant AI replies, qualification, follow-up at every stage, consents, cycle coordination and reviews. More patients, more revenue, in less time.';
 
 export const metadata: Metadata = {
   title: TITLE,

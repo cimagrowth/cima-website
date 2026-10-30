@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import mapSnapshot from "@/content/growthos-map.snapshot.json";
-import { STAGE_COPY } from "@/content/map-copy";
+import { STAGE_COPY, STAGE_HERO } from "@/content/map-copy";
 import { MAP_INTRO } from "@/content/specialty-map";
 import { GENERAL_LINE_SWAPS } from "@/content/specialty-pages";
 import { applySiteCopy, type GrowthosMap } from "@/lib/growthos-map";
@@ -24,7 +24,10 @@ describe("specializeMap", () => {
   it("returns fertility unchanged", () => {
     const before = JSON.parse(JSON.stringify(map));
     expect(specializeMap(map, "fertility")).toEqual(before);
-    expect(stageCopyFor("fertility")).toEqual(STAGE_COPY);
+    const keys = Object.keys(STAGE_COPY) as (keyof typeof STAGE_COPY)[];
+    expect(stageCopyFor("fertility")).toEqual(
+      Object.fromEntries(keys.map((k) => [k, { ...STAGE_COPY[k], ...STAGE_HERO[k] }])),
+    );
   });
 
   it.each(OTHERS)("%s has no fertility wording and only general stats", (key) => {

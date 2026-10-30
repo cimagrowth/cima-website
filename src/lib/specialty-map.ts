@@ -1,4 +1,4 @@
-import { STAGE_COPY } from "@/content/map-copy";
+import { STAGE_COPY, STAGE_HERO } from "@/content/map-copy";
 import { GENERAL_SOURCE_KEYS, type Specialty } from "@/content/specialty";
 import { FOUNDATION_OVERRIDES, STAGE_OVERRIDES } from "@/content/specialty-map";
 import type { GrowthosMap, MapStage, StageKey } from "@/lib/growthos-map";
@@ -55,14 +55,27 @@ export function specializeMap(map: GrowthosMap, specialty: Specialty): GrowthosM
   };
 }
 
-/** STAGE_COPY with a specialty's leak and fix overrides merged in. */
-export function stageCopyFor(specialty: Specialty): Record<StageKey, { leak: string; fix: string }> {
-  if (specialty === "fertility") return STAGE_COPY;
+/** STAGE_COPY and STAGE_HERO with a specialty's overrides merged in. */
+export function stageCopyFor(
+  specialty: Specialty,
+): Record<StageKey, { leak: string; fix: string; outcome: string; how: string }> {
+  const keys = Object.keys(STAGE_COPY) as StageKey[];
+  if (specialty === "fertility") {
+    return Object.fromEntries(keys.map((k) => [k, { ...STAGE_COPY[k], ...STAGE_HERO[k] }])) as ReturnType<
+      typeof stageCopyFor
+    >;
+  }
   const overrides = STAGE_OVERRIDES[specialty];
+  const words = specialty === "aesthetics" ? toClient : (t: string) => t;
   return Object.fromEntries(
-    (Object.keys(STAGE_COPY) as StageKey[]).map((k) => [
+    keys.map((k) => [
       k,
-      { leak: overrides[k]?.leak ?? STAGE_COPY[k].leak, fix: overrides[k]?.fix ?? STAGE_COPY[k].fix },
+      {
+        leak: overrides[k]?.leak ?? STAGE_COPY[k].leak,
+        fix: overrides[k]?.fix ?? STAGE_COPY[k].fix,
+        outcome: overrides[k]?.outcome ?? words(STAGE_HERO[k].outcome),
+        how: overrides[k]?.how ?? words(STAGE_HERO[k].how),
+      },
     ]),
-  ) as Record<StageKey, { leak: string; fix: string }>;
+  ) as ReturnType<typeof stageCopyFor>;
 }

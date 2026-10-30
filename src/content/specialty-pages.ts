@@ -1,5 +1,3 @@
-import { HOME_COPY } from "@/content/home-specialty";
-import { KEEP_COPY } from "@/content/map-copy";
 import { CONSENT_FAQS } from "@/lib/consent-faqs";
 import type { Specialty } from "@/content/specialty";
 
@@ -8,44 +6,39 @@ import type { Specialty } from "@/content/specialty";
 
 export interface KeepPageCopy {
   h1: string;
+  /** Hero paragraph. The "Keep records ..." sentence lives in How Keep works. */
   body: string;
-  featuresTitle: string;
   ctaTitle: string;
   ctaBody: string;
 }
 
 export const KEEP_PAGE: Record<Specialty, KeepPageCopy> = {
   fertility: {
-    h1: "Keep. For every egg, embryo and sample still in your tanks.",
-    body: KEEP_COPY.body,
-    featuresTitle: "A ledger, a voice and a record for every stored specimen.",
+    h1: "Turn the eggs and embryos in your tanks into patients who come back.",
+    body: "GrowthOS keeps in touch with every patient who has something stored, through renewal reminders, anniversary check-ins and a private link to decide what's next, and pauses on its own after a loss.",
     ctaTitle: "See Keep on your own storage list.",
-    ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it syncs with your lab system and what your patients would see.",
+    ctaBody: "Keep is included in GrowthOS. Book a demo to see what your patients would see.",
   },
   aesthetics: {
-    h1: "Keep. For every package, membership and credit your clients already paid for.",
-    body: HOME_COPY.aesthetics.beyond.keepBody,
-    featuresTitle: "A ledger, a voice and a record for every package and membership.",
+    h1: "Turn the packages and memberships your clients already paid for into clients who come back.",
+    body: "GrowthOS keeps in touch with every client who has sessions, credit or a membership waiting, through reminders before they expire, check-ins when results typically fade and a private link to decide what's next.",
     ctaTitle: "See Keep on your own client list.",
     ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it reads the packages and memberships you already sell, and what your clients would see.",
+      "Keep is included in GrowthOS. Book a demo to see how it reads the packages and memberships you already sell, and what your clients would see.",
   },
   regenerative: {
-    h1: "Keep. For every banked vial, series and membership your patients already hold.",
-    body: HOME_COPY.regenerative.beyond.keepBody,
-    featuresTitle: "A ledger, a voice and a record for every banked vial and series.",
+    h1: "Turn banked cells and unfinished series into patients who come back.",
+    body: "GrowthOS keeps in touch with every patient who has cells banked or sessions left, through renewal reminders, follow-up check-ins and a private link to decide what's next.",
     ctaTitle: "See Keep on your own patient list.",
     ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it reads your banked cells, series and memberships, and what your patients would see.",
+      "Keep is included in GrowthOS. Book a demo to see how it reads your banked cells, series and memberships, and what your patients would see.",
   },
   wellness: {
-    h1: "Keep. For every package, membership and session your patients already paid for.",
-    body: HOME_COPY.wellness.beyond.keepBody,
-    featuresTitle: "A ledger, a voice and a record for every package and membership.",
+    h1: "Turn the packages and memberships your patients already paid for into patients who come back.",
+    body: "GrowthOS keeps in touch with every patient who has sessions, a package or a membership waiting, through reminders before they expire, check-ins on the schedule you choose and a private link to decide what's next.",
     ctaTitle: "See Keep on your own patient list.",
     ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it reads the packages and memberships you already sell, and what your patients would see.",
+      "Keep is included in GrowthOS. Book a demo to see how it reads the packages and memberships you already sell, and what your patients would see.",
   },
 };
 

@@ -39,8 +39,7 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
   const isFertility = specialty === "fertility";
   const leak = stage.leaks[0];
   const statCards = displayStatsForStage(map, stage, stats);
-  const reminders = stage.features.find((f) => /reminder|check-in/i.test(f.name));
-  const research = stage.features.find((f) => /publish|research/i.test(f.name));
+  const research = stage.features.find((f) => /publish|research|return reporting/i.test(f.name));
 
   return (
     <>
@@ -48,15 +47,15 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
       <section aria-labelledby="keep-title" className="pb-14 pt-6 md:pb-20 md:pt-10">
         <div className={`${WRAP} grid items-center gap-10 lg:grid-cols-12`}>
           <div className="flex flex-col gap-6 lg:col-span-6">
-            <div className="flex flex-wrap items-center gap-2.5">
-              <Eyebrow as="span" className="!text-[13px]">
-                <Link href={stageHref("after_cycle")} className="hover:underline">
-                  Stage {stage.number} · {stage.name}
-                </Link>{" "}
-                · {leak?.name}
-              </Eyebrow>
-              <span className="rounded-full bg-mist px-2.5 py-1 text-xs font-bold text-teal">INCLUDED IN EVERY PLAN</span>
-            </div>
+            <p className="text-[13px] font-semibold text-teal-deep/75">
+              <Link href={stageHref("after_cycle")} className="hover:underline">
+                Stage {stage.number} · {stage.name}
+              </Link>{" "}
+              · {leak?.name}
+            </p>
+            <Eyebrow as="span" className="-mb-2 !text-[13px]">
+              Keep · Included in GrowthOS
+            </Eyebrow>
             <h1
               id="keep-title"
               className="font-display text-[clamp(38px,5vw,60px)] font-semibold leading-[1.04] tracking-[-0.025em] text-teal-deep"
@@ -65,7 +64,7 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
             </h1>
             <p className="text-lg leading-relaxed text-teal-deep/80">{page.body}</p>
             <p className="text-base font-semibold text-teal-deep">
-              Keep is included in every GrowthOS plan. It is not an add-on.
+              Keep is included in GrowthOS. It is not an add-on.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="/demo" className={BTN_PRIMARY}>
@@ -111,12 +110,7 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
       {/* Features */}
       <section aria-labelledby="keep-features-title" className="py-20 md:py-24">
         <div className={`${WRAP} flex flex-col gap-10`}>
-          <SectionHead
-            eyebrow="How Keep works"
-            titleId="keep-features-title"
-            title={page.featuresTitle}
-            side={copy.fix}
-          />
+          <SectionHead titleId="keep-features-title" title="How Keep works" side={copy.fix} />
           <FeatureList stage={stage} headingLevel="h3" />
         </div>
       </section>
@@ -134,7 +128,6 @@ function KeepBody({ map, stats, specialty }: { map: GrowthosMap; stats: Platform
                 Keep pauses automatically after a known loss. Anniversary messages and renewal nudges
                 stop, and the conversation is handed to a person on your team when it matters.
               </p>
-              {reminders && <p>{reminders.description}</p>}
             </div>
           </div>
         </section>
