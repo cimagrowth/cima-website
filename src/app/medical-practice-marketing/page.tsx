@@ -11,16 +11,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Medical practice marketing',
-  h1Lead: 'Practice software that turns inquiries',
-  h1Accent: 'into booked appointments.',
+  h1Lead: 'No patient falls through the cracks,',
+  h1Accent: 'even on your busiest day.',
   subhead:
-    'Most clinics buy more marketing. They do not buy marketing that works together. GrowthOS combines inbox, CRM, booking and ad management in one platform your staff operates.',
+    'Most clinics add another tool. None of them talk to each other. GrowthOS automates replies, follow-up, reminders and rebooking in one platform your staff operates.',
   problem: {
     eyebrow: 'The problem',
     heading: 'You are paying for four tools',
     accent: 'for tools that do not talk.',
     paragraphs: [
-      'A typical clinic stack looks like this: an ad tool here, a chatbot on the website, a CRM stores the contacts, and a staff member stitches it all together by hand. Each piece bills you separately, and none of them owns the result. Leads fall through the seams.',
+      'A typical clinic stack looks like this: an ad tool here, a chatbot on the website, a CRM stores the contacts, and a staff member stitches it all together by hand. Each piece bills you separately, and none of them owns the result. Leads fall through the seams. Medical practice marketing only works when those pieces work together.',
       'More activity is not more infrastructure. Running campaigns is not the same as having a system that turns a click into a booked consultation. When the pieces are disconnected, you pay for demand you never convert and blame the ads when the real leak is everything that happens after the click.',
     ],
     points: [
@@ -58,7 +58,7 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'layers',
-        title: 'Replace the patchwork',
+        title: 'One platform instead of four',
         body: 'Ads, inbox, CRM, booking, and reporting in one platform, so you stop paying four vendors to do one job.',
       },
       {

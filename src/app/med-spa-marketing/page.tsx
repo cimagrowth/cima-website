@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
 import { getGrowthosMap } from '@/lib/growthos-map';
+import { specializeMap } from '@/lib/specialty-map';
 import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
@@ -11,16 +12,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Med spa marketing',
-  h1Lead: 'Med spa software that',
-  h1Accent: 'books the chair and keeps it full.',
+  h1Lead: 'Keep every chair full,',
+  h1Accent: 'without your front desk chasing anyone.',
   subhead:
-    'An empty chair is lost revenue you never get back. GrowthOS answers every inquiry instantly, tracks your ad results and helps your team rebook clients, so your aesthetic clinic stays full without manual chasing.',
+    'An empty chair is lost revenue you never get back. GrowthOS automates instant replies, no-show recovery, rebooking and memberships, so no client slips away when your med spa gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'In aesthetics, the fast clinic wins',
     accent: 'and the slow one stays empty.',
     paragraphs: [
-      'Med spa clients decide quickly and shop around. They message three clinics on Instagram on a Friday night and book with whoever answers first. If your front desk replies on Monday, the appointment is already gone. Speed is not a nice-to-have in aesthetics, it is the whole game.',
+      'Med spa clients decide quickly and shop around. They message three clinics on Instagram on a Friday night and book with whoever answers first. If your front desk replies on Monday, the appointment is already gone. Speed is not a nice-to-have in aesthetics, it is the whole game, and the first job of med spa marketing.',
       'Then there is the back half of the business. No-shows, unfilled gaps, and clients who never rebook quietly drain revenue every week. Memberships and packages only pay off if someone keeps them active. Most clinics rely on a busy front desk to do all of that by hand, and it slips.',
     ],
     points: [
@@ -190,7 +191,7 @@ export const revalidate = 3600;
 
 export default async function Page() {
   const map = await getGrowthosMap();
-  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
+  const mapSection = <MapStrip map={specializeMap(map, 'aesthetics')} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,

@@ -11,16 +11,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient engagement platform',
-  h1Lead: 'A patient engagement platform that',
-  h1Accent: 'converts and retains, not just messages.',
+  h1Lead: 'Every patient followed up until they book,',
+  h1Accent: 'and again until they rebook.',
   subhead:
-    'Most engagement tools send messages. They do not move patients forward. GrowthOS engages every inquiry across every channel, responds in seconds, and follows up until the patient books and rebooks.',
+    'Most engagement tools send messages. They do not move patients forward. GrowthOS automates every conversation across SMS, WhatsApp, Instagram, chat and email, so no patient falls through the cracks when your clinic gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'Sending messages is not',
     accent: 'the same as engaging patients.',
     paragraphs: [
-      'Plenty of tools can send a message. That is not engagement. Real engagement means the right reply, on the channel the patient chose, fast enough to matter, every single time. Most tools fall down on speed and consistency, which is exactly when patients lose interest.',
+      'Plenty of tools can send a message. That is not engagement. Real engagement means the right reply, on the channel the patient chose, fast enough to matter. Most tools fall down on speed and consistency, which is exactly when patients lose interest. A patient engagement platform has to get both right.',
       'A patient who messages at 9:14pm does not want an auto-reply that says someone will be in touch. They want an answer. The clinic that responds in seconds with a real, accurate reply earns the consultation. The one that waits until morning loses it to whoever answered first.',
     ],
     points: [

@@ -22,16 +22,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Fertility clinic marketing',
-  h1Lead: 'Fertility clinic software that',
-  h1Accent: 'answers in seconds and follows up for months.',
+  h1Lead: 'Every fertility patient followed,',
+  h1Accent: 'from first inquiry to paid treatment.',
   subhead:
-    'A fertility patient may take months to decide, but they choose their shortlist in the first hour. GrowthOS answers every inquiry instantly, in the right tone, then nurtures patiently across the entire journey, so the patients who find you actually book the consult.',
+    'A fertility patient may take months to decide, but they choose their shortlist in the first hour. GrowthOS automates everything that happens to a patient outside the lab, so no patient falls through the cracks when your clinic gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'In fertility, the clinic that responds first, and follows up longest',
     accent: 'wins.',
     paragraphs: [
-      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: a fertility decision takes many conversations over weeks, and most clinics stop after one or two.',
+      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: a fertility decision takes many conversations over weeks, and most clinics stop after one or two. That is the job fertility clinic marketing software has to do.',
       'Then there is everything a stretched front desk cannot keep up with. Inquiries that arrive after hours. Patients who go quiet mid-decision. Cycles that pause and never resume. Egg-freezing leads that were never followed up. Each one is a patient, and a high-value treatment, quietly lost.',
     ],
     points: [

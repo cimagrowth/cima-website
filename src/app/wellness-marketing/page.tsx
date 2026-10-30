@@ -7,6 +7,7 @@ import {
   FIRST_REPLY_SOURCE_SHORT,
   FORMS_CONNECT_LINE,
 } from '@/lib/growthos-map';
+import { specializeMap } from '@/lib/specialty-map';
 import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
@@ -18,16 +19,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Wellness marketing',
-  h1Lead: 'Wellness clinic software that fills the calendar and',
-  h1Accent: 'keeps members coming back.',
+  h1Lead: 'Keep every member booked,',
+  h1Accent: 'renewed and coming back.',
   subhead:
-    'Wellness is a relationship, not a one-time visit. GrowthOS brings new clients in, answers every inquiry instantly, and keeps members rebooking and renewing, so your recurring revenue grows instead of leaking every month.',
+    'Wellness is a relationship, not a one-time visit. GrowthOS automates instant replies, rebooking nudges, package reminders and win-backs, so no member drifts away when your clinic gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'Wellness clinics do not lose clients loudly.',
     accent: 'They lose them quietly.',
     paragraphs: [
-      'A prospective client fills out a form after seeing your post, hears nothing back for a day, and moves on. That is the visible leak. The bigger one is invisible: members who quietly stop booking, packages that go unused, and lapsed clients who would happily return if anyone reached out. Wellness lives on lifetime value, and lifetime value dies from silence, not from a bad visit.',
+      'A prospective client fills out a form after seeing your post, hears nothing back for a day, and moves on. That is the visible leak. The bigger one is invisible: members who quietly stop booking, packages that go unused, and lapsed clients who would happily return if anyone reached out. Wellness lives on lifetime value, and lifetime value dies from silence, not from a bad visit. Good wellness center marketing catches both.',
       'Most clinics lean on a busy front desk to handle intake, reminders, rebooking, and follow-up by hand. It slips, every week, and the recurring revenue you already earned walks out the door.',
     ],
     points: [
@@ -214,7 +215,7 @@ export const revalidate = 3600;
 
 export default async function Page() {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
-  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
+  const mapSection = <MapStrip map={specializeMap(map, 'wellness')} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,

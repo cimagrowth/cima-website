@@ -11,17 +11,17 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Healthcare CRM',
-  h1Lead: 'The healthcare CRM that acquires patients,',
-  h1Accent: 'not just stores them.',
+  h1Lead: 'The healthcare CRM',
+  h1Accent: 'that follows up for you.',
   subhead:
-    'Your CRM stores patients. It does not acquire them. GrowthOS is the healthcare CRM built to capture inquiries, convert them, and retain patients for specialty clinics.',
+    'Your CRM stores patients. It does not acquire them. GrowthOS automates every reply, follow-up and rebooking, so no patient falls through the cracks when you get busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'A CRM is a filing cabinet',
     accent: 'you still have to fill by hand.',
     paragraphs: [
-      'Salesforce, HubSpot, and the generic medical CRMs were built to store contacts. They give you fields, pipelines, and reports, then hand the actual work back to you. Without one system, inquiries and follow-ups get lost between tools. The records do not fill themselves.',
-      'For a specialty clinic, that gap is expensive. A new patient inquiry is often the start of a long relationship with the clinic, and the clinic that responds first usually wins. A CRM that only logs the lead after it goes cold is not acquisition software. It is a record of what you missed.',
+      'Salesforce, HubSpot, and the generic medical CRMs were built to store contacts. They give you fields, pipelines, and reports, then hand the actual work back to you. Without one system, inquiries and follow-ups get lost between tools. The records do not fill themselves. A healthcare CRM should do that work, not just hold the records.',
+      'For a specialty clinic, that gap is expensive. A new patient inquiry is worth far more over a patient\'s lifetime, and the clinic that responds first usually wins. A CRM that only logs the lead after it goes cold is not acquisition software. It is a record of what you missed.',
     ],
     points: [
       'Generic CRMs log the inquiry but never answer it.',

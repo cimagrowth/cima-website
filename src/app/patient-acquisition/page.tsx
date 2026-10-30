@@ -11,10 +11,10 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient acquisition',
-  h1Lead: 'Patient acquisition software for specialty clinics,',
-  h1Accent: 'from first click to rebooking.',
+  h1Lead: 'Turn the inquiries you already get',
+  h1Accent: 'into booked patients.',
   subhead:
-    'More leads is not the answer. A system that converts the leads you already get is. GrowthOS is the complete patient acquisition platform for fertility, aesthetics, regenerative, and wellness clinics.',
+    'More leads is not the answer. A system that converts the leads you already get is. GrowthOS automates everything from the first reply to the rebooking for fertility, aesthetics, regenerative and wellness clinics, so no inquiry falls through the cracks when you get busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'Most clinics do not have a lead problem.',
@@ -156,7 +156,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
-        label: 'The 13-hour patient',
+        label: 'Why reply speed decides who books',
         description: 'How clinics lose revenue to leakage while they sleep.',
       },
       {
