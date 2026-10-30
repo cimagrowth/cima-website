@@ -7,7 +7,7 @@ import { buildSolutionSchema } from '@/lib/solution-jsonld';
 const SLUG = 'patient-engagement-platform';
 const TITLE = 'Patient Engagement Platform for Clinics | GrowthOS';
 const DESCRIPTION =
-  'GrowthOS is a patient engagement platform that converts and retains, not just messages. One inbox for patients who contact you by text, email, WhatsApp, LINE, web chat or phone, with an AI patient bot.';
+  'GrowthOS is a patient engagement platform that converts and retains, not just messages. One inbox for patients who contact you by text, email, WhatsApp, LINE, web chat or phone, with an AI front desk.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient engagement platform',
@@ -34,7 +34,7 @@ const content: SolutionLandingProps = {
     eyebrow: 'How GrowthOS solves it',
     heading: 'Engagement that responds, converts, and retains.',
     intro:
-      'GrowthOS engages patients on every channel with an AI patient bot that answers accurately, books consultations, and keeps following up. Speed and consistency are the product, not an afterthought.',
+      'GrowthOS engages patients on every channel with an AI front desk that answers accurately, books consultations, and keeps following up. Speed and consistency are the product, not an afterthought.',
     features: [
       {
         icon: 'message',
@@ -43,7 +43,7 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'bot',
-        title: 'AI patient bot',
+        title: 'AI front desk',
         body: 'A specialty-trained bot answers questions accurately, qualifies the inquiry, and books the consultation without a staff member online.',
       },
       {
@@ -94,7 +94,7 @@ const content: SolutionLandingProps = {
   },
   proofPoints: [
     'SMS, email, WhatsApp, LINE, chat, and voice',
-    'AI patient bot',
+    'AI front desk',
     'HIPAA-grade data handling',
     'Leads flowing on day one',
   ],
@@ -115,7 +115,7 @@ const content: SolutionLandingProps = {
         'GrowthOS responds in seconds, around the clock, including after hours and weekends. Because speed to lead is the strongest predictor of whether a patient books, responding instantly is the core of the platform.',
     },
     {
-      question: 'Is the AI patient bot safe for healthcare conversations?',
+      question: 'Is the AI front desk safe for healthcare conversations?',
       answer:
         'Yes. The AI bot is trained with specialty-specific guardrails and HIPAA-grade data handling, and your team can step into any conversation at any time through the unified inbox.',
     },

@@ -148,7 +148,7 @@ const content: SolutionLandingProps = {
     links: [
       {
         href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
-        label: 'The 13-Hour Patient',
+        label: 'Why reply speed decides who books',
         description: 'Where fertility clinics leak patients between inquiry and booked consult.',
       },
       {
@@ -227,6 +227,15 @@ export default async function Page() {
   const mapSection = (
     <>
       <MapExplorer stages={explorerStages} defaultStage="after_cycle" />
+      <div className={`${WRAP} pb-10`}>
+        <p className="max-w-3xl text-lg leading-relaxed text-teal-deep">
+          At one multi-location fertility network on GrowthOS, the average time from first contact to paid
+          treatment fell from 120 days to 32.
+        </p>
+        <p className="mt-1 max-w-3xl text-[13px] text-teal-deep/75">
+          Average days from first contact to treatment sold, one multi-location fertility network.
+        </p>
+      </div>
       <div className={`${WRAP} pb-16`}>
         <SourcesList map={map} sourceKeys={explorerSourceKeys(explorerStages)} windowDays={stats.window_days} />
       </div>

@@ -145,7 +145,7 @@ const content: SolutionLandingProps = {
     links: [
       {
         href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
-        label: 'The 13-Hour Patient',
+        label: 'Why reply speed decides who books',
         description: 'Where high-ticket clinics leak patients between inquiry and booked consult.',
       },
       {

@@ -193,7 +193,7 @@ const crmCards = [
   },
   {
     icon: CreditCard,
-    title: "Invoicing & Payments",
+    title: "Payment links",
     description:
       "Send invoices, collect deposits, and process payments. All inside the platform. Text-to-pay and payment links included.",
   },

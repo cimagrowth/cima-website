@@ -340,7 +340,7 @@ const upgradePaths = [
   {
     icon: Sparkles,
     title: "Full GrowthOS",
-    description: "Landing pages, campaigns, pipeline, inbox, lead scoring, EHR integration: the complete patient acquisition operating system. All your ad data carries over.",
+    description: "Landing pages, campaigns, pipeline, inbox, lead scoring, EHR integration: all of GrowthOS. All your ad data carries over.",
   },
 ];
 

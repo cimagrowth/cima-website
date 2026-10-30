@@ -122,7 +122,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How quickly can a healthcare CRM be live?',
       answer:
-        'GrowthOS is typically live in about 48 hours because it ships pre-built for your specialty, rather than requiring weeks of configuration.',
+        'GrowthOS ships pre-built for your specialty, rather than requiring weeks of configuration.',
     },
   ],
   related: {

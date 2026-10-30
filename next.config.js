@@ -60,7 +60,7 @@ const nextConfig = {
       // The old How It Works page is replaced by the GrowthOS Map.
       { source: '/how-it-works', destination: '/map', permanent: true },
       // /features merged into /product.
-      { source: '/features', destination: '/product#features', permanent: true },
+      { source: '/features', destination: '/product#features', statusCode: 301 },
       // Self-serve signup and checkout are retired. GrowthOS is sold through
       // Deal Desk, so every former signup and plan path routes to the demo.
       { source: '/sign-up', destination: '/demo', permanent: true },
@@ -77,7 +77,7 @@ const nextConfig = {
       ...Object.entries(BLOG_REDIRECTS).map(([from, to]) => ({
         source: `/blog/${from}`,
         destination: `/blog/${to}`,
-        permanent: true,
+        statusCode: 301,
       })),
       { source: '/b/:slug*', destination: '/blog', permanent: true },
       { source: '/2024/:month/:day/:slug', destination: '/blog', permanent: true },

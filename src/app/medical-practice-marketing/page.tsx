@@ -48,7 +48,7 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'filter',
-        title: 'Stop the leakage',
+        title: 'Close the gaps',
         body: 'GrowthOS follows up at every pipeline stage, recovering the inquiries that stall after the first message.',
       },
       {
@@ -122,7 +122,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How fast will we see booked consultations?',
       answer:
-        'GrowthOS is typically live in about 48 hours and begins responding to inquiries immediately. Speed to lead improves from day one, which is the single biggest driver of booked consultations.',
+        'GrowthOS starts responding to inquiries as soon as your team turns it on, so speed to lead improves from the first day, and speed to lead is a major driver of booked consultations.',
     },
   ],
   related: {

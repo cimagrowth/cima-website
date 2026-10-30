@@ -49,11 +49,11 @@ const content: SolutionLandingProps = {
       {
         icon: 'message',
         title: 'Engage and convert',
-        body: 'Multi-channel engagement and an AI patient bot move inquiries to booked consultations. See the patient engagement platform.',
+        body: 'Multi-channel engagement and an AI front desk move inquiries to booked consultations. See the patient engagement platform.',
       },
       {
         icon: 'filter',
-        title: 'Stop the leakage',
+        title: 'Close the gaps',
         body: 'Leak-stage follow-up recovers the inquiries that stall, the ones a CRM would simply log and forget.',
       },
       {

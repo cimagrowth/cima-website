@@ -227,6 +227,11 @@ const BlogPost = ({ post, relatedPosts, sanitizedContent }: BlogPostProps) => {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
+              <p className="mt-4">
+                <Link href="/growth" className="font-semibold text-paper underline underline-offset-2 hover:text-sand">
+                  Get your free Leak Map
+                </Link>
+              </p>
             </div>
           </motion.aside>
 

@@ -123,7 +123,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How quickly can a med spa get started?',
       answer:
-        'GrowthOS is typically live in about 48 hours because it ships pre-built for aesthetics, so you can start responding to inquiries and recovering no-shows right away.',
+        'GrowthOS ships pre-built for aesthetics, so your team can start responding to inquiries and recovering no-shows soon after setup.',
     },
   ],
   related: {
