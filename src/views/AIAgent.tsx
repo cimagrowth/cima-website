@@ -71,7 +71,7 @@ const features = [
     icon: Clock,
     title: "24/7 Instant Response",
     description:
-      "Under 3 seconds. Every channel. Every time. Day or night, weekday or holiday.",
+      "Answers in seconds on every channel, day or night, weekday or holiday.",
   },
   {
     icon: Users,
@@ -124,8 +124,6 @@ const pricingTiers = [
     planKeyAnnual: "starter_annual" as const,
     description: "For clinics ready to automate patient follow-up",
     features: [
-      "1 AI agent",
-      "Up to 500 conversations/mo",
       "GoHighLevel integration",
       "Lead qualification",
       "Appointment booking",
@@ -142,7 +140,6 @@ const pricingTiers = [
     description: "For multi-location clinics and high-volume practices",
     features: [
       "Everything in Starter",
-      "Unlimited conversations",
       "All CRM integrations",
       "Replies on the channels patients use to contact you: web chat, SMS, email, WhatsApp and social DMs",
       "Custom AI training",
@@ -163,7 +160,7 @@ const faqItems = [
   {
     question: "How is this different from the chatbot that came with my CRM?",
     answer:
-      "Most CRM chatbots match keywords to canned responses. The Cima AI Agent is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI assistant your team configures.",
+      "Most CRM chatbots match keywords to canned responses. The GrowthOS AI front desk is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI assistant your team configures.",
   },
   {
     question: "Can my staff see what the AI is saying?",
@@ -194,7 +191,7 @@ const faqItems = [
 
 export interface AIAgentFigures {
   medianSeconds: number;
-  pctUnder60: string;
+  clinics: string;
   conversations: string;
   windowDays: number;
 }
@@ -230,7 +227,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               </span>
             </h1>
             <p className="text-body-lg text-teal-deep/80 max-w-3xl mx-auto mb-10">
-              Stop losing patients to slow response times. The Cima AI Agent
+              Stop losing patients to slow response times. The GrowthOS AI front desk
               handles inquiries, qualifies leads, and books appointments 24/7,
               inside the CRM you already use, or inside GrowthOS.
             </p>
@@ -272,8 +269,8 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                 text: "median GrowthOS first reply to a patient message",
               },
               {
-                stat: figures.pctUnder60,
-                text: "of patient messages answered in under 60 seconds",
+                stat: figures.clinics,
+                text: "clinic accounts live in 5 countries",
               },
               {
                 stat: figures.conversations,
@@ -324,7 +321,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                 </p>
               </div>
               <div className="card-premium p-6 border-l-4 border-clay">
-                <p className="font-ui text-sm font-semibold text-clay uppercase tracking-[.16em] mb-3">The Cima AI Agent:</p>
+                <p className="font-ui text-sm font-semibold text-clay uppercase tracking-[.16em] mb-3">The GrowthOS AI front desk:</p>
                 <p data-sv-region className="text-body text-foreground">
                   {AI_AGENT_EXAMPLE[specialty]}
                 </p>
@@ -345,7 +342,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             className="text-center mb-16"
           >
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Live in Under 10 Minutes. No Code. No IT.
+              No Code. No IT.
             </h2>
           </motion.div>
           <motion.div

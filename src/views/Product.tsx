@@ -137,7 +137,7 @@ const compareRows: CompareRow[] = [
     ghl: "no",
   },
   {
-    label: "Pre-built for your specialty (live in ~24h)",
+    label: "Pre-built for your specialty",
     growthos: "yes",
     hubspot: "Weeks of setup",
     ghl: "Weeks of setup",
@@ -538,8 +538,8 @@ const Product = () => {
               See it run on your clinic.
             </h2>
             <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">
-              Twenty minutes. We&rsquo;ll show you the software handling sample
-              patient inquiries in your specialty, not a generic demo.
+              Thirty minutes. See the software handle sample patient inquiries in
+              your specialty, not a generic demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">

@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
-import { getGrowthosMap, getPlatformStats, firstReplyCommitment } from '@/lib/growthos-map';
+import {
+  getGrowthosMap,
+  getPlatformStats,
+  firstReplyCommitment,
+  FIRST_REPLY_SOURCE_SHORT,
+  FORMS_CONNECT_LINE,
+} from '@/lib/growthos-map';
 import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
@@ -173,7 +179,7 @@ const content: SolutionLandingProps = {
     // Filled from live platform figures in Page().
     body: '',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 
@@ -224,7 +230,12 @@ export default async function Page() {
       />
       <SolutionLanding
         {...content}
-        closing={{ ...content.closing, body: firstReplyCommitment(stats) }}
+        closing={{
+          ...content.closing,
+          body: firstReplyCommitment(stats),
+          note: FIRST_REPLY_SOURCE_SHORT,
+          more: FORMS_CONNECT_LINE,
+        }}
         mapSection={mapSection}
       />
     </>

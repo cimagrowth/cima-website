@@ -12,6 +12,7 @@ import { unstable_cache } from "next/cache";
 import mapSnapshot from "@/content/growthos-map.snapshot.json";
 import statsSnapshot from "@/content/platform-stats.snapshot.json";
 import { HIDDEN_FEATURES, SITE_FEATURE_COPY, SITE_STAGE_PHRASES } from "@/content/map-site-copy";
+import { SITE_NUMBERS, SITE_STATS } from "@/lib/site-stats";
 
 // ---------------------------------------------------------------------------
 // Types (only what the site reads)
@@ -159,7 +160,13 @@ export function applySiteCopy(map: GrowthosMap): GrowthosMap {
       .map((f) => {
         const copy = SITE_FEATURE_COPY[f.name];
         return copy ? { ...f, name: copy.name ?? f.name, description: copy.description ?? f.description } : { ...f };
-      }),
+      })
+      .reduce<MapFeature[]>((out, f) => {
+        const same = out.find((o) => o.name === f.name);
+        if (same) same.description = `${same.description} ${f.description}`;
+        else out.push(f);
+        return out;
+      }, []),
   }));
   const features = stages.reduce((n, s) => n + s.features.length, 0);
   return { ...map, stages, totals: { ...map.totals, features } };
@@ -177,7 +184,17 @@ export const getGrowthosMap = unstable_cache(
 export const getPlatformStats = unstable_cache(
   async (): Promise<PlatformStats> => {
     const data = await callRpc("get_public_platform_stats");
-    return isUsableStats(data) ? data : STATS_SNAPSHOT;
+    const live = isUsableStats(data) ? data : STATS_SNAPSHOT;
+    // Displayed figures always come from the approved values in site-stats.ts,
+    // so every page shows the same number.
+    return {
+      ...live,
+      median_first_reply_seconds: SITE_NUMBERS.medianFirstReplySeconds,
+      clinics_active: SITE_NUMBERS.clinicsActive,
+      countries: SITE_NUMBERS.countries,
+      patient_conversations: SITE_NUMBERS.patientConversations,
+      window_days: SITE_NUMBERS.windowDays,
+    };
   },
   ["platform-stats"],
   { revalidate: 86400 },
@@ -244,13 +261,12 @@ export function shortCitation(map: GrowthosMap, key: string): string {
   return [author, year].filter(Boolean).join(", ") + ".";
 }
 
-export function platformDisplayStat(stats: PlatformStats): DisplayStat {
+export function platformDisplayStat(_stats: PlatformStats): DisplayStat {
   return {
-    value: `${stats.median_first_reply_seconds} sec`,
+    value: SITE_STATS.firstReply.value,
     label: "median GrowthOS first reply to a patient message",
-    subline: `About ${Math.floor(stats.pct_first_reply_under_60s)}% are answered in under a minute`,
     sourceKey: PLATFORM_SOURCE_KEY,
-    sourceLabel: `Live GrowthOS data, active clinic accounts, last ${stats.window_days} days`,
+    sourceLabel: SITE_STATS.firstReply.source,
   };
 }
 
@@ -321,6 +337,13 @@ export const sourceKeysForStages = (map: GrowthosMap, stages: MapStage[], stats:
     .map((d) => d.sourceKey)
     .filter((k): k is string => !!k && k !== PLATFORM_SOURCE_KEY);
 
-/** The pre-footer and closing line: a measured first-reply figure, not a promise. */
+/** The pre-footer and closing line: the measured first-reply figure. */
 export const firstReplyCommitment = (stats: PlatformStats) =>
-  `Median first reply in ${stats.median_first_reply_seconds} seconds across every live clinic, measured, not promised. Your existing website forms connect on day one, so every inquiry lands in one inbox.`;
+  `Median first reply: ${stats.median_first_reply_seconds} seconds.`;
+
+/** Source line rendered directly under firstReplyCommitment, in caption style. */
+export const FIRST_REPLY_SOURCE_SHORT = "Live GrowthOS data, active clinic accounts, last 90 days.";
+
+/** The closing band line after the first-reply figure and its source. */
+export const FORMS_CONNECT_LINE =
+  "Your existing website forms connect from the first day, so every inquiry lands in one inbox.";

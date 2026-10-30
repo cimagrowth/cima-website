@@ -183,9 +183,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See patient acquisition run end to end.',
-    body: 'Twenty minutes. We will show how GrowthOS answers inquiries and helps your staff rebook patients, not a generic demo.',
+    body: 'Thirty minutes. See how GrowthOS answers inquiries and helps your staff rebook patients, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

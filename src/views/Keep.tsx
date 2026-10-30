@@ -18,7 +18,7 @@ import { BTN_OUTLINE, BTN_PRIMARY, Eyebrow, H2, SectionHead, WRAP } from "@/comp
 import StatCard from "@/components/map/StatCard";
 import SourcesList from "@/components/map/SourcesList";
 import { FeatureList } from "@/components/map/StageDetail";
-import { KeepRecordPanel } from "@/components/home/BeyondTheBooking";
+import { KeepRecordPanel } from "@/components/home/KeepRecordPanel";
 
 export default async function KeepView() {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);

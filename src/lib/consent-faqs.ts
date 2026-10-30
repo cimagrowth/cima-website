@@ -26,7 +26,7 @@ export const CONSENT_FAQS: ConsentFaq[] = [
   {
     question: "Can we use our own consent documents?",
     answer:
-      "Yes. Edit any document in the library and your version replaces the default for your clinic. You can also send us your existing forms to digitise.",
+      "Yes. Edit any document in the library and your version replaces the default for your clinic. You can also send us your existing forms to digitize.",
   },
   {
     question: "Has this been reviewed by an attorney?",

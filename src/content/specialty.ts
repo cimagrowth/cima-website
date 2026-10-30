@@ -5,10 +5,10 @@
 export type Specialty = "fertility" | "aesthetics" | "regenerative" | "wellness";
 
 export const SPECIALTIES: { key: Specialty; label: string; short: string }[] = [
-  { key: "fertility", label: "Fertility & IVF", short: "Fertility" },
-  { key: "aesthetics", label: "Aesthetics & med spa", short: "Aesthetics" },
+  { key: "fertility", label: "Fertility and IVF", short: "Fertility" },
+  { key: "aesthetics", label: "Aesthetics and med spa", short: "Aesthetics" },
   { key: "regenerative", label: "Regenerative medicine", short: "Regenerative" },
-  { key: "wellness", label: "Wellness & integrative", short: "Wellness" },
+  { key: "wellness", label: "Wellness and integrative", short: "Wellness" },
 ];
 
 export const DEFAULT_SPECIALTY: Specialty = "fertility";

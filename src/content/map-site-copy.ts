@@ -4,7 +4,8 @@ import type { StageKey } from "@/lib/growthos-map";
 // so the site rewrites a few module names and descriptions here to describe
 // GrowthOS as software the clinic's own team operates, messaging only its own
 // patients and inquirers. Applied to every map read (RPC and snapshot) before
-// any specialty override. Keys are live RPC names.
+// any specialty override. Keys are live RPC names. Two features renamed to the
+// same name in one stage are merged into one card, descriptions joined.
 
 export interface SiteFeatureCopy {
   name?: string;
@@ -34,7 +35,7 @@ export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
       "Intake quizzes that collect the patient's answers and route the inquiry to your team, sorting every lead hot, warm or cold into the right stage for follow-up.",
   },
   "Doctor referral campaigns": {
-    name: "Referral intake",
+    name: "Referral Partners",
     description: "Referring doctors send patients in and are thanked automatically.",
   },
   "Referral Partners": {
@@ -68,6 +69,27 @@ export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
   Newsletters: {
     name: "Patient updates",
     description: "Drag-and-drop email to opted-in patients, with unsubscribe enforced.",
+  },
+  "Booking and appointment automations": {
+    name: "Appointments",
+  },
+  "Pipelines with leak stages": {
+    name: "Pipeline follow-ups",
+  },
+  "Leak Stages": {
+    name: "Pipeline follow-ups",
+  },
+  "Billing automation": {
+    name: "Payment links",
+  },
+  "Cycle and Treatment Coordinator": {
+    name: "Cycle Coordinator",
+  },
+  "Crisis Triage Agent": {
+    name: "Escalations",
+  },
+  "Google reviews and replies": {
+    name: "Reviews",
   },
   "ChartAI records retrieval": {
     description: "Sends outside records requests and tracks them until the records arrive, organized before the consult.",

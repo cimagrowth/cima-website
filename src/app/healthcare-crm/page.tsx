@@ -21,7 +21,7 @@ const content: SolutionLandingProps = {
     accent: 'you still have to fill by hand.',
     paragraphs: [
       'Salesforce, HubSpot, and the generic medical CRMs were built to store contacts. They give you fields, pipelines, and reports, then hand the actual work back to you. Without one system, inquiries and follow-ups get lost between tools. The records do not fill themselves.',
-      'For a specialty clinic, that gap is expensive. A new patient inquiry is worth thousands of dollars in lifetime value, and the clinic that responds first usually wins. A CRM that only logs the lead after it goes cold is not acquisition software. It is a record of what you missed.',
+      'For a specialty clinic, that gap is expensive. A new patient inquiry is often the start of a long relationship with the clinic, and the clinic that responds first usually wins. A CRM that only logs the lead after it goes cold is not acquisition software. It is a record of what you missed.',
     ],
     points: [
       'Generic CRMs log the inquiry but never answer it.',
@@ -153,9 +153,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See the healthcare CRM that does the work.',
-    body: 'Twenty minutes. We will show the software handling sample patient inquiries in your specialty, inside the CRM, not a generic demo.',
+    body: 'Thirty minutes. See the software handle sample patient inquiries in your specialty, inside the CRM, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

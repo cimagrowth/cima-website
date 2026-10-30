@@ -153,9 +153,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See your med spa stay full.',
-    body: 'Twenty minutes. We will show the software answering inquiries, recovering no-shows, and rebooking clients for an aesthetic clinic, not a generic demo.',
+    body: 'Thirty minutes. See the software answer inquiries, recover no-shows, and rebook clients for an aesthetic clinic, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

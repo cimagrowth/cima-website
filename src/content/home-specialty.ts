@@ -5,11 +5,24 @@ import type { Specialty } from "@/content/specialty";
 // from the home sections. The live Map data (stage names, leaks, features) is
 // specialized separately in src/lib/specialty-map.ts.
 
+export interface StoryCard {
+  title: string;
+  body: string;
+  /** Stage page the card links to. */
+  href: string;
+}
+
 export interface HomeCopy {
-  hero: { pill: string; h1: string; sub: string; footnote: string };
-  /** PlatformProof labels. `conversations` uses {days}. */
-  proof: { reply: string; under60: string; conversations: string };
-  map: { title: string };
+  hero: { pill: string; h1: string; sub: string };
+  /** PlatformProof labels. `paidTreatment` shows the fertility-only 120 to 32 figure. */
+  proof: { paidTreatment: boolean; reply: string; clinics: string; conversations: string };
+  /** The problem, what GrowthOS does, and the result. */
+  story: {
+    problem: { title: string; body: string };
+    does: { title: string; lead: string; cards: StoryCard[]; ehr: string };
+    result: { title: string; body: string; showFertilityResult: boolean };
+  };
+  /** Keep record panel, also used on /keep. */
   beyond: {
     side: string;
     /** Show the after_cycle research stat cards. */
@@ -20,25 +33,73 @@ export interface HomeCopy {
     tiles: [string, string][];
     rows: { label: string; value: string; warn: boolean }[];
   };
-  research: { show: boolean };
-  team: { keepStage: string; nurture: string; keep: string; reputation: string };
   healthcare: { hipaa: { title: string; body: string }; grief: { title: string; body: string } };
 }
 
+const EHR_LINE = "And it all connects to your EHR and practice systems, so nothing is typed twice.";
+
+/** The six "what GrowthOS does" cards. Only cards 4 to 6 vary by specialty. */
+const storyCards = (person: string, ready: string, track: string, back: string): StoryCard[] => [
+  {
+    title: "They reach out",
+    body: "AI trained on your clinic answers every text, call, WhatsApp, chat and form in seconds, in your voice, 24/7.",
+    href: "/map/first-response",
+  },
+  {
+    title: "They get qualified",
+    body: `It asks your screening questions, scores fit and books qualified ${person} on your real calendar.`,
+    href: "/map/nurture-and-qualify",
+  },
+  {
+    title: "They don't fall off",
+    body: `Follow-up runs at every pipeline stage, so a stalled ${person.replace(/s$/, "")} gets a nudge before they go cold.`,
+    href: "/map/book-and-show-up",
+  },
+  { title: "They get ready", body: ready, href: "/map/consult-to-commitment" },
+  { title: "They stay on track", body: track, href: "/map/in-treatment" },
+  { title: "They come back and refer", body: back, href: "/map/advocate-and-return" },
+];
+
+const PROBLEM_TITLE = "When clinics get busy, patients stop hearing from you.";
+const DOES_TITLE = "GrowthOS automates the manual work that falls through the cracks.";
+const DOES_LEAD =
+  "One platform covers every step a patient takes with your clinic. Your team sets the rules and steps in whenever they want.";
+const RESULT_TITLE = "More patients. More revenue. In less time.";
+const RESULT_BODY =
+  "When every patient gets an answer and a next step, more of them reach treatment, and they get there faster.";
+
+const PROOF: HomeCopy["proof"] = {
+  paidTreatment: false,
+  reply: "Median first reply to a patient message, day or night",
+  clinics: "Clinic accounts live in 5 countries",
+  conversations: "Patient conversations handled in the last 90 days",
+};
+
 const fertility: HomeCopy = {
   hero: {
-    pill: "The front-end operating system for fertility and specialty clinics",
-    h1: "Your clinic leaks patients at eight stages. GrowthOS closes every one.",
-    sub: "From the first search to years after treatment. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, keep patients moving through consult and treatment, and check in with patients who have eggs and embryos in storage.",
-    footnote:
-      "See where your clinic leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
+    pill: "The front-end operating system for fertility clinics",
+    h1: "Every patient answered, followed up and moved to treatment. Automatically.",
+    sub: "GrowthOS automates the entire patient journey outside the lab, from the first message to paid treatment and beyond. AI trained on your clinic answers in seconds, qualifies every inquiry and follows up at every stage, so no patient slips through when your team gets busy.",
   },
-  proof: {
-    reply: "median first reply to a patient message",
-    under60: "of patient messages answered in under 60 seconds",
-    conversations: "patient conversations handled in the last {days} days",
+  proof: { ...PROOF, paidTreatment: true },
+  story: {
+    problem: {
+      title: PROBLEM_TITLE,
+      body: "It is the first thing to break. The inquiry that came in at 9pm waits until morning. The patient who wasn't ready never gets a second message. Consents sit unsigned, a cycle-timed test gets missed, and nobody asks the happy patient for a review. None of it is medicine. All of it costs you patients.",
+    },
+    does: {
+      title: DOES_TITLE,
+      lead: DOES_LEAD,
+      cards: storyCards(
+        "patients",
+        "Consents, education videos, records requests and payment links go out and get tracked to done.",
+        "Cycle Coordinator books cycle-timed tests in the right window and checks in until they're done.",
+        "Review requests, storage check-ins for eggs and embryos, and past-patient updates go out on schedule.",
+      ),
+      ehr: EHR_LINE,
+    },
+    result: { title: RESULT_TITLE, body: RESULT_BODY, showFertilityResult: true },
   },
-  map: { title: "One map, from the first search to the last stored embryo." },
   beyond: {
     side: "A chatbot can answer a lead. A CRM can hold a record. Neither notices the patient who froze eggs in 2021 and never came back, or the family with two embryos left in storage. GrowthOS does.",
     showStats: true,
@@ -56,23 +117,10 @@ const fertility: HomeCopy = {
       { label: "Patient decision link", value: "Opened", warn: false },
     ],
   },
-  research: { show: true },
-  team: {
-    keepStage: "STAGE 7 · AFTER THE CYCLE",
-    nurture: "Follows up across days and weeks, adapting tone to where the patient is emotionally.",
-    keep: "Checks in with every patient who has eggs, embryos or samples in storage, for as long as they are stored.",
-    reputation: "Asks happy patients for reviews at the right moment and drafts your replies.",
-  },
   healthcare: {
     hipaa: { title: "HIPAA and BAA", body: "Patient data handled to clinical standard, with a signed BAA." },
     grief: { title: "Grief-aware", body: "Automated messages pause after a loss, and tone follows the patient." },
   },
-};
-
-const OTHER_PROOF: HomeCopy["proof"] = {
-  reply: "median first reply to an inbound message",
-  under60: "of inbound messages answered in under 60 seconds",
-  conversations: "conversations handled in the last {days} days",
 };
 
 export const HOME_COPY: Record<Specialty, HomeCopy> = {
@@ -80,13 +128,36 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
   aesthetics: {
     hero: {
       pill: "The front-end operating system for aesthetics and med spa clinics",
-      h1: "Your med spa leaks clients at eight stages. GrowthOS closes every one.",
-      sub: "From the first search to the next touch-up. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, move clients from consult to booked treatment, and check in when results fade and packages sit unused.",
-      footnote:
-        "See where your med spa leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
+      h1: "Every client answered, followed up and booked. Automatically.",
+      sub: "GrowthOS automates the entire client journey outside the treatment room, from the first message to booked treatment and the next visit. AI trained on your med spa answers in seconds, qualifies every inquiry and follows up at every stage, so no client slips through when your team gets busy.",
     },
-    proof: OTHER_PROOF,
-    map: { title: "One map, from the first search to the next rebooking." },
+    proof: {
+      ...PROOF,
+      reply: "Median first reply to a client message, day or night",
+      conversations: "Client conversations handled in the last 90 days",
+    },
+    story: {
+      problem: {
+        title: "When med spas get busy, clients stop hearing from you.",
+        body: "It is the first thing to break. The inquiry that came in at 9pm waits until morning. The client who wasn't ready never gets a second message. Consents sit unsigned, a touch-up window gets missed, and nobody asks the happy client for a review. None of it is the treatment. All of it costs you clients.",
+      },
+      does: {
+        title: DOES_TITLE,
+        lead: "One platform covers every step a client takes with your med spa. Your team sets the rules and steps in whenever they want.",
+        cards: storyCards(
+          "clients",
+          "Consents, education videos and payment links go out and get tracked to done.",
+          "Treatment Coordinator books the next session in the right window and checks in until the plan is done.",
+          "Review requests, reminders before packages and memberships expire, and past-client updates go out on schedule.",
+        ),
+        ehr: EHR_LINE,
+      },
+      result: {
+        title: "More clients. More revenue. In less time.",
+        body: "When every client gets an answer and a next step, more of them book treatment, and they get there faster.",
+        showFertilityResult: false,
+      },
+    },
     beyond: {
       side: "A chatbot can answer a lead. A CRM can hold a record. Neither notices the client who bought a six-session package and stopped after two, or the member whose results faded three months ago. GrowthOS does.",
       showStats: false,
@@ -105,13 +176,6 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
         { label: "Client link", value: "Opened", warn: false },
       ],
     },
-    research: { show: false },
-    team: {
-      keepStage: "STAGE 7 · BETWEEN TREATMENTS",
-      nurture: "Follows up across days and weeks, adapting tone to where the client is in their decision.",
-      keep: "Checks in with every client who has sessions, credit or a membership waiting, and brings them back at the right interval.",
-      reputation: "Asks happy clients for reviews at the right moment and drafts your replies.",
-    },
     healthcare: {
       hipaa: { title: "HIPAA and BAA", body: "Client data handled to clinical standard, with a signed BAA." },
       grief: { title: "Outcome-aware", body: "Never promises a result, and drops the review ask when a client is unhappy." },
@@ -120,13 +184,28 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
   regenerative: {
     hero: {
       pill: "The front-end operating system for regenerative medicine clinics",
-      h1: "Your clinic leaks patients at eight stages. GrowthOS closes every one.",
-      sub: "From the first search to the last session of the protocol. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, move patients from consult to treatment start, and check in with patients about the series, memberships and banked cells they already hold.",
-      footnote:
-        "See where your clinic leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
+      h1: "Every patient answered, followed up and moved to treatment. Automatically.",
+      sub: "GrowthOS automates the entire patient journey outside the treatment room, from the first message to paid treatment and the final follow-up. AI trained on your clinic answers in seconds, qualifies every inquiry and follows up at every stage, so no patient slips through when your team gets busy.",
     },
-    proof: OTHER_PROOF,
-    map: { title: "One map, from the first search to the final follow-up." },
+    proof: PROOF,
+    story: {
+      problem: {
+        title: PROBLEM_TITLE,
+        body: "It is the first thing to break. The inquiry that came in at 9pm waits until morning. The patient who wasn't ready never gets a second message. Consents sit unsigned, the next phase of a protocol gets missed, and nobody asks the happy patient for a review. None of it is medicine. All of it costs you patients.",
+      },
+      does: {
+        title: DOES_TITLE,
+        lead: DOES_LEAD,
+        cards: storyCards(
+          "patients",
+          "Consents, education videos, records requests and payment links go out and get tracked to done.",
+          "Treatment Coordinator books the next phase of each protocol in the right window and checks in until it is done.",
+          "Review requests, check-ins about banked cells and unfinished series, and past-patient updates go out on schedule.",
+        ),
+        ehr: EHR_LINE,
+      },
+      result: { title: RESULT_TITLE, body: RESULT_BODY, showFertilityResult: false },
+    },
     beyond: {
       side: "A chatbot can answer a lead. A CRM can hold a record. Neither notices the patient who banked cells two years ago and never came back, or the one who stopped halfway through a series. GrowthOS does.",
       showStats: false,
@@ -145,12 +224,6 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
         { label: "Patient link", value: "Opened", warn: false },
       ],
     },
-    research: { show: false },
-    team: {
-      ...fertility.team,
-      keepStage: "STAGE 7 · BETWEEN PHASES",
-      keep: "Checks in with every patient who has cells banked, sessions left or a membership running, for as long as they hold them.",
-    },
     healthcare: {
       hipaa: fertility.healthcare.hipaa,
       grief: {
@@ -162,13 +235,28 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
   wellness: {
     hero: {
       pill: "The front-end operating system for wellness and integrative clinics",
-      h1: "Your practice leaks patients at eight stages. GrowthOS closes every one.",
-      sub: "From the first search to the next visit. One platform your team uses to manage your own ad accounts, answer every inquiry in seconds, move patients from first visit to a started program, and check in about the packages and memberships they already have.",
-      footnote:
-        "See where your practice leaks, benchmarked against anonymized data from active GrowthOS clinic accounts. Your report arrives in your inbox in a few minutes.",
+      h1: "Every patient answered, followed up and booked. Automatically.",
+      sub: "GrowthOS automates the entire patient journey outside the treatment room, from the first message to a started program and the next visit. AI trained on your practice answers in seconds, qualifies every inquiry and follows up at every stage, so no patient slips through when your team gets busy.",
     },
-    proof: OTHER_PROOF,
-    map: { title: "One map, from the first search to the next visit." },
+    proof: PROOF,
+    story: {
+      problem: {
+        title: "When practices get busy, patients stop hearing from you.",
+        body: "It is the first thing to break. The inquiry that came in at 9pm waits until morning. The patient who wasn't ready never gets a second message. Intake forms sit unsigned, a follow-up visit gets missed, and nobody asks the happy patient for a review. None of it is medicine. All of it costs you patients.",
+      },
+      does: {
+        title: DOES_TITLE,
+        lead: "One platform covers every step a patient takes with your practice. Your team sets the rules and steps in whenever they want.",
+        cards: storyCards(
+          "patients",
+          "Consents, education videos, records requests and payment links go out and get tracked to done.",
+          "Treatment Coordinator books the next visit on each care plan in the right window and checks in until it is done.",
+          "Review requests, reminders before packages and memberships expire, and past-patient updates go out on schedule.",
+        ),
+        ehr: EHR_LINE,
+      },
+      result: { title: RESULT_TITLE, body: RESULT_BODY, showFertilityResult: false },
+    },
     beyond: {
       side: "A chatbot can answer a lead. A CRM can hold a record. Neither notices the patient who bought a ten-session IV package and used three, or the member who stopped coming in after the holidays. GrowthOS does.",
       showStats: false,
@@ -186,12 +274,6 @@ export const HOME_COPY: Record<Specialty, HomeCopy> = {
         { label: "Package expiring", value: "Due in [N] days", warn: true },
         { label: "Patient link", value: "Opened", warn: false },
       ],
-    },
-    research: { show: false },
-    team: {
-      ...fertility.team,
-      keepStage: "STAGE 7 · BETWEEN VISITS",
-      keep: "Checks in with every patient who has sessions, a package or a membership waiting, and brings them back on their plan.",
     },
     healthcare: {
       hipaa: fertility.healthcare.hipaa,

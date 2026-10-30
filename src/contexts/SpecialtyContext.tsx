@@ -59,9 +59,10 @@ const clearPending = () => {
 };
 
 export const SpecialtyProvider = ({ children }: { children: ReactNode }) => {
-  // Always start on fertility so the first client render matches the server HTML.
-  const [specialty, setState] = useState<Specialty>(DEFAULT_SPECIALTY);
+  // Start on the route's specialty (a specialty landing page) or fertility, so
+  // the server HTML and the first client render agree.
   const pathname = usePathname();
+  const [specialty, setState] = useState<Specialty>(() => landingSpecialty(pathname) ?? DEFAULT_SPECIALTY);
   const resolved = useRef(false);
   const [ready, setReady] = useState(false);
   const [chosen, setChosen] = useState(false);

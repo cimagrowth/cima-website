@@ -46,7 +46,7 @@ const steps = [
     icon: FileCheck,
     title: "Records Delivered",
     description:
-      "Records retrieved from previous providers and delivered to your system. 5–14 business days.",
+      "Records retrieved from previous providers and delivered to your system. 5 to 14 business days.",
   },
 ];
 
@@ -116,11 +116,11 @@ const CTAButtons = () => (
         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Button>
     </Link>
-    <a href="https://os.cimagrowth.com" target="_blank" rel="noopener noreferrer">
+    <Link href="/growth">
       <Button variant="hero-outline" size="lg">
-        Sign Up for GrowthOS
+        Get your free Leak Map
       </Button>
-    </a>
+    </Link>
   </div>
 );
 
@@ -347,15 +347,15 @@ const ChartAI = () => {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <a href="https://os.cimagrowth.com" target="_blank" rel="noopener noreferrer">
+              <Link href="/growth">
                 <Button
                   variant="hero-outline"
                   size="lg"
                   className="border border-paper/40 bg-transparent text-paper hover:bg-paper/10"
                 >
-                  Sign Up for GrowthOS
+                  Get your free Leak Map
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Footer note */}

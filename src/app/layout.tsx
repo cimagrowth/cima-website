@@ -15,10 +15,10 @@ import { SPECIALTY_PENDING_SCRIPT } from '@/content/specialty';
 export const metadata: Metadata = {
   metadataBase: new URL('https://cimagrowth.com'),
   title: {
-    default: 'Cima Growth Solutions – AI Patient Engagement for Healthcare Clinics',
+    default: 'Cima Growth Solutions: AI Patient Engagement for Healthcare Clinics',
     template: '%s',
   },
-  description: 'GrowthOS is an AI-powered patient engagement platform for fertility clinics, med spas, wellness centers, and regenerative medicine clinics.',
+  description: 'GrowthOS automates everything that happens to a patient outside the lab.',
   keywords: ['patient engagement software', 'healthcare CRM', 'AI patient communication', 'fertility clinic software', 'med spa CRM'],
   authors: [{ name: 'Cima Growth Solutions' }],
   openGraph: {

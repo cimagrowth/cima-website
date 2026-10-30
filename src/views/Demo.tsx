@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { getAttribution, pushLeadEvent } from "@/lib/attribution";
 import { FORM_SPECIALTY_VALUES } from "@/content/specialty-pages";
 import { useSpecialty } from "@/contexts/SpecialtyContext";
+import { SetupSteps } from "@/components/home/SetupSteps";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
 const ANON_KEY =
@@ -215,6 +216,11 @@ const Demo = () => {
                     </motion.div>
                   );
                 })}
+              </div>
+
+              <div className="mb-10">
+                <h2 className="text-body font-semibold text-foreground mb-4">How setup works</h2>
+                <SetupSteps />
               </div>
             </motion.div>
 

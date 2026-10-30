@@ -153,9 +153,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See marketing that fills the calendar.',
-    body: 'Twenty minutes. We will show the software answering inquiries and helping staff book consults in your specialty, not a generic demo.',
+    body: 'Thirty minutes. See the software answer inquiries and help staff book consults in your specialty, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

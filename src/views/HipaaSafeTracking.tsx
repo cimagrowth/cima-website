@@ -11,7 +11,7 @@ type Section = {
 const sections: Section[] = [
   {
     heading: "The problem nobody fixed",
-    body: "Meta and Google will not sign a business associate agreement. The moment a standard pixel sends a patient's visit to a health page, that data is exposed. Clinics that left tracking on have faced class-action lawsuits. Clinics that turned it off lost the ability to measure a single dollar of ad spend.",
+    body: "Meta and Google will not sign a business associate agreement. The moment a standard pixel sends a patient's visit to a health page, that data is exposed. Clinics that turned it off lost the ability to measure a single dollar of ad spend.",
   },
   {
     heading: "How GrowthOS handles it",
@@ -22,7 +22,7 @@ const sections: Section[] = [
     body: "Because the data is first-party and server-side, your real performance lives in GrowthOS. Spend, leads, booked consults, and ROI in one view. The ad platforms own dashboards will show smaller numbers, by design, for health accounts. GrowthOS is your scoreboard.",
   },
   {
-    heading: "Set up in three clicks",
+    heading: "Set up by connecting your accounts",
     body: "Connect Meta. Connect Google Ads. Connect Analytics. That is the entire setup. Compliant tracking switches on automatically from the moment you connect.",
   },
 ];

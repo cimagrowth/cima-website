@@ -23,18 +23,12 @@ export default function HeroMap({ map, copy = HOME_COPY.fertility.hero }: { map:
           </p>
           <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
             <Link href="/growth" className={`${BTN_PRIMARY} md:text-[17px]`}>
-              Get your free Leak Map
+              See where your clinic leaks
             </Link>
             <Link href="/demo" className={`${BTN_OUTLINE} md:text-[17px]`}>
               Book a demo
             </Link>
           </div>
-          <p className="text-sm text-teal-deep/75">
-            GrowthOS is subscription software. Your team runs it, and it messages only your own patients and inquirers.
-          </p>
-          <p className="text-sm text-teal-deep/75">
-            {copy.footnote}
-          </p>
         </div>
 
         <div className="flex flex-col gap-3.5 rounded-[22px] bg-teal-deep p-5 text-paper md:p-7 lg:col-span-5">

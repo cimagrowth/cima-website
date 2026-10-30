@@ -62,7 +62,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       nostat:
         "No published benchmark we trust yet for mid-series drop-off in aesthetics. GrowthOS stage timing can produce one.",
       features: {
-        "Cycle and Treatment Coordinator": {
+        "Cycle Coordinator": {
           name: "Treatment Coordinator",
           description:
             "Timed plans for every series and maintenance schedule, drafted from the clinic's own protocol and started from a pipeline stage.",
@@ -123,7 +123,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       metrics: ["Missed protocol windows", "Escalations resolved", "Mid-protocol discontinuation"],
       nostat: "No published benchmark we trust yet for mid-protocol drop-off. GrowthOS stage timing can produce one.",
       features: {
-        "Cycle and Treatment Coordinator": {
+        "Cycle Coordinator": {
           name: "Treatment Coordinator",
           description:
             "Timed plans for every protocol series and follow-up window, drafted from the clinic's own protocol and started from a pipeline stage.",
@@ -131,7 +131,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       },
     },
     after_cycle: {
-      name: "Between phases",
+      name: "After the procedure",
       leaks: [{ name: "The Unfinished Protocol", description: "Cells banked, series unfinished, patient gone quiet" }],
       leak: "Banked cells sit unused and treatment series go unfinished while the patient goes quiet.",
       fix: "Keep records the banked cells, treatment series and memberships each patient holds, sends scheduled reminders before they renew or expire and at the follow-up windows you choose, and gives patients a secure link to see what they have and decide what comes next. Every touch is logged.",
@@ -171,7 +171,7 @@ export const STAGE_OVERRIDES: Record<OtherSpecialty, Partial<Record<StageKey, St
       metrics: ["Missed visit windows", "Escalations resolved", "Patients who stopped mid-plan"],
       nostat: "No published benchmark we trust yet for mid-plan drop-off. GrowthOS stage timing can produce one.",
       features: {
-        "Cycle and Treatment Coordinator": {
+        "Cycle Coordinator": {
           name: "Treatment Coordinator",
           description:
             "Timed plans for every care plan and program, drafted from the clinic's own protocol and started from a pipeline stage.",

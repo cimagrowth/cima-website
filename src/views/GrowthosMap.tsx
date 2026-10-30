@@ -15,7 +15,7 @@ import { BTN_OUTLINE, BTN_PRIMARY, Eyebrow, H2, WRAP } from "@/components/map/ui
 import StageDetail from "@/components/map/StageDetail";
 import SourcesList from "@/components/map/SourcesList";
 import IntegrationsPanel from "@/components/map/IntegrationsPanel";
-import { SetupSteps } from "@/components/home/SetupAndIntegrations";
+import { SetupSteps } from "@/components/home/SetupSteps";
 import LeakMapCTA from "@/components/home/LeakMapCTA";
 
 export default async function GrowthosMapView() {

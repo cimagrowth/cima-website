@@ -152,7 +152,7 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
   },
 };
 
-/** The "The Cima AI Agent:" comparison paragraph on /ai-agent. */
+/** The "The GrowthOS AI front desk:" comparison paragraph on /ai-agent. */
 export const AI_AGENT_EXAMPLE: Record<Specialty, string> = {
   fertility:
     "Reads the emotional context of every message. Knows that a patient asking about egg freezing at 11 PM is probably anxious and needs reassurance, not a pricing sheet. Nurtures across days or weeks. Then hands off with the complete conversation history.",

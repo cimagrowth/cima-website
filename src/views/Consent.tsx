@@ -83,7 +83,7 @@ const Consent = () => {
               {[
                 "Your videos, your brand",
                 "Audit trail on every signature",
-                "Live in a day",
+                "Runs from your pipeline",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <Check
@@ -202,7 +202,7 @@ const Consent = () => {
                 n: "01",
                 icon: Video,
                 title: "Your videos, your voice.",
-                body: "Upload your own education modules and the portal carries your clinic's colours, logo, and domain. Patients watch your clinicians explain your protocols, not stock footage recorded for someone else. Cima stays invisible.",
+                body: "Upload your own education modules and the portal carries your clinic's colors, logo, and domain. Patients watch your clinicians explain your protocols, not stock footage recorded for someone else. Cima stays invisible.",
               },
               {
                 n: "02",
@@ -505,10 +505,10 @@ const Consent = () => {
         <div className="container-tight relative z-10 text-center">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
             <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-5">
-              Modernise the front desk of your practice.
+              Modernize the front desk of your practice.
             </h2>
             <p className="text-base md:text-lg text-paper/85 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Book a walkthrough and we will show you consent firing from a live
+              Book a walkthrough and see consent fire from a live
               pipeline.
             </p>
             <Link href={DEMO_ROUTE}>

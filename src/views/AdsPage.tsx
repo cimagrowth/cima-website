@@ -405,7 +405,7 @@ const AdsPage = () => {
             </motion.div>
 
             <motion.p variants={itemVariants} className="text-body-sm text-teal-deep/80 mt-4">
-              Included in GrowthOS Growth and available with the Cima AI Agent Pro plan
+              Included in GrowthOS Growth
             </motion.p>
           </motion.div>
         </div>
@@ -1014,9 +1014,8 @@ const AdsPage = () => {
               Part of the GrowthOS Growth Plan.
             </h2>
             <p className="text-body-lg text-muted-foreground">
-              Ads Manager is built into the GrowthOS Growth plan, and it is
-              available with the Cima AI Agent Pro plan. Your ad accounts always
-              stay yours. Pricing is tailored to your clinic
+              Ads Manager is built into the GrowthOS Growth plan. Your ad
+              accounts always stay yours. Pricing is tailored to your clinic
               and shared in your demo.
             </p>
           </motion.div>

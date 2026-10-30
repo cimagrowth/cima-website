@@ -73,7 +73,7 @@ const Training = () => {
               {[
                 "Your videos, your brand",
                 "Certificates that verify",
-                "Enrol a whole company at once",
+                "Enroll a whole company at once",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <Check
@@ -211,8 +211,8 @@ const Training = () => {
               {
                 n: "04",
                 icon: Building2,
-                title: "Enrol a company, not a person.",
-                body: "Your customer is an organisation. Enrol all of them in one action, exclude anyone who does not need it, and read completion by seat. When your customer asks you to prove their staff are trained, you export the list.",
+                title: "Enroll a company, not a person.",
+                body: "Your customer is an organization. Enroll all of them in one action, exclude anyone who does not need it, and read completion by seat. When your customer asks you to prove their staff are trained, you export the list.",
               },
             ].map((card, i) => {
               const Icon = card.icon;
@@ -276,8 +276,8 @@ const Training = () => {
             <IncludedCard
               title="Run"
               items={[
-                "Enrol a contact or an entire company in one action",
-                "Automatic enrolment when a deal reaches a stage you choose",
+                "Enroll a contact or an entire company in one action",
+                "Automatic enrollment when a deal reaches a stage you choose",
                 "Kickoff, reminder, and overdue messages that send themselves",
                 "Every message editable in your own words",
               ]}

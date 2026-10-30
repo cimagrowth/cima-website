@@ -153,9 +153,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See engagement that books patients.',
-    body: 'Twenty minutes. We will show the AI patient bot handling real inquiries across channels in your specialty, not a generic demo.',
+    body: 'Thirty minutes. See the AI front desk handle real inquiries across channels in your specialty, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

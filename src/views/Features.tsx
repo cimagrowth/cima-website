@@ -759,7 +759,7 @@ const Features = () => {
               Ready to see it in action?
             </h2>
             <p className="text-body-lg text-white/70 mb-10">
-              Book a 15-minute demo and we'll show you exactly how GrowthOS works for your
+              Book a 30-minute demo and see exactly how GrowthOS works for your
               specialty.
             </p>
             <Link href="/demo">
