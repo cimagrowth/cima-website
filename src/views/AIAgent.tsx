@@ -119,10 +119,8 @@ const features = [
 
 const pricingTiers = [
   {
-    name: "Starter",
-    planKeyMonthly: "starter_monthly" as const,
-    planKeyAnnual: "starter_annual" as const,
-    description: "For clinics ready to automate patient follow-up",
+    name: "For a single clinic",
+    description: "Automate patient follow-up from the first message to the booked consult.",
     features: [
       "GoHighLevel integration",
       "Lead qualification",
@@ -134,12 +132,10 @@ const pricingTiers = [
     highlighted: false,
   },
   {
-    name: "Pro",
-    planKeyMonthly: "pro_monthly" as const,
-    planKeyAnnual: "pro_annual" as const,
-    description: "For multi-location clinics and high-volume practices",
+    name: "For multi-location and high-volume clinics",
+    description: "Everything a single clinic gets, across every location and channel.",
     features: [
-      "Everything in Starter",
+      "Everything a single clinic gets",
       "All CRM integrations",
       "Replies on the channels patients use to contact you: web chat, SMS, email, WhatsApp and social DMs",
       "Custom AI training",
@@ -181,11 +177,6 @@ const faqItems = [
     question: "Can I customize what the AI says?",
     answer:
       "You control personality, tone, FAQs, booking rules, qualification criteria, and escalation triggers. It uses your clinic's tone and wording.",
-  },
-  {
-    question: "Can I upgrade or downgrade my plan?",
-    answer:
-      "Yes, you can switch between Starter and Pro at any time. Changes take effect on your next billing cycle. No penalties or hidden fees.",
   },
 ];
 
@@ -471,11 +462,11 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             className="text-center mb-12"
           >
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Two plans. Pricing is shared in your demo.
+              Pricing is shared in your demo.
             </h2>
 
             <p className="text-body-lg text-teal-deep/80">
-              Setup fee waived on six-month and annual terms.
+              Monthly, six-month and annual terms.
             </p>
           </motion.div>
 
@@ -493,11 +484,6 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                     : "card-premium"
                 }`}
               >
-                {tier.highlighted && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-paper border border-sand text-clay shadow-[var(--shadow-sm)] text-xs font-semibold px-4 py-1 rounded-full">
-                    Most Popular
-                  </span>
-                )}
                 <h3
                   className={`text-heading-sm mb-1 ${
                     tier.highlighted ? "text-paper" : "text-foreground"
@@ -654,7 +640,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               </a>
             </Button>
             <p className="text-sm text-paper/75 mt-4">
-              Setup fee waived on six-month and annual terms.
+              Monthly, six-month and annual terms.
             </p>
           </motion.div>
         </div>
