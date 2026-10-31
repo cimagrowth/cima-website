@@ -86,6 +86,11 @@ update website_blog_posts set content = replace(
 )
 where slug = 'ai-communication-layer-responsible-patient-care';
 
+update website_blog_posts set content = replace(replace(
+  content,
+  'Dr. Rivera''s team at Cima Fertility Center', 'Dr. Rivera''s team at her clinic'),
+  'Cima Fertility Center', 'her clinic')
+where slug = 'get-more-patient-reviews';
 update website_blog_posts set content = replace(
   content,
   'Dr. Rivera''s team at Cima Fertility',
@@ -100,5 +105,6 @@ commit;
 --     count(*) filter (where content like '%47-frameworks%') as frameworks,
 --     count(*) filter (where content like '%href="/features"%') as features_links,
 --     count(*) filter (where title like '%by 15\%%' or meta_title like '%by 15\%%') as badge_15,
---     count(*) filter (where content like '%No leads fall through%') as no_leads
+--     count(*) filter (where content like '%No leads fall through%') as no_leads,
+--     count(*) filter (where content like '%Cima Fertility%') as cima_fertility
 --   from website_blog_posts;

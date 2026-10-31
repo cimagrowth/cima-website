@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
 import { getGrowthosMap } from '@/lib/growthos-map';
+import { specializeMap } from '@/lib/specialty-map';
 import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
@@ -189,7 +190,7 @@ export const revalidate = 3600;
 
 export default async function Page() {
   const map = await getGrowthosMap();
-  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
+  const mapSection = <MapStrip map={specializeMap(map, 'wellness')} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,

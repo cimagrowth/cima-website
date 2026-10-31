@@ -50,9 +50,9 @@ const steps = [
 ];
 
 const integrations = [
-  { name: "GoHighLevel", status: "Live", statusColor: "bg-green-500" },
-  { name: "HubSpot", status: "Live", statusColor: "bg-green-500" },
-  { name: "Salesforce", status: "Live", statusColor: "bg-green-500" },
+  { name: "GoHighLevel" },
+  { name: "HubSpot" },
+  { name: "Salesforce" },
 ];
 
 const features = [
@@ -351,11 +351,6 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               >
                 <span className="text-body font-semibold text-foreground">
                   {crm.name}
-                </span>
-                <span
-                  className={`${crm.statusColor} text-white text-xs font-semibold px-2.5 py-0.5 rounded-full`}
-                >
-                  {crm.status}
                 </span>
               </motion.div>
             ))}

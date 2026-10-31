@@ -372,7 +372,7 @@ const PrivacyPolicy = () => {
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>adwords</code></td>
-                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To create and manage Google Ads campaigns for your clinic and report on their performance, when you enable the AI Ads feature.</td>
+                  <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">To let you create and manage Google Ads campaigns in your own account through the AI Ads feature, and report on their performance.</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-300 dark:border-gray-600 px-4 py-2"><code>datamanager</code></td>

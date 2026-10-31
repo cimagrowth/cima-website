@@ -348,7 +348,7 @@ const enterpriseCards = [
 const hipaaTags = [
   "PHI Encryption",
   "BAA Included",
-  "SOC 2 Infrastructure",
+  "Hosted on SOC 2 audited infrastructure",
   "Role-Based Access",
   "Audit Logs",
 ];
