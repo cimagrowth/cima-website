@@ -92,6 +92,15 @@ export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
     name: "Pipeline follow-ups",
     description: PIPELINE_FOLLOW_UPS,
   },
+  // Live RPC names for the same two modules.
+  "Pipelines with Stop The Leak follow-ups": {
+    name: "Pipeline follow-ups",
+    description: PIPELINE_FOLLOW_UPS,
+  },
+  "Stop The Leak": {
+    name: "Pipeline follow-ups",
+    description: PIPELINE_FOLLOW_UPS,
+  },
   "Stage-to-stage timing": {
     description: "Shows how long patients take between each step, so you can see where they slow down.",
   },
@@ -170,6 +179,7 @@ export const SITE_FOUNDATION_NAMES: Record<string, string> = {
 /** Phrase rewrites applied to every stage's text (leaks, ideal, metrics, nostat, feature descriptions). */
 export const SITE_PHRASES: [string, string][] = [
   ["follow up starts", "follow-up starts"],
+  ["Every inquiry answered in under 60 seconds,", "Every inquiry answered in seconds,"],
   ["nobody arrives as a stranger", "your team walks in already knowing the patient"],
   ["Deals in a leak stage", "Patients stalled at a step"],
   ["Patient Continuity research log", "Keep"],
