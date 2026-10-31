@@ -69,3 +69,23 @@ describe("GENERAL_LINE_SWAPS", () => {
     expect(swap.match(FERTILITY_WORDS)).toBeNull();
   });
 });
+
+describe("applySiteCopy with live RPC names", () => {
+  it("merges the Stop The Leak modules into one Pipeline follow-ups card and drops the 60-second line", () => {
+    const live = JSON.parse(JSON.stringify(mapSnapshot)) as GrowthosMap;
+    const commit = live.stages.find((s) => s.stage_key === "commit")!;
+    commit.features = commit.features.map((f) =>
+      f.name === "Pipelines with leak stages"
+        ? { ...f, name: "Pipelines with Stop The Leak follow-ups" }
+        : f.name === "Leak Stages"
+          ? { ...f, name: "Stop The Leak" }
+          : f,
+    );
+    const out = applySiteCopy(live);
+    const text = rendered(out);
+    expect(text).not.toMatch(/stop the leak/i);
+    expect(text).not.toMatch(/under 60 seconds/i);
+    const names = out.stages.find((s) => s.stage_key === "commit")!.features.map((f) => f.name);
+    expect(names.filter((n) => n === "Pipeline follow-ups")).toHaveLength(1);
+  });
+});
