@@ -9,9 +9,9 @@ import {
 
 export const revalidate = 3600;
 
-const TITLE = 'GrowthOS by Cima: the patient journey operating system for clinics';
+const TITLE = 'GrowthOS: automate every patient touch outside the lab';
 const DESCRIPTION =
-  'Clinics lose patients at eight stages, from the first search to years after treatment. GrowthOS closes every one: ad account management, instant AI response, nurture, booking, consent, cycle coordination, stored-specimen follow-up and reviews in one platform.';
+  'GrowthOS automates everything that happens to a patient outside the lab: instant AI replies, qualification, follow-up at every stage, consents, cycle coordination and reviews. More patients, more revenue, in less time.';
 
 export const metadata: Metadata = {
   title: TITLE,

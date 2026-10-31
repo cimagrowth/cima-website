@@ -4,7 +4,9 @@ import type { StageKey } from "@/lib/growthos-map";
 // so the site rewrites a few module names and descriptions here to describe
 // GrowthOS as software the clinic's own team operates, messaging only its own
 // patients and inquirers. Applied to every map read (RPC and snapshot) before
-// any specialty override. Keys are live RPC names.
+// any specialty override. Keys are live RPC names. Two features renamed to the
+// same name in one stage are merged into one card, descriptions joined
+// (identical descriptions are kept once).
 
 export interface SiteFeatureCopy {
   name?: string;
@@ -13,6 +15,10 @@ export interface SiteFeatureCopy {
 
 /** Features the website never lists (sold only through Deal Desk). */
 export const HIDDEN_FEATURES = new Set(["Website management and SEO"]);
+
+const RE_ENGAGEMENT = "Re-contacts past inquirers and patients who opted in, with opt-out on every message.";
+const PIPELINE_FOLLOW_UPS = "Flags a patient who stalls at any step and follows up before they go cold.";
+const PAST_PATIENTS = "Keeps past patients who opted in hearing from your clinic.";
 
 export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
   "Campaign engine": {
@@ -34,8 +40,15 @@ export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
       "Intake quizzes that collect the patient's answers and route the inquiry to your team, sorting every lead hot, warm or cold into the right stage for follow-up.",
   },
   "Doctor referral campaigns": {
-    name: "Referral intake",
+    name: "Referral Partners",
     description: "Referring doctors send patients in and are thanked automatically.",
+  },
+  "Qualification Agent": {
+    description:
+      "Checks each lead's fit using your own questions and rules, on forms and in chat, and flags red and yellow answers for your team.",
+  },
+  "Workflows and automations": {
+    description: "Build your own automations that send, tag, move and assign patients based on what they do.",
   },
   "Referral Partners": {
     description:
@@ -62,12 +75,42 @@ export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
   },
   "Reactivation campaigns": {
     name: "Re-engagement",
-    description:
-      "Lets your team re-contact past inquirers and patients who opted in, with opt-out on every message.",
+    description: RE_ENGAGEMENT,
   },
   Newsletters: {
-    name: "Patient updates",
-    description: "Drag-and-drop email to opted-in patients, with unsubscribe enforced.",
+    name: "Re-engagement",
+    description: RE_ENGAGEMENT,
+  },
+  "Booking and appointment automations": {
+    name: "Appointments",
+  },
+  "Pipelines with leak stages": {
+    name: "Pipeline follow-ups",
+    description: PIPELINE_FOLLOW_UPS,
+  },
+  "Leak Stages": {
+    name: "Pipeline follow-ups",
+    description: PIPELINE_FOLLOW_UPS,
+  },
+  "Stage-to-stage timing": {
+    description: "Shows how long patients take between each step, so you can see where they slow down.",
+  },
+  "Billing automation": {
+    name: "Payment links",
+  },
+  "Cycle and Treatment Coordinator": {
+    name: "Cycle Coordinator",
+  },
+  "Crisis Triage Agent": {
+    name: "Escalations",
+    description: "Sends urgent patient messages to the right person on your team, with the full history.",
+  },
+  "Results you can publish": {
+    name: "Return reporting",
+    description: "See which patients with stored specimens came back.",
+  },
+  "Google reviews and replies": {
+    name: "Reviews",
   },
   "ChartAI records retrieval": {
     description: "Sends outside records requests and tracks them until the records arrive, organized before the consult.",
@@ -78,14 +121,64 @@ export const SITE_FEATURE_COPY: Record<string, SiteFeatureCopy> = {
       "Sends scheduled reminders before storage renews or a package expires, and a check-in on the schedule you choose. Automated messages pause after a known loss until a person reviews.",
   },
   "Alumni journeys and retargeting": {
-    name: "Alumni check-ins",
-    description: "Outcome-aware check-ins with opted-in alumni, so a graduate hears from the clinic without a sales pitch.",
+    name: "Past patient check-ins",
+    description: PAST_PATIENTS,
   },
   "Newsletters to alumni": {
-    name: "Updates to opted-in alumni",
-    description: "The same drag-and-drop patient updates keep opted-in graduates close to the clinic between visits.",
+    name: "Past patient check-ins",
+    description: PAST_PATIENTS,
   },
 };
+
+/** Leaks the website never lists (unsourced), by RPC name. */
+export const HIDDEN_LEAKS = new Set(["The 13-Hour Patient"]);
+
+/** Leak description rewrites, by RPC leak name. */
+export const SITE_LEAK_COPY: Record<string, string> = {
+  "The Form That Kills": "Forms and calls that never reach the right person",
+};
+
+/** Cards the website adds to a stage that the RPC does not list. */
+export const SITE_EXTRA_FEATURES: Partial<Record<StageKey, { name: string; description: string }[]>> = {
+  book: [
+    {
+      name: "Consult briefings",
+      description: "Gives your team a written summary of what each patient said before the consult.",
+    },
+  ],
+};
+
+/** Features shown as one line under a stage's grid instead of as cards. */
+export const SITE_ALSO_USED: Partial<Record<StageKey, { hide: string[]; line: string }>> = {
+  treatment: {
+    hide: ["EHR integrations", "GrowthOS mobile app"],
+    line: "Also used here: EHR integrations and the GrowthOS mobile app.",
+  },
+};
+
+/** Stat label rewrites, keyed "stage_key:source_key". */
+export const SITE_STAT_LABELS: Record<string, string> = {
+  "commit:gameiro": "of the reasons patients give for stopping fertility treatment are postponement",
+  "after_cycle:lyerly": "of patients with stored embryos report high conflict over what to do with them",
+};
+
+/** Foundation item renames, by RPC name. */
+export const SITE_FOUNDATION_NAMES: Record<string, string> = {
+  "Agents under control": "Your team stays in control",
+};
+
+/** Phrase rewrites applied to every stage's text (leaks, ideal, metrics, nostat, feature descriptions). */
+export const SITE_PHRASES: [string, string][] = [
+  ["follow up starts", "follow-up starts"],
+  ["nobody arrives as a stranger", "your team walks in already knowing the patient"],
+  ["Deals in a leak stage", "Patients stalled at a step"],
+  ["Patient Continuity research log", "Keep"],
+  ["Referral Accounts", "Referral Partners"],
+  ["Stop The Leak", "Pipeline follow-ups"],
+  ["Cycle and Treatment Coordinator", "Cycle Coordinator"],
+  ["Crisis Triage Agent", "Escalations"],
+  ["Billing automation", "Payment links"],
+];
 
 /** Phrase-level rewrites for stage text (ideal, metrics). */
 export const SITE_STAGE_PHRASES: Partial<Record<StageKey, [string, string][]>> = {

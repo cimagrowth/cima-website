@@ -56,13 +56,13 @@ const Consent = () => {
           >
             <Eyebrow>Patient consent and education</Eyebrow>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Consent that lives where{" "}
-              <span className="text-clay">your patients do.</span>
+              Every consent signed and understood before treatment starts,{" "}
+              <span className="text-clay">without chasing anyone.</span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Branded video education and e-signature that runs inside your CRM.
-              It fires off your pipeline, gates on comprehension, and lands on
-              the patient record. Not another login for your staff to remember.
+              The right consent packet goes out automatically at each stage.
+              Patients watch your education videos, answer a quick check and sign
+              on their phone. The signed record lands in their chart.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link href={DEMO_ROUTE}>
@@ -83,7 +83,6 @@ const Consent = () => {
               {[
                 "Your videos, your brand",
                 "Audit trail on every signature",
-                "Live in a day",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <Check
@@ -140,7 +139,7 @@ const Consent = () => {
               },
               {
                 n: "02",
-                title: "Education gates the signature.",
+                title: "Education checks understanding before signing.",
                 body: "Comprehension questions must be answered correctly before a document unlocks. A signature means something.",
               },
               {
@@ -202,7 +201,7 @@ const Consent = () => {
                 n: "01",
                 icon: Video,
                 title: "Your videos, your voice.",
-                body: "Upload your own education modules and the portal carries your clinic's colours, logo, and domain. Patients watch your clinicians explain your protocols, not stock footage recorded for someone else. Cima stays invisible.",
+                body: "Upload your own education modules and the portal carries your clinic's colors, logo, and domain. Patients watch your clinicians explain your protocols, not stock footage recorded for someone else. Cima stays invisible.",
               },
               {
                 n: "02",
@@ -377,7 +376,7 @@ const Consent = () => {
                 The legacy tool
               </p>
               <p className="font-ui text-sm font-medium text-muted-foreground mt-1 mb-6">
-                EngagedMD-class pricing
+                Standalone consent software
               </p>
               <ul className="space-y-3">
                 {[
@@ -505,10 +504,10 @@ const Consent = () => {
         <div className="container-tight relative z-10 text-center">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
             <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] mb-5">
-              Modernise the front desk of your practice.
+              Take consent paperwork off your team's plate.
             </h2>
             <p className="text-base md:text-lg text-paper/85 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Book a walkthrough and we will show you consent firing from a live
+              Book a walkthrough and see consent fire from a live
               pipeline.
             </p>
             <Link href={DEMO_ROUTE}>
@@ -601,7 +600,7 @@ const PipelineVisual = ({ clinic, recordLabel }: { clinic: string; recordLabel: 
                   </span>
                   <div data-sv-region className="leading-tight">
                     <p className="font-ui text-xs font-semibold text-foreground">
-                      {clinic}
+                      {clinic} <span className="font-normal text-muted-foreground">(illustrative)</span>
                     </p>
                     <p className="text-[10px] text-muted-foreground">
                       {recordLabel}

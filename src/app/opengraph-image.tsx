@@ -4,12 +4,12 @@ import { renderOgCard, OG_SIZE } from '@/lib/og-card';
 export const runtime = 'edge';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
-export const alt = 'GrowthOS by Cima: the patient journey operating system for clinics';
+export const alt = 'GrowthOS automates everything that happens to a patient outside the lab.';
 
 export default function Image() {
   return renderOgCard({
-    eyebrow: 'The GrowthOS Map',
-    title: 'Your clinic leaks patients at eight stages. GrowthOS closes every one.',
-    sub: 'From the first search to years after treatment, in one system.',
+    eyebrow: 'GrowthOS',
+    title: 'Every patient answered, followed up and moved to treatment. Automatically.',
+    sub: 'GrowthOS automates everything that happens to a patient outside the lab.',
   });
 }

@@ -14,8 +14,8 @@ const CLAY = '#D74117';
 const ORANGE = '#D74117';
 const SAND = '#E2E6EB';
 
-const TITLE = 'Your customers need training. You built a folder of videos.';
-const SUB = 'Onboarding, training, and certification for the companies you sell to.';
+const TITLE = 'Every new hire trained on how your clinic handles patients.';
+const SUB = 'Assign training by role, check understanding and see who is certified.';
 
 const GLYPHS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,!?:;'\"()[]{}@#$%&*-+=/\\|<>~`^_.";

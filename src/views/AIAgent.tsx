@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Check,
   Clock,
   MessageSquare,
   Calendar,
@@ -16,7 +15,6 @@ import {
   ChevronDown,
   Plug,
   Sparkles,
-  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AI_AGENT_EXAMPLE } from "@/content/specialty-pages";
@@ -40,30 +38,21 @@ const steps = [
   {
     icon: Plug,
     title: "Connect Your CRM",
-    time: "2 minutes",
     description:
-      "Link your GoHighLevel, HubSpot (Q3), or Salesforce (Q4) account. One click. Your data stays yours.",
+      "Link your HubSpot, Salesforce or GoHighLevel account. Your data stays yours.",
   },
   {
     icon: Brain,
-    title: "Train Your Agent",
-    time: "5 minutes",
+    title: "Train Your AI Front Desk",
     description:
-      "Upload your services, FAQs, booking rules, and qualification criteria. The AI learns your clinic's tone and wording instantly.",
-  },
-  {
-    icon: Zap,
-    title: "Go Live",
-    time: "Instant",
-    description:
-      "Your AI agent starts responding to leads, qualifying patients, and booking appointments immediately.",
+      "Upload your services, FAQs, booking rules, and qualification criteria. The AI learns your clinic's tone and wording.",
   },
 ];
 
 const integrations = [
-  { name: "GoHighLevel", status: "Live", statusColor: "bg-green-500" },
-  { name: "HubSpot", status: "Coming Q3", statusColor: "bg-amber-500" },
-  { name: "Salesforce", status: "Coming Q4", statusColor: "bg-amber-500" },
+  { name: "GoHighLevel" },
+  { name: "HubSpot" },
+  { name: "Salesforce" },
 ];
 
 const features = [
@@ -71,7 +60,7 @@ const features = [
     icon: Clock,
     title: "24/7 Instant Response",
     description:
-      "Under 3 seconds. Every channel. Every time. Day or night, weekday or holiday.",
+      "Replies in seconds on every channel. Day or night, weekday or holiday.",
   },
   {
     icon: Users,
@@ -117,53 +106,17 @@ const features = [
   },
 ];
 
-const pricingTiers = [
-  {
-    name: "Starter",
-    planKeyMonthly: "starter_monthly" as const,
-    planKeyAnnual: "starter_annual" as const,
-    description: "For clinics ready to automate patient follow-up",
-    features: [
-      "1 AI agent",
-      "Up to 500 conversations/mo",
-      "GoHighLevel integration",
-      "Lead qualification",
-      "Appointment booking",
-      "Email & SMS channels",
-      "Real-time inbox",
-      "Standard support",
-    ],
-    highlighted: false,
-  },
-  {
-    name: "Pro",
-    planKeyMonthly: "pro_monthly" as const,
-    planKeyAnnual: "pro_annual" as const,
-    description: "For multi-location clinics and high-volume practices",
-    features: [
-      "Everything in Starter",
-      "Unlimited conversations",
-      "All CRM integrations",
-      "Replies on the channels patients use to contact you: web chat, SMS, email, WhatsApp and social DMs",
-      "Custom AI training",
-      "Human escalation workflows",
-      "Advanced analytics",
-      "Priority support",
-    ],
-    highlighted: true,
-  },
-];
 
 const faqItems = [
   {
     question: "Does this work with my CRM?",
     answer:
-      "Connects to your CRM today. HubSpot in Q3, Salesforce in Q4. Or use it inside GrowthOS as the full platform, no external CRM needed.",
+      "Connects to HubSpot, Salesforce or GoHighLevel. Or use it inside GrowthOS as the full platform, no external CRM needed.",
   },
   {
     question: "How is this different from the chatbot that came with my CRM?",
     answer:
-      "Most CRM chatbots match keywords to canned responses. The Cima AI Agent is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI assistant your team configures.",
+      "Most CRM chatbots match keywords to canned responses. The GrowthOS AI front desk is trained on your specialty, adapts tone to patient emotion, nurtures across days/weeks, scores leads behaviorally, and hands off with full context. It's the difference between an FAQ page and an AI assistant your team configures.",
   },
   {
     question: "Can my staff see what the AI is saying?",
@@ -185,16 +138,11 @@ const faqItems = [
     answer:
       "You control personality, tone, FAQs, booking rules, qualification criteria, and escalation triggers. It uses your clinic's tone and wording.",
   },
-  {
-    question: "Can I upgrade or downgrade my plan?",
-    answer:
-      "Yes, you can switch between Starter and Pro at any time. Changes take effect on your next billing cycle. No penalties or hidden fees.",
-  },
 ];
 
 export interface AIAgentFigures {
   medianSeconds: number;
-  pctUnder60: string;
+  clinics: string;
   conversations: string;
   windowDays: number;
 }
@@ -224,25 +172,20 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               Now Available
             </span>
             <h1 className="font-display font-semibold tracking-[-.02em] text-display-lg md:text-display-xl text-teal-deep mb-6">
-              Your Clinic's AI Front Desk:{" "}
-              <span className="text-clay">
-                Responds in Seconds, Nurtures for Weeks, Hands Off With Full Context.
-              </span>
+              Every patient inquiry answered, qualified and booked{" "}
+              <span className="text-clay">in seconds, day or night.</span>
             </h1>
             <p className="text-body-lg text-teal-deep/80 max-w-3xl mx-auto mb-10">
-              Stop losing patients to slow response times. The Cima AI Agent
-              handles inquiries, qualifies leads, and books appointments 24/7,
-              inside the CRM you already use, or inside GrowthOS.
+              AI trained on your clinic replies on text, chat, email, WhatsApp and
+              social, books consults into your calendar, and hands off to your team
+              with the full conversation, inside GrowthOS or the CRM you already use.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="hero"
-                size="lg"
-                className="group"
-                onClick={() => scrollTo("pricing")}
-              >
-                Start Your AI Agent
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button asChild variant="hero" size="lg" className="group">
+                <a href="/demo">
+                  Book a demo
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
               <Button
                 variant="hero-outline"
@@ -272,8 +215,8 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                 text: "median GrowthOS first reply to a patient message",
               },
               {
-                stat: figures.pctUnder60,
-                text: "of patient messages answered in under 60 seconds",
+                stat: figures.clinics,
+                text: "clinic accounts live in 5 countries",
               },
               {
                 stat: figures.conversations,
@@ -313,8 +256,8 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             className="max-w-3xl lg:max-w-4xl mx-auto"
           >
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-6 text-center">
-              Most "AI Chatbots" Are Glorified FAQ Pages.{" "}
-              <span className="text-clay">An AI Assistant Your Team Controls.</span>
+              Not a FAQ chatbot.{" "}
+              <span className="text-clay">An AI front desk your team controls.</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-6 mt-10">
               <div className="card-premium p-6 border-l-4 border-muted-foreground/30">
@@ -324,7 +267,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                 </p>
               </div>
               <div className="card-premium p-6 border-l-4 border-clay">
-                <p className="font-ui text-sm font-semibold text-clay uppercase tracking-[.16em] mb-3">The Cima AI Agent:</p>
+                <p className="font-ui text-sm font-semibold text-clay uppercase tracking-[.16em] mb-3">The GrowthOS AI front desk:</p>
                 <p data-sv-region className="text-body text-foreground">
                   {AI_AGENT_EXAMPLE[specialty]}
                 </p>
@@ -345,7 +288,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             className="text-center mb-16"
           >
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Live in Under 10 Minutes. No Code. No IT.
+              No Code. No IT.
             </h2>
           </motion.div>
           <motion.div
@@ -353,7 +296,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
             {steps.map((step, i) => (
               <motion.div
@@ -365,7 +308,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                   <step.icon className="w-7 h-7 text-accent-orange" />
                 </div>
                 <span className="font-ui text-xs font-semibold text-clay uppercase tracking-[.16em]">
-                  Step {i + 1}: {step.time}
+                  Step {i + 1}
                 </span>
                 <h3 className="text-heading-sm text-foreground mt-2 mb-3">
                   {step.title}
@@ -408,11 +351,6 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               >
                 <span className="text-body font-semibold text-foreground">
                   {crm.name}
-                </span>
-                <span
-                  className={`${crm.statusColor} text-white text-xs font-semibold px-2.5 py-0.5 rounded-full`}
-                >
-                  {crm.status}
                 </span>
               </motion.div>
             ))}
@@ -463,95 +401,9 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section id="pricing" className="section-padding bg-background">
+      {/* Full platform */}
+      <section className="section-padding bg-background">
         <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-foreground mb-4">
-              Two plans. Pricing is shared in your demo.
-            </h2>
-
-            <p className="text-body-lg text-teal-deep/80">
-              Setup fee waived on six-month and annual terms.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl lg:max-w-6xl mx-auto">
-            {pricingTiers.map((tier, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`rounded-xl2 p-8 ${
-                  tier.highlighted
-                    ? "bg-teal text-paper shadow-[var(--shadow)] relative"
-                    : "card-premium"
-                }`}
-              >
-                {tier.highlighted && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-paper border border-sand text-clay shadow-[var(--shadow-sm)] text-xs font-semibold px-4 py-1 rounded-full">
-                    Most Popular
-                  </span>
-                )}
-                <h3
-                  className={`text-heading-sm mb-1 ${
-                    tier.highlighted ? "text-paper" : "text-foreground"
-                  }`}
-                >
-                  {tier.name}
-                </h3>
-                <p
-                  className={`text-body-sm mb-6 ${
-                    tier.highlighted
-                      ? "text-paper/70"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {tier.description}
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-2.5">
-                      <Check
-                        className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                          tier.highlighted ? "text-sand" : "text-accent-orange"
-                        }`}
-                      />
-                      <span
-                        className={`text-body-sm ${
-                          tier.highlighted
-                            ? "text-paper/90"
-                            : "text-muted-foreground"
-                        }`}
-                      >
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  asChild
-                  variant={tier.highlighted ? "hero" : "hero-outline"}
-                  size="lg"
-                  className="w-full group"
-                >
-                  <a href="/demo">
-                    Book a Demo
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-
           {/* Full Platform upsell */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -565,7 +417,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
                 Want the full platform?
               </p>
               <p className="text-body-sm text-muted-foreground mb-4">
-                GrowthOS adds pipelines, scheduling, forms, consent, reporting and EHR integration on top of your AI Agent. Pricing is tailored to your clinic and shared in your demo.
+                GrowthOS adds pipelines, scheduling, forms, consent, reporting and EHR integration on top of the AI front desk. Pricing depends on your clinic and is shared in your demo. Monthly, six-month and annual terms.
               </p>
               <Button asChild variant="hero-outline" size="lg" className="group">
                 <a href="/demo">
@@ -640,10 +492,10 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-display font-semibold tracking-tight text-heading-lg md:text-display text-paper mb-4">
-              Every Hour Without an AI Agent Is an Hour of Leads Going to Your Competitor.
+              Every Hour Without an AI Front Desk Is an Hour of Leads Going to Your Competitor.
             </h2>
             <p className="text-body-lg text-paper/70 max-w-xl mx-auto mb-8">
-              The clinic that responds first usually wins the patient. Your AI agent responds in seconds.
+              The clinic that responds first usually wins the patient. Your AI front desk responds in seconds.
             </p>
             <Button
               asChild
@@ -657,7 +509,7 @@ const AIAgent = ({ figures }: { figures: AIAgentFigures }) => {
               </a>
             </Button>
             <p className="text-sm text-paper/75 mt-4">
-              Setup fee waived on six-month and annual terms.
+              Monthly, six-month and annual terms.
             </p>
           </motion.div>
         </div>

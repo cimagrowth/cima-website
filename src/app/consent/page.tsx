@@ -6,7 +6,7 @@ import { CONSENT_FAQS } from '@/lib/consent-faqs';
 const SLUG = 'consent';
 const TITLE = 'Patient Consent and Education for Clinics | Cima';
 const DESCRIPTION =
-  'Branded consent and video education that runs inside your CRM. Fires from your pipeline, gates on comprehension, and keeps an audit trail you can defend. Fertility and aesthetics libraries included.';
+  'The right consent packet goes out automatically at each stage. Patients watch your education videos, answer a quick check and sign on their phone, with an audit trail you can defend. Fertility and aesthetics libraries included.';
 
 export const metadata: Metadata = {
   title: TITLE,

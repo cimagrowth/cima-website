@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
-import { getGrowthosMap, getPlatformStats, firstReplyCommitment } from '@/lib/growthos-map';
+import {
+  getGrowthosMap,
+  getPlatformStats,
+  firstReplyCommitment,
+  FIRST_REPLY_SOURCE_SHORT,
+  FORMS_CONNECT_LINE,
+} from '@/lib/growthos-map';
+import { specializeMap } from '@/lib/specialty-map';
 import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
@@ -12,16 +19,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Regenerative medicine marketing',
-  h1Lead: 'Regenerative medicine software that educates, builds trust, and',
-  h1Accent: 'books the consult.',
+  h1Lead: 'Every regenerative inquiry educated,',
+  h1Accent: 'followed up and booked.',
   subhead:
-    'Regenerative treatments are high-ticket and high-consideration, patients research for weeks and need to trust you before they commit. GrowthOS answers instantly, nurtures with the right education at the right time, and stays compliant, so serious patients book the consult instead of drifting to a competitor.',
+    'Regenerative treatments are high-ticket and high-consideration, patients research for weeks and need to trust you before they commit. GrowthOS automates instant answers, education-led follow-up and consult reminders, so weeks-long decisions don\'t fall through the cracks when your clinic gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'In regenerative medicine, trust is the whole sale',
     accent: 'and trust takes follow-up.',
     paragraphs: [
-      "A patient considering PRP, stem cell, or peptide therapy is spending real money on a decision they don't fully understand yet. They read everything, compare clinics, and hesitate. They need education, reassurance, and answers, delivered patiently over time. One fast reply won't close them, and neither will a hard sell. What closes them is a clinic that shows up consistently, informs them, and earns trust across the whole decision.",
+      "A patient considering PRP, stem cell, or peptide therapy is spending real money on a decision they don't fully understand yet. They read everything, compare clinics, and hesitate. They need education, reassurance, and answers, delivered patiently over time. One fast reply won't close them, and neither will a hard sell. What closes them is a clinic that shows up consistently, informs them, and earns trust across the whole decision. That is the job of regenerative medicine marketing.",
       "Most clinics can't do that by hand. The inquiry comes in, someone replies once, and the follow-up that would have built trust never happens, so a high-value patient quietly goes cold.",
     ],
     points: [
@@ -138,7 +145,7 @@ const content: SolutionLandingProps = {
     links: [
       {
         href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
-        label: 'The 13-Hour Patient',
+        label: 'Why reply speed decides who books',
         description: 'Where high-ticket clinics leak patients between inquiry and booked consult.',
       },
       {
@@ -157,7 +164,7 @@ const content: SolutionLandingProps = {
         description: 'The AI assistant that answers, educates, and follows up with high-ticket patients around the clock, supervised by your team.',
       },
       {
-        href: '/features',
+        href: '/product#features',
         label: 'Explore the features',
         description: 'Ad account management, unified inbox, education-led nurture, and rebooking in one platform.',
       },
@@ -173,7 +180,7 @@ const content: SolutionLandingProps = {
     // Filled from live platform figures in Page().
     body: '',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 
@@ -208,7 +215,7 @@ export const revalidate = 3600;
 
 export default async function Page() {
   const [map, stats] = await Promise.all([getGrowthosMap(), getPlatformStats()]);
-  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
+  const mapSection = <MapStrip map={specializeMap(map, 'regenerative')} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,
@@ -224,7 +231,12 @@ export default async function Page() {
       />
       <SolutionLanding
         {...content}
-        closing={{ ...content.closing, body: firstReplyCommitment(stats) }}
+        closing={{
+          ...content.closing,
+          body: firstReplyCommitment(stats),
+          note: FIRST_REPLY_SOURCE_SHORT,
+          more: FORMS_CONNECT_LINE,
+        }}
         mapSection={mapSection}
       />
     </>

@@ -11,10 +11,10 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient acquisition',
-  h1Lead: 'Patient acquisition software for specialty clinics,',
-  h1Accent: 'from first click to rebooking.',
+  h1Lead: 'Turn the inquiries you already get',
+  h1Accent: 'into booked patients.',
   subhead:
-    'More leads is not the answer. A system that converts the leads you already get is. GrowthOS is the complete patient acquisition platform for fertility, aesthetics, regenerative, and wellness clinics.',
+    'More leads is not the answer. A system that converts the leads you already get is. GrowthOS automates everything from the first reply to the rebooking for fertility, aesthetics, regenerative and wellness clinics, so no inquiry falls through the cracks when you get busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'Most clinics do not have a lead problem.',
@@ -49,11 +49,11 @@ const content: SolutionLandingProps = {
       {
         icon: 'message',
         title: 'Engage and convert',
-        body: 'Multi-channel engagement and an AI patient bot move inquiries to booked consultations. See the patient engagement platform.',
+        body: 'Multi-channel engagement and an AI front desk move inquiries to booked consultations. See the patient engagement platform.',
       },
       {
         icon: 'filter',
-        title: 'Stop the leakage',
+        title: 'Close the gaps',
         body: 'Leak-stage follow-up recovers the inquiries that stall, the ones a CRM would simply log and forget.',
       },
       {
@@ -156,7 +156,7 @@ const content: SolutionLandingProps = {
       },
       {
         href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
-        label: 'The 13-hour patient',
+        label: 'Why reply speed decides who books',
         description: 'How clinics lose revenue to leakage while they sleep.',
       },
       {
@@ -183,9 +183,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See patient acquisition run end to end.',
-    body: 'Twenty minutes. We will show how GrowthOS answers inquiries and helps your staff rebook patients, not a generic demo.',
+    body: 'Thirty minutes. See how GrowthOS answers inquiries and helps your staff rebook patients, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

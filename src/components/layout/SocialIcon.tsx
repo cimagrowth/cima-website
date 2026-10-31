@@ -2,7 +2,7 @@ import { Instagram, Linkedin, Youtube } from "lucide-react";
 import type { SocialNetwork } from "@/content/social";
 
 // lucide-react has no X or TikTok icon, so those two are small inline SVGs,
-// sized and coloured like the lucide icons (currentColor).
+// sized and colored like the lucide icons (currentColor).
 function XIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" className={className}>

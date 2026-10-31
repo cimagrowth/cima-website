@@ -3,7 +3,7 @@ import ChartAI from '@/views/ChartAI';
 
 export const metadata: Metadata = {
   title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
-  description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system. Included with GrowthOS.',
+  description: 'Prior records in hand before the first consult, without a fax machine. Your staff enters the previous providers, the patient signs on their phone, and records arrive in the patient\'s chart. Included with GrowthOS.',
   keywords: [
     'medical records retrieval', 'ChartAI', 'HIPAA records request',
     'electronic medical records', 'patient records automation',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://cimagrowth.com/chartai' },
   openGraph: {
     title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
-    description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system.',
+    description: 'Prior records in hand before the first consult, without a fax machine. Your staff enters the previous providers, the patient signs on their phone, and records arrive in the patient\'s chart.',
     url: 'https://cimagrowth.com/chartai',
     siteName: 'Cima Growth Solutions',
     locale: 'en_US',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: ['/opengraph-image'],
     title: 'ChartAI – Automated Medical Records Retrieval | GrowthOS by Cima Growth',
-    description: 'Stop chasing faxes. ChartAI retrieves medical records automatically. Your staff fills the request, the patient signs via email, and records arrive in your system.',
+    description: 'Prior records in hand before the first consult, without a fax machine. Your staff enters the previous providers, the patient signs on their phone, and records arrive in the patient\'s chart.',
   },
 };
 

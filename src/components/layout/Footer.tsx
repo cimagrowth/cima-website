@@ -5,6 +5,8 @@ import cimaLogoDarkImg from "@/assets/cima-logo-dark.png";
 import { IOS_APP_STORE_URL } from "@/content/apps";
 import { BRANDON_SOCIAL, CIMA_SOCIAL, type SocialProfile } from "@/content/social";
 import {
+  FIRST_REPLY_SOURCE_SHORT,
+  FORMS_CONNECT_LINE,
   firstReplyCommitment,
   getGrowthosMap,
   getPlatformStats,
@@ -15,6 +17,7 @@ import { SPECIALTIES } from "@/content/specialty";
 import BySpecialty from "@/components/specialty/BySpecialty";
 import SocialIcon from "./SocialIcon";
 import CookiePreferencesButton from "./CookiePreferencesButton";
+import RouteClosingBand from "./RouteClosingBand";
 
 const cimaLogoDark = typeof cimaLogoDarkImg === 'string' ? cimaLogoDarkImg : cimaLogoDarkImg.src;
 
@@ -22,14 +25,14 @@ type FooterLink = { label: ReactNode; href: string; external?: boolean };
 
 const platformLinks: FooterLink[] = [
   { label: "Platform overview", href: "/product" },
-  { label: "Features", href: "/features" },
-  { label: "AI Agent", href: "/ai-agent" },
+  { label: "Features", href: "/product#features" },
+  { label: "AI front desk", href: "/ai-agent" },
   { label: "Ads Manager", href: "/ads" },
   { label: "ChartAI", href: "/chartai" },
-  { label: "Patient Consent", href: "/consent" },
+  { label: "Consent and education", href: "/consent" },
   { label: "Keep", href: "/keep" },
   { label: "Training", href: "/training" },
-  { label: "HIPAA-Safe Tracking", href: "/hipaa-safe-tracking" },
+  { label: "Privacy-safe tracking", href: "/hipaa-safe-tracking" },
 ];
 
 const specialtyLinks: FooterLink[] = [
@@ -44,7 +47,7 @@ const specialtyLinks: FooterLink[] = [
 ];
 
 const companyLinks: FooterLink[] = [
-  { label: "Research", href: "/#research" },
+  { label: "Research", href: "/map#sources" },
   { label: "Blog", href: "/blog" },
   { label: "Speaking", href: "/speaking" },
   { label: "GrowthOS app for iPhone", href: IOS_APP_STORE_URL, external: true },
@@ -124,26 +127,50 @@ const Footer = async () => {
 
   return (
     <>
-      {/* Pre-footer CTA: teal anchor block */}
-      <section className="bg-teal py-[clamp(80px,10vw,140px)]">
-        <div className="container-wide text-center">
-          <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-5">
-            Every day without GrowthOS is another day of patients choosing the clinic that responded first.
-          </h2>
-          <p className="text-base md:text-lg text-paper/85 max-w-xl mx-auto mb-10">
-            {firstReplyCommitment(stats)}
-          </p>
-          <div className="flex justify-center">
-            <Link
-              href="/demo"
-              className="group inline-flex h-12 items-center rounded-btn bg-clay-deep px-7 text-base font-semibold text-white transition-colors hover:bg-orange-600"
-            >
-              Book a demo
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Pre-footer CTA: teal anchor block. /training shows its own, without the stat. */}
+      <RouteClosingBand
+        shared={
+          <section className="bg-teal py-[clamp(80px,10vw,140px)]">
+            <div className="container-wide text-center">
+              <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-5">
+                When your clinic gets busy, GrowthOS keeps every patient hearing from you.
+              </h2>
+              <p className="text-base md:text-lg text-paper/85 max-w-xl mx-auto mb-2">
+                {firstReplyCommitment(stats)}
+              </p>
+              <p className="text-xs text-paper/70 max-w-xl mx-auto mb-4">{FIRST_REPLY_SOURCE_SHORT}</p>
+              <p className="text-base md:text-lg text-paper/85 max-w-xl mx-auto mb-10">{FORMS_CONNECT_LINE}</p>
+              <div className="flex justify-center">
+                <Link
+                  href="/demo"
+                  className="group inline-flex h-12 items-center rounded-btn bg-clay-deep px-7 text-base font-semibold text-white transition-colors hover:bg-orange-600"
+                >
+                  Book a demo
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        }
+        training={
+          <section className="bg-teal py-[clamp(80px,10vw,140px)]">
+            <div className="container-wide text-center">
+              <h2 className="font-display font-semibold tracking-tight text-[clamp(28px,4vw,48px)] leading-[1.15] text-paper max-w-3xl mx-auto mb-10">
+                Train once. Every new hire handles patients your way.
+              </h2>
+              <div className="flex justify-center">
+                <Link
+                  href="/demo"
+                  className="group inline-flex h-12 items-center rounded-btn bg-clay-deep px-7 text-base font-semibold text-white transition-colors hover:bg-orange-600"
+                >
+                  Book a demo
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        }
+      />
 
       <footer className="bg-primary text-primary-foreground">
         <div className="container-wide px-4 md:px-6 py-10 md:py-16">
@@ -154,7 +181,7 @@ const Footer = async () => {
                 <img src={cimaLogoDark} alt="Cima Growth Solutions logo" className="h-9 md:h-10 w-auto" />
               </Link>
               <p className="text-sm md:text-base text-primary-foreground/75 max-w-xs leading-relaxed">
-                GrowthOS, the patient journey operating system for clinics.
+                GrowthOS automates everything that happens to a patient outside the lab.
               </p>
               <p className="mt-3 text-sm text-primary-foreground/75 max-w-xs leading-relaxed">
                 GrowthOS is subscription software from Cima Growth Solutions, LLC. Clinics operate their own accounts and message only their own patients and inquirers.

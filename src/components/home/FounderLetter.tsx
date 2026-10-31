@@ -24,10 +24,9 @@ const FounderLetter = () => {
           </h2>
           <blockquote className="font-display text-[clamp(22px,2.6vw,30px)] font-normal leading-[1.35] text-teal-deep">
             <p>
-              &ldquo;AI transformed the lab side of fertility medicine. Nobody modernized the front end.
-              After 15 years in this industry, I watched clinics spend real money to find patients and
-              then lose them in the gaps between one stage and the next. The Map is how GrowthOS helps
-              clinics close every one of those gaps.&rdquo;
+              &ldquo;I&rsquo;ve spent 15 years in fertility. AI transformed the lab, but the front end
+              still runs on sticky notes and good intentions. When clinics get busy, patients get lost. I
+              built GrowthOS to fix that.&rdquo;
             </p>
           </blockquote>
           <figcaption className="flex flex-col gap-1.5 text-base">

@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
-import { getGrowthosMap, getPlatformStats, firstReplyCommitment } from '@/lib/growthos-map';
+import {
+  getGrowthosMap,
+  getPlatformStats,
+  firstReplyCommitment,
+  FIRST_REPLY_SOURCE_SHORT,
+  FORMS_CONNECT_LINE,
+} from '@/lib/growthos-map';
 import MapExplorer from '@/components/home/MapExplorer';
 import { buildExplorerStages, explorerSourceKeys } from '@/components/map/explorer-data';
 import SourcesList from '@/components/map/SourcesList';
@@ -16,16 +22,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Fertility clinic marketing',
-  h1Lead: 'Fertility clinic software that',
-  h1Accent: 'answers in seconds and follows up for months.',
+  h1Lead: 'Every fertility patient followed,',
+  h1Accent: 'from first inquiry to paid treatment.',
   subhead:
-    'A fertility patient may take months to decide, but they choose their shortlist in the first hour. GrowthOS answers every inquiry instantly, in the right tone, then nurtures patiently across the entire journey, so the patients who find you actually book the consult.',
+    'A fertility patient may take months to decide, but they choose their shortlist in the first hour. GrowthOS automates everything that happens to a patient outside the lab, so no patient falls through the cracks when your clinic gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'In fertility, the clinic that responds first, and follows up longest',
     accent: 'wins.',
     paragraphs: [
-      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: a fertility decision takes many conversations over weeks, and most clinics stop after one or two.',
+      'Fertility patients research for weeks and reach out to several clinics at once, often late at night after a hard day. Whoever answers first, warmly, and with real information, earns the trust. If your front desk replies two days later, the patient has already booked elsewhere. But speed is only half of it: a fertility decision takes many conversations over weeks, and most clinics stop after one or two. That is the job fertility clinic marketing software has to do.',
       'Then there is everything a stretched front desk cannot keep up with. Inquiries that arrive after hours. Patients who go quiet mid-decision. Cycles that pause and never resume. Egg-freezing leads that were never followed up. Each one is a patient, and a high-value treatment, quietly lost.',
     ],
     points: [
@@ -142,7 +148,7 @@ const content: SolutionLandingProps = {
     links: [
       {
         href: '/blog/13-hour-patient-fertility-clinic-response-time-revenue',
-        label: 'The 13-Hour Patient',
+        label: 'Why reply speed decides who books',
         description: 'Where fertility clinics leak patients between inquiry and booked consult.',
       },
       {
@@ -166,7 +172,7 @@ const content: SolutionLandingProps = {
         description: 'The AI assistant that answers and follows up with patients around the clock, supervised by your team.',
       },
       {
-        href: '/features',
+        href: '/product#features',
         label: 'Explore the features',
         description: 'Ad account management, unified inbox, nurture, and rebooking in one platform.',
       },
@@ -178,11 +184,11 @@ const content: SolutionLandingProps = {
     ],
   },
   closing: {
-    heading: 'Every day without GrowthOS is another fertility patient choosing the clinic that answered first.',
+    heading: 'When your clinic gets busy, GrowthOS keeps every fertility patient hearing from you.',
     // Filled from live platform figures in Page().
     body: '',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 
@@ -221,6 +227,15 @@ export default async function Page() {
   const mapSection = (
     <>
       <MapExplorer stages={explorerStages} defaultStage="after_cycle" />
+      <div className={`${WRAP} pb-10`}>
+        <p className="max-w-3xl text-lg leading-relaxed text-teal-deep">
+          At one multi-location fertility network on GrowthOS, the average time from first contact to paid
+          treatment fell from 120 days to 32.
+        </p>
+        <p className="mt-1 max-w-3xl text-[13px] text-teal-deep/75">
+          Average days from first contact to treatment sold, one multi-location fertility network.
+        </p>
+      </div>
       <div className={`${WRAP} pb-16`}>
         <SourcesList map={map} sourceKeys={explorerSourceKeys(explorerStages)} windowDays={stats.window_days} />
       </div>
@@ -241,7 +256,12 @@ export default async function Page() {
       />
       <SolutionLanding
         {...content}
-        closing={{ ...content.closing, body: firstReplyCommitment(stats) }}
+        closing={{
+          ...content.closing,
+          body: firstReplyCommitment(stats),
+          note: FIRST_REPLY_SOURCE_SHORT,
+          more: FORMS_CONNECT_LINE,
+        }}
         mapSection={mapSection}
       />
     </>

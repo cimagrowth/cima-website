@@ -39,7 +39,7 @@
 //      cookies may be set. Do not load analytics or marketing scripts
 //      before you see an event with that category set to true.
 //
-// Behaviour:
+// Behavior:
 //   - Honors the browser Global Privacy Control signal (navigator.globalPrivacyControl):
 //     if GPC is on we record a reject-all consent silently without showing the banner.
 //   - Stores consent in localStorage with a 13-month TTL (CNIL guidance); after

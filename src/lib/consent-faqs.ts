@@ -11,7 +11,7 @@ export const CONSENT_FAQS: ConsentFaq[] = [
   {
     question: "Do we have to make our own videos?",
     answer:
-      "The 15 fertility modules come with topics, order, and comprehension questions already built. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "The 15 fertility modules come with topics, order, and comprehension questions already built. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
   {
     question: "Do patients need an account?",
@@ -26,7 +26,7 @@ export const CONSENT_FAQS: ConsentFaq[] = [
   {
     question: "Can we use our own consent documents?",
     answer:
-      "Yes. Edit any document in the library and your version replaces the default for your clinic. You can also send us your existing forms to digitise.",
+      "Yes. Edit any document in the library and your version replaces the default for your clinic. Upload your own videos and forms, or use the built-in library.",
   },
   {
     question: "Has this been reviewed by an attorney?",

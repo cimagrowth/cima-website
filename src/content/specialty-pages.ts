@@ -1,5 +1,3 @@
-import { HOME_COPY } from "@/content/home-specialty";
-import { KEEP_COPY } from "@/content/map-copy";
 import { CONSENT_FAQS } from "@/lib/consent-faqs";
 import type { Specialty } from "@/content/specialty";
 
@@ -8,44 +6,39 @@ import type { Specialty } from "@/content/specialty";
 
 export interface KeepPageCopy {
   h1: string;
+  /** Hero paragraph. The "Keep records ..." sentence lives in How Keep works. */
   body: string;
-  featuresTitle: string;
   ctaTitle: string;
   ctaBody: string;
 }
 
 export const KEEP_PAGE: Record<Specialty, KeepPageCopy> = {
   fertility: {
-    h1: "Keep. For every egg, embryo and sample still in your tanks.",
-    body: KEEP_COPY.body,
-    featuresTitle: "A ledger, a voice and a record for every stored specimen.",
+    h1: "Turn the eggs and embryos in your tanks into patients who come back.",
+    body: "GrowthOS keeps in touch with every patient who has something stored, through renewal reminders, anniversary check-ins and a private link to decide what's next, and pauses on its own after a loss.",
     ctaTitle: "See Keep on your own storage list.",
-    ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it syncs with your lab system and what your patients would see.",
+    ctaBody: "Keep is included in GrowthOS. Book a demo to see what your patients would see.",
   },
   aesthetics: {
-    h1: "Keep. For every package, membership and credit your clients already paid for.",
-    body: HOME_COPY.aesthetics.beyond.keepBody,
-    featuresTitle: "A ledger, a voice and a record for every package and membership.",
+    h1: "Turn the packages and memberships your clients already paid for into clients who come back.",
+    body: "GrowthOS keeps in touch with every client who has sessions, credit or a membership waiting, through reminders before they expire, check-ins when results typically fade and a private link to decide what's next.",
     ctaTitle: "See Keep on your own client list.",
     ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it reads the packages and memberships you already sell, and what your clients would see.",
+      "Keep is included in GrowthOS. Book a demo to see how it reads the packages and memberships you already sell, and what your clients would see.",
   },
   regenerative: {
-    h1: "Keep. For every banked vial, series and membership your patients already hold.",
-    body: HOME_COPY.regenerative.beyond.keepBody,
-    featuresTitle: "A ledger, a voice and a record for every banked vial and series.",
+    h1: "Turn banked cells and unfinished series into patients who come back.",
+    body: "GrowthOS keeps in touch with every patient who has cells banked or sessions left, through renewal reminders, follow-up check-ins and a private link to decide what's next.",
     ctaTitle: "See Keep on your own patient list.",
     ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it reads your banked cells, series and memberships, and what your patients would see.",
+      "Keep is included in GrowthOS. Book a demo to see how it reads your banked cells, series and memberships, and what your patients would see.",
   },
   wellness: {
-    h1: "Keep. For every package, membership and session your patients already paid for.",
-    body: HOME_COPY.wellness.beyond.keepBody,
-    featuresTitle: "A ledger, a voice and a record for every package and membership.",
+    h1: "Turn the packages and memberships your patients already paid for into patients who come back.",
+    body: "GrowthOS keeps in touch with every patient who has sessions, a package or a membership waiting, through reminders before they expire, check-ins on the schedule you choose and a private link to decide what's next.",
     ctaTitle: "See Keep on your own patient list.",
     ctaBody:
-      "Keep is included in every plan. Book a demo and we will walk through how it reads the packages and memberships you already sell, and what your patients would see.",
+      "Keep is included in GrowthOS. Book a demo to see how it reads the packages and memberships you already sell, and what your patients would see.",
   },
 };
 
@@ -106,7 +99,7 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
     educationRow: "4 of 4 modules acknowledged",
     comprehensionRow: "4 of 4 answered correctly",
     faqVideos:
-      "You set the topics and order for each treatment and add a comprehension question to each module. You upload the video for each one, which means clients hear it from your own team rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "You set the topics and order for each treatment and add a comprehension question to each module. You upload the video for each one, which means clients hear it from your own team rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
   regenerative: {
     cards: [
@@ -127,7 +120,7 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
     educationRow: "4 of 4 modules acknowledged",
     comprehensionRow: "4 of 4 answered correctly",
     faqVideos:
-      "You set the topics and order for each protocol and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "You set the topics and order for each protocol and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
   wellness: {
     cards: [
@@ -148,11 +141,11 @@ export const CONSENT_PAGE: Record<Specialty, ConsentPageCopy> = {
     educationRow: "4 of 4 modules acknowledged",
     comprehensionRow: "4 of 4 answered correctly",
     faqVideos:
-      "You set the topics and order for each program and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. If you would rather not film, ask us about production.",
+      "You set the topics and order for each program and add a comprehension question to each module. You upload the video for each one, which means patients hear it from your clinicians rather than from stock footage recorded for another practice. Upload your own videos and forms, or use the built-in library.",
   },
 };
 
-/** The "The Cima AI Agent:" comparison paragraph on /ai-agent. */
+/** The "The GrowthOS AI front desk:" comparison paragraph on /ai-agent. */
 export const AI_AGENT_EXAMPLE: Record<Specialty, string> = {
   fertility:
     "Reads the emotional context of every message. Knows that a patient asking about egg freezing at 11 PM is probably anxious and needs reassurance, not a pricing sheet. Nurtures across days or weeks. Then hands off with the complete conversation history.",
@@ -232,8 +225,6 @@ export const GENERAL_LINE_SWAPS: Record<string, string> = {
   "Enterprise sales cycle to get started": "Enterprise sales process to get started",
   "Pre-loaded with fertility, med spa, aesthetic, regenerative, and wellness conversation frameworks. Then fine-tuned on YOUR clinic's specific services, policies, and voice.":
     "Pre-loaded with med spa, aesthetic, regenerative, and wellness conversation frameworks. Then fine-tuned on YOUR clinic's specific services, policies, and voice.",
-  "Yes, you can switch between Starter and Pro at any time. Changes take effect on your next billing cycle. No penalties or hidden fees.":
-    "Yes, you can switch between Starter and Pro at any time. Changes take effect on your next billing period. No penalties or hidden fees.",
   "Specialty-specific copy for fertility, aesthetics, wellness, and regenerative services. Written to convert patients, not impressions.":
     "Specialty-specific copy for aesthetics, wellness, and regenerative services. Written to convert patients, not impressions.",
   "Budget changes are capped at 25% per cycle. Campaigns are never deleted, only paused. And the system waits 14 full days before making its first move, so Google's ML has time to learn.":

@@ -7,20 +7,20 @@ import { buildSolutionSchema } from '@/lib/solution-jsonld';
 const SLUG = 'patient-engagement-platform';
 const TITLE = 'Patient Engagement Platform for Clinics | GrowthOS';
 const DESCRIPTION =
-  'GrowthOS is a patient engagement platform that converts and retains, not just messages. One inbox for patients who contact you by text, email, WhatsApp, LINE, web chat or phone, with an AI patient bot.';
+  'GrowthOS is a patient engagement platform that converts and retains, not just messages. One inbox for patients who contact you by text, email, WhatsApp, LINE, web chat or phone, with an AI front desk.';
 
 const content: SolutionLandingProps = {
   eyebrow: 'Patient engagement platform',
-  h1Lead: 'A patient engagement platform that',
-  h1Accent: 'converts and retains, not just messages.',
+  h1Lead: 'Every patient followed up until they book,',
+  h1Accent: 'and again until they rebook.',
   subhead:
-    'Most engagement tools send messages. They do not move patients forward. GrowthOS engages every inquiry across every channel, responds in seconds, and follows up until the patient books and rebooks.',
+    'Most engagement tools send messages. They do not move patients forward. GrowthOS automates every conversation across SMS, WhatsApp, Instagram, chat and email, so no patient falls through the cracks when your clinic gets busy.',
   problem: {
     eyebrow: 'The problem',
     heading: 'Sending messages is not',
     accent: 'the same as engaging patients.',
     paragraphs: [
-      'Plenty of tools can send a message. That is not engagement. Real engagement means the right reply, on the channel the patient chose, fast enough to matter, every single time. Most tools fall down on speed and consistency, which is exactly when patients lose interest.',
+      'Plenty of tools can send a message. That is not engagement. Real engagement means the right reply, on the channel the patient chose, fast enough to matter. Most tools fall down on speed and consistency, which is exactly when patients lose interest. A patient engagement platform has to get both right.',
       'A patient who messages at 9:14pm does not want an auto-reply that says someone will be in touch. They want an answer. The clinic that responds in seconds with a real, accurate reply earns the consultation. The one that waits until morning loses it to whoever answered first.',
     ],
     points: [
@@ -34,7 +34,7 @@ const content: SolutionLandingProps = {
     eyebrow: 'How GrowthOS solves it',
     heading: 'Engagement that responds, converts, and retains.',
     intro:
-      'GrowthOS engages patients on every channel with an AI patient bot that answers accurately, books consultations, and keeps following up. Speed and consistency are the product, not an afterthought.',
+      'GrowthOS engages patients on every channel with an AI front desk that answers accurately, books consultations, and keeps following up. Speed and consistency are the product, not an afterthought.',
     features: [
       {
         icon: 'message',
@@ -43,7 +43,7 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'bot',
-        title: 'AI patient bot',
+        title: 'AI front desk',
         body: 'A specialty-trained bot answers questions accurately, qualifies the inquiry, and books the consultation without a staff member online.',
       },
       {
@@ -94,7 +94,7 @@ const content: SolutionLandingProps = {
   },
   proofPoints: [
     'SMS, email, WhatsApp, LINE, chat, and voice',
-    'AI patient bot',
+    'AI front desk',
     'HIPAA-grade data handling',
     'Leads flowing on day one',
   ],
@@ -115,7 +115,7 @@ const content: SolutionLandingProps = {
         'GrowthOS responds in seconds, around the clock, including after hours and weekends. Because speed to lead is the strongest predictor of whether a patient books, responding instantly is the core of the platform.',
     },
     {
-      question: 'Is the AI patient bot safe for healthcare conversations?',
+      question: 'Is the AI front desk safe for healthcare conversations?',
       answer:
         'Yes. The AI bot is trained with specialty-specific guardrails and HIPAA-grade data handling, and your team can step into any conversation at any time through the unified inbox.',
     },
@@ -153,9 +153,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See engagement that books patients.',
-    body: 'Twenty minutes. We will show the AI patient bot handling real inquiries across channels in your specialty, not a generic demo.',
+    body: 'Thirty minutes. See the AI front desk handle real inquiries across channels in your specialty, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 

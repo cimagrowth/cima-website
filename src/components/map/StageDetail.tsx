@@ -55,21 +55,26 @@ export default function StageDetail({
   stats: PlatformStats;
   headingLevel?: "h1" | "h2";
   linkToStagePage?: boolean;
-  /** Leak and fix copy for this stage. Defaults to the fertility STAGE_COPY. */
-  copy?: { leak: string; fix: string };
+  /** Leak and fix copy for this stage, plus the stage page outcome and how line. Defaults to the fertility STAGE_COPY. */
+  copy?: { leak: string; fix: string; outcome?: string; how?: string };
   /** Upper-case person word for the caption, such as "CLIENT". */
   personOne?: string;
 }) {
   const Heading = headingLevel;
   const SubHeading = headingLevel === "h1" ? "h2" : "h3";
   const display = displayStatsForStage(map, stage, stats);
+  // The stage's own page leads with the outcome; the Map overview keeps the stage name.
+  const isPage = headingLevel === "h1" && !!copy?.outcome;
   return (
     <div className="flex flex-col gap-8">
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
         <div className="flex flex-col gap-4 lg:col-span-7">
-          <p className="text-sm font-bold uppercase tracking-[0.1em] text-teal">Stage {stage.number}</p>
+          <p className="text-sm font-bold uppercase tracking-[0.1em] text-teal">
+            Stage {stage.number}
+            {isPage && ` · ${stage.name}`}
+          </p>
           <Heading className="font-display text-[clamp(32px,4vw,48px)] font-semibold leading-[1.06] tracking-[-0.02em] text-teal-deep">
-            {stage.name}
+            {isPage ? copy.outcome : stage.name}
           </Heading>
           <ul className="flex flex-col gap-1.5">
             {stage.leaks.map((l) => (
@@ -82,6 +87,7 @@ export default function StageDetail({
             ))}
           </ul>
           {copy && <p className="font-display text-[clamp(20px,2.2vw,26px)] leading-snug text-teal-deep">{copy.leak}</p>}
+          {isPage && copy.how && <p className="text-base leading-relaxed text-teal-deep/85 md:text-[17px]">{copy.how}</p>}
         </div>
         <figure className="flex flex-col justify-center gap-3 rounded-[18px] bg-teal-deep p-7 text-paper lg:col-span-5">
           <figcaption className="text-[13px] font-bold tracking-[0.08em] text-clay-soft">WHAT THE {personOne} IS THINKING</figcaption>
@@ -120,9 +126,10 @@ export default function StageDetail({
 
       <div className="flex flex-col gap-3">
         <SubHeading className="text-sm font-bold uppercase tracking-[0.08em] text-teal">
-          Modules in this stage ({stage.features.length})
+          What runs automatically ({stage.features.length})
         </SubHeading>
         <FeatureList stage={stage} headingLevel={headingLevel === "h1" ? "h3" : "h4"} />
+        {stage.also_used && <p className="text-[15px] text-teal-deep/80">{stage.also_used}</p>}
       </div>
 
       {linkToStagePage && (

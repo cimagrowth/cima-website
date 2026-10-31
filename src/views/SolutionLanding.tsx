@@ -123,6 +123,10 @@ export interface SolutionLandingProps {
   closing: {
     heading: string;
     body: string;
+    /** Caption-style source line directly under body. */
+    note?: string;
+    /** Second paragraph after the note. */
+    more?: string;
     primaryCta: Cta;
     secondaryCta?: Cta;
   };
@@ -447,9 +451,15 @@ const SolutionLanding = ({
             <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-paper mb-6 leading-tight">
               {closing.heading}
             </h2>
-            <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">
+            <p className={`text-base md:text-lg text-paper/80 max-w-2xl mx-auto ${closing.note || closing.more ? "mb-2" : "mb-8"}`}>
               {closing.body}
             </p>
+            {closing.note && (
+              <p className={`text-xs text-paper/70 max-w-2xl mx-auto ${closing.more ? "mb-4" : "mb-8"}`}>{closing.note}</p>
+            )}
+            {closing.more && (
+              <p className="text-base md:text-lg text-paper/80 mb-8 max-w-2xl mx-auto">{closing.more}</p>
+            )}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={closing.primaryCta.href}>
                 <Button variant="hero" size="xl" className="group">

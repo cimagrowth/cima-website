@@ -188,7 +188,7 @@ export default async function Image({
               textTransform: 'uppercase',
             }}
           >
-            The 47 Frameworks
+            GrowthOS Blog
           </div>
         </div>
 

@@ -483,10 +483,10 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
         <div className="container-wide relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Where does your clinic leak? See it on the GrowthOS Map.
+              Find where patients fall through the cracks at your clinic.
             </h1>
             <p className="font-body text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Answer a few questions about your patient journey. We place every answer on the GrowthOS Map, benchmark it against anonymized data from active GrowthOS clinic accounts, and send you a report showing which stages are leaking, what the leak costs in revenue, and how much opportunity is in your local market. Your report arrives in your inbox in a few minutes.
+              Answer a few questions about your patient journey. In a few minutes you'll get a free report showing which stages lose patients, what that costs, how much opportunity is in your local market, and what to fix first.
             </p>
             <div className="flex flex-col items-center gap-4">
               <Button
@@ -500,7 +500,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               <p className="font-body text-sm text-teal-deep/70 max-w-2xl">
-                Free audit. Your report arrives in your inbox in a few minutes. Includes The Seven-Figure Leak framework guide.
+                Free audit. Your report arrives in your inbox in a few minutes.
               </p>
             </div>
           </div>
@@ -562,7 +562,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                   Your audit is underway.
                 </h2>
                 <p className="font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-                  Your audit is underway. Check your email for The Seven-Figure Leak guide. Your report arrives in your inbox in a few minutes.
+                  Your audit is underway. Your report arrives in your inbox in a few minutes.
                 </p>
               </div>
             ) : (
@@ -572,7 +572,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
                     Get My Free Audit
                   </h2>
                   <p className="font-body text-base md:text-lg text-teal-deep/80 leading-relaxed">
-                    Free audit. Your report arrives in your inbox in a few minutes. Includes The Seven-Figure Leak framework guide.
+                    Free audit. Your report arrives in your inbox in a few minutes.
                   </p>
                 </div>
 
@@ -1032,7 +1032,7 @@ export default function Growth({ mapPreview }: { mapPreview?: ReactNode } = {}) 
       <section className="section-padding-sm bg-background relative overflow-hidden">
         <div className="container-wide relative z-10">
           <p className="text-center font-ui text-sm font-medium text-teal-deep/70">
-            Cima Growth Solutions. Built on The 47 Frameworks.
+            Cima Growth Solutions.
           </p>
         </div>
       </section>

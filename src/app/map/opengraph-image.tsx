@@ -9,7 +9,7 @@ export const alt = 'The GrowthOS Map: the patient journey and where clinics leak
 export default function Image() {
   return renderOgCard({
     eyebrow: 'The GrowthOS Map',
-    title: 'The patient journey, and every place it leaks.',
+    title: 'No patient falls through the cracks, from first search to years after treatment.',
     sub: 'Eight stages, from the first search to the last stored embryo.',
   });
 }

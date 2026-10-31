@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SolutionLanding, { type SolutionLandingProps } from '@/views/SolutionLanding';
 import { getGrowthosMap } from '@/lib/growthos-map';
+import { specializeMap } from '@/lib/specialty-map';
 import MapStrip from '@/components/map/MapStrip';
 import { buildSolutionSchema } from '@/lib/solution-jsonld';
 
@@ -11,16 +12,16 @@ const DESCRIPTION =
 
 const content: SolutionLandingProps = {
   eyebrow: 'Medical practice marketing',
-  h1Lead: 'Practice software that turns inquiries',
-  h1Accent: 'into booked appointments.',
+  h1Lead: 'No patient falls through the cracks,',
+  h1Accent: 'even on your busiest day.',
   subhead:
-    'Most clinics buy more marketing. They do not buy marketing that works together. GrowthOS combines inbox, CRM, booking and ad management in one platform your staff operates.',
+    'Most clinics add another tool. None of them talk to each other. GrowthOS automates replies, follow-up, reminders and rebooking in one platform your staff operates.',
   problem: {
     eyebrow: 'The problem',
     heading: 'You are paying for four tools',
     accent: 'for tools that do not talk.',
     paragraphs: [
-      'A typical clinic stack looks like this: an ad tool here, a chatbot on the website, a CRM stores the contacts, and a staff member stitches it all together by hand. Each piece bills you separately, and none of them owns the result. Leads fall through the seams.',
+      'A typical clinic stack looks like this: an ad tool here, a chatbot on the website, a CRM stores the contacts, and a staff member stitches it all together by hand. Each piece bills you separately, and none of them owns the result. Leads fall through the seams. Medical practice marketing only works when those pieces work together.',
       'More activity is not more infrastructure. Running campaigns is not the same as having a system that turns a click into a booked consultation. When the pieces are disconnected, you pay for demand you never convert and blame the ads when the real leak is everything that happens after the click.',
     ],
     points: [
@@ -48,7 +49,7 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'filter',
-        title: 'Stop the leakage',
+        title: 'Close the gaps',
         body: 'GrowthOS follows up at every pipeline stage, recovering the inquiries that stall after the first message.',
       },
       {
@@ -58,7 +59,7 @@ const content: SolutionLandingProps = {
       },
       {
         icon: 'layers',
-        title: 'Replace the patchwork',
+        title: 'One platform instead of four',
         body: 'Ads, inbox, CRM, booking, and reporting in one platform, so you stop paying four vendors to do one job.',
       },
       {
@@ -122,7 +123,7 @@ const content: SolutionLandingProps = {
     {
       question: 'How fast will we see booked consultations?',
       answer:
-        'GrowthOS is typically live in about 48 hours and begins responding to inquiries immediately. Speed to lead improves from day one, which is the single biggest driver of booked consultations.',
+        'GrowthOS starts responding to inquiries as soon as your team turns it on, so speed to lead improves from the first day, and speed to lead is a major driver of booked consultations.',
     },
   ],
   related: {
@@ -153,9 +154,9 @@ const content: SolutionLandingProps = {
   },
   closing: {
     heading: 'See marketing that fills the calendar.',
-    body: 'Twenty minutes. We will show the software answering inquiries and helping staff book consults in your specialty, not a generic demo.',
+    body: 'Thirty minutes. See the software answer inquiries and help staff book consults in your specialty, not a generic demo.',
     primaryCta: { label: 'Book a Demo', href: '/demo' },
-    secondaryCta: { label: 'See GrowthOS', href: '/product' },
+    secondaryCta: { label: 'Get your free Leak Map', href: '/growth' },
   },
 };
 
@@ -189,7 +190,7 @@ export const revalidate = 3600;
 
 export default async function Page() {
   const map = await getGrowthosMap();
-  const mapSection = <MapStrip map={map} exclude={['after_cycle']} />;
+  const mapSection = <MapStrip map={specializeMap(map, 'wellness')} />;
   const schema = buildSolutionSchema({
     slug: SLUG,
     name: TITLE,

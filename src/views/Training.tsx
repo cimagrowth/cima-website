@@ -43,16 +43,15 @@ const Training = () => {
           >
             <Eyebrow>Training and certification, a GrowthOS module</Eyebrow>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-[-.02em] text-teal-deep mb-6 leading-tight">
-              Your customers need training.{" "}
+              Every new hire trained{" "}
               <span className="text-clay">
-                You built a folder of videos.
+                on how your clinic handles patients.
               </span>
             </h1>
             <p className="text-base md:text-xl text-teal-deep/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Training is a GrowthOS module for onboarding, training, and
-              certification for the companies you sell to. It runs off your pipeline, tracks who finished, and issues
-              certificates they can prove. Not another platform for your
-              customers to log into and forget.
+              Assign training by role, check understanding with short quizzes,
+              and see who&apos;s certified, so service doesn&apos;t slip when
+              you&apos;re busy or short-staffed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link href={DEMO_ROUTE}>
@@ -73,7 +72,7 @@ const Training = () => {
               {[
                 "Your videos, your brand",
                 "Certificates that verify",
-                "Enrol a whole company at once",
+                "Enroll a whole team at once",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <Check
@@ -94,10 +93,10 @@ const Training = () => {
           <motion.div {...fadeUp} className="max-w-3xl mx-auto">
             <div className="relative pl-6 md:pl-10 border-l-2 border-orange/70">
               <p className="font-display text-[clamp(22px,3vw,34px)] font-semibold tracking-tight text-teal leading-snug">
-                Every B2B company that sells into clinics ends up running a
-                training operation it never meant to build. Recorded calls, a
-                shared drive, a spreadsheet of who watched what, and a customer
-                success manager who becomes the person who chases people. It is
+                Every clinic ends up running a training operation it never meant
+                to build. Recorded calls, a shared drive, a spreadsheet of who
+                watched what, and a practice manager who becomes the person who
+                chases people. It is
                 the least automated part of a business that automates everything
                 else.
               </p>
@@ -118,7 +117,7 @@ const Training = () => {
           >
             <Eyebrow>How it works</Eyebrow>
             <h2 className="font-display text-[clamp(28px,4vw,48px)] font-semibold tracking-tight text-foreground leading-tight">
-              Training that knows where the customer is.
+              Training that knows where each new hire is.
             </h2>
           </motion.div>
 
@@ -127,8 +126,8 @@ const Training = () => {
             {[
               {
                 n: "01",
-                title: "A deal reaches Onboarding.",
-                body: "Every named contact at that company is enrolled automatically. Nobody remembers to do it.",
+                title: "A new hire reaches Onboarding.",
+                body: "Every new team member is enrolled in the right training for their role automatically. Nobody remembers to do it.",
               },
               {
                 n: "02",
@@ -138,7 +137,7 @@ const Training = () => {
               {
                 n: "03",
                 title: "The stage will not advance until they are trained.",
-                body: "Training stops being a task your CSM nags about. It becomes a condition of going live.",
+                body: "Training stops being a task your manager nags about. It becomes a condition of working with patients.",
               },
             ].map((step, i) => (
               <motion.div
@@ -194,7 +193,7 @@ const Training = () => {
                 n: "01",
                 icon: Video,
                 title: "Your videos, or ones you have not filmed yet.",
-                body: "Generate training videos from a script, or upload your own. Most companies never make the training they know they need because filming it is a project. Here it is a paragraph and a few minutes.",
+                body: "Generate training videos from a script, or upload your own. Most clinics never make the training they know they need because filming it is a project. Here it is a paragraph and a few minutes.",
               },
               {
                 n: "02",
@@ -206,13 +205,13 @@ const Training = () => {
                 n: "03",
                 icon: Award,
                 title: "Certificates you can defend.",
-                body: "Finish a program and a certificate issues automatically, carrying your logo and the signature of whoever in your company signs off. Anyone can verify it from a public link. A certificate issued in 2026 still proves what it proved after you redesign the template, because the signature is captured at the moment it was issued.",
+                body: "Finish a program and a certificate issues automatically, carrying your logo and the signature of whoever in your clinic signs off. Anyone can verify it from a public link. A certificate issued in 2026 still proves what it proved after you redesign the template, because the signature is captured at the moment it was issued.",
               },
               {
                 n: "04",
                 icon: Building2,
-                title: "Enrol a company, not a person.",
-                body: "Your customer is an organisation. Enrol all of them in one action, exclude anyone who does not need it, and read completion by seat. When your customer asks you to prove their staff are trained, you export the list.",
+                title: "Enroll a whole team, not one person at a time.",
+                body: "Assign training by role. Enroll your whole team in one action, exclude anyone who does not need it, and read completion by person. When you need to prove your staff are trained, you export the list.",
               },
             ].map((card, i) => {
               const Icon = card.icon;
@@ -267,7 +266,7 @@ const Training = () => {
             <IncludedCard
               title="Build"
               items={[
-                "Unlimited tracks, one per product line or audience",
+                "Unlimited tracks, one per role or service line",
                 "Modules from your own video, or generated from a script",
                 "Knowledge checks with explanations on wrong answers",
                 "Written, file, and link assignments with attempt limits",
@@ -276,8 +275,8 @@ const Training = () => {
             <IncludedCard
               title="Run"
               items={[
-                "Enrol a contact or an entire company in one action",
-                "Automatic enrolment when a deal reaches a stage you choose",
+                "Enroll one person or your entire team in one action",
+                "Automatic enrollment when a new hire reaches a stage you choose",
                 "Kickoff, reminder, and overdue messages that send themselves",
                 "Every message editable in your own words",
               ]}
@@ -288,7 +287,7 @@ const Training = () => {
                 "Designed certificates with your logo and a locked signature",
                 "Public verification link on every certificate",
                 "Recertification on a schedule you set",
-                "Completion by person, by company, and by program",
+                "Completion by person, by role, and by program",
               ]}
             />
           </div>
@@ -325,10 +324,7 @@ const Training = () => {
               Pricing is shared in your demo.
             </p>
             <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
-              Not per seat, not per learner, not per course. Video generation is
-              billed by the minute of finished video, and your first year
-              includes a credit to get started. Uploading video you already have
-              costs nothing per minute.
+              Not per seat, not per learner, not per course.
             </p>
           </motion.div>
 
@@ -344,10 +340,10 @@ const Training = () => {
               </p>
               <ul className="space-y-3">
                 {[
-                  "Priced per seat, so training your biggest customer costs the most",
-                  "Their brand on your customers' screens",
-                  "A separate system your CSM has to remember to update",
-                  "Reporting that lives away from the account record",
+                  "Priced per seat, so training your whole team costs the most",
+                  "Their brand on your staff's screens",
+                  "A separate system your manager has to remember to update",
+                  "Reporting that lives away from your team records",
                 ].map((item) => (
                   <li
                     key={item}
@@ -379,7 +375,7 @@ const Training = () => {
                   "One price, every learner",
                   "Your brand, your domain",
                   "Fires off the pipeline you already run",
-                  "Completion on the company record",
+                  "Completion on each staff record",
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-sm md:text-base">
                     <Check
@@ -457,14 +453,14 @@ const IncludedCard = ({
 
 /* --------------------------------------------------------------------- */
 /* CSS-only pipeline visual                                               */
-/* Three stage columns, a company record sitting in the final stage, and  */
-/* a seat-completion readout. No video, no heavy animation, and it stacks */
+/* Three stage columns, a team record sitting in the final stage, and     */
+/* a staff-certification readout. No video, no heavy animation, and it stacks */
 /* cleanly on mobile.                                                     */
 /* --------------------------------------------------------------------- */
 
 const PipelineVisual = () => {
   const stages = [
-    { label: "Closed Won", active: false },
+    { label: "Hired", active: false },
     { label: "Onboarding", active: false },
     { label: "Certified", active: true },
   ];
@@ -500,22 +496,22 @@ const PipelineVisual = () => {
                   </span>
                   <div className="leading-tight">
                     <p className="font-ui text-xs font-semibold text-foreground">
-                      Meridian Labs
+                      Front desk onboarding
                     </p>
                     <p className="text-[10px] text-muted-foreground">
-                      Company record
+                      Team record
                     </p>
                   </div>
                 </div>
                 <span className="inline-flex items-center gap-1 rounded-full bg-orange/15 text-orange-600 px-2 py-0.5 font-ui text-[10px] font-semibold uppercase tracking-[.1em]">
                   <BadgeCheck className="w-3 h-3" />
-                  8 of 12 seats complete
+                  8 of 12 staff certified
                 </span>
               </div>
             ) : (
               <div className="rounded-lg border border-dashed border-sand bg-white/50 p-3 h-[74px] flex items-center justify-center">
                 <span className="font-ui text-[10px] uppercase tracking-[.12em] text-muted-foreground/60">
-                  {stage.label === "Onboarding" ? "Program sent" : "Won"}
+                  {stage.label === "Onboarding" ? "Program sent" : "Hired"}
                 </span>
               </div>
             )}

@@ -27,10 +27,10 @@ const navLinks: NavLink[] = [
   {
     label: "Solutions",
     children: [
-      { href: "/ai-agent", label: "AI Agent" },
+      { href: "/ai-agent", label: "AI front desk" },
       { href: "/ads", label: "Ads Manager" },
       { href: "/chartai", label: "ChartAI" },
-      { href: "/consent", label: "Patient Consent" },
+      { href: "/consent", label: "Consent and education" },
       { href: "/keep", label: "Keep" },
       { href: "/training", label: "Training" },
     ],

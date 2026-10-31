@@ -18,7 +18,7 @@ export const generateOrganizationSchema = ({
   name = COMPANY_NAME,
   url = SITE_URL,
   logo = `${SITE_URL}/og-image.png`,
-  description = "AI-powered patient engagement and marketing automation platform for fertility clinics, med spas, and regenerative medicine practices.",
+  description = "Cima Growth Solutions makes GrowthOS, subscription software that automates everything that happens to a patient outside the lab.",
   sameAs = CIMA_SOCIAL.map((p) => p.url),
 }: OrganizationSchemaProps = {}) => ({
   "@context": "https://schema.org",
@@ -72,7 +72,7 @@ export interface WebsiteSchemaProps {
 export const generateWebsiteSchema = ({
   name = `${PRODUCT_NAME} by ${COMPANY_NAME}`,
   url = SITE_URL,
-  description = "AI-powered patient engagement and lead nurturing platform for fertility clinics, med spas, wellness centers, and regenerative medicine clinics.",
+  description = "GrowthOS automates everything that happens to a patient outside the lab.",
 }: WebsiteSchemaProps = {}) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -96,7 +96,7 @@ export interface SoftwareApplicationSchemaProps {
 
 export const generateSoftwareSchema = ({
   name = PRODUCT_NAME,
-  description = "AI-powered patient engagement platform that responds instantly across every channel: web, phone, text, email, WhatsApp, and social media, then nurtures leads until your team steps in.",
+  description = "GrowthOS automates everything that happens to a patient outside the lab.",
   applicationCategory = "BusinessApplication",
   applicationSubCategory = "Healthcare Marketing Automation",
   operatingSystem = "Web, iOS, Android",

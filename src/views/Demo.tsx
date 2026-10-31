@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { getAttribution, pushLeadEvent } from "@/lib/attribution";
 import { FORM_SPECIALTY_VALUES } from "@/content/specialty-pages";
 import { useSpecialty } from "@/contexts/SpecialtyContext";
+import { SetupSteps } from "@/components/home/SetupSteps";
 
 const SUPABASE_URL = "https://momssbzlofjodqodvvvk.supabase.co";
 const ANON_KEY =
@@ -20,10 +21,14 @@ const industryOptions = [
   { label: "Wellness", value: "wellness" },
   { label: "Aesthetics", value: "aesthetics" },
   { label: "Regenerative Medicine", value: "regenerative_medicine" },
+  { label: "Cosmetic surgery", value: "cosmetic_surgery" },
+  { label: "Dermatology", value: "dermatology" },
+  { label: "Dental / orthodontics", value: "dental" },
   { label: "Other", value: "other" },
 ];
 
 const primaryGoalOptions = [
+  "Patients go quiet when we're busy",
   "Need more leads/patients",
   "Poor conversion rates",
   "No follow-up system",
@@ -164,14 +169,13 @@ const Demo = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="font-display font-semibold tracking-tight text-display-lg md:text-display-xl text-foreground mb-6">
-                See GrowthOS{" "}
-                <span className="text-gradient-accent">in Action</span>
+                See how GrowthOS keeps{" "}
+                <span className="text-gradient-accent">every patient moving.</span>
               </h1>
               <p className="text-body-lg text-muted-foreground mb-10">
-                Answer a few quick questions and book a 30-minute call with
-                Brandon. After the call, you'll get access to a personalized
-                GrowthOS account seeded with sample data for your specialty,
-                so you can explore on your own.
+                A 30-minute call with Brandon on your clinic&apos;s patient
+                journey. Afterwards you get your own GrowthOS account loaded with
+                sample data for your specialty to explore.
               </p>
 
               <div className="space-y-5 mb-10">
@@ -216,6 +220,7 @@ const Demo = () => {
                   );
                 })}
               </div>
+
             </motion.div>
 
             {/* Right: form */}
@@ -478,6 +483,15 @@ const Demo = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="after-call-title" className="pb-[clamp(64px,8vw,120px)] bg-background">
+        <div className="container-wide max-w-3xl">
+          <h2 id="after-call-title" className="text-heading text-foreground mb-6">
+            What happens after the call
+          </h2>
+          <SetupSteps />
         </div>
       </section>
     </>
