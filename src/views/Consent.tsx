@@ -135,7 +135,7 @@ const Consent = () => {
               {
                 n: "01",
                 title: "A patient moves to Protocol Assigned.",
-                body: "Their consent packet sends automatically. No one remembers to do it.",
+                body: "Their consent packet sends automatically, with the clinic details already filled in from the chart, the visit note and your clinic settings. Your team is only asked, with a one-tap prompt on web or phone, when something is truly missing.",
               },
               {
                 n: "02",
